@@ -1,0 +1,153 @@
+/* src/assets/fonts.css */
+/* 阿里巴巴普惠体字体 */
+@font-face {
+  font-family: "AlibabaPuHuiTi_2_55_Thin";
+  src: url("../font/AlibabaPuHuiTi-2/AlibabaPuHuiTi-2-35-Thin/AlibabaPuHuiTi-2-35-Thin.ttf")
+    format("truetype"); /* 根据实际文件名修改 */
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "AlibabaPuHuiTi_2_45_Light";
+  src: url("../font/AlibabaPuHuiTi-2/AlibabaPuHuiTi-2-45-Light/AlibabaPuHuiTi-2-45-Light.ttf")
+    format("truetype"); /* 根据实际文件名修改 */
+  font-weight: bold;
+  font-style: normal;
+}
+@font-face {
+  font-family: "AlibabaPuHuiTi_2_55_Regular";
+  src: url("../font/AlibabaPuHuiTi-2/AlibabaPuHuiTi-2-55-Regular/AlibabaPuHuiTi-2-55-Regular.ttf")
+    format("truetype"); /* 根据实际文件名修改 */
+  font-weight: bold;
+  font-style: normal;
+}
+@font-face {
+  font-family: "AlibabaPuHuiTi_2_65_Medium";
+  src: url("../font/AlibabaPuHuiTi-2/AlibabaPuHuiTi-2-65-Medium/AlibabaPuHuiTi-2-65-Medium.ttf")
+    format("truetype"); /* 根据实际文件名修改 */
+  font-weight: bold;
+  font-style: normal;
+}
+@font-face {
+  font-family: "AlibabaPuHuiTi_2_75_SemiBold";
+  src: url("../font/AlibabaPuHuiTi-2/AlibabaPuHuiTi-2-75-SemiBold/AlibabaPuHuiTi-2-75-SemiBold.ttf")
+    format("truetype"); /* 根据实际文件名修改 */
+  font-weight: bold;
+  font-style: normal;
+}
+@font-face {
+  font-family: "AlibabaPuHuiTi_2_85_Bold";
+  src: url("../font/AlibabaPuHuiTi-2/AlibabaPuHuiTi-2-85-Bold/AlibabaPuHuiTi-2-85-Bold.ttf")
+    format("truetype"); /* 根据实际文件名修改 */
+  font-weight: bold;
+  font-style: normal;
+}
+@font-face {
+  font-family: "AlibabaPuHuiTi_2_95_ExtraBold";
+  src: url("../font/AlibabaPuHuiTi-2/AlibabaPuHuiTi-2-95-ExtraBold/AlibabaPuHuiTi-2-95-ExtraBold.ttf")
+    format("truetype"); /* 根据实际文件名修改 */
+  font-weight: bold;
+  font-style: normal;
+}
+@font-face {
+  font-family: "AlibabaPuHuiTi_2_105_Heavy";
+  src: url("../font/AlibabaPuHuiTi-2/AlibabaPuHuiTi-2-105-Heavy/AlibabaPuHuiTi-2-105-Heavy.ttf")
+    format("truetype"); /* 根据实际文件名修改 */
+  font-weight: bold;
+  font-style: normal;
+}
+@font-face {
+  font-family: "AlibabaPuHuiTi_2_115_Black";
+  src: url("../font/AlibabaPuHuiTi-2/AlibabaPuHuiTi-2-115-Black/AlibabaPuHuiTi-2-115-Black.ttf")
+    format("truetype"); /* 根据实际文件名修改 */
+  font-weight: bold;
+  font-style: normal;
+}
+
+/* [SourceHanSerifCN] */
+@font-face {
+  font-family: "SourceHanSerifCN_Bold";
+  src: url("../font/CN/SourceHanSerifCN-Bold.otf") format("truetype"); /* 根据实际文件名修改 */
+  font-weight: bold;
+  font-style: normal;
+}
+@font-face {
+  font-family: "SourceHanSerifCN_Medium";
+  src: url("../font/CN/SourceHanSerifCN-Medium.otf") format("truetype"); /* 根据实际文件名修改 */
+  font-weight: bold;
+  font-style: normal;
+}
+@font-face {
+  font-family: "SourceHanSerifCN_ExtraLight";
+  src: url("../font/CN/SourceHanSerifCN-ExtraLight.otf") format("truetype"); /* 根据实际文件名修改 */
+  font-weight: bold;
+  font-style: normal;
+}
+@font-face {
+  font-family: "SourceHanSerifCN_Heavy";
+  src: url("../font/CN/SourceHanSerifCN-Heavy.otf") format("truetype"); /* 根据实际文件名修改 */
+  font-weight: bold;
+  font-style: normal;
+}
+@font-face {
+  font-family: "SourceHanSerifCN_Light";
+  src: url("../font/CN/SourceHanSerifCN-Light.otf") format("truetype"); /* 根据实际文件名修改 */
+  font-weight: bold;
+  font-style: normal;
+}
+@font-face {
+  font-family: "SourceHanSerifCN_Regular";
+  src: url("../font/CN/SourceHanSerifCN-Regular.otf") format("truetype"); /* 根据实际文件名修改 */
+  font-weight: bold;
+  font-style: normal;
+}
+@font-face {
+  font-family: "SourceHanSerifCN_SemiBold";
+  src: url("../font/CN/SourceHanSerifCN-SemiBold.otf") format("truetype"); /* 根据实际文件名修改 */
+  font-weight: bold;
+  font-style: normal;
+}
+
+/* Avenir */
+@font-face {
+  font-family: "Avenir-black-4";
+  src: url("../font/Avenir/AVENIR-BLACK-3.ttf") format("truetype"); /* 根据实际文件名修改 */
+  font-weight: bold;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Avenir-Book-4";
+  src: url("../font/Avenir/Avenir-Book-4.otf") format("truetype"); /* 根据实际文件名修改 */
+  font-weight: bold;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Avenir-Book-woff-5";
+  src: url("../font/Avenir/Avenir-Book-woff-5.ttf") format("truetype"); /* 根据实际文件名修改 */
+  font-weight: bold;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Avenir-Medium-6";
+  src: url("../font/Avenir/Avenir-Medium-6.otf") format("truetype"); /* 根据实际文件名修改 */
+  font-weight: bold;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Avenir-Medium-woff-7";
+  src: url("../font/Avenir/Avenir-Medium-woff-7.ttf") format("truetype"); /* 根据实际文件名修改 */
+  font-weight: bold;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Avenir-Roman-8";
+  src: url("../font/Avenir/Avenir-Roman-8.ttf") format("truetype"); /* 根据实际文件名修改 */
+  font-weight: bold;
+  font-style: normal;
+}
+/* Avenir Next */
+@font-face {
+  font-family: "AvenirNext";
+  src: url("../font/AvenirNext/Avenir\ Next.ttc") format("truetype"); /* 根据实际文件名修改 */
+}

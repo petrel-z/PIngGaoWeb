@@ -1,0 +1,58 @@
+<script setup>
+defineOptions({
+  name: "marketing-serviceIndex",
+});
+
+import { ref } from "vue";
+import ComHeader from "@/components/ComHeader.vue";
+import Footer from "@/components/Footer.vue";
+import imgPath from "@/assets/imgs/_8_humanResourcesImgs/头部轮播-08.png";
+
+const content = ref({
+  title: "联系我们",
+  content: "改革·创新·团结·奋斗·实干",
+  footer: "PG GROUP",
+  imgPath: imgPath,
+});
+const footer = ref([
+  {
+    name: "招标采购",
+    path: "/contactUs/purchaseByBidding",
+  },
+  {
+    name: "成为伙伴",
+    path: "/contactUs/becomePartner",
+  },
+  {
+    name: "业务咨询",
+    path: "/contactUs/businessConsulting",
+  },
+  {
+    name: "地址电话",
+    path: "/contactUs/addressTelephone",
+  },
+]);
+</script>
+
+<template>
+  <div>
+    <div class="header">
+      <div style="padding-top: 32px; height: 100%">
+        <ComHeader :content="content" :footer="footer" />
+      </div>
+    </div>
+    <router-view />
+    <div>
+      <Footer />
+    </div>
+  </div>
+</template>
+
+<style scoped>
+.header {
+  height: 68vh;
+  min-width: 1920px;
+  background-image: url("@/assets//imgs/_8_humanResourcesImgs/headerBg.png");
+  background-size: cover;
+}
+</style>
