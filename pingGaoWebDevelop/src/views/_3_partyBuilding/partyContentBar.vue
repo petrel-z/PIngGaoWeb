@@ -21,8 +21,8 @@ const props = defineProps({
     <div class="partyContentBar">
         <div class="center-container">
             <div class="content">
-                <h1 class="h1-1">{{  props.title1  }}</h1>
-                <h1 class="h1-2">{{  props.title2  }}</h1>
+                <h1 class="h1-1">{{ props.title1 }}</h1>
+                <h1 class="h1-2">{{ props.title2 }}</h1>
                 <div class="short-line">
                     <div class="triangle-left"></div>
                     <div class="line-center"></div>
@@ -30,13 +30,13 @@ const props = defineProps({
                 </div>
                 <hr class="long-line">
                 <p class="first-p">
-                    {{  props.content  }}
+                    {{ props.content }}
                 </p>
                 <!-- <p>法修改，深化党和国家机构改革，坚持和完善中国特色社会主义制度、推进国家治</p> -->
             </div>
         </div>
         <div class="important-logo">
-            <img src="../assets/image/importantLogo.png" alt="">
+            <img src="../../assets/imgs/_3_partyBuildingImgs/importantLogo.png" alt="">
         </div>
     </div>
 </template>
@@ -46,28 +46,26 @@ const props = defineProps({
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 1920px;
-    height: 478px;
-    background-image: url(../assets/image/t3P1F1Bg.png);
+    background-color: #a51617;
+
     position: relative;
 
     .center-container {
-        width: 1501px;
-        height: 401px;
+        width: 100%;
+        height: 400px;
         text-align: center;
-        background-color: #a51617;
-        border-radius: 10px;
-        font-family: "SourceHanSerifCN";
+        font-family: "SourceHanSerifCN_Bold";
+        display: flex;
+        justify-content: center;
+        align-items: center;
 
         .content {
+            margin-top: 2%;
+            width: 79%;
             display: flex;
             flex-direction: column;
             justify-content: start;
             align-items: center;
-            position: relative;
-            top: 108px;
-            left: 119px;
-            width: 1265px;
 
             h1,
             p,
@@ -78,7 +76,6 @@ const props = defineProps({
 
             h1 {
                 font-size: 32px;
-                font-family: "AlibabaPuHuiTi_2_65_Medium";
                 color: #fce3cc;
                 line-height: 1.156;
             }
@@ -136,18 +133,17 @@ const props = defineProps({
                 font-size: 20px;
                 color: #fce3cc;
                 line-height: 1.85;
-                font-family: "SourceHanSerifCN";
-                margin-top: 25px;
+                margin-top: 2.5rem;
                 text-align: justify;
-                padding: 0 15px 0 30px;
+                padding: 0 1.5rem 0 3rem;
             }
         }
     }
 
     .important-logo {
         position: absolute;
-        left: 220px;
-        top: 45px;
+        left: 10%;
+        top: 4%;
 
     }
 }

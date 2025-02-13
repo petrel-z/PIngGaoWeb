@@ -4,17 +4,10 @@
   <div class="homePage">
     <div class="top">
       <div class="top-left">
-        <div class="left-on">
-          <h1>欢迎登录</h1>
-          <p>WELCOME</p>
-        </div>
-        <div class="left-under">
-          <p class="p-first">平高集团门户网站</p>
-          <p class="p-second">{{ "Pinggao Group Portal Website".toUpperCase() }}</p>
-        </div>
+        <img src="../../assets/imgs/_11_welcomeImgs/welcome.png" alt="">
       </div>
       <div class="top-right">
-        <h1>赋能智慧电气·创引绿色能源</h1>
+        <img src="../../assets/imgs/_11_welcomeImgs/header.png" alt="">
       </div>
     </div>
     <div class="center">
@@ -40,65 +33,37 @@
 <style lang="less" scoped>
 .homePage {
   position: relative;
-  width: 1920px;
-  height: 1080px;
+  width: 100%;
+  height: 100vh;
   background-image: url("../../assets/imgs/_11_welcomeImgs/homePageBg.png");
+  background-repeat: no-repeat;
+  background-size: cover;
   padding: 75px 75px 55px 75px;
 
   .top {
     width: 100%;
     height: 140px;
-    // padding: 75px 75px 55px 75px;
     margin-bottom: 55px;
-    display: flex;
-    justify-content: start;
-
+    position: relative;
     .top-left {
       width: 690px;
       height: 100%;
       color: #fff;
 
-      .left-on {
-        width: 220px;
-        border-bottom: 1px solid #fff;
+      position: absolute;
+      top: 0;
+      left: 0;
 
-        h1 {
-          font-size: 31.762px;
-          font-family: "AlibabaPuHuiTi_2_55_Regular";
-        }
-
-        p {
-          font-size: 18.451px;
-          font-family: "Avenir";
-          text-transform: uppercase;
-          position: relative;
-          top: -8px;
-        }
-      }
-
-      .left-under {
-        .p-first {
-          font-size: 20px;
-          font-family: "AlibabaPuHuiTi_2_55_Regular";
-          margin-top: 14px;
-        }
-
-        .p-second {
-          font-size: 14.511px;
-          font-family: "Avenir";
-          text-transform: uppercase;
-        }
-      }
     }
 
     .top-right {
-      // width: 100%;
+      width: 100%;
       height: 100%;
+      display: flex;
+      justify-content: center;
 
-      h1 {
-        font-size: 31.762px;
-        font-family: "AlibabaPuHuiTi_2_55_Regular";
-        color: rgb(255, 255, 255);
+      img {
+        height: 30px;
       }
     }
   }
@@ -126,6 +91,7 @@
         clear: both;
         width: 230px;
         height: 52px;
+        line-height: 52px;
         text-align: center;
         background-color: #fff;
         border-radius: 52px;
@@ -170,7 +136,7 @@
     transform: translateX(-50%);
     bottom: 0;
     font-size: 24.675px;
-    font-family: "Avenir";
+    font-family: "Avenir Black";
     color: rgb(255, 255, 255);
     text-align: center;
     margin-bottom: 85px;

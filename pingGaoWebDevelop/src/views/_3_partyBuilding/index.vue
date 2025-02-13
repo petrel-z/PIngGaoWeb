@@ -3,7 +3,7 @@ import { ref } from "vue";
 import ComHeader from "@/components/ComHeader.vue";
 import Footer from "@/components/Footer.vue";
 import imgPath from "@/assets/imgs/_3_partyBuildingImgs/头部轮播-03.png";
-
+import T3_topBar from "@/assets/imgs/_3_partyBuildingImgs/t3_topBar.png"
 defineOptions({
   name: "PartyBuilding",
 });
@@ -28,15 +28,16 @@ const footer = ref([
 <template>
   <div style="width: auto">
     <div class="header">
-      <div style="padding-top: 32px; height: 100%; width: auto">
-        <ComHeader :content="content" :footer="footer" />
+      <img class="header-bg" src="@/assets/imgs/_3_partyBuildingImgs/t3_p1_titleBg.png" alt="">
+      <div class="header-body" style="padding-top: 32px; height: 100%; ">
+        <ComHeader :content="content" :footer="footer" :css="{ fontColor: '#fce3cd', footerColor: '#a51617'}" :footerImg="T3_topBar"/>
       </div>
     </div>
 
     <RouterView />
 
     <div style="width: auto">
-      <Footer />
+      <Footer/>
     </div>
   </div>
 </template>
@@ -44,10 +45,24 @@ const footer = ref([
 <style lang="less" scoped>
 .header {
   /* height: 611px; */
-  height: 68.3vh;
+  height: auto;
   /* min-width: 1920px; */
-  width: auto;
-  background-image: url("@/assets/imgs/_3_partyBuildingImgs/t3_p1_titleBg.png");
-  background-size: cover;
+  width: 100vw;
+  // background-image: url("@/assets/imgs/_3_partyBuildingImgs/t3_p1_titleBg.png");
+  background-size: 100%;
+  background-repeat: no-repeat;
+  position:relative;
+  img {
+    width: 100%;
+  }
+
+  .header-body {
+    width: 100%;
+    position: absolute;
+    top: 0;
+    padding: 0;
+  }
 }
+
+
 </style>
