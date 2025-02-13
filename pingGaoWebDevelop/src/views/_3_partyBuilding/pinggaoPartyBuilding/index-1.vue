@@ -3,6 +3,7 @@ defineOptions({});
 import partyContentBar from "../partyContentBar.vue";
 import partyContentDetail from "../partyContentDetail.vue";
 import img1 from "@/assets/imgs/_3_partyBuildingImgs/t3_p2_img.png";
+import line from '@/assets/imgs/_3_partyBuildingImgs/t3_p1_line.png'
 
 const contentBar = {
   title1: "党纪学习教育 | 扎实起步",
@@ -68,7 +69,7 @@ const itemContent = [
       >
       </partyContentBar>
     </div>
-    <div class="footer-line"></div>
+    <div class="footer-line" :style="{ backgroundImage: `url(${line})` }"></div>
     <div class="building-content">
       <div class="bg-color"></div>
       <partyContentDetail
@@ -91,7 +92,7 @@ const itemContent = [
     background-image: url("../../../assets/imgs/_3_partyBuildingImgs/t3_p1_line.png");
     background-size: cover;
     background-repeat: repeat;
-    // transform: translateY(-3px);
+    transform: translateY(-3px);
     position: absolute;
     top: -3px;
   }

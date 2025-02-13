@@ -38,7 +38,7 @@ const footer = ref([
     <RouterView />
 
     <div style="width: auto">
-      <Footer />
+      <Footer/>
     </div>
   </div>
 </template>
@@ -46,10 +46,24 @@ const footer = ref([
 <style lang="less" scoped>
 .header {
   /* height: 611px; */
-  height: 68.3vh;
+  height: auto;
   /* min-width: 1920px; */
-  width: auto;
-  background-image: url("@/assets/imgs/_3_partyBuildingImgs/t3_p1_titleBg.png");
-  background-size: cover;
+  width: 100vw;
+  // background-image: url("@/assets/imgs/_3_partyBuildingImgs/t3_p1_titleBg.png");
+  background-size: 100%;
+  background-repeat: no-repeat;
+  position:relative;
+  img {
+    width: 100%;
+  }
+
+  .header-body {
+    width: 100%;
+    position: absolute;
+    top: 0;
+    padding: 0;
+  }
 }
+
+
 </style>

@@ -249,11 +249,22 @@ const props = defineProps({
     type: Boolean,
     default: false,
   },
+  footerImg: {
+    type: String,
+    default: '',
+  },
+  css: {
+    type: Object,
+    default: () => ({
+      fontColor: '#fff',
+      footerColor: '#fff'
+    }),
+  }
 });
 </script>
 
 <template>
-  <div id="header">
+  <div id="header" :style="{'--footerImg': props.footerImg, '--fontColor': props.css.fontColor , '--footerImg': props.footerImg, '--footerColor': props.css.footerColor }">
     <div id="header-nav">
       <div id="header-nav-top">
         <ul>
@@ -375,7 +386,7 @@ const props = defineProps({
     <div v-if="!props.onlyHeaderFlag" style="margin: 0 100px">
       <div class="header-body">
         <div class="header-body-title">{{ props.content.title }}</div>
-        <hr style="width: 50px; border: 1px solid #fff" />
+        <hr class="header-body-hr" style="width: 50px; " />
         <div class="header-body-content">{{ props.content.content }}</div>
         <div class="header-body-footer">{{ props.content.footer }}</div>
       </div>
@@ -617,14 +628,16 @@ const props = defineProps({
 .header-body {
   margin-top: 9em;
   margin-left: 7em;
-  color: #fff;
+  color: var(--fontColor);
 }
-
+.header-body-hr {
+  border: 1px solid var(--fontColor)
+ }
 .header-body-title {
   margin-bottom: 10px;
   font-size: 3.125rem;
   font-family: "AlibabaPuHuiTi_2_65_Medium";
-  color: rgb(255, 255, 255);
+  color: var(--fontColor);
   line-height: 1.2;
 }
 
@@ -632,7 +645,7 @@ const props = defineProps({
   margin-top: 10px;
   font-size: 2.125rem;
   font-family: "AlibabaPuHuiTi_2_45_Light";
-  color: rgb(255, 255, 255);
+  color: var(--fontColor);
   line-height: 1.2;
 }
 .header-body-footer {
@@ -664,11 +677,11 @@ const props = defineProps({
 }
 
 .header-footer ul li {
-  margin-right: 0.5em;
+  margin-right: 1.5em;
 }
 
 .header-footer ul li a {
-  color: #fff;
+  color: var(--footerColor);
 }
 
 .hidden {
@@ -677,7 +690,7 @@ const props = defineProps({
 }
 
 .active-border {
-  border-bottom: 1px solid #fff;
+  border-bottom: 1px solid var(--footerColor);
 }
 
 .active-color {

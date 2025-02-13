@@ -26,7 +26,7 @@ defineOptions({
           </div>
         </div>
         <div class="f1">
-          <h3><a href="#">关于平高</a></h3>
+          <h3>关于平高</h3>
           <p class="p-first">集团简介</p>
           <p>领导成员</p>
           <p>组织结构</p>
@@ -231,7 +231,7 @@ a {
   .codeImg {
     border: none;
     margin-left: 48px;
-    margin-right: 159px;
+    margin-right: 145px;
     p {
       font-size: 14px;
       font-family: "AlibabaPuHuiTi_2_55_Regular";

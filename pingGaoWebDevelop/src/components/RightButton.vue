@@ -16,7 +16,7 @@
     </div>
   </div>
 </template>
-<style>
+<style scoped>
 .button{
   width: 121px;
   height: 393px;
