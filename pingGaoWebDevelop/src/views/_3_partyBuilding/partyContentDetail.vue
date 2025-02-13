@@ -127,13 +127,16 @@ const props = defineProps({
 <style lang="less" scoped>
 .partyContentDetail {
   position: relative;
-  width: 1920px;
+  width: 100%;
   height: 600px;
   background-color: #f8f1e5;
   padding: 0 210px;
+  display: flex;
+  justify-content: center;
 
   .spirit-top {
-    width: 1500px;
+    // width: 1500px;/
+    width: 79%;
     position: absolute;
     top: 60px;
   }
@@ -144,7 +147,7 @@ const props = defineProps({
   }
 
   .spirit-list {
-    width: 1500px;
+    // width: 1500px;
     height: 100px;
 
     position: absolute;

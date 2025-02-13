@@ -1,7 +1,7 @@
 <script setup>
 import MyTitle from "@/components/MyTitle.vue";
 // import myFooter from '@/components/myFooter.vue';
-import rightButton from "@/components/rightButton.vue";
+import rightButton from "@/components/RightButton.vue";
 </script>
 <template>
   <!-- 集团简介 -->

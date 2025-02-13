@@ -11,6 +11,7 @@ import imgPath2 from "@/assets/imgs/_2_informationCenterImgs/头部轮播-02.png
 // import imgPath7 from '@/assets/imgs/头部轮播-07.png';
 // import imgPath8 from '@/assets/imgs/头部轮播-08.png';
 // import imgPath9 from '@/assets/imgs/头部轮播-09.png';
+import T3_topBar from "@/assets/imgs/_3_partyBuildingImgs/t3_topBar.png"
 
 let hidden = ref(true);
 let hoverFlag = ref(false);
@@ -82,12 +83,23 @@ const props = defineProps({
     type: Boolean,
     default: true,
   },
+  footerImg: {
+    type: String,
+    default: '',
+  },
+  css: {
+    type: Object,
+    default: () => ({
+      fontColor: '#fff',
+      footerColor: '#fff'
+    }),
+  }
 });
 console.log(props.onlyHeaderFlag);
 </script>
 
 <template>
-  <div id="header">
+  <div id="header" :style="{'--footerImg': props.footerImg, '--fontColor': props.css.fontColor , '--footerImg': props.footerImg, '--footerColor': props.css.footerColor }">
     <div id="header-nav">
       <div id="header-nav-top">
         <ul>
@@ -164,11 +176,11 @@ console.log(props.onlyHeaderFlag);
     <div v-if="props.onlyHeaderFlag" style="margin: 0 100px">
       <div class="header-body">
         <div class="header-body-title">{{ props.content.title }}</div>
-        <hr style="width: 50px; border: 1px solid #fff" />
+        <hr class="header-body-hr" style="width: 50px; " />
         <div class="header-body-content">{{ props.content.content }}</div>
         <div class="header-body-footer">{{ props.content.footer }}</div>
       </div>
-      <div class="header-footer">
+      <div class="header-footer" :style="{ 'background-image': `url(${props.footerImg})` }">
         <ul>
           <li v-for="item in footer" :key="item.name">
             <router-link active-class="active-border" :to="item.path">{{ item.name }}</router-link>
@@ -339,14 +351,16 @@ console.log(props.onlyHeaderFlag);
 .header-body {
   margin-top: 9em;
   margin-left: 7em;
-  color: #fff;
+  color: var(--fontColor);
 }
-
+.header-body-hr {
+  border: 1px solid var(--fontColor)
+ }
 .header-body-title {
   margin-bottom: 10px;
   font-size: 3.125rem;
   font-family: "AlibabaPuHuiTi_2_65_Medium";
-  color: rgb(255, 255, 255);
+  color: var(--fontColor);
   line-height: 1.2;
 }
 
@@ -354,7 +368,7 @@ console.log(props.onlyHeaderFlag);
   margin-top: 10px;
   font-size: 2.125rem;
   font-family: "AlibabaPuHuiTi_2_45_Light";
-  color: rgb(255, 255, 255);
+  color: var(--fontColor);
   line-height: 1.2;
 }
 .header-body-footer {
@@ -367,25 +381,33 @@ console.log(props.onlyHeaderFlag);
 
 .header-footer {
   position: absolute;
-  bottom: 0.5em;
-  left: 65%;
+  /* bottom: 0.5em; */
+  bottom: 0;
+  /* left: 65%; */
+  right: 0;
   font-size: 1.4375rem;
   font-family: "AlibabaPuHuiTi_2_55_Regular";
-  color: rgb(255, 255, 255);
+  color: var(--footerColor);
+  width: 37%;
+  height: 68px;
+  line-height: 68px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding-left: 3%;
 }
 
 .header-footer ul {
   display: flex;
-  justify-content: space-between;
+  justify-content: start;
   align-items: center;
 }
 
 .header-footer ul li {
-  margin-right: 0.5em;
+  margin-right: 1.5em;
 }
 
 .header-footer ul li a {
-  color: #fff;
+  color: var(--footerColor);
 }
 
 .hidden {
@@ -394,7 +416,7 @@ console.log(props.onlyHeaderFlag);
 }
 
 .active-border {
-  border-bottom: 1px solid #fff;
+  border-bottom: 1px solid var(--footerColor);
 }
 
 .active-color {
