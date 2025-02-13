@@ -1,7 +1,6 @@
 <script setup>
 import MyTitle from "@/components/MyTitle.vue";
 import MyButton from "@/components/MyButton.vue";
-import rightButton from "@/components/rightButton.vue";
 </script>
 
 <template>
@@ -22,9 +21,6 @@ import rightButton from "@/components/rightButton.vue";
       <img src="@/assets/imgs/_1_aboutPinggaoImgs/pic11.png" alt="Image 12" class="grid-item12" />
       <img src="@/assets/imgs/_1_aboutPinggaoImgs/pic3.png" alt="Image 13" class="grid-item13" />
     </div>
-    <div class="rightButton">
-      <rightButton></rightButton>
-    </div>
     <div class="footer">
       <MyButton class="myButton" text="加载更多"></MyButton>
     </div>
@@ -35,8 +31,8 @@ import rightButton from "@/components/rightButton.vue";
 .approachPinggao {
   position: relative;
   margin: auto;
-  width: 1920px;
-  height: 2400px;
+  width: 100%;
+  height: auto;
   /* border: 1px solid rgb(177, 177, 177); */
   padding: 64px 210px;
   border-radius: 20px;

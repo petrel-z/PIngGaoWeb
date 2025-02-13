@@ -99,14 +99,14 @@ function handleClick(e) {
   top: 0;
   left: 0;
   width: 100%;
-  height: 600px;
+  height: auto;
   background-color: #def1fb;
   z-index: -1;
 }
 
 .item-container {
   width: 100%;
-  height: 910px;
+  height: auto;
   margin-top: 72px;
   display: flex;
   justify-content: space-between;
@@ -116,7 +116,8 @@ function handleClick(e) {
 
 .button-container {
   width: 100%;
-  height: 276px;
+  height: auto;
+  margin: 3em 0;
   display: flex;
   justify-content: center;
   align-items: center;

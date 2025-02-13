@@ -41,7 +41,9 @@ const props = defineProps({
 
 <style scoped>
 .button {
-  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   background-color: var(--bgColor);
   border: none;
   color: white;
@@ -52,8 +54,8 @@ const props = defineProps({
   font-size: 16px;
   margin: 4px 2px;
   cursor: pointer;
-  width: 270px;
-  height: 61px;
+  width: auto;
+  height: auto;
   border-radius: 30.5px;
 }
 .button-text {

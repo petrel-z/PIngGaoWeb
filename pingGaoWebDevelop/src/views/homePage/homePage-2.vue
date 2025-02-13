@@ -63,7 +63,7 @@ onUnmounted(() => {
 <template>
   <div class="home_page">
     <div class="header">
-      <ComHeader :onlyHeaderFlag="false"></ComHeader>
+      <ComHeader :onlyHeaderFlag="true"></ComHeader>
     </div>
 
     <div class="my_carousel">

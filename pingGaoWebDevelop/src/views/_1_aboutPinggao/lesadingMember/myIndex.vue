@@ -1,6 +1,5 @@
 <script setup>
 import MyTitle from "@/components/MyTitle.vue";
-import rightButton from "@/components/rightButton.vue";
 </script>
 <template>
   <div class="lesadingMember">
@@ -36,19 +35,16 @@ import rightButton from "@/components/rightButton.vue";
         <div class="p1">三级顾问</div>
       </div>
     </div>
-    <div class="rightButton">
-      <rightButton></rightButton>
-    </div>
   </div>
 </template>
 <style scoped>
 .lesadingMember {
-  height: 980px;
+  height: auto;
   position: relative;
   margin: auto;
-  width: 1920px;
+  width: 100%;
   /* border: 1px solid rgb(177, 177, 177); */
-  padding: 64px 210px;
+  padding: 64px 5em;
   border-radius: 20px;
   background-color: #f7f8f8;
   z-index: -100;
@@ -69,7 +65,7 @@ import rightButton from "@/components/rightButton.vue";
   position: relative;
   width: 478px;
   height: 301px;
-  background-image: url(src\\assets\\img1-1\\people-bg.png);
+  background-image: url("../../../assets/imgs/_1_aboutPinggaoImgs/people-bg.png");
   background-size: cover;
 }
 .info .h {

@@ -37,7 +37,7 @@ const footer = ref([
 <template>
   <div>
     <div class="header">
-      <div style="padding-top: 32px; height: 100%">
+      <div style="height: 100%">
         <ComHeader :content="content" :footer="footer" />
       </div>
     </div>
@@ -51,7 +51,7 @@ const footer = ref([
 <style scoped>
 .header {
   height: 68vh;
-  min-width: 1920px;
+  min-width: 100%;
   background-image: url("@/assets//imgs/_8_humanResourcesImgs/headerBg.png");
   background-size: cover;
 }

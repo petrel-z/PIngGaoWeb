@@ -7,12 +7,14 @@ import { ref } from "vue";
 import ComHeader from "@/components/ComHeader.vue";
 import Footer from "@/components/Footer.vue";
 import imgPath from "@/assets/imgs/_5_marketingServiceImgs/头部轮播-05.png";
+import footerBg from "@/assets/imgs/_6_qualityAssuranceImgs/t6_topBar.png";
 
 const content = ref({
   title: "营销服务",
   content: "始于客户需求·为客户创造价值",
   footer: "PG GROUP",
   imgPath: imgPath,
+  footerBg: footerBg,
 });
 const footer = ref([
   {
@@ -33,7 +35,7 @@ const footer = ref([
 <template>
   <div>
     <div class="header">
-      <div style="padding-top: 32px; height: 100%">
+      <div style="height: 100%">
         <ComHeader :content="content" :footer="footer" />
       </div>
     </div>
@@ -46,9 +48,10 @@ const footer = ref([
 
 <style scoped>
 .header {
-  height: 735px;
-  width: 1920px;
-  background-image: url("@/assets//imgs/_5_marketingServiceImgs/headerBg.png");
+  /* height: 735px; */
+  height: 70vh;
+  width: 100%;
+  background-image: url("@/assets//imgs/_5_marketingServiceImgs/头部轮播-05.png");
   background-size: cover;
 }
 </style>

@@ -54,8 +54,8 @@ const props = defineProps({
 .news-bar {
   display: flex;
   justify-content: space-between;
-  width: 1300px;
-  height: 72px;
+  width: 100%;
+  height: auto;
   line-height: 72px;
   border-top: 1px solid;
   border-bottom: 1px solid;
@@ -63,7 +63,7 @@ const props = defineProps({
   font-size: 24px;
   font-family: "AlibabaPuHuiTi_2_55_Regular";
   color: rgb(165, 22, 23);
-  text-align: justifyLeft;
+  text-align: left;
 
   .bar-left {
     display: flex;

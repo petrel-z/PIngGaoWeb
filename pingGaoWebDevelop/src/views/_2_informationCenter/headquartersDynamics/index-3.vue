@@ -4,6 +4,7 @@ defineOptions({
 });
 import TextTitle from "@/components/TextTitle.vue";
 import ComDoubleDiv from "@/components/ComDoubleDiv.vue";
+import imgPath from "@/assets/imgs/_2_informationCenterImgs/LehYXF.png";
 </script>
 
 <template>
@@ -17,11 +18,7 @@ import ComDoubleDiv from "@/components/ComDoubleDiv.vue";
           想为指导，深入贯彻党的二十大和二十届二中、三中全会精神，全面落实中央经济工作会议和中央企业负责人会议各项要求，总结2024年工作，分析
           当前形势，研究部署2025年重点工作，奋力开创集团公司高质量发展新篇章。
         </p>
-        <img
-          style="margin-top: 79px; margin-bottom: 81px"
-          src="@/assets//imgs/_2_informationCenterImgs/LehYXF.png"
-          alt=""
-        />
+        <img style="margin-top: 79px; margin-bottom: 81px" :src="imgPath" alt="" />
         <p>
           集团公司党委书记、董事长李洪凤作题为《一步不停 一刻不歇
           推动集团持续高质量发展》的讲话。党委副书记、董事、总经理周群作题为《强基固本 蓄势能
@@ -37,7 +34,11 @@ import ComDoubleDiv from "@/components/ComDoubleDiv.vue";
         </p>
       </div>
       <div class="footer">
-        <ComDoubleDiv title="上一篇" content="中国电气装备召开一届二次职工代表大会暨2025年" />
+        <ComDoubleDiv
+          style="margin-right: 1em"
+          title="上一篇"
+          content="中国电气装备召开一届二次职工代表大会暨2025年"
+        />
         <ComDoubleDiv title="下一篇" content="中国电气装备召开一届二次职工代表大会暨2025年" />
       </div>
     </div>
@@ -46,7 +47,7 @@ import ComDoubleDiv from "@/components/ComDoubleDiv.vue";
 
 <style scoped>
 .body-bg {
-  background-image: url("@/assets//imgs//资讯中心/newsBg-1.png");
+  background-image: url("../../../assets/imgs/_2_informationCenterImgs/newsBg-1.png");
   padding: 0 210px;
   background-size: cover;
 }
@@ -71,23 +72,24 @@ import ComDoubleDiv from "@/components/ComDoubleDiv.vue";
   font-family: "AlibabaPuHuiTi_2_45_Light";
   color: rgb(89, 87, 87);
   line-height: 1.498;
-  width: 1300px;
+  width: 100%;
 }
 
 .content p:first-child {
-  height: 80px;
+  height: auto;
   text-align: left;
 }
 
 .content p:nth-of-type(2) {
-  height: 230px;
+  height: auto;
   text-align: left;
 }
 
 .footer {
   display: flex;
   justify-content: space-between;
-  margin-top: 74px;
-  margin-bottom: 67px;
+  width: 100%;
+  height: 20vh;
+  padding: 2em 0;
 }
 </style>

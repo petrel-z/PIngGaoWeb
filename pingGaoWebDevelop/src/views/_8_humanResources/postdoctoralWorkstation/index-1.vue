@@ -1,18 +1,15 @@
 <script setup>
-import MyTitle from '@/components/MyTitle.vue';
+import MyTitle from "@/components/MyTitle.vue";
 </script>
 
 <template>
-  <div style="width: 1920px; position: relative; min-height: 1605px">
+  <div style="width: 100%; position: relative; min-height: 1605px">
     <div class="title">
       <MyTitle title="博士后工作站" English="POSTDOCTORAL WORKSTATION" />
     </div>
     <div class="center">
       <div
-        style="
-          border-left: 2px solid rgb(0, 111, 193);
-          border-right: 2px solid rgb(0, 111, 193);
-        "
+        style="border-left: 2px solid rgb(0, 111, 193); border-right: 2px solid rgb(0, 111, 193)"
       >
         2008年6月<br />
         国家人力资源与社会保障部批准设立
@@ -22,10 +19,7 @@ import MyTitle from '@/components/MyTitle.vue';
         河南省优秀博士后工作站
       </div>
       <div
-        style="
-          border-left: 2px solid rgb(0, 111, 193);
-          border-right: 2px solid rgb(0, 111, 193);
-        "
+        style="border-left: 2px solid rgb(0, 111, 193); border-right: 2px solid rgb(0, 111, 193)"
       >
         累计接收12名博士<br />
         进站开展科研工作
@@ -53,66 +47,66 @@ import MyTitle from '@/components/MyTitle.vue';
       </div>
       <div class="img"></div>
     </div>
+
     <div class="bottom-bg"></div>
   </div>
 </template>
 
 <style scoped>
 .title {
-  padding-left: 210px;
-  padding-top: 65px;
+  padding: 65px 7em 0 7em;
 }
 
 .center {
-  width: 1920px;
+  width: 100%;
   height: 233px;
   background-color: #e8f5fc;
   display: flex;
   align-items: center;
-  padding: 0 210px;
   margin-top: 55px;
+  padding: 0 7em;
 }
 
 .center > div {
   width: 500px;
   height: 70px;
   font-size: 26px;
-  font-family: 'AlibabaPuHuiTi_2_65_Medium';
+  font-family: "AlibabaPuHuiTi_2_65_Medium";
   color: rgb(0, 111, 193);
   text-align: center;
 }
 
 .content {
-  width: 1920px;
-  padding: 0 210px;
+  width: 100%;
   margin-top: 45px;
   height: 545px;
   display: flex;
+  padding: 0 7em;
 }
 
 .text {
-  width: 800px;
+  width: 50%;
 }
 
 .text > p {
   font-size: 20px;
-  font-family: 'AlibabaPuHuiTi_2_45_Light';
+  font-family: "AlibabaPuHuiTi_2_45_Light";
   color: rgb(89, 87, 87);
   text-align: left;
   margin-bottom: 53px;
 }
 
 .img {
-  background-image: url('../../assets/imgs/人才资源/divBg-3.png');
+  background-image: url("../../../assets/imgs/_8_humanResourcesImgs/divBg-3.png");
   width: 651px;
   height: 366px;
   margin-left: 52px;
 }
 
 .bottom-bg {
-  background-image: url('@/assets//imgs/人才资源/bg-1.png');
+  background-image: url("../../../assets/imgs/_8_humanResourcesImgs/bg-1.png");
   background-size: cover;
-  width: 1920px;
+  width: 100%;
   min-height: 884px;
   position: absolute;
   top: 740px;

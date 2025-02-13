@@ -4,6 +4,7 @@ defineOptions({
 });
 import TextTitle from "@/components/TextTitle.vue";
 import ComDoubleDiv from "@/components/ComDoubleDiv.vue";
+import imgPath from "@/assets/imgs/_2_informationCenterImgs/MZFUZt.png";
 </script>
 
 <template>
@@ -17,11 +18,7 @@ import ComDoubleDiv from "@/components/ComDoubleDiv.vue";
           2024国际电力系统、电网设备及技术展览会上大放异彩，成为展会上
           一颗璀璨的明星。此次展会作为国际大电网会议组织（CIGRE）的顶级盛会，吸引了来自全球各地的顶尖电力企业和专家共襄盛举。
         </p>
-        <img
-          style="margin-top: 79px; margin-bottom: 81px"
-          src="@/assets//imgs/_2_informationCenterImgs/MZFUZt.png"
-          alt=""
-        />
+        <img style="margin-top: 79px; margin-bottom: 81px" :src="imgPath" alt="" />
         <p>
           平高集团以“绿色环保，智能制造”为主题，展示了其在新型电力系统建设中所取得的业绩和实力。展会现场，平高集团精心布置了展示区，重点推介
           了N2X-24型环保气体绝缘开关设备和145千伏无氟环保型GIS两款明星产品，充分展示了平高集团在科技创新和绿色发展方面的坚定决心和卓越成果。
@@ -44,7 +41,7 @@ import ComDoubleDiv from "@/components/ComDoubleDiv.vue";
 
 <style scoped>
 .body-bg {
-  background-image: url("@/assets//imgs//资讯中心/newsBg-1.png");
+  background-image: url("../../../assets/imgs/_2_informationCenterImgs/newsBg-1.png");
   padding: 0 210px;
   background-size: cover;
 }
@@ -69,23 +66,24 @@ import ComDoubleDiv from "@/components/ComDoubleDiv.vue";
   font-family: "AlibabaPuHuiTi_2_45_Light";
   color: rgb(89, 87, 87);
   line-height: 1.498;
-  width: 1300px;
+  width: 100%;
 }
 
 .content p:first-child {
-  height: 80px;
+  height: auto;
   text-align: left;
 }
 
 .content p:nth-of-type(2) {
-  height: 230px;
+  height: auto;
   text-align: left;
 }
 
 .footer {
   display: flex;
   justify-content: space-between;
-  margin-top: 74px;
-  margin-bottom: 67px;
+  padding: 2em 0;
+  width: 100%;
+  height: 20vh;
 }
 </style>

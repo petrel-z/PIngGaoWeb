@@ -11,7 +11,7 @@ const props = defineProps({
     default: () => ({
       h: "党的精神",
       English: "The spirit of the Party",
-      titleColor: "#a51517",
+      titleColor: "#d40000",
       lineColor: "#a51517",
       engColor: "#a51517",
     }),
@@ -89,7 +89,7 @@ const props = defineProps({
       ></MyTitle>
     </div>
     <div class="spirit-span">
-      <contenPage
+      <ContenPage
         :title1="props.contentPage.title1"
         :title2="props.contentPage.title2"
         :text="props.contentPage.text"
@@ -100,7 +100,7 @@ const props = defineProps({
         :title-font="props.contentPage.titleFont"
         :text-font="props.contentPage.textFont"
         :font-color="props.contentPage.fontColor"
-      ></contenPage>
+      ></ContenPage>
     </div>
     <div class="spirit-list">
       <div class="list-item" v-for="item in props.itemContent" :key="item.month">
@@ -127,31 +127,21 @@ const props = defineProps({
 <style lang="less" scoped>
 .partyContentDetail {
   position: relative;
-  width: 100%;
-  height: 600px;
-  background-color: #f8f1e5;
-  padding: 0 210px;
-  display: flex;
-  justify-content: center;
+
+  padding: 0 6em;
 
   .spirit-top {
-    // width: 1500px;/
-    width: 79%;
-    position: absolute;
-    top: 60px;
+    width: 100%;
+    padding: 2em 0;
   }
 
   .spirit-span {
-    position: absolute;
-    top: 215px;
+    padding: 5em 0;
   }
 
   .spirit-list {
-    // width: 1500px;
-    height: 100px;
-
-    position: absolute;
-    top: 875px;
+    width: 100%;
+    height: auto;
   }
 
   .list-item {
@@ -159,12 +149,11 @@ const props = defineProps({
   }
 
   .lookMore {
-    // width: 1500px;
-    display: inline-block;
-    position: absolute;
-    top: 1850px;
-    left: 50%;
-    transform: translateX(-50%);
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2em 0;
   }
 }
 </style>

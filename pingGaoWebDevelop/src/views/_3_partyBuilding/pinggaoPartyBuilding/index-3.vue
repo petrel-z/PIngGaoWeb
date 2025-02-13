@@ -2,7 +2,7 @@
 defineOptions({
   name: "pinggaoPartyBuildingMore",
 });
-import myTitle from "@/components/myTitle.vue";
+import myTitle from "@/components/MyTitle.vue";
 import ComDoubleDiv from "@/components/ComDoubleDiv.vue";
 import OrderList from "@/components/OrderList.vue";
 const leftList = [
@@ -79,7 +79,7 @@ const rightList = [
   justify-content: start;
   align-items: center;
 
-  background-image: url("@/assets/image/t3_p1_moreBg.png");
+  background-image: url("../../../assets/imgs/_3_partyBuildingImgs/t3_p1_moreBg.png");
 
   .title {
     margin-top: 22px;
@@ -112,7 +112,7 @@ const rightList = [
   .footer-line {
     width: 100%;
     height: 10px;
-    background-image: url(@/assets/image/t3_p1_line.png);
+    background-image: url("../../../assets/imgs/_3_partyBuildingImgs/t3_p1_line.png");
     background-size: cover;
     background-repeat: repeat;
     // transform: translateY(-3px);

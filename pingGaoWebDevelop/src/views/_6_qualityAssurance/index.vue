@@ -32,7 +32,7 @@ const footer = ref([
 <template>
   <div style="width: auto">
     <div class="header">
-      <div style="padding-top: 32px; height: 100%; width: auto">
+      <div style="height: 100%; width: auto">
         <ComHeader :content="content" :footer="footer" />
       </div>
     </div>
