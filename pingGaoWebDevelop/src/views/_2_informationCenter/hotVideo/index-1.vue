@@ -1,10 +1,10 @@
 <script setup>
 defineOptions({
-  name: 'NewsCenterIndex4-1',
+  name: "NewsCenterIndex4-1",
 });
-import { ref } from 'vue';
-import MyTitle from '@/components/MyTitle.vue';
-import MyButton from '@/components/MyButton.vue';
+import { ref } from "vue";
+import MyTitle from "@/components/MyTitle.vue";
+import MyButton from "@/components/MyButton.vue";
 const flag = ref(false);
 </script>
 
@@ -35,34 +35,31 @@ const flag = ref(false);
       </div>
     </div>
     <div v-if="flag" class="video" @click="flag = false">
-      <video
-        @click.stop
-        src=""
-        style="width: 80vw; height: 80vh; background-color: #fff"
-      ></video>
+      <video @click.stop src="" style="width: 80vw; height: 80vh; background-color: #fff"></video>
     </div>
   </div>
 </template>
 
 <style scoped>
 .body {
-  margin: 0 188px;
+  padding: 0 10em;
 }
 
 .bodyBg {
   width: 100%;
   position: relative;
   background-size: cover;
-  background-image: url('../../assets/imgs/资讯中心/videosBg.png');
+  background-image: url("../../assets/imgs/资讯中心/videosBg.png");
 }
 
 .content {
+  padding-top: 1em;
   width: 100%;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   grid-template-rows: repeat(3, 1fr);
   gap: 35px;
-  height: 1540px;
+  height: auto;
 }
 
 .video-box {
@@ -72,7 +69,7 @@ const flag = ref(false);
 }
 
 .video-item {
-  width: 739px;
+  width: 100%;
   height: 426px;
   border-radius: 10px;
 }
@@ -86,10 +83,11 @@ const flag = ref(false);
 
 .video-name {
   font-size: 26px;
-  font-family: 'AlibabaPuHuiTi_2_65_Medium';
+  font-family: "AlibabaPuHuiTi_2_65_Medium";
   color: rgb(0, 111, 193);
   line-height: 1.423;
   text-align: center;
+  padding: 1em;
 }
 
 .video {

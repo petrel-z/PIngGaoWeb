@@ -118,17 +118,45 @@ ul {
 }
 
 html {
-  font-size: 15px;
+  font-size: 16px;
 }
 
-@media screen and (max-width: 1500px) {
-  html {
-    font-size: 11px;
+/* 媒体查询 */
+/* 小型设备（手机，小于 600px） */
+@media (max-width: 600px) {
+  body {
+    font-size: 14px;
+  }
+  h1 {
+    font-size: 24px;
+  }
+  p {
+    font-size: 14px;
   }
 }
 
-@media screen and (max-width: 1200px) {
-  html {
-    font-size: 10px;
+/* 中型设备（平板，600px 到 900px） */
+@media (min-width: 600px) and (max-width: 900px) {
+  body {
+    font-size: 16px;
+  }
+  h1 {
+    font-size: 32px;
+  }
+  p {
+    font-size: 16px;
+  }
+}
+
+/* 大型设备（桌面，大于 900px） */
+@media (min-width: 900px) {
+  body {
+    font-size: 18px;
+  }
+  h1 {
+    font-size: 48px;
+  }
+  p {
+    font-size: 18px;
   }
 }

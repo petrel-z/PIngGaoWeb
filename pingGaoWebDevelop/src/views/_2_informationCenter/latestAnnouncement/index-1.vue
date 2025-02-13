@@ -1,11 +1,11 @@
 <script setup>
 defineOptions({
-  name: 'NewsCenterIndex5-1',
+  name: "NewsCenterIndex5-1",
 });
-import MyTitle from '@/components/MyTitle.vue';
-import MyContent from '@/components/MyContent.vue';
-import Item2 from '@/components/Item-2.vue';
-import MyPagination from '@/components/MyPagination.vue';
+import MyTitle from "@/components/MyTitle.vue";
+import MyContent from "@/components/MyContent.vue";
+import Item2 from "@/components/Item-2.vue";
+import MyPagination from "@/components/MyPagination.vue";
 </script>
 
 <template>
@@ -32,14 +32,7 @@ import MyPagination from '@/components/MyPagination.vue';
             </li>
           </ul>
         </div>
-        <div
-          style="
-            display: flex;
-            justify-content: center;
-            margin-top: 55px;
-            margin-bottom: 85px;
-          "
-        >
+        <div style="display: flex; justify-content: center; margin-top: 55px; margin-bottom: 85px">
           <MyPagination />
         </div>
       </div>
@@ -50,7 +43,7 @@ import MyPagination from '@/components/MyPagination.vue';
 <style scoped>
 .header {
   height: 611px;
-  background-image: url('@/assets//imgs/资讯中心/headerBg.png');
+  background-image: url("../../../assets/imgs/_2_informationCenterImgs/headerBg.png");
   background-size: cover;
 }
 .body {

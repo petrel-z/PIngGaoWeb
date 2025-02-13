@@ -1,7 +1,6 @@
 <script setup>
 import MyTitle from "@/components/MyTitle.vue";
 import MyButton from "@/components/MyButton.vue";
-import rightButton from "@/components/rightButton.vue";
 </script>
 <template>
   <div class="seniorHonor">
@@ -68,10 +67,10 @@ import rightButton from "@/components/rightButton.vue";
 .seniorHonor {
   position: relative;
   margin: auto;
-  width: 1920px;
-  height: 1389px;
+  width: 100%;
+  height: auto;
   /* border: 1px solid rgb(177, 177, 177); */
-  padding: 64px 210px;
+  padding: 64px 10em;
   border-radius: 20px;
   background-color: #fff;
   z-index: -100;
@@ -89,7 +88,7 @@ import rightButton from "@/components/rightButton.vue";
   justify-content: space-between;
 }
 .content .info {
-  width: 345px;
+  width: 300px;
   height: 276px;
   margin-bottom: 50px;
   text-align: center;
@@ -103,9 +102,10 @@ import rightButton from "@/components/rightButton.vue";
   color: rgb(182, 141, 55);
 }
 .footer {
-  margin-top: 10px;
-}
-.footer .myButton {
-  margin: auto;
+  width: 100%;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 </style>

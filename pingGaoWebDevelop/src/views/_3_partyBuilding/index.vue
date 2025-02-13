@@ -3,6 +3,7 @@ import { ref } from "vue";
 import ComHeader from "@/components/ComHeader.vue";
 import Footer from "@/components/Footer.vue";
 import imgPath from "@/assets/imgs/_3_partyBuildingImgs/头部轮播-03.png";
+import footerBg from "@/assets/imgs/_3_partyBuildingImgs/t3_topBar.png";
 
 defineOptions({
   name: "PartyBuilding",
@@ -12,6 +13,7 @@ const content = ref({
   content: "高举中国特色社会主义伟大旗帜",
   footer: "PG GROUP",
   imgPath: imgPath,
+  footerBg: footerBg,
 });
 const footer = ref([
   {
@@ -28,7 +30,7 @@ const footer = ref([
 <template>
   <div style="width: auto">
     <div class="header">
-      <div style="padding-top: 32px; height: 100%; width: auto">
+      <div style="height: 100%; width: auto">
         <ComHeader :content="content" :footer="footer" />
       </div>
     </div>

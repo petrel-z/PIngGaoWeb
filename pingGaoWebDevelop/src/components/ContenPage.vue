@@ -1,13 +1,13 @@
 <script setup>
-import { ref } from 'vue';
+import { ref } from "vue";
 const props = defineProps({
   title1: {
     type: String,
-    default: '中国电气装备召开一届二次',
+    default: "中国电气装备召开一届二次",
   },
   title2: {
     type: String,
-    default: '职工代表大会暨2025年工作会议',
+    default: "职工代表大会暨2025年工作会议",
   },
   text: {
     type: String,
@@ -18,36 +18,36 @@ const props = defineProps({
   },
   img: {
     type: String,
-    default: 'src\\assets\\imgs\\资讯中心\\LehYXF.png',//
+    default: "src\\assets\\imgs\\资讯中心\\LehYXF.png", //
   },
   btnText: {
     type: String,
-    default: '查看详情',
+    default: "查看详情",
   },
   btnColor: {
     type: String,
-    default: '#45b3e0',
+    default: "#45b3e0",
   },
   bgColor: {
     type: String,
-    default: '#003792',
+    default: "#003792",
   },
   lineColor: {
     type: String,
-    default: '#389cd1',
+    default: "#389cd1",
   },
   titleFont: {
     type: String,
-    default: 'Alibaba PuHuiTi 2.0',
+    default: "Alibaba PuHuiTi 2.0",
   },
   textFont: {
     type: String,
-    default: 'Alibaba PuHuiTi 2.0',
+    default: "Alibaba PuHuiTi 2.0",
   },
   fontColor: {
     type: String,
-    default: '#ffffff',
-  }
+    default: "#ffffff",
+  },
 });
 const imgPath = ref(props.img);
 </script>
@@ -55,31 +55,32 @@ const imgPath = ref(props.img);
 <template>
   <div class="content" :style="{ 'background-color': props.bgColor }">
     <div>
-      <div class="title"  :style="{fontFamily: props.titleFont, color: props.fontColor}">
+      <div class="title" :style="{ fontFamily: props.titleFont, color: props.fontColor }">
         {{ props.title1 }}
         <br />
         {{ props.title2 }}
       </div>
       <div class="hr">
-        <div style="width: 135px; height: 3px; " :style="{'background-color': props.lineColor}"></div>
-        <div style="width: 380px; height: 1px; " :style="{ 'background-color': props.lineColor}"></div>
+        <div
+          style="width: 135px; height: 3px"
+          :style="{ 'background-color': props.lineColor }"
+        ></div>
+        <div
+          style="width: 380px; height: 1px"
+          :style="{ 'background-color': props.lineColor }"
+        ></div>
       </div>
-      <div class="content-text" :style="{fontFamily: props.textFont, color: props.fontColor}">
+      <div class="content-text" :style="{ fontFamily: props.textFont, color: props.fontColor }">
         {{ props.text }}
       </div>
       <div class="content-btn" :style="{ 'background-color': props.btnColor }">
-        <span class="btn-text">{{ props.btnText}}</span>
+        <span class="btn-text">{{ props.btnText }}</span>
         <!-- ********8 -->
         <span class="icon iconfont lookdetail-icon">&#xe504;</span>
-
       </div>
     </div>
     <div style="width: 760px; height: 475px" class="img">
-      <img
-        style="width: 105%; height: 102%; object-fit: cover"
-        :src="imgPath"
-        alt="图片加载失败"
-      />
+      <img style="width: 105%; height: 102%; object-fit: cover" :src="imgPath" alt="图片加载失败" />
     </div>
   </div>
 </template>
@@ -87,7 +88,7 @@ const imgPath = ref(props.img);
 <style lang="less" scoped>
 .content {
   display: flex;
-  min-width: 1500px;
+  width: 100%;
   min-height: 601px;
   justify-content: space-evenly;
   align-items: center;
@@ -122,7 +123,7 @@ const imgPath = ref(props.img);
 
 .content-text {
   font-size: 20px;
-  font-family: 'Alibaba PuHuiTi 2.0';
+  font-family: "Alibaba PuHuiTi 2.0";
   color: rgb(255, 255, 255);
   line-height: 1.85;
   position: relative;
@@ -151,7 +152,7 @@ const imgPath = ref(props.img);
   margin-top: 80px;
   border-radius: 5px;
   cursor: pointer;
-  font-family: 'AlibabaPuHuiTi_2_45_Light';
+  font-family: "AlibabaPuHuiTi_2_45_Light";
 
   display: flex;
   justify-content: space-between;

@@ -1,7 +1,7 @@
 <script setup>
 import MyTitle from "@/components/MyTitle.vue";
 // import myFooter from '@/components/myFooter.vue';
-import rightButton from "@/components/rightButton.vue";
+import rightButton from "@/components/RightButton.vue";
 </script>
 <template>
   <!-- 集团简介 -->
@@ -139,15 +139,15 @@ import rightButton from "@/components/rightButton.vue";
     <div class="rightButton">
       <rightButton></rightButton>
     </div>
-    <div class="mind_map"></div>
   </div>
+  <div class="mind_map"></div>
 </template>
 <style scoped>
 .groupProfile {
   position: relative;
   margin: auto;
-  width: 1920px;
-  height: 3518px;
+  width: 100%;
+  height: auto;
   /* border: 1px solid rgb(177, 177, 177); */
   padding: 64px 210px;
   border-radius: 20px;
@@ -224,9 +224,10 @@ import rightButton from "@/components/rightButton.vue";
 }
 .text_word .img_right {
   margin-left: 44px;
-  width: 739px;
+  width: 100%;
   height: 426px;
-  background-image: url(src\\assets\\img1-1\\shipin.png);
+  background-image: url("../../../assets/imgs/_1_aboutPinggaoImgs/shipin.png");
+  background-size: cover;
 }
 .key {
   margin-bottom: 120px;
@@ -242,45 +243,46 @@ import rightButton from "@/components/rightButton.vue";
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
+  width: 100%;
 }
 .key_content_one {
   margin-bottom: 10px;
   position: relative;
   width: 491px;
   height: 161px;
-  background-image: url(src\\assets\\img1-1\\content-1.png);
+  background-image: url("../../../assets/imgs/_1_aboutPinggaoImgs/content-1.png");
 }
 .key_content_two {
   margin-bottom: 10px;
   position: relative;
   width: 491px;
   height: 161px;
-  background-image: url(src\\assets\\img1-1\\content-2.png);
+  background-image: url("../../../assets/imgs/_1_aboutPinggaoImgs/content-2.png");
 }
 .key_content_three {
   margin-bottom: 10px;
   position: relative;
   width: 491px;
   height: 161px;
-  background-image: url(src\\assets\\img1-1\\content-3.png);
+  background-image: url("../../../assets/imgs/_1_aboutPinggaoImgs/content-3.png");
 }
 .key_content_four {
   position: relative;
   width: 491px;
   height: 161px;
-  background-image: url(src\\assets\\img1-1\\content-4.png);
+  background-image: url("../../../assets/imgs/_1_aboutPinggaoImgs/content-4.png");
 }
 .key_content_five {
   position: relative;
   width: 491px;
   height: 161px;
-  background-image: url(src\\assets\\img1-1\\content-5.png);
+  background-image: url("../../../assets/imgs/_1_aboutPinggaoImgs/content-5.png");
 }
 .key_content_six {
   position: relative;
   width: 491px;
   height: 161px;
-  background-image: url(src\\assets\\img1-1\\content-6.png);
+  background-image: url("../../../assets/imgs/_1_aboutPinggaoImgs/content-6.png");
 }
 .key_content_h {
   left: 188px;
@@ -306,14 +308,14 @@ import rightButton from "@/components/rightButton.vue";
   margin-bottom: 70px;
 }
 .basic_culture_content {
-  width: 1500px;
+  width: 100%;
   height: 310px;
   display: flex;
   flex-wrap: wrap;
 }
 .basic_culture_info {
   border-left: 1px solid #c4c4c4;
-  width: 374px;
+  width: 300px;
   height: 112px;
   text-align: center;
   margin-bottom: 70px;
@@ -348,11 +350,9 @@ import rightButton from "@/components/rightButton.vue";
   border-right: 1px solid #c4c4c4;
 }
 .mind_map {
-  position: absolute;
-  bottom: 0px;
-  left: 0;
-  width: 1920px;
-  height: 1028px;
-  background-image: url(src\\assets\\img1-1\\bg-footer.png);
+  width: 100%;
+  height: 900px;
+  background-image: url("../../../assets/imgs/_1_aboutPinggaoImgs/bg-footer.png");
+  background-size: cover;
 }
 </style>

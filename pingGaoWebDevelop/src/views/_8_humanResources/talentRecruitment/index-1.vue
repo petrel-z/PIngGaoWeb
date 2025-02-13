@@ -35,7 +35,7 @@ import Item2 from "@/components/Item-2.vue";
 .bodyBg {
   background-image: url("../../../assets/imgs/_8_humanResourcesImgs/bg-1.png");
   background-size: cover;
-  width: 1920px;
+  width: 100%;
   min-height: 884px;
   position: absolute;
   top: 705px;
@@ -47,7 +47,7 @@ import Item2 from "@/components/Item-2.vue";
 }
 
 .left {
-  width: 725px;
+  width: 80%;
   height: 235px;
   line-height: 235px;
   cursor: pointer;

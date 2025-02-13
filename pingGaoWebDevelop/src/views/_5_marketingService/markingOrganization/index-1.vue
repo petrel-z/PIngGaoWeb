@@ -21,7 +21,7 @@ import MyContent from "@/components/MyContent.vue";
             background-color: #45b3e0;
             border-radius: 10px;
             min-height: 525px;
-            width: 1501px;
+            width: 100%;
           "
         >
           <MyContent
@@ -30,12 +30,7 @@ import MyContent from "@/components/MyContent.vue";
             content2="解决方案，逐渐成为行业的佼佼者，并以先进的技术、完善的服务，影响和改善更多人的工作和生活。"
           />
           <div class="my-content-bottom">
-            <div
-              :style="{ marginRight: [i < 3 ? '53px' : '50px'] }"
-              class="my-content-bottom-item"
-              v-for="i in 3"
-              :key="i"
-            >
+            <div class="my-content-bottom-item" v-for="i in 3" :key="i">
               <span>国内销售</span>
               <div></div>
               <span>0375-3507888</span>
@@ -77,7 +72,7 @@ import MyContent from "@/components/MyContent.vue";
 <style scoped>
 .bodyBg {
   background-color: #def1fb;
-  width: 1920px;
+  width: 100%;
   height: 493px;
   position: absolute;
   top: 0px;
@@ -85,7 +80,7 @@ import MyContent from "@/components/MyContent.vue";
   z-index: -1;
 }
 .body-content {
-  margin: 0 210px;
+  margin: 0 10em;
   padding-top: 65px;
   min-height: 3855px;
 }
@@ -93,6 +88,9 @@ import MyContent from "@/components/MyContent.vue";
 .my-content-bottom {
   margin-top: 34px;
   display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 2em;
 }
 
 .my-content-bottom-item:hover {
@@ -102,15 +100,14 @@ import MyContent from "@/components/MyContent.vue";
 
 .my-content-bottom-item {
   display: flex;
-  min-width: 390px;
-  min-height: 65px;
-  margin-bottom: 5px;
-  margin-left: 58px;
-  margin-right: 80px;
+  width: 34%;
+  height: auto;
+  justify-content: space-evenly;
+  align-items: center;
 }
 
 .my-content-bottom-item div {
-  height: 75%;
+  height: 2em;
   width: 2px;
   margin: 0 15px;
   background-color: #fff;
@@ -136,7 +133,7 @@ import MyContent from "@/components/MyContent.vue";
 
 .items-div {
   padding-top: 82px;
-  width: 1501px;
+  width: 100%;
 }
 
 .items-title {
@@ -193,13 +190,13 @@ import MyContent from "@/components/MyContent.vue";
 }
 
 .footer-bg {
-  min-width: 1921px;
-  min-height: 810px;
+  width: 100%;
+  height: 90vh;
   background-image: url("../../../assets/imgs/_5_marketingServiceImgs/serviceBg1.png");
   background-size: cover;
   position: absolute;
   left: 0px;
-  top: 3070px;
+  bottom: 0px;
   z-index: -1;
 }
 </style>

@@ -1,18 +1,18 @@
 <script setup>
-import { ref } from 'vue';
+import { ref } from "vue";
 let hover = ref(false);
 const props = defineProps({
   month: {
     type: String,
-    default: '01.14',
+    default: "01.14",
   },
   year: {
     type: String,
-    default: '2025',
+    default: "2025",
   },
   title: {
     type: String,
-    default: '中国电气装备召开一届二次职工代表大会暨2025年工作会议',
+    default: "中国电气装备召开一届二次职工代表大会暨2025年工作会议",
   },
   text: {
     type: String,
@@ -21,7 +21,10 @@ const props = defineProps({
   },
   hoverColor: {
     type: String,
-    default: '#003792',
+    default: "#003792",
+  },
+  bgColor: {
+    type: String,
   },
 });
 </script>
@@ -57,6 +60,8 @@ const props = defineProps({
 .item {
   display: flex;
   cursor: pointer;
+  margin-bottom: 1em;
+  width: 100%;
 }
 
 .item:hover .month {
@@ -70,8 +75,8 @@ const props = defineProps({
 }
 
 .month {
-  font-size: 49.313px;
-  font-family: 'Avenir';
+  font-size: 3rem;
+  font-family: "Avenir";
   color: rgb(0, 55, 146);
   line-height: 1.85;
   text-align: right;
@@ -80,44 +85,56 @@ const props = defineProps({
 }
 
 .year {
-  font-size: 25.426px;
-  font-family: 'Avenir';
+  font-size: 1.59rem;
+  font-family: "Avenir";
   color: rgb(0, 55, 146);
   line-height: 1.85;
   text-align: right;
 }
 
 .left {
-  width: 275px;
-  height: 161px;
-  margin-right: 15px;
+  width: 18%;
+  height: auto;
+  margin-right: 2%;
   background-color: #def1fb;
   border-radius: 10px;
   text-align: right;
-  padding: 0 40px;
+  padding: 0 2em;
 }
 
 .right {
-  width: 1210px;
-  height: 161px;
+  width: 80%;
+  height: auto;
   background-color: #def1fb;
   border-radius: 10px;
-  padding: 25px 65px 0;
+  padding: 2em 3em;
 }
 .title {
-  font-size: 28px;
-  font-family: 'AlibabaPuHuiTi_2_65_Medium';
+  font-size: 1.75rem;
+  font-family: "AlibabaPuHuiTi_2_65_Medium";
   color: rgb(35, 24, 21);
   line-height: 1.75;
-  text-align: justifyLeft;
+  text-align: left;
 }
 .text {
-  font-size: 20px;
-  font-family: 'AlibabaPuHuiTi_2_65_Medium';
+  font-size: 1.25rem;
+  font-family: "AlibabaPuHuiTi_2_65_Medium";
   color: rgb(89, 87, 87);
   line-height: 1.498;
-  text-align: justifyLeft;
-  width: 1075px;
-  height: 50px;
+  text-align: left;
+  width: 100%;
+  height: auto;
+}
+
+@media screen and (max-width: 1500px) {
+  .left {
+    text-align: center;
+  }
+  .month {
+    text-align: center;
+  }
+  .year {
+    text-align: center;
+  }
 }
 </style>

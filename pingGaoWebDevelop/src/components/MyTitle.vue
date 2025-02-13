@@ -8,13 +8,25 @@ const props = defineProps({
     type: String,
     default: "organization structure",
   },
+  titleColor: {
+    type: String,
+    default: "#000000",
+  },
+  lineColor: {
+    type: String,
+    default: "#70aedc",
+  },
+  engColor: {
+    type: String,
+    default: "rgb(159, 160, 160)",
+  },
 });
 </script>
 <template>
   <div>
-    <span class="h">{{ props.title }}</span>
-    <div class="line"></div>
-    <span class="English">{{ props.English }}</span>
+    <span class="h" :style="{ color: props.titleColor }">{{ props.title }}</span>
+    <div class="line" :style="{ 'background-color': props.lineColor }"></div>
+    <span class="English" :style="{ color: props.engColor }">{{ props.English }}</span>
   </div>
 </template>
 <style scoped>
@@ -34,7 +46,7 @@ const props = defineProps({
   /* width: 1500px; */
   width: auto;
   font-family: "AlibabaPuHuiTi_2_75_SemiBold";
-  color: rgb(0, 0, 0);
+  color: #000000;
   z-index: 4;
   margin-top: 4px;
 }

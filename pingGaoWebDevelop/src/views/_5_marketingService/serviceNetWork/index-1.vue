@@ -33,7 +33,7 @@ import MyContent from "@/components/MyContent.vue";
 <style scoped>
 .bodyBg {
   background-color: #def1fb;
-  min-width: 1920px;
+  width: 100%;
   min-height: 493px;
   position: absolute;
   top: 0px;
@@ -43,17 +43,17 @@ import MyContent from "@/components/MyContent.vue";
 .body-content {
   margin: 0 210px;
   padding-top: 65px;
-  min-height: 2220px;
+  min-height: 2520px;
 }
 
 .footer-bg {
-  min-width: 1921px;
-  min-height: 810px;
-  background-image: url("../../../assets/imgs/_5_marketingServiceImgs/process.png");
+  width: 100%;
+  height: 90vh;
+  background-image: url("../../../assets/imgs/_5_marketingServiceImgs/serviceBg1.png");
   background-size: cover;
   position: absolute;
   left: 0px;
-  top: 1413px;
+  bottom: 0px;
   z-index: -1;
 }
 
@@ -70,7 +70,7 @@ import MyContent from "@/components/MyContent.vue";
 .process {
   width: 1360px;
   height: 1321px;
-  background-image: url("../../assets//imgs//营销服务/process.png");
+  background-image: url("../../../assets/imgs/_5_marketingServiceImgs/process.png");
   background-size: cover;
 }
 </style>
