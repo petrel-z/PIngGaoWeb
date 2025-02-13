@@ -42,7 +42,8 @@ const router = createRouter({
   routes: [
     {
       path: "/",
-      redirect: "/homePage-1",
+      // redirect: "/homePage-1",
+      redirect: "/productEngineering/productSeries",
     },
     {
       path: "/homePage-1",
@@ -54,7 +55,7 @@ const router = createRouter({
     },
     {
       path: "/aboutPinggao",
-      redirect: "/aboutPinggao/groupProfile", // 这里重定向到 /aboutPinggao 下的 groupProfile
+      redirect: "/aboutPinggao/seniorHonor", // 这里重定向到 /aboutPinggao 下的 groupProfile
       component: aboutPinggao,
       children: [
         { path: "groupProfile", component: groupProfile },
@@ -176,7 +177,7 @@ const router = createRouter({
     },
     {
       path: "/scientificResearchCenter",
-      redirect: "/scientificResearchCenter/scientificResearchSystem", // 这里的重定向路径是相对于父路径的
+      redirect: "/scientificResearchCenter/testSystem", // 这里的重定向路径是相对于父路径的
       component: scientificResearchCenter,
       children: [
         { path: "scientificResearchAchievement", component: scientificResearchAchievement },

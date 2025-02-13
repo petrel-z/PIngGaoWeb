@@ -1,7 +1,5 @@
 <script setup>
 import MyTitle from "@/components/MyTitle.vue";
-// import myFooter from '@/components/myFooter.vue';
-import rightButton from "@/components/rightButton.vue";
 </script>
 <template>
   <!-- 集团简介 -->
@@ -50,7 +48,9 @@ import rightButton from "@/components/rightButton.vue";
           </p>
         </div>
       </div>
-      <div class="img_right"></div>
+      <div class="img_right">
+        <img src="@/assets/imgs/_10_homePageImgs/shipin.png" alt="">
+      </div>
     </div>
     <div class="key">
       <div class="key_title"><span>核心集团六大核心概念</span></div>
@@ -136,9 +136,6 @@ import rightButton from "@/components/rightButton.vue";
         </div>
       </div>
     </div>
-    <div class="rightButton">
-      <rightButton></rightButton>
-    </div>
     <div class="mind_map"></div>
   </div>
 </template>
@@ -146,20 +143,14 @@ import rightButton from "@/components/rightButton.vue";
 .groupProfile {
   position: relative;
   margin: auto;
-  width: 1920px;
-  height: 3518px;
+  width:100%;
   /* border: 1px solid rgb(177, 177, 177); */
   padding: 64px 210px;
   border-radius: 20px;
   background-color: #fff;
   z-index: -100;
 }
-.rightButton {
-  position: absolute;
-  top: 810px;
-  right: 0;
-  z-index: 10;
-}
+
 .introduce {
   display: flex;
   margin-top: 55px;
@@ -172,7 +163,7 @@ import rightButton from "@/components/rightButton.vue";
 }
 .introduce_content {
   position: relative;
-  width: 248.5px;
+  width: 16.7%;
   border-left: 2px solid #8abade;
   border-right: 2px solid #8abade;
   text-align: center;
@@ -208,7 +199,7 @@ import rightButton from "@/components/rightButton.vue";
 }
 .text_word .word_left {
   display: flex;
-  width: 900px;
+  width: 55%;
   font-size: 20px;
   font-family: "AlibabaPuHuiTi_2_55_Regular", sans-serif;
   color: rgb(89, 87, 87);
@@ -224,9 +215,14 @@ import rightButton from "@/components/rightButton.vue";
 }
 .text_word .img_right {
   margin-left: 44px;
-  width: 739px;
+  width: 45%;
   height: 426px;
-  background-image: url(src\\assets\\img1-1\\shipin.png);
+  background-size: contain;
+}
+.text_word .img_right img{
+  margin-left: 44px;
+  width: 100%;
+  height: 426px;
 }
 .key {
   margin-bottom: 120px;
@@ -248,39 +244,39 @@ import rightButton from "@/components/rightButton.vue";
   position: relative;
   width: 491px;
   height: 161px;
-  background-image: url(src\\assets\\img1-1\\content-1.png);
+  background-image: url(src\\assets\\imgs\\_1_aboutPinggaoImgs\\content-1.png);
 }
 .key_content_two {
   margin-bottom: 10px;
   position: relative;
   width: 491px;
   height: 161px;
-  background-image: url(src\\assets\\img1-1\\content-2.png);
+  background-image: url(src\\assets\\imgs\\_1_aboutPinggaoImgs\\content-2.png);
 }
 .key_content_three {
   margin-bottom: 10px;
   position: relative;
   width: 491px;
   height: 161px;
-  background-image: url(src\\assets\\img1-1\\content-3.png);
+  background-image: url(src\\assets\\imgs\\_1_aboutPinggaoImgs\\content-3.png);
 }
 .key_content_four {
   position: relative;
   width: 491px;
   height: 161px;
-  background-image: url(src\\assets\\img1-1\\content-4.png);
+  background-image: url(src\\assets\\imgs\\_1_aboutPinggaoImgs\\content-4.png);
 }
 .key_content_five {
   position: relative;
   width: 491px;
   height: 161px;
-  background-image: url(src\\assets\\img1-1\\content-5.png);
+  background-image: url(src\\assets\\imgs\\_1_aboutPinggaoImgs\\content-5.png);
 }
 .key_content_six {
   position: relative;
   width: 491px;
   height: 161px;
-  background-image: url(src\\assets\\img1-1\\content-6.png);
+  background-image: url(src\\assets\\imgs\\_1_aboutPinggaoImgs\\content-6.png);
 }
 .key_content_h {
   left: 188px;
@@ -306,14 +302,14 @@ import rightButton from "@/components/rightButton.vue";
   margin-bottom: 70px;
 }
 .basic_culture_content {
-  width: 1500px;
+  width: 100%;
   height: 310px;
   display: flex;
   flex-wrap: wrap;
 }
 .basic_culture_info {
   border-left: 1px solid #c4c4c4;
-  width: 374px;
+  width: 25%;
   height: 112px;
   text-align: center;
   margin-bottom: 70px;
@@ -337,6 +333,7 @@ import rightButton from "@/components/rightButton.vue";
   height: 1px;
   background-color: #4093d1;
   margin-left: 165px;
+  margin: auto;
 }
 .basic_culture_info .basic_culture_num {
   white-space: pre;

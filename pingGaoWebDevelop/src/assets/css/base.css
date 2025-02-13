@@ -118,7 +118,7 @@ ul {
 }
 
 html {
-  font-size: 15px;
+  font-size: 16px /* 随视口宽度动态调整基准 */
 }
 
 @media screen and (max-width: 1500px) {

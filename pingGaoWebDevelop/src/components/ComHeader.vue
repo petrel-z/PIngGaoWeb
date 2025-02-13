@@ -25,39 +25,6 @@ const header = ref([
   { name: "人力资源", path: "/humanResources" },
   { name: "联系我们", path: "/contactUs" },
 ]);
-// const allContent = ref([
-//   {
-//     content: {
-//       title: '关于平高',
-//       content: '赋能智慧电气·创引绿色能源',
-//       footer: 'PG GROUP',
-//       imgPath: imgPath1,
-//     },
-//     footer: [
-//       { name: '总部动态', path: '/informationCenter/headquartersDynamics-1' },
-//       { name: '集团新闻', path: '/informationCenter/groupNews-1' },
-//       { name: '媒体聚焦', path: '/informationCenter/mediaFocus-1' },
-//       { name: '热点视频', path: '/informationCenter/hotVideo' },
-//       { name: '最新公告', path: '/informationCenter/latestAnnouncement-1' },
-//     ],
-//   },
-//   {
-//     content: {
-//       title: '资讯中心',
-//       content: '电气技术引领者·能源革命推动者·绿色发展践行者',
-//       footer: 'PG GROUP',
-//       imgPath: imgPath2,
-//     },
-//     footer: [
-//       { name: '总部动态', path: '/informationCenter/headquartersDynamics-1' },
-//       { name: '集团新闻', path: '/informationCenter/groupNews-1' },
-//       { name: '媒体聚焦', path: '/informationCenter/mediaFocus-1' },
-//       { name: '热点视频', path: '/informationCenter/hotVideo' },
-//       { name: '最新公告', path: '/informationCenter/latestAnnouncement-1' },
-//     ],
-//   },
-// ]);
-
 const props = defineProps({
   content: {
     type: Object,
@@ -239,6 +206,7 @@ console.log(props.onlyHeaderFlag);
   align-items: center;
   height: 40px;
   flex: 0 0 auto;
+  background-image: url();
 }
 
 .header-nav-bottom-item {

@@ -1,7 +1,6 @@
 <script setup>
 import MyTitle from "@/components/MyTitle.vue";
 import MyContent from "@/components/F6_MyContent.vue";
-import RightButton from "@/components/RightButton.vue";
 </script>
 <template>
   <div class="scientificResearchSystem">
@@ -34,9 +33,6 @@ import RightButton from "@/components/RightButton.vue";
         </div>
       </MyContent>
     </div>
-    <div class="rightButton">
-      <RightButton></RightButton>
-    </div>
     <div class="footer_img">
       <img src="@/assets/imgs/_7_scientificResearchCenterImgs/science-footer.png" alt="" />
     </div>
@@ -46,18 +42,12 @@ import RightButton from "@/components/RightButton.vue";
 .scientificResearchSystem {
   position: relative;
   margin: auto;
-  width: 1920px;
+  width: 100%;
   height: 1960px;
-  /* border: 1px solid rgb(206, 206, 206); */
   padding: 64px 210px;
   border-radius: 20px;
   background-color: #fff;
   z-index: -100;
-}
-.rightButton {
-  position: absolute;
-  top: 520px;
-  right: 0;
 }
 .content {
   margin-top: 46px;
@@ -72,13 +62,14 @@ import RightButton from "@/components/RightButton.vue";
 }
 .footer_img {
   position: absolute;
-  width: 1910px;
+  width: 100%;
   height: 1064px;
   bottom: 0;
   left: 0;
   z-index: -20;
 }
 .footer_img img {
-  width: 1910px;
+  width: 100%;
+  height: 100%;
 }
 </style>

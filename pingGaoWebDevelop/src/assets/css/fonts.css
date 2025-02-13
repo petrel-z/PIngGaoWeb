@@ -1,7 +1,7 @@
 /* src/assets/fonts.css */
 /* 阿里巴巴普惠体字体 */
 @font-face {
-  font-family: "AlibabaPuHuiTi_2_55_Thin";
+  font-family: "AlibabaPuHuiTi_2_35_Thin";
   src: url("../font/AlibabaPuHuiTi-2/AlibabaPuHuiTi-2-35-Thin/AlibabaPuHuiTi-2-35-Thin.ttf")
     format("truetype"); /* 根据实际文件名修改 */
   font-weight: normal;

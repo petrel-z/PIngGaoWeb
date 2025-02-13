@@ -1,25 +1,8 @@
 <template>
-  <!-- <div class="aboutPinggao">
-    <div class="header-body">
-      <div class="header-body-title">{{ info.title }}</div>
-      <hr class="header-body-hr" />
-      <div class="header-body-content">{{ info.content }}</div>
-      <div class="header-body-footer">{{ info.footer }}</div>
-    </div>
-    <div class="header-footer">
-      <ul>
-        <li v-for="item in footer" :key="item.name">
-
-          <router-link class="footer_text" :to="item.path">{{ item.name }}</router-link>
-        </li>
-      </ul>
-    </div>
-  </div> -->
   <div class="header">
     <ComHeader :content="info" :footer="footer"></ComHeader>
   </div>
   <router-view></router-view>
-
   <div style="width: auto">
     <Footer />
   </div>
@@ -49,10 +32,10 @@ import Footer from "@/components/Footer.vue";
 </script>
 <style lang="less" scoped>
 .header {
-  background-image: url("../../assets//imgs/_1_aboutPinggaoImgs/top-bg.png");
-
+  background-image: url("@/assets//imgs/_1_aboutPinggaoImgs/头部轮播-01.png");
   width: auto;
-  height: 67vh;
+  height: 610px;
   background-size: cover;
+  padding-top: 32px;
 }
 </style>

@@ -1,7 +1,6 @@
 <script setup>
 import MyTitle from "@/components/MyTitle.vue";
 import MyButton from "@/components/MyButton.vue";
-import rightButton from "@/components/rightButton.vue";
 </script>
 <template>
   <div class="seniorHonor">
@@ -56,9 +55,6 @@ import rightButton from "@/components/rightButton.vue";
         <div class="p">创新型企业</div>
       </div>
     </div>
-    <div class="rightButton">
-      <rightButton></rightButton>
-    </div>
     <div class="footer">
       <myButton class="myButton" text="加载更多"></myButton>
     </div>
@@ -68,19 +64,13 @@ import rightButton from "@/components/rightButton.vue";
 .seniorHonor {
   position: relative;
   margin: auto;
-  width: 1920px;
+  width: 100%;
   height: 1389px;
   /* border: 1px solid rgb(177, 177, 177); */
   padding: 64px 210px;
   border-radius: 20px;
   background-color: #fff;
   z-index: -100;
-}
-.rightButton {
-  position: absolute;
-  top: 630px;
-  right: 0;
-  z-index: 10;
 }
 .content {
   margin-top: 50px;
@@ -89,7 +79,7 @@ import rightButton from "@/components/rightButton.vue";
   justify-content: space-between;
 }
 .content .info {
-  width: 345px;
+  width: 24%;
   height: 276px;
   margin-bottom: 50px;
   text-align: center;
@@ -103,7 +93,9 @@ import rightButton from "@/components/rightButton.vue";
   color: rgb(182, 141, 55);
 }
 .footer {
+  width: 100%;
   margin-top: 10px;
+  text-align: center;
 }
 .footer .myButton {
   margin: auto;

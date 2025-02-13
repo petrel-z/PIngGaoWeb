@@ -1,7 +1,6 @@
 <script setup>
 import MyTitle from "@/components/MyTitle.vue";
 import MyContent from "@/components/F6_MyContent.vue";
-import RightButton from "@/components/RightButton.vue";
 </script>
 <template>
   <div class="scientificResearchAchievement">
@@ -34,6 +33,9 @@ import RightButton from "@/components/RightButton.vue";
         </div>
       </div>
       <div class="achievement_bottom">
+        <div class="achievement_detail" style="border: none;">
+        </div>
+
         <div class="achievement_detail">
           <div class="num">266</div>
           <div class="p1">制（修）订</div>
@@ -54,6 +56,8 @@ import RightButton from "@/components/RightButton.vue";
           <div class="p1">制（修）订</div>
           <div class="p2">科技奖励/项</div>
         </div>
+        <div class="achievement_detail" style="border: none;">
+        </div>
       </div>
     </div>
     <div class="content">
@@ -69,9 +73,6 @@ import RightButton from "@/components/RightButton.vue";
         </div>
       </MyContent>
     </div>
-    <div class="rightButton">
-      <rightButton></rightButton>
-    </div>
     <div class="footer_img">
       <img src="@/assets/imgs/_7_scientificResearchCenterImgs/science-footer.png" alt="" />
     </div>
@@ -80,19 +81,13 @@ import RightButton from "@/components/RightButton.vue";
 <style scoped>
 .scientificResearchAchievement {
   position: relative;
-  margin: auto;
-  width: 1920px;
+  width: 100%;
   height: 2040px;
   /* border: 1px solid rgb(206, 206, 206); */
   background-color: #fff;
   padding: 64px 210px;
   border-radius: 20px;
   z-index: -10;
-}
-.rightButton {
-  position: absolute;
-  top: 530px;
-  right: 0;
 }
 .content {
   margin-top: 424px;
@@ -107,7 +102,7 @@ import RightButton from "@/components/RightButton.vue";
 }
 .achievement {
   position: absolute;
-  width: 1914px;
+  width: 100%;
   height: 400px;
   background-color: #f4f4f4;
   padding: 78px 210px;
@@ -116,18 +111,17 @@ import RightButton from "@/components/RightButton.vue";
 }
 .achievement_top {
   display: flex;
-  width: 1500px;
+  width: 100%;
   margin-bottom: 64px;
   border-right: 2px solid #6ba9d7;
 }
 .achievement_bottom {
   display: flex;
-  width: 1500px;
+  width: 100%;
   text-align: center;
-  padding: 0px 250px;
 }
 .achievement_top .achievement_detail {
-  width: 250px;
+  width: 16%;
   height: 75px;
   border-left: 2px solid #6ba9d7;
   position: relative;
@@ -155,6 +149,14 @@ import RightButton from "@/components/RightButton.vue";
   text-align: center;
   top: 40px;
   width: 250px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.achievement_bottom{
+  width: 100%;
+}
+.achievement_bottom .achievement_detail {
+  width: 16%;
 }
 .achievement_bottom .achievement_detail .num {
   position: absolute;
@@ -173,6 +175,8 @@ import RightButton from "@/components/RightButton.vue";
   text-align: center;
   top: 40px;
   width: 250px;
+  left: 50%;
+  transform: translateX(-50%);
 }
 .achievement_bottom .achievement_detail .p2 {
   position: absolute;
@@ -181,20 +185,23 @@ import RightButton from "@/components/RightButton.vue";
   color: rgb(0, 111, 193);
   text-align: center;
   top: 72px;
-  width: 250px;
+  width: 100%;
+  left: 50%;
+  transform: translateX(-50%);
 }
 .detail_last {
   border-right: 2px solid #6ba9d7;
 }
 .footer_img {
   position: absolute;
-  width: 1920px;
+  width: 100%;
   height: 1064px;
   bottom: 0;
   left: 0;
   z-index: -1;
 }
 .footer_img img {
-  width: 1916px;
+  width: 100%;
+  height: 1064px;
 }
 </style>
