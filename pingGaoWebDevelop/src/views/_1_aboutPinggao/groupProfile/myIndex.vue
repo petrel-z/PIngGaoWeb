@@ -145,7 +145,7 @@ import MyTitle from "@/components/MyTitle.vue";
   margin: auto;
   width:100%;
   /* border: 1px solid rgb(177, 177, 177); */
-  padding: 64px 210px;
+  padding: 64px 204px;
   border-radius: 20px;
   background-color: #fff;
   z-index: -100;
@@ -225,6 +225,7 @@ import MyTitle from "@/components/MyTitle.vue";
   height: 426px;
 }
 .key {
+  width: 100%;
   margin-bottom: 120px;
 }
 .key .key_title {
