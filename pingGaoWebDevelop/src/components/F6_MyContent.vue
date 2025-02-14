@@ -27,18 +27,17 @@ const props = defineProps({
 </template>
 <style lang="less" scoped>
 .framework {
-  width: 1500px;
+  width: 100%;
   border-top: 1px solid #006fc1;
   padding-top: 46px;
   padding-bottom: 36px;
   display: flex;
-  min-height: 280px;
+  min-height: 300px;
 }
 
 .left {
-  width: 480px;
+  width: 32%;
   position: relative;
-
   .icon-right {
     font-size: 79px;
     color: #006fc1;
@@ -58,7 +57,7 @@ const props = defineProps({
 }
 
 .right {
-  width: 1010px;
+  width: 70%;
   margin-left: 20px;
 }
 </style>

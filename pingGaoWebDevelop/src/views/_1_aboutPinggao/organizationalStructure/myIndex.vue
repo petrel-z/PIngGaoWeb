@@ -1,6 +1,6 @@
 <script setup>
 import MyTitle from "@/components/MyTitle.vue";
-import headLine from "@/components/myHeadLine.vue";
+import headLine from "@/components/MyHeadLine.vue";
 import row from "@/assets/imgs/_1_aboutPinggaoImgs/row.png";
 import longLine from "@/assets/imgs/_1_aboutPinggaoImgs/long-line.png";
 import footrow from "@/assets/imgs/_1_aboutPinggaoImgs/footrow.png";
@@ -396,6 +396,7 @@ import footrow from "@/assets/imgs/_1_aboutPinggaoImgs/footrow.png";
 }
 .component .content_bottom .foot {
   display: flex;
+  justify-content: space-between;
   width: 100%;
 }
 .component .content_bottom .foot_middle {

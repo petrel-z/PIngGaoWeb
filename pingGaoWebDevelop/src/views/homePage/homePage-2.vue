@@ -626,9 +626,14 @@ onUnmounted(() => {
   margin-left: 8px;
 }
 .great_flag_footer {
+  width: 100%;
   position: absolute;
-  bottom: -5px;
+  bottom: -7px;
   left: 0;
+}
+.great_flag_footer img{
+  height: 420px;
+  width: 100%;
 }
 .great_flag_content .content_detail_text {
   width: 33%;
