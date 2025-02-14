@@ -31,19 +31,11 @@ import MyButton from "@/components/MyButton.vue";
 .approachPinggao {
   position: relative;
   margin: auto;
-  width: 100%;
-  height: auto;
-  /* border: 1px solid rgb(177, 177, 177); */
+  width:100%;
   padding: 64px 210px;
   border-radius: 20px;
   background-color: #fff;
   z-index: -100;
-}
-.rightButton {
-  position: absolute;
-  top: 626px;
-  right: 0;
-  z-index: 10;
 }
 .pics {
   margin-top: 60px;

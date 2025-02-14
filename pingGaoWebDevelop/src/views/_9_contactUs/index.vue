@@ -40,7 +40,7 @@ const footer = ref([
 <template>
   <div>
     <div class="header">
-      <div style="padding-top: 32px; height: 100%">
+      <div style="height: 100%">
         <ComHeader :content="content" :footer="footer" :footerImg="footerImg" />
       </div>
     </div>

@@ -42,35 +42,43 @@ import Item2 from "@/components/Item-2.vue";
   z-index: -1;
 }
 .body-content {
-  margin: 0 210px;
+  margin: 0 11%;
   padding-top: 66px;
 }
 
 .left {
-  width: 80%;
-  height: 235px;
-  line-height: 235px;
+  width: 48%;
+  height: 30vh;
+  line-height: 30vh;
   cursor: pointer;
   background-image: url("../../../assets/imgs/_8_humanResourcesImgs/divBg-1.png");
   background-size: cover;
+  border-radius: 10px;
   font-size: 32px;
   font-family: "AlibabaPuHuiTi_2_65_Medium";
   color: rgb(255, 255, 255);
   text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .right {
   font-size: 32px;
   font-family: "AlibabaPuHuiTi_2_65_Medium";
   color: rgb(255, 255, 255);
+  border-radius: 10px;
   text-align: center;
-  width: 725px;
-  height: 235px;
-  line-height: 235px;
+  width: 48%;
+  height: 30vh;
+  line-height: 30vh;
   cursor: pointer;
   background-image: url("../../../assets/imgs/_8_humanResourcesImgs/divBg-2.png");
   background-size: cover;
-  margin-left: 55px;
+  margin-left: 4%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .title {

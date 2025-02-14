@@ -14,7 +14,6 @@ import imgPath9 from "@/assets/imgs/_9_contactUsImgs/头部轮播-09.png";
 import footerBg from "@/assets/imgs/_6_qualityAssuranceImgs/t6_topBar.png";
 
 let hidden = ref(true);
-let hoverFlag = ref(false);
 let inputFlag = ref(false);
 let searchFlag = ref(false);
 const header = ref([
@@ -37,11 +36,11 @@ const allContent = ref([
       imgPath: imgPath1,
     },
     footer: [
-      { name: "总部动态", path: "/informationCenter/headquartersDynamics-1" },
-      { name: "集团新闻", path: "/informationCenter/groupNews-1" },
-      { name: "媒体聚焦", path: "/informationCenter/mediaFocus-1" },
-      { name: "热点视频", path: "/informationCenter/hotVideo" },
-      { name: "最新公告", path: "/informationCenter/latestAnnouncement-1" },
+      { name: "集团简介", path: "/aboutPinggao/groupProfile" },
+      { name: "领导成员", path: "/aboutPinggao/lesadingMember" },
+      { name: "组织结构", path: "/aboutPinggao/organizationalStructure" },
+      { name: "资质荣誉", path: "/aboutPinggao/seniorHonor" },
+      { name: "走进平高", path: "/aboutPinggao/approachPinggao" },
     ],
   },
   {
@@ -215,7 +214,6 @@ let hoverText = ref({
   ],
 });
 function hoverContent(name) {
-  hoverFlag.value = true;
   hidden.value = false;
   allContent.value.forEach((item) => {
     if (item.content.title === name) {
@@ -276,12 +274,9 @@ const props = defineProps({
       <div id="header-nav-top">
         <ul>
           <li v-for="item in header" :key="item.name">
-            <router-link
-              @mouseenter="hoverContent(item.name)"
-              @mouseleave="hidden = true"
-              :to="item.path"
-              >{{ item.name }}</router-link
-            >
+            <router-link @mouseenter="hoverContent(item.name)" :to="item.path">{{
+              item.name
+            }}</router-link>
           </li>
         </ul>
       </div>
@@ -297,7 +292,16 @@ const props = defineProps({
             placeholder="输入关键词"
           />
         </div>
-        <div v-show="!inputFlag" @mouseenter="inputFlag = true" class="header-nav-bottom-item">
+        <div
+          v-show="!inputFlag"
+          @mouseenter="
+            () => {
+              inputFlag = true;
+              hidden = true;
+            }
+          "
+          class="header-nav-bottom-item"
+        >
           搜索
           <i class="iconfont icon-sousuo" style="font-size: 1.125rem; color: #fff" />
         </div>
@@ -312,84 +316,86 @@ const props = defineProps({
         </div>
       </div>
     </div>
-    <div
-      @mouseenter="hidden = !hoverFlag"
-      @mouseleave="hidden = true"
-      class="header-nav-hover-content"
-      :class="{ hidden: hidden }"
-    >
+    <div class="header-nav-hover-box">
       <div
-        style="width: 100%; height: 100%; background-size: cover; display: flex"
-        :style="{ 'background-image': `url(${imgPath})` }"
+        @mouseleave="hidden = true"
+        class="header-nav-hover-content"
+        :class="{ hidden: inputFlag || hidden }"
       >
-        <div class="header-nav-hover-content-left">
-          <div class="header-nav-hover-content-title">
-            {{ hoverText.content.title }}
+        <div
+          style="width: 100%; height: 100%; background-size: cover; display: flex"
+          :style="{ 'background-image': `url(${imgPath})` }"
+        >
+          <div class="header-nav-hover-content-left">
+            <div class="header-nav-hover-content-title">
+              {{ hoverText.content.title }}
+            </div>
+            <hr style="display: inline-block; width: 58px; border: 2px solid rgb(35, 24, 21)" />
+            <div class="header-nav-hover-content-text">
+              {{ hoverText.content.content }}
+            </div>
+            <div class="header-nav-hover-content-english">
+              {{ hoverText.content.footer }}
+            </div>
           </div>
-          <hr style="display: inline-block; width: 58px; border: 2px solid rgb(35, 24, 21)" />
-          <div class="header-nav-hover-content-text">
-            {{ hoverText.content.content }}
-          </div>
-          <div class="header-nav-hover-content-english">
-            {{ hoverText.content.footer }}
-          </div>
-        </div>
-        <div class="header-nav-hover-content-right">
-          <div class="right-left">
-            <ul>
-              <li v-for="item in hoverText.footer" :key="item.name">
-                <router-link active-class="active-color" :to="item.path">{{
-                  item.name
-                }}</router-link>
-              </li>
-            </ul>
-          </div>
-          <div
-            class="right-right"
-            :style="{ 'background-image': `url(${hoverText.content.imgPath})` }"
-          ></div>
-        </div>
-      </div>
-    </div>
-    <div
-      class="header-nav-search-content"
-      @mouseleave="searchFlag = false"
-      :class="{ hidden: !searchFlag }"
-    >
-      <div
-        style="width: 100%; height: 100%; background-size: cover; display: flex"
-        :style="{ 'background-image': `url(${imgPath})` }"
-      >
-        <div class="header-nav-search-content-left">
-          <div class="header-nav-search-content-title">搜索结果</div>
-          <hr style="display: inline-block; width: 58px; border: 2px solid rgb(35, 24, 21)" />
-          <div class="header-nav-search-content-text">
-            {{ hoverText.content.content }}
-          </div>
-          <div class="header-nav-search-content-english">
-            {{ hoverText.content.footer }}
-          </div>
-        </div>
-        <div class="header-nav-search-content-right">
-          <div class="header-nav-search-content-right-title">
-            <ul>
-              <li>全部</li>
-              <li>新闻</li>
-              <li>产品</li>
-              <li>招聘</li>
-            </ul>
-          </div>
-          <div class="header-nav-search-content-right-content">
-            <ul>
-              <li>平高集团1家企业荣获2024年全国质量标杆奖</li>
-              <li>平高集团亮相CIGRE 2024 绿色智能产品吸引全球电力行业目光</li>
-              <li>共青团平高集团有限公司、河南平高电气股份有限公司第二...</li>
-              <li>平高集团亮相CIGRE 2024 绿色智能产品吸引全球电力行业目光</li>
-            </ul>
+          <div class="header-nav-hover-content-right">
+            <div class="right-left">
+              <ul>
+                <li v-for="item in hoverText.footer" :key="item.name">
+                  <router-link active-class="active-color" :to="item.path">{{
+                    item.name
+                  }}</router-link>
+                </li>
+              </ul>
+            </div>
+            <div
+              class="right-right"
+              :style="{ 'background-image': `url(${hoverText.content.imgPath})` }"
+            ></div>
           </div>
         </div>
       </div>
+      <div
+        class="header-nav-search-content"
+        @mouseleave="searchFlag = false"
+        :class="{ hidden: !searchFlag }"
+      >
+        <div
+          style="width: 100%; height: 100%; background-size: cover; display: flex"
+          :style="{ 'background-image': `url(${imgPath})` }"
+        >
+          <div class="header-nav-search-content-left">
+            <div class="header-nav-search-content-title">搜索结果</div>
+            <hr style="display: inline-block; width: 58px; border: 2px solid rgb(35, 24, 21)" />
+            <div class="header-nav-search-content-text">
+              {{ hoverText.content.content }}
+            </div>
+            <div class="header-nav-search-content-english">
+              {{ hoverText.content.footer }}
+            </div>
+          </div>
+          <div class="header-nav-search-content-right">
+            <div class="header-nav-search-content-right-title">
+              <ul>
+                <li>全部</li>
+                <li>新闻</li>
+                <li>产品</li>
+                <li>招聘</li>
+              </ul>
+            </div>
+            <div class="header-nav-search-content-right-content">
+              <ul>
+                <li>平高集团1家企业荣获2024年全国质量标杆奖</li>
+                <li>平高集团亮相CIGRE 2024 绿色智能产品吸引全球电力行业目光</li>
+                <li>共青团平高集团有限公司、河南平高电气股份有限公司第二...</li>
+                <li>平高集团亮相CIGRE 2024 绿色智能产品吸引全球电力行业目光</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
+
     <div v-if="!props.onlyHeaderFlag" style="margin: 0 100px">
       <div class="header-body">
         <div class="header-body-title">{{ props.content.title }}</div>
@@ -424,7 +430,7 @@ const props = defineProps({
 }
 #header-nav {
   position: relative;
-  height: 90px;
+  height: auto;
   margin: 0 5em;
 }
 
@@ -467,13 +473,15 @@ const props = defineProps({
   display: flex;
   justify-content: flex-end;
   align-items: center;
-  height: auto;
   transform: translateY(-100%);
   position: relative;
   z-index: 1000;
 }
 
 .header-nav-bottom-item {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
   color: #fff;
   padding: 0 1rem;
   width: auto;
@@ -486,6 +494,10 @@ const props = defineProps({
   font-size: 1.125rem;
   transition: all 0.3s ease;
   flex: 0 0 auto;
+  height: 4vh;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .header-nav-bottom-input {
@@ -493,6 +505,7 @@ const props = defineProps({
   border: none;
   padding: 8px;
   color: #fff;
+  height: 4vh;
 }
 
 .header-nav-bottom-input::placeholder {
@@ -507,14 +520,16 @@ const props = defineProps({
   color: #fff;
 }
 
+.header-nav-hover-box {
+  position: relative;
+}
+
 .header-nav-hover-content,
 .header-nav-search-content {
   position: absolute;
-  top: auto;
+  top: -2vh;
   width: 100%;
-  height: auto;
-  padding-top: 3em;
-  margin-top: -30px;
+  height: 50vh;
   z-index: 999;
   cursor: pointer;
   transition: all 0.3s ease;
@@ -635,7 +650,7 @@ const props = defineProps({
 
 .header-body {
   margin-top: 9em;
-  margin-left: 7em;
+  margin-left: 5%;
   color: var(--fontColor);
 }
 .header-body-hr {
@@ -669,7 +684,7 @@ const props = defineProps({
   bottom: 0;
   left: 60%;
   width: 40%;
-  font-size: 1.4375rem;
+  font-size: 1.3rem;
   font-family: "AlibabaPuHuiTi_2_55_Regular";
   color: rgb(255, 255, 255);
   background-image: url("../assets/imgs/_6_qualityAssuranceImgs/t6_topBar.png");
@@ -683,6 +698,7 @@ const props = defineProps({
   display: flex;
   justify-content: start;
   align-items: center;
+  flex-wrap: wrap;
 }
 
 .header-footer ul li {

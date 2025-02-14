@@ -55,9 +55,6 @@ import MyButton from "@/components/MyButton.vue";
         <div class="p">创新型企业</div>
       </div>
     </div>
-    <div class="rightButton">
-      <rightButton></rightButton>
-    </div>
     <div class="footer">
       <myButton class="myButton" text="加载更多"></myButton>
     </div>
@@ -68,18 +65,12 @@ import MyButton from "@/components/MyButton.vue";
   position: relative;
   margin: auto;
   width: 100%;
-  height: auto;
+  height: 1389px;
   /* border: 1px solid rgb(177, 177, 177); */
-  padding: 64px 10em;
+  padding: 64px 210px;
   border-radius: 20px;
   background-color: #fff;
   z-index: -100;
-}
-.rightButton {
-  position: absolute;
-  top: 630px;
-  right: 0;
-  z-index: 10;
 }
 .content {
   margin-top: 50px;
@@ -88,7 +79,7 @@ import MyButton from "@/components/MyButton.vue";
   justify-content: space-between;
 }
 .content .info {
-  width: 300px;
+  width: 24%;
   height: 276px;
   margin-bottom: 50px;
   text-align: center;
@@ -103,9 +94,10 @@ import MyButton from "@/components/MyButton.vue";
 }
 .footer {
   width: 100%;
-  height: auto;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  margin-top: 10px;
+  text-align: center;
+}
+.footer .myButton {
+  margin: auto;
 }
 </style>

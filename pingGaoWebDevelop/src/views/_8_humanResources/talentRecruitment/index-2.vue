@@ -12,7 +12,9 @@ import TextTitle from "@/components/TextTitle.vue";
       z-index: -2;
     "
   >
-    <div class="bodyBg"></div>
+    <div class="bodyBg">
+      <img src="../../../assets/imgs/_8_humanResourcesImgs/bg-1.png" alt="" />
+    </div>
     <div class="body-content">
       <div class="bg-white" style="padding: 5em; width: 100%">
         <div class="title">国电气装备旗下平高集团2022年社会招聘公告</div>
@@ -64,16 +66,21 @@ import TextTitle from "@/components/TextTitle.vue";
 
 <style scoped>
 .bodyBg {
-  background-image: url("../../../assets/imgs/_8_humanResourcesImgs/bg-1.png");
-  background-size: cover;
   width: 100%;
-  min-height: 884px;
   position: absolute;
-  top: 980px;
+  bottom: -10px;
   z-index: -1;
 }
+
+.bodyBg img {
+  width: 100%;
+  height: auto;
+  padding: 0;
+  margin: 0;
+}
+
 .body-content {
-  padding: 0 5em;
+  padding: 0 11%;
   height: auto;
   width: 100%;
 }

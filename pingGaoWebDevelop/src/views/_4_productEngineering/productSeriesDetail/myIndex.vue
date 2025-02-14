@@ -1,5 +1,4 @@
 <script setup>
-import RightButton from "@/components/RightButton.vue";
 </script>
 <template>
   <div class="productSeriesDetail">
@@ -14,7 +13,7 @@ import RightButton from "@/components/RightButton.vue";
         <div class="detail_text">
           <div class="text">ZHW1-252（L）/T4000-50型复合式组合电器</div>
           <div class="button">
-            <div class="p" @click="this.$router.go(-1)">返回上一级</div>
+            <div class="p" @click="this.$router.go(-1)" @mousedown="console.log(111)">返回上一级</div>
           </div>
         </div>
         <div class="long_line"></div>
@@ -61,41 +60,36 @@ import RightButton from "@/components/RightButton.vue";
         </div>
       </div>
     </div>
-    <div class="rightButton">
-      <RightButton></RightButton>
+    <div class="footer_img">
+      <img src="@/assets/imgs/_4_productEngineeringImgs/product-footer.png" alt="" />
     </div>
-    <div class="footer_img"></div>
   </div>
 </template>
 <style scoped>
 .productSeriesDetail {
   position: relative;
   margin: auto;
-  width: 1920px;
-  height: 2500px;
-  /* border: 1px solid rgb(177, 177, 177); */
+  width: 100%;
   padding: 0px 210px;
   border-radius: 20px;
   background-color: #fff;
-  z-index: -100;
-}
-.rightButton {
-  position: absolute;
-  top: 1310px;
-  right: 0;
-  z-index: 10;
 }
 .detail_page {
   padding: 0px 100px;
-  width: 1500px;
+  width: 100%;
   height: 2010px;
   padding-top: 80px;
   background-color: #fff;
+  z-index: 100;
+}
+.detail_page .header{
+  width: 100%;
 }
 .detail_title {
   height: 30px;
   display: flex;
   margin-bottom: 30px;
+  width: 100%;
 }
 .detail_title .title {
   font-size: 35px;
@@ -107,9 +101,10 @@ import RightButton from "@/components/RightButton.vue";
 .detail_text {
   display: flex;
   justify-content: space-between;
-  width: 1310px;
+  width: 100%;
   height: 54px;
   margin-bottom: 23px;
+  z-index: 100;
 }
 .detail_text .text {
   font-size: 35px;
@@ -121,21 +116,18 @@ import RightButton from "@/components/RightButton.vue";
   height: 54px;
   background-color: #45b3e0;
   border-radius: 27px;
-  z-index: 10;
   cursor: pointer;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
 .detail_text .button .p {
   font-size: 21.219px;
   font-family: "AlibabaPuHuiTi_2_55_Regular", sans-serif;
   color: rgb(255, 255, 255);
   text-align: center;
-  line-height: 28px;
+  line-height: 54px;
+  z-index: 1000;
 }
 .long_line {
-  width: 1310px;
+  width: 100%;
   height: 4px;
   background-color: #003792;
   margin-bottom: 60px;
@@ -151,7 +143,7 @@ import RightButton from "@/components/RightButton.vue";
   height: 474px;
 }
 .special {
-  width: 1300px;
+  width: 100%;
   height: 380px;
   margin-bottom: 54px;
 }
@@ -189,12 +181,11 @@ import RightButton from "@/components/RightButton.vue";
 }
 .footer_img {
   position: absolute;
-  bottom: 0;
   left: 0;
-  background-image: url("../../../assets/imgs/_4_productEngineeringImgs/bg-footimg.png");
-  background-size: cover;
-  width: 100%;
-  height: 70vh;
+  bottom: 0;
+  width: 1920px;
+  height: 2500px;
+  z-index: -10;
 }
 .footer_img img {
   width: 1916px;

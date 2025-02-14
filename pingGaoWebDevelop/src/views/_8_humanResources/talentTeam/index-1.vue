@@ -91,7 +91,7 @@ import HumanContent from "@/components/HumanContent.vue";
   z-index: -1;
 }
 .body-content {
-  margin: 0 10em;
+  margin: 0 11%;
   padding-top: 66px;
 }
 </style>

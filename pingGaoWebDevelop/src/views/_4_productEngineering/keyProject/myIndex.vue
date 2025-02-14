@@ -40,49 +40,42 @@ import MyTitle from "@/components/MyTitle.vue";
         </div>
       </div>
     </div>
-    <div class="rightButton">
-      <rightButton></rightButton>
+    <div class="footer_img">
+      <img src="@/assets/imgs/_4_productEngineeringImgs/project-footer.png" alt="" />
     </div>
-    <div class="footer_img"></div>
   </div>
 </template>
 <style scoped>
 .keyProject {
   position: relative;
   margin: auto;
-  width: 1920px;
+  width: 100%;
   height: 2380px;
-  /* border: 1px solid rgb(177, 177, 177); */
   padding: 64px 210px;
   border-radius: 20px;
   background-color: #fff;
   z-index: -100;
 }
-.rightButton {
-  position: absolute;
-  top: 1310px;
-  right: 0;
-  z-index: 10;
-}
 .project_content {
   display: flex;
-  width: 1500px;
+  justify-content: space-between;
+  width: 100%;
   height: 1580px;
   margin-top: 60px;
 }
 .content_left {
-  width: 350px;
+  width: 20.5%;
   margin-right: 23px;
 }
 .top_button {
-  width: 350px;
+  width: 100%;
   height: 100px;
   border-radius: 10px;
   background-color: #006fc1;
   margin-bottom: 10px;
 }
 .bottom_button {
-  width: 350px;
+  width: 100%;
   height: 100px;
   border-radius: 10px;
   background-color: #fff;
@@ -103,23 +96,28 @@ import MyTitle from "@/components/MyTitle.vue";
   line-height: 100px;
 }
 .content_right {
-  width: 1130px;
+  width: 79%;
   height: 1560px;
 }
 .pic_content {
   position: relative;
-  width: 1130px;
+  width: 100%;
   height: 500px;
   margin-bottom: 30px;
 }
 .pic_content .pic {
-  width: 1130px;
+  width: 100%;
   height: 500px;
+}
+.pic_content .pic img{
+  width: 100%;
+  height: 500px;
+  background-size: cover;
 }
 .pic_content .bg_black {
   position: absolute;
   bottom: 0;
-  width: 1130px;
+  width: 100%;
   height: 83px;
   background-color: #38383859;
   border-radius: 6px;
@@ -133,14 +131,14 @@ import MyTitle from "@/components/MyTitle.vue";
 }
 .footer_img {
   position: absolute;
-  bottom: 0;
+  bottom: -10px;
   left: 0;
-  background-image: url("../../../assets/imgs/_4_productEngineeringImgs/bg-footimg.png");
-  background-size: cover;
+  z-index: -10;
   width: 100%;
-  height: 70vh;
+
 }
 .footer_img img {
-  width: 1916px;
+  width: 100%;
+  height: 100%;
 }
 </style>
