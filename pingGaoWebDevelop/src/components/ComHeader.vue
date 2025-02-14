@@ -269,7 +269,6 @@ const props = defineProps({
     :style="{
       '--footerImg': props.footerImg,
       '--fontColor': props.css.fontColor,
-      '--footerImg': props.footerImg,
       '--footerColor': props.css.footerColor,
     }"
   >
