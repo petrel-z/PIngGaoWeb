@@ -45,16 +45,20 @@ import MyTitle from "@/components/MyTitle.vue";
           为切实提高集团科技水平和市场竞争力，平高集团注重人才引进，加强人才队伍建设，培育“尊重劳动、尊重知识、尊重人才、尊重创新”管理氛围，树立“以人为本、人才先行”发展理念，大力实施“人才强企”战略。平高集团博士后工作站热忱欢迎广大博士进站合作。
         </p>
       </div>
-      <div class="img"></div>
+      <div class="img">
+        <img src="../../../assets/imgs/_8_humanResourcesImgs/divBg-3.png" alt="" />
+      </div>
     </div>
 
-    <div class="bottom-bg"></div>
+    <div class="bottom-bg">
+      <img src="../../../assets/imgs/_8_humanResourcesImgs/bg-1.png" alt="" />
+    </div>
   </div>
 </template>
 
 <style scoped>
 .title {
-  padding: 65px 7em 0 7em;
+  padding: 65px 11% 0 11%;
 }
 
 .center {
@@ -64,7 +68,7 @@ import MyTitle from "@/components/MyTitle.vue";
   display: flex;
   align-items: center;
   margin-top: 55px;
-  padding: 0 7em;
+  padding: 0 11%;
 }
 
 .center > div {
@@ -81,7 +85,7 @@ import MyTitle from "@/components/MyTitle.vue";
   margin-top: 45px;
   height: 545px;
   display: flex;
-  padding: 0 7em;
+  padding: 0 11%;
 }
 
 .text {
@@ -97,19 +101,20 @@ import MyTitle from "@/components/MyTitle.vue";
 }
 
 .img {
-  background-image: url("../../../assets/imgs/_8_humanResourcesImgs/divBg-3.png");
-  width: 651px;
-  height: 366px;
-  margin-left: 52px;
+  width: 48%;
+  margin-left: 2%;
 }
 
 .bottom-bg {
-  background-image: url("../../../assets/imgs/_8_humanResourcesImgs/bg-1.png");
   background-size: cover;
   width: 100%;
-  min-height: 884px;
   position: absolute;
-  top: 740px;
+  bottom: -10px;
   z-index: -1;
+}
+
+.bottom-bg img {
+  width: 100%;
+  height: auto;
 }
 </style>

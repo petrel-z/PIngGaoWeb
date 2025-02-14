@@ -3,8 +3,12 @@ import MyTitle from "@/components/MyTitle.vue";
 </script>
 
 <template>
-  <div style="position: relative; min-height: 1780px; background-color: #def1fb; z-index: -2">
-    <div class="bodyBg"></div>
+  <div
+    style="position: relative; width: 100%; height: auto; background-color: #def1fb; z-index: -2"
+  >
+    <div class="bodyBg">
+      <img src="../../../assets/imgs/_8_humanResourcesImgs/bg-1.png" alt="" />
+    </div>
     <div class="body-content">
       <div>
         <MyTitle title="人才开发" English="TALENT DEVELOPMENT"></MyTitle>
@@ -58,21 +62,26 @@ import MyTitle from "@/components/MyTitle.vue";
 
 <style scoped>
 .bodyBg {
-  background-image: url("../../../assets/imgs/_8_humanResourcesImgs/bg-1.png");
   background-size: cover;
   width: 100%;
-  min-height: 884px;
   position: absolute;
-  top: 940px;
+  bottom: -10px;
   z-index: -1;
 }
+
+.bodyBg img {
+  width: 100%;
+  height: auto;
+}
+
 .body-content {
-  margin: 0 10em;
+  margin: 0 11%;
   padding-top: 66px;
+  padding-bottom: 30vh;
 }
 
 .body-content-left {
-  width: 30%;
+  width: 20%;
   white-space: nowrap;
 }
 
@@ -82,13 +91,15 @@ import MyTitle from "@/components/MyTitle.vue";
   margin-bottom: 11px;
   text-align: center;
   line-height: 101px;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .body-content-right {
-  width: 100%;
-  height: 1288px;
+  width: 79%;
+  height: auto;
   padding: 0 89px;
-  margin-left: 19px;
+  margin-left: 1%;
   border-radius: 10px;
 }
 
@@ -106,6 +117,7 @@ import MyTitle from "@/components/MyTitle.vue";
   padding-top: 35px;
   margin-top: 32px;
   border-top: 2px solid #006fc1;
+  padding-bottom: 20vh;
 }
 
 .text > p {
@@ -114,7 +126,6 @@ import MyTitle from "@/components/MyTitle.vue";
   color: rgb(89, 87, 87);
   line-height: 1.85;
   text-align: left;
-  width: 952px;
 }
 .font-white {
   font-size: 32px;

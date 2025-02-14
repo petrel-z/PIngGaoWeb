@@ -22,8 +22,12 @@ import MyContent from "@/components/MyContent.vue";
             content2="服务水平，全力打造建设现代企业客户服务体系，切实提升客户满意度、获得感，为集团高质量跨越发展提供有力支撑。"
           />
         </div>
-        <div class="process-title">服务流程图</div>
-        <div class="process"></div>
+        <div class="process-box">
+          <div class="process-title">服务流程图</div>
+          <div class="process">
+            <img src="../../../assets/imgs/_5_marketingServiceImgs/process.png" alt="" />
+          </div>
+        </div>
       </div>
       <div class="footer-bg"></div>
     </div>
@@ -41,7 +45,7 @@ import MyContent from "@/components/MyContent.vue";
   z-index: -1;
 }
 .body-content {
-  margin: 0 210px;
+  margin: 0 11%;
   padding-top: 65px;
   min-height: 2520px;
 }
@@ -57,8 +61,17 @@ import MyContent from "@/components/MyContent.vue";
   z-index: -1;
 }
 
+.process-box {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
 .process-title {
-  font-size: 32px;
+  font-size: 2.5rem;
   font-family: "AlibabaPuHuiTi_2_65_Medium";
   color: rgb(69, 179, 224);
   line-height: 1.156;
@@ -68,9 +81,11 @@ import MyContent from "@/components/MyContent.vue";
 }
 
 .process {
-  width: 1360px;
-  height: 1321px;
-  background-image: url("../../../assets/imgs/_5_marketingServiceImgs/process.png");
-  background-size: cover;
+  width: 100%;
+}
+
+.process img {
+  width: 100%;
+  height: auto;
 }
 </style>
