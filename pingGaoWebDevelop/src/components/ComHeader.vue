@@ -251,20 +251,28 @@ const props = defineProps({
   },
   footerImg: {
     type: String,
-    default: '',
+    default: "",
   },
   css: {
     type: Object,
     default: () => ({
-      fontColor: '#fff',
-      footerColor: '#fff'
+      fontColor: "#fff",
+      footerColor: "#fff",
     }),
-  }
+  },
 });
 </script>
 
 <template>
-  <div id="header" :style="{'--footerImg': props.footerImg, '--fontColor': props.css.fontColor , '--footerImg': props.footerImg, '--footerColor': props.css.footerColor }">
+  <div
+    id="header"
+    :style="{
+      '--footerImg': props.footerImg,
+      '--fontColor': props.css.fontColor,
+      '--footerImg': props.footerImg,
+      '--footerColor': props.css.footerColor,
+    }"
+  >
     <div id="header-nav">
       <div id="header-nav-top">
         <ul>
@@ -386,7 +394,7 @@ const props = defineProps({
     <div v-if="!props.onlyHeaderFlag" style="margin: 0 100px">
       <div class="header-body">
         <div class="header-body-title">{{ props.content.title }}</div>
-        <hr class="header-body-hr" style="width: 50px; " />
+        <hr class="header-body-hr" style="width: 50px" />
         <div class="header-body-content">{{ props.content.content }}</div>
         <div class="header-body-footer">{{ props.content.footer }}</div>
       </div>
@@ -578,6 +586,7 @@ const props = defineProps({
 .header-nav-search-content-right-title ul li {
   padding: 0 2em;
   font-size: 1.4375rem;
+  white-space: nowrap;
   font-family: "AlibabaPuHuiTi_2_55_Regular";
   color: rgb(128, 127, 127);
   line-height: 1.87;
@@ -631,8 +640,8 @@ const props = defineProps({
   color: var(--fontColor);
 }
 .header-body-hr {
-  border: 1px solid var(--fontColor)
- }
+  border: 1px solid var(--fontColor);
+}
 .header-body-title {
   margin-bottom: 10px;
   font-size: 3.125rem;
@@ -659,15 +668,16 @@ const props = defineProps({
 .header-footer {
   position: absolute;
   bottom: 0;
-  left: 65%;
+  left: 60%;
+  width: 40%;
   font-size: 1.4375rem;
   font-family: "AlibabaPuHuiTi_2_55_Regular";
   color: rgb(255, 255, 255);
   background-image: url("../assets/imgs/_6_qualityAssuranceImgs/t6_topBar.png");
   background-size: cover;
-  width: 35%;
   padding: 0.5em 0;
-  padding-left: 3em;
+  padding-left: 1.5em;
+  white-space: nowrap;
 }
 
 .header-footer ul {

@@ -1,6 +1,6 @@
 @font-face {
   font-family: "iconfont"; /* Project id  */
-  src: url('iconfont.ttf?t=1739084413110') format('truetype');
+  src: url('iconfont.ttf?t=1739493244240') format('truetype');
 }
 
 .iconfont {
@@ -65,6 +65,10 @@
 
 .icon-huidaodingbu:before {
   content: "\e7e5";
+}
+
+.icon-xiangyou:before {
+  content: "\e6a3";
 }
 
 .icon-dalaba:before {

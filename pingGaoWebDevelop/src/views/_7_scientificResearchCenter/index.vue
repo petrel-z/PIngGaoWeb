@@ -32,11 +32,13 @@ import { ref } from "vue";
 import ComHeader from "@/components/ComHeader.vue";
 import Footer from "@/components/Footer.vue";
 import imgPath from "@/assets/imgs/_7_scientificResearchCenterImgs/头部轮播-07.png";
+import footerBg from "@/assets/imgs/_6_qualityAssuranceImgs/t6_topBar.png";
 const info = ref({
   title: "科研中心",
   content: "电工行业重大技术装备支柱企业",
   footer: "PG GROUP",
   imgPath: imgPath,
+  footerBg: footerBg,
 });
 
 const footer = ref([
@@ -114,7 +116,7 @@ const footer = ref([
 //    border-bottom: 1px solid rgb(255, 255, 255);
 //   }
 .header {
-  background-image: url("../../assets/imgs/_7_scientificResearchCenterImgs/top-bg3.png");
+  background-image: url("../../assets/imgs/_7_scientificResearchCenterImgs/头部轮播-07.png");
 
   width: auto;
   height: 67vh;

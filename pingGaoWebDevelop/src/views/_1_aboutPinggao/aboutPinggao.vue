@@ -33,6 +33,7 @@ const info = ref({
   content: "赋能智慧电气·创引绿色能源",
   footer: "PG GROUP",
   imgPath: imgPath,
+  footerBg: footerBg,
 });
 
 const footer = ref([
@@ -46,10 +47,11 @@ const footer = ref([
 import ComHeader from "@/components/ComHeader.vue";
 import imgPath from "@/assets/imgs/_1_aboutPinggaoImgs/头部轮播-01.png";
 import Footer from "@/components/Footer.vue";
+import footerBg from "@/assets/imgs/_6_qualityAssuranceImgs/t6_topBar.png";
 </script>
 <style lang="less" scoped>
 .header {
-  background-image: url("../../assets//imgs/_1_aboutPinggaoImgs/top-bg.png");
+  background-image: url("../../assets/imgs/_1_aboutPinggaoImgs/头部轮播-01.png");
 
   width: auto;
   height: 67vh;
