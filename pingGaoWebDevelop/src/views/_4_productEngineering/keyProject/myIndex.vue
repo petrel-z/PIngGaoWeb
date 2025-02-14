@@ -1,6 +1,5 @@
 <script setup>
 import MyTitle from "@/components/MyTitle.vue";
-import rightButton from "@/components/rightButton.vue";
 </script>
 <template>
   <div class="keyProject">
@@ -44,9 +43,7 @@ import rightButton from "@/components/rightButton.vue";
     <div class="rightButton">
       <rightButton></rightButton>
     </div>
-    <div class="footer_img">
-      <img src="@/assets/imgs/_4_productEngineeringImgs/project-footer.png" alt="" />
-    </div>
+    <div class="footer_img"></div>
   </div>
 </template>
 <style scoped>
@@ -138,7 +135,10 @@ import rightButton from "@/components/rightButton.vue";
   position: absolute;
   bottom: 0;
   left: 0;
-  z-index: -10;
+  background-image: url("../../../assets/imgs/_4_productEngineeringImgs/bg-footimg.png");
+  background-size: cover;
+  width: 100%;
+  height: 70vh;
 }
 .footer_img img {
   width: 1916px;

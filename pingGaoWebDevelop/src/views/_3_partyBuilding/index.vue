@@ -38,7 +38,7 @@ const footer = ref([
     <RouterView />
 
     <div style="width: auto">
-      <Footer/>
+      <Footer />
     </div>
   </div>
 </template>
@@ -48,22 +48,12 @@ const footer = ref([
   /* height: 611px; */
   height: auto;
   /* min-width: 1920px; */
-  width: 100vw;
+  width: 100%;
   // background-image: url("@/assets/imgs/_3_partyBuildingImgs/t3_p1_titleBg.png");
   background-size: 100%;
   background-repeat: no-repeat;
-  position:relative;
-  img {
-    width: 100%;
-  }
-
-  .header-body {
-    width: 100%;
-    position: absolute;
-    top: 0;
-    padding: 0;
-  }
+  position: relative;
+  background-image: url("../../assets/imgs/_3_partyBuildingImgs/头部轮播-03.png");
+  height: 500px;
 }
-
-
 </style>

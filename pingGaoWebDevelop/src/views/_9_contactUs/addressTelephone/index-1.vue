@@ -51,14 +51,14 @@ import MyTitle from "@/components/MyTitle.vue";
   z-index: 999;
   width: 100%;
   display: flex;
-  justify-content: center;
+  // justify-content: center;
   flex-wrap: wrap;
   align-items: start;
   position: relative;
-  background-image: url(../../../assets/imgs/_9_contactUs/t9_p2_contentBg.png);
+  background-image: url("../../../assets/imgs/_9_contactUsImgs/t9_p2_contentBg.png");
 
   .content-top {
-    padding: 60px 0;
+    padding: 60px 10em;
   }
   .address {
     z-index: 999;
@@ -69,11 +69,11 @@ import MyTitle from "@/components/MyTitle.vue";
     justify-content: space-between;
 
     .left {
-      width: 1190px;
+      width: 100%;
       height: 100%;
       background-color: #fff;
       position: relative;
-
+      margin-right: 1.5em;
       .image {
         width: 930px;
         height: 610px;
@@ -91,7 +91,7 @@ import MyTitle from "@/components/MyTitle.vue";
 
     .right {
       height: 100%;
-      width: 700px;
+      width: 50%;
       background-color: #45b3e0;
       display: flex;
       flex-direction: column;

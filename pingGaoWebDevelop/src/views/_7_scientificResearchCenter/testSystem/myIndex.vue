@@ -1,11 +1,11 @@
 <script setup>
 import MyTitle from "@/components/MyTitle.vue";
-import myContent from "@/components/myContent.vue";
+import myContent from "@/components/F6_MyContent.vue";
 import RightButton from "@/components/RightButton.vue";
 </script>
 <template>
   <div class="testSystem">
-    <MyTitle h="试验体系" English="TEST SYSTEM"></MyTitle>
+    <MyTitle title="试验体系" English="TEST SYSTEM"></MyTitle>
     <div class="content">
       <myContent class="my_content" title="三院两所两中心一基地">
         <span class="left">
@@ -44,7 +44,7 @@ import RightButton from "@/components/RightButton.vue";
 .testSystem {
   position: relative;
   margin: auto;
-  width: 1920px;
+  width: 100%;
   height: 1680px;
   /* border: 1px solid rgb(206, 206, 206); */
   padding: 64px 210px;
@@ -83,14 +83,14 @@ import RightButton from "@/components/RightButton.vue";
 }
 .footer_img {
   position: absolute;
-  width: 1910px;
-  height: 1064px;
+  width: 100%;
+  height: 1040px;
   bottom: 0;
   left: 0;
   z-index: -20;
 }
 .footer_img img {
-  width: 1910px;
+  width: 100%;
 }
 .content .left {
   width: 430px;

@@ -6,13 +6,15 @@ defineOptions({
 import { ref } from "vue";
 import ComHeader from "@/components/ComHeader.vue";
 import Footer from "@/components/Footer.vue";
-import imgPath from "@/assets/imgs/_8_humanResourcesImgs/头部轮播-08.png";
+import imgPath from "@/assets/imgs/_9_contactUsImgs/头部轮播-09.png";
+import footerBg from "@/assets/imgs/_6_qualityAssuranceImgs/t6_topBar.png";
 
 const content = ref({
   title: "联系我们",
   content: "改革·创新·团结·奋斗·实干",
   footer: "PG GROUP",
   imgPath: imgPath,
+  footerBg: footerBg,
 });
 const footer = ref([
   {
@@ -51,8 +53,8 @@ const footer = ref([
 <style scoped>
 .header {
   height: 68vh;
-  min-width: 1920px;
-  background-image: url("@/assets//imgs/_8_humanResourcesImgs/headerBg.png");
+  width: 100%;
+  background-image: url("@/assets/imgs/_9_contactUsImgs/头部轮播-09.png");
   background-size: cover;
 }
 </style>
