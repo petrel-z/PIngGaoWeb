@@ -112,7 +112,7 @@ const props = defineProps({
 .partyContentDetail {
   position: relative;
 
-  padding: 0 6em;
+  padding: 0 11%;
 
   .spirit-top {
     width: 100%;
@@ -120,7 +120,7 @@ const props = defineProps({
   }
 
   .spirit-span {
-    padding: 5em 0;
+    padding: 0 0 72px 0;
   }
 
   .spirit-list {

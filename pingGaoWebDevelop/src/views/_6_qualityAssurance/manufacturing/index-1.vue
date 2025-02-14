@@ -46,7 +46,7 @@ import MyContent from "@/components/F6_MyContent.vue";
 <style lang="less" scoped>
 .manufacture-content {
   width: 100%;
-
+  padding: 0 11%;
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
@@ -56,6 +56,7 @@ import MyContent from "@/components/F6_MyContent.vue";
   position: relative;
 
   .content-top {
+    width: 100%;
     .top-title {
       margin-top: 60px;
       margin-bottom: 60px;

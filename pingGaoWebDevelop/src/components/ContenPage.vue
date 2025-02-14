@@ -54,7 +54,7 @@ const imgPath = ref(props.img);
 
 <template>
   <div class="content" :style="{ 'background-color': props.bgColor }">
-    <div>
+    <div class="content-left">
       <div class="title" :style="{ fontFamily: props.titleFont, color: props.fontColor }">
         {{ props.title1 }}
         <br />
@@ -79,7 +79,8 @@ const imgPath = ref(props.img);
         <span class="icon iconfont lookdetail-icon">&#xe504;</span>
       </div>
     </div>
-    <div style="width: 760px; height: 475px" class="img">
+    <div 
+ class="img">
       <img style="width: 105%; height: 102%; object-fit: cover" :src="imgPath" alt="图片加载失败" />
     </div>
   </div>
@@ -94,7 +95,11 @@ const imgPath = ref(props.img);
   align-items: center;
   background-color: #003792;
   border-radius: 10px;
+  .content-left {
+    width: 35%;
+  }
   .img {
+    width: 35%;
     overflow: hidden;
     border-radius: 10px;
     img {
@@ -108,7 +113,7 @@ const imgPath = ref(props.img);
   transition: all 0.5s ease-in-out;
 }
 .title {
-  font-size: 35px;
+  font-size: 2.18remv;
   // font-family: 'Alibaba PuHuiTi 2.0';
   color: rgb(255, 255, 255);
   line-height: 1.4;
@@ -122,13 +127,13 @@ const imgPath = ref(props.img);
 }
 
 .content-text {
-  font-size: 20px;
+  font-size: 1.5rem;
   font-family: "Alibaba PuHuiTi 2.0";
   color: rgb(255, 255, 255);
   line-height: 1.85;
   position: relative;
-  width: 525px;
-  height: 140px;
+  width: 100%;
+  height: 40%;
   z-index: 17;
   display: -webkit-box;
   -webkit-box-orient: vertical;
@@ -139,7 +144,7 @@ const imgPath = ref(props.img);
 }
 
 .content-btn {
-  font-size: 20px;
+  font-size: 1.25rem;
   // font-family: 'Alibaba PuHuiTi 2.0';
   color: rgb(255, 255, 255);
   line-height: 51px;
