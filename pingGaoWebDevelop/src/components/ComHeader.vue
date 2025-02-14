@@ -235,6 +235,10 @@ const props = defineProps({
       footerBg: footerBg,
     }),
   },
+  isfooter:{
+    type:Boolean,
+    default: true
+  },
   footer: {
     type: Array,
     default: () => [
@@ -247,7 +251,7 @@ const props = defineProps({
   },
   onlyHeaderFlag: {
     type: Boolean,
-    default: false,
+    default: true,
   },
   footerImg: {
     type: String,
@@ -391,14 +395,14 @@ const props = defineProps({
         </div>
       </div>
     </div>
-    <div v-if="!props.onlyHeaderFlag" style="margin: 0 100px">
+    <div v-if="props.onlyHeaderFlag" style="margin: 0 100px">
       <div class="header-body">
         <div class="header-body-title">{{ props.content.title }}</div>
         <hr class="header-body-hr" style="width: 50px" />
         <div class="header-body-content">{{ props.content.content }}</div>
         <div class="header-body-footer">{{ props.content.footer }}</div>
       </div>
-      <div
+      <div v-if="isfooter"
         class="header-footer"
         :style="{ 'background-image': `url('${props.content.footerBg}') ` }"
       >

@@ -62,7 +62,7 @@ onUnmounted(() => {
 <template>
   <div class="home_page">
     <div class="header">
-      <div style="padding-top: 20px;"><ComHeader :onlyHeaderFlag="false"></ComHeader></div>
+      <div style="padding-top: 20px;"><ComHeader :isfooter="false" :onlyHeaderFlag="false"></ComHeader></div>
     </div>
 
     <div class="my_carousel">
@@ -282,7 +282,7 @@ onUnmounted(() => {
 }
 .header {
   height: 68vh;
-  // min-width: 1920px; 
+  // min-width: 1920px;
   width: 100%;
   position: absolute;
   top: 0;
