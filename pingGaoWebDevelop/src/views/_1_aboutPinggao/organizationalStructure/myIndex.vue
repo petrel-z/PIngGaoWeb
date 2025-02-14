@@ -1,8 +1,5 @@
 <script setup>
 import MyTitle from "@/components/MyTitle.vue";
-// import MyHeader from "@/components/myHeader.vue";
-// import comHeader from "@/components/comHeader.vue";
-// import myFooter from "@/components/myFooter.vue";
 import headLine from "@/components/MyHeadLine.vue";
 import row from "@/assets/imgs/_1_aboutPinggaoImgs/row.png";
 import longLine from "@/assets/imgs/_1_aboutPinggaoImgs/long-line.png";
@@ -284,9 +281,6 @@ import footrow from "@/assets/imgs/_1_aboutPinggaoImgs/footrow.png";
         </div>
       </div>
     </div>
-    <!-- <div class="footer">
-      <myFooter class="myfooter"></myFooter>
-    </div> -->
   </div>
 </template>
 
@@ -295,18 +289,11 @@ import footrow from "@/assets/imgs/_1_aboutPinggaoImgs/footrow.png";
   position: relative;
   margin: auto;
   width: 100%;
-  height: 2867px;
   // border: 1px solid rgb(177, 177, 177);
   padding: 64px 210px;
   border-radius: 20px;
   background-color: #fff;
   z-index: -100;
-}
-.rightButton {
-  position: absolute;
-  right: 0;
-  z-index: 10;
-  top: 640px;
 }
 .mytitle {
   margin-top: 50px;
@@ -336,7 +323,7 @@ import footrow from "@/assets/imgs/_1_aboutPinggaoImgs/footrow.png";
   width: 100%;
 }
 .organization .introduce {
-  width: 249px;
+  width: 16.7%;
   height: 112px;
   border-right: 1px solid #2291d0;
   color: #fff;
@@ -378,7 +365,6 @@ import footrow from "@/assets/imgs/_1_aboutPinggaoImgs/footrow.png";
 .component .content_top {
   display: flex;
   justify-content: space-between;
-  width: 100%;
 }
 .component .content_top .content_left {
   width: 33%;
@@ -410,13 +396,19 @@ import footrow from "@/assets/imgs/_1_aboutPinggaoImgs/footrow.png";
 }
 .component .content_bottom .foot {
   display: flex;
+  justify-content: space-between;
   width: 100%;
 }
 .component .content_bottom .foot_middle {
   margin-left: 12px;
+  width: 33%;
+}
+.component .content_bottom .foot_left {
+  width: 33%;
 }
 .component .content_bottom .foot_right {
   margin-left: 12px;
+  width: 33%;
 }
 .organization_2 {
   position: relative;
@@ -443,7 +435,7 @@ import footrow from "@/assets/imgs/_1_aboutPinggaoImgs/footrow.png";
   width: 100%;
 }
 .organization_2 .introduce {
-  width: 249px;
+  width: 16.7%;
   height: 112px;
   border-right: 1px solid #2291d0;
   color: #fff;
@@ -538,7 +530,7 @@ import footrow from "@/assets/imgs/_1_aboutPinggaoImgs/footrow.png";
   display: flex;
 }
 .parts {
-  width: 100%;
+  width: 500px;
   margin-top: -4px;
 }
 .parts li {
@@ -548,10 +540,5 @@ import footrow from "@/assets/imgs/_1_aboutPinggaoImgs/footrow.png";
   text-decoration: none;
   list-style: none;
   line-height: 2.058;
-}
-.myfooter {
-  position: absolute;
-  left: 0;
-  bottom: 0;
 }
 </style>

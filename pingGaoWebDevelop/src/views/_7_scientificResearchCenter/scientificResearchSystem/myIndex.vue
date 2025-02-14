@@ -1,11 +1,10 @@
 <script setup>
 import MyTitle from "@/components/MyTitle.vue";
 import MyContent from "@/components/F6_MyContent.vue";
-import RightButton from "@/components/RightButton.vue";
 </script>
 <template>
   <div class="scientificResearchSystem">
-    <MyTitle title="科研体系" English="SCIENTIFIC RESEARCH SYSTEM"></MyTitle>
+    <MyTitle h="科研体系" English="SCIENTIFIC RESEARCH SYSTEM"></MyTitle>
     <div class="content">
       <MyContent title="三院两所两中心一基地">
         <div class="text">
@@ -34,9 +33,6 @@ import RightButton from "@/components/RightButton.vue";
         </div>
       </MyContent>
     </div>
-    <div class="rightButton">
-      <RightButton></RightButton>
-    </div>
     <div class="footer_img">
       <img src="@/assets/imgs/_7_scientificResearchCenterImgs/science-footer.png" alt="" />
     </div>
@@ -48,16 +44,10 @@ import RightButton from "@/components/RightButton.vue";
   margin: auto;
   width: 100%;
   height: 1960px;
-  /* border: 1px solid rgb(206, 206, 206); */
   padding: 64px 210px;
   border-radius: 20px;
   background-color: #fff;
   z-index: -100;
-}
-.rightButton {
-  position: absolute;
-  top: 520px;
-  right: 0;
 }
 .content {
   margin-top: 46px;
@@ -80,5 +70,6 @@ import RightButton from "@/components/RightButton.vue";
 }
 .footer_img img {
   width: 100%;
+  height: 100%;
 }
 </style>

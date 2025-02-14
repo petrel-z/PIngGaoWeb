@@ -1,7 +1,5 @@
 <script setup>
 import MyTitle from "@/components/MyTitle.vue";
-// import myFooter from '@/components/myFooter.vue';
-import rightButton from "@/components/RightButton.vue";
 </script>
 <template>
   <!-- 集团简介 -->
@@ -50,7 +48,9 @@ import rightButton from "@/components/RightButton.vue";
           </p>
         </div>
       </div>
-      <div class="img_right"></div>
+      <div class="img_right">
+        <img src="@/assets/imgs/_10_homePageImgs/shipin.png" alt="">
+      </div>
     </div>
     <div class="key">
       <div class="key_title"><span>核心集团六大核心概念</span></div>
@@ -136,30 +136,21 @@ import rightButton from "@/components/RightButton.vue";
         </div>
       </div>
     </div>
-    <div class="rightButton">
-      <rightButton></rightButton>
-    </div>
+    <div class="mind_map"></div>
   </div>
-  <div class="mind_map"></div>
 </template>
 <style scoped>
 .groupProfile {
   position: relative;
   margin: auto;
-  width: 100%;
-  height: auto;
+  width:100%;
   /* border: 1px solid rgb(177, 177, 177); */
-  padding: 64px 210px;
+  padding: 64px 204px;
   border-radius: 20px;
   background-color: #fff;
   z-index: -100;
 }
-.rightButton {
-  position: absolute;
-  top: 810px;
-  right: 0;
-  z-index: 10;
-}
+
 .introduce {
   display: flex;
   margin-top: 55px;
@@ -172,7 +163,7 @@ import rightButton from "@/components/RightButton.vue";
 }
 .introduce_content {
   position: relative;
-  width: 248.5px;
+  width: 16.7%;
   border-left: 2px solid #8abade;
   border-right: 2px solid #8abade;
   text-align: center;
@@ -208,7 +199,7 @@ import rightButton from "@/components/RightButton.vue";
 }
 .text_word .word_left {
   display: flex;
-  width: 900px;
+  width: 55%;
   font-size: 20px;
   font-family: "AlibabaPuHuiTi_2_55_Regular", sans-serif;
   color: rgb(89, 87, 87);
@@ -224,12 +215,17 @@ import rightButton from "@/components/RightButton.vue";
 }
 .text_word .img_right {
   margin-left: 44px;
+  width: 45%;
+  height: 426px;
+  background-size: contain;
+}
+.text_word .img_right img{
+  margin-left: 44px;
   width: 100%;
   height: 426px;
-  background-image: url("../../../assets/imgs/_1_aboutPinggaoImgs/shipin.png");
-  background-size: cover;
 }
 .key {
+  width: 100%;
   margin-bottom: 120px;
 }
 .key .key_title {
@@ -243,46 +239,45 @@ import rightButton from "@/components/RightButton.vue";
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  width: 100%;
 }
 .key_content_one {
   margin-bottom: 10px;
   position: relative;
   width: 491px;
   height: 161px;
-  background-image: url("../../../assets/imgs/_1_aboutPinggaoImgs/content-1.png");
+  background-image: url(src\\assets\\imgs\\_1_aboutPinggaoImgs\\content-1.png);
 }
 .key_content_two {
   margin-bottom: 10px;
   position: relative;
   width: 491px;
   height: 161px;
-  background-image: url("../../../assets/imgs/_1_aboutPinggaoImgs/content-2.png");
+  background-image: url(src\\assets\\imgs\\_1_aboutPinggaoImgs\\content-2.png);
 }
 .key_content_three {
   margin-bottom: 10px;
   position: relative;
   width: 491px;
   height: 161px;
-  background-image: url("../../../assets/imgs/_1_aboutPinggaoImgs/content-3.png");
+  background-image: url(src\\assets\\imgs\\_1_aboutPinggaoImgs\\content-3.png);
 }
 .key_content_four {
   position: relative;
   width: 491px;
   height: 161px;
-  background-image: url("../../../assets/imgs/_1_aboutPinggaoImgs/content-4.png");
+  background-image: url(src\\assets\\imgs\\_1_aboutPinggaoImgs\\content-4.png);
 }
 .key_content_five {
   position: relative;
   width: 491px;
   height: 161px;
-  background-image: url("../../../assets/imgs/_1_aboutPinggaoImgs/content-5.png");
+  background-image: url(src\\assets\\imgs\\_1_aboutPinggaoImgs\\content-5.png);
 }
 .key_content_six {
   position: relative;
   width: 491px;
   height: 161px;
-  background-image: url("../../../assets/imgs/_1_aboutPinggaoImgs/content-6.png");
+  background-image: url(src\\assets\\imgs\\_1_aboutPinggaoImgs\\content-6.png);
 }
 .key_content_h {
   left: 188px;
@@ -315,7 +310,7 @@ import rightButton from "@/components/RightButton.vue";
 }
 .basic_culture_info {
   border-left: 1px solid #c4c4c4;
-  width: 300px;
+  width: 25%;
   height: 112px;
   text-align: center;
   margin-bottom: 70px;
@@ -339,6 +334,7 @@ import rightButton from "@/components/RightButton.vue";
   height: 1px;
   background-color: #4093d1;
   margin-left: 165px;
+  margin: auto;
 }
 .basic_culture_info .basic_culture_num {
   white-space: pre;
@@ -350,9 +346,11 @@ import rightButton from "@/components/RightButton.vue";
   border-right: 1px solid #c4c4c4;
 }
 .mind_map {
-  width: 100%;
-  height: 900px;
-  background-image: url("../../../assets/imgs/_1_aboutPinggaoImgs/bg-footer.png");
-  background-size: cover;
+  position: absolute;
+  bottom: 0px;
+  left: 0;
+  width: 1920px;
+  height: 1028px;
+  background-image: url(src\\assets\\img1-1\\bg-footer.png);
 }
 </style>
