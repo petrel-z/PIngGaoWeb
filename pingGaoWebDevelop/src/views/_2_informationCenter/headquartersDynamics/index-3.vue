@@ -35,11 +35,15 @@ import imgPath from "@/assets/imgs/_2_informationCenterImgs/LehYXF.png";
       </div>
       <div class="footer">
         <ComDoubleDiv
-          style="margin-right: 1em"
+          class="footer-left"
           title="上一篇"
           content="中国电气装备召开一届二次职工代表大会暨2025年"
         />
-        <ComDoubleDiv title="下一篇" content="中国电气装备召开一届二次职工代表大会暨2025年" />
+        <ComDoubleDiv
+          class="footer-right"
+          title="下一篇"
+          content="中国电气装备召开一届二次职工代表大会暨2025年"
+        />
       </div>
     </div>
   </div>
@@ -48,7 +52,7 @@ import imgPath from "@/assets/imgs/_2_informationCenterImgs/LehYXF.png";
 <style scoped>
 .body-bg {
   background-image: url("../../../assets/imgs/_2_informationCenterImgs/newsBg-1.png");
-  padding: 0 210px;
+  padding: 0 11%;
   background-size: cover;
 }
 .body {
@@ -84,12 +88,19 @@ import imgPath from "@/assets/imgs/_2_informationCenterImgs/LehYXF.png";
   height: auto;
   text-align: left;
 }
-
 .footer {
   display: flex;
   justify-content: space-between;
+  padding: 10vh 0;
   width: 100%;
-  height: 20vh;
-  padding: 2em 0;
+}
+
+.footer-left {
+  width: 49%;
+  margin-right: 2%;
+}
+
+.footer-right {
+  width: 49%;
 }
 </style>

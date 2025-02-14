@@ -50,17 +50,23 @@ const props = defineProps({
   font-family: "Avenir";
   color: rgb(0, 55, 146);
   line-height: 1.68;
-  text-align: right;
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .left {
-  margin-right: 15px;
+  margin-right: 1%;
   background-color: #fff;
   border-bottom-left-radius: 10px;
   border-top-left-radius: 10px;
   text-align: right;
   padding: 35px 1em;
-  width: auto;
+  width: 20%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .right {
@@ -68,7 +74,7 @@ const props = defineProps({
   border-bottom-right-radius: 10px;
   border-top-right-radius: 10px;
   padding: 45px 36px;
-  width: 100%;
+  width: 79%;
 }
 
 .text {
@@ -77,5 +83,8 @@ const props = defineProps({
   color: rgb(35, 24, 21);
   line-height: 1.25;
   text-align: left;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 </style>

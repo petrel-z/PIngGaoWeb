@@ -47,7 +47,7 @@ import MyPagination from "@/components/MyPagination.vue";
   background-size: cover;
 }
 .body {
-  margin: 0 188px;
+  margin: 0 11%;
 }
 .bodyBg1 {
   position: absolute;

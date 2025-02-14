@@ -92,7 +92,7 @@ function handleClick(e) {
 
 <style scoped>
 .body {
-  margin: 0 210px;
+  margin: 0 11%;
 }
 .bodyBg1 {
   position: absolute;

@@ -31,11 +31,15 @@ import ComDoubleDiv from "@/components/ComDoubleDiv.vue";
       </div>
       <div class="footer">
         <ComDoubleDiv
-          style="margin-right: 1em"
+          class="footer-left"
           title="上一篇"
           content="平高集团1家企业荣获2024年全国质量标杆奖"
         />
-        <ComDoubleDiv title="下一篇" content="平高集团1家企业荣获2024年全国质量标杆奖" />
+        <ComDoubleDiv
+          class="footer-right"
+          title="下一篇"
+          content="平高集团1家企业荣获2024年全国质量标杆奖"
+        />
       </div>
     </div>
   </div>
@@ -44,7 +48,7 @@ import ComDoubleDiv from "@/components/ComDoubleDiv.vue";
 <style scoped>
 .body-bg {
   background-image: url("../../../assets/imgs/_2_informationCenterImgs/newsBg-1.png");
-  padding: 0 210px;
+  padding: 0 11%;
   background-size: cover;
   height: auto;
 }
@@ -72,7 +76,7 @@ import ComDoubleDiv from "@/components/ComDoubleDiv.vue";
   color: rgb(89, 87, 87);
   line-height: 1.498;
   width: 100%;
-  height: auto;
+  min-height: 80vh;
 }
 
 .content p:first-child {
@@ -88,8 +92,16 @@ import ComDoubleDiv from "@/components/ComDoubleDiv.vue";
 .footer {
   display: flex;
   justify-content: space-between;
+  padding: 10vh 0;
   width: 100%;
-  height: 20vh;
-  padding: 2em 0;
+}
+
+.footer-left {
+  width: 49%;
+  margin-right: 2%;
+}
+
+.footer-right {
+  width: 49%;
 }
 </style>

@@ -23,8 +23,8 @@ import imgPath from "../../../assets/imgs/_2_informationCenterImgs/MZFUZt.png";
         <p>
           平高集团以“绿色环保，智能制造”为主题，展示了其在新型电力系统建设中所取得的业绩和实力。展会现场，平高集团精心布置了展示区，重点推介
           了N2X-24型环保气体绝缘开关设备和145千伏无氟环保型GIS两款明星产品，充分展示了平高集团在科技创新和绿色发展方面的坚定决心和卓越成果。
-          <br />
-          <br />
+        </p>
+        <p>
           N2X-24型环保气体绝缘开关设备以其独特的环保特性和技术优势，吸引了众多参观者的关注。该设备采用微正压氮气作为绝缘气体，真空断路器开
           断，具有环保型、小型化、免维护等特点，特别适用于土地资源紧张的城市及恶劣环境条件下的中压电力系统。据了解，2023年12月，N2X-24型充气
           柜取得了意大利ENEL公司的TCA认证证书，不仅成为国内首家通过欧洲电网公司中压开关柜TCA认证的企业，同时也收到意大利ENEL集团首批共18面
@@ -33,8 +33,16 @@ import imgPath from "../../../assets/imgs/_2_informationCenterImgs/MZFUZt.png";
         </p>
       </div>
       <div class="footer">
-        <ComDoubleDiv title="上一篇" content="平高集团1家企业荣获2024年全国质量标杆奖" />
-        <ComDoubleDiv title="下一篇" content="平高集团1家企业荣获2024年全国质量标杆奖" />
+        <ComDoubleDiv
+          class="footer-left"
+          title="上一篇"
+          content="平高集团1家企业荣获2024年全国质量标杆奖"
+        />
+        <ComDoubleDiv
+          class="footer-right"
+          title="下一篇"
+          content="平高集团1家企业荣获2024年全国质量标杆奖"
+        />
       </div>
     </div>
   </div>
@@ -43,12 +51,12 @@ import imgPath from "../../../assets/imgs/_2_informationCenterImgs/MZFUZt.png";
 <style scoped>
 .body-bg {
   background-image: url("../../../assets/imgs/_2_informationCenterImgs/newsBg-1.png");
-  padding: 0 210px;
+  padding: 0 11%;
   background-size: cover;
 }
 .body {
   background-color: #fff;
-  padding: 0 100px;
+  padding: 0 7%;
 }
 .title {
   font-size: 35px;
@@ -68,22 +76,28 @@ import imgPath from "../../../assets/imgs/_2_informationCenterImgs/MZFUZt.png";
   color: rgb(89, 87, 87);
   line-height: 1.498;
   width: 100%;
+  height: auto;
+  overflow: hidden;
 }
 
-.content p:first-child {
-  height: 80px;
-  text-align: left;
-}
-
-.content p:nth-of-type(2) {
-  height: 230px;
+.content p {
+  height: auto;
   text-align: left;
 }
 
 .footer {
   display: flex;
   justify-content: space-between;
-  margin-top: 74px;
-  margin-bottom: 67px;
+  padding: 10vh 0;
+  width: 100%;
+}
+
+.footer-left {
+  width: 49%;
+  margin-right: 2%;
+}
+
+.footer-right {
+  width: 49%;
 }
 </style>

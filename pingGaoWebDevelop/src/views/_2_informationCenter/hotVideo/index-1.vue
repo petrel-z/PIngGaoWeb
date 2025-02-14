@@ -42,7 +42,7 @@ const flag = ref(false);
 
 <style scoped>
 .body {
-  padding: 0 10em;
+  padding: 0 11%;
 }
 
 .bodyBg {
