@@ -3,7 +3,7 @@ import MyTitle from "@/components/MyTitle.vue";
 </script>
 <template>
   <div class="productSeries">
-    <div class="top_img"></div>
+    <div class="img"><img src="@/assets/imgs/_4_productEngineeringImgs/bg-protect.png" alt=""></div>
     <MyTitle
       h="产品系列"
       English="PRODUCT SERIES"
@@ -14,8 +14,8 @@ import MyTitle from "@/components/MyTitle.vue";
     <div class="detail_content">
       <div class="detail_product active">
         <router-link to="/productEngineering/productSeriesDetail"
-          ><span>高压电器产业</span></router-link
-        >
+          ><span>高压电器产业</span>
+        </router-link>
       </div>
       <div class="detail_product">
         <span>系统集成业务</span>
@@ -97,10 +97,9 @@ import MyTitle from "@/components/MyTitle.vue";
         </div>
       </div>
     </div>
-    <div class="rightButton">
-      <rightButton></rightButton>
+    <div class="footer_img">
+      <img src="@/assets/imgs/_4_productEngineeringImgs/bg-footimg.png" alt="" />
     </div>
-    <div class="footer_img"></div>
   </div>
 </template>
 <style scoped>
@@ -108,28 +107,11 @@ import MyTitle from "@/components/MyTitle.vue";
   position: relative;
   margin: auto;
   width: 100%;
-  height: 2400px;
   border: 1px solid rgb(177, 177, 177);
-  padding: 64px 210px;
   border-radius: 20px;
   background-color: #fff;
   z-index: 100;
-}
-.rightButton {
-  position: absolute;
-  top: 1310px;
-  right: -1px;
-  z-index: 10;
-}
-.top_img {
-  position: absolute;
-  width: 100%;
-  height: 610px;
-  top: 0;
-  left: 0;
-  background-image: url("../../../assets/imgs/_4_productEngineeringImgs/bg-protect.png");
-  background-size: cover;
-  z-index: -2;
+  padding: 64px 210px;
 }
 .detail_content {
   width: 1080px;
@@ -138,28 +120,45 @@ import MyTitle from "@/components/MyTitle.vue";
   flex-wrap: wrap;
   justify-content: space-between;
   margin-top: 66px;
+  position: relative;
+}
+.productSeries .img{
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 614px;
+  position: absolute;
+  z-index: -100;
+}
+.productSeries img{
+  height: 614px;
+  width: 100%;
 }
 .detail_content .detail_product {
-  border: 4px #1e8dce solid;
+  border: 1px #1e8dce solid;
   border-radius: 10px;
   width: 342px;
   height: 77px;
   margin-bottom: 25px;
   text-align: center;
   line-height: 75px;
+  z-index: 10;
 }
 .detail_product span {
   font-size: 30px;
   font-family: "AlibabaPuHuiTi_2_35_Thin", sans-serif;
-  color: rgb(255, 255, 255);
+  color: #ffffff;
 }
 .active {
   border: none !important;
-  color: #fff;
   background-color: #45b3e0;
+}
+.active span{
+  color: #ffffff;
 }
 .detail_page {
   margin-top: 150px;
+  height: 1734px;
 }
 .detail_page_title {
   font-size: 32px;
@@ -172,20 +171,19 @@ import MyTitle from "@/components/MyTitle.vue";
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  height: auto;
 }
 .detail_page_info {
-  width: 469px;
-  height: auto;
+  width: 32%;
+  height: 225px;
   border-bottom: 1px #1078c5 solid;
-  padding-bottom: 2em;
+  z-index: 100;
 }
 
 .detail_page_info .h {
   font-size: 36px;
   font-family: "AlibabaPuHuiTi_2_85_Bold", sans-serif;
   color: rgb(0, 111, 193);
-  margin-top: 32px;
+  margin-top: 30px;
 }
 .detail_page_info .p1 {
   font-size: 26px;
@@ -199,14 +197,12 @@ import MyTitle from "@/components/MyTitle.vue";
 }
 .footer_img {
   position: absolute;
+  width: 100%;
   bottom: 0;
   left: 0;
-  background-image: url("../../../assets/imgs/_4_productEngineeringImgs/bg-footimg.png");
-  background-size: cover;
-  width: 100%;
-  height: 70vh;
 }
 .footer_img img {
-  width: 1916px;
+  width: 100%;
+  margin-bottom: -8px;
 }
 </style>

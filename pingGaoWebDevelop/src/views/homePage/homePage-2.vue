@@ -11,9 +11,6 @@ import img2 from "@/assets/imgs/_10_homePageImgs/carousel.png";
 import img3 from "@/assets/imgs/_10_homePageImgs/carousel.png";
 import img4 from "@/assets/imgs/_10_homePageImgs/carousel.png";
 import img5 from "@/assets/imgs/_10_homePageImgs/carousel.png";
-import pro1 from "@/assets/imgs/_10_homePageImgs/product1.png";
-import pro2 from "@/assets/imgs/_10_homePageImgs/product2.png";
-import pro3 from "@/assets/imgs/_10_homePageImgs/product3.png";
 
 const images = ref([img1, img2, img3, img4, img5]);
 // 轮播图切换逻辑
@@ -65,7 +62,7 @@ onUnmounted(() => {
 <template>
   <div class="home_page">
     <div class="header">
-      <ComHeader :onlyHeaderFlag="true"></ComHeader>
+      <div style="padding-top: 20px;"><ComHeader :onlyHeaderFlag="false"></ComHeader></div>
     </div>
 
     <div class="my_carousel">
@@ -128,10 +125,10 @@ onUnmounted(() => {
     </div>
     <hr style="border: 1px solid #80b7e0" />
     <div class="product_content">
-      <div class="left_icon"><span class="icon iconfont">&#xe607;</span></div>
-      <div class="product_detail">
+      <div class="product_content_box">
+        <div class="product_detail">
         <div class="product_topImg">
-          <img :src="pro1" alt="" />
+          <img src="@/assets/imgs/_10_homePageImgs/product1.png" alt="" />
         </div>
         <div class="product_h">高压电器产业</div>
         <div class="product_hr"></div>
@@ -140,7 +137,7 @@ onUnmounted(() => {
       </div>
       <div class="product_detail">
         <div class="product_topImg">
-          <img :src="pro2" alt="" />
+          <img src="@/assets/imgs/_10_homePageImgs/product2.png" alt="" />
         </div>
         <div class="product_h">系统集成业务</div>
         <div class="product_hr"></div>
@@ -149,14 +146,16 @@ onUnmounted(() => {
       </div>
       <div class="product_detail">
         <div class="product_topImg">
-          <img :src="pro3" alt="" />
+          <img src="@/assets/imgs/_10_homePageImgs/product3.png" alt="" />
         </div>
         <div class="product_h">零部件制造产业</div>
         <div class="product_hr"></div>
         <div class="product_p">气体回收净化业务、集中供气站、混气比检测仪、密度继电器校验仪…</div>
         <div class="product_button"><span>查看详情</span></div>
       </div>
+      <div class="left_icon"><span class="icon iconfont">&#xe607;</span></div>
       <div class="right_icon"><span class="icon iconfont">&#xe606;</span></div>
+      </div>
     </div>
     <div class="company_introduction">
       <div class="introduction_title">赋能智慧电气 创引绿色能源</div>
@@ -263,14 +262,11 @@ onUnmounted(() => {
       </div>
       <div class="great_flag_button">
         <div class="button_left">了解更多</div>
-        <div class="button_right">
-          <span class="icon iconfont">&#xe6a3;</span>
-        </div>
+        <div class="button_right"><span class="icon iconfont">&#xe6a3;</span></div>
       </div>
-      <div class="great_flag_footer"></div>
-    </div>
-    <div class="right_button">
-      <rightButton></rightButton>
+      <div class="great_flag_footer">
+        <img src="@/assets/imgs/_10_homePageImgs/footer.png" alt="" />
+      </div>
     </div>
   </div>
   <div>
@@ -281,17 +277,12 @@ onUnmounted(() => {
 <style scoped lang="less">
 .home_page {
   width: 100%;
-  height: 4700px;
   z-index: 10;
   position: relative;
 }
-.right_button {
-  position: absolute;
-  top: 3560px;
-  right: 0;
-}
 .header {
   height: 68vh;
+  // min-width: 1920px; 
   width: 100%;
   position: absolute;
   top: 0;
@@ -351,17 +342,20 @@ onUnmounted(() => {
   border-right: 1px solid #fff;
   display: flex;
   justify-content: space-between;
+  margin: auto;
 }
 .nav_introduction {
-  width: 322px;
+  width: 100%;
   height: 40px;
   border-left: 1px solid #fff;
   text-align: center;
+  margin: auto;
 }
 .nav_introduction .p {
   font-size: 24px;
   font-family: "AlibabaPuHuiTi_2_55_Regular";
   color: rgb(255, 255, 255);
+  // text-align: center;
 }
 .announcement {
   display: flex;
@@ -390,18 +384,21 @@ onUnmounted(() => {
 }
 .product_content {
   width: 100%;
-  position: relative;
   height: 922px;
-  // background-color: #fff2f2;
-  margin: auto;
   display: flex;
   justify-content: space-between;
-  align-items: center;
   padding-top: 120px;
+  position: relative;
+}
+.product_content_box{
+  display: flex;
+  width: 80%;
+  justify-content: space-between;
+  margin: auto;
 }
 .product_detail {
   height: 100%;
-  width: 30%;
+  width: 33%;
 }
 .product_topImg {
   width: 420px;
@@ -438,8 +435,7 @@ onUnmounted(() => {
   height: 32px;
   margin: auto;
   text-align: center;
-  background-image: url("../../assets/imgs/_10_homePageImgs/button.png");
-  background-size: cover;
+  background-image: url("src\\assets\\imgs\\_10_homePageImg\\button.png");
   margin-top: 30px;
 }
 .product_button span {
@@ -450,51 +446,64 @@ onUnmounted(() => {
 }
 .left_icon .icon {
   top: 320px;
-  left: -60px;
-  // position: absolute;
+  left: 60px;
+  position: absolute;
   font-size: 70px;
   color: #006fc1;
 }
 .right_icon .icon {
-  // position: absolute;
+  position: absolute;
   font-size: 70px;
   top: 320px;
-  left: 1640px;
+  right: 60px;
   color: #006fc1;
 }
 .company_introduction {
-  height: 1130px;
+  height: 1140px;
   width: 100%;
   padding: 100px 160px;
-  background-image: url("../../assets/imgs/_10_homePageImgs/company-introduction.png");
-  background-size: cover;
+  background-image: url("src\\assets\\imgs\\_10_homePageImgs\\company-introduction.png");
+  background-size: cover; /* 实现图片等比例缩放 */
+  background-repeat: no-repeat;
 }
 .introduction_title {
   font-size: 44px;
   font-family: "AlibabaPuHuiTi_2_65_Medium";
   color: rgb(0, 0, 0);
   margin-bottom: 65px;
+  width: 100%;
 }
 .introduction_small_title {
   font-size: 36px;
+  margin-bottom: 10px;
   font-family: "AlibabaPuHuiTi_2_65_Medium";
   color: rgb(0, 0, 0);
+  width: 100%;
 }
 .introduction_content {
   width: 100%;
   height: 510px;
   display: flex;
   margin-bottom: 140px;
+  object-fit: cover;
 }
 .introduction_content .text_left {
-  width: 702px;
+  width: 45%;
   height: 510px;
   margin-right: 100px;
   border-top: 1px solid #313a3d;
+  padding-top: 13px;
 }
 .introduction_content .img_right {
-  width: 800px;
-  height: 510px;
+  width: 55%;
+  height: 100%;
+  min-width: 400px;
+}
+.introduction_content .img_right img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* 实现图片等比例缩放 */
+  min-width: 400px;
 }
 .introduction_content .p {
   font-size: 20px;
@@ -507,15 +516,17 @@ onUnmounted(() => {
 }
 
 .introduction_honor {
+  margin-bottom: 118px;
   display: flex;
   width: 100%;
   height: 57px;
   border-right: 1px solid #fff;
 }
 .introduction_honor .honor_info {
-  width: 274px;
+  width: 100%;
   border-left: 1px solid #fff;
   text-align: center;
+  margin: auto;
 }
 .introduction_honor .honor_info .p {
   font-size: 26px;
@@ -528,6 +539,7 @@ onUnmounted(() => {
   padding: 152px 156px;
   background-color: #def1fb;
   height: 1474px;
+  width: 100%;
 }
 .great_flag_title {
   display: flex;
@@ -561,7 +573,7 @@ onUnmounted(() => {
   margin-bottom: 73px;
 }
 .great_flag_content .content_detail {
-  width: 521px;
+  width: 33%;
   height: 575px;
   background-color: #fff;
 }
@@ -617,17 +629,18 @@ onUnmounted(() => {
   position: absolute;
   bottom: -5px;
   left: 0;
-  width: 100%;
-  height: 50vh;
-  background-image: url("../../assets/imgs/_10_homePageImgs/footer.png");
-  background-size: cover;
 }
 .great_flag_content .content_detail_text {
-  width: 521px;
+  width: 33%;
   height: 575px;
   background-color: #fff;
   padding-top: 48px;
   padding-left: 40px;
+}
+.great_flag .top_img img{
+  width: 100%;
+  height: 372px;
+  background-size: cover;
 }
 .great_flag_content .content_detail_text .text .title {
   font-size: 22px;
