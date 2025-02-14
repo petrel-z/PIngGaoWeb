@@ -10,23 +10,24 @@ const props = defineProps({
   },
   titleColor: {
     type: String,
-    default: "#000000",
+    default: "#000"
   },
   lineColor: {
     type: String,
-    default: "#70aedc",
+    default: "#70aedc"
   },
   engColor: {
     type: String,
-    default: "rgb(159, 160, 160)",
-  },
+    default: "#9fa0a0"
+  }
 });
 </script>
 <template>
   <div>
-    <span class="h" :style="{ color: props.titleColor }">{{ props.title }}</span>
-    <div class="line" :style="{ 'background-color': props.lineColor }"></div>
-    <span class="English" :style="{ color: props.engColor }">{{ props.English }}</span>
+    <span class="h" :style="{ color: props.titleColor } ">{{ props.title }}</span>
+    <div class="line" :style="{ backgroundColor: props.lineColor } "></div>
+    <span class="English"  :style="{ color: props.engColor } ">{{ props.English }}</span>
+
   </div>
 </template>
 <style scoped>

@@ -26,16 +26,64 @@ const props = defineProps({
   bgColor: {
     type: String,
   },
+  // css
+  titleFont: {
+    type: String,
+    default: 'AlibabaPuHuiTi_2_65_Medium',
+  },
+  textFont: {
+    type: String,
+    default: 'AlibabaPuHuiTi_2_45_Light'
+  },
+  titleFontColor: {
+    type: String,
+    default: '#231815'
+  },
+  textFontColor: {
+    type: String,
+    default: '#595757'
+  },
+  bgColor1: {
+    type: String,
+    default: '#def1fb',// 默认背景为淡蓝色
+  },
+  bgColor2: {
+    type: String,
+    default: '#003792', // 默认悬停背景为蓝色
+  },
+  leftFontColor: {
+    type: String,
+    default: '#003792', // 默认 左侧字体为蓝色
+  },
+  leftFontColorHover: {
+    type: String,
+    default: '#fff',  // 默认 左侧字体悬停颜色为白色
+  },
+  rightFontColor: {
+    type: String,
+    default: '#fff', 
+  },
+  rightFontColorHover: {
+    type: String,
+    default: '#fff',   // 默认 右侧字体悬停颜色为白色
+  },
 });
 </script>
 
 <template>
-  <div class="item">
+  <div class="item"
+  :style="{'--bgColor1': props.bgColor1,'--bgColor2': props.bgColor2,
+   '--leftFontColor': props.leftFontColor, '--leftFontColorHover': props.leftFontColorHover,
+    '--rightFontColorHover': props.rightFontColorHover,
+    '--titleFont': props.titleFont, '--textFont': props.textFont,
+    '--titleFontColor': props.titleFontColor, '--textFontColor': props.textFontColor
+    }"
+  >
     <div
       class="left"
       @mouseenter="hover = true"
       @mouseleave="hover = false"
-      :style="{ backgroundColor: hover ? hoverColor : '#def1fb' }"
+      :style="{ backgroundColor: hover ? 'var(--bgColor2)' : 'var(--bgColor1)' }"
     >
       <span class="month">{{ props.month }}</span>
       <span class="year">{{ props.year }}</span>
@@ -44,7 +92,7 @@ const props = defineProps({
       class="right"
       @mouseenter="hover = true"
       @mouseleave="hover = false"
-      :style="{ backgroundColor: hover ? hoverColor : '#def1fb' }"
+      :style="{ backgroundColor: hover ? 'var(--bgColor2)' : 'var(--bgColor1)' }"
     >
       <div class="title">
         {{ props.title }}
@@ -65,34 +113,48 @@ const props = defineProps({
 }
 
 .item:hover .month {
-  border-bottom: 2px solid #ffffff;
+  border-bottom: 2px solid var(--leftFontColorHover);
+}
+
+.item:hover .month,
+.item:hover .year{
+  color: var(--leftFontColorHover);
 }
 .item:hover .month,
 .item:hover .year,
 .item:hover .right .title,
 .item:hover .right .text {
-  color: #ffffff;
+  color: var(--leftFontColorHover);
 }
-
+/* .item:hover .right .title,
+.item:hover .right .text {
+  color: var(--rightFontColorHover);
+} */
+.item:hover .right,
+.item:hover .left {
+  background-color: var(--bgColor2);
+}
 .month {
+
+  font-family: 'Avenir Black';
+  color: var(--leftFontColor);
   font-size: 3rem;
-  font-family: "Avenir";
-  color: rgb(0, 55, 146);
   line-height: 1.85;
   text-align: right;
-  border-bottom: 2px solid #1c4e9f; /* 底部蓝色线条 */
+  border-bottom: 2px solid var(--leftFontColor); /*底部蓝色线条*/
   display: block;
 }
 
 .year {
+  font-family: 'Avenir Black';
+  color: var(--leftFontColor);
   font-size: 1.59rem;
-  font-family: "Avenir";
-  color: rgb(0, 55, 146);
   line-height: 1.85;
   text-align: right;
 }
 
 .left {
+
   width: 18%;
   height: auto;
   margin-right: 2%;
@@ -103,6 +165,7 @@ const props = defineProps({
 }
 
 .right {
+
   width: 80%;
   height: auto;
   background-color: #def1fb;
@@ -110,16 +173,19 @@ const props = defineProps({
   padding: 2em 3em;
 }
 .title {
+  /* font-size: 28px; */
+  font-family: var(--titleFont);
+  color: var(--titleFontColor);
   font-size: 1.75rem;
-  font-family: "AlibabaPuHuiTi_2_65_Medium";
-  color: rgb(35, 24, 21);
   line-height: 1.75;
   text-align: left;
 }
+
 .text {
+  /* font-size: 20px; */
+  font-family: var(--textFont);
+  color: var(--textFontColor);
   font-size: 1.25rem;
-  font-family: "AlibabaPuHuiTi_2_65_Medium";
-  color: rgb(89, 87, 87);
   line-height: 1.498;
   text-align: left;
   width: 100%;
@@ -137,4 +203,6 @@ const props = defineProps({
     text-align: center;
   }
 }
+
+
 </style>
