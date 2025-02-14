@@ -29,11 +29,13 @@ const props = defineProps({
     </div>
     <div class="bar-right" :style="{ color: props.color }">
       <span>分享:</span>
-      <span class="icon iconfont" :style="{ color: props.color }">&#xe62e;</span>
-      <span class="icon iconfont" :style="{ color: props.color }">&#xe61a;</span>
-      <span class="icon iconfont" :style="{ color: props.color }">&#xe674;</span>
-      <span class="icon iconfont" :style="{ color: props.color }">&#xe654;</span>
-      <span class="icon iconfont" :style="{ color: props.color }">&#xe655;</span>
+      <div class="icon-box">
+        <span class="icon iconfont" :style="{ color: props.color }">&#xe62e;</span>
+        <span class="icon iconfont" :style="{ color: props.color }">&#xe61a;</span>
+        <span class="icon iconfont" :style="{ color: props.color }">&#xe674;</span>
+        <span class="icon iconfont" :style="{ color: props.color }">&#xe654;</span>
+        <span class="icon iconfont" :style="{ color: props.color }">&#xe655;</span>
+      </div>
     </div>
   </div>
 </template>
@@ -68,15 +70,43 @@ const props = defineProps({
   .bar-left {
     display: flex;
     justify-content: start;
+    align-items: center;
+    white-space: nowrap;
+
+    width: 50%;
+    .left-time {
+      width: 50%;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
     .left-browse {
-      margin-left: 88px;
+      width: 40%;
+      margin-left: 10%;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
   }
+
   .bar-right {
     display: flex;
     align-items: center;
+    justify-content: end;
+    white-space: nowrap;
+    width: 50%;
+    overflow: hidden;
+    text-overflow: ellipsis;
     .icon {
       margin-left: 19px;
+    }
+    .icon-box {
+      width: 60%;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    span:nth-of-type(1) {
+      width: 20%;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
   }
 }

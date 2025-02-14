@@ -96,7 +96,7 @@ const orderList = [
               :text="item.text"
             />
           </div>
-          <div style="">
+          <div class="order-container">
             <OrderList :orderList="orderList" bgColor="#006fc1" />
           </div>
         </div>
@@ -120,18 +120,21 @@ const orderList = [
 }
 
 .item-container {
-  width: 100%;
+  width: 64%;
   height: auto;
   display: flex;
-  justify-content: space-between;
   align-items: center;
   flex-direction: column;
-  margin-right: 1em;
+  margin-right: 1%;
+}
+
+.order-container {
+  width: 35%;
+  height: auto;
 }
 
 .pagination-container {
   width: 100%;
-  height: auto;
   padding: 3em 0;
   display: flex;
   justify-content: center;

@@ -74,7 +74,7 @@ const items = [
               :text="item.text"
             />
           </div>
-          <div style="">
+          <div class="order-container">
             <OrderList />
           </div>
         </div>
@@ -88,25 +88,28 @@ const items = [
 
 <style scoped>
 .body {
-  padding: 0 10em;
+  padding: 0 11%;
   background-color: #def1fb;
   height: auto;
 }
 
 .item-container {
-  width: 100%;
+  width: 64%;
   height: auto;
   display: flex;
-  justify-content: space-between;
   align-items: center;
   flex-direction: column;
-  margin-right: 1em;
+  margin-right: 1%;
+}
+
+.order-container {
+  width: 35%;
+  height: auto;
 }
 
 .pagination-container {
   width: 100%;
-  height: auto;
-  padding: 2em 0;
+  padding: 3em 0;
   display: flex;
   justify-content: center;
   align-items: center;

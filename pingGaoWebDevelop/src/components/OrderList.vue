@@ -42,7 +42,7 @@ const props = defineProps({
       <li class="list-item" style="height: 105px">
         <span>{{ props.title }}</span>
         <i
-          class="iconfont icon-paixu"
+          class="iconfont icon-a-MenuBar-show"
           style="font-size: 24px; color: #fff; transform: rotate(180deg)"
         ></i>
       </li>
@@ -74,7 +74,8 @@ const props = defineProps({
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
-  width: 310px;
+  width: 70%;
+  margin-right: 1%;
 }
 
 .list-item span:nth-child(2) {
@@ -84,7 +85,10 @@ const props = defineProps({
   text-align: justifyLeft;
   position: relative;
   z-index: 238;
-  width: 6em;
+  width: 29%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .order {

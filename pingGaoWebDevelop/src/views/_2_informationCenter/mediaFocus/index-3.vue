@@ -82,8 +82,16 @@ import imgPath from "@/assets/imgs/_2_informationCenterImgs/MZFUZt.png";
 .footer {
   display: flex;
   justify-content: space-between;
-  padding: 2em 0;
+  padding: 10vh 0;
   width: 100%;
-  height: 20vh;
+}
+
+.footer-left {
+  width: 49%;
+  margin-right: 2%;
+}
+
+.footer-right {
+  width: 49%;
 }
 </style>

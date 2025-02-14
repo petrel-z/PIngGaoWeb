@@ -96,15 +96,16 @@ const orderList = [
               :key="index"
               :time="item.time"
               :text="item.text"
+              class="item"
             />
           </div>
-          <div style="">
+          <div class="order-container">
             <OrderList :orderList="orderList" bgColor="#006fc1" />
           </div>
         </div>
       </div>
       <div class="pagination-container">
-        <MyPagination />
+        <MyPagination class="pagination" />
       </div>
     </div>
   </div>
@@ -112,22 +113,27 @@ const orderList = [
 
 <style scoped>
 .body {
-  padding: 0 2em;
+  padding: 0 11%;
   background-color: #def1fb;
 }
 
 .item-container {
-  width: 100%;
+  width: 64%;
   height: auto;
   display: flex;
-  justify-content: space-between;
   align-items: center;
   flex-direction: column;
+  margin-right: 1%;
+}
+
+.order-container {
+  width: 35%;
+  height: auto;
 }
 
 .pagination-container {
   width: 100%;
-  margin: 3em 0;
+  padding: 3em 0;
   display: flex;
   justify-content: center;
   align-items: center;

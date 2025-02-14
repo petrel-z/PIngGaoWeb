@@ -29,54 +29,60 @@ const props = defineProps({
   // css
   titleFont: {
     type: String,
-    default: 'AlibabaPuHuiTi_2_65_Medium',
+    default: "AlibabaPuHuiTi_2_65_Medium",
   },
   textFont: {
     type: String,
-    default: 'AlibabaPuHuiTi_2_45_Light'
+    default: "AlibabaPuHuiTi_2_45_Light",
   },
   titleFontColor: {
     type: String,
-    default: '#231815'
+    default: "#231815",
   },
   textFontColor: {
     type: String,
-    default: '#595757'
+    default: "#595757",
   },
   bgColor1: {
     type: String,
-    default: '#def1fb',// 默认背景为淡蓝色
+    default: "#def1fb", // 默认背景为淡蓝色
   },
   bgColor2: {
     type: String,
-    default: '#003792', // 默认悬停背景为蓝色
+    default: "#003792", // 默认悬停背景为蓝色
   },
   leftFontColor: {
     type: String,
-    default: '#003792', // 默认 左侧字体为蓝色
+    default: "#003792", // 默认 左侧字体为蓝色
   },
   leftFontColorHover: {
     type: String,
-    default: '#fff',  // 默认 左侧字体悬停颜色为白色
+    default: "#fff", // 默认 左侧字体悬停颜色为白色
   },
   rightFontColor: {
     type: String,
-    default: '#fff', 
+    default: "#fff",
   },
   rightFontColorHover: {
     type: String,
-    default: '#fff',   // 默认 右侧字体悬停颜色为白色
+    default: "#fff", // 默认 右侧字体悬停颜色为白色
   },
 });
 </script>
 
 <template>
-  <div class="item"
-  :style="{'--bgColor1': props.bgColor1,'--bgColor2': props.bgColor2,
-   '--leftFontColor': props.leftFontColor, '--leftFontColorHover': props.leftFontColorHover,
-    '--rightFontColorHover': props.rightFontColorHover,
-    '--titleFont': props.titleFont, '--textFont': props.textFont,
-    '--titleFontColor': props.titleFontColor, '--textFontColor': props.textFontColor
+  <div
+    class="item"
+    :style="{
+      '--bgColor1': props.bgColor1,
+      '--bgColor2': props.bgColor2,
+      '--leftFontColor': props.leftFontColor,
+      '--leftFontColorHover': props.leftFontColorHover,
+      '--rightFontColorHover': props.rightFontColorHover,
+      '--titleFont': props.titleFont,
+      '--textFont': props.textFont,
+      '--titleFontColor': props.titleFontColor,
+      '--textFontColor': props.textFontColor,
     }"
   >
     <div
@@ -108,8 +114,9 @@ const props = defineProps({
 .item {
   display: flex;
   cursor: pointer;
-  margin-bottom: 1em;
+  margin-bottom: 1%;
   width: 100%;
+  height: 100%;
 }
 
 .item:hover .month {
@@ -117,7 +124,7 @@ const props = defineProps({
 }
 
 .item:hover .month,
-.item:hover .year{
+.item:hover .year {
   color: var(--leftFontColorHover);
 }
 .item:hover .month,
@@ -135,26 +142,30 @@ const props = defineProps({
   background-color: var(--bgColor2);
 }
 .month {
-
-  font-family: 'Avenir Black';
+  font-family: "Avenir Black";
   color: var(--leftFontColor);
   font-size: 3rem;
   line-height: 1.85;
   text-align: right;
   border-bottom: 2px solid var(--leftFontColor); /*底部蓝色线条*/
   display: block;
+  width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .year {
-  font-family: 'Avenir Black';
+  font-family: "Avenir Black";
   color: var(--leftFontColor);
   font-size: 1.59rem;
   line-height: 1.85;
   text-align: right;
+  width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .left {
-
   width: 18%;
   height: auto;
   margin-right: 2%;
@@ -162,15 +173,20 @@ const props = defineProps({
   border-radius: 10px;
   text-align: right;
   padding: 0 2em;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .right {
-
   width: 80%;
   height: auto;
   background-color: #def1fb;
   border-radius: 10px;
   padding: 2em 3em;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 .title {
   /* font-size: 28px; */
@@ -203,6 +219,4 @@ const props = defineProps({
     text-align: center;
   }
 }
-
-
 </style>

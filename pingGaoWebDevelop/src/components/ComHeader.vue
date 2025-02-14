@@ -676,7 +676,7 @@ const props = defineProps({
   background-image: url("../assets/imgs/_6_qualityAssuranceImgs/t6_topBar.png");
   background-size: cover;
   padding: 0.5em 0;
-  padding-left: 1.5em;
+  padding-left: 4%;
   white-space: nowrap;
 }
 
