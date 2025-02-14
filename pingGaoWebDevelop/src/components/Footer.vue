@@ -207,7 +207,6 @@ a {
   .f9 {
     padding: 0 25px;
     text-align: center;
-
     h3 {
       // height: 30px;
       font-size: 18px;

@@ -1,7 +1,7 @@
 <script setup>
 import MyTitle from "@/components/MyTitle.vue";
 import ContenPage from "@/components/ContenPage.vue";
-import Item1 from "@/components/Item-1.vue";
+import Item1 from "@/components/F3_Item-1.vue";
 import MyButton from "@/components/MyButton.vue";
 import img1 from "@/assets/imgs/_3_partyBuildingImgs/t3_p2_person.png";
 
@@ -68,6 +68,8 @@ const props = defineProps({
       textFont: "SourceHanSerifCN_Regular",
       bgColor1: "#f8f1e5",
       bgColor2: "#a51617",
+      titleFontColor: "#7b6a5d",
+      textFontColor: "#7b6a5d",
       leftFontColor: "#a51617",
       leftFontColorHover: "#fce3cc",
       rightFontColorHover: "#fce3cc",
@@ -115,6 +117,8 @@ const props = defineProps({
           :left-font-color="props.itemCss.leftFontColor"
           :left-font-color-hover="props.itemCss.leftFontColorHover"
           :right-font-color-hover="props.itemCss.rightFontColorHover"
+          :title-font-color="props.itemCss.titleFontColor"
+          :text-font-color="props.itemCss.textFontColor"
         ></Item1>
       </div>
     </div>

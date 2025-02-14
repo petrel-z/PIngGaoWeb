@@ -5,7 +5,7 @@ import RightButton from "@/components/RightButton.vue";
 </script>
 <template>
   <div class="scientificResearchAchievement">
-    <MyTitle h="科研成果" English="SCIENTIFIC RESEARCH ACHIEVEMENTS"></MyTitle>
+    <MyTitle title="科研成果" English="SCIENTIFIC RESEARCH ACHIEVEMENTS"></MyTitle>
     <div class="achievement">
       <div class="achievement_top">
         <div class="achievement_detail">
@@ -81,7 +81,7 @@ import RightButton from "@/components/RightButton.vue";
 .scientificResearchAchievement {
   position: relative;
   margin: auto;
-  width: 1920px;
+  width: 100%;
   height: 2040px;
   /* border: 1px solid rgb(206, 206, 206); */
   background-color: #fff;
@@ -107,7 +107,7 @@ import RightButton from "@/components/RightButton.vue";
 }
 .achievement {
   position: absolute;
-  width: 1914px;
+  width: 100%;
   height: 400px;
   background-color: #f4f4f4;
   padding: 78px 210px;
@@ -116,13 +116,13 @@ import RightButton from "@/components/RightButton.vue";
 }
 .achievement_top {
   display: flex;
-  width: 1500px;
+  width: 100%;
   margin-bottom: 64px;
   border-right: 2px solid #6ba9d7;
 }
 .achievement_bottom {
   display: flex;
-  width: 1500px;
+  width: 100%;
   text-align: center;
   padding: 0px 250px;
 }
@@ -188,13 +188,13 @@ import RightButton from "@/components/RightButton.vue";
 }
 .footer_img {
   position: absolute;
-  width: 1920px;
+  width: 100%;
   height: 1064px;
   bottom: 0;
   left: 0;
   z-index: -1;
 }
 .footer_img img {
-  width: 1916px;
+  width: 100%;
 }
 </style>

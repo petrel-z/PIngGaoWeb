@@ -23,13 +23,14 @@ const props = defineProps({
   display: flex;
   justify-content: start;
   align-items: center;
-  height: auto;
+  /* height: auto; */
   width: 100%;
-  height: 100%;
+  height: 6em;
 }
 .left {
   height: 100%;
   font-size: 20px;
+  width: auto;
   white-space: nowrap;
   font-family: "AlibabaPuHuiTi_2_75_SemiBold";
   color: rgb(0, 111, 193);
@@ -45,11 +46,11 @@ const props = defineProps({
   display: flex;
   justify-content: center;
   align-items: center;
-
   padding: 1.5em;
 }
 .right {
   height: 100%;
+  width: 100%;
   background-color: #def1fb;
   font-size: 20px;
   font-family: "AlibabaPuHuiTi_2_55_Regular";

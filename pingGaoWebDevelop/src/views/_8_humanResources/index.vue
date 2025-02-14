@@ -7,12 +7,14 @@ import { ref } from "vue";
 import ComHeader from "@/components/ComHeader.vue";
 import Footer from "@/components/Footer.vue";
 import imgPath from "@/assets/imgs/_8_humanResourcesImgs/头部轮播-08.png";
+import footerBg from "@/assets/imgs/_6_qualityAssuranceImgs/t6_topBar.png";
 
 const content = ref({
   title: "人力资源",
   content: "人才强企战略是集团发展战略之一",
   footer: "PG GROUP",
   imgPath: imgPath,
+  footerBg: footerBg,
 });
 const footer = ref([
   {
@@ -52,7 +54,7 @@ const footer = ref([
 .header {
   height: 68vh;
   min-width: 100%;
-  background-image: url("@/assets//imgs/_8_humanResourcesImgs/headerBg.png");
+  background-image: url("@/assets//imgs/_8_humanResourcesImgs/头部轮播-08.png");
   background-size: cover;
 }
 </style>
