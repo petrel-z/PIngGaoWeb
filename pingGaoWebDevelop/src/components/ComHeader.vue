@@ -11,7 +11,6 @@ import imgPath2 from "@/assets/imgs/_2_informationCenterImgs/头部轮播-02.png
 // import imgPath7 from '@/assets/imgs/头部轮播-07.png';
 // import imgPath8 from '@/assets/imgs/头部轮播-08.png';
 // import imgPath9 from '@/assets/imgs/头部轮播-09.png';
-import T3_topBar from "@/assets/imgs/_3_partyBuildingImgs/t3_topBar.png"
 
 let hidden = ref(true);
 let hoverFlag = ref(false);

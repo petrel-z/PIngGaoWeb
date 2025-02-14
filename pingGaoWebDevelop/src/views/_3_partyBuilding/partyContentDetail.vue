@@ -64,8 +64,10 @@ const props = defineProps({
   itemCss: {
     type: Object,
     default: () => ({
-      titleFont: "SourceHanSerifCN_Regular",
+      titleFont: "SourceHanSerifCN_Bold",
       textFont: "SourceHanSerifCN_Regular",
+      titleFontColor: "#7b6a5d",
+      textFontColor: "#7b6a5d",
       bgColor1: "#f8f1e5",
       bgColor2: "#a51617",
       leftFontColor: "#a51617",
@@ -110,6 +112,8 @@ const props = defineProps({
           :text="item.text"
           :title-font="props.itemCss.titleFont"
           :text-font="props.itemCss.textFont"
+          :title-font-color="props.itemCss.titleFontColor"
+          :text-font-color="props.itemCss.textFontColor"
           :bg-color1="props.itemCss.bgColor1"
           :bg-color2="props.itemCss.bgColor2"
           :left-font-color="props.itemCss.leftFontColor"

@@ -3,7 +3,7 @@ import { ref } from "vue";
 import ComHeader from "@/components/ComHeader.vue";
 import Footer from "@/components/Footer.vue";
 import imgPath from "@/assets/imgs/_6_qualityAssuranceImgs/头部轮播-06.png";
-
+import footerImg from '@/assets/imgs/_6_qualityAssuranceImgs/t6_topBar.png'
 defineOptions({
   name: "PartyBuilding",
 });
@@ -33,7 +33,7 @@ const footer = ref([
   <div style="width: auto">
     <div class="header">
       <div style="padding-top: 32px; height: 100%; width: auto">
-        <ComHeader :content="content" :footer="footer" />
+        <ComHeader :content="content" :footer="footer" :footerImg="footerImg" />
       </div>
     </div>
 

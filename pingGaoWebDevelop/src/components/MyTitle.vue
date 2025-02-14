@@ -8,13 +8,25 @@ const props = defineProps({
     type: String,
     default: "organization structure",
   },
+  titleColor: {
+    type: String,
+    default: "#000"
+  },
+  lineColor: {
+    type: String,
+    default: "#70aedc"
+  },
+  engColor: {
+    type: String,
+    default: "#9fa0a0"
+  }
 });
 </script>
 <template>
   <div>
-    <span class="h">{{ props.title }}</span>
-    <div class="line"></div>
-    <span class="English">{{ props.English }}</span>
+    <span class="h" :style="{ color: props.titleColor } ">{{ props.title }}</span>
+    <div class="line" :style="{ backgroundColor: props.lineColor } "></div>
+    <span class="English"  :style="{ color: props.engColor } ">{{ props.English }}</span>
   </div>
 </template>
 <style scoped>

@@ -7,6 +7,7 @@ import { ref } from "vue";
 import ComHeader from "@/components/ComHeader.vue";
 import Footer from "@/components/Footer.vue";
 import imgPath from "@/assets/imgs/_8_humanResourcesImgs/头部轮播-08.png";
+import footerImg from '@/assets/imgs/_6_qualityAssuranceImgs/t6_topBar.png'
 
 const content = ref({
   title: "联系我们",
@@ -38,7 +39,7 @@ const footer = ref([
   <div>
     <div class="header">
       <div style="padding-top: 32px; height: 100%">
-        <ComHeader :content="content" :footer="footer" />
+        <ComHeader :content="content" :footer="footer" :footerImg="footerImg" />
       </div>
     </div>
     <router-view />
