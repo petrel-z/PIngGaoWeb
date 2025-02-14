@@ -136,41 +136,70 @@ html {
 }
 
 /* 媒体查询 */
-/* 小型设备（手机，小于 600px） */
-@media (max-width: 600px) {
-  body {
-    font-size: 14px;
+@media (max-width: 9000px) {
+  html {
+    font-size: 50px;
   }
-  h1 {
+}
+
+@media (max-width: 7000px) {
+  html {
+    font-size: 40px;
+  }
+}
+@media (max-width: 4800px) {
+  html {
+    font-size: 30px;
+  }
+}
+@media (max-width: 3600px) {
+  html {
     font-size: 24px;
   }
-  p {
-    font-size: 14px;
+}
+@media (max-width: 2800px) {
+  html {
+    font-size: 20px;
+  }
+}
+
+@media (max-width: 2100px) {
+  html {
+    font-size: 13px;
+  }
+}
+@media (max-width: 1400px) {
+  html {
+    font-size: 12px;
+  }
+}
+@media (max-width: 1200px) {
+  html {
+    font-size: 9px;
+  }
+}
+/* 大型设备（桌面，大于 900px） */
+@media (max-width: 900px) {
+  html {
+    font-size: 8px;
+  }
+}
+
+@media (max-width: 800px) {
+  html {
+    font-size: 7px;
   }
 }
 
 /* 中型设备（平板，600px 到 900px） */
-@media (min-width: 600px) and (max-width: 900px) {
-  body {
-    font-size: 16px;
+@media (max-width: 700px) {
+  html {
+    font-size: 6px;
   }
-  h1 {
-    font-size: 32px;
-  }
-  p {
-    font-size: 16px;
-  }
-}
+} /* 小型设备（手机，小于 600px） */
 
-/* 大型设备（桌面，大于 900px） */
-@media (min-width: 900px) {
-  body {
-    font-size: 18px;
-  }
-  h1 {
-    font-size: 48px;
-  }
-  p {
-    font-size: 18px;
+@media (max-width: 600px) {
+  html {
+    font-size: 3px;
   }
 }

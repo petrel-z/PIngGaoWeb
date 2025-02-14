@@ -113,9 +113,9 @@ function handleClick(e) {
   justify-content: center;
   align-items: center;
 }
-@media screen and (max-width: 1500px) {
+@media screen and (max-width: 1000px) {
   .body {
-    margin: 0 2em;
+    margin: 0 11%;
   }
 }
 </style>
