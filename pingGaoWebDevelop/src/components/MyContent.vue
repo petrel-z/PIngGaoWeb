@@ -65,7 +65,7 @@ console.log(props.bottomItems);
 
 <style lang="less" scoped>
 .commitment-span {
-  width: 1501px;
+  width: 100%;
   min-height: 401px;
   text-align: center;
   background-color: #006fc1;
@@ -77,9 +77,8 @@ console.log(props.bottomItems);
     justify-content: start;
     align-items: center;
     position: relative;
-    padding-top: 108px;
-    margin-left: 119px;
-    width: 1265px;
+    padding: 108px 4em;
+    width: 100%;
 
     h1,
     p,
@@ -147,13 +146,13 @@ console.log(props.bottomItems);
       color: rgb(255, 255, 255);
       line-height: 1.85;
       text-align: left;
-      width: 1264px;
+      width: 100%;
       height: 94px;
     }
     .my-content-bottom {
       display: flex;
       align-items: center;
-      width: 752px;
+      width: 100%;
       height: 76px;
       border-left: 1px solid #1a88cd;
       border-right: 1px solid #1a88cd;
@@ -189,7 +188,7 @@ console.log(props.bottomItems);
   .button-div {
     width: 201px;
     min-height: 51px;
-    margin-left: 1180px;
+    padding-left: 80%;
     padding-top: 36px;
     padding-bottom: 46px;
   }

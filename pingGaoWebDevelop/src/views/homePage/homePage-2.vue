@@ -1,6 +1,5 @@
 <script setup>
 import { ref, onMounted, onUnmounted } from "vue";
-import rightButton from "@/components/rightButton.vue";
 import ComHeader from "@/components/ComHeader.vue";
 import Footer from "@/components/Footer.vue";
 const items = ref([]);
@@ -12,6 +11,9 @@ import img2 from "@/assets/imgs/_10_homePageImgs/carousel.png";
 import img3 from "@/assets/imgs/_10_homePageImgs/carousel.png";
 import img4 from "@/assets/imgs/_10_homePageImgs/carousel.png";
 import img5 from "@/assets/imgs/_10_homePageImgs/carousel.png";
+import pro1 from "@/assets/imgs/_10_homePageImgs/product1.png";
+import pro2 from "@/assets/imgs/_10_homePageImgs/product2.png";
+import pro3 from "@/assets/imgs/_10_homePageImgs/product3.png";
 
 const images = ref([img1, img2, img3, img4, img5]);
 // 轮播图切换逻辑
@@ -63,7 +65,7 @@ onUnmounted(() => {
 <template>
   <div class="home_page">
     <div class="header">
-      <ComHeader :onlyHeaderFlag="false"></ComHeader>
+      <ComHeader :onlyHeaderFlag="true"></ComHeader>
     </div>
 
     <div class="my_carousel">
@@ -126,9 +128,10 @@ onUnmounted(() => {
     </div>
     <hr style="border: 1px solid #80b7e0" />
     <div class="product_content">
+      <div class="left_icon"><span class="icon iconfont">&#xe607;</span></div>
       <div class="product_detail">
         <div class="product_topImg">
-          <img src="@/assets/imgs/_10_homePageImgs/product1.png" alt="" />
+          <img :src="pro1" alt="" />
         </div>
         <div class="product_h">高压电器产业</div>
         <div class="product_hr"></div>
@@ -137,7 +140,7 @@ onUnmounted(() => {
       </div>
       <div class="product_detail">
         <div class="product_topImg">
-          <img src="@/assets/imgs/_10_homePageImgs/product2.png" alt="" />
+          <img :src="pro2" alt="" />
         </div>
         <div class="product_h">系统集成业务</div>
         <div class="product_hr"></div>
@@ -146,14 +149,13 @@ onUnmounted(() => {
       </div>
       <div class="product_detail">
         <div class="product_topImg">
-          <img src="@/assets/imgs/_10_homePageImgs/product3.png" alt="" />
+          <img :src="pro3" alt="" />
         </div>
         <div class="product_h">零部件制造产业</div>
         <div class="product_hr"></div>
         <div class="product_p">气体回收净化业务、集中供气站、混气比检测仪、密度继电器校验仪…</div>
         <div class="product_button"><span>查看详情</span></div>
       </div>
-      <div class="left_icon"><span class="icon iconfont">&#xe607;</span></div>
       <div class="right_icon"><span class="icon iconfont">&#xe606;</span></div>
     </div>
     <div class="company_introduction">
@@ -261,11 +263,11 @@ onUnmounted(() => {
       </div>
       <div class="great_flag_button">
         <div class="button_left">了解更多</div>
-        <div class="button_right"><span class="icon iconfont">&#xe6a3;</span></div>
+        <div class="button_right">
+          <span class="icon iconfont">&#xe6a3;</span>
+        </div>
       </div>
-      <div class="great_flag_footer">
-        <img src="@/assets/imgs/_10_homePageImgs/footer.png" alt="" />
-      </div>
+      <div class="great_flag_footer"></div>
     </div>
     <div class="right_button">
       <rightButton></rightButton>
@@ -278,7 +280,7 @@ onUnmounted(() => {
 
 <style scoped lang="less">
 .home_page {
-  width: 1920px;
+  width: 100%;
   height: 4700px;
   z-index: 10;
   position: relative;
@@ -290,24 +292,24 @@ onUnmounted(() => {
 }
 .header {
   height: 68vh;
-  min-width: 1920px;
+  width: 100%;
   position: absolute;
   top: 0;
   left: 0;
   z-index: 100;
 }
 .my_carousel {
-  width: 1920px;
+  width: 100%;
   height: 990px;
   position: relative;
 }
 .my_carousel .carousel {
-  width: 1920px;
+  width: 100%;
   height: 990px;
   overflow: hidden;
 }
 .my_carousel .carousel img {
-  width: 1920px;
+  width: 100%;
   height: 990px;
 }
 .carousel-inner {
@@ -323,7 +325,7 @@ onUnmounted(() => {
   justify-content: center;
   z-index: 100;
   bottom: 30px;
-  width: 1920px;
+  width: 100%;
   align-items: center;
 }
 .dots li {
@@ -338,13 +340,13 @@ onUnmounted(() => {
   background-color: rgb(189, 206, 255);
 }
 .nav {
-  width: 1920px;
+  width: 100%;
   height: 103px;
   background-color: #45b3e0;
   padding: 30px 164px;
 }
 .nav_content {
-  width: 1600px;
+  width: 100%;
   height: 40px;
   border-right: 1px solid #fff;
   display: flex;
@@ -387,18 +389,19 @@ onUnmounted(() => {
   color: rgb(89, 87, 87);
 }
 .product_content {
-  width: 1600px;
+  width: 100%;
   position: relative;
   height: 922px;
   // background-color: #fff2f2;
   margin: auto;
   display: flex;
   justify-content: space-between;
+  align-items: center;
   padding-top: 120px;
 }
 .product_detail {
   height: 100%;
-  width: 533px;
+  width: 30%;
 }
 .product_topImg {
   width: 420px;
@@ -435,7 +438,8 @@ onUnmounted(() => {
   height: 32px;
   margin: auto;
   text-align: center;
-  background-image: url("src\\assets\\imgs\\_10_homePageImg\\button.png");
+  background-image: url("../../assets/imgs/_10_homePageImgs/button.png");
+  background-size: cover;
   margin-top: 30px;
 }
 .product_button span {
@@ -447,12 +451,12 @@ onUnmounted(() => {
 .left_icon .icon {
   top: 320px;
   left: -60px;
-  position: absolute;
+  // position: absolute;
   font-size: 70px;
   color: #006fc1;
 }
 .right_icon .icon {
-  position: absolute;
+  // position: absolute;
   font-size: 70px;
   top: 320px;
   left: 1640px;
@@ -460,9 +464,10 @@ onUnmounted(() => {
 }
 .company_introduction {
   height: 1130px;
-  width: 1920px;
+  width: 100%;
   padding: 100px 160px;
-  background-image: url("src\\assets\\imgs\\_10_homePageImg\\company-introduction.png");
+  background-image: url("../../assets/imgs/_10_homePageImgs/company-introduction.png");
+  background-size: cover;
 }
 .introduction_title {
   font-size: 44px;
@@ -476,7 +481,7 @@ onUnmounted(() => {
   color: rgb(0, 0, 0);
 }
 .introduction_content {
-  width: 1600px;
+  width: 100%;
   height: 510px;
   display: flex;
   margin-bottom: 140px;
@@ -503,7 +508,7 @@ onUnmounted(() => {
 
 .introduction_honor {
   display: flex;
-  width: 1600px;
+  width: 100%;
   height: 57px;
   border-right: 1px solid #fff;
 }
@@ -549,7 +554,7 @@ onUnmounted(() => {
   cursor: pointer;
 }
 .great_flag_content {
-  width: 1600px;
+  width: 100%;
   height: 579px;
   display: flex;
   justify-content: space-between;
@@ -612,6 +617,10 @@ onUnmounted(() => {
   position: absolute;
   bottom: -5px;
   left: 0;
+  width: 100%;
+  height: 50vh;
+  background-image: url("../../assets/imgs/_10_homePageImgs/footer.png");
+  background-size: cover;
 }
 .great_flag_content .content_detail_text {
   width: 521px;

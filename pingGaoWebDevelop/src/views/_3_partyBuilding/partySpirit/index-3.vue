@@ -2,7 +2,7 @@
 defineOptions({
   name: "PartySpiritMore",
 });
-import myTitle from "@/components/myTitle.vue";
+import myTitle from "@/components/MyTitle.vue";
 import ComDoubleDiv from "@/components/ComDoubleDiv.vue";
 import OrderList from "@/components/OrderList.vue";
 const leftList = [
@@ -68,7 +68,6 @@ const rightList = [
         </OrderList>
       </div>
     </div>
-
     <div class="footer-button"></div>
   </div>
 </template>
@@ -79,34 +78,37 @@ const rightList = [
   display: flex;
   flex-direction: column;
   justify-content: start;
-  align-items: center;
-
-  background-image: url("@/assets/image/t3_p1_moreBg.png");
-
+  // align-items: center;
+  width: 100%;
+  background-image: url("../../../assets/imgs/_3_partyBuildingImgs/t3_p1_moreBg.png");
+  background-size: cover;
+  height: auto;
   .title {
     margin-top: 22px;
     margin-bottom: 22px;
+    margin-left: 7em;
   }
 
   .list {
     width: 100%;
     display: flex;
     justify-content: space-between;
-
     .left {
       margin-left: 200px;
-
+      width: 60%;
       div:nth-child(1) {
         margin-top: 0;
       }
 
       .listItem {
-        // width: 945px;
+        width: 100%;
+        height: auto;
         margin: 10px 0;
       }
     }
 
     .right {
+      width: 40%;
       margin-right: 215px;
     }
   }
@@ -114,7 +116,7 @@ const rightList = [
   .footer-line {
     width: 100%;
     height: 10px;
-    background-image: url(@/assets/image/t3_p1_line.png);
+    background-image: url("../../../assets/imgs/_3_partyBuildingImgs/t3_p1_line.png");
     background-size: cover;
     background-repeat: repeat;
     // transform: translateY(-3px);

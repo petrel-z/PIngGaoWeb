@@ -2,7 +2,7 @@
 const props = defineProps({
   time: {
     type: String,
-    default: '2025.01.14',
+    default: "2025.01.14",
   },
   text: {
     type: String,
@@ -10,11 +10,7 @@ const props = defineProps({
   },
   bgColor: {
     type: String,
-    default: '#fff',
-  },
-  size: {
-    type: String,
-    default: 'small',
+    default: "#fff",
   },
 });
 </script>
@@ -23,7 +19,6 @@ const props = defineProps({
   <div class="item">
     <div
       class="left"
-      :class="[`${props.size}-left`]"
       :style="{
         'background-color': props.bgColor,
       }"
@@ -32,7 +27,6 @@ const props = defineProps({
     </div>
     <div
       class="right"
-      :class="[`${props.size}-right`]"
       :style="{
         'background-color': props.bgColor,
       }"
@@ -49,40 +43,24 @@ const props = defineProps({
   width: 100%;
   display: flex;
   cursor: pointer;
+  margin-bottom: 1em;
 }
 .time {
   font-size: 28px;
-  font-family: 'Avenir';
+  font-family: "Avenir";
   color: rgb(0, 55, 146);
   line-height: 1.68;
   text-align: right;
 }
-.small-left {
-  width: 190px;
-  height: 121px;
-}
 
-.small-right {
-  width: 751px;
-  height: 121px;
-}
-
-.big-left {
-  width: 190px;
-  height: 121px;
-}
-
-.big-right {
-  width: 1300px;
-  height: 121px;
-}
 .left {
   margin-right: 15px;
   background-color: #fff;
   border-bottom-left-radius: 10px;
   border-top-left-radius: 10px;
   text-align: right;
-  padding: 35px 21px;
+  padding: 35px 1em;
+  width: auto;
 }
 
 .right {
@@ -90,13 +68,14 @@ const props = defineProps({
   border-bottom-right-radius: 10px;
   border-top-right-radius: 10px;
   padding: 45px 36px;
+  width: 100%;
 }
 
 .text {
   font-size: 24px;
-  font-family: 'AlibabaPuHuiTi_2_55_Regular';
+  font-family: "AlibabaPuHuiTi_2_55_Regular";
   color: rgb(35, 24, 21);
   line-height: 1.25;
-  text-align: justifyLeft;
+  text-align: left;
 }
 </style>

@@ -64,9 +64,7 @@ import RightButton from "@/components/RightButton.vue";
     <div class="rightButton">
       <RightButton></RightButton>
     </div>
-    <div class="footer_img">
-      <img src="@/assets/imgs/_4_productEngineeringImgs/product-footer.png" alt="" />
-    </div>
+    <div class="footer_img"></div>
   </div>
 </template>
 <style scoped>
@@ -125,6 +123,9 @@ import RightButton from "@/components/RightButton.vue";
   border-radius: 27px;
   z-index: 10;
   cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .detail_text .button .p {
   font-size: 21.219px;
@@ -188,11 +189,12 @@ import RightButton from "@/components/RightButton.vue";
 }
 .footer_img {
   position: absolute;
-  left: 0;
   bottom: 0;
-  width: 1920px;
-  height: 2500px;
-  z-index: -10;
+  left: 0;
+  background-image: url("../../../assets/imgs/_4_productEngineeringImgs/bg-footimg.png");
+  background-size: cover;
+  width: 100%;
+  height: 70vh;
 }
 .footer_img img {
   width: 1916px;

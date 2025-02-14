@@ -27,6 +27,7 @@ const props = defineProps({
     <span class="h" :style="{ color: props.titleColor } ">{{ props.title }}</span>
     <div class="line" :style="{ backgroundColor: props.lineColor } "></div>
     <span class="English"  :style="{ color: props.engColor } ">{{ props.English }}</span>
+
   </div>
 </template>
 <style scoped>
@@ -46,7 +47,7 @@ const props = defineProps({
   /* width: 1500px; */
   width: auto;
   font-family: "AlibabaPuHuiTi_2_75_SemiBold";
-  color: rgb(0, 0, 0);
+  color: #000000;
   z-index: 4;
   margin-top: 4px;
 }

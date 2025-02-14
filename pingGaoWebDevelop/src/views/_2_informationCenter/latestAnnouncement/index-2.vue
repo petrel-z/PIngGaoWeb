@@ -1,17 +1,15 @@
 <script setup>
 defineOptions({
-  name: 'NewsCenterIndex5-2',
+  name: "NewsCenterIndex5-2",
 });
-import TextTitle from '@/components/TextTitle.vue';
-import ComDoubleDiv from '@/components/ComDoubleDiv.vue';
+import TextTitle from "@/components/TextTitle.vue";
+import ComDoubleDiv from "@/components/ComDoubleDiv.vue";
 </script>
 
 <template>
   <div class="body-bg">
     <div class="body">
-      <div class="title">
-        平高集团亮相CIGRE 2024 绿色智能产品吸引全球电力行业目光
-      </div>
+      <div class="title">平高集团亮相CIGRE 2024 绿色智能产品吸引全球电力行业目光</div>
       <TextTitle :color="'#1c4e9f'" :time="'2025-01-14'" :browse="488" />
       <div class="content">
         <p>
@@ -33,13 +31,11 @@ import ComDoubleDiv from '@/components/ComDoubleDiv.vue';
       </div>
       <div class="footer">
         <ComDoubleDiv
+          style="margin-right: 1em"
           title="上一篇"
           content="平高集团1家企业荣获2024年全国质量标杆奖"
         />
-        <ComDoubleDiv
-          title="下一篇"
-          content="平高集团1家企业荣获2024年全国质量标杆奖"
-        />
+        <ComDoubleDiv title="下一篇" content="平高集团1家企业荣获2024年全国质量标杆奖" />
       </div>
     </div>
   </div>
@@ -47,19 +43,20 @@ import ComDoubleDiv from '@/components/ComDoubleDiv.vue';
 
 <style scoped>
 .body-bg {
-  background-image: url('@/assets//imgs//资讯中心/newsBg-1.png');
+  background-image: url("../../../assets/imgs/_2_informationCenterImgs/newsBg-1.png");
   padding: 0 210px;
   background-size: cover;
+  height: auto;
 }
 .body {
   position: relative;
   background-color: #fff;
   padding: 0 100px;
-  min-height: 1500px;
+  height: auto;
 }
 .title {
   font-size: 35px;
-  font-family: 'AlibabaPuHuiTi_2_65_Medium';
+  font-family: "AlibabaPuHuiTi_2_65_Medium";
   color: rgb(0, 55, 146);
   line-height: 1.4;
   text-align: center;
@@ -71,26 +68,28 @@ import ComDoubleDiv from '@/components/ComDoubleDiv.vue';
   margin-top: 56px;
   text-align: center;
   font-size: 20px;
-  font-family: 'AlibabaPuHuiTi_2_45_Light';
+  font-family: "AlibabaPuHuiTi_2_45_Light";
   color: rgb(89, 87, 87);
   line-height: 1.498;
-  width: 1300px;
+  width: 100%;
+  height: auto;
 }
 
 .content p:first-child {
-  height: 80px;
+  height: auto;
   text-align: left;
 }
 
 .content p:nth-of-type(2) {
-  height: 230px;
+  height: auto;
   text-align: left;
 }
 
 .footer {
   display: flex;
   justify-content: space-between;
-  position: absolute;
-  bottom: 67px;
+  width: 100%;
+  height: 20vh;
+  padding: 2em 0;
 }
 </style>

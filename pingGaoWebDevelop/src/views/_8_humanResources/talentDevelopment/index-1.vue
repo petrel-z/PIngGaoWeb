@@ -1,16 +1,9 @@
 <script setup>
-import MyTitle from '@/components/MyTitle.vue';
+import MyTitle from "@/components/MyTitle.vue";
 </script>
 
 <template>
-  <div
-    style="
-      position: relative;
-      min-height: 1780px;
-      background-color: #def1fb;
-      z-index: -2;
-    "
-  >
+  <div style="position: relative; min-height: 1780px; background-color: #def1fb; z-index: -2">
     <div class="bodyBg"></div>
     <div class="body-content">
       <div>
@@ -65,21 +58,22 @@ import MyTitle from '@/components/MyTitle.vue';
 
 <style scoped>
 .bodyBg {
-  background-image: url('@/assets//imgs/人才资源/bg-1.png');
+  background-image: url("../../../assets/imgs/_8_humanResourcesImgs/bg-1.png");
   background-size: cover;
-  width: 1920px;
+  width: 100%;
   min-height: 884px;
   position: absolute;
   top: 940px;
   z-index: -1;
 }
 .body-content {
-  margin: 0 210px;
+  margin: 0 10em;
   padding-top: 66px;
 }
 
 .body-content-left {
-  width: 351px;
+  width: 30%;
+  white-space: nowrap;
 }
 
 .body-content-left > div {
@@ -91,7 +85,7 @@ import MyTitle from '@/components/MyTitle.vue';
 }
 
 .body-content-right {
-  width: 1131px;
+  width: 100%;
   height: 1288px;
   padding: 0 89px;
   margin-left: 19px;
@@ -100,7 +94,7 @@ import MyTitle from '@/components/MyTitle.vue';
 
 .title {
   font-size: 32px;
-  font-family: 'AlibabaPuHuiTi_2_65_Medium';
+  font-family: "AlibabaPuHuiTi_2_65_Medium";
   color: rgb(0, 111, 193);
   line-height: 1.156;
   text-align: center;
@@ -116,7 +110,7 @@ import MyTitle from '@/components/MyTitle.vue';
 
 .text > p {
   font-size: 20px;
-  font-family: 'AlibabaPuHuiTi_2_45_Light';
+  font-family: "AlibabaPuHuiTi_2_45_Light";
   color: rgb(89, 87, 87);
   line-height: 1.85;
   text-align: left;
@@ -124,7 +118,7 @@ import MyTitle from '@/components/MyTitle.vue';
 }
 .font-white {
   font-size: 32px;
-  font-family: 'AlibabaPuHuiTi_2_65_Medium';
+  font-family: "AlibabaPuHuiTi_2_65_Medium";
   color: rgb(255, 255, 255);
   line-height: 1.156;
   text-align: center;
@@ -132,7 +126,7 @@ import MyTitle from '@/components/MyTitle.vue';
 
 .font-blue {
   font-size: 32px;
-  font-family: 'AlibabaPuHuiTi_2_65_Medium';
+  font-family: "AlibabaPuHuiTi_2_65_Medium";
   color: rgb(0, 111, 193);
   line-height: 1.156;
   text-align: center;

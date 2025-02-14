@@ -88,7 +88,7 @@ import MyContent from "@/components/F6_MyContent.vue";
     bottom: 0;
     width: 100%;
     height: 1013px;
-    background-image: url(@/assets/image/t6_p1_contentBg.png);
+    background-image: url("../../../assets/imgs/_6_qualityAssuranceImgs/t6_p1_contentBg.png");
     background-size: cover;
   }
 }

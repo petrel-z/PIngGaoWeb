@@ -5,7 +5,7 @@ import RightButton from "@/components/RightButton.vue";
 </script>
 <template>
   <div class="scientificResearchSystem">
-    <MyTitle h="科研体系" English="SCIENTIFIC RESEARCH SYSTEM"></MyTitle>
+    <MyTitle title="科研体系" English="SCIENTIFIC RESEARCH SYSTEM"></MyTitle>
     <div class="content">
       <MyContent title="三院两所两中心一基地">
         <div class="text">
@@ -46,7 +46,7 @@ import RightButton from "@/components/RightButton.vue";
 .scientificResearchSystem {
   position: relative;
   margin: auto;
-  width: 1920px;
+  width: 100%;
   height: 1960px;
   /* border: 1px solid rgb(206, 206, 206); */
   padding: 64px 210px;
@@ -72,13 +72,13 @@ import RightButton from "@/components/RightButton.vue";
 }
 .footer_img {
   position: absolute;
-  width: 1910px;
+  width: 100%;
   height: 1064px;
   bottom: 0;
   left: 0;
   z-index: -20;
 }
 .footer_img img {
-  width: 1910px;
+  width: 100%;
 }
 </style>

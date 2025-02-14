@@ -1,6 +1,5 @@
 <script setup>
 import MyTitle from "@/components/MyTitle.vue";
-import rightButton from "@/components/rightButton.vue";
 </script>
 <template>
   <div class="productSeries">
@@ -101,16 +100,14 @@ import rightButton from "@/components/rightButton.vue";
     <div class="rightButton">
       <rightButton></rightButton>
     </div>
-    <div class="footer_img">
-      <img src="@/assets/imgs/_4_productEngineeringImgs/bg-footimg.png" alt="" />
-    </div>
+    <div class="footer_img"></div>
   </div>
 </template>
 <style scoped>
 .productSeries {
   position: relative;
   margin: auto;
-  width: 1920px;
+  width: 100%;
   height: 2400px;
   border: 1px solid rgb(177, 177, 177);
   padding: 64px 210px;
@@ -126,11 +123,12 @@ import rightButton from "@/components/rightButton.vue";
 }
 .top_img {
   position: absolute;
-  width: 1920px;
+  width: 100%;
   height: 610px;
   top: 0;
   left: 0;
-  background-image: url(src\\assets\\img1-1\\bg-protect.png);
+  background-image: url("../../../assets/imgs/_4_productEngineeringImgs/bg-protect.png");
+  background-size: cover;
   z-index: -2;
 }
 .detail_content {
@@ -174,11 +172,13 @@ import rightButton from "@/components/rightButton.vue";
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
+  height: auto;
 }
 .detail_page_info {
   width: 469px;
-  height: 225px;
+  height: auto;
   border-bottom: 1px #1078c5 solid;
+  padding-bottom: 2em;
 }
 
 .detail_page_info .h {
@@ -201,6 +201,10 @@ import rightButton from "@/components/rightButton.vue";
   position: absolute;
   bottom: 0;
   left: 0;
+  background-image: url("../../../assets/imgs/_4_productEngineeringImgs/bg-footimg.png");
+  background-size: cover;
+  width: 100%;
+  height: 70vh;
 }
 .footer_img img {
   width: 1916px;

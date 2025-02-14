@@ -118,7 +118,7 @@ import MyTitle from "@/components/MyTitle.vue";
     bottom: 0;
     width: 100%;
     height: 707px;
-    background-image: url(@/assets/image/t9_p1_contentBg.png);
+    background-image: url("../../../assets/imgs/_9_contactUsImgs/t9_p1_contentBg.png");
     background-size: auto;
   }
 }

@@ -1,9 +1,9 @@
 <script setup>
 defineOptions({
-  name: 'marketing-serviceIndex1-1',
+  name: "marketing-serviceIndex1-1",
 });
-import MyTitle from '@/components/MyTitle.vue';
-import MyContent from '@/components/MyContent.vue';
+import MyTitle from "@/components/MyTitle.vue";
+import MyContent from "@/components/MyContent.vue";
 </script>
 
 <template>
@@ -22,9 +22,9 @@ import MyContent from '@/components/MyContent.vue';
 
 <style scoped>
 .bodyBg {
-  background-image: url('@/assets//imgs/营销服务/serviceBg1.png');
+  background-image: url("../../../assets/imgs/_5_marketingServiceImgs/serviceBg1.png");
   background-size: cover;
-  width: 1920px;
+  width: 100%;
   min-height: 811px;
   position: absolute;
   top: 310px;

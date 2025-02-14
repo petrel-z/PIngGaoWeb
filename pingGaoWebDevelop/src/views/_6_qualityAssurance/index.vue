@@ -3,7 +3,11 @@ import { ref } from "vue";
 import ComHeader from "@/components/ComHeader.vue";
 import Footer from "@/components/Footer.vue";
 import imgPath from "@/assets/imgs/_6_qualityAssuranceImgs/头部轮播-06.png";
-import footerImg from '@/assets/imgs/_6_qualityAssuranceImgs/t6_topBar.png'
+
+// import footerImg from '@/assets/imgs/_6_qualityAssuranceImgs/t6_topBar.png'
+
+import footerBg from "@/assets/imgs/_6_qualityAssuranceImgs/t6_topBar.png";
+
 defineOptions({
   name: "PartyBuilding",
 });
@@ -12,6 +16,7 @@ const content = ref({
   content: "追求卓越·争创一流",
   footer: "PG GROUP",
   imgPath: imgPath,
+  footerBg: footerBg,
 });
 const footer = ref([
   {
@@ -32,8 +37,9 @@ const footer = ref([
 <template>
   <div style="width: auto">
     <div class="header">
-      <div style="padding-top: 32px; height: 100%; width: auto">
-        <ComHeader :content="content" :footer="footer" :footerImg="footerImg" />
+
+      <div style="height: 100%; width: auto">
+        <ComHeader :content="content" :footer="footer" />
       </div>
     </div>
 
@@ -51,7 +57,7 @@ const footer = ref([
   height: 68.3vh;
   /* min-width: 1920px; */
   width: auto;
-  background-image: url("@/assets/imgs/_6_qualityAssuranceImgs/t6_p1_titleBg.png");
+  background-image: url("@/assets/imgs/_6_qualityAssuranceImgs/头部轮播-06.png");
   background-size: cover;
 }
 </style>

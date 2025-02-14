@@ -71,6 +71,7 @@ const itemContent = [
     </div>
     <div class="footer-line" :style="{ backgroundImage: `url(${line})` }"></div>
     <div class="building-content">
+      <div class="bg-color"></div>
       <partyContentDetail
         :content-top="contentTop"
         :content-page="contentPage"
@@ -88,7 +89,7 @@ const itemContent = [
   .footer-line {
     width: 100%;
     height: 10px;
-    // background-image: url(@/assets/image/t3_p1_line.png);
+    background-image: url("../../../assets/imgs/_3_partyBuildingImgs/t3_p1_line.png");
     background-size: cover;
     background-repeat: repeat;
     transform: translateY(-3px);
@@ -97,10 +98,17 @@ const itemContent = [
   }
 
   .building-content {
+    position: relative;
     .white-div {
       width: 100%;
-      height: 1420px;
+      height: auto;
       background-color: #fff; // 白色背景 #fff
+    }
+    .bg-color {
+      width: 100%;
+      position: absolute;
+      height: 70vh;
+      background-color: #f8f1e5;
     }
   }
 }

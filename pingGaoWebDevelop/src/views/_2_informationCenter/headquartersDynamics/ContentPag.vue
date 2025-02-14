@@ -37,25 +37,28 @@ const props = defineProps({
 
 <template>
   <div class="content" :style="{ 'background-color': props.bgColor }">
-    <div>
+    <div class="content-left">
       <div class="title">
         {{ props.title1 }}
         <br />
         {{ props.title2 }}
       </div>
       <div class="hr">
-        <div style="width: 135px; height: 3px; background-color: #389cd1"></div>
-        <div style="width: 380px; height: 1px; background-color: #389cd1"></div>
+        <div style="width: 30%; height: 3px; background-color: #389cd1"></div>
+        <div style="width: 100%; height: 1px; background-color: #389cd1"></div>
       </div>
       <div class="content-text">
         {{ props.text }}
       </div>
       <div class="content-btn" :style="{ 'background-color': props.btnColor }">
-        {{ props.btnText }}
-        <i class="iconfont icon-chazhao" style="font-size: 24px; margin-left: 2em"></i>
+        <span>{{ props.btnText }}</span>
+        <i
+          class="iconfont icon-chakanxiangqing-copy"
+          style="font-size: 1.5rem; margin-left: 2em"
+        ></i>
       </div>
     </div>
-    <div style="width: 760px; height: 475px">
+    <div class="content-right">
       <img
         style="width: 100%; height: 100%; object-fit: cover"
         :src="props.img"
@@ -75,9 +78,20 @@ const props = defineProps({
   align-items: center;
   background-color: #003792;
   border-radius: 10px;
+  overflow: hidden;
 }
+
+.content-left {
+  width: 35%;
+  height: auto;
+}
+
+.content-right {
+  width: 35%;
+}
+
 .title {
-  font-size: 35px;
+  font-size: 2.18rem;
   font-family: "AlibabaPuHuiTi_2_65_Medium";
   color: rgb(255, 255, 255);
   line-height: 1.4;
@@ -91,14 +105,14 @@ const props = defineProps({
 }
 
 .content-text {
-  font-size: 20px;
+  font-size: 1.5rem;
   font-family: "AlibabaPuHuiTi_2_45_Light";
   color: rgb(255, 255, 255);
   line-height: 1.85;
   text-align: justifyLeft;
   position: relative;
-  width: 525px;
-  height: 140px;
+  width: 100%;
+  height: 40%;
   z-index: 17;
   display: -webkit-box;
   overflow: hidden;
@@ -106,18 +120,40 @@ const props = defineProps({
 }
 
 .content-btn {
-  font-size: 20px;
+  font-size: 1.25rem;
   font-family: "AlibabaPuHuiTi_2_45_Light";
   color: rgb(255, 255, 255);
-  line-height: 51px;
+  /* line-height: 51px; */
   text-align: center;
   position: relative;
   z-index: 143;
   background-color: #45b3e0;
-  width: 201px;
-  min-height: 51px;
-  margin-top: 80px;
+  width: 10em;
+  height: auto;
+  margin-top: 3em;
   border-radius: 5px;
   cursor: pointer;
+}
+
+@media screen and (max-width: 1500px) {
+  .content {
+    flex-wrap: wrap-reverse;
+    width: 100%;
+  }
+  .content-btn {
+    margin: 0 auto;
+    margin-bottom: 2em;
+  }
+  .content-left {
+    margin-top: 2em;
+    width: 80%;
+  }
+  .content-right {
+    width: 100%;
+    height: 50%;
+  }
+  .hr div {
+    width: 100%;
+  }
 }
 </style>
