@@ -37,6 +37,5 @@ import Footer from "@/components/Footer.vue";
   width: auto;
   height: 68.3vh;
   background-size: cover;
-  padding-top: 32px;
 }
 </style>
