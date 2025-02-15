@@ -82,7 +82,7 @@ import MyTitle from "@/components/MyTitle.vue";
           padding-bottom: 35px;
 
           textarea {
-            width: 1040px;
+            // width: 1040px;
             height: 155px;
             font-size: 20px;
             font-family: "AlibabaPuHuiTi_2_45_Light";

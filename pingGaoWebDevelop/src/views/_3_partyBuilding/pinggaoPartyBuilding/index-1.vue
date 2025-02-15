@@ -92,7 +92,6 @@ const itemContent = [
     background-image: url("../../../assets/imgs/_3_partyBuildingImgs/t3_p1_line.png");
     background-size: cover;
     background-repeat: repeat;
-    transform: translateY(-3px);
     position: absolute;
     top: -3px;
   }

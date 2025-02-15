@@ -8,11 +8,24 @@ const props = defineProps({
     type: String,
     default: "内容",
   },
+  bgColor: {
+    type: String,
+    default: "#def1fb",
+  },
+  leftFontColor: {
+    type: String,
+    default: "#006fc1",
+  
+  },
+  rightFontColor: {
+    type: String,
+    default: "#595757",
+  }
 });
 </script>
 
 <template>
-  <div class="com-double-div">
+  <div class="com-double-div" :style="{ '--bgColor': props.bgColor, '--leftFontColor': props.leftFontColor, '--rightFontColor': props.rightFontColor}">
     <div class="left">{{ props.title }}</div>
     <div class="right">{{ props.content }}</div>
   </div>
@@ -32,13 +45,13 @@ const props = defineProps({
   width: 20%;
   font-size: 20px;
   font-family: "AlibabaPuHuiTi_2_75_SemiBold";
-  color: rgb(0, 111, 193);
+  color: var(--leftFontColor);
   font-weight: bold;
   line-height: 1.5;
   text-align: center;
   position: relative;
   z-index: 146;
-  background-color: #def1fb;
+  background-color: var(--bgColor);
   border-top-left-radius: 15px;
   border-bottom-left-radius: 15px;
   margin-right: 2%;
@@ -50,10 +63,10 @@ const props = defineProps({
   padding: 7% 3%;
   height: 100%;
   width: 78%;
-  background-color: #def1fb;
+  background-color: var(--bgColor);
   font-size: 20px;
   font-family: "AlibabaPuHuiTi_2_55_Regular";
-  color: rgb(89, 87, 87);
+  color: var(--rightFontColor);
   line-height: 1.5;
   text-align: center;
   border-top-right-radius: 15px;

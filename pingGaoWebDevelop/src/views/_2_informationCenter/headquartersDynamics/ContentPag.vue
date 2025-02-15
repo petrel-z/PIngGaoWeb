@@ -59,11 +59,7 @@ const props = defineProps({
       </div>
     </div>
     <div class="content-right">
-      <img
-        style="width: 100%; height: 100%; object-fit: cover"
-        :src="props.img"
-        alt="图片加载失败"
-      />
+      <img style="width: 100%; height: auto" :src="props.img" alt="图片加载失败" />
     </div>
   </div>
 </template>
@@ -135,7 +131,7 @@ const props = defineProps({
   cursor: pointer;
 }
 
-@media screen and (max-width: 1500px) {
+@media screen and (max-width: 1000px) {
   .content {
     flex-wrap: wrap-reverse;
     width: 100%;

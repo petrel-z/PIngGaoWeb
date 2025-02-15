@@ -74,6 +74,7 @@ const rightList = [
 
 <style lang="less" scoped>
 .spirit-more {
+  // padding: 0 11%;
   position: relative;
   display: flex;
   flex-direction: column;
@@ -86,7 +87,7 @@ const rightList = [
   .title {
     margin-top: 22px;
     margin-bottom: 22px;
-    margin-left: 7em;
+    margin-left: 11%;
   }
 
   .list {
@@ -94,12 +95,11 @@ const rightList = [
     display: flex;
     justify-content: space-between;
     .left {
-      margin-left: 200px;
+      margin-left: 11%;
       width: 60%;
       div:nth-child(1) {
         margin-top: 0;
       }
-
       .listItem {
         width: 100%;
         height: auto;
@@ -109,7 +109,9 @@ const rightList = [
 
     .right {
       width: 40%;
-      margin-right: 215px;
+      margin-left: 2%;
+      margin-right: 11%;
+      overflow: hidden;
     }
   }
 

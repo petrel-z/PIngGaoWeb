@@ -81,7 +81,9 @@ const rightList = [
 
   background-image: url("../../../assets/imgs/_3_partyBuildingImgs/t3_p1_moreBg.png");
 
+  padding: 0 11%;
   .title {
+    width: 100%;
     margin-top: 22px;
     margin-bottom: 22px;
   }
@@ -92,8 +94,7 @@ const rightList = [
     justify-content: space-between;
 
     .left {
-      margin-left: 200px;
-
+      width: 60%;
       div:nth-child(1) {
         margin-top: 0;
       }
@@ -105,7 +106,6 @@ const rightList = [
     }
 
     .right {
-      margin-right: 215px;
     }
   }
 
@@ -122,7 +122,7 @@ const rightList = [
 
   .footer-button {
     width: 100%;
-    height: 100px;
+    // height: 100px;
     background-color: #f5f5f5;
   }
 }

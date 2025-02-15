@@ -49,7 +49,7 @@ import MyTitle from "@/components/MyTitle.vue";
         </div>
       </div>
       <div class="img_right">
-        <img src="@/assets/imgs/_10_homePageImgs/shipin.png" alt="">
+        <img src="@/assets/imgs/_10_homePageImgs/shipin.png" alt="" />
       </div>
     </div>
     <div class="key">
@@ -67,6 +67,8 @@ import MyTitle from "@/components/MyTitle.vue";
           <div class="key_content_h">战略目标</div>
           <div class="key_content_text">世界一流智慧电气装备集团</div>
         </div>
+      </div>
+      <div class="key_content">
         <div class="key_content_four">
           <div class="key_content_h">总体布局</div>
           <div class="key_content_text">装备制造·集成增值服务 智慧能源服务</div>
@@ -136,14 +138,17 @@ import MyTitle from "@/components/MyTitle.vue";
         </div>
       </div>
     </div>
-    <div class="mind_map"></div>
+    <div class="mind_map">
+      <img src="@/assets/imgs/_1_aboutPinggaoImgs/bg-footer.png" alt="" />
+    </div>
   </div>
 </template>
 <style scoped>
 .groupProfile {
   position: relative;
   margin: auto;
-  width:100%;
+  width: 100%;
+  height: 3530px;
   /* border: 1px solid rgb(177, 177, 177); */
   padding: 64px 204px;
   border-radius: 20px;
@@ -219,7 +224,7 @@ import MyTitle from "@/components/MyTitle.vue";
   height: 426px;
   background-size: contain;
 }
-.text_word .img_right img{
+.text_word .img_right img {
   margin-left: 44px;
   width: 100%;
   height: 426px;
@@ -346,11 +351,16 @@ import MyTitle from "@/components/MyTitle.vue";
   border-right: 1px solid #c4c4c4;
 }
 .mind_map {
-  position: absolute;
   bottom: 0px;
   left: 0;
-  width: 1920px;
+  width: 100%;
   height: 1028px;
-  background-image: url(src\\assets\\img1-1\\bg-footer.png);
+  position: absolute;
+}
+.mind_map img {
+  width: 100%;
+  left: 0;
+  bottom: 0;
+  height: 1028px;
 }
 </style>
