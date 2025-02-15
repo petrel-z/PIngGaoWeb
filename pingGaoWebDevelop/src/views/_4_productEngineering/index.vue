@@ -1,19 +1,4 @@
 <template>
-  <!-- <div class="productEngineering">
-    <div class="header-body">
-      <div class="header-body-title">{{ info.title }}</div>
-      <hr class="header-body-hr" />
-      <div class="header-body-content">{{ info.content }}</div>
-      <div class="header-body-footer">{{ info.footer }}</div>
-    </div>
-    <div class="header-footer">
-      <ul>
-        <li v-for="item in footer" :key="item.name">
-          <router-link class="footer_text" :to="item.path">{{ item.name }}</router-link>
-        </li>
-      </ul>
-    </div>
-  </div> -->
   <div class="header">
     <ComHeader :content="info" :footer="footer"></ComHeader>
   </div>
@@ -25,6 +10,7 @@
 </template>
 
 <script setup>
+import comHeaderFoot from "@/assets/imgs/_1_aboutPinggaoImgs/t6_topBar.png"
 defineOptions({
   name: "ProductEngineering",
 });
@@ -37,6 +23,7 @@ const info = ref({
   content: "建设世界一流智慧电气装备集团",
   footer: "PG GROUP",
   imgPath: imgPath,
+  footerBg: comHeaderFoot
 });
 
 const footer = ref([
@@ -49,7 +36,7 @@ const footer = ref([
 .header {
   background-image: url("../../assets/imgs/_4_productEngineeringImgs/头部轮播-04.png");
   width: auto;
-  height: 610px;
+  height: 68.3vh;
   background-size: cover;
   padding-top: 32px;
 }
