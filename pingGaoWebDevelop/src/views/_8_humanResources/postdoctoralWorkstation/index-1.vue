@@ -69,11 +69,13 @@ import MyTitle from "@/components/MyTitle.vue";
   align-items: center;
   margin-top: 55px;
   padding: 0 11%;
+  display: flex;
+  justify-content: center;
 }
 
 .center > div {
-  width: 500px;
-  height: 70px;
+  width: 33%;
+  height: auto;
   font-size: 26px;
   font-family: "AlibabaPuHuiTi_2_65_Medium";
   color: rgb(0, 111, 193);
@@ -83,9 +85,10 @@ import MyTitle from "@/components/MyTitle.vue";
 .content {
   width: 100%;
   margin-top: 45px;
-  height: 545px;
+  height: auto;
   display: flex;
   padding: 0 11%;
+  /* justify-content: space-between; */
 }
 
 .text {
@@ -93,16 +96,21 @@ import MyTitle from "@/components/MyTitle.vue";
 }
 
 .text > p {
-  font-size: 20px;
+  font-size: 1.25rem;
   font-family: "AlibabaPuHuiTi_2_45_Light";
   color: rgb(89, 87, 87);
   text-align: left;
-  margin-bottom: 53px;
+  margin-bottom: 2em;
 }
 
 .img {
   width: 48%;
   margin-left: 2%;
+}
+
+.img img {
+  width: 100%;
+  height: auto;
 }
 
 .bottom-bg {

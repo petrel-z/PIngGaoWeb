@@ -286,7 +286,6 @@ const props = defineProps({
         <div @mouseleave="inputFlag = false" v-show="inputFlag" class="header-nav-bottom-item">
           <i class="iconfont icon-sousuo"></i>
           <input
-            @blur="inputFlag = false"
             class="header-nav-bottom-input"
             type="text"
             @keydown.enter="searchFlag = true"
