@@ -164,12 +164,12 @@ import MyTitle from "@/components/MyTitle.vue";
   left: 0;
   background-color: #f4f4f4;
   padding: 85px 210px;
+  border-right: 2px solid #8abade;
 }
 .introduce_content {
   position: relative;
   width: 16.7%;
   border-left: 2px solid #8abade;
-  border-right: 2px solid #8abade;
   text-align: center;
 }
 .introduce_content span {
@@ -191,11 +191,8 @@ import MyTitle from "@/components/MyTitle.vue";
 .introduce_content_bottom {
   bottom: -3px;
 }
-.introduce_content_first {
-  border-left: 3px solid #8abade;
-}
 .introduce_content_last {
-  border-right: 3px solid #8abade;
+  border-right: 2px solid #8abade;
 }
 .text_word {
   display: flex;
