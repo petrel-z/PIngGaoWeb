@@ -160,6 +160,7 @@ onUnmounted(() => {
       </div>
     </div>
     <div class="company_introduction">
+      <div class="bg_img"><img src="@/assets/imgs/_10_homePageImgs/company-introduction.png" alt=""></div>
       <div class="introduction_title">赋能智慧电气 创引绿色能源</div>
       <div class="introduction_small_title">公司介绍</div>
       <div class="introduction_content">
@@ -461,12 +462,24 @@ onUnmounted(() => {
   color: #006fc1;
 }
 .company_introduction {
+  position: relative;
   height: 1140px;
   width: 100%;
   padding: 100px 160px;
-  background-image: url("src\\assets\\imgs\\_10_homePageImgs\\company-introduction.png");
   background-size: cover; /* 实现图片等比例缩放 */
   background-repeat: no-repeat;
+}
+.company_introduction .bg_img{
+  top: 0;
+  left: 0;
+  position: absolute;
+  width: 100%;
+  height: 1140px;
+  z-index: -100;
+}
+.company_introduction .bg_img img{
+  width: 100%;
+  height: 1140px;
 }
 .introduction_title {
   font-size: 44px;
