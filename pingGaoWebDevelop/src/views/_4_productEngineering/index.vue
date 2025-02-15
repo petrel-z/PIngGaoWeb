@@ -51,6 +51,6 @@ const footer = ref([
   width: auto;
   height: 610px;
   background-size: cover;
-  padding-top: 32px;
+  // padding-top: 32px;
 }
 </style>

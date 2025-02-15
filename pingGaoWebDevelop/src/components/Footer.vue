@@ -106,14 +106,12 @@ a {
 }
 
 .footer-item {
-  // width: 1920px;
+  font-size: 0,875rem;
   width: auto;
   height: 426px;
-  background-color: yellow;
 }
 
 .footer-top {
-  // width: 100%;
   width: auto;
   height: 374px;
   position: relative;
@@ -129,14 +127,11 @@ a {
 
 .content {
   display: flex;
-  // width: 1800px;
   width: 100%;
   height: 180px;
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  // left: 50%;
-  // transform: translateX(-50%);
   padding-left: 159px;
   justify-content: start;
   align-items: start;
@@ -163,7 +158,7 @@ a {
 
     .logo-text-bottom {
       .bottom-p1 {
-        font-size: 15px;
+        font-size: 0,937rem;
         font-family: "AlibabaPuHuiTi_2_85_Bold";
         color: rgb(114, 113, 113);
         line-height: 1.296;
@@ -173,7 +168,7 @@ a {
       }
 
       .bottom-p2 {
-        font-size: 10px;
+        font-size: 0.625rem;
         font-family: "Arial";
         color: rgb(114, 113, 113);
         font-weight: bold;
@@ -185,7 +180,8 @@ a {
     }
 
     .text-bottom {
-      font-size: 13px;
+      
+      font-size: 0.8125rem;
       font-family: "AlibabaPuHuiTi_2_55_Regular";
       color: rgb(114, 113, 113);
       line-height: 1.2;
@@ -209,7 +205,7 @@ a {
     text-align: center;
     h3 {
       // height: 30px;
-      font-size: 18px;
+      font-size: 1.125rem;
       font-family: "AlibabaPuHuiTi_2_65_Medium";
       color: rgb(114, 113, 113);
       line-height: 1;
@@ -232,7 +228,7 @@ a {
     margin-left: 48px;
     margin-right: 145px;
     p {
-      font-size: 14px;
+      font-size: 0.875rem;
       font-family: "AlibabaPuHuiTi_2_55_Regular";
       color: rgb(137, 137, 137);
       line-height: 2.5;
@@ -250,8 +246,9 @@ a {
   text-align: center;
   line-height: 52px;
 
-  font-size: 14px;
+  font-size: 0.875rem;
   font-family: "SourceHanSansCN";
   color: rgb(114, 113, 113);
 }
+
 </style>

@@ -50,7 +50,7 @@ const headerCss = {
 <style lang="less" scoped>
 .header {
   width: auto;
-  height: 65vh;
+  height: 66vh;
   background-size: 100%;
   // height: 610px;
   background-repeat: no-repeat;

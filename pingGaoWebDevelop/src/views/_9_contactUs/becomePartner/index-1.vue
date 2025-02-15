@@ -4,7 +4,6 @@ import MyTitle from "@/components/MyTitle.vue";
 
 <template>
   <div class="becomePartner-content">
-    <div class="content-bgimg"></div>
 
     <div class="content-top">
       <div class="top-title">
@@ -104,8 +103,10 @@ import MyTitle from "@/components/MyTitle.vue";
           </div>
         </div>
       </div>
-
-      <div class="top-whiteSpan"></div>
+      
+    </div>
+    <div class="content-bgimg">
+      <img :style="{width: '100%', height: 'auto'}" src="../../../assets/imgs/_9_contactUsImgs/t9_p1_contentBg.png" alt="" />
     </div>
   </div>
 </template>
@@ -114,6 +115,8 @@ import MyTitle from "@/components/MyTitle.vue";
 .becomePartner-content {
   z-index: 999;
   width: 100%;
+  // padding: 0 11%;
+
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
@@ -121,6 +124,9 @@ import MyTitle from "@/components/MyTitle.vue";
   position: relative;
   background-image: url("../../../assets/imgs/_9_contactUsImgs/t9_p2_contentBg.png");
   .content-top {
+    margin: 0 11%;
+    width: 100%;
+    height: 100%;
     z-index: 999;
     .top-title {
       margin-top: 60px;
@@ -149,7 +155,7 @@ import MyTitle from "@/components/MyTitle.vue";
 
         .left,
         .right {
-          width: 610px;
+          width: 42%;
           height: 100%;
           position: relative;
           margin: 0 100px;
@@ -239,18 +245,14 @@ import MyTitle from "@/components/MyTitle.vue";
 
     .top-whiteSpan {
       width: 100%;
-      height: 400px;
+      // height: 700px;
     }
   }
 
   .content-bgimg {
     z-index: 1;
-    position: absolute;
-    bottom: 0;
     width: 100%;
-    height: 707px;
-    background-image: url("../../../assets/imgs/_9_contactUsImgs/t9_p1_contentBg.png");
-    background-size: auto;
+    height: 100%;
   }
 }
 </style>

@@ -48,7 +48,7 @@ const footer = ref([
 <style lang="less" scoped>
 .header {
   background-image: url("../../assets/imgs/_7_scientificResearchCenterImgs/头部轮播-07.png");
-  padding-top: 32px;
+  // padding-top: 32px;
   width: auto;
   height: 610px;
   background-size: cover;

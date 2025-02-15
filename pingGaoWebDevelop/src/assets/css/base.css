@@ -107,11 +107,11 @@ img {
   height: auto;
 }
 
-.container {
+/* .container {
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 20px;
-}
+} */
 
 ul {
   list-style: none;
@@ -171,6 +171,7 @@ html {
     font-size: 48px;
   }
   p {
-    font-size: 18px;
+    /* font-size: 18px; */
   }
 }
+

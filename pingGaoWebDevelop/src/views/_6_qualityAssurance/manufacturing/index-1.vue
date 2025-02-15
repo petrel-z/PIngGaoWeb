@@ -79,13 +79,16 @@ import MyContent from "@/components/F6_MyContent.vue";
       margin-top: 35px;
 
       .right-text {
-        width: 1010px;
+        // width: 1010px;
         font-size: 20px;
         font-family: "AlibabaPuHuiTi_2_45_Light";
         color: #595757;
         line-height: 1.85;
         text-align: justify;
         // white-space: nowrap;
+        p {
+          width: 100%;
+        }
       }
     }
 

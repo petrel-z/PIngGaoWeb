@@ -4,7 +4,7 @@ import MyTitle from "@/components/MyTitle.vue";
 
 <template>
   <div class="becomePartner-content">
-    <div class="content-bgimg"></div>
+    
 
     <div class="content-top">
       <div class="top-title">
@@ -15,7 +15,7 @@ import MyTitle from "@/components/MyTitle.vue";
     <div class="address">
       <div class="left">
         <div class="image">
-          <img src="../../../assets/imgs/_9_contactUsImgs/t9_p4_map.png" alt="" />
+          <img :style="{width: '100%', height: 'auto'}" src="../../../assets/imgs/_9_contactUsImgs/t9_p4_map.png" alt="" />
         </div>
       </div>
       <div class="right">
@@ -42,7 +42,10 @@ import MyTitle from "@/components/MyTitle.vue";
         </div>
       </div>
     </div>
-    <div class="top-whiteSpan"></div>
+    <div class="content-bgimg">
+      <img :style="{width: '100%', height: 'auto'}" src="../../../assets/imgs/_9_contactUsImgs/t9_p1_contentBg.png" alt="" />
+    </div>
+    <!-- <div class="top-whiteSpan"></div> -->
   </div>
 </template>
 
@@ -50,91 +53,116 @@ import MyTitle from "@/components/MyTitle.vue";
 .becomePartner-content {
   z-index: 999;
   width: 100%;
+  height: auto;
   display: flex;
-  // justify-content: center;
   flex-wrap: wrap;
   align-items: start;
   position: relative;
   background-image: url("../../../assets/imgs/_9_contactUsImgs/t9_p2_contentBg.png");
 
   .content-top {
-    padding: 60px 10em;
+    width: 78%;
+    margin-left:11%;
+    padding: 60px 0;
   }
   .address {
-    z-index: 999;
     width: 100%;
-    height: 690px;
 
     display: flex;
     justify-content: space-between;
 
     .left {
-      width: 100%;
-      height: 100%;
+      z-index: 999;
+
+      padding-left: 11%;
+      width: 60%;
+      height: auto;
       background-color: #fff;
-      position: relative;
       margin-right: 1.5em;
       .image {
-        width: 930px;
-        height: 610px;
-        position: absolute;
-        bottom: 40px;
-        right: 35px;
-
+        padding-top: 6%;
+        padding-bottom: 6%;
+        padding-right: 6%;
+        width: 100%;
+        height: 100%;
+        overflow: hidden; 
+        display: flex;
+        align-items: center;
         img {
           width: 100%;
           height: 100%;
+          height:auto;
           border-radius: 10px;
         }
       }
     }
 
     .right {
-      height: 100%;
-      width: 50%;
+      z-index: 999;
+      height: auto;
+      width: 40%;
       background-color: #45b3e0;
       display: flex;
       flex-direction: column;
       align-items: start;
-      padding-top: 90px;
-      padding-left: 60px;
+      justify-content: center;
+      // padding-top: 5%;
+      padding-left: 3%;
+      padding-right: 11%;
+      // padding-bottom: 2%;
 
       .company-name {
-        width: 435px;
+        width: 100%;
         font-size: 32px;
         font-family: "AlibabaPuHuiTi_2_65_Medium";
         color: rgb(255, 255, 255);
         border-bottom: 2px solid #fff;
         padding: 33px 0 14px 0;
+        overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
       }
 
       .common {
-        width: 435px;
+        width:100%;
         padding: 25px 0;
         border-bottom: 1px solid #fff;
         color: rgb(255, 255, 255);
         display: flex;
         justify-content: start;
         align-items: center;
+        
 
         div {
           height: 30px;
           line-height: 30px;
+          overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
         }
 
         .span-left {
           font-size: 24px;
           font-family: "AlibabaPuHuiTi_2_55_Regular";
+          overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
         }
 
         .span-center {
           margin: 0 10px;
           font-size: 22px;
+          overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
         }
 
         .span-right {
           font-size: 30.692px;
           font-family: "Avenir";
+          overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
         }
       }
 
@@ -151,13 +179,9 @@ import MyTitle from "@/components/MyTitle.vue";
   }
 
   .content-bgimg {
-    z-index: 1;
-    position: absolute;
-    bottom: 0;
+    z-index: 2;
     width: 100%;
-    height: 707px;
-    background-image: url("../../../assets/imgs/_9_contactUsImgs/t9_p1_contentBg.png");
-    background-size: auto;
+    height: 100%;
   }
 
   .top-whiteSpan {
