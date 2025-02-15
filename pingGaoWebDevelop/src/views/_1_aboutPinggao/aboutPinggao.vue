@@ -32,10 +32,9 @@ import Footer from "@/components/Footer.vue";
 </script>
 <style lang="less" scoped>
 .header {
-  background-image: url("@/assets//imgs/_1_aboutPinggaoImgs/头部轮播-01.png");
+  background-image: url("@/assets/imgs/_1_aboutPinggaoImgs/头部轮播-01.png");
   width: auto;
   height: 610px;
   background-size: cover;
-  padding-top: 32px;
 }
 </style>

@@ -149,5 +149,5 @@
 /* Avenir Next */
 @font-face {
   font-family: "AvenirNext";
-  src: url("../font/AvenirNext/Avenir\ Next.ttc") format("truetype"); /* 根据实际文件名修改 */
+  src: url("../font/AvenirNext/AvenirNext.ttc") format("truetype"); /* 根据实际文件名修改 */
 }

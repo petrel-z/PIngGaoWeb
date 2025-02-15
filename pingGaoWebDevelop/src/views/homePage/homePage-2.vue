@@ -437,7 +437,7 @@ onUnmounted(() => {
   height: 32px;
   margin: auto;
   text-align: center;
-  background-image: url("src\\assets\\imgs\\_10_homePageImg\\button.png");
+  background-image: url("../../assets/imgs/_10_homePageImgs/button.png");
   margin-top: 30px;
 }
 .product_button span {
@@ -464,7 +464,7 @@ onUnmounted(() => {
   height: 1140px;
   width: 100%;
   padding: 100px 160px;
-  background-image: url("src\\assets\\imgs\\_10_homePageImgs\\company-introduction.png");
+  background-image: url("../../assets/imgs/_10_homePageImgs/company-introduction.png");
   background-size: cover; /* 实现图片等比例缩放 */
   background-repeat: no-repeat;
 }

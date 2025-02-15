@@ -32,11 +32,13 @@ import { ref } from "vue";
 import ComHeader from "@/components/ComHeader.vue";
 import Footer from "@/components/Footer.vue";
 import imgPath from "@/assets/imgs/_4_productEngineeringImgs/头部轮播-04.png";
+import footerBg from "@/assets/imgs/_6_qualityAssuranceImgs/t6_topbar.png";
 const info = ref({
   title: "产品工程",
   content: "建设世界一流智慧电气装备集团",
   footer: "PG GROUP",
   imgPath: imgPath,
+  footerBg: footerBg,
 });
 
 const footer = ref([
@@ -45,12 +47,10 @@ const footer = ref([
 ]);
 </script>
 <style lang="less" scoped>
-
 .header {
   background-image: url("../../assets/imgs/_4_productEngineeringImgs/头部轮播-04.png");
   width: auto;
-  height: 610px;
+  height: 67vh;
   background-size: cover;
-  padding-top: 32px;
 }
 </style>

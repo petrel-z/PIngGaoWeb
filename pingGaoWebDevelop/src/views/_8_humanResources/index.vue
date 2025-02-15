@@ -54,7 +54,7 @@ const footer = ref([
 .header {
   height: 68vh;
   min-width: 100%;
-  background-image: url("@/assets//imgs/_8_humanResourcesImgs/头部轮播-08.png");
+  background-image: url("@/assets/imgs/_8_humanResourcesImgs/头部轮播-08.png");
   background-size: cover;
 }
 </style>

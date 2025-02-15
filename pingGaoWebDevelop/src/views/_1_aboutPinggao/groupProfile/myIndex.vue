@@ -49,7 +49,7 @@ import MyTitle from "@/components/MyTitle.vue";
         </div>
       </div>
       <div class="img_right">
-        <img src="@/assets/imgs/_10_homePageImgs/shipin.png" alt="">
+        <img src="@/assets/imgs/_10_homePageImgs/shipin.png" alt="" />
       </div>
     </div>
     <div class="key">
@@ -143,7 +143,7 @@ import MyTitle from "@/components/MyTitle.vue";
 .groupProfile {
   position: relative;
   margin: auto;
-  width:100%;
+  width: 100%;
   /* border: 1px solid rgb(177, 177, 177); */
   padding: 64px 204px;
   border-radius: 20px;
@@ -219,7 +219,7 @@ import MyTitle from "@/components/MyTitle.vue";
   height: 426px;
   background-size: contain;
 }
-.text_word .img_right img{
+.text_word .img_right img {
   margin-left: 44px;
   width: 100%;
   height: 426px;
@@ -245,39 +245,39 @@ import MyTitle from "@/components/MyTitle.vue";
   position: relative;
   width: 491px;
   height: 161px;
-  background-image: url(src\\assets\\imgs\\_1_aboutPinggaoImgs\\content-1.png);
+  background-image: url("@/assets/imgs/_1_aboutPinggaoImgs/content-1.png");
 }
 .key_content_two {
   margin-bottom: 10px;
   position: relative;
   width: 491px;
   height: 161px;
-  background-image: url(src\\assets\\imgs\\_1_aboutPinggaoImgs\\content-2.png);
+  background-image: url("@/assets/imgs/_1_aboutPinggaoImgs/content-2.png");
 }
 .key_content_three {
   margin-bottom: 10px;
   position: relative;
   width: 491px;
   height: 161px;
-  background-image: url(src\\assets\\imgs\\_1_aboutPinggaoImgs\\content-3.png);
+  background-image: url("@/assets/imgs/_1_aboutPinggaoImgs/content-3.png");
 }
 .key_content_four {
   position: relative;
   width: 491px;
   height: 161px;
-  background-image: url(src\\assets\\imgs\\_1_aboutPinggaoImgs\\content-4.png);
+  background-image: url("@/assets/imgs/_1_aboutPinggaoImgs/content-4.png");
 }
 .key_content_five {
   position: relative;
   width: 491px;
   height: 161px;
-  background-image: url(src\\assets\\imgs\\_1_aboutPinggaoImgs\\content-5.png);
+  background-image: url("@/assets/imgs/_1_aboutPinggaoImgs/content-5.png");
 }
 .key_content_six {
   position: relative;
   width: 491px;
   height: 161px;
-  background-image: url(src\\assets\\imgs\\_1_aboutPinggaoImgs\\content-6.png);
+  background-image: url("@/assets/imgs/_1_aboutPinggaoImgs/content-6.png");
 }
 .key_content_h {
   left: 188px;
@@ -351,6 +351,6 @@ import MyTitle from "@/components/MyTitle.vue";
   left: 0;
   width: 1920px;
   height: 1028px;
-  background-image: url(src\\assets\\img1-1\\bg-footer.png);
+  background-image: url("../../../assets/imgs/_1_aboutPinggaoImgs/bg-footer.png");
 }
 </style>
