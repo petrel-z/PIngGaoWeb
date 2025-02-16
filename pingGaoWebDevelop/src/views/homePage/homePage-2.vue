@@ -614,8 +614,14 @@ onUnmounted(() => {
 .great_flag_content .content_detail {
   width: 33%;
   height: 575px;
-  background-color: #fff;
+  background-color: #ffffff;
+  transition: 0.5s;
+  cursor: pointer;
 }
+.great_flag_content .content_detail:hover{
+  transform: scale(1.02);
+}
+
 
 .great_flag_content .bottom_text {
   padding: 36px 40px;
@@ -680,6 +686,11 @@ onUnmounted(() => {
   background-color: #fff;
   padding-top: 48px;
   padding-left: 40px;
+  transition: 0.5s;
+  cursor: pointer;
+}
+.great_flag_content .content_detail_text:hover{
+  transform: scale(1.02);
 }
 .great_flag .top_img img {
   width: 100%;
