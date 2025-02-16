@@ -289,7 +289,7 @@ import footrow from "@/assets/imgs/_1_aboutPinggaoImgs/footrow.png";
   position: relative;
   margin: auto;
   width: 100%;
-  padding: 64px 210px;
+  padding: 64px 11%;
   border-radius: 20px;
   background-color: #fff;
   z-index: -100;

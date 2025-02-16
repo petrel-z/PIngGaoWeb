@@ -46,7 +46,7 @@ import MyContent from "@/components/F6_MyContent.vue";
 <style lang="less" scoped>
 .manufacture-content {
   width: 100%;
-
+  padding: 0 11%;
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
@@ -56,6 +56,7 @@ import MyContent from "@/components/F6_MyContent.vue";
   position: relative;
 
   .content-top {
+    width: 100%;
     .top-title {
       margin-top: 60px;
       margin-bottom: 60px;
@@ -78,13 +79,16 @@ import MyContent from "@/components/F6_MyContent.vue";
       margin-top: 35px;
 
       .right-text {
-        width: 1010px;
+        // width: 1010px;
         font-size: 20px;
         font-family: "AlibabaPuHuiTi_2_45_Light";
         color: #595757;
         line-height: 1.85;
         text-align: justify;
         // white-space: nowrap;
+        p {
+          width: 100%;
+        }
       }
     }
 

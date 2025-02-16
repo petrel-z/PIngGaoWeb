@@ -13,7 +13,7 @@ defineOptions({
           <div class="logo-text-top">
             <img src="../assets/imgs/common/logo-text.png" alt="" />
           </div>
-          <hr class="logo-text-hr" />
+          <!-- <hr class="logo-text-hr" /> -->
           <div class="logo-text-bottom">
             <p class="bottom-p1">平高集团有限公司</p>
             <p class="bottom-p2">pinggao group co.,ltd.</p>
@@ -96,6 +96,8 @@ defineOptions({
   </div>
 </template>
 <style lang="less" scoped>
+/*
+
 li {
   list-style: none;
 }
@@ -106,19 +108,17 @@ a {
 }
 
 .footer-item {
-  // width: 1920px;
   width: auto;
-  height: 426px;
-  background-color: yellow;
+  height: 45vh; 
 }
 
 .footer-top {
-  // width: 100%;
   width: auto;
-  height: 374px;
-  position: relative;
+  height: 90%;
+  // position: relative;
   background-color: #333;
   color: #727171;
+
 }
 
 .content > div {
@@ -129,26 +129,24 @@ a {
 
 .content {
   display: flex;
-  // width: 1800px;
   width: 100%;
-  height: 180px;
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  // left: 50%;
-  // transform: translateX(-50%);
-  padding-left: 159px;
+  height: 100%;
+  padding: 5% 7% ;
   justify-content: start;
   align-items: start;
 
+  div {
+    // height: 100%;
+  }
   .logo-img {
     border: none;
-    margin-right: 10px;
+    // margin-right: 10px;
     transform: translateY(-3px);
   }
 
   .logo-text {
-    width: 250px;
+    // width: 250px;
+    width: 18%;
 
     .logo-text-top {
       width: 112px;
@@ -163,7 +161,7 @@ a {
 
     .logo-text-bottom {
       .bottom-p1 {
-        font-size: 15px;
+        font-size: 1.15rem;
         font-family: "AlibabaPuHuiTi_2_85_Bold";
         color: rgb(114, 113, 113);
         line-height: 1.296;
@@ -173,7 +171,7 @@ a {
       }
 
       .bottom-p2 {
-        font-size: 10px;
+        font-size: 0.9rem;
         font-family: "Arial";
         color: rgb(114, 113, 113);
         font-weight: bold;
@@ -185,13 +183,13 @@ a {
     }
 
     .text-bottom {
-      font-size: 13px;
+      font-size: 1rem;
       font-family: "AlibabaPuHuiTi_2_55_Regular";
       color: rgb(114, 113, 113);
       line-height: 1.2;
 
       p {
-        margin-top: 11px;
+        // margin-top: 11px;/
       }
     }
   }
@@ -205,34 +203,44 @@ a {
   .f7,
   .f8,
   .f9 {
-    padding: 0 25px;
+    width: 7.5%;
+    height: 100%;
+    padding: 0 0.5%;
     text-align: center;
+    white-space: nowrap;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
     h3 {
-      // height: 30px;
-      font-size: 18px;
+      font-size: 1.1rem;
       font-family: "AlibabaPuHuiTi_2_65_Medium";
       color: rgb(114, 113, 113);
-      line-height: 1;
+      // line-height: 1;
     }
 
     p {
-      font-size: 14px;
+      font-size: 1rem;
       font-family: "AlibabaPuHuiTi_2_55_Regular";
       color: rgb(137, 137, 137);
-      line-height: 2.214;
+      // line-height: 2.214;
+      padding-bottom:1%;
     }
 
     .p-first {
-      margin-top: 15px;
+      // margin-top: 15px;
     }
   }
 
   .codeImg {
+    width: 20%;
+    height: 100%;
     border: none;
-    margin-left: 48px;
-    margin-right: 145px;
+    img {
+      width: 100%;
+      height: auto;
+    }
     p {
-      font-size: 14px;
+      font-size: 1.12rem;
       font-family: "AlibabaPuHuiTi_2_55_Regular";
       color: rgb(137, 137, 137);
       line-height: 2.5;
@@ -244,13 +252,194 @@ a {
 .footer-bottom {
   // width: 100%;
   width: auto;
-  height: 52px;
+  height: 10%;
   background-color: #000;
   color: #727171;
   text-align: center;
-  line-height: 52px;
+  padding: 1% 1%;
+  // line-height: 52px;
 
-  font-size: 14px;
+  font-size: 1.15rem;
+  font-family: "SourceHanSansCN";
+  color: rgb(114, 113, 113);
+}
+
+*/
+
+li {
+  list-style: none;
+}
+
+a {
+  color: #727171;
+  text-decoration: none;
+}
+
+.footer-item {
+  width: auto;
+  // height: 35vh;
+  // padding: 3% ;
+  white-space: nowrap;
+}
+
+.footer-top {
+  width: auto;
+  height: 90%;
+  background-color: #333;
+  color: #727171;
+
+  // display: flex;
+  // justify-content: center;
+  // align-items: center;
+  padding: 5% 9%;
+
+
+}
+
+.content>div {
+  border-right: 1px solid #727171;
+  // flex: 1 1 auto;
+}
+
+.content {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  // align-content: center;
+
+  div {
+    // height: 100%;
+  }
+
+  .logo-img {
+    width: 3%;
+    // height: 5%;
+    height: 100%;
+    border: none;
+    margin-right: 1%;
+    transform: translateY(-3px);
+    img {
+
+    }
+  }
+
+  .logo-text {
+    width: 17%;
+    padding-right: 3%;
+    .logo-text-top {
+      width: 60%;
+      // width: 112px;
+    }
+
+    .logo-text-hr {
+      border: none;
+      border-top: 1px solid #727171;
+    }
+
+    .logo-text-bottom {
+      .bottom-p1 {
+        width: 70%;
+        white-space: nowrap;  
+        border-top: 1px solid #727171;
+        font-size: 1.15rem;
+        font-family: "AlibabaPuHuiTi_2_85_Bold";
+        color: rgb(114, 113, 113);
+        line-height: 1.296;
+        text-align: left;
+        letter-spacing: 2px;
+        font-weight: bold;
+      }
+
+      .bottom-p2 {
+        font-size: 0.9rem;
+        font-family: "Arial";
+        color: rgb(114, 113, 113);
+        font-weight: bold;
+        text-transform: uppercase;
+        text-align: left;
+        line-height: 1.841;
+        // transform: translate(1px, -2px);
+      }
+    }
+
+    .text-bottom {
+      font-size: 0.85rem;
+      font-family: "AlibabaPuHuiTi_2_55_Regular";
+      color: rgb(114, 113, 113);
+      line-height: 1.2;
+      margin-top: 1%;
+      p {
+        margin-top: 5%;
+      }
+    }
+  }
+
+  .f1,
+  .f2,
+  .f3,
+  .f4,
+  .f5,
+  .f6,
+  .f7,
+  .f8,
+  .f9 {
+    width: 8%;
+    // height: 100%;
+    padding: 0 1%;
+    text-align: center;
+    white-space: nowrap;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+
+    h3 {
+      font-size: 1.2rem;
+      font-family: "AlibabaPuHuiTi_2_65_Medium";
+      color: rgb(114, 113, 113);
+      // line-height: 1;
+    }
+
+    p {
+      font-size: 0.85rem;
+      font-family: "AlibabaPuHuiTi_2_55_Regular";
+      color: rgb(137, 137, 137);
+      line-height: 2.214;
+      margin-bottom: 1%;
+    }
+
+    .p-first {
+      // margin-top: 15px;
+    }
+  }
+
+  .codeImg {
+    width: 8%;
+    // height: 100%;
+    border: none;
+    margin-left: 3%;
+    img {
+      width: 100%;
+      height: auto;
+    }
+
+    p {
+      font-size: 1.12rem;
+      font-family: "AlibabaPuHuiTi_2_55_Regular";
+      color: rgb(137, 137, 137);
+      line-height: 2.5;
+      text-align: center;
+    }
+  }
+}
+
+.footer-bottom {
+  background-color: #000;
+  color: #727171;
+  text-align: center;
+  padding: 0.5% 0;
+
+  font-size: 1.15rem;
   font-family: "SourceHanSansCN";
   color: rgb(114, 113, 113);
 }

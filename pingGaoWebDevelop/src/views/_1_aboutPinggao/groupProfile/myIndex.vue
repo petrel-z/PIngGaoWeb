@@ -148,8 +148,8 @@ import MyTitle from "@/components/MyTitle.vue";
   position: relative;
   margin: auto;
   width: 100%;
-  height:3560px;
-  padding: 64px 204px;
+  height: 3560px;
+  padding: 64px 11%;
   border-radius: 20px;
   background-color: #fff;
   z-index: -100;
@@ -163,7 +163,7 @@ import MyTitle from "@/components/MyTitle.vue";
   height: 232px;
   left: 0;
   background-color: #f4f4f4;
-  padding: 85px 210px;
+  padding: 85px 11%;
   border-right: 2px solid #8abade;
 }
 .introduce_content {

@@ -147,8 +147,8 @@ const props = defineProps({
 
   .important-logo {
     position: absolute;
-    left: 220px;
-    top: 45px;
+    left: 11%;
+    top:10%;
   }
 }
 </style>

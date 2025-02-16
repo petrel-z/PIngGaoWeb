@@ -16,6 +16,7 @@ import footerBg from "@/assets/imgs/_6_qualityAssuranceImgs/t6_topBar.png";
 let hidden = ref(true);
 let inputFlag = ref(false);
 let searchFlag = ref(false);
+let headerBottomFlag = ref(true);
 const header = ref([
   { name: "关于平高", path: "/aboutPingGao" },
   { name: "资讯中心", path: "/informationCenter" },
@@ -267,52 +268,69 @@ const props = defineProps({
     :style="{
       '--footerImg': props.footerImg,
       '--fontColor': props.css.fontColor,
-      '--footerImg': props.footerImg,
       '--footerColor': props.css.footerColor,
     }"
   >
-    <div id="header-nav">
-      <div id="header-nav-top">
-        <ul>
-          <li v-for="item in header" :key="item.name">
-            <router-link @mouseenter="hoverContent(item.name)" :to="item.path">{{
-              item.name
-            }}</router-link>
-          </li>
-        </ul>
+    <div
+      id="header-nav"
+      @mouseenter="headerBottomFlag = false"
+      @mouseleave="headerBottomFlag = true"
+    >
+      <div class="log-img">
+        <img src="../assets/imgs/common/logo-img.png" alt="" />
       </div>
-      <img id="header-nav-logo" src="../assets/imgs/common/logoImgAll.png" alt="" />
-      <div id="header-nav-bottom">
-        <div @mouseleave="inputFlag = false" v-show="inputFlag" class="header-nav-bottom-item">
-          <i class="iconfont icon-sousuo"></i>
-          <input
-            class="header-nav-bottom-input"
-            type="text"
-            @keydown.enter="searchFlag = true"
-            placeholder="输入关键词"
-          />
-        </div>
-        <div
-          v-show="!inputFlag"
-          @mouseenter="
-            () => {
-              inputFlag = true;
-              hidden = true;
-            }
-          "
-          class="header-nav-bottom-item"
-        >
-          搜索
-          <i class="iconfont icon-sousuo" style="font-size: 1.125rem; color: #fff" />
+      <div style="flex: 1 1 auto">
+        <div id="header-nav-top">
+          <div class="log-title">
+            <div class="log-title-text">中国电器装备</div>
+            <div class="log-title-english">China Electrical Equipment</div>
+          </div>
+          <ul>
+            <li v-for="item in header" :key="item.name">
+              <router-link @mouseenter="hoverContent(item.name)" :to="item.path">{{
+                item.name
+              }}</router-link>
+            </li>
+          </ul>
         </div>
 
-        <div class="header-nav-bottom-item">
-          邮箱
-          <i class="iconfont icon-youxiang" style="font-size: 1.125rem; color: #fff" />
-        </div>
-        <div class="header-nav-bottom-item">
-          CN
-          <i class="iconfont icon-repeat" style="font-size: 1.125rem"></i>
+        <div class="header-nav-bottom" :class="{ hidden: headerBottomFlag }">
+          <div id="header-nav-bottom-left">
+            <div class="log-bottom-text">平 高 集 团 有 限 公 司</div>
+            <div class="log-bottom-english">PINGGAO GROUP CO.,LTD.</div>
+          </div>
+          <div id="header-nav-bottom-right">
+            <div @mouseleave="inputFlag = false" v-show="inputFlag" class="header-nav-bottom-item">
+              <i class="iconfont icon-sousuo"></i>
+              <input
+                class="header-nav-bottom-input"
+                type="text"
+                @keydown.enter="searchFlag = true"
+                placeholder="输入关键词"
+              />
+            </div>
+            <div
+              v-show="!inputFlag"
+              @mouseenter="
+                () => {
+                  inputFlag = true;
+                  hidden = true;
+                }
+              "
+              class="header-nav-bottom-item"
+            >
+              搜索
+              <i class="iconfont icon-sousuo" style="font-size: 1.125rem" />
+            </div>
+            <div class="header-nav-bottom-item">
+              邮箱
+              <i class="iconfont icon-youxiang" style="font-size: 1.125rem" />
+            </div>
+            <div class="header-nav-bottom-item">
+              CN
+              <i class="iconfont icon-repeat" style="font-size: 1.125rem"></i>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -431,12 +449,74 @@ const props = defineProps({
 #header-nav {
   position: relative;
   height: auto;
-  margin: 0 5em;
+  padding: 1% 5em 0 5em;
+  display: flex;
+  box-sizing: content-box;
+  cursor: pointer;
+}
+
+#header-nav:hover {
+  background: #fff;
+  color: black;
+}
+
+#header-nav:hover .header-nav-bottom-item,
+#header-nav:hover .header-nav-bottom-input,
+#header-nav:hover #header-nav-top li a,
+#header-nav:hover .log-title-text,
+#header-nav:hover .log-title-english,
+#header-nav:hover .log-bottom-text,
+#header-nav:hover .log-bottom-english,
+#header-nav:hover .header-nav-bottom-input::placeholder,
+#header-nav:hover i {
+  color: black;
+}
+
+#header-nav:hover #header-nav-top,
+#header-nav:hover .header-nav-bottom-input,
+#header-nav:hover .header-nav-bottom-item {
+  border-color: black;
 }
 
 #header-nav-top {
   text-align: right;
-  transform: translateY(100%);
+  /* transform: translateY(150%); */
+  display: flex;
+  border-bottom: 0.05rem solid #fff;
+  padding-bottom: 0.3%;
+  flex: 1 1 auto;
+}
+
+.log-img {
+  width: 3%;
+  padding-top: 0.3%;
+  margin-right: 1%;
+}
+
+.log-img img {
+  width: 100%;
+  height: auto;
+}
+
+.log-title {
+  text-align: start;
+}
+
+.log-title-text {
+  color: #fff;
+  font-family: "AalibabaPuHuiTi_2_65_Medium";
+  font-size: 1.91rem;
+  line-height: 1.2;
+  text-align: start;
+}
+
+.log-title-english {
+  color: #fff;
+  font-family: "Avenir";
+  font-size: 0.763rem;
+  line-height: 1.5;
+  font-size: 0.8rem;
+  text-align: start;
 }
 
 #header-nav-top ul {
@@ -444,6 +524,8 @@ const props = defineProps({
   margin: 0;
   padding: 0;
   align-items: center;
+  justify-content: flex-end;
+  flex: 1 1 auto;
 }
 
 #header-nav-top li {
@@ -458,22 +540,51 @@ const props = defineProps({
 #header-nav-top a {
   display: block;
   text-align: right;
-  padding: 0 0 0 15px;
+  padding: 0 0 0 1rem;
   /* height: 100%; */
   color: #fff;
   /* text-decoration: none; */
   transition: all 0.3s ease;
+  font-size: 1.1rem;
 }
 
 #header-nav-top a:hover {
   color: #409eff;
 }
 
-#header-nav-bottom {
+.header-nav-bottom {
+  height: 45%;
+  display: flex;
+  align-items: center;
+  transition: all 0.3s ease;
+  overflow: hidden;
+}
+
+#header-nav-bottom-left {
+  text-align: start;
+}
+
+.log-bottom-text {
+  font-size: 1.5rem;
+  font-family: "AlibabaPuHuiTi_2_55_Regular";
+  color: #fff;
+  line-height: 1.2;
+  text-align: start;
+}
+
+.log-bottom-english {
+  font-size: 1.05rem;
+  font-family: "Avenir";
+  color: rgba(255, 0.6);
+  line-height: 1.2;
+  color: #fff;
+}
+
+#header-nav-bottom-right {
+  flex: 1 1 auto;
   display: flex;
   justify-content: flex-end;
   align-items: center;
-  transform: translateY(-100%);
   position: relative;
   z-index: 1000;
 }
@@ -486,15 +597,15 @@ const props = defineProps({
   padding: 0 1rem;
   width: auto;
   text-align: center;
-  margin-left: 20px;
+  margin-left: 1rem;
   cursor: pointer;
-  border: 1px solid #fff;
-  border-radius: 20px;
+  border: 0.05rem solid #fff;
+  border-radius: 1.2rem;
   font-family: "AlibabaPuHuiTi_2_45_Light";
-  font-size: 1rem;
+  font-size: 0.8rem;
   transition: all 0.3s ease;
   flex: 0 0 auto;
-  height: 4vh;
+  height: 3vh;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -505,7 +616,7 @@ const props = defineProps({
   border: none;
   padding: 8px;
   color: #fff;
-  height: 4vh;
+  height: 3vh;
 }
 
 .header-nav-bottom-input::placeholder {
@@ -527,7 +638,7 @@ const props = defineProps({
 .header-nav-hover-content,
 .header-nav-search-content {
   position: absolute;
-  top: -2vh;
+  top: -0.2vh;
   width: 100%;
   height: 50vh;
   z-index: 999;
@@ -649,15 +760,19 @@ const props = defineProps({
 }
 
 .header-body {
+  position: absolute;
+  top: 30%;
+  left: 17%;
+  transform: translate(-50%, -50%);
   margin-top: 9em;
   margin-left: 5%;
   color: var(--fontColor);
 }
 .header-body-hr {
-  border: 1px solid var(--fontColor);
+  border: 0.05rem solid var(--fontColor);
 }
 .header-body-title {
-  margin-bottom: 10px;
+  margin-bottom: 2%;
   font-size: 3.125rem;
   font-family: "AlibabaPuHuiTi_2_65_Medium";
   color: var(--fontColor);
@@ -665,7 +780,7 @@ const props = defineProps({
 }
 
 .header-body-content {
-  margin-top: 10px;
+  margin-top: 2%;
   font-size: 2.125rem;
   font-family: "AlibabaPuHuiTi_2_45_Light";
   color: var(--fontColor);
