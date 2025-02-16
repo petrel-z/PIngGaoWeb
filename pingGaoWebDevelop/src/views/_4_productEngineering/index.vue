@@ -1,19 +1,4 @@
 <template>
-  <!-- <div class="productEngineering">
-    <div class="header-body">
-      <div class="header-body-title">{{ info.title }}</div>
-      <hr class="header-body-hr" />
-      <div class="header-body-content">{{ info.content }}</div>
-      <div class="header-body-footer">{{ info.footer }}</div>
-    </div>
-    <div class="header-footer">
-      <ul>
-        <li v-for="item in footer" :key="item.name">
-          <router-link class="footer_text" :to="item.path">{{ item.name }}</router-link>
-        </li>
-      </ul>
-    </div>
-  </div> -->
   <div class="header">
     <ComHeader :content="info" :footer="footer"></ComHeader>
   </div>
@@ -50,7 +35,7 @@ const footer = ref([
 .header {
   background-image: url("../../assets/imgs/_4_productEngineeringImgs/头部轮播-04.png");
   width: auto;
-  height: 67vh;
+  height: 68.3vh;
   background-size: cover;
 }
 </style>

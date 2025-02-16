@@ -141,7 +141,6 @@ html {
     font-size: 50px;
   }
 }
-
 @media (max-width: 7000px) {
   html {
     font-size: 40px;

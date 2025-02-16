@@ -35,7 +35,7 @@ import Footer from "@/components/Footer.vue";
 .header {
   background-image: url("@/assets/imgs/_1_aboutPinggaoImgs/头部轮播-01.png");
   width: auto;
-  height: 610px;
+  height: 68.3vh;
   background-size: cover;
 }
 </style>
