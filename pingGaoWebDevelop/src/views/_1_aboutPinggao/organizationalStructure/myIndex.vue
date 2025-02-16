@@ -289,14 +289,10 @@ import footrow from "@/assets/imgs/_1_aboutPinggaoImgs/footrow.png";
   position: relative;
   margin: auto;
   width: 100%;
-  // border: 1px solid rgb(177, 177, 177);
   padding: 64px 210px;
   border-radius: 20px;
   background-color: #fff;
   z-index: -100;
-}
-.mytitle {
-  margin-top: 50px;
 }
 .organization {
   position: relative;
