@@ -285,6 +285,27 @@ onUnmounted(() => {
   z-index: 10;
   position: relative;
 }
+
+.product_topImg:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  transition: opacity 0.3s ease; /* 设置过渡效果 */
+  opacity: 0.3; /* 默认透明 */
+  z-index: -1; /* 确保在图片下方 */
+}
+
+.product_topImg:hover:before {
+  background-image: url("src/assets/imgs/_10_homePageImgs/circle.png"); /* 悬停时的背景图片 */
+  opacity: 1; /* 显示背景图片 */
+}
+
+
 .header {
   height: 68vh;
   // min-width: 1920px;
@@ -406,6 +427,7 @@ onUnmounted(() => {
   width: 33%;
 }
 .product_topImg {
+  position: relative;
   width: 420px;
   height: 420px;
   margin: auto;
@@ -592,8 +614,14 @@ onUnmounted(() => {
 .great_flag_content .content_detail {
   width: 33%;
   height: 575px;
-  background-color: #fff;
+  background-color: #ffffff;
+  transition: 0.5s;
+  cursor: pointer;
 }
+.great_flag_content .content_detail:hover{
+  transform: scale(1.02);
+}
+
 
 .great_flag_content .bottom_text {
   padding: 36px 40px;
@@ -658,6 +686,11 @@ onUnmounted(() => {
   background-color: #fff;
   padding-top: 48px;
   padding-left: 40px;
+  transition: 0.5s;
+  cursor: pointer;
+}
+.great_flag_content .content_detail_text:hover{
+  transform: scale(1.02);
 }
 .great_flag .top_img img {
   width: 100%;
