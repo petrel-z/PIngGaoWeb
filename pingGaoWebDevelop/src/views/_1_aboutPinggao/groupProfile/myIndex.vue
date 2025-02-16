@@ -228,6 +228,7 @@ import MyTitle from "@/components/MyTitle.vue";
 .key {
   width: 100%;
   margin-bottom: 120px;
+  margin-top: 40px;
 }
 .key .key_title {
   font-size: 32px;
