@@ -1,5 +1,5 @@
 <script setup>
-import { ref } from 'vue';
+import { ref } from "vue";
 let currentPage = ref(1);
 // const props = defineProps({
 //   total: {
@@ -18,19 +18,23 @@ let currentPage = ref(1);
         :class="{ active: i === currentPage }"
         @click="currentPage = i"
       >
-        {{ i <= 5 ? i : '末页' }}
+        {{ i <= 5 ? i : "末页" }}
       </li>
     </ul>
   </div>
 </template>
 
 <style scoped>
+.my-pagination {
+  width: 25%;
+}
+
 .my-pagination ul {
   display: flex;
   justify-content: space-between;
   align-items: center;
   list-style: none;
-  width: 30em;
+  width: 100%;
   margin: 0;
   padding: 0;
 }
@@ -41,13 +45,13 @@ let currentPage = ref(1);
 }
 
 .my-pagination li {
-  font-size: 24px;
-  font-family: 'AlibabaPuHuiTi_2_55_Regular';
+  font-size: 1.2rem;
+  font-family: "AlibabaPuHuiTi_2_55_Regular";
   color: rgb(69, 179, 224);
   line-height: 2em;
   height: 2em;
   width: 2em;
-  border: 1px solid rgb(69, 179, 224);
+  border: 0.05rem solid rgb(69, 179, 224);
   border-radius: 1.5em;
   text-align: center;
   cursor: pointer;
