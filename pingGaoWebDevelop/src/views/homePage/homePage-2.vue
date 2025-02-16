@@ -160,7 +160,9 @@ onUnmounted(() => {
       </div>
     </div>
     <div class="company_introduction">
-      <div class="bg_img"><img src="@/assets/imgs/_10_homePageImgs/company-introduction.png" alt=""></div>
+      <div class="bg_img">
+        <img src="@/assets/imgs/_10_homePageImgs/company-introduction.png" alt="" />
+      </div>
       <div class="introduction_title">赋能智慧电气 创引绿色能源</div>
       <div class="introduction_small_title">公司介绍</div>
       <div class="introduction_content">
@@ -283,6 +285,27 @@ onUnmounted(() => {
   z-index: 10;
   position: relative;
 }
+
+.product_topImg:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  transition: opacity 0.3s ease; /* 设置过渡效果 */
+  opacity: 0.3; /* 默认透明 */
+  z-index: -1; /* 确保在图片下方 */
+}
+
+.product_topImg:hover:before {
+  background-image: url("src/assets/imgs/_10_homePageImgs/circle.png"); /* 悬停时的背景图片 */
+  opacity: 1; /* 显示背景图片 */
+}
+
+
 .header {
   height: 68vh;
   // min-width: 1920px;
@@ -404,6 +427,7 @@ onUnmounted(() => {
   width: 33%;
 }
 .product_topImg {
+  position: relative;
   width: 420px;
   height: 420px;
   margin: auto;
@@ -469,7 +493,7 @@ onUnmounted(() => {
   background-size: cover; /* 实现图片等比例缩放 */
   background-repeat: no-repeat;
 }
-.company_introduction .bg_img{
+.company_introduction .bg_img {
   top: 0;
   left: 0;
   position: absolute;
@@ -477,7 +501,7 @@ onUnmounted(() => {
   height: 1140px;
   z-index: -100;
 }
-.company_introduction .bg_img img{
+.company_introduction .bg_img img {
   width: 100%;
   height: 1140px;
 }
