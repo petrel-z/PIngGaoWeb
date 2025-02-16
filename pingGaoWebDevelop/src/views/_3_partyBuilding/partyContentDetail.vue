@@ -1,7 +1,7 @@
 <script setup>
 import MyTitle from "@/components/MyTitle.vue";
 import ContenPage from "@/components/ContenPage.vue";
-import Item1 from "@/components/F3_Item-1.vue";
+import Item1 from "@/components/item-1.vue";
 import MyButton from "@/components/MyButton.vue";
 import img1 from "@/assets/imgs/_3_partyBuildingImgs/t3_p2_person.png";
 
@@ -11,7 +11,7 @@ const props = defineProps({
     default: () => ({
       h: "党的精神",
       English: "The spirit of the Party",
-      titleColor: "#d40000",
+      titleColor: "#a51617",
       lineColor: "#a51517",
       engColor: "#a51517",
     }),
@@ -21,7 +21,7 @@ const props = defineProps({
     default: () => ({
       title1: "中国共产党第二十届",
       title2: "中央委员会第三次全体会议公报",
-      text: "中国共产党第二十届中央委员会第三次全体会议，于2024年7月15日至18日在北京举行出席这次全会的有，中央委员199人，候补中央委员165人。中央纪律检查委员会常务委员会委员和有关方面负责同志列席会",
+      text: "中国共产党第二十届中央委员会第三次全体会议，于2024年7月15日至18日在北京举行出席这次全会的有，中央委员199人，候补中央委员165人。中央纪律检查委员会常务委员会委员和有关方面负责同志列席会议。党的二十大代表中部分基层同志和专家学者也列席了会议。",
       img: img1,
       btnColor: "#e06e5f",
       bgColor: "#a51617",
@@ -82,44 +82,24 @@ const props = defineProps({
   <!-- 党的精神 -->
   <div class="partyContentDetail">
     <div class="spirit-top">
-      <MyTitle
-        :title="props.contentTop.h"
-        :English="props.contentTop.English"
-        :title-color="props.contentTop.titleColor"
-        :line-color="props.contentTop.lineColor"
-        :eng-color="props.contentTop.engColor"
-      ></MyTitle>
+      <MyTitle :title="props.contentTop.h" :English="props.contentTop.English"
+        :title-color="props.contentTop.titleColor" :line-color="props.contentTop.lineColor"
+        :eng-color="props.contentTop.engColor"></MyTitle>
     </div>
     <div class="spirit-span">
-      <ContenPage
-        :title1="props.contentPage.title1"
-        :title2="props.contentPage.title2"
-        :text="props.contentPage.text"
-        :img="props.contentPage.img"
-        :btn-color="props.contentPage.btnColor"
-        :bg-color="props.contentPage.bgColor"
-        :line-color="props.contentPage.lineColor"
-        :title-font="props.contentPage.titleFont"
-        :text-font="props.contentPage.textFont"
-        :font-color="props.contentPage.fontColor"
-      ></ContenPage>
+      <ContenPage :title1="props.contentPage.title1" :title2="props.contentPage.title2" :text="props.contentPage.text"
+        :img="props.contentPage.img" :btn-color="props.contentPage.btnColor" :bg-color="props.contentPage.bgColor"
+        :line-color="props.contentPage.lineColor" :title-font="props.contentPage.titleFont"
+        :text-font="props.contentPage.textFont" :font-color="props.contentPage.fontColor"></ContenPage>
     </div>
     <div class="spirit-list">
       <div class="list-item" v-for="item in props.itemContent" :key="item.month">
-        <Item1
-          :month="item.month"
-          :title="item.title"
-          :text="item.text"
-          :title-font="props.itemCss.titleFont"
-          :text-font="props.itemCss.textFont"
-          :title-font-color="props.itemCss.titleFontColor"
-          :text-font-color="props.itemCss.textFontColor"
-          :bg-color1="props.itemCss.bgColor1"
-          :bg-color2="props.itemCss.bgColor2"
-          :left-font-color="props.itemCss.leftFontColor"
+        <Item1 :month="item.month" :title="item.title" :text="item.text" :title-font="props.itemCss.titleFont"
+          :text-font="props.itemCss.textFont" :title-font-color="props.itemCss.titleFontColor"
+          :text-font-color="props.itemCss.textFontColor" :bg-color1="props.itemCss.bgColor1"
+          :bg-color2="props.itemCss.bgColor2" :left-font-color="props.itemCss.leftFontColor"
           :left-font-color-hover="props.itemCss.leftFontColorHover"
-          :right-font-color-hover="props.itemCss.rightFontColorHover"
-        ></Item1>
+          :right-font-color-hover="props.itemCss.rightFontColorHover"></Item1>
       </div>
     </div>
     <div class="lookMore">
@@ -132,25 +112,27 @@ const props = defineProps({
 .partyContentDetail {
   position: relative;
 
-  padding: 0 6em;
+  padding: 0 11%;
 
   .spirit-top {
     width: 100%;
-    padding: 2em 0;
+    padding: 3% 0;
   }
 
   .spirit-span {
-    padding: 5em 0;
+    padding: 0 0 72px 0;
   }
 
   .spirit-list {
     width: 100%;
     height: auto;
+
+    .list-item {
+      margin-bottom: 20px;
+    }
   }
 
-  .list-item {
-    margin-bottom: 20px;
-  }
+
 
   .lookMore {
     width: 100%;
@@ -160,4 +142,5 @@ const props = defineProps({
     padding: 2em 0;
   }
 }
+
 </style>

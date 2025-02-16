@@ -54,7 +54,7 @@ const imgPath = ref(props.img);
 
 <template>
   <div class="content" :style="{ 'background-color': props.bgColor }">
-    <div>
+    <div class="content-left">
       <div class="title" :style="{ fontFamily: props.titleFont, color: props.fontColor }">
         {{ props.title1 }}
         <br />
@@ -66,7 +66,7 @@ const imgPath = ref(props.img);
           :style="{ 'background-color': props.lineColor }"
         ></div>
         <div
-          style="width: 380px; height: 1px"
+          style="width: 100%; height: 1px"
           :style="{ 'background-color': props.lineColor }"
         ></div>
       </div>
@@ -79,7 +79,8 @@ const imgPath = ref(props.img);
         <span class="icon iconfont lookdetail-icon">&#xe504;</span>
       </div>
     </div>
-    <div style="width: 760px; height: 475px" class="img">
+    <div 
+ class="img">
       <img style="width: 105%; height: 102%; object-fit: cover" :src="imgPath" alt="图片加载失败" />
     </div>
   </div>
@@ -89,17 +90,24 @@ const imgPath = ref(props.img);
 .content {
   display: flex;
   width: 100%;
-  min-height: 601px;
-  justify-content: space-evenly;
+  min-height: auto;
+  padding: 4%;
+  justify-content: space-between;
   align-items: center;
   background-color: #003792;
   border-radius: 10px;
+  .content-left {
+    width: 40%;
+    height: 100%;
+  }
   .img {
+    width: 55%;
+    height: 100%;
     overflow: hidden;
     border-radius: 10px;
     img {
       position: relative;
-      left: -10px;
+      left: -1rem;
     }
   }
 }
@@ -108,27 +116,28 @@ const imgPath = ref(props.img);
   transition: all 0.5s ease-in-out;
 }
 .title {
-  font-size: 35px;
+  font-size: 2.1rem;
   // font-family: 'Alibaba PuHuiTi 2.0';
   color: rgb(255, 255, 255);
   line-height: 1.4;
   text-align: justifyLeft;
   position: relative;
   z-index: 135;
+  margin-top: 10%;
 }
 
 .hr {
-  margin: 28px 0;
+  margin: 4% 0;
 }
 
 .content-text {
-  font-size: 20px;
+  font-size: 1.38rem;
   font-family: "Alibaba PuHuiTi 2.0";
   color: rgb(255, 255, 255);
   line-height: 1.85;
   position: relative;
-  width: 525px;
-  height: 140px;
+  width: 100%;
+  height: 40%;
   z-index: 17;
   display: -webkit-box;
   -webkit-box-orient: vertical;
@@ -139,17 +148,16 @@ const imgPath = ref(props.img);
 }
 
 .content-btn {
-  font-size: 20px;
-  // font-family: 'Alibaba PuHuiTi 2.0';
+  font-size: 1.3rem;
   color: rgb(255, 255, 255);
-  line-height: 51px;
+  display: flex;
+  align-items: center;
   text-align: center;
-  position: relative;
   z-index: 143;
   background-color: #45b3e0;
-  width: 201px;
-  min-height: 51px;
-  margin-top: 80px;
+  width: 38%;
+  min-height: 10%;
+  margin-top: 10%;
   border-radius: 5px;
   cursor: pointer;
   font-family: "AlibabaPuHuiTi_2_45_Light";
@@ -157,7 +165,7 @@ const imgPath = ref(props.img);
   display: flex;
   justify-content: space-between;
   .btn-text {
-    margin-left: 27px;
+    margin-left: 13%;
   }
   .lookdetail-icon {
     margin-right: 15px;

@@ -46,7 +46,7 @@ const props = defineProps({
 
 <style lang="less" scoped>
 .commitment-span {
-  width: 1501px;
+  width: 100%;
   height: 401px;
   text-align: center;
   background-color: #006fc1;
@@ -60,8 +60,9 @@ const props = defineProps({
     align-items: center;
     position: relative;
     top: var(--top);
-    left: 119px;
-    width: 1265px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 85%;
 
     h1,
     p,

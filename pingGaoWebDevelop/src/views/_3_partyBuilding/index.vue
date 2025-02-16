@@ -25,13 +25,17 @@ const footer = ref([
     path: "/partyBuilding/pinggaoPartyBuilding",
   },
 ]);
+const headerCss = {
+  fontColor: "#fce3cd",
+  footerColor: "#a51617",
+}
 </script>
 
 <template>
   <div style="width: auto">
     <div class="header">
       <div style="height: 100%; width: auto">
-        <ComHeader :content="content" :footer="footer" />
+        <ComHeader :content="content" :footer="footer" :css="headerCss" />
       </div>
     </div>
 
@@ -45,15 +49,13 @@ const footer = ref([
 
 <style lang="less" scoped>
 .header {
-  /* height: 611px; */
-  height: auto;
-  /* min-width: 1920px; */
-  width: 100%;
-  // background-image: url("@/assets/imgs/_3_partyBuildingImgs/t3_p1_titleBg.png");
+  width: auto;
+  height: 66vh;
   background-size: 100%;
+  // height: 610px;
   background-repeat: no-repeat;
   position: relative;
   background-image: url("../../assets/imgs/_3_partyBuildingImgs/头部轮播-03.png");
-  height: 500px;
+  background-size: cover;
 }
 </style>

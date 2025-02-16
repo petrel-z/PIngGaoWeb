@@ -68,7 +68,7 @@ const props = defineProps({
       justify-content: start;
       align-items: center;
 
-      width: 80%;
+      width: 65%;
 
       h1,
       p,
@@ -147,8 +147,8 @@ const props = defineProps({
 
   .important-logo {
     position: absolute;
-    left: 220px;
-    top: 45px;
+    left: 11%;
+    top:10%;
   }
 }
 </style>

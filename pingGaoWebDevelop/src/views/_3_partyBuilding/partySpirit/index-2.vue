@@ -35,14 +35,8 @@ defineOptions({
                 :title="'上一篇'"
                 :content="'中国共产党第二十届中央委员会第三次全体会议公报'"
                 :bgColor="'#f8f1e5'"
-                :width="'638px'"
-                :height="'101px'"
-                :leftFontSize="'20px'"
-                :rightFontSize="'20px'"
                 :leftFontColor="'#a51617'"
                 :rightFontColor="'#7b6a5d'"
-                :leftFontFamily="'SourceHanSerifCN_Bold'"
-                :rightFontFamily="'SourceHanSerifCN_Bold'"
               >
               </ComDoubleDiv>
             </div>
@@ -50,6 +44,9 @@ defineOptions({
               <ComDoubleDiv
                 :title="'下一篇'"
                 :content="'中国共产党第二十届中央委员会第三次全体会议公报'"
+                :bgColor="'#f8f1e5'"
+                :leftFontColor="'#a51617'"
+                :rightFontColor="'#7b6a5d'"
               >
               </ComDoubleDiv>
             </div>
@@ -63,9 +60,10 @@ defineOptions({
 <style lang="less" scoped>
 .spirit-detail {
   position: relative;
-
   .detail {
     width: 100%;
+    padding: 0 11%;
+
     height: auto;
     background-image: url("../../../assets/imgs/_3_partyBuildingImgs/t3_p1_detailBg.png");
     background-size: auto;
@@ -78,7 +76,7 @@ defineOptions({
       // height: 1996px;
       // height: 1549px;
       background-color: #fff;
-      margin: 0 100px 0 100px;
+      // margin: 0 100px 0 100px;
 
       .title {
         width: 100%;
@@ -104,7 +102,7 @@ defineOptions({
         justify-content: center;
 
         .image {
-          height: 475px;
+          height: 50%;
           width: 58%;
           overflow: hidden;
           display: flex;
@@ -115,6 +113,7 @@ defineOptions({
 
           img {
             width: 100%;
+            height:auto;
           }
         }
       }
@@ -122,7 +121,7 @@ defineOptions({
       .button {
         display: flex;
         justify-content: space-between;
-        // margin-top: 80px;
+        margin-top: 3%;
         width: 100%;
       }
     }

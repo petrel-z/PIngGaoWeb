@@ -98,4 +98,8 @@ const props = defineProps({
   border-radius: 10px;
   padding: 0 34px;
 }
+
+.order ul li:last-child {
+  border-bottom: none;
+}
 </style>

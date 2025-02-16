@@ -36,6 +36,7 @@ import MyContent from "@/components/F6_MyContent.vue";
 <style lang="less" scoped>
 .productTesting-content {
   width: 100%;
+  padding: 0 11%;
 
   display: flex;
   justify-content: center;
@@ -67,13 +68,17 @@ import MyContent from "@/components/F6_MyContent.vue";
     .top-detailList {
       margin-top: 35px;
       .right-text {
-        width: 1010px;
+        // width: 1010px;
         font-size: 20px;
         font-family: "AlibabaPuHuiTi_2_45_Light";
         color: #595757;
         line-height: 1.85;
         text-align: justify;
         // white-space: nowrap;
+        p {
+          width: 100%;
+
+        }
       }
     }
 

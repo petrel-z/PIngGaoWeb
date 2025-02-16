@@ -48,7 +48,8 @@ import partyContentDetail from "../partyContentDetail.vue";
     .bg-color {
       width: 100%;
       position: absolute;
-      height: 70vh;
+      // height: 70vh;
+      height: 600px;
       background-color: #f8f1e5;
     }
   }

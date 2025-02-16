@@ -3,8 +3,9 @@ defineOptions({
   name: "pinggaoPartyBuildingMore",
 });
 import myTitle from "@/components/MyTitle.vue";
-import ComDoubleDiv from "@/components/ComDoubleDiv.vue";
 import OrderList from "@/components/OrderList.vue";
+import Item2 from "@/components/Item-2.vue";
+import MyPagination from "@/components/MyPagination.vue";
 const leftList = [
   { time: "2025.01.14", text: "党纪学习教育 | 扎实起步 有序开展 推动党纪学习教育走深走实" },
   { time: "2025.01.16", text: "平高集团、平高电气纪检系统深入开展党纪学习教育" },
@@ -41,17 +42,15 @@ const rightList = [
     <div class="list">
       <div class="left">
         <div class="listItem" v-for="item in leftList" :key="item.time">
-          <ComDoubleDiv
-            :title="item.time"
-            :content="item.text"
-            :css="{
-              bgColor: '#fff',
-              leftFontColor: '#a51617',
-              rightFontColor: '#7b6a5d',
-              rightFontFamily: 'SourceHanSerifCN_Bold',
-            }"
+          <Item2
+            :time="item.time"
+            :text="item.text"
+            :timeColor="'#a51617'"
+            :textColor="'#7b6a5d'"
+            :text-font-family="'SourceHanSerifCN_Bold'"
+
           >
-          </ComDoubleDiv>
+          </Item2>
         </div>
       </div>
       <div class="right">
@@ -67,7 +66,9 @@ const rightList = [
       </div>
     </div>
 
-    <div class="footer-button"></div>
+    <div class="footer-button">
+      <MyPagination :font-color="'#a51617'"></MyPagination>
+    </div>
   </div>
 </template>
 
@@ -81,7 +82,9 @@ const rightList = [
 
   background-image: url("../../../assets/imgs/_3_partyBuildingImgs/t3_p1_moreBg.png");
 
+  padding: 0 11%;
   .title {
+    width: 100%;
     margin-top: 22px;
     margin-bottom: 22px;
   }
@@ -92,8 +95,7 @@ const rightList = [
     justify-content: space-between;
 
     .left {
-      margin-left: 200px;
-
+      width: 60%;
       div:nth-child(1) {
         margin-top: 0;
       }
@@ -105,7 +107,6 @@ const rightList = [
     }
 
     .right {
-      margin-right: 215px;
     }
   }
 
@@ -122,8 +123,9 @@ const rightList = [
 
   .footer-button {
     width: 100%;
-    height: 100px;
-    background-color: #f5f5f5;
+    height: auto;
+    display: flex;
+    justify-content: center;
   }
 }
 </style>
