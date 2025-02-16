@@ -425,7 +425,7 @@ const props = defineProps({
   position: relative;
   width: auto;
   height: 100%;
-  font-size: 1rem;
+  font-size: 0.8rem;
   font-family: "AlibabaPuHuiTi_2_55_Regular";
 }
 #header-nav {
@@ -491,7 +491,7 @@ const props = defineProps({
   border: 1px solid #fff;
   border-radius: 20px;
   font-family: "AlibabaPuHuiTi_2_45_Light";
-  font-size: 1.125rem;
+  font-size: 1rem;
   transition: all 0.3s ease;
   flex: 0 0 auto;
   height: 4vh;
@@ -684,7 +684,7 @@ const props = defineProps({
   bottom: 0;
   left: 60%;
   width: 40%;
-  font-size: 1.3rem;
+  font-size: 1.2rem;
   font-family: "AlibabaPuHuiTi_2_55_Regular";
   color: rgb(255, 255, 255);
   background-image: url("../assets/imgs/_6_qualityAssuranceImgs/t6_topBar.png");

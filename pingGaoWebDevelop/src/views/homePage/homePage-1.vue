@@ -4,10 +4,10 @@
   <div class="homePage">
     <div class="top">
       <div class="top-left">
-        <img src="../../assets/imgs/_11_welcomeImgs/welcome.png" alt="">
+        <img src="../../assets/imgs/_11_welcomeImgs/welcome.png" alt="" />
       </div>
       <div class="top-right">
-        <img src="../../assets/imgs/_11_welcomeImgs/header.png" alt="">
+        <img src="../../assets/imgs/_11_welcomeImgs/header.png" alt="" />
       </div>
     </div>
     <div class="center">
@@ -53,7 +53,6 @@
       position: absolute;
       top: 0;
       left: 0;
-
     }
 
     .top-right {

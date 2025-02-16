@@ -24,7 +24,7 @@
 }
 @font-face {
   font-family: "AlibabaPuHuiTi_2_65_Medium";
-  src: url("../font/AlibabaPuHuiTi-2/AlibabaPuHuiTi-2-65-Medium/AlibabaPuHuiTi-2-65-Medium.ttf")
+  src: url("@/assets/font/AlibabaPuHuiTi-2/AlibabaPuHuiTi-2-65-Medium/AlibabaPuHuiTi-2-65-Medium.ttf")
     format("truetype"); /* 根据实际文件名修改 */
   font-weight: bold;
   font-style: normal;
