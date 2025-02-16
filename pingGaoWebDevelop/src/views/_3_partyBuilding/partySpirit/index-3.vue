@@ -3,8 +3,9 @@ defineOptions({
   name: "PartySpiritMore",
 });
 import myTitle from "@/components/MyTitle.vue";
-import ComDoubleDiv from "@/components/ComDoubleDiv.vue";
 import OrderList from "@/components/OrderList.vue";
+import Item2 from "@/components/Item-2.vue";
+import MyPagination from "@/components/MyPagination.vue";
 const leftList = [
   { time: "2025.01.14", text: "习近平：高举中国特色社会主义伟大旗帜 为全面建设社会主义…" },
   { time: "2025.01.16", text: "习近平：高举中国特色社会主义伟大旗帜 为全面建设社会主义…" },
@@ -41,19 +42,14 @@ const rightList = [
     <div class="list">
       <div class="left">
         <div class="listItem" v-for="item in leftList" :key="item.time">
-          <ComDoubleDiv
-            :title="item.time"
-            :content="item.text"
-            :css="{
-              bgColor: '#fff',
-              leftFontColor: '#a51617',
-              rightFontColor: '#7b6a5d',
-              rightFontFamily: 'SourceHanSerifCN_Bold',
-              width: '950px',
-              height: '120px',
-            }"
+          <Item2
+            :time="item.time"
+            :text="item.text"
+            :timeColor="'#a51617'"
+            :textColor="'#7b6a5d'"
+            :text-font-family="'SourceHanSerifCN_Bold'"
           >
-          </ComDoubleDiv>
+          </Item2>
         </div>
       </div>
       <div class="right">
@@ -68,11 +64,14 @@ const rightList = [
         </OrderList>
       </div>
     </div>
-    <div class="footer-button"></div>
+    <div class="footer-button">
+      <MyPagination :font-color="'#a51617'"></MyPagination>
+    </div>
   </div>
 </template>
 
 <style lang="less" scoped>
+
 .spirit-more {
   // padding: 0 11%;
   position: relative;
@@ -128,8 +127,9 @@ const rightList = [
 
   .footer-button {
     width: 100%;
-    height: 100px;
-    background-color: #f5f5f5;
+    height: auto;
+    display: flex;
+    justify-content: center;
   }
 }
 </style>

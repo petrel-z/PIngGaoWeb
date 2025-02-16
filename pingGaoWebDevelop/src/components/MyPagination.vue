@@ -1,16 +1,20 @@
 <script setup>
 import { ref } from 'vue';
 let currentPage = ref(1);
-// const props = defineProps({
-//   total: {
-//     type: Number,
-//     default: 5,
-//   },
-// });
+const props = defineProps({
+  // total: {
+  //   type: Number,
+  //   default: 5,
+  // },
+  fontColor: {
+    type: String,
+    default: '#45b3e0'
+  },
+});
 </script>
 
 <template>
-  <div class="my-pagination">
+  <div class="my-pagination" :style="{'--fontColor': props.fontColor}">
     <ul>
       <li
         v-for="(i, index) in 5 + 1"
@@ -36,18 +40,18 @@ let currentPage = ref(1);
 }
 
 .my-pagination ul .active {
-  background-color: #45b3e0;
-  color: rgb(255, 255, 255);
+  background-color: var(--fontColor);
+  color: #ffffff;
 }
 
 .my-pagination li {
   font-size: 24px;
   font-family: 'AlibabaPuHuiTi_2_55_Regular';
-  color: rgb(69, 179, 224);
+  color: var(--fontColor);
   line-height: 2em;
   height: 2em;
   width: 2em;
-  border: 1px solid rgb(69, 179, 224);
+  border: 1px solid var(--fontColor);
   border-radius: 1.5em;
   text-align: center;
   cursor: pointer;

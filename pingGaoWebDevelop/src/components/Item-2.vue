@@ -12,11 +12,23 @@ const props = defineProps({
     type: String,
     default: "#fff",
   },
+  timeColor: {
+    type: String,
+    default: "#003792"
+  },
+  textColor: {
+    type: String,
+    default: "#231815"
+  },
+  textFontFamily: {
+    type: String,
+    default: "AlibabaPuHuiTi_2_55_Regular"
+  }
 });
 </script>
 
 <template>
-  <div class="item">
+  <div class="item" :style="{'--timeColor': props.timeColor, '--textColor': props.textColor, '--textFontFamily': props.textFontFamily}">
     <div
       class="left"
       :style="{
@@ -48,7 +60,7 @@ const props = defineProps({
 .time {
   font-size: 28px;
   font-family: "Avenir";
-  color: rgb(0, 55, 146);
+  color: var(--timeColor);
   line-height: 1.68;
   text-align: center;
   white-space: nowrap;
@@ -79,8 +91,8 @@ const props = defineProps({
 
 .text {
   font-size: 24px;
-  font-family: "AlibabaPuHuiTi_2_55_Regular";
-  color: rgb(35, 24, 21);
+  font-family: var(--textFontFamily);
+  color: var(--textColor);
   line-height: 1.25;
   text-align: left;
   white-space: nowrap;
