@@ -23,8 +23,8 @@
     <Footer />
   </div>
 </template>
-
 <script setup>
+import comHeaderFoot from "@/assets/imgs/_1_aboutPinggaoImgs/t6_topBar.png"
 defineOptions({
   name: "ScientificResearchCenter",
 });
@@ -37,6 +37,7 @@ const info = ref({
   content: "电工行业重大技术装备支柱企业",
   footer: "PG GROUP",
   imgPath: imgPath,
+  footerBg: comHeaderFoot
 });
 
 const footer = ref([
@@ -48,9 +49,8 @@ const footer = ref([
 <style lang="less" scoped>
 .header {
   background-image: url("../../assets/imgs/_7_scientificResearchCenterImgs/头部轮播-07.png");
-  // padding-top: 32px;
   width: auto;
-  height: 610px;
+  height: 68.3vh;
   background-size: cover;
 }
 </style>
