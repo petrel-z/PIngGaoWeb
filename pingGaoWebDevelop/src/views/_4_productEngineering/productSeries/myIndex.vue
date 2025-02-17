@@ -1,5 +1,22 @@
 <script setup>
 import MyTitle from "@/components/MyTitle.vue";
+// 获取图片元素
+const mainImage = document.getElementById('.img');
+
+// 获取所有带有 data-image 属性的 div 元素
+const imageBoxes = document.querySelectorAll('.detail_product');
+
+// 遍历所有 div，当鼠标悬浮时更改图片
+imageBoxes.forEach(box => {
+  box.addEventListener('mouseover', () => {
+    const newImage = box.getAttribute('data-image');  // 获取每个 div 中的图片路径
+    mainImage.src = newImage;  // 更改 img 的 src
+  });
+  // 当鼠标移出时恢复默认图片
+  box.addEventListener('mouseout', () => {
+    mainImage.src = "@/assets/imgs/_4_productEngineeringImgs/bg-protect.png";  // 恢复默认图片
+  });
+});
 </script>
 <template>
   <div class="productSeries">
@@ -17,28 +34,28 @@ import MyTitle from "@/components/MyTitle.vue";
           ><span>高压电器产业</span>
         </router-link>
       </div>
-      <div class="detail_product">
+      <div class="detail_product" data-image="@/assets/imgs/_4_productEngineeringImgs/product-img.png">
         <span>系统集成业务</span>
       </div>
-      <div class="detail_product">
+      <div class="detail_product" data-image="@/assets/imgs/_4_productEngineeringImgs/bg-protect.png">
         <span>电力储能业务</span>
       </div>
-      <div class="detail_product">
+      <div class="detail_product" data-image="@/assets/imgs/_4_productEngineeringImgs/bg-protect.png" >
         <span>配电网产业</span>
       </div>
-      <div class="detail_product">
+      <div class="detail_product" data-image="@/assets/imgs/_4_productEngineeringImgs/bg-protect.png">
         <span>运维检修业务</span>
       </div>
-      <div class="detail_product">
+      <div class="detail_product" data-image="@/assets/imgs/_4_productEngineeringImgs/bg-protect.png">
         <span>电锅炉及热储能业务</span>
       </div>
-      <div class="detail_product">
+      <div class="detail_product" data-image="@/assets/imgs/_4_productEngineeringImgs/bg-protect.png">
         <span>零部件制造产业</span>
       </div>
-      <div class="detail_product">
+      <div class="detail_product" data-image="@/assets/imgs/_4_productEngineeringImgs/bg-protect.png">
         <span>综合能源服务业务</span>
       </div>
-      <div class="detail_product">
+      <div class="detail_product" data-image="@/assets/imgs/_4_productEngineeringImgs/bg-protect.png">
         <span>智慧配用电业务</span>
       </div>
     </div>

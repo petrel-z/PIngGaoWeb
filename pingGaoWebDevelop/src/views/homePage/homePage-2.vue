@@ -192,7 +192,7 @@ onMounted(() => {
             <div class="product_topImg">
               <img src="@/assets/imgs/_10_homePageImgs/product1.png" alt="" />
             </div>
-            <div class="product_h">高压电器产业1</div>
+            <div class="product_h">高压电器产业</div>
             <div class="product_hr"></div>
             <div class="product_p">复合式组合电器、罐式六氟化硫断路器、高压六氟化硫断路器…</div>
             <div class="product_button"><span>查看详情</span></div>
@@ -201,7 +201,7 @@ onMounted(() => {
             <div class="product_topImg">
               <img src="@/assets/imgs/_10_homePageImgs/product2.png" alt="" />
             </div>
-            <div class="product_h">系统集成业务2</div>
+            <div class="product_h">运维检修业务</div>
             <div class="product_hr"></div>
             <div class="product_p">罩式馈线自动化终端、箱式馈线自动化终端、配电自动化站所终端…</div>
             <div class="product_button"><span>查看详情</span></div>
@@ -210,7 +210,7 @@ onMounted(() => {
             <div class="product_topImg">
               <img src="@/assets/imgs/_10_homePageImgs/product3.png" alt="" />
             </div>
-            <div class="product_h">零部件制造产业3</div>
+            <div class="product_h">零部件制造产业</div>
             <div class="product_hr"></div>
             <div class="product_p">
               气体回收净化业务、集中供气站、混气比检测仪、密度继电器校验仪…
@@ -219,27 +219,27 @@ onMounted(() => {
           </div>
           <div class="product_detail">
             <div class="product_topImg">
-              <img src="@/assets/imgs/_10_homePageImgs/product2.png" alt="" />
+              <img src="@/assets/imgs/_10_homePageImgs/product4.png" alt="" />
             </div>
-            <div class="product_h">高压电器产业4</div>
+            <div class="product_h">电锅炉及热储能业务</div>
             <div class="product_hr"></div>
             <div class="product_p">复合式组合电器、罐式六氟化硫断路器、高压六氟化硫断路器…</div>
             <div class="product_button"><span>查看详情</span></div>
           </div>
           <div class="product_detail">
             <div class="product_topImg">
-              <img src="@/assets/imgs/_10_homePageImgs/product1.png" alt="" />
+              <img src="@/assets/imgs/_10_homePageImgs/product5.png" alt="" />
             </div>
-            <div class="product_h">系统集成业务5</div>
+            <div class="product_h">电力储能业务</div>
             <div class="product_hr"></div>
             <div class="product_p">罩式馈线自动化终端、箱式馈线自动化终端、配电自动化站所终端…</div>
             <div class="product_button"><span>查看详情</span></div>
           </div>
           <div class="product_detail">
             <div class="product_topImg">
-              <img src="@/assets/imgs/_10_homePageImgs/product2.png" alt="" />
+              <img src="@/assets/imgs/_10_homePageImgs/product6.png" alt="" />
             </div>
-            <div class="product_h">零部件制造产业6</div>
+            <div class="product_h">配电网产业</div>
             <div class="product_hr"></div>
             <div class="product_p">
               气体回收净化业务、集中供气站、混气比检测仪、密度继电器校验仪…
@@ -248,27 +248,27 @@ onMounted(() => {
           </div>
           <div class="product_detail">
             <div class="product_topImg">
-              <img src="@/assets/imgs/_10_homePageImgs/product3.png" alt="" />
+              <img src="@/assets/imgs/_10_homePageImgs/product7.png" alt="" />
             </div>
-            <div class="product_h">高压电器产业7</div>
+            <div class="product_h">系统集成业务</div>
             <div class="product_hr"></div>
             <div class="product_p">复合式组合电器、罐式六氟化硫断路器、高压六氟化硫断路器…</div>
             <div class="product_button"><span>查看详情</span></div>
           </div>
           <div class="product_detail">
             <div class="product_topImg">
-              <img src="@/assets/imgs/_10_homePageImgs/product1.png" alt="" />
+              <img src="@/assets/imgs/_10_homePageImgs/product8.png" alt="" />
             </div>
-            <div class="product_h">系统集成业务8</div>
+            <div class="product_h">智慧配用电业务</div>
             <div class="product_hr"></div>
             <div class="product_p">罩式馈线自动化终端、箱式馈线自动化终端、配电自动化站所终端…</div>
             <div class="product_button"><span>查看详情</span></div>
           </div>
           <div class="product_detail">
             <div class="product_topImg">
-              <img src="@/assets/imgs/_10_homePageImgs/product2.png" alt="" />
+              <img src="@/assets/imgs/_10_homePageImgs/product9.png" alt="" />
             </div>
-            <div class="product_h">零部件制造产业9</div>
+            <div class="product_h">综合能源服务业务</div>
             <div class="product_hr"></div>
             <div class="product_p">
               气体回收净化业务、集中供气站、混气比检测仪、密度继电器校验仪…
