@@ -282,7 +282,7 @@ const props = defineProps({
       <div style="flex: 1 1 auto">
         <div id="header-nav-top">
           <div class="log-title">
-            <div class="log-title-text">中国电器装备</div>
+            <div class="log-title-text">中国电气装备</div>
             <div class="log-title-english">China Electrical Equipment</div>
           </div>
           <ul>
@@ -488,8 +488,7 @@ const props = defineProps({
 }
 
 .log-img {
-  width: 3%;
-  padding-top: 0.3%;
+  width: 4.5%;
   margin-right: 1%;
 }
 

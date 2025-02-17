@@ -62,7 +62,7 @@ onUnmounted(() => {
 <template>
   <div class="home_page">
     <div class="header">
-      <div style="padding-top: 20px">
+      <div>
         <ComHeader :isfooter="false" :onlyHeaderFlag="true"></ComHeader>
       </div>
     </div>
@@ -301,10 +301,9 @@ onUnmounted(() => {
 }
 
 .product_topImg:hover:before {
-  background-image: url("src/assets/imgs/_10_homePageImgs/circle.png"); /* 悬停时的背景图片 */
+  background-image: url("../../assets/imgs/_10_homePageImgs/circle.png"); /* 悬停时的背景图片 */
   opacity: 1; /* 显示背景图片 */
 }
-
 
 .header {
   height: 68vh;
@@ -618,10 +617,9 @@ onUnmounted(() => {
   transition: 0.5s;
   cursor: pointer;
 }
-.great_flag_content .content_detail:hover{
+.great_flag_content .content_detail:hover {
   transform: scale(1.02);
 }
-
 
 .great_flag_content .bottom_text {
   padding: 36px 40px;
@@ -689,7 +687,7 @@ onUnmounted(() => {
   transition: 0.5s;
   cursor: pointer;
 }
-.great_flag_content .content_detail_text:hover{
+.great_flag_content .content_detail_text:hover {
   transform: scale(1.02);
 }
 .great_flag .top_img img {
