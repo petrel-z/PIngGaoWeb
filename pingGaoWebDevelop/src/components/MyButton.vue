@@ -34,7 +34,6 @@ const props = defineProps({
         iconfont: true,
         [props.type === 'more' ? 'icon-a-MenuBar-show' : 'icon-chakanxiangqing-copy']: true,
       }"
-      style="font-size: 24px; margin-left: 2em"
     ></i>
   </div>
 </template>
@@ -51,7 +50,7 @@ const props = defineProps({
   text-align: center;
   text-decoration: none;
   display: inline-block;
-  font-size: 16px;
+  font-size: 1rem;
   margin: 4px 2px;
   cursor: pointer;
   width: auto;
@@ -59,22 +58,37 @@ const props = defineProps({
   border-radius: 30.5px;
 }
 .button-text {
-  font-size: 24px;
+  width: 70%;
+  font-size: 1.1rem;
   font-family: "AlibabaPuHuiTi_2_55_Regular";
   color: rgb(255, 255, 255);
   line-height: 1.542;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  padding: 5% 0;
 }
+.iconfont {
+  font-size: 1.1rem;
+  width: 25%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
 .content-btn {
-  font-size: 20px;
+  font-size: 1.1rem;
   font-family: "AlibabaPuHuiTi_2_45_Light";
   color: rgb(255, 255, 255);
-  line-height: 51px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   text-align: center;
   position: relative;
   z-index: 143;
   background-color: var(--bgColor);
-  width: 201px;
-  min-height: 51px;
+  width: 100%;
+  height: auto;
   border-radius: 5px;
   cursor: pointer;
 }

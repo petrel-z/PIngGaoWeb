@@ -66,7 +66,7 @@ console.log(props.bottomItems);
 <style lang="less" scoped>
 .commitment-span {
   width: 100%;
-  min-height: 401px;
+  height: auto;
   text-align: center;
   background-color: #006fc1;
   border-radius: 10px;
@@ -77,7 +77,7 @@ console.log(props.bottomItems);
     justify-content: start;
     align-items: center;
     position: relative;
-    padding: 108px 4em;
+    padding: 8rem 4rem;
     width: 100%;
 
     h1,
@@ -88,11 +88,11 @@ console.log(props.bottomItems);
     }
 
     h1 {
-      font-size: 32px;
+      font-size: 2.65rem;
       font-family: "AlibabaPuHuiTi_2_65_Medium";
       color: rgb(255, 255, 255);
       line-height: 1.156;
-      margin-bottom: 35px;
+      margin-bottom: 2.65rem;
     }
 
     .short-line {
@@ -141,13 +141,13 @@ console.log(props.bottomItems);
       margin-top: 25px;
     }
     .one-p {
-      font-size: 20px;
+      font-size: 1.3rem;
       font-family: "AlibabaPuHuiTi_2_45_Light";
       color: rgb(255, 255, 255);
       line-height: 1.85;
       text-align: left;
       width: 100%;
-      height: 94px;
+      height: auto;
     }
     .my-content-bottom {
       display: flex;
@@ -186,11 +186,12 @@ console.log(props.bottomItems);
     }
   }
   .button-div {
-    width: 201px;
-    min-height: 51px;
-    padding-left: 80%;
-    padding-top: 36px;
-    padding-bottom: 46px;
+    width: 15%;
+    height: auto;
+    margin-left: 80%;
+    margin-right: 5%;
+    padding-top: 1%;
+    padding-bottom: 3%;
   }
 }
 </style>

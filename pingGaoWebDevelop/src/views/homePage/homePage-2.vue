@@ -121,7 +121,7 @@ onMounted(() => {
 <template>
   <div class="home_page">
     <div class="header">
-      <div style="padding-top: 20px">
+      <div>
         <ComHeader :isfooter="false" :onlyHeaderFlag="true"></ComHeader>
       </div>
     </div>

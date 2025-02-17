@@ -149,7 +149,7 @@ import MyTitle from "@/components/MyTitle.vue";
   margin: auto;
   width: 100%;
   height: 3560px;
-  padding: 64px 204px;
+  padding: 64px 11%;
   border-radius: 20px;
   background-color: #fff;
   z-index: -100;
@@ -163,7 +163,7 @@ import MyTitle from "@/components/MyTitle.vue";
   height: 232px;
   left: 0;
   background-color: #f4f4f4;
-  padding: 85px 210px;
+  padding: 85px 11%;
   border-right: 2px solid #8abade;
 }
 .introduce_content {
@@ -257,7 +257,7 @@ import MyTitle from "@/components/MyTitle.vue";
   position: relative;
   width: 491px;
   height: 161px;
-  background-image: url(src\\assets\\imgs\\_1_aboutPinggaoImgs\\content-1.png);
+  background-image: url("@/assets/imgs/_1_aboutPinggaoImgs/content-1.png");
 }
 
 .key_content_two {
@@ -265,7 +265,7 @@ import MyTitle from "@/components/MyTitle.vue";
   position: relative;
   width: 491px;
   height: 161px;
-  background-image: url(src\\assets\\imgs\\_1_aboutPinggaoImgs\\content-2.png);
+  background-image: url("@/assets/imgs/_1_aboutPinggaoImgs/content-2.png");
 }
 
 .key_content_three {
@@ -273,28 +273,28 @@ import MyTitle from "@/components/MyTitle.vue";
   position: relative;
   width: 491px;
   height: 161px;
-  background-image: url(src\\assets\\imgs\\_1_aboutPinggaoImgs\\content-3.png);
+  background-image: url("@/assets/imgs/_1_aboutPinggaoImgs/content-3.png");
 }
 
 .key_content_four {
   position: relative;
   width: 491px;
   height: 161px;
-  background-image: url(src\\assets\\imgs\\_1_aboutPinggaoImgs\\content-4.png);
+  background-image: url("@/assets/imgs/_1_aboutPinggaoImgs/content-4.png");
 }
 
 .key_content_five {
   position: relative;
   width: 491px;
   height: 161px;
-  background-image: url(src\\assets\\imgs\\_1_aboutPinggaoImgs\\content-5.png);
+  background-image: url("@/assets/imgs/_1_aboutPinggaoImgs/content-5.png");
 }
 
 .key_content_six {
   position: relative;
   width: 491px;
   height: 161px;
-  background-image: url(src\\assets\\imgs\\_1_aboutPinggaoImgs\\content-6.png);
+  background-image: url("@/assets/imgs/_1_aboutPinggaoImgs/content-6.png");
 }
 
 .key_content_h {
