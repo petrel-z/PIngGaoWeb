@@ -7,18 +7,14 @@ import Footer from "@/components/Footer.vue";
 </script>
 
 <template>
+  <div class="header">
+    <ComHeader></ComHeader>
+  </div>
+
+  <RouterView />
+
   <div style="width: auto">
-    <div class="header">
-      <div style="height: 100%; width: auto">
-        <ComHeader />
-      </div>
-    </div>
-
-    <RouterView />
-
-    <div style="width: auto">
-      <Footer />
-    </div>
+    <Footer />
   </div>
 </template>
 

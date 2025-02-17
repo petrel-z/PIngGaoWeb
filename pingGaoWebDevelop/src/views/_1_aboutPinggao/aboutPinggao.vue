@@ -1,6 +1,6 @@
 <template>
   <div class="header">
-    <ComHeader :footer-img="comHeaderFoot" :content="info" :footer="footer"></ComHeader>
+    <ComHeader :content="info" :footer="footer"></ComHeader>
   </div>
   <router-view></router-view>
   <div style="width: auto">
@@ -10,13 +10,13 @@
 
 <script setup>
 import { ref } from "vue";
-import comHeaderFoot from "@/assets/imgs/_1_aboutPinggaoImgs/t6_topBar.png"
+import comHeaderFoot from "@/assets/imgs/_1_aboutPinggaoImgs/t6_topBar.png";
 const info = ref({
   title: "关于平高",
   content: "赋能智慧电气·创引绿色能源",
   footer: "PG GROUP",
   imgPath: imgPath,
-  footerBg: comHeaderFoot
+  footerBg: comHeaderFoot,
 });
 
 const footer = ref([

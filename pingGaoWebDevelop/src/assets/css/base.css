@@ -199,7 +199,12 @@ html {
 
 @media (max-width: 600px) {
   html {
-    font-size: 3px;
+    font-size: 4.5px;
   }
 }
 
+@media (max-width: 500px) {
+  html {
+    font-size: 3px;
+  }
+}

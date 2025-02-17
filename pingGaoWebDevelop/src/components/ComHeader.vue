@@ -285,13 +285,16 @@ const props = defineProps({
             <div class="log-title-text">中国电气装备</div>
             <div class="log-title-english">China Electrical Equipment</div>
           </div>
-          <ul>
-            <li v-for="item in header" :key="item.name">
-              <router-link @mouseenter="hoverContent(item.name)" :to="item.path">{{
-                item.name
-              }}</router-link>
-            </li>
-          </ul>
+          <div class="header-nav-top-bar">
+            <i class="iconfont icon-a-MenuBar-show bar-icon"></i>
+            <ul class="header-nav-top-bar-ul">
+              <li v-for="item in header" :key="item.name">
+                <router-link @mouseenter="hoverContent(item.name)" :to="item.path">{{
+                  item.name
+                }}</router-link>
+              </li>
+            </ul>
+          </div>
         </div>
 
         <div class="header-nav-bottom" :class="{ hidden: headerBottomFlag }">
@@ -348,7 +351,7 @@ const props = defineProps({
             <div class="header-nav-hover-content-title">
               {{ hoverText.content.title }}
             </div>
-            <hr style="display: inline-block; width: 58px; border: 2px solid rgb(35, 24, 21)" />
+            <hr style="display: inline-block; width: 5%; border: 0.1rem solid rgb(35, 24, 21)" />
             <div class="header-nav-hover-content-text">
               {{ hoverText.content.content }}
             </div>
@@ -366,10 +369,11 @@ const props = defineProps({
                 </li>
               </ul>
             </div>
-            <div
-              class="right-right"
-              :style="{ 'background-image': `url(${hoverText.content.imgPath})` }"
-            ></div>
+            <div class="right-right">
+              <div>
+                <img :src="hoverText.content.imgPath" alt="" />
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -384,7 +388,7 @@ const props = defineProps({
         >
           <div class="header-nav-search-content-left">
             <div class="header-nav-search-content-title">搜索结果</div>
-            <hr style="display: inline-block; width: 58px; border: 2px solid rgb(35, 24, 21)" />
+            <hr style="display: inline-block; width: 5%; border: 0.1rem solid rgb(35, 24, 21)" />
             <div class="header-nav-search-content-text">
               {{ hoverText.content.content }}
             </div>
@@ -414,10 +418,10 @@ const props = defineProps({
       </div>
     </div>
 
-    <div v-if="!props.onlyHeaderFlag" style="margin: 0 100px">
+    <div v-if="!props.onlyHeaderFlag" class="header-body-box">
       <div class="header-body">
         <div class="header-body-title">{{ props.content.title }}</div>
-        <hr class="header-body-hr" style="width: 50px" />
+        <hr class="header-body-hr" style="width: 5%" />
         <div class="header-body-content">{{ props.content.content }}</div>
         <div class="header-body-footer">{{ props.content.footer }}</div>
       </div>
@@ -436,8 +440,8 @@ const props = defineProps({
 </template>
 
 <style scoped>
-#header-nav-logo {
-  width: 100%;
+.bar-icon {
+  display: none;
 }
 #header {
   position: relative;
@@ -453,6 +457,7 @@ const props = defineProps({
   display: flex;
   box-sizing: content-box;
   cursor: pointer;
+  height: 20%;
 }
 
 #header-nav:hover {
@@ -518,13 +523,19 @@ const props = defineProps({
   text-align: start;
 }
 
+.header-nav-top-bar {
+  flex: 1 1 auto;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
 #header-nav-top ul {
   display: inline-flex;
   margin: 0;
   padding: 0;
   align-items: center;
   justify-content: flex-end;
-  flex: 1 1 auto;
 }
 
 #header-nav-top li {
@@ -613,13 +624,15 @@ const props = defineProps({
 .header-nav-bottom-input {
   background-color: transparent;
   border: none;
-  padding: 8px;
+  /* padding: 0.05rem; */
   color: #fff;
-  height: 3vh;
+  height: 100%;
 }
 
 .header-nav-bottom-input::placeholder {
   color: #fff;
+  font-size: 0.8rem;
+  font-family: "AlibabaPuHuiTi_2_45_Light";
 }
 
 .header-nav-bottom-input:focus {
@@ -639,7 +652,7 @@ const props = defineProps({
   position: absolute;
   top: -0.2vh;
   width: 100%;
-  height: 50vh;
+  height: auto;
   z-index: 999;
   cursor: pointer;
   transition: all 0.3s ease;
@@ -653,7 +666,7 @@ const props = defineProps({
 
 .header-nav-hover-content-left,
 .header-nav-search-content-left {
-  flex: 1 1 50%;
+  flex: 1 1 40%;
   text-align: right;
   padding-right: 3%;
   padding-top: 3em;
@@ -689,7 +702,7 @@ const props = defineProps({
 
 .header-nav-hover-content-right,
 .header-nav-search-content-right {
-  flex: 1 1 50%;
+  flex: 1 1 60%;
   background-image: url("../assets/imgs/common/headerHoverBg-2.png");
   background-size: cover;
   padding-left: 2.5%;
@@ -714,7 +727,7 @@ const props = defineProps({
   font-family: "AlibabaPuHuiTi_2_55_Regular";
   color: rgb(128, 127, 127);
   line-height: 1.87;
-  border-radius: 5px;
+  border-radius: 0.4rem;
   background-color: rgb(201, 202, 202);
   margin-right: 1em;
   cursor: pointer;
@@ -732,7 +745,7 @@ const props = defineProps({
   line-height: 1.2;
   text-align: left;
   padding: 1em 0;
-  border-bottom: 2px solid gainsboro;
+  border-bottom: 0.1rem solid gainsboro;
 }
 .header-nav-search-content-right-content ul li:hover {
   color: rgb(69, 179, 224);
@@ -748,23 +761,33 @@ const props = defineProps({
   font-family: "AlibabaPuHuiTi_2_55_Regular";
   color: #e3e8ea;
   line-height: 1.87;
+  flex: 1 1 auto;
 }
 
 .right-right {
   margin-left: 7.5%;
-  width: 624px;
-  height: 198px;
+  flex: 1 1 auto;
+  height: 100%;
   background-size: cover;
-  border-radius: 10px;
+}
+
+.right-right > div {
+  width: 80%;
+}
+
+.right-right img {
+  width: 100%;
+  height: auto;
+  border-radius: 0.6rem;
+}
+
+.header-body-box {
+  position: relative;
+  height: 77%;
+  padding: 5% 0 0 10%;
 }
 
 .header-body {
-  position: absolute;
-  top: 30%;
-  left: 17%;
-  transform: translate(-50%, -50%);
-  margin-top: 9em;
-  margin-left: 5%;
   color: var(--fontColor);
 }
 .header-body-hr {
@@ -829,7 +852,7 @@ const props = defineProps({
 }
 
 .active-border {
-  border-bottom: 1px solid var(--footerColor);
+  border-bottom: 0.05rem solid var(--footerColor);
 }
 
 .active-color {

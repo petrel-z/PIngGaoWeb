@@ -28,22 +28,15 @@ const footer = ref([
 const headerCss = {
   fontColor: "#fce3cd",
   footerColor: "#a51617",
-}
+};
 </script>
 
 <template>
+  <div class="header"><ComHeader :content="content" :footer="footer" :css="headerCss" /></div>
+  <RouterView />
+
   <div style="width: auto">
-    <div class="header">
-      <div style="height: 100%; width: auto">
-        <ComHeader :content="content" :footer="footer" :css="headerCss" />
-      </div>
-    </div>
-
-    <RouterView />
-
-    <div style="width: auto">
-      <Footer />
-    </div>
+    <Footer />
   </div>
 </template>
 

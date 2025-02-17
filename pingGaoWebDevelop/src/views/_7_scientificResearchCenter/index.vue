@@ -14,6 +14,7 @@
       </ul>
     </div>
   </div> -->
+
   <div class="header">
     <ComHeader :content="info" :footer="footer"></ComHeader>
   </div>
@@ -24,7 +25,7 @@
   </div>
 </template>
 <script setup>
-import comHeaderFoot from "@/assets/imgs/_1_aboutPinggaoImgs/t6_topBar.png"
+import comHeaderFoot from "@/assets/imgs/_1_aboutPinggaoImgs/t6_topBar.png";
 defineOptions({
   name: "ScientificResearchCenter",
 });
@@ -37,7 +38,7 @@ const info = ref({
   content: "电工行业重大技术装备支柱企业",
   footer: "PG GROUP",
   imgPath: imgPath,
-  footerBg: comHeaderFoot
+  footerBg: comHeaderFoot,
 });
 
 const footer = ref([
@@ -50,7 +51,7 @@ const footer = ref([
 .header {
   background-image: url("../../assets/imgs/_7_scientificResearchCenterImgs/头部轮播-07.png");
   width: auto;
-  height: 68.3vh;
+  height: 68vh;
   background-size: cover;
 }
 </style>
