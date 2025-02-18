@@ -517,18 +517,22 @@ onMounted(() => {
   position: relative;
   justify-content: space-evenly;
   margin-bottom: 40px;
+
 }
 
 .product_box {
   /* overflow: hidden; */
-  width: 91%;
+  width: 94%;
   min-width: 1920px;
   margin: auto;
+  padding-left: 30px;
+  padding-right: 70px;
+
 }
 
 .product_content_box {
   display: flex;
-  width: 91%;
+  width: 95%;
   margin: auto;
 }
 
@@ -552,6 +556,10 @@ onMounted(() => {
   cursor: pointer;
   z-index: 1000;
 }
+.product_topImg img {
+  margin-left: -5px;
+  margin: auto;
+}
 .product_topImg:before {
   content: "";
   position: absolute;
@@ -565,7 +573,7 @@ onMounted(() => {
   /* 设置过渡效果 */
   opacity: 0.3;
   /* 默认透明 */
-  z-index: 1;
+  z-index: -1;
   /* 确保在图片下方 */
 }
 
