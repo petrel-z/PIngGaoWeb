@@ -164,7 +164,6 @@ import MyTitle from "@/components/MyTitle.vue";
   left: 0;
   background-color: #f4f4f4;
   padding: 85px 11%;
-  border-right: 2px solid #8abade;
 }
 .introduce_content {
   position: relative;
@@ -201,6 +200,7 @@ import MyTitle from "@/components/MyTitle.vue";
 }
 
 .text_word .word_left {
+
   display: flex;
   width: 55%;
   font-size: 20px;
@@ -222,14 +222,15 @@ import MyTitle from "@/components/MyTitle.vue";
 .text_word .img_right {
   margin-left: 44px;
   width: 45%;
-  height: 426px;
+  height: 365px;
   background-size: contain;
+  padding-top: 10px;
 }
 
 .text_word .img_right img {
   margin-left: 44px;
   width: 100%;
-  height: 426px;
+  height: 365px;
 }
 
 .key {

@@ -6,15 +6,11 @@
   <div style="width: auto">
     <Footer />
   </div>
-  <div class="right_button">
-    <RightButton></RightButton>
-  </div>
 </template>
 
 <script setup>
 import { ref } from "vue";
 import comHeaderFoot from "@/assets/imgs/_1_aboutPinggaoImgs/t6_topBar.png";
-import RightButton from "@/components/RightButton.vue";
 const info = ref({
   title: "关于平高",
   content: "赋能智慧电气·创引绿色能源",
@@ -41,10 +37,5 @@ import Footer from "@/components/Footer.vue";
   width: auto;
   height: 68.3vh;
   background-size: cover;
-}
-.right_button{
-  position: absolute;
-  top: 1400px;
-  right: 0;
 }
 </style>
