@@ -220,7 +220,7 @@ import MyTitle from "@/components/MyTitle.vue";
 }
 
 .text_word .img_right {
-  margin-left: 44px;
+  margin-left: 10px;
   width: 45%;
   height: 365px;
   background-size: contain;
