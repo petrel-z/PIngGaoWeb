@@ -38,7 +38,9 @@
   color: rgb(137, 137, 137);
   margin-top: -16px;
 }
-.top .icon{
+.box .icon{
+  font-size:40px;
   font-weight: 600;
+  margin-bottom:5px;
 }
 </style>

@@ -42,4 +42,9 @@ import Footer from "@/components/Footer.vue";
   height: 68.3vh;
   background-size: cover;
 }
+.right_button{
+  position: absolute;
+  top: 1400px;
+  right: 0;
+}
 </style>

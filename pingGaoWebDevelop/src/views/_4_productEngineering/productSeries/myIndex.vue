@@ -8,30 +8,39 @@ const imageSrc = ref(
 );
 
 // 处理 imgs 数组中的路径
-const imgs = ref([
-  new URL("@/assets/imgs/_4_productEngineeringImgs/bg-product1.png", import.meta.url).href,
-  new URL("@/assets/imgs/_4_productEngineeringImgs/bg-product2.png", import.meta.url).href,
-  new URL("@/assets/imgs/_4_productEngineeringImgs/bg-product3.png", import.meta.url).href,
-  new URL("@/assets/imgs/_4_productEngineeringImgs/bg-product4.png", import.meta.url).href,
-  new URL("@/assets/imgs/_4_productEngineeringImgs/bg-product5.png", import.meta.url).href,
-  new URL("@/assets/imgs/_4_productEngineeringImgs/bg-product6.png", import.meta.url).href,
-  new URL("@/assets/imgs/_4_productEngineeringImgs/bg-product7.png", import.meta.url).href,
-  new URL("@/assets/imgs/_4_productEngineeringImgs/bg-product8.png", import.meta.url).href,
-  new URL("@/assets/imgs/_4_productEngineeringImgs/bg-product9.png", import.meta.url).href
-]);
-console.log(imgs)
-console.log(111)
+const imgs = ref(
+  [
+    new URL("@/assets/imgs/_4_productEngineeringImgs/bg-product1.png", import.meta.url).href,
+    new URL("@/assets/imgs/_4_productEngineeringImgs/bg-product2.png", import.meta.url).href,
+    new URL("@/assets/imgs/_4_productEngineeringImgs/bg-product3.png", import.meta.url).href,
+    new URL("@/assets/imgs/_4_productEngineeringImgs/bg-product4.png", import.meta.url).href,
+    new URL("@/assets/imgs/_4_productEngineeringImgs/bg-product5.png", import.meta.url).href,
+    new URL("@/assets/imgs/_4_productEngineeringImgs/bg-product6.png", import.meta.url).href,
+    new URL("@/assets/imgs/_4_productEngineeringImgs/bg-product7.png", import.meta.url).href,
+    new URL("@/assets/imgs/_4_productEngineeringImgs/bg-product8.png", import.meta.url).href,
+    new URL("@/assets/imgs/_4_productEngineeringImgs/bg-product9.png", import.meta.url).href,
+  ].map((path) => new URL(path, import.meta.url).href)
+);
+
+const activeIndex = ref(0);
+
 const handleMouse = (event) => {
   const boxs = document.querySelectorAll(".detail_product");
   const clickedDiv = event.currentTarget;
   const index = Array.from(boxs).indexOf(clickedDiv);
+
+  boxs.forEach((div) => {
+    div.classList.remove("active");
+  });
+
   if (index >= 0 && index < imgs.value.length) {
     imageSrc.value = imgs.value[index];
     console.log(`你点击了第 ${index + 1} 个 div`);
+    // 更新 activeIndex 的值
+    activeIndex.value = index;
   }
-  console.log(imageSrc)
-  // 在这里可以根据索引进行其他操作
 };
+
 // 处理鼠标离开事件，恢复默认图片
 const handleMouseLeave = () => {
   imageSrc.value = new URL(
@@ -39,8 +48,11 @@ const handleMouseLeave = () => {
     import.meta.url
   ).href; // 恢复默认图片
   console.log("鼠标离开，恢复默认图片");
+  // 鼠标离开时，将 activeIndex 重置为 -1
+  activeIndex.value = 0;
 };
 </script>
+
 <template>
   <div class="productSeries">
     <div class="img">
@@ -53,37 +65,80 @@ const handleMouseLeave = () => {
       line-color="#fff"
       engColor="#fff"
     ></MyTitle>
-    <div class="detail_content" @mouseover="handleMouse" @mouseleave="handleMouseLeave">
+    <div class="detail_content">
       <div
-        class="detail_product active"
+        class="detail_product"
+        :style="{ 'background-color': activeIndex === 0 ? '#45b3e0' : 'transparent' }"
+        @mouseover="handleMouse"
+        @mouseleave="handleMouseLeave"
         data-image="@/assets/imgs/_4_productEngineeringImgs/bg-protect.png"
       >
         <router-link to="/productEngineering/productSeriesDetail"
           ><span>高压电器产业</span>
         </router-link>
       </div>
-      <div class="detail_product" @mouseover="handleMouse" @mouseleave="handleMouseLeave">
+      <div
+        class="detail_product"
+        :style="{ 'background-color': activeIndex === 1 ? '#45b3e0' : 'transparent' }"
+        @mouseover="handleMouse"
+        @mouseleave="handleMouseLeave"
+      >
         <span>系统集成业务</span>
       </div>
-      <div class="detail_product" @mouseover="handleMouse" @mouseleave="handleMouseLeave" >
-        <span>电力储能业务</span>
+      <div
+        class="detail_product"
+        :style="{ 'background-color': activeIndex === 2 ? '#45b3e0' : 'transparent' }"
+        @mouseover="handleMouse"
+        @mouseleave="handleMouseLeave"
+      >
+        <span >电力储能业务</span>
       </div>
-      <div class="detail_product" @mouseover="handleMouse" @mouseleave="handleMouseLeave">
+      <div
+        class="detail_product"
+        :style="{ 'background-color': activeIndex === 3 ? '#45b3e0' : 'transparent' }"
+        @mouseover="handleMouse"
+        @mouseleave="handleMouseLeave"
+      >
         <span>配电网产业</span>
       </div>
-      <div class="detail_product" @mouseover="handleMouse" @mouseleave="handleMouseLeave">
+      <div
+        class="detail_product"
+        :style="{ 'background-color': activeIndex === 4 ? '#45b3e0' : 'transparent' }"
+        @mouseover="handleMouse"
+        @mouseleave="handleMouseLeave"
+      >
         <span>运维检修业务</span>
       </div>
-      <div class="detail_product" @mouseover="handleMouse" @mouseleave="handleMouseLeave">
+      <div
+        class="detail_product"
+        :style="{ 'background-color': activeIndex === 5 ? '#45b3e0' : 'transparent' }"
+        @mouseover="handleMouse"
+        @mouseleave="handleMouseLeave"
+      >
         <span>电锅炉及热储能业务</span>
       </div>
-      <div class="detail_product" @mouseover="handleMouse" @mouseleave="handleMouseLeave">
+      <div
+        class="detail_product"
+        :style="{ 'background-color': activeIndex === 6 ? '#45b3e0' : 'transparent' }"
+        @mouseover="handleMouse"
+        @mouseleave="handleMouseLeave"
+      >
         <span>零部件制造产业</span>
       </div>
-      <div class="detail_product" @mouseover="handleMouse" @mouseleave="handleMouseLeave">
+      <div
+        class="detail_product"
+        :style="{ 'background-color': activeIndex === 7 ? '#45b3e0' : 'transparent' }"
+        @mouseover="handleMouse"
+        @mouseleave="handleMouseLeave"
+      >
         <span>综合能源服务业务</span>
       </div>
-      <div class="detail_product" @mouseover="handleMouse" @mouseleave="handleMouseLeave">
+      <div
+        class="detail_product"
+        :style="{ 'background-color': activeIndex === 8 ? '#45b3e0' : 'transparent' }"
+        @mouseover="handleMouse"
+        @mouseleave="handleMouseLeave"
+      >
         <span>智慧配用电业务</span>
       </div>
     </div>
@@ -174,10 +229,12 @@ const handleMouseLeave = () => {
   height: 614px;
   position: absolute;
   z-index: -100;
+  transition: 0.2s;
 }
 .productSeries img {
   height: 614px;
   width: 100%;
+  transition: 0.1s;
 }
 .detail_content .detail_product {
   border: 1px #1e8dce solid;
@@ -187,20 +244,18 @@ const handleMouseLeave = () => {
   margin-bottom: 25px;
   text-align: center;
   line-height: 75px;
-  z-index: 10;
+  z-index: 100;
+  cursor: pointer;
+  transition: 0.1s;
 }
 .detail_product span {
+  display: block;
   font-size: 30px;
   font-family: "AlibabaPuHuiTi_2_35_Thin", sans-serif;
   color: #ffffff;
+  z-index:-100;
 }
-.active {
-  border: none !important;
-  background-color: #45b3e0;
-}
-.active span {
-  color: #ffffff;
-}
+
 .detail_page {
   margin-top: 150px;
   height: 1734px;
