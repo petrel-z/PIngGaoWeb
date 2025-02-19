@@ -41,9 +41,6 @@ const footer = ref([
   background-size: cover;
 }
 .right_button {
- width: 100px;
- height: 100px;
- background-color: #bbbbbb;
  position: absolute;
  top: 1400px;
  right: 0;
