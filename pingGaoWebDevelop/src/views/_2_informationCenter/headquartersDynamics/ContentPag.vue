@@ -75,15 +75,17 @@ const props = defineProps({
   background-color: #003792;
   border-radius: 10px;
   overflow: hidden;
+  padding: 5% 5%;
 }
 
 .content-left {
-  width: 35%;
+  width: 48%;
   height: auto;
+  margin-right: 4%;
 }
 
 .content-right {
-  width: 35%;
+  width: 48%;
 }
 
 .title {
@@ -97,7 +99,7 @@ const props = defineProps({
 }
 
 .hr {
-  margin: 28px 0;
+  margin: 5% 0;
 }
 
 .content-text {
@@ -126,7 +128,7 @@ const props = defineProps({
   background-color: #45b3e0;
   width: 10em;
   height: auto;
-  margin-top: 3em;
+  margin-top: 3%;
   border-radius: 5px;
   cursor: pointer;
 }
@@ -138,7 +140,7 @@ const props = defineProps({
   }
   .content-btn {
     margin: 0 auto;
-    margin-bottom: 2em;
+    margin-top: 5%;
   }
   .content-left {
     margin-top: 2em;

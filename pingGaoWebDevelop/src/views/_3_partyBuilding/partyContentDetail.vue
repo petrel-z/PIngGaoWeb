@@ -110,6 +110,8 @@ const props = defineProps({
 
 <style lang="less" scoped>
 .partyContentDetail {
+  overflow: hidden;
+
   position: relative;
 
   padding: 0 11%;
@@ -126,7 +128,6 @@ const props = defineProps({
   .spirit-list {
     width: 100%;
     height: auto;
-
     .list-item {
       margin-bottom: 20px;
     }

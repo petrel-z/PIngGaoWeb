@@ -49,7 +49,7 @@ const flag = ref(false);
   width: 100%;
   position: relative;
   background-size: cover;
-  background-image: url("../../assets/imgs/资讯中心/videosBg.png");
+  background-image: url("../../../assets/imgs/_2_informationCenterImgs/videosBg.png");
 }
 
 .content {

@@ -33,16 +33,12 @@ const footer = ref([
 </script>
 
 <template>
+  <div class="header">
+    <ComHeader :content="content" :footer="footer" />
+  </div>
+  <router-view />
   <div>
-    <div class="header">
-      <div style="height: 100%">
-        <ComHeader :content="content" :footer="footer" />
-      </div>
-    </div>
-    <router-view />
-    <div>
-      <Footer />
-    </div>
+    <Footer />
   </div>
 </template>
 

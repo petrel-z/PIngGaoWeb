@@ -54,6 +54,7 @@ import CommitmentSpan from "@/components/CommitmentSpan.vue";
 
     .top-span {
       .top-span-content {
+
         margin-top: 22px;
 
         p {
@@ -61,6 +62,9 @@ import CommitmentSpan from "@/components/CommitmentSpan.vue";
           font-family: "AlibabaPuHuiTi_2_45_Light";
           color: #ffffff;
           line-height: 1.85;
+          white-space: nowrap;
+          text-overflow: ellipsis;
+
         }
 
         .enter-bidding {

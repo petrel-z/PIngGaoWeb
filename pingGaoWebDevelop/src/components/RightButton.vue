@@ -1,4 +1,22 @@
 <script setup>
+const backToTopBtn = document.querySelector('.top');
+
+// 点击按钮时滚动到顶部
+backToTopBtn.addEventListener('click', () => {
+  window.scrollTo({
+    top: 0,
+    behavior: 'smooth' // 平滑滚动
+  });
+});
+
+// 根据滚动位置显示或隐藏按钮
+window.addEventListener('scroll', () => {
+  if (window.scrollY > 300) {
+    backToTopBtn.classList.remove('hide');
+  } else {
+    backToTopBtn.classList.add('hide');
+  }
+});
 </script>
 <template>
   <div class="button">
@@ -38,7 +56,9 @@
   color: rgb(137, 137, 137);
   margin-top: -16px;
 }
-.top .icon{
+.box .icon{
+  font-size:40px;
   font-weight: 600;
+  margin-bottom:5px;
 }
 </style>

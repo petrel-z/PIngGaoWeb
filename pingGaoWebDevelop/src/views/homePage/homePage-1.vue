@@ -4,10 +4,10 @@
   <div class="homePage">
     <div class="top">
       <div class="top-left">
-        <img src="../../assets/imgs/_11_welcomeImgs/welcome.png" alt="">
+        <img src="../../assets/imgs/_11_welcomeImgs/welcome.png" alt="" />
       </div>
       <div class="top-right">
-        <img src="../../assets/imgs/_11_welcomeImgs/header.png" alt="">
+        <img src="../../assets/imgs/_11_welcomeImgs/header.png" alt="" />
       </div>
     </div>
     <div class="center">
@@ -53,7 +53,6 @@
       position: absolute;
       top: 0;
       left: 0;
-
     }
 
     .top-right {
@@ -100,6 +99,11 @@
         font-size: 20px;
         font-family: "AlibabaPuHuiTi_2_65_Medium";
         color: rgb(0, 111, 193);
+      }
+
+      .button:hover {
+        background-color: rgb(0, 111, 193);
+        color: #fff;
       }
     }
 

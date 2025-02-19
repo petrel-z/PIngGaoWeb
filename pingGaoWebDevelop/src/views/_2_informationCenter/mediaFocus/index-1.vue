@@ -85,7 +85,7 @@ function handleClick(e) {
 </script>
 
 <template>
-  <div style="position: relative">
+  <div style="position: relative; overflow: hidden;">
     <div class="body">
       <div>
         <div style="padding-top: 64px">

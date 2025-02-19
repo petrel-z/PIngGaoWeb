@@ -18,7 +18,7 @@ const props = defineProps({
   },
   img: {
     type: String,
-    default: "src\\assets\\imgs\\资讯中心\\LehYXF.png", //
+    default: "@/assets/imgs/_2_informationCenterImgs/LehYXF.png", //
   },
   btnText: {
     type: String,

@@ -54,7 +54,7 @@ import MyTitle from "@/components/MyTitle.vue";
   position: relative;
   margin: auto;
   width: 100%;
-  padding: 64px 210px;
+  padding: 64px 11%;
   border-radius: 20px;
   background-color: #f7f8f8;
   z-index: -100;
@@ -86,7 +86,7 @@ import MyTitle from "@/components/MyTitle.vue";
   font-family: "AlibabaPuHuiTi_2_65_Medium", sans-serif;
   color: rgb(0, 111, 193);
 }
-.info .hr{
+.info .hr {
   width: 40%;
   height: 1px;
   left: 32px;

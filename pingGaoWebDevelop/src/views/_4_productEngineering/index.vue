@@ -10,7 +10,6 @@
 </template>
 
 <script setup>
-import comHeaderFoot from "@/assets/imgs/_1_aboutPinggaoImgs/t6_topBar.png"
 defineOptions({
   name: "ProductEngineering",
 });
@@ -18,12 +17,13 @@ import { ref } from "vue";
 import ComHeader from "@/components/ComHeader.vue";
 import Footer from "@/components/Footer.vue";
 import imgPath from "@/assets/imgs/_4_productEngineeringImgs/头部轮播-04.png";
+import footerBg from "@/assets/imgs/_6_qualityAssuranceImgs/t6_topbar.png";
 const info = ref({
   title: "产品工程",
   content: "建设世界一流智慧电气装备集团",
   footer: "PG GROUP",
   imgPath: imgPath,
-  footerBg: comHeaderFoot
+  footerBg: footerBg,
 });
 
 const footer = ref([
@@ -32,7 +32,6 @@ const footer = ref([
 ]);
 </script>
 <style lang="less" scoped>
-
 .header {
   background-image: url("../../assets/imgs/_4_productEngineeringImgs/头部轮播-04.png");
   width: auto;

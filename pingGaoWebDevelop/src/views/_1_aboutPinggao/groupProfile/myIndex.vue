@@ -148,8 +148,8 @@ import MyTitle from "@/components/MyTitle.vue";
   position: relative;
   margin: auto;
   width: 100%;
-  height:3560px;
-  padding: 64px 204px;
+  height: 3560px;
+  padding: 64px 11%;
   border-radius: 20px;
   background-color: #fff;
   z-index: -100;
@@ -163,8 +163,7 @@ import MyTitle from "@/components/MyTitle.vue";
   height: 232px;
   left: 0;
   background-color: #f4f4f4;
-  padding: 85px 210px;
-  border-right: 2px solid #8abade;
+  padding: 85px 11%;
 }
 .introduce_content {
   position: relative;
@@ -194,11 +193,14 @@ import MyTitle from "@/components/MyTitle.vue";
 .introduce_content_last {
   border-right: 2px solid #8abade;
 }
+
 .text_word {
   display: flex;
   margin-top: 335px;
 }
+
 .text_word .word_left {
+
   display: flex;
   width: 55%;
   font-size: 20px;
@@ -206,29 +208,37 @@ import MyTitle from "@/components/MyTitle.vue";
   color: rgb(89, 87, 87);
   line-height: 1.85;
 }
+
 .text_word .word_left p {
   display: block;
   margin-bottom: 40px;
 }
+
 .text_word .text-section {
   flex: 2;
   padding: 20px;
 }
+
 .text_word .img_right {
-  margin-left: 44px;
+  margin-left: 10px;
   width: 45%;
-  height: 426px;
+  height: 365px;
   background-size: contain;
+  padding-top: 10px;
 }
+
 .text_word .img_right img {
   margin-left: 44px;
   width: 100%;
-  height: 426px;
+  height: 365px;
 }
+
 .key {
   width: 100%;
   margin-bottom: 120px;
+  margin-top: 40px;
 }
+
 .key .key_title {
   font-size: 32px;
   font-family: "AlibabaPuHuiTi_2_65_Medium", sans-serif;
@@ -236,50 +246,58 @@ import MyTitle from "@/components/MyTitle.vue";
   text-align: center;
   margin-bottom: 35px;
 }
+
 .key .key_content {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
 }
+
 .key_content_one {
   margin-bottom: 10px;
   position: relative;
   width: 491px;
   height: 161px;
-  background-image: url(src\\assets\\imgs\\_1_aboutPinggaoImgs\\content-1.png);
+  background-image: url("@/assets/imgs/_1_aboutPinggaoImgs/content-1.png");
 }
+
 .key_content_two {
   margin-bottom: 10px;
   position: relative;
   width: 491px;
   height: 161px;
-  background-image: url(src\\assets\\imgs\\_1_aboutPinggaoImgs\\content-2.png);
+  background-image: url("@/assets/imgs/_1_aboutPinggaoImgs/content-2.png");
 }
+
 .key_content_three {
   margin-bottom: 10px;
   position: relative;
   width: 491px;
   height: 161px;
-  background-image: url(src\\assets\\imgs\\_1_aboutPinggaoImgs\\content-3.png);
+  background-image: url("@/assets/imgs/_1_aboutPinggaoImgs/content-3.png");
 }
+
 .key_content_four {
   position: relative;
   width: 491px;
   height: 161px;
-  background-image: url(src\\assets\\imgs\\_1_aboutPinggaoImgs\\content-4.png);
+  background-image: url("@/assets/imgs/_1_aboutPinggaoImgs/content-4.png");
 }
+
 .key_content_five {
   position: relative;
   width: 491px;
   height: 161px;
-  background-image: url(src\\assets\\imgs\\_1_aboutPinggaoImgs\\content-5.png);
+  background-image: url("@/assets/imgs/_1_aboutPinggaoImgs/content-5.png");
 }
+
 .key_content_six {
   position: relative;
   width: 491px;
   height: 161px;
-  background-image: url(src\\assets\\imgs\\_1_aboutPinggaoImgs\\content-6.png);
+  background-image: url("@/assets/imgs/_1_aboutPinggaoImgs/content-6.png");
 }
+
 .key_content_h {
   left: 188px;
   top: 32px;
@@ -288,6 +306,7 @@ import MyTitle from "@/components/MyTitle.vue";
   font-family: "AlibabaPuHuiTi_2_65_Medium", sans-serif;
   color: rgb(35, 24, 21);
 }
+
 .key_content_text {
   left: 188px;
   top: 71px;
@@ -296,6 +315,7 @@ import MyTitle from "@/components/MyTitle.vue";
   font-family: "AlibabaPuHuiTi_2_45_Light", sans-serif;
   color: rgb(89, 87, 87);
 }
+
 .basic_culture_title {
   font-size: 32px;
   font-family: "AlibabaPuHuiTi_2_65_Medium", sans-serif;

@@ -37,16 +37,12 @@ const footer = ref([
 </script>
 
 <template>
+  <div class="header">
+    <ComHeader :content="content" :footer="footer" />
+  </div>
+  <router-view />
   <div>
-    <div class="header">
-      <div style="height: 100%">
-        <ComHeader :content="content" :footer="footer" />
-      </div>
-    </div>
-    <router-view />
-    <div>
-      <Footer />
-    </div>
+    <Footer />
   </div>
 </template>
 
@@ -54,7 +50,7 @@ const footer = ref([
 .header {
   height: 68vh;
   min-width: 100%;
-  background-image: url("@/assets//imgs/_8_humanResourcesImgs/头部轮播-08.png");
+  background-image: url("@/assets/imgs/_8_humanResourcesImgs/头部轮播-08.png");
   background-size: cover;
 }
 </style>

@@ -2,15 +2,29 @@
 import MyTitle from "@/components/MyTitle.vue";
 import CommitmentSpan from "@/components/CommitmentSpan.vue";
 import MyContent from "@/components/F6_MyContent.vue";
+import { ref, onMounted } from "vue";
+const topDetailList = ref(null);
+const topTitle = ref(null);
+const topSpan = ref(null);
+onMounted(() => {
+  const topDetailListDom = topDetailList.value;
+  const topTitleDom = topTitle.value;
+  const topSpanDom = topSpan.value;
+  setTimeout(() => {
+    topTitleDom.classList.add("topTitleClass");
+    topDetailListDom.classList.add("topDetailListClass");
+    topSpanDom.classList.add("topSpanClass");
+  }, 100);
+})
 </script>
 
 <template>
-  <div class="quality-content">
+  <div class="quality-content" style="overflow: hidden;">
     <div class="content-top">
-      <div class="top-title">
+      <div ref="topTitle" class="top-title">
         <MyTitle :title="'质量体系'" :English="'Quality System'"></MyTitle>
       </div>
-      <div class="top-span">
+      <div ref="topSpan" class="top-span">
         <CommitmentSpan :title="'平高集团在中国电气行业率先导入国际先进的质量管理体系'">
           <div class="top-span-content">
             <p>
@@ -23,7 +37,7 @@ import MyContent from "@/components/F6_MyContent.vue";
           </div>
         </CommitmentSpan>
       </div>
-      <div class="top-detailList">
+      <div ref="topDetailList" class="top-detailList">
         <MyContent class="delete-border" :title="'质量文化'">
           <div class="right-text">
             <p>
@@ -69,12 +83,24 @@ import MyContent from "@/components/F6_MyContent.vue";
 
   .content-top {
     width: 100%;
+
     .top-title {
       margin-top: 60px;
       margin-bottom: 60px;
+      position: relative;
+      right: -100%;
+      transition: all 0.5s;
+    }
+
+    .topTitleClass {
+      right: 0; // 动画效果
     }
 
     .top-span {
+      position: relative;
+      left: -100%;
+      transition: all 0.5s;
+
       .top-span-content {
         margin-top: 30px;
 
@@ -86,8 +112,15 @@ import MyContent from "@/components/F6_MyContent.vue";
         }
       }
     }
-
+    .topSpanClass {
+      left: 0; // 动画效果
+    }
     .top-detailList {
+      margin-top: 35px;
+      position: relative;
+      right: -100%;
+      transition: all 0.5s;
+
       margin-top: 35px;
 
       .delete-border {
@@ -100,6 +133,7 @@ import MyContent from "@/components/F6_MyContent.vue";
         color: #595757;
         line-height: 1.85;
         text-align: justify;
+
         // white-space: nowrap;
         p {
           width: 100%;
@@ -108,9 +142,14 @@ import MyContent from "@/components/F6_MyContent.vue";
       }
     }
 
+    .topDetailListClass {
+      right: 0; // 动画效果
+    }
+
     .top-whiteSpan {
       width: 100%;
-      height: 730px;
+      // height: 730px;
+      height: 1050px;
     }
   }
 
@@ -121,6 +160,7 @@ import MyContent from "@/components/F6_MyContent.vue";
     height: 1013px;
     background-image: url("../../../assets/imgs/_6_qualityAssuranceImgs/t6_p1_contentBg.png");
     background-size: cover;
+    background-attachment: fixed;
   }
 }
 </style>

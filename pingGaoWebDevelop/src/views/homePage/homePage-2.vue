@@ -57,12 +57,71 @@ onMounted(() => {
 onUnmounted(() => {
   clearInterval(timer);
 });
+
+onMounted(() => {
+  const container = document.querySelector(".product_box");
+  const leftIcon = document.querySelector(".left_icon");
+  const rightIcon = document.querySelector(".right_icon");
+  const items1 = document.querySelectorAll(".product_detail");
+  const itemCount = items1.length;
+  const visibleItems = 3;
+  let currentIndex = 0;
+  let isAnimating = false;
+
+  // 确保元素存在
+  if (!container || !leftIcon || !rightIcon) {
+    console.error("One or more required elements not found.");
+    return;
+  }
+
+  // 添加CSS过渡
+  container.style.transition = "transform 0.5s cubic-bezier(0.4, 0, 0.2, 1)";
+
+  function updateCarousel() {
+    if (isAnimating) return;
+    isAnimating = true;
+
+    // 计算位移百分比（每个项目占33.333%）
+    const translateX = -currentIndex * (100 / visibleItems / 1.07);
+    container.style.transform = `translateX(${translateX}%)`;
+
+    // 重置动画状态
+    setTimeout(() => {
+      isAnimating = false;
+    }, 500);
+  }
+
+  function nextSlide1() {
+    if (currentIndex >= itemCount - visibleItems) {
+      // 到达最后时回到第一个
+      currentIndex = 0;
+    } else {
+      currentIndex++;
+    }
+    updateCarousel();
+    console.log(111); // 确保这行代码能够执行
+  }
+
+  function prevSlide1() {
+    if (currentIndex <= 0) {
+      // 到达第一个时跳到最后
+      currentIndex = itemCount - visibleItems;
+    } else {
+      currentIndex--;
+    }
+    updateCarousel();
+  }
+
+  // 添加按钮事件
+  rightIcon.addEventListener("click", nextSlide1);
+  leftIcon.addEventListener("click", prevSlide1);
+});
 </script>
 
 <template>
   <div class="home_page">
     <div class="header">
-      <div style="padding-top: 20px">
+      <div>
         <ComHeader :isfooter="false" :onlyHeaderFlag="true"></ComHeader>
       </div>
     </div>
@@ -127,37 +186,99 @@ onUnmounted(() => {
     </div>
     <hr style="border: 1px solid #80b7e0" />
     <div class="product_content">
-      <div class="product_content_box">
-        <div class="product_detail">
-          <div class="product_topImg">
-            <img src="@/assets/imgs/_10_homePageImgs/product1.png" alt="" />
+      <div class="product_box">
+        <div class="product_content_box">
+          <div class="product_detail product_detail_1">
+            <div class="product_topImg">
+              <img src="@/assets/imgs/_10_homePageImgs/product1.png" alt="" />
+            </div>
+            <div class="product_h">高压电器产业</div>
+            <div class="product_hr"></div>
+            <div class="product_p">复合式组合电器、罐式六氟化硫断路器、高压六氟化硫断路器…</div>
+            <div class="product_button"><span>查看详情</span></div>
           </div>
-          <div class="product_h">高压电器产业</div>
-          <div class="product_hr"></div>
-          <div class="product_p">复合式组合电器、罐式六氟化硫断路器、高压六氟化硫断路器…</div>
-          <div class="product_button"><span>查看详情</span></div>
-        </div>
-        <div class="product_detail">
-          <div class="product_topImg">
-            <img src="@/assets/imgs/_10_homePageImgs/product2.png" alt="" />
+          <div class="product_detail">
+            <div class="product_topImg">
+              <img src="@/assets/imgs/_10_homePageImgs/product2.png" alt="" />
+            </div>
+            <div class="product_h">运维检修业务</div>
+            <div class="product_hr"></div>
+            <div class="product_p">罩式馈线自动化终端、箱式馈线自动化终端、配电自动化站所终端…</div>
+            <div class="product_button"><span>查看详情</span></div>
           </div>
-          <div class="product_h">系统集成业务</div>
-          <div class="product_hr"></div>
-          <div class="product_p">罩式馈线自动化终端、箱式馈线自动化终端、配电自动化站所终端…</div>
-          <div class="product_button"><span>查看详情</span></div>
-        </div>
-        <div class="product_detail">
-          <div class="product_topImg">
-            <img src="@/assets/imgs/_10_homePageImgs/product3.png" alt="" />
+          <div class="product_detail">
+            <div class="product_topImg">
+              <img src="@/assets/imgs/_10_homePageImgs/product3.png" alt="" />
+            </div>
+            <div class="product_h">零部件制造产业</div>
+            <div class="product_hr"></div>
+            <div class="product_p">
+              气体回收净化业务、集中供气站、混气比检测仪、密度继电器校验仪…
+            </div>
+            <div class="product_button"><span>查看详情</span></div>
           </div>
-          <div class="product_h">零部件制造产业</div>
-          <div class="product_hr"></div>
-          <div class="product_p">气体回收净化业务、集中供气站、混气比检测仪、密度继电器校验仪…</div>
-          <div class="product_button"><span>查看详情</span></div>
+          <div class="product_detail">
+            <div class="product_topImg">
+              <img src="@/assets/imgs/_10_homePageImgs/product4.png" alt="" />
+            </div>
+            <div class="product_h">电锅炉及热储能业务</div>
+            <div class="product_hr"></div>
+            <div class="product_p">复合式组合电器、罐式六氟化硫断路器、高压六氟化硫断路器…</div>
+            <div class="product_button"><span>查看详情</span></div>
+          </div>
+          <div class="product_detail">
+            <div class="product_topImg">
+              <img src="@/assets/imgs/_10_homePageImgs/product5.png" alt="" />
+            </div>
+            <div class="product_h">电力储能业务</div>
+            <div class="product_hr"></div>
+            <div class="product_p">罩式馈线自动化终端、箱式馈线自动化终端、配电自动化站所终端…</div>
+            <div class="product_button"><span>查看详情</span></div>
+          </div>
+          <div class="product_detail">
+            <div class="product_topImg">
+              <img src="@/assets/imgs/_10_homePageImgs/product6.png" alt="" />
+            </div>
+            <div class="product_h">配电网产业</div>
+            <div class="product_hr"></div>
+            <div class="product_p">
+              气体回收净化业务、集中供气站、混气比检测仪、密度继电器校验仪…
+            </div>
+            <div class="product_button"><span>查看详情</span></div>
+          </div>
+          <div class="product_detail">
+            <div class="product_topImg">
+              <img src="@/assets/imgs/_10_homePageImgs/product7.png" alt="" />
+            </div>
+            <div class="product_h">系统集成业务</div>
+            <div class="product_hr"></div>
+            <div class="product_p">复合式组合电器、罐式六氟化硫断路器、高压六氟化硫断路器…</div>
+            <div class="product_button"><span>查看详情</span></div>
+          </div>
+          <div class="product_detail">
+            <div class="product_topImg">
+              <img src="@/assets/imgs/_10_homePageImgs/product8.png" alt="" />
+            </div>
+            <div class="product_h">智慧配用电业务</div>
+            <div class="product_hr"></div>
+            <div class="product_p">罩式馈线自动化终端、箱式馈线自动化终端、配电自动化站所终端…</div>
+            <div class="product_button"><span>查看详情</span></div>
+          </div>
+          <div class="product_detail">
+            <div class="product_topImg">
+              <img src="@/assets/imgs/_10_homePageImgs/product9.png" alt="" />
+            </div>
+            <div class="product_h">综合能源服务业务</div>
+            <div class="product_hr"></div>
+            <div class="product_p">
+              气体回收净化业务、集中供气站、混气比检测仪、密度继电器校验仪…
+            </div>
+            <div class="product_button"><span>查看详情</span></div>
+          </div>
         </div>
-        <div class="left_icon"><span class="icon iconfont">&#xe607;</span></div>
-        <div class="right_icon"><span class="icon iconfont">&#xe606;</span></div>
       </div>
+      <div class="left_icon"><span class="icon iconfont">&#xe607;</span></div>
+      <div class="right_icon"><span class="icon iconfont">&#xe606;</span></div>
     </div>
     <div class="company_introduction">
       <div class="bg_img">
@@ -286,26 +407,6 @@ onUnmounted(() => {
   position: relative;
 }
 
-.product_topImg:before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-size: cover;
-  background-position: center;
-  transition: opacity 0.3s ease; /* 设置过渡效果 */
-  opacity: 0.3; /* 默认透明 */
-  z-index: -1; /* 确保在图片下方 */
-}
-
-.product_topImg:hover:before {
-  background-image: url("src/assets/imgs/_10_homePageImgs/circle.png"); /* 悬停时的背景图片 */
-  opacity: 1; /* 显示背景图片 */
-}
-
-
 .header {
   height: 68vh;
   // min-width: 1920px;
@@ -412,42 +513,94 @@ onUnmounted(() => {
   width: 100%;
   height: 922px;
   display: flex;
-  justify-content: space-between;
-  padding-top: 120px;
+  padding-top: 80px;
   position: relative;
+  justify-content: space-evenly;
+  margin-bottom: 40px;
+
 }
+
+.product_box {
+  /* overflow: hidden; */
+  width: 94%;
+  min-width: 1920px;
+  margin: auto;
+  padding-left: 30px;
+  padding-right: 70px;
+
+}
+
 .product_content_box {
   display: flex;
-  width: 80%;
-  justify-content: space-between;
+  width: 95%;
   margin: auto;
 }
+
 .product_detail {
-  height: 100%;
-  width: 33%;
+  flex-shrink: 0;
+  width: calc(33.333%);
+  /* 每个图标占据三分之一的视口宽度 */
+  height: 700px;
+  margin: 10px;
+  color: white;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.3s ease;
 }
+
 .product_topImg {
   position: relative;
   width: 420px;
   height: 420px;
   margin: auto;
+  cursor: pointer;
+  z-index: 1000;
 }
+.product_topImg img {
+  margin-left: -5px;
+  margin: auto;
+}
+.product_topImg:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  transition: opacity 0.3s ease;
+  /* 设置过渡效果 */
+  opacity: 0.3;
+  /* 默认透明 */
+  z-index: -1;
+  /* 确保在图片下方 */
+}
+
+.product_topImg:hover:before {
+  background-image: url("@/assets/imgs/_10_homePageImgs/circle.png");
+  /* 悬停时的背景图片 */
+  opacity: 1;
+}
+
 .product_h {
   font-size: 40px;
   font-family: "AlibabaPuHuiTi_2_55_Regular", sans-serif;
   color: rgb(0, 111, 193);
   text-align: center;
 }
+
 .product_hr {
   width: 106px;
   height: 2px;
   background-color: #2081c9;
   text-align: center;
-  // margin: 20px 0px;
+  margin: 20px 0px;
   margin: auto;
   margin-top: 10px;
   margin-bottom: 15px;
 }
+
 .product_p {
   width: 346px;
   height: 72px;
@@ -457,14 +610,16 @@ onUnmounted(() => {
   text-align: center;
   margin: auto;
 }
+
 .product_button {
   width: 139px;
   height: 32px;
   margin: auto;
   text-align: center;
-  background-image: url("src\\assets\\imgs\\_10_homePageImg\\button.png");
+  background-image: url("@/assets/imgs/_10_homePageImgs/button.png");
   margin-top: 30px;
 }
+
 .product_button span {
   font-size: 18px;
   line-height: 32px;
@@ -477,13 +632,17 @@ onUnmounted(() => {
   position: absolute;
   font-size: 70px;
   color: #006fc1;
+  z-index: 100;
+  cursor: pointer;
 }
 .right_icon .icon {
   position: absolute;
   font-size: 70px;
   top: 320px;
-  right: 60px;
+  right: 50px;
   color: #006fc1;
+  z-index: 100;
+  cursor: pointer;
 }
 .company_introduction {
   position: relative;
@@ -614,7 +773,12 @@ onUnmounted(() => {
 .great_flag_content .content_detail {
   width: 33%;
   height: 575px;
-  background-color: #fff;
+  background-color: #ffffff;
+  transition: 0.5s;
+  cursor: pointer;
+}
+.great_flag_content .content_detail:hover {
+  transform: scale(1.02);
 }
 
 .great_flag_content .bottom_text {
@@ -680,6 +844,11 @@ onUnmounted(() => {
   background-color: #fff;
   padding-top: 48px;
   padding-left: 40px;
+  transition: 0.5s;
+  cursor: pointer;
+}
+.great_flag_content .content_detail_text:hover {
+  transform: scale(1.02);
 }
 .great_flag .top_img img {
   width: 100%;

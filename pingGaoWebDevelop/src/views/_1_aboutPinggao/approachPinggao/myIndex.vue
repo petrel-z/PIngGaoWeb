@@ -31,8 +31,8 @@ import MyButton from "@/components/MyButton.vue";
 .approachPinggao {
   position: relative;
   margin: auto;
-  width:100%;
-  padding: 64px 210px;
+  width: 100%;
+  padding: 64px 11%;
   border-radius: 20px;
   background-color: #fff;
   z-index: -100;

@@ -1,5 +1,5 @@
 <script setup>
-import { ref } from "vue";
+import { onMounted, ref } from "vue";
 let hover = ref(false);
 const props = defineProps({
   month: {
@@ -68,38 +68,52 @@ const props = defineProps({
     default: "#fff", // 默认 右侧字体悬停颜色为白色
   },
 });
+
+const items = ref(null);
+onMounted(() => {
+  // 获取目标元素容器
+  const targetContainer = items.value;
+  if (targetContainer) {
+    // 监听页面滚动事件
+    window.addEventListener('scroll', () => {
+      if (!targetContainer) return;
+      // 获取元素顶部距离页面顶部的距离
+      const elementTop = targetContainer.getBoundingClientRect().top;
+      // 获取窗口的高度
+      const windowHeight = window.innerHeight;
+
+      // 判断元素是否进入可视区域
+      if (elementTop < windowHeight) {
+        targetContainer.classList.add('show');
+      } else {
+        targetContainer.classList.remove('show');
+      }
+    });
+  }
+});
+
+
 </script>
 
 <template>
-  <div
-    class="item"
-    :style="{
-      '--bgColor1': props.bgColor1,
-      '--bgColor2': props.bgColor2,
-      '--leftFontColor': props.leftFontColor,
-      '--leftFontColorHover': props.leftFontColorHover,
-      '--rightFontColorHover': props.rightFontColorHover,
-      '--titleFont': props.titleFont,
-      '--textFont': props.textFont,
-      '--titleFontColor': props.titleFontColor,
-      '--textFontColor': props.textFontColor,
-    }"
-  >
-    <div
-      class="left"
-      @mouseenter="hover = true"
-      @mouseleave="hover = false"
-      :style="{ backgroundColor: hover ? 'var(--bgColor2)' : 'var(--bgColor1)' }"
-    >
+  <div ref="items" class="item" :style="{
+    '--bgColor1': props.bgColor1,
+    '--bgColor2': props.bgColor2,
+    '--leftFontColor': props.leftFontColor,
+    '--leftFontColorHover': props.leftFontColorHover,
+    '--rightFontColorHover': props.rightFontColorHover,
+    '--titleFont': props.titleFont,
+    '--textFont': props.textFont,
+    '--titleFontColor': props.titleFontColor,
+    '--textFontColor': props.textFontColor,
+  }">
+    <div class="left" @mouseenter="hover = true" @mouseleave="hover = false"
+      :style="{ backgroundColor: hover ? 'var(--bgColor2)' : 'var(--bgColor1)' }">
       <span class="month">{{ props.month }}</span>
       <span class="year">{{ props.year }}</span>
     </div>
-    <div
-      class="right"
-      @mouseenter="hover = true"
-      @mouseleave="hover = false"
-      :style="{ backgroundColor: hover ? 'var(--bgColor2)' : 'var(--bgColor1)' }"
-    >
+    <div class="right" @mouseenter="hover = true" @mouseleave="hover = false"
+      :style="{ backgroundColor: hover ? 'var(--bgColor2)' : 'var(--bgColor1)' }">
       <div class="title">
         {{ props.title }}
       </div>
@@ -119,6 +133,15 @@ const props = defineProps({
   height: 100%;
 }
 
+/* 元素进入可视区域时的样式 */
+.show .left {
+  left: 0;
+}
+
+.show .right {
+  right: 0;
+}
+
 .item:hover .month {
   border-bottom: 2px solid var(--leftFontColorHover);
 }
@@ -127,12 +150,14 @@ const props = defineProps({
 .item:hover .year {
   color: var(--leftFontColorHover);
 }
+
 .item:hover .month,
 .item:hover .year,
 .item:hover .right .title,
 .item:hover .right .text {
   color: var(--leftFontColorHover);
 }
+
 /* .item:hover .right .title,
 .item:hover .right .text {
   color: var(--rightFontColorHover);
@@ -141,13 +166,15 @@ const props = defineProps({
 .item:hover .left {
   background-color: var(--bgColor2);
 }
+
 .month {
   font-family: "Avenir Black";
   color: var(--leftFontColor);
   font-size: 3rem;
   line-height: 1.85;
   text-align: right;
-  border-bottom: 2px solid var(--leftFontColor); /*底部蓝色线条*/
+  border-bottom: 2px solid var(--leftFontColor);
+  /*底部蓝色线条*/
   display: block;
   width: 100%;
   overflow: hidden;
@@ -166,6 +193,11 @@ const props = defineProps({
 }
 
 .left {
+  position: relative;
+  left: -100%;
+  /* top: 0; */
+  transition: left 0.5s ease;
+
   width: 18%;
   height: auto;
   margin-right: 2%;
@@ -179,6 +211,11 @@ const props = defineProps({
 }
 
 .right {
+  position: relative;
+  right: -100%;
+  /* top: 0; */
+  transition: right 0.5s ease;
+
   width: 80%;
   height: auto;
   background-color: #def1fb;
@@ -188,6 +225,7 @@ const props = defineProps({
   flex-direction: column;
   justify-content: center;
 }
+
 .title {
   /* font-size: 28px; */
   font-family: var(--titleFont);
@@ -212,9 +250,11 @@ const props = defineProps({
   .left {
     text-align: center;
   }
+
   .month {
     text-align: center;
   }
+
   .year {
     text-align: center;
   }

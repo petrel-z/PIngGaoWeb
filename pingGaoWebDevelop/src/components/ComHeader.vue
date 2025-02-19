@@ -16,6 +16,7 @@ import footerBg from "@/assets/imgs/_6_qualityAssuranceImgs/t6_topBar.png";
 let hidden = ref(true);
 let inputFlag = ref(false);
 let searchFlag = ref(false);
+let headerBottomFlag = ref(true);
 const header = ref([
   { name: "关于平高", path: "/aboutPingGao" },
   { name: "资讯中心", path: "/informationCenter" },
@@ -270,48 +271,69 @@ const props = defineProps({
       '--footerColor': props.css.footerColor,
     }"
   >
-    <div id="header-nav">
-      <div id="header-nav-top">
-        <ul>
-          <li v-for="item in header" :key="item.name">
-            <router-link @mouseenter="hoverContent(item.name)" :to="item.path">{{
-              item.name
-            }}</router-link>
-          </li>
-        </ul>
+    <div
+      id="header-nav"
+      @mouseenter="headerBottomFlag = false"
+      @mouseleave="headerBottomFlag = true"
+    >
+      <div class="log-img">
+        <img src="../assets/imgs/common/logo-img.png" alt="" />
       </div>
-      <img id="header-nav-logo" src="../assets/imgs/common/logoImgAll.png" alt="" />
-      <div id="header-nav-bottom">
-        <div @mouseleave="inputFlag = false" v-show="inputFlag" class="header-nav-bottom-item">
-          <i class="iconfont icon-sousuo"></i>
-          <input
-            class="header-nav-bottom-input"
-            type="text"
-            @keydown.enter="searchFlag = true"
-            placeholder="输入关键词"
-          />
-        </div>
-        <div
-          v-show="!inputFlag"
-          @mouseenter="
-            () => {
-              inputFlag = true;
-              hidden = true;
-            }
-          "
-          class="header-nav-bottom-item"
-        >
-          搜索
-          <i class="iconfont icon-sousuo" style="font-size: 1.125rem; color: #fff" />
+      <div style="flex: 1 1 auto">
+        <div id="header-nav-top">
+          <div class="log-title">
+            <div class="log-title-text">中国电气装备</div>
+            <div class="log-title-english">China Electrical Equipment</div>
+          </div>
+          <div class="header-nav-top-bar">
+            <i class="iconfont icon-a-MenuBar-show bar-icon"></i>
+            <ul class="header-nav-top-bar-ul">
+              <li v-for="item in header" :key="item.name">
+                <router-link @mouseenter="hoverContent(item.name)" :to="item.path">{{
+                  item.name
+                }}</router-link>
+              </li>
+            </ul>
+          </div>
         </div>
 
-        <div class="header-nav-bottom-item">
-          邮箱
-          <i class="iconfont icon-youxiang" style="font-size: 1.125rem; color: #fff" />
-        </div>
-        <div class="header-nav-bottom-item">
-          CN
-          <i class="iconfont icon-repeat" style="font-size: 1.125rem"></i>
+        <div class="header-nav-bottom" :class="{ hidden: headerBottomFlag }">
+          <div id="header-nav-bottom-left">
+            <div class="log-bottom-text">平 高 集 团 有 限 公 司</div>
+            <div class="log-bottom-english">PINGGAO GROUP CO.,LTD.</div>
+          </div>
+          <div id="header-nav-bottom-right">
+            <div @mouseleave="inputFlag = false" v-show="inputFlag" class="header-nav-bottom-item">
+              <i class="iconfont icon-sousuo"></i>
+              <input
+                class="header-nav-bottom-input"
+                type="text"
+                @keydown.enter="searchFlag = true"
+                placeholder="输入关键词"
+              />
+            </div>
+            <div
+              v-show="!inputFlag"
+              @mouseenter="
+                () => {
+                  inputFlag = true;
+                  hidden = true;
+                }
+              "
+              class="header-nav-bottom-item"
+            >
+              搜索
+              <i class="iconfont icon-sousuo" style="font-size: 1.125rem" />
+            </div>
+            <div class="header-nav-bottom-item">
+              邮箱
+              <i class="iconfont icon-youxiang" style="font-size: 1.125rem" />
+            </div>
+            <div class="header-nav-bottom-item">
+              CN
+              <i class="iconfont icon-repeat" style="font-size: 1.125rem"></i>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -329,7 +351,7 @@ const props = defineProps({
             <div class="header-nav-hover-content-title">
               {{ hoverText.content.title }}
             </div>
-            <hr style="display: inline-block; width: 58px; border: 2px solid rgb(35, 24, 21)" />
+            <hr style="display: inline-block; width: 5%; border: 0.1rem solid rgb(35, 24, 21)" />
             <div class="header-nav-hover-content-text">
               {{ hoverText.content.content }}
             </div>
@@ -347,10 +369,11 @@ const props = defineProps({
                 </li>
               </ul>
             </div>
-            <div
-              class="right-right"
-              :style="{ 'background-image': `url(${hoverText.content.imgPath})` }"
-            ></div>
+            <div class="right-right">
+              <div>
+                <img :src="hoverText.content.imgPath" alt="" />
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -365,7 +388,7 @@ const props = defineProps({
         >
           <div class="header-nav-search-content-left">
             <div class="header-nav-search-content-title">搜索结果</div>
-            <hr style="display: inline-block; width: 58px; border: 2px solid rgb(35, 24, 21)" />
+            <hr style="display: inline-block; width: 5%; border: 0.1rem solid rgb(35, 24, 21)" />
             <div class="header-nav-search-content-text">
               {{ hoverText.content.content }}
             </div>
@@ -395,10 +418,10 @@ const props = defineProps({
       </div>
     </div>
 
-    <div v-if="!props.onlyHeaderFlag" style="margin: 0 100px">
+    <div v-if="!props.onlyHeaderFlag" class="header-body-box">
       <div class="header-body">
         <div class="header-body-title">{{ props.content.title }}</div>
-        <hr class="header-body-hr" style="width: 50px" />
+        <hr class="header-body-hr" style="width: 5%" />
         <div class="header-body-content">{{ props.content.content }}</div>
         <div class="header-body-footer">{{ props.content.footer }}</div>
       </div>
@@ -417,25 +440,94 @@ const props = defineProps({
 </template>
 
 <style scoped>
-#header-nav-logo {
-  width: 100%;
+.bar-icon {
+  display: none;
 }
 #header {
   position: relative;
   width: auto;
   height: 100%;
-  font-size: 1rem;
+  font-size: 0.8rem;
   font-family: "AlibabaPuHuiTi_2_55_Regular";
 }
 #header-nav {
   position: relative;
   height: auto;
-  margin: 0 5em;
+  padding: 1% 5em 0 5em;
+  display: flex;
+  box-sizing: content-box;
+  cursor: pointer;
+  height: 20%;
+}
+
+#header-nav:hover {
+  background: #fff;
+  color: black;
+}
+
+#header-nav:hover .header-nav-bottom-item,
+#header-nav:hover .header-nav-bottom-input,
+#header-nav:hover #header-nav-top li a,
+#header-nav:hover .log-title-text,
+#header-nav:hover .log-title-english,
+#header-nav:hover .log-bottom-text,
+#header-nav:hover .log-bottom-english,
+#header-nav:hover .header-nav-bottom-input::placeholder,
+#header-nav:hover i {
+  color: black;
+}
+
+#header-nav:hover #header-nav-top,
+#header-nav:hover .header-nav-bottom-input,
+#header-nav:hover .header-nav-bottom-item {
+  border-color: black;
 }
 
 #header-nav-top {
   text-align: right;
-  transform: translateY(100%);
+  /* transform: translateY(150%); */
+  display: flex;
+  border-bottom: 0.05rem solid #fff;
+  padding-bottom: 0.3%;
+  flex: 1 1 auto;
+}
+
+.log-img {
+  width: 4.5%;
+  margin-right: 1%;
+}
+
+.log-img img {
+  width: 100%;
+  height: auto;
+}
+
+.log-title {
+  text-align: start;
+}
+
+.log-title-text {
+  color: #fff;
+  font-family: "AalibabaPuHuiTi_2_65_Medium";
+  font-size: 1.91rem;
+  line-height: 1.2;
+  text-align: start;
+}
+
+.log-title-english {
+  color: #fff;
+  font-family: "Avenir";
+  font-size: 0.763rem;
+  line-height: 1.5;
+  font-size: 0.8rem;
+  text-align: start;
+}
+
+.header-nav-top-bar {
+  flex: 1 1 auto;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
 }
 
 #header-nav-top ul {
@@ -443,6 +535,7 @@ const props = defineProps({
   margin: 0;
   padding: 0;
   align-items: center;
+  justify-content: flex-end;
 }
 
 #header-nav-top li {
@@ -457,22 +550,51 @@ const props = defineProps({
 #header-nav-top a {
   display: block;
   text-align: right;
-  padding: 0 0 0 15px;
+  padding: 0 0 0 1rem;
   /* height: 100%; */
   color: #fff;
   /* text-decoration: none; */
   transition: all 0.3s ease;
+  font-size: 1.1rem;
 }
 
 #header-nav-top a:hover {
   color: #409eff;
 }
 
-#header-nav-bottom {
+.header-nav-bottom {
+  height: 45%;
+  display: flex;
+  align-items: center;
+  transition: all 0.3s ease;
+  overflow: hidden;
+}
+
+#header-nav-bottom-left {
+  text-align: start;
+}
+
+.log-bottom-text {
+  font-size: 1.5rem;
+  font-family: "AlibabaPuHuiTi_2_55_Regular";
+  color: #fff;
+  line-height: 1.2;
+  text-align: start;
+}
+
+.log-bottom-english {
+  font-size: 1.05rem;
+  font-family: "Avenir";
+  color: rgba(255, 0.6);
+  line-height: 1.2;
+  color: #fff;
+}
+
+#header-nav-bottom-right {
+  flex: 1 1 auto;
   display: flex;
   justify-content: flex-end;
   align-items: center;
-  transform: translateY(-100%);
   position: relative;
   z-index: 1000;
 }
@@ -485,15 +607,15 @@ const props = defineProps({
   padding: 0 1rem;
   width: auto;
   text-align: center;
-  margin-left: 20px;
+  margin-left: 1rem;
   cursor: pointer;
-  border: 1px solid #fff;
-  border-radius: 20px;
+  border: 0.05rem solid #fff;
+  border-radius: 1.2rem;
   font-family: "AlibabaPuHuiTi_2_45_Light";
-  font-size: 1.125rem;
+  font-size: 0.8rem;
   transition: all 0.3s ease;
   flex: 0 0 auto;
-  height: 4vh;
+  height: 3vh;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -502,13 +624,15 @@ const props = defineProps({
 .header-nav-bottom-input {
   background-color: transparent;
   border: none;
-  padding: 8px;
+  /* padding: 0.05rem; */
   color: #fff;
-  height: 4vh;
+  height: 100%;
 }
 
 .header-nav-bottom-input::placeholder {
   color: #fff;
+  font-size: 0.8rem;
+  font-family: "AlibabaPuHuiTi_2_45_Light";
 }
 
 .header-nav-bottom-input:focus {
@@ -526,9 +650,9 @@ const props = defineProps({
 .header-nav-hover-content,
 .header-nav-search-content {
   position: absolute;
-  top: -2vh;
+  top: -0.2vh;
   width: 100%;
-  height: 50vh;
+  height: auto;
   z-index: 999;
   cursor: pointer;
   transition: all 0.3s ease;
@@ -542,7 +666,7 @@ const props = defineProps({
 
 .header-nav-hover-content-left,
 .header-nav-search-content-left {
-  flex: 1 1 50%;
+  flex: 1 1 40%;
   text-align: right;
   padding-right: 3%;
   padding-top: 3em;
@@ -578,7 +702,7 @@ const props = defineProps({
 
 .header-nav-hover-content-right,
 .header-nav-search-content-right {
-  flex: 1 1 50%;
+  flex: 1 1 60%;
   background-image: url("../assets/imgs/common/headerHoverBg-2.png");
   background-size: cover;
   padding-left: 2.5%;
@@ -603,7 +727,7 @@ const props = defineProps({
   font-family: "AlibabaPuHuiTi_2_55_Regular";
   color: rgb(128, 127, 127);
   line-height: 1.87;
-  border-radius: 5px;
+  border-radius: 0.4rem;
   background-color: rgb(201, 202, 202);
   margin-right: 1em;
   cursor: pointer;
@@ -621,7 +745,7 @@ const props = defineProps({
   line-height: 1.2;
   text-align: left;
   padding: 1em 0;
-  border-bottom: 2px solid gainsboro;
+  border-bottom: 0.1rem solid gainsboro;
 }
 .header-nav-search-content-right-content ul li:hover {
   color: rgb(69, 179, 224);
@@ -637,26 +761,40 @@ const props = defineProps({
   font-family: "AlibabaPuHuiTi_2_55_Regular";
   color: #e3e8ea;
   line-height: 1.87;
+  flex: 1 1 auto;
 }
 
 .right-right {
   margin-left: 7.5%;
-  width: 624px;
-  height: 198px;
+  flex: 1 1 auto;
+  height: 100%;
   background-size: cover;
-  border-radius: 10px;
+}
+
+.right-right > div {
+  width: 80%;
+}
+
+.right-right img {
+  width: 100%;
+  height: auto;
+  border-radius: 0.6rem;
+}
+
+.header-body-box {
+  position: relative;
+  height: 77%;
+  padding: 5% 0 0 11%;
 }
 
 .header-body {
-  margin-top: 9em;
-  margin-left: 5%;
   color: var(--fontColor);
 }
 .header-body-hr {
-  border: 1px solid var(--fontColor);
+  border: 0.05rem solid var(--fontColor);
 }
 .header-body-title {
-  margin-bottom: 10px;
+  margin-bottom: 2%;
   font-size: 3.125rem;
   font-family: "AlibabaPuHuiTi_2_65_Medium";
   color: var(--fontColor);
@@ -664,7 +802,7 @@ const props = defineProps({
 }
 
 .header-body-content {
-  margin-top: 10px;
+  margin-top: 2%;
   font-size: 2.125rem;
   font-family: "AlibabaPuHuiTi_2_45_Light";
   color: var(--fontColor);
@@ -683,7 +821,7 @@ const props = defineProps({
   bottom: 0;
   left: 60%;
   width: 40%;
-  font-size: 1.3rem;
+  font-size: 1.2rem;
   font-family: "AlibabaPuHuiTi_2_55_Regular";
   color: rgb(255, 255, 255);
   background-image: url("../assets/imgs/_6_qualityAssuranceImgs/t6_topBar.png");
@@ -714,7 +852,7 @@ const props = defineProps({
 }
 
 .active-border {
-  border-bottom: 1px solid var(--footerColor);
+  border-bottom: 0.05rem solid var(--footerColor);
 }
 
 .active-color {
