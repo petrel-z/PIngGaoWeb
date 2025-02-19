@@ -1,5 +1,5 @@
 <script setup>
-import { ref, onMounted, onUnmounted } from "vue";
+import { ref, onMounted, onUnmounted,nextTick } from "vue";
 import ComHeader from "@/components/ComHeader.vue";
 import Footer from "@/components/Footer.vue";
 const items = ref([]);
@@ -116,6 +116,51 @@ onMounted(() => {
   rightIcon.addEventListener("click", nextSlide1);
   leftIcon.addEventListener("click", prevSlide1);
 });
+const scrollDiv = ref(null);
+const scrollBegin = ref(null);
+const scrollEnd = ref(null);
+
+let MyMar = null;
+const speed = 5; // 更流畅的滚动速度
+const initMarquee = () => {
+  if (
+    (!scrollBegin.value ||!document.contains(scrollBegin.value)) ||
+    (!scrollEnd.value ||!document.contains(scrollEnd.value)) ||
+    (!scrollDiv.value ||!document.contains(scrollDiv.value))
+  ) return;
+
+  // 复制双份内容实现无缝衔接
+  scrollEnd.value.innerHTML = scrollBegin.value.innerHTML;
+
+  const Marquee = () => {
+    // 当滚动距离超过第一个容器的宽度时重置
+    if (scrollDiv.value.scrollLeft >= scrollBegin.value.offsetWidth) {
+      scrollDiv.value.scrollLeft = 0;
+    } else {
+      scrollDiv.value.scrollLeft += 1;
+    }
+  };
+
+  const startScroll = () => {
+    MyMar = setInterval(Marquee, speed);
+  };
+
+  const stopScroll = () => {
+    clearInterval(MyMar);
+  };
+
+  // 确保容器有内容后再启动
+  startScroll();
+
+  // 鼠标交互
+  scrollDiv.value.addEventListener("mouseenter", stopScroll);
+  scrollDiv.value.addEventListener("mouseleave", startScroll);
+};
+onMounted(() => {
+  nextTick(() => {
+    initMarquee();
+  });
+});
 </script>
 
 <template>
@@ -180,8 +225,31 @@ onMounted(() => {
     <div class="announcement">
       <div class="announcement_icon"><span class="icon iconfont">&#xe506;</span></div>
       <div class="announcement_title">最新公告</div>
-      <div class="announcement_p">
-        平高集团有限公司官方网站及移动端全面上线，未来平高集团将紧跟国家步伐，全力以赴建设世界一流智慧电气装备集团……
+      <div class="announcement_text">
+        <div ref="scrollDiv" class="scroll-container">
+          <div ref="scrollBegin" class="scroll-content">
+            <span class="pad_right">
+              平高集团隶属于中国电气装备集团有限公司，始建于1970年，是我国电工行业重大技术装备支柱企业，
+              具备世界领先的规模化高端电力装备研发制造实力及行业领先的能源系统集成解决方案提供能力。是国
+              家级高新技术企业、国家级创新型企业，先后荣获全国五一劳动奖状、中国机械工业100强企业、装备
+              中国功勋企业、全国文明单位、国家技能人才培育突出贡献单位、中国储能产业最具影响力企业等荣誉
+              称号。经过50余年的发展，平高集团已形成了涵盖输配电设备研发、设计、制造、销售、检测、运维等
+              服务及相关设备成套、电力工程总承包、全过程工程咨询、综合能源服务、电力储能、电锅炉及热储能、
+              海上风电并网装备、智慧电网装备、充换电设施的业务格局。构建了以中原腹地为中心，触角遍布京津
+              冀、长三角、环渤海等经济区的产业布局。积极拓展“一带一路”市场，产品覆盖东欧、东南亚、中东、
+              非洲、南美洲、大洋洲等70多个国家和地区。平高集团坚持自主创新，掌握了交直流、全系列、全电压
+              等级开关产品研发制造技术，搭建了“五院三中心一基地”新型研发体系，研制了一系列引领我国开关发展
+              、打破国外垄断、提升民族装备水平的首台套产品，特别是在特高压交直流开关、直流穿墙套管、环保型
+              开关电力储能等产品领域达到世界领先水平。产品广泛应用于我国重点电力工程，先后为我国第-条500千
+              伏高压交流输电工程、第一条750千伏超高压交流输电工程、世界首条投入商业运行的1000千伏交流示范
+              工程、世界输送容量最大的苏通GIL综合管廊工程、国内首个百兆瓦级电网侧储能项目等国家重点工程项
+              目提供了成套设备和技术服务。平高集团以世界一流智慧电气装备集团战略目标为统领，紧紧围绕“智慧
+              电气、系统服务高效能源”总体布局，聚焦电力装备制造及能源系统解决方案，争当电气技术引领者、能
+              源革命推动者、绿色发展践行者，努力为全面建设社会主义现代化国家贡献智慧和力量。</span
+            >
+          </div>
+          <div ref="scrollEnd" class="scroll-content"></div>
+        </div>
       </div>
     </div>
     <hr style="border: 1px solid #80b7e0" />
@@ -478,11 +546,16 @@ onMounted(() => {
   text-align: center;
   margin: auto;
 }
+
 .nav_introduction .p {
   font-size: 24px;
   font-family: "AlibabaPuHuiTi_2_55_Regular";
   color: rgb(255, 255, 255);
   // text-align: center;
+  transition: 0.3s;
+}
+.nav_introduction .p:hover {
+  font-size: 26px;
 }
 .announcement {
   display: flex;
@@ -504,10 +577,41 @@ onMounted(() => {
   margin-left: 6px;
   margin-right: 12px;
 }
-.announcement_p {
+.announcement_text {
+  flex: 0.908;
+  overflow: hidden;
+}
+
+.scroll-container {
+  width: 100%;
+  white-space: nowrap;
+  display: flex;
   font-size: 22px;
   font-family: "AlibabaPuHuiTi_2_45_Light", sans-serif;
   color: rgb(89, 87, 87);
+}
+
+.scroll-content {
+  display: inline-flex;
+  animation: marquee 140s linear infinite;
+}
+
+.pad_right {
+  padding-right: 50px; /* 创建间隔避免文字粘连 */
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+/* 鼠标悬停暂停动画 */
+.scroll-container:hover .scroll-content {
+  animation-play-state: paused;
 }
 .product_content {
   width: 100%;
@@ -517,7 +621,6 @@ onMounted(() => {
   position: relative;
   justify-content: space-evenly;
   margin-bottom: 40px;
-
 }
 
 .product_box {
@@ -527,7 +630,6 @@ onMounted(() => {
   margin: auto;
   padding-left: 30px;
   padding-right: 70px;
-
 }
 
 .product_content_box {
@@ -569,7 +671,7 @@ onMounted(() => {
   height: 100%;
   background-size: cover;
   background-position: center;
-  transition: opacity 0.3s ease;
+  transition: opacity 1s ease;
   /* 设置过渡效果 */
   opacity: 0.3;
   /* 默认透明 */
@@ -618,8 +720,15 @@ onMounted(() => {
   text-align: center;
   background-image: url("@/assets/imgs/_10_homePageImgs/button.png");
   margin-top: 30px;
+  transition: all 0.3s ease;
+  cursor: pointer;
 }
-
+.product_button:hover {
+  transform:scale(1.1);
+  /* translate(0, -5px) 使文字在Y轴方向向上移动5px，scale(1.1) 使文字放大到原来的1.1倍 */
+  color: #58ffa9;
+  /* 改变文字颜色 */
+}
 .product_button span {
   font-size: 18px;
   line-height: 32px;
@@ -771,14 +880,15 @@ onMounted(() => {
   margin-bottom: 73px;
 }
 .great_flag_content .content_detail {
-  width: 33%;
+  width: 32%;
   height: 575px;
   background-color: #ffffff;
   transition: 0.5s;
   cursor: pointer;
 }
 .great_flag_content .content_detail:hover {
-  transform: scale(1.02);
+  transform: scale(0.99);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.286); /* 悬浮时显示黑色阴影 */
 }
 
 .great_flag_content .bottom_text {
@@ -804,8 +914,9 @@ onMounted(() => {
   margin: auto;
   width: 196px;
   height: 47px;
-  background-color: #fff;
+  background-color: #ffffff;
   display: flex;
+  transition: transform 0.3s ease;
 }
 .button_left {
   width: 150px;
@@ -816,9 +927,14 @@ onMounted(() => {
   background-color: #006fc1;
   color: #fff;
   text-align: center;
+  cursor: pointer;
+}
+.great_flag_button:hover {
+  transform: scale(1.05);
 }
 .button_right {
-  width: 34px;
+  width: 10%;
+  height: 100%;
   color: rgb(255, 255, 255);
   line-height: 47px;
   text-align: center;
@@ -848,7 +964,8 @@ onMounted(() => {
   cursor: pointer;
 }
 .great_flag_content .content_detail_text:hover {
-  transform: scale(1.02);
+  transform: scale(0.99);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.286); /* 悬浮时显示黑色阴影 */
 }
 .great_flag .top_img img {
   width: 100%;

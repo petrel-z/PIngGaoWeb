@@ -4,6 +4,7 @@ defineOptions({
 });
 import ComHeader from "@/components/ComHeader.vue";
 import Footer from "@/components/Footer.vue";
+import RightButton from "@/components/RightButton.vue";
 </script>
 
 <template>
@@ -13,6 +14,7 @@ import Footer from "@/components/Footer.vue";
 
   <RouterView />
 
+  <div class="right_button"> <RightButton></RightButton> </div>
   <div style="width: auto">
     <Footer />
   </div>
@@ -26,5 +28,11 @@ import Footer from "@/components/Footer.vue";
   width: auto;
   background-image: url("@/assets/imgs/_2_informationCenterImgs/头部轮播-02.png");
   background-size: cover;
+}
+.right_button {
+ position: absolute;
+ top: 1400px;
+ right: 0;
+ z-index: 1001;
 }
 </style>

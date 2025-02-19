@@ -3,9 +3,7 @@ import { ref } from "vue";
 import ComHeader from "@/components/ComHeader.vue";
 import Footer from "@/components/Footer.vue";
 import imgPath from "@/assets/imgs/_6_qualityAssuranceImgs/头部轮播-06.png";
-
-// import footerImg from '@/assets/imgs/_6_qualityAssuranceImgs/t6_topBar.png'
-
+import RightButton from "@/components/RightButton.vue";
 import footerBg from "@/assets/imgs/_6_qualityAssuranceImgs/t6_topBar.png";
 
 defineOptions({
@@ -40,7 +38,7 @@ const footer = ref([
   </div>
 
   <RouterView />
-
+  <div class="right_button"> <RightButton></RightButton> </div>
   <div style="width: auto">
     <Footer />
   </div>
@@ -54,5 +52,11 @@ const footer = ref([
   width: auto;
   background-image: url("@/assets/imgs/_6_qualityAssuranceImgs/头部轮播-06.png");
   background-size: cover;
+}
+.right_button {
+ position: absolute;
+ top: 1400px;
+ right: 0;
+ z-index: 1001;
 }
 </style>

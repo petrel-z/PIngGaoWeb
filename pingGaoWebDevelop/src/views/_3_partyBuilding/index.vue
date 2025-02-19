@@ -4,6 +4,7 @@ import ComHeader from "@/components/ComHeader.vue";
 import Footer from "@/components/Footer.vue";
 import imgPath from "@/assets/imgs/_3_partyBuildingImgs/头部轮播-03.png";
 import footerBg from "@/assets/imgs/_3_partyBuildingImgs/t3_topBar.png";
+import RightButton from "@/components/RightButton.vue";
 
 defineOptions({
   name: "PartyBuilding",
@@ -34,7 +35,7 @@ const headerCss = {
 <template>
   <div class="header"><ComHeader :content="content" :footer="footer" :css="headerCss" /></div>
   <RouterView />
-
+  <div class="right_button"> <RightButton></RightButton> </div>
   <div style="width: auto">
     <Footer />
   </div>
@@ -51,6 +52,7 @@ const headerCss = {
   background-image: url("../../assets/imgs/_3_partyBuildingImgs/头部轮播-03.png");
   background-size: cover;
 }
+<<<<<<< HEAD
 
 /* 大型设备（桌面，大于 900px） */
 @media (max-width: 900px) {
@@ -72,5 +74,12 @@ const headerCss = {
 
 @media (max-width: 500px) {
   
+// =======
+// .right_button {
+//  position: absolute;
+//  top: 1400px;
+//  right: 0;
+//  z-index: 1001;
+// >>>>>>> 2a18161dd19e33a74b6522d4e7afd9722888a541
 }
 </style>
