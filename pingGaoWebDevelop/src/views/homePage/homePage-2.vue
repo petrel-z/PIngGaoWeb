@@ -880,14 +880,15 @@ onMounted(() => {
   margin-bottom: 73px;
 }
 .great_flag_content .content_detail {
-  width: 33%;
+  width: 32%;
   height: 575px;
   background-color: #ffffff;
   transition: 0.5s;
   cursor: pointer;
 }
 .great_flag_content .content_detail:hover {
-  transform: scale(1.02);
+  transform: scale(0.99);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.286); /* 悬浮时显示黑色阴影 */
 }
 
 .great_flag_content .bottom_text {
@@ -913,8 +914,9 @@ onMounted(() => {
   margin: auto;
   width: 196px;
   height: 47px;
-  background-color: #fff;
+  background-color: #ffffff;
   display: flex;
+  transition: transform 0.3s ease;
 }
 .button_left {
   width: 150px;
@@ -925,9 +927,14 @@ onMounted(() => {
   background-color: #006fc1;
   color: #fff;
   text-align: center;
+  cursor: pointer;
+}
+.great_flag_button:hover {
+  transform: scale(1.05);
 }
 .button_right {
-  width: 34px;
+  width: 10%;
+  height: 100%;
   color: rgb(255, 255, 255);
   line-height: 47px;
   text-align: center;
@@ -957,7 +964,8 @@ onMounted(() => {
   cursor: pointer;
 }
 .great_flag_content .content_detail_text:hover {
-  transform: scale(1.02);
+  transform: scale(0.99);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.286); /* 悬浮时显示黑色阴影 */
 }
 .great_flag .top_img img {
   width: 100%;
