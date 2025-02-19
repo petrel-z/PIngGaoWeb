@@ -8,6 +8,7 @@ import ComHeader from "@/components/ComHeader.vue";
 import Footer from "@/components/Footer.vue";
 import imgPath from "@/assets/imgs/_8_humanResourcesImgs/头部轮播-08.png";
 import footerBg from "@/assets/imgs/_6_qualityAssuranceImgs/t6_topBar.png";
+import RightButton from "@/components/RightButton.vue";
 
 const content = ref({
   title: "人力资源",
@@ -41,6 +42,7 @@ const footer = ref([
     <ComHeader :content="content" :footer="footer" />
   </div>
   <router-view />
+  <div class="right_button"> <RightButton></RightButton> </div>
   <div>
     <Footer />
   </div>
@@ -52,5 +54,14 @@ const footer = ref([
   min-width: 100%;
   background-image: url("@/assets/imgs/_8_humanResourcesImgs/头部轮播-08.png");
   background-size: cover;
+}
+.right_button {
+ width: 100px;
+ height: 100px;
+ background-color: #bbbbbb;
+ position: absolute;
+ top: 1400px;
+ right: 0;
+ z-index: 1001;
 }
 </style>
