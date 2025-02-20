@@ -1,7 +1,8 @@
 <script setup>
-import { ref, onMounted, onUnmounted, nextTick } from "vue";
+import {ref, onMounted, onUnmounted, nextTick} from "vue";
 import ComHeader from "@/components/ComHeader.vue";
 import Footer from "@/components/Footer.vue";
+
 const items = ref([]);
 const dots = ref([]);
 const current = ref(0);
@@ -11,6 +12,7 @@ import img2 from "@/assets/imgs/_10_homePageImgs/carousel.png";
 import img3 from "@/assets/imgs/_10_homePageImgs/carousel.png";
 import img4 from "@/assets/imgs/_10_homePageImgs/carousel.png";
 import img5 from "@/assets/imgs/_10_homePageImgs/carousel.png";
+import router from "@/router/index.js";
 
 const images = ref([img1, img2, img3, img4, img5]);
 // 轮播图切换逻辑
@@ -119,6 +121,9 @@ onMounted(() => {
 const scrollDiv = ref(null);
 const scrollBegin = ref(null);
 const scrollEnd = ref(null);
+const goDetail = (id) => {
+  router.push("/informationCenter/groupNews-3?newsId=" + id)
+}
 
 let MyMar = null;
 const speed = 5; // 更流畅的滚动速度
@@ -254,13 +259,13 @@ onMounted(() => {
         </div>
       </div>
     </div>
-    <hr style="border: 1px solid #80b7e0" />
+    <hr style="border: 1px solid #80b7e0"/>
     <div class="product_content">
       <div class="product_box">
         <div class="product_content_box">
           <div class="product_detail product_detail_1">
             <div class="product_topImg">
-              <img src="@/assets/imgs/_10_homePageImgs/product1.png" alt="" />
+              <img src="@/assets/imgs/_10_homePageImgs/product1.png" alt=""/>
             </div>
             <div class="product_h">高压电器产业</div>
             <div class="product_hr"></div>
@@ -269,7 +274,7 @@ onMounted(() => {
           </div>
           <div class="product_detail">
             <div class="product_topImg">
-              <img src="@/assets/imgs/_10_homePageImgs/product2.png" alt="" />
+              <img src="@/assets/imgs/_10_homePageImgs/product2.png" alt=""/>
             </div>
             <div class="product_h">运维检修业务</div>
             <div class="product_hr"></div>
@@ -278,7 +283,7 @@ onMounted(() => {
           </div>
           <div class="product_detail">
             <div class="product_topImg">
-              <img src="@/assets/imgs/_10_homePageImgs/product3.png" alt="" />
+              <img src="@/assets/imgs/_10_homePageImgs/product3.png" alt=""/>
             </div>
             <div class="product_h">零部件制造产业</div>
             <div class="product_hr"></div>
@@ -289,7 +294,7 @@ onMounted(() => {
           </div>
           <div class="product_detail">
             <div class="product_topImg">
-              <img src="@/assets/imgs/_10_homePageImgs/product4.png" alt="" />
+              <img src="@/assets/imgs/_10_homePageImgs/product4.png" alt=""/>
             </div>
             <div class="product_h">电锅炉及热储能业务</div>
             <div class="product_hr"></div>
@@ -298,7 +303,7 @@ onMounted(() => {
           </div>
           <div class="product_detail">
             <div class="product_topImg">
-              <img src="@/assets/imgs/_10_homePageImgs/product5.png" alt="" />
+              <img src="@/assets/imgs/_10_homePageImgs/product5.png" alt=""/>
             </div>
             <div class="product_h">电力储能业务</div>
             <div class="product_hr"></div>
@@ -307,7 +312,7 @@ onMounted(() => {
           </div>
           <div class="product_detail">
             <div class="product_topImg">
-              <img src="@/assets/imgs/_10_homePageImgs/product6.png" alt="" />
+              <img src="@/assets/imgs/_10_homePageImgs/product6.png" alt=""/>
             </div>
             <div class="product_h">配电网产业</div>
             <div class="product_hr"></div>
@@ -318,7 +323,7 @@ onMounted(() => {
           </div>
           <div class="product_detail">
             <div class="product_topImg">
-              <img src="@/assets/imgs/_10_homePageImgs/product7.png" alt="" />
+              <img src="@/assets/imgs/_10_homePageImgs/product7.png" alt=""/>
             </div>
             <div class="product_h">系统集成业务</div>
             <div class="product_hr"></div>
@@ -327,7 +332,7 @@ onMounted(() => {
           </div>
           <div class="product_detail">
             <div class="product_topImg">
-              <img src="@/assets/imgs/_10_homePageImgs/product8.png" alt="" />
+              <img src="@/assets/imgs/_10_homePageImgs/product8.png" alt=""/>
             </div>
             <div class="product_h">智慧配用电业务</div>
             <div class="product_hr"></div>
@@ -336,7 +341,7 @@ onMounted(() => {
           </div>
           <div class="product_detail">
             <div class="product_topImg">
-              <img src="@/assets/imgs/_10_homePageImgs/product9.png" alt="" />
+              <img src="@/assets/imgs/_10_homePageImgs/product9.png" alt=""/>
             </div>
             <div class="product_h">综合能源服务业务</div>
             <div class="product_hr"></div>
@@ -352,7 +357,7 @@ onMounted(() => {
     </div>
     <div class="company_introduction">
       <div class="bg_img">
-        <img src="@/assets/imgs/_10_homePageImgs/company-introduction.png" alt="" />
+        <img src="@/assets/imgs/_10_homePageImgs/company-introduction.png" alt=""/>
       </div>
       <div class="introduction_title">赋能智慧电气 创引绿色能源</div>
       <div class="introduction_small_title">公司介绍</div>
@@ -368,7 +373,7 @@ onMounted(() => {
           </div>
         </div>
         <div class="img_right">
-          <img src="@/assets/imgs/_10_homePageImgs/shipin.png" alt="" />
+          <img src="@/assets/imgs/_10_homePageImgs/shipin.png" alt=""/>
         </div>
       </div>
       <div class="introduction_honor">
@@ -410,8 +415,8 @@ onMounted(() => {
         </div>
       </div>
       <div class="great_flag_content">
-        <div class="content_detail">
-          <div class="top_img"><img src="@/assets/imgs/_10_homePageImgs/pic1.png" alt="" /></div>
+        <div class="content_detail" @click="goDetail(1)">
+          <div class="top_img"><img src="@/assets/imgs/_10_homePageImgs/pic1.png" alt=""/></div>
           <div class="bottom_text">
             <div class="time">2023-02-28</div>
             <div class="hr"></div>
@@ -419,8 +424,8 @@ onMounted(() => {
             <div class="p">BNEF全球一级储能厂商榜</div>
           </div>
         </div>
-        <div class="content_detail">
-          <div class="top_img"><img src="@/assets/imgs/_10_homePageImgs/pic2.png" alt="" /></div>
+        <div class="content_detail" @click="goDetail(1)">
+          <div class="top_img"><img src="@/assets/imgs/_10_homePageImgs/pic2.png" alt=""/></div>
           <div class="bottom_text">
             <div class="time">2023-02-28</div>
             <div class="hr"></div>
@@ -429,27 +434,27 @@ onMounted(() => {
           </div>
         </div>
         <div class="content_detail_text">
-          <div class="text">
+          <div class="text" @click="goDetail(1)">
             <div class="title">平高集团入选BNEF全球一级储能厂商榜</div>
             <div class="line"></div>
             <div class="time">2023-02-28</div>
           </div>
-          <div class="text">
+          <div class="text" @click="goDetail(2)">
             <div class="title">国际领先+1，平高1项新产品通过国家级鉴…</div>
             <div class="line"></div>
             <div class="time">2023-02-28</div>
           </div>
-          <div class="text">
+          <div class="text" @click="goDetail(3)">
             <div class="title">中国电气装备党委书记、董事长到平…</div>
             <div class="line"></div>
             <div class="time">2023-02-28</div>
           </div>
-          <div class="text">
+          <div class="text" @click="goDetail(4)">
             <div class="title">国际领先+1，平高1项新产品通过国家级鉴…</div>
             <div class="line"></div>
             <div class="time">2023-02-28</div>
           </div>
-          <div class="text">
+          <div class="text" @click="goDetail(5)">
             <div class="title">平高集团入选BNEF全球一级储能厂商榜</div>
             <div class="line"></div>
             <div class="time">2023-02-28</div>
@@ -461,12 +466,12 @@ onMounted(() => {
         <div class="button_right"><span class="icon iconfont">&#xe6a3;</span></div>
       </div>
       <div class="great_flag_footer">
-        <img src="@/assets/imgs/_10_homePageImgs/footer.png" alt="" />
+        <img src="@/assets/imgs/_10_homePageImgs/footer.png" alt=""/>
       </div>
     </div>
   </div>
   <div>
-    <Footer />
+    <Footer/>
   </div>
 </template>
 
@@ -486,27 +491,33 @@ onMounted(() => {
   left: 0;
   z-index: 100;
 }
+
 .my_carousel {
   width: 100%;
   height: 990px;
   position: relative;
 }
+
 .my_carousel .carousel {
   width: 100%;
   height: 990px;
   overflow: hidden;
 }
+
 .my_carousel .carousel img {
   width: 100%;
   height: 990px;
 }
+
 .carousel-inner {
   display: flex;
   transition: transform 0.5s ease-in-out;
 }
+
 .item {
   min-width: 100%;
 }
+
 .dots {
   position: absolute;
   display: flex;
@@ -516,6 +527,7 @@ onMounted(() => {
   width: 100%;
   align-items: center;
 }
+
 .dots li {
   width: 118px;
   height: 3px;
@@ -524,15 +536,18 @@ onMounted(() => {
   margin: 0 5px;
   cursor: pointer;
 }
+
 .dots .active {
   background-color: rgb(189, 206, 255);
 }
+
 .nav {
   width: 100%;
   height: 103px;
   background-color: #45b3e0;
   padding: 30px 164px;
 }
+
 .nav_content {
   width: 100%;
   height: 40px;
@@ -541,6 +556,7 @@ onMounted(() => {
   justify-content: space-between;
   margin: auto;
 }
+
 .nav_introduction {
   width: 100%;
   height: 40px;
@@ -556,22 +572,27 @@ onMounted(() => {
   // text-align: center;
   transition: 0.3s;
 }
+
 .nav_introduction .p:hover {
   font-size: 26px;
 }
+
 .announcement {
   display: flex;
   height: 78px;
   line-height: 78px;
   margin-left: 160px;
 }
+
 .announcement_icon {
   color: #338bcd;
 }
+
 .announcement_icon .iconfont {
   font-size: 29px;
   font-weight: 600;
 }
+
 .announcement_title {
   font-size: 22px;
   font-family: "AlibabaPuHuiTi_2_55_Regular", sans-serif;
@@ -579,6 +600,7 @@ onMounted(() => {
   margin-left: 6px;
   margin-right: 12px;
 }
+
 .announcement_text {
   flex: 0.908;
   overflow: hidden;
@@ -615,6 +637,7 @@ onMounted(() => {
 .scroll-container:hover .scroll-content {
   animation-play-state: paused;
 }
+
 .product_content {
   width: 100%;
   height: 922px;
@@ -661,10 +684,12 @@ onMounted(() => {
   cursor: pointer;
   z-index: 1000;
 }
+
 .product_topImg img {
   margin-left: -5px;
   margin: auto;
 }
+
 .product_topImg:before {
   content: "";
   position: absolute;
@@ -726,18 +751,21 @@ onMounted(() => {
   transition: all 0.3s ease;
   cursor: pointer;
 }
+
 .product_button:hover {
   transform: scale(1.1);
   /* translate(0, -5px) 使文字在Y轴方向向上移动5px，scale(1.1) 使文字放大到原来的1.1倍 */
   color: #58ffa9;
   /* 改变文字颜色 */
 }
+
 .product_button span {
   font-size: 18px;
   line-height: 32px;
   font-family: "AlibabaPuHuiTi_2_45_Light", sans-serif;
   color: rgb(0, 111, 193);
 }
+
 .left_icon .icon {
   top: 320px;
   left: 60px;
@@ -747,6 +775,7 @@ onMounted(() => {
   z-index: 100;
   cursor: pointer;
 }
+
 .right_icon .icon {
   position: absolute;
   font-size: 70px;
@@ -756,6 +785,7 @@ onMounted(() => {
   z-index: 100;
   cursor: pointer;
 }
+
 .company_introduction {
   position: relative;
   height: 1140px;
@@ -764,6 +794,7 @@ onMounted(() => {
   background-size: cover; /* 实现图片等比例缩放 */
   background-repeat: no-repeat;
 }
+
 .company_introduction .bg_img {
   top: 0;
   left: 0;
@@ -772,10 +803,12 @@ onMounted(() => {
   height: 1140px;
   z-index: -100;
 }
+
 .company_introduction .bg_img img {
   width: 100%;
   height: 1140px;
 }
+
 .introduction_title {
   font-size: 44px;
   font-family: "AlibabaPuHuiTi_2_65_Medium";
@@ -783,6 +816,7 @@ onMounted(() => {
   margin-bottom: 65px;
   width: 100%;
 }
+
 .introduction_small_title {
   font-size: 36px;
   margin-bottom: 10px;
@@ -790,6 +824,7 @@ onMounted(() => {
   color: rgb(0, 0, 0);
   width: 100%;
 }
+
 .introduction_content {
   width: 100%;
   height: 510px;
@@ -797,6 +832,7 @@ onMounted(() => {
   margin-bottom: 140px;
   object-fit: cover;
 }
+
 .introduction_content .text_left {
   width: 45%;
   height: 510px;
@@ -804,23 +840,28 @@ onMounted(() => {
   border-top: 1px solid #313a3d;
   padding-top: 13px;
 }
+
 .introduction_content .img_right {
   width: 55%;
   height: 100%;
   min-width: 400px;
 }
-.introduction_content .img_right img {
+
+.introduction_content .img_right img,
+.introduction_content .img_right video {
   width: 100%;
   height: 100%;
   object-fit: cover; /* 实现图片等比例缩放 */
   min-width: 400px;
 }
+
 .introduction_content .p {
   font-size: 20px;
   font-family: "AlibabaPuHuiTi_2_45_Light";
   color: rgb(89, 87, 87);
   line-height: 1.7;
 }
+
 .introduction_content .p1 {
   margin-bottom: 30px;
 }
@@ -832,18 +873,21 @@ onMounted(() => {
   height: 57px;
   border-right: 1px solid #fff;
 }
+
 .introduction_honor .honor_info {
   width: 100%;
   border-left: 1px solid #fff;
   text-align: center;
   margin: auto;
 }
+
 .introduction_honor .honor_info .p {
   font-size: 26px;
   font-family: "AlibabaPuHuiTi_2_45_Light", sans-serif;
   color: rgb(255, 255, 255);
   margin-top: -10px;
 }
+
 .great_flag {
   position: relative;
   padding: 152px 156px;
@@ -851,30 +895,36 @@ onMounted(() => {
   height: 1474px;
   width: 100%;
 }
+
 .great_flag_title {
   display: flex;
   justify-content: space-between;
   margin-bottom: 100px;
 }
+
 .great_flag_title .h {
   font-size: 44px;
   font-family: "AlibabaPuHuiTi_2_65_Medium", sans-serif;
   color: rgb(35, 24, 21);
 }
+
 .great_flag_title .title_right {
   display: flex;
   line-height: 70px;
 }
+
 .great_flag_title .p {
   font-size: 24px;
   font-family: "AlibabaPuHuiTi_2_55_Regular", sans-serif;
   color: #595757;
   margin-right: 20px;
 }
+
 .great_flag_title .p:hover {
   color: #006fc1;
   cursor: pointer;
 }
+
 .great_flag_content {
   width: 100%;
   height: 579px;
@@ -882,6 +932,7 @@ onMounted(() => {
   justify-content: space-between;
   margin-bottom: 73px;
 }
+
 .great_flag_content .content_detail {
   width: 32%;
   height: 575px;
@@ -889,6 +940,7 @@ onMounted(() => {
   transition: 0.5s;
   cursor: pointer;
 }
+
 .great_flag_content .content_detail:hover {
   transform: scale(0.99);
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.286); /* 悬浮时显示黑色阴影 */
@@ -897,22 +949,26 @@ onMounted(() => {
 .great_flag_content .bottom_text {
   padding: 36px 40px;
 }
+
 .great_flag_content .bottom_text .time {
   font-size: 20px;
   font-family: "AvenirNext";
   color: rgb(34, 56, 147);
 }
+
 .great_flag_content .bottom_text .hr {
   width: 43px;
   height: 2px;
   background-color: rgb(34, 56, 147);
   margin: 4px 0px;
 }
+
 .great_flag_content .bottom_text .p {
   font-size: 22px;
   font-family: "AlibabaPuHuiTi_2_55_Regular", sans-serif;
   color: rgb(89, 87, 87);
 }
+
 .great_flag_button {
   margin: auto;
   width: 196px;
@@ -921,6 +977,7 @@ onMounted(() => {
   display: flex;
   transition: transform 0.3s ease;
 }
+
 .button_left {
   width: 150px;
   height: 100%;
@@ -932,9 +989,11 @@ onMounted(() => {
   text-align: center;
   cursor: pointer;
 }
+
 .great_flag_button:hover {
   transform: scale(1.05);
 }
+
 .button_right {
   width: 10%;
   height: 100%;
@@ -942,21 +1001,25 @@ onMounted(() => {
   line-height: 47px;
   text-align: center;
 }
+
 .great_flag_button .icon {
   font-size: 30px;
   color: #006fc1;
   margin-left: 8px;
 }
+
 .great_flag_footer {
   width: 100%;
   position: absolute;
   bottom: -7px;
   left: 0;
 }
+
 .great_flag_footer img {
   height: 420px;
   width: 100%;
 }
+
 .great_flag_content .content_detail_text {
   width: 33%;
   height: 575px;
@@ -966,26 +1029,31 @@ onMounted(() => {
   transition: 0.5s;
   cursor: pointer;
 }
+
 .great_flag_content .content_detail_text:hover {
   transform: scale(0.99);
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.286); /* 悬浮时显示黑色阴影 */
 }
+
 .great_flag .top_img img {
   width: 100%;
   height: 372px;
   background-size: cover;
 }
+
 .great_flag_content .content_detail_text .text .title {
   font-size: 22px;
   font-family: "AlibabaPuHuiTi_2_55_Regular";
   color: rgb(89, 87, 87);
 }
+
 .great_flag_content .content_detail_text .text .line {
   width: 43px;
   height: 2px;
   background-color: rgb(34, 56, 147);
   margin: 4px 0px;
 }
+
 .great_flag_content .content_detail_text .time {
   font-size: 20px;
   font-family: "AvenirNext";

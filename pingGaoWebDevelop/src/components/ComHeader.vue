@@ -522,8 +522,8 @@ const props = defineProps({
 }
 
 .log-img img {
-  width: 100%;
-  height: auto;
+  height: 84px;
+  width: auto;
 }
 
 .log-title {

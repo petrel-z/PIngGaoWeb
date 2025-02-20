@@ -13,7 +13,7 @@ import MyContent from "@/components/MyContent.vue";
       <div class="body-content">
         <div class="bodyBg"></div>
         <div>
-          <MyTitle title="营销组织" English="MARKETING ORGANIZATION" />
+          <MyTitle title="营销组织" English="MARKETING ORGANIZATION"/>
         </div>
         <div
           style="
@@ -30,10 +30,20 @@ import MyContent from "@/components/MyContent.vue";
             content2="解决方案，逐渐成为行业的佼佼者，并以先进的技术、完善的服务，影响和改善更多人的工作和生活。"
           />
           <div class="my-content-bottom">
-            <div class="my-content-bottom-item" v-for="i in 3" :key="i">
+            <div class="my-content-bottom-item">
               <span>国内销售</span>
               <div></div>
-              <span>0375-3507888</span>
+              <span>0371-66968576</span>
+            </div>
+            <div class="my-content-bottom-item">
+              <span>国外销售</span>
+              <div></div>
+              <span>0371-58505793</span>
+            </div>
+            <div class="my-content-bottom-item">
+              <span>客服电话</span>
+              <div></div>
+              <span>400-6700-312</span>
             </div>
           </div>
         </div>
@@ -41,10 +51,10 @@ import MyContent from "@/components/MyContent.vue";
           <div class="items-title">平高集团各产业单位联系方式</div>
           <div class="items-content">
             <div class="item" v-for="i in 25" :key="i">
-              <hr class="item-hr1" />
+              <hr class="item-hr1"/>
               <div>
                 <div class="item-title">河南平高电气股份有限公司</div>
-                <hr class="item-hr-hr" />
+                <hr class="item-hr-hr"/>
                 <div class="item-phone">电话：400-6700312</div>
                 <div class="item-fax">传真：0375-3506431</div>
                 <div class="item-email">邮箱：service_pg@vip.163.com</div>
@@ -79,6 +89,7 @@ import MyContent from "@/components/MyContent.vue";
   left: 0px;
   z-index: -1;
 }
+
 .body-content {
   margin: 0 11%;
   padding-top: 65px;
@@ -90,7 +101,7 @@ import MyContent from "@/components/MyContent.vue";
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding-bottom: 2em;
+  padding: 0 2em 2em;
 }
 
 .my-content-bottom-item:hover {

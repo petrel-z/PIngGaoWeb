@@ -1,5 +1,5 @@
-import { createWebHashHistory } from "vue-router";
-import { createRouter } from "vue-router";
+import {createWebHistory} from "vue-router";
+import {createRouter} from "vue-router";
 
 import partyBuilding from "@/views/_3_partyBuilding/index.vue";
 import qualityAssurance from "@/views/_6_qualityAssurance/index.vue";
@@ -29,8 +29,10 @@ import approachPinggao from "@/views/_1_aboutPinggao/approachPinggao/myIndex.vue
 import keyProject from "@/views/_4_productEngineering/keyProject/myIndex.vue";
 import productSeriesDetail from "@/views/_4_productEngineering/productSeriesDetail/myIndex.vue";
 import productSeries from "@/views/_4_productEngineering/productSeries/myIndex.vue";
-import scientificResearchAchievement from "@/views/_7_scientificResearchCenter/scientificResearchAchievement/myIndex.vue";
-import scientificResearchSystem from "@/views/_7_scientificResearchCenter/scientificResearchSystem/myIndex.vue";
+import scientificResearchAchievement
+  from "@/views/_7_scientificResearchCenter/scientificResearchAchievement/myIndex.vue";
+import scientificResearchSystem
+  from "@/views/_7_scientificResearchCenter/scientificResearchSystem/myIndex.vue";
 import testSystem from "@/views/_7_scientificResearchCenter/testSystem/myIndex.vue";
 import aboutPinggao from "@/views/_1_aboutPinggao/aboutPinggao.vue";
 import productEngineering from "@/views/_4_productEngineering/index.vue";
@@ -38,7 +40,7 @@ import scientificResearchCenter from "@/views/_7_scientificResearchCenter/index.
 import homePage_1 from "@/views/homePage/homePage-1.vue";
 
 const router = createRouter({
-  history: createWebHashHistory(), // 使用哈希模式，适合单页面应用
+  history: createWebHistory(), // 使用哈希模式，适合单页面应用
   routes: [
     {
       path: "/",
@@ -57,11 +59,21 @@ const router = createRouter({
       redirect: "/aboutPinggao/groupProfile", // 这里重定向到 /aboutPinggao 下的 groupProfile
       component: aboutPinggao,
       children: [
-        { path: "groupProfile", component: groupProfile },
-        { path: "lesadingMember", component: lesadingMember },
-        { path: "organizationalStructure", component: organizationalStructure },
-        { path: "seniorHonor", component: seniorHonor },
-        { path: "approachPinggao", component: approachPinggao },
+        {
+          path: "groupProfile", component: groupProfile
+        },
+        {
+          path: "lesadingMember", component: lesadingMember
+        },
+        {
+          path: "organizationalStructure", component: organizationalStructure
+        },
+        {
+          path: "seniorHonor", component: seniorHonor
+        },
+        {
+          path: "approachPinggao", component: approachPinggao
+        },
       ],
     },
     {
@@ -124,15 +136,15 @@ const router = createRouter({
       component: partyBuilding,
       redirect: "/partyBuilding/partyspirit",
       children: [
-        { path: "partyspirit", component: partyspirit },
-        { path: "partyspiritDetail", component: partyspiritDetail },
-        { path: "partyspiritMore", component: partyspiritMore },
-        { path: "pinggaoPartyBuilding", component: pinggaoPartyBuilding },
+        {path: "partyspirit", component: partyspirit},
+        {path: "partyspiritDetail", component: partyspiritDetail},
+        {path: "partyspiritMore", component: partyspiritMore},
+        {path: "pinggaoPartyBuilding", component: pinggaoPartyBuilding},
         {
           path: "pinggaoPartyBuildingDetail",
           component: pinggaoPartyBuildingDetail,
         },
-        { path: "PinggaoPartyBuildingMore", component: PinggaoPartyBuildingMore },
+        {path: "PinggaoPartyBuildingMore", component: PinggaoPartyBuildingMore},
       ],
     },
     {
@@ -140,9 +152,9 @@ const router = createRouter({
       redirect: "/productEngineering/productSeries", // 这里的重定向路径是相对于父路径的
       component: productEngineering,
       children: [
-        { path: "keyProject", component: keyProject },
-        { path: "productSeriesDetail", component: productSeriesDetail },
-        { path: "productSeries", component: productSeries },
+        {path: "keyProject", component: keyProject},
+        {path: "productSeriesDetail", component: productSeriesDetail},
+        {path: "productSeries", component: productSeries},
       ],
     },
     {
@@ -169,9 +181,9 @@ const router = createRouter({
       component: qualityAssurance,
       redirect: "/qualityAssurance/qualitySystem",
       children: [
-        { path: "qualitySystem", component: qualitySystem },
-        { path: "manufacturing", component: manufacturing },
-        { path: "productTesting", component: productTesting },
+        {path: "qualitySystem", component: qualitySystem},
+        {path: "manufacturing", component: manufacturing},
+        {path: "productTesting", component: productTesting},
       ],
     },
     {
@@ -179,9 +191,9 @@ const router = createRouter({
       redirect: "/scientificResearchCenter/scientificResearchSystem", // 这里的重定向路径是相对于父路径的
       component: scientificResearchCenter,
       children: [
-        { path: "scientificResearchAchievement", component: scientificResearchAchievement },
-        { path: "scientificResearchSystem", component: scientificResearchSystem },
-        { path: "testSystem", component: testSystem },
+        {path: "scientificResearchAchievement", component: scientificResearchAchievement},
+        {path: "scientificResearchSystem", component: scientificResearchSystem},
+        {path: "testSystem", component: testSystem},
       ],
     },
     {
@@ -216,10 +228,10 @@ const router = createRouter({
       component: contactUs,
       redirect: "/contactUs/purchaseByBidding",
       children: [
-        { path: "purchaseByBidding", component: purchaseByBidding },
-        { path: "becomePartner", component: becomePartner },
-        { path: "businessConsulting", component: businessConsulting },
-        { path: "addressTelephone", component: addressTelephone },
+        {path: "purchaseByBidding", component: purchaseByBidding},
+        {path: "becomePartner", component: becomePartner},
+        {path: "businessConsulting", component: businessConsulting},
+        {path: "addressTelephone", component: addressTelephone},
       ],
     },
   ],
