@@ -3,7 +3,9 @@ import MyTitle from "@/components/MyTitle.vue";
 </script>
 <template>
   <div class="productSeries">
-    <div class="img"><img src="@/assets/imgs/_4_productEngineeringImgs/bg-protect.png" alt=""></div>
+    <div class="img">
+      <img src="@/assets/imgs/_4_productEngineeringImgs/bg-protect.png" alt="" />
+    </div>
     <MyTitle
       h="产品系列"
       English="PRODUCT SERIES"
@@ -111,7 +113,7 @@ import MyTitle from "@/components/MyTitle.vue";
   border-radius: 20px;
   background-color: #fff;
   z-index: 100;
-  padding: 64px 210px;
+  padding: 64px 11%;
 }
 .detail_content {
   width: 1080px;
@@ -122,7 +124,7 @@ import MyTitle from "@/components/MyTitle.vue";
   margin-top: 66px;
   position: relative;
 }
-.productSeries .img{
+.productSeries .img {
   left: 0;
   top: 0;
   width: 100%;
@@ -130,7 +132,7 @@ import MyTitle from "@/components/MyTitle.vue";
   position: absolute;
   z-index: -100;
 }
-.productSeries img{
+.productSeries img {
   height: 614px;
   width: 100%;
 }
@@ -153,7 +155,7 @@ import MyTitle from "@/components/MyTitle.vue";
   border: none !important;
   background-color: #45b3e0;
 }
-.active span{
+.active span {
   color: #ffffff;
 }
 .detail_page {

@@ -32,18 +32,25 @@ const headerCss = {
 </script>
 
 <template>
-  <div class="header"><ComHeader :content="content" :footer="footer" :css="headerCss" /></div>
-  <RouterView />
-
   <div style="width: auto">
-    <Footer />
+    <div class="header">
+      <div style="height: 100%; width: auto">
+        <ComHeader :content="content" :footer="footer" :css="headerCss" />
+      </div>
+    </div>
+
+    <RouterView />
+
+    <div style="width: auto">
+      <Footer />
+    </div>
   </div>
 </template>
 
 <style lang="less" scoped>
 .header {
   width: auto;
-  height: 66vh;
+  height: 32vw;
   background-size: 100%;
   // height: 610px;
   background-repeat: no-repeat;

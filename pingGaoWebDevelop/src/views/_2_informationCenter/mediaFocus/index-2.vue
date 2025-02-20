@@ -115,7 +115,7 @@ const orderList = [
   background-size: cover;
 }
 .body {
-  padding: 0 10em;
+  padding: 0 11%;
   background-color: #def1fb;
 }
 

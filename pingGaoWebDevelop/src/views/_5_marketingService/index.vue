@@ -45,7 +45,7 @@ const footer = ref([
 <style scoped>
 .header {
   /* height: 735px; */
-  height: 70vh;
+  height: 32vw;
   width: 100%;
   background-image: url("@/assets//imgs/_5_marketingServiceImgs/头部轮播-05.png");
   background-size: cover;

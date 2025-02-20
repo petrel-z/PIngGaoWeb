@@ -120,7 +120,7 @@ const props = defineProps({
 }
 
 .item:hover .month {
-  border-bottom: 2px solid var(--leftFontColorHover);
+  border-bottom: 0.1rem solid var(--leftFontColorHover);
 }
 
 .item:hover .month,
@@ -144,7 +144,7 @@ const props = defineProps({
 .month {
   font-family: "Avenir Black";
   color: var(--leftFontColor);
-  font-size: 3rem;
+  font-size: 2.5rem;
   line-height: 1.85;
   text-align: right;
   border-bottom: 2px solid var(--leftFontColor); /*底部蓝色线条*/
@@ -217,6 +217,15 @@ const props = defineProps({
   }
   .year {
     text-align: center;
+  }
+}
+
+@media (max-width: 400px) {
+  .month {
+    font-size: 1.5rem;
+  }
+  .year {
+    font-size: 1rem;
   }
 }
 </style>

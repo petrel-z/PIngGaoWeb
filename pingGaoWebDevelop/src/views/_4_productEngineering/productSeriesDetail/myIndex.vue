@@ -1,5 +1,4 @@
-<script setup>
-</script>
+<script setup></script>
 <template>
   <div class="productSeriesDetail">
     <div class="detail_page">
@@ -13,7 +12,9 @@
         <div class="detail_text">
           <div class="text">ZHW1-252（L）/T4000-50型复合式组合电器</div>
           <div class="button">
-            <div class="p" @click="this.$router.go(-1)" @mousedown="console.log(111)">返回上一级</div>
+            <div class="p" @click="this.$router.go(-1)" @mousedown="console.log(111)">
+              返回上一级
+            </div>
           </div>
         </div>
         <div class="long_line"></div>
@@ -70,7 +71,7 @@
   position: relative;
   margin: auto;
   width: 100%;
-  padding: 0px 210px;
+  padding: 0px 11%;
   border-radius: 20px;
   background-color: #fff;
 }
@@ -82,7 +83,7 @@
   background-color: #fff;
   z-index: 100;
 }
-.detail_page .header{
+.detail_page .header {
   width: 100%;
 }
 .detail_title {

@@ -112,7 +112,7 @@ function handleClick(e) {
 
 <style scoped>
 .body {
-  margin: 0 11vw;
+  margin: 0 11%;
 }
 
 .item-container {

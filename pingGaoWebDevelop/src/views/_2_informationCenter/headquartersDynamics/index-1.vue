@@ -57,10 +57,10 @@ function handleClick(e) {
     </div>
     <div class="body">
       <div>
-        <div style="padding-top: 64px">
+        <div style="padding-top: 4rem">
           <my-title title="总部动态" English="HEADQUARTERS NEWS" />
         </div>
-        <div style="margin-top: 59px">
+        <div style="margin-top: 4rem">
           <ContentPag />
         </div>
         <div class="item-container">
@@ -90,7 +90,7 @@ function handleClick(e) {
   top: 0;
   left: 0;
   width: 100%;
-  height: auto;
+  height: 33vw;
   background-color: #def1fb;
   z-index: -1;
 }
@@ -113,9 +113,12 @@ function handleClick(e) {
   justify-content: center;
   align-items: center;
 }
-@media screen and (max-width: 1000px) {
+@media screen and (max-width: 900px) {
   .body {
-    margin: 0 11%;
+    margin: 0 5%;
+  }
+  .bodyBg1 {
+    height: 100vw;
   }
 }
 </style>

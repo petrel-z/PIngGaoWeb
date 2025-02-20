@@ -49,7 +49,8 @@ const footer = ref([
 <style lang="less" scoped>
 .header {
   /* height: 611px; */
-  height: 68.3vh;
+  height: 32vw;
+
   /* min-width: 1920px; */
   width: auto;
   background-image: url("@/assets/imgs/_6_qualityAssuranceImgs/头部轮播-06.png");

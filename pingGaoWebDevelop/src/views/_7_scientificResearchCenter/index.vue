@@ -51,7 +51,7 @@ const footer = ref([
 .header {
   background-image: url("../../assets/imgs/_7_scientificResearchCenterImgs/头部轮播-07.png");
   width: auto;
-  height: 68vh;
+  height: 32vw;
   background-size: cover;
 }
 </style>

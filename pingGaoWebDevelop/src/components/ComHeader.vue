@@ -297,7 +297,7 @@ const props = defineProps({
           </div>
         </div>
 
-        <div class="header-nav-bottom" :class="{ hidden: headerBottomFlag }">
+        <div class="header-nav-bottom">
           <div id="header-nav-bottom-left">
             <div class="log-bottom-text">平 高 集 团 有 限 公 司</div>
             <div class="log-bottom-english">PINGGAO GROUP CO.,LTD.</div>
@@ -530,7 +530,7 @@ const props = defineProps({
   justify-content: flex-end;
 }
 
-#header-nav-top ul {
+.header-nav-top-bar-ul {
   display: inline-flex;
   margin: 0;
   padding: 0;
@@ -615,7 +615,7 @@ const props = defineProps({
   font-size: 0.8rem;
   transition: all 0.3s ease;
   flex: 0 0 auto;
-  height: 3vh;
+  height: auto;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -626,7 +626,7 @@ const props = defineProps({
   border: none;
   /* padding: 0.05rem; */
   color: #fff;
-  height: 100%;
+  height: auto;
 }
 
 .header-nav-bottom-input::placeholder {
@@ -707,7 +707,7 @@ const props = defineProps({
   background-size: cover;
   padding-left: 2.5%;
   padding-top: 3em;
-  padding-bottom: 5%;
+  padding-bottom: 3%;
 }
 
 .header-nav-hover-content-right {
@@ -784,7 +784,7 @@ const props = defineProps({
 .header-body-box {
   position: relative;
   height: 77%;
-  padding: 5% 0 0 10%;
+  padding: 5% 0 0 11%;
 }
 
 .header-body {
@@ -857,5 +857,36 @@ const props = defineProps({
 
 .active-color {
   color: rgb(69, 179, 224);
+}
+
+@media (max-width: 900px) {
+  #header-nav {
+    padding: 1% 0.5% 0 0;
+  }
+  .header-body-box {
+    padding: 5% 0 0 5%;
+  }
+  .bar-icon {
+    display: inline-block;
+    width: auto;
+    height: auto;
+    padding: 0;
+    margin: 0;
+    font-size: 2rem;
+    color: #fff;
+  }
+  .header-nav-top-bar-ul {
+    display: none;
+  }
+
+  #header-nav-top {
+    border: none;
+  }
+  .header-nav-bottom {
+    height: auto;
+  }
+  #header-nav-bottom-left {
+    border-top: 0.05rem solid #fff;
+  }
 }
 </style>

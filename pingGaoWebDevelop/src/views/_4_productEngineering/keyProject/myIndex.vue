@@ -51,7 +51,7 @@ import MyTitle from "@/components/MyTitle.vue";
   margin: auto;
   width: 100%;
   height: 2380px;
-  padding: 64px 210px;
+  padding: 64px 11%;
   border-radius: 20px;
   background-color: #fff;
   z-index: -100;
@@ -109,7 +109,7 @@ import MyTitle from "@/components/MyTitle.vue";
   width: 100%;
   height: 500px;
 }
-.pic_content .pic img{
+.pic_content .pic img {
   width: 100%;
   height: 500px;
   background-size: cover;
@@ -135,7 +135,6 @@ import MyTitle from "@/components/MyTitle.vue";
   left: 0;
   z-index: -10;
   width: 100%;
-
 }
 .footer_img img {
   width: 100%;

@@ -10,24 +10,23 @@ const props = defineProps({
   },
   titleColor: {
     type: String,
-    default: "#000"
+    default: "#000",
   },
   lineColor: {
     type: String,
-    default: "#70aedc"
+    default: "#70aedc",
   },
   engColor: {
     type: String,
-    default: "#9fa0a0"
-  }
+    default: "#9fa0a0",
+  },
 });
 </script>
 <template>
   <div>
-    <span class="h" :style="{ color: props.titleColor } ">{{ props.title }}</span>
-    <div class="line" :style="{ backgroundColor: props.lineColor } "></div>
-    <span class="English"  :style="{ color: props.engColor } ">{{ props.English }}</span>
-
+    <span class="h" :style="{ color: props.titleColor }">{{ props.title }}</span>
+    <div class="line" :style="{ backgroundColor: props.lineColor }"></div>
+    <span class="English" :style="{ color: props.engColor }">{{ props.English }}</span>
   </div>
 </template>
 <style scoped>
@@ -43,7 +42,7 @@ const props = defineProps({
 .h {
   display: block;
   font-weight: 550;
-  font-size: 38px;
+  font-size: 3.5rem;
   /* width: 1500px; */
   width: auto;
   font-family: "AlibabaPuHuiTi_2_75_SemiBold";
@@ -60,7 +59,7 @@ const props = defineProps({
   margin: 2px 0px;
 }
 .English {
-  font-size: 29.497px;
+  font-size: 3rem;
   font-family: "Avenir-Medium-woff-7";
   color: rgb(159, 160, 160);
   text-transform: uppercase;

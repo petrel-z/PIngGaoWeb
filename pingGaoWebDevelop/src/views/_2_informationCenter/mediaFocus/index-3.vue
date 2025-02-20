@@ -42,7 +42,7 @@ import imgPath from "@/assets/imgs/_2_informationCenterImgs/MZFUZt.png";
 <style scoped>
 .body-bg {
   background-image: url("../../../assets/imgs/_2_informationCenterImgs/newsBg-1.png");
-  padding: 0 210px;
+  padding: 0 11%;
   background-size: cover;
 }
 .body {

@@ -69,11 +69,10 @@ const props = defineProps({
   display: flex;
   /* min-width: 1500px; */
   width: auto;
-  min-height: 601px;
   justify-content: space-evenly;
   align-items: center;
   background-color: #003792;
-  border-radius: 10px;
+  border-radius: 1.6rem;
   overflow: hidden;
   padding: 5% 5%;
 }
@@ -128,27 +127,31 @@ const props = defineProps({
   background-color: #45b3e0;
   width: 10em;
   height: auto;
+  padding: 1.5%;
   margin-top: 3%;
   border-radius: 5px;
   cursor: pointer;
 }
 
-@media screen and (max-width: 1000px) {
+@media screen and (max-width: 900px) {
   .content {
     flex-wrap: wrap-reverse;
     width: 100%;
+    padding: 0;
+    align-items: start;
   }
   .content-btn {
-    margin: 0 auto;
-    margin-top: 5%;
+    margin: 3rem auto;
   }
   .content-left {
-    margin-top: 2em;
+    margin-top: 3rem;
     width: 80%;
+    flex: 0 0 auto;
   }
   .content-right {
     width: 100%;
-    height: 50%;
+    height: auto;
+    flex: 0 0 auto;
   }
   .hr div {
     width: 100%;

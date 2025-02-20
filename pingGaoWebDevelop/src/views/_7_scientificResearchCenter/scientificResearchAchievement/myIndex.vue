@@ -33,8 +33,7 @@ import MyContent from "@/components/F6_MyContent.vue";
         </div>
       </div>
       <div class="achievement_bottom">
-        <div class="achievement_detail" style="border: none;">
-        </div>
+        <div class="achievement_detail" style="border: none"></div>
 
         <div class="achievement_detail">
           <div class="num">266</div>
@@ -56,8 +55,7 @@ import MyContent from "@/components/F6_MyContent.vue";
           <div class="p1">制（修）订</div>
           <div class="p2">科技奖励/项</div>
         </div>
-        <div class="achievement_detail" style="border: none;">
-        </div>
+        <div class="achievement_detail" style="border: none"></div>
       </div>
     </div>
     <div class="content">
@@ -85,7 +83,7 @@ import MyContent from "@/components/F6_MyContent.vue";
   height: 2040px;
   /* border: 1px solid rgb(206, 206, 206); */
   background-color: #fff;
-  padding: 64px 210px;
+  padding: 64px 11%;
   border-radius: 20px;
   z-index: -10;
 }
@@ -152,7 +150,7 @@ import MyContent from "@/components/F6_MyContent.vue";
   left: 50%;
   transform: translateX(-50%);
 }
-.achievement_bottom{
+.achievement_bottom {
   width: 100%;
 }
 .achievement_bottom .achievement_detail {

@@ -43,7 +43,7 @@ import F6_MyContent from "@/components/F6_MyContent.vue";
   width: 100%;
   height: 1680px;
   /* border: 1px solid rgb(206, 206, 206); */
-  padding: 64px 210px;
+  padding: 64px 11%;
   border-radius: 20px;
   background-color: #fff;
   z-index: -100;
