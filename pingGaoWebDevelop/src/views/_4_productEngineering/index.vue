@@ -3,7 +3,7 @@
     <ComHeader :content="info" :footer="footer"></ComHeader>
   </div>
   <router-view></router-view>
-
+  <div class="right_button"> <RightButton></RightButton> </div>
   <div style="width: auto">
     <Footer />
   </div>
@@ -18,6 +18,7 @@ import ComHeader from "@/components/ComHeader.vue";
 import Footer from "@/components/Footer.vue";
 import imgPath from "@/assets/imgs/_4_productEngineeringImgs/头部轮播-04.png";
 import footerBg from "@/assets/imgs/_6_qualityAssuranceImgs/t6_topbar.png";
+import RightButton from "@/components/RightButton.vue";
 const info = ref({
   title: "产品工程",
   content: "建设世界一流智慧电气装备集团",
@@ -37,5 +38,11 @@ const footer = ref([
   width: auto;
   height: 32vw;
   background-size: cover;
+}
+.right_button {
+ position: absolute;
+ top: 1400px;
+ right: 0;
+ z-index: 1001;
 }
 </style>

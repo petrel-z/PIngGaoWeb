@@ -51,7 +51,7 @@ function handleClick(e) {
 </script>
 
 <template>
-  <div style="position: relative; width: auto">
+  <div style="position: relative; width: auto; overflow: hidden;">
     <div class="bodyBg">
       <div class="bodyBg1"></div>
     </div>

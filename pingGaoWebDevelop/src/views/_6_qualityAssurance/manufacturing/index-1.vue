@@ -5,16 +5,31 @@ defineOptions({
 import MyTitle from "@/components/MyTitle.vue";
 // import commitmentSpan from '@/components/commitmentSpan.vue';
 import MyContent from "@/components/F6_MyContent.vue";
+import { onMounted, ref } from "vue";
+
+const topDetailList = ref(null);
+const topTitle = ref(null);
+onMounted(() => {
+  const topDetailListDom = topDetailList.value;
+  const topTitleDom = topTitle.value;
+  setTimeout(() => {
+    topTitleDom.classList.add("topTitleClass");
+  }, 100);
+  setTimeout(() => {
+    topDetailListDom.classList.add("topDetailListClass");
+  }, 100);
+})
+
 </script>
 
 <template>
-  <div class="manufacture-content">
+  <div class="manufacture-content" style="overflow: auto;">
     <div class="content-top">
-      <div class="top-title">
+      <div ref="topTitle" class="top-title">
         <MyTitle :title="'生产制造'" :English="'manufacture'"></MyTitle>
       </div>
 
-      <div class="top-detailList">
+      <div ref="topDetailList" class="top-detailList">
         <MyContent class="add-border" :title="'行业领先的生产线'">
           <div class="right-text">
             <p>
@@ -45,6 +60,7 @@ import MyContent from "@/components/F6_MyContent.vue";
 
 <style lang="less" scoped>
 .manufacture-content {
+  z-index: 999;
   width: 100%;
   padding: 0 11%;
   display: flex;
@@ -56,13 +72,24 @@ import MyContent from "@/components/F6_MyContent.vue";
   position: relative;
 
   .content-top {
+    z-index: 9;
     width: 100%;
+
     .top-title {
       margin-top: 60px;
       margin-bottom: 60px;
+
+      position: relative;
+      right: -100%;
+      transition: all 0.5s;
+    }
+
+    .topTitleClass {
+      right: 0;
     }
 
     .top-span {
+
       .top-span-content {
         margin-top: 30px;
 
@@ -77,7 +104,9 @@ import MyContent from "@/components/F6_MyContent.vue";
 
     .top-detailList {
       margin-top: 35px;
-
+      position: relative;
+      left: -100%;
+      transition: all 0.5s;
       .right-text {
         // width: 1010px;
         font-size: 20px;
@@ -85,6 +114,7 @@ import MyContent from "@/components/F6_MyContent.vue";
         color: #595757;
         line-height: 1.85;
         text-align: justify;
+
         // white-space: nowrap;
         p {
           width: 100%;
@@ -92,13 +122,19 @@ import MyContent from "@/components/F6_MyContent.vue";
       }
     }
 
+    .topDetailListClass {
+      left: 0;
+    }
     .top-whiteSpan {
       width: 100%;
-      height: 880px;
+      // height: 880px;
+      height: 1050px;
     }
   }
 
   .content-bgimg {
+    z-index: 0;
+    background-attachment: fixed;
     position: absolute;
     bottom: 0;
     width: 100%;
@@ -107,4 +143,7 @@ import MyContent from "@/components/F6_MyContent.vue";
     background-size: cover;
   }
 }
-</style>
+
+// .manufacture-content .content-top .topTitleClass {
+//   right: 0;
+// }</style>

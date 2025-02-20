@@ -5,7 +5,7 @@ import MyButton from "@/components/MyButton.vue";
 
 <template>
   <div class="approachPinggao">
-    <MyTitle h="走进平高" English="ENTERING PINGGAO"></MyTitle>
+    <MyTitle title="走进平高" English="ENTERING PINGGAO"></MyTitle>
     <div class="pics">
       <img src="@/assets/imgs/_1_aboutPinggaoImgs/pic1.png" alt="Image 1" class="grid-item1" />
       <img src="@/assets/imgs/_1_aboutPinggaoImgs/pic2.png" alt="Image 2" class="grid-item2" />

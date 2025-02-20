@@ -50,6 +50,17 @@ import MyTitle from "@/components/MyTitle.vue";
 </template>
 
 <style lang="less" scoped>
+
+@keyframes eases {
+  from {
+    left: -100%;
+
+  }
+  to {
+    left: 0;
+
+  }
+}
 .becomePartner-content {
   z-index: 999;
   width: 100%;
@@ -88,6 +99,10 @@ import MyTitle from "@/components/MyTitle.vue";
         overflow: hidden; 
         display: flex;
         align-items: center;
+
+        position: relative;
+        animation: eases 1.5s;
+        
         img {
           width: 100%;
           height: 100%;

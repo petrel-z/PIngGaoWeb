@@ -3,7 +3,7 @@ import MyTitle from "@/components/MyTitle.vue";
 </script>
 <template>
   <div class="lesadingMember">
-    <MyTitle h="领导成员" English="LENDING MEMBERS"></MyTitle>
+    <MyTitle title="领导成员" English="LENDING MEMBERS"></MyTitle>
     <div class="content">
       <div class="info">
         <img src="@/assets/imgs/_1_aboutPinggaoImgs/peoplebg.png" alt="" />

@@ -6,11 +6,16 @@
   <div style="width: auto">
     <Footer />
   </div>
+  <!-- <div class="lsiefi">3r addEventListener</div> -->
+  <div class="right_button">
+    <RightButton></RightButton>
+  </div>
 </template>
 
 <script setup>
 import { ref } from "vue";
 import comHeaderFoot from "@/assets/imgs/_1_aboutPinggaoImgs/t6_topBar.png";
+import RightButton from "@/components/RightButton.vue";
 const info = ref({
   title: "关于平高",
   content: "赋能智慧电气·创引绿色能源",
@@ -22,7 +27,7 @@ const info = ref({
 const footer = ref([
   { name: "集团简介", path: "/aboutPinggao/groupProfile" },
   { name: "领导成员", path: "/aboutPinggao/lesadingMember" },
-  { name: "组织结构", path: "/aboutPinggao/organizationalStructure" },
+  { name: "组织机构", path: "/aboutPinggao/organizationalStructure" },
   { name: "资质荣誉", path: "/aboutPinggao/seniorHonor" },
   { name: "走进平高", path: "/aboutPinggao/approachPinggao" },
 ]);
@@ -38,5 +43,11 @@ import Footer from "@/components/Footer.vue";
   height: 32vw;
 
   background-size: cover;
+}
+.right_button {
+  position: absolute;
+  top: 1400px;
+  right: 0;
+  z-index: 1001;
 }
 </style>

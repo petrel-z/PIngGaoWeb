@@ -1,16 +1,29 @@
 <script setup>
 import MyTitle from "@/components/MyTitle.vue";
 import MyContent from "@/components/F6_MyContent.vue";
+import { ref, onMounted } from "vue";
+const topDetailList = ref(null);
+const topTitle = ref(null);
+onMounted(() => {
+  const topDetailListDom = topDetailList.value;
+  const topTitleDom = topTitle.value;
+  setTimeout(() => {
+    topTitleDom.classList.add("topTitleClass");
+  }, 100);
+  setTimeout(() => {
+    topDetailListDom.classList.add("topDetailListClass");
+  }, 100);
+})
 </script>
 
 <template>
-  <div class="productTesting-content">
+  <div class="productTesting-content" style="overflow: auto;">
     <div class="content-top">
-      <div class="top-title">
+      <div ref="topTitle" class="top-title">
         <MyTitle :title="'产品检测'" :English="'productTesting'"></MyTitle>
       </div>
 
-      <div class="top-detailList">
+      <div ref="topDetailList" class="top-detailList">
         <MyContent class="delete-border" :title="'试验检测'">
           <div class="right-text">
             <p>
@@ -50,30 +63,27 @@ import MyContent from "@/components/F6_MyContent.vue";
     .top-title {
       margin-top: 60px;
       margin-bottom: 60px;
+      position: relative;
+      right: -100%;
+      transition: all 0.5s;
     }
 
-    .top-span {
-      .top-span-content {
-        margin-top: 30px;
-
-        p {
-          font-size: 20px;
-          font-family: "AlibabaPuHuiTi_2_45_Light";
-          color: #ffffff;
-          line-height: 1.85;
-        }
-      }
+    .topTitleClass {
+      right: 0;// 动画效果
     }
 
     .top-detailList {
       margin-top: 35px;
+      position: relative;
+        left: -100%;
+        transition: all 0.5s;
       .right-text {
-        // width: 1010px;
         font-size: 20px;
         font-family: "AlibabaPuHuiTi_2_45_Light";
         color: #595757;
         line-height: 1.85;
         text-align: justify;
+        
         // white-space: nowrap;
         p {
           width: 100%;
@@ -81,10 +91,14 @@ import MyContent from "@/components/F6_MyContent.vue";
         }
       }
     }
+    .topDetailListClass {
+      left: 0;
+    }
 
     .top-whiteSpan {
       width: 100%;
-      height: 880px;
+      // height: 880px;
+      height: 1050px;
     }
   }
 
@@ -95,6 +109,7 @@ import MyContent from "@/components/F6_MyContent.vue";
     height: 1013px;
     background-image: url("../../../assets/imgs/_6_qualityAssuranceImgs/t6_p1_contentBg.png");
     background-size: cover;
+    background-attachment: fixed;
   }
 }
 </style>

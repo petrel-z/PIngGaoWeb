@@ -8,7 +8,7 @@ import footrow from "@/assets/imgs/_1_aboutPinggaoImgs/footrow.png";
 <template>
   <!-- 组织结构 -->
   <div class="organizationalStructure">
-    <MyTitle class="mytitle" h="组织结构" English="organization structure"></MyTitle>
+    <MyTitle class="mytitle" title="组织机构" English="organization structure"></MyTitle>
     <div class="organization">
       <div class="organization_title">平高集团有限公司</div>
       <div class="detail">

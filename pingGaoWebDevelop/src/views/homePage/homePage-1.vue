@@ -100,6 +100,11 @@
         font-family: "AlibabaPuHuiTi_2_65_Medium";
         color: rgb(0, 111, 193);
       }
+
+      .button:hover {
+        background-color: rgb(0, 111, 193);
+        color: #fff;
+      }
     }
 
     .center-left {

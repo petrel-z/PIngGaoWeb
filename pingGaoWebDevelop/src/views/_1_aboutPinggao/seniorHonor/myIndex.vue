@@ -4,7 +4,7 @@ import MyButton from "@/components/MyButton.vue";
 </script>
 <template>
   <div class="seniorHonor">
-    <myTitle h="资质荣誉" English="QUALIFICATION AND HONOR"></myTitle>
+    <myTitle title="资质荣誉" English="QUALIFICATION AND HONOR"></myTitle>
     <div class="content">
       <div class="info">
         <div class="img"><img src="@/assets/imgs/_1_aboutPinggaoImgs/create.png" alt="" /></div>

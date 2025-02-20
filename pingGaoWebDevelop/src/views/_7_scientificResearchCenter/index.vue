@@ -1,38 +1,24 @@
 <template>
-  <!-- <div class="productEngineering">
-    <div class="header-body">
-      <div class="header-body-title">{{ info.title }}</div>
-      <hr class="header-body-hr" />
-      <div class="header-body-content">{{ info.content }}</div>
-      <div class="header-body-footer">{{ info.footer }}</div>
-    </div>
-    <div class="header-footer">
-      <ul>
-        <li v-for="item in footer" :key="item.name">
-          <router-link class="footer_text" :to="item.path">{{ item.name }}</router-link>
-        </li>
-      </ul>
-    </div>
-  </div> -->
-
   <div class="header">
     <ComHeader :content="info" :footer="footer"></ComHeader>
   </div>
   <router-view></router-view>
-
+  <div class="right_button"> <RightButton></RightButton> </div>
   <div style="width: auto">
     <Footer />
   </div>
 </template>
 <script setup>
 import comHeaderFoot from "@/assets/imgs/_1_aboutPinggaoImgs/t6_topBar.png";
-defineOptions({
-  name: "ScientificResearchCenter",
-});
+import RightButton from "@/components/RightButton.vue";
 import { ref } from "vue";
 import ComHeader from "@/components/ComHeader.vue";
 import Footer from "@/components/Footer.vue";
 import imgPath from "@/assets/imgs/_7_scientificResearchCenterImgs/头部轮播-07.png";
+defineOptions({
+  name: "ScientificResearchCenter",
+});
+
 const info = ref({
   title: "科研中心",
   content: "电工行业重大技术装备支柱企业",
@@ -53,5 +39,11 @@ const footer = ref([
   width: auto;
   height: 32vw;
   background-size: cover;
+}
+.right_button {
+ position: absolute;
+ top: 1400px;
+ right: 0;
+ z-index: 1001;
 }
 </style>

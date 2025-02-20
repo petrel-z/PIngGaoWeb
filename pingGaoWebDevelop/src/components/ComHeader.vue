@@ -1,5 +1,5 @@
 <script setup>
-import { ref } from "vue";
+import { onMounted, ref } from "vue";
 
 import imgPath from "@/assets/imgs/common/headerHoverBg-1.png";
 import imgPath1 from "@/assets/imgs/_1_aboutPinggaoImgs/头部轮播-01.png";
@@ -12,11 +12,21 @@ import imgPath7 from "@/assets/imgs/_7_scientificResearchCenterImgs/头部轮播
 import imgPath8 from "@/assets/imgs/_8_humanResourcesImgs/头部轮播-08.png";
 import imgPath9 from "@/assets/imgs/_9_contactUsImgs/头部轮播-09.png";
 import footerBg from "@/assets/imgs/_6_qualityAssuranceImgs/t6_topBar.png";
+import logoImg1 from "@/assets/imgs/common/logoImgAll.png";
+// import logoImg2 from "@/assets/imgs/common/logoImgAllBlack.png";
 
 let hidden = ref(true);
 let inputFlag = ref(false);
 let searchFlag = ref(false);
-let headerBottomFlag = ref(true);
+let headerBottomFlag = ref(false);
+let showText = ref(false);
+
+onMounted(() => {
+  // 模拟延迟显示，触发过渡效果
+  setTimeout(() => {
+    showText.value = true;
+  }, 0);
+});
 const header = ref([
   { name: "关于平高", path: "/aboutPingGao" },
   { name: "资讯中心", path: "/informationCenter" },
@@ -277,31 +287,32 @@ const props = defineProps({
       @mouseleave="headerBottomFlag = true"
     >
       <div class="log-img">
-        <img src="../assets/imgs/common/logo-img.png" alt="" />
-      </div>
-      <div style="flex: 1 1 auto">
+        <img :src="logoImg1" alt="" />
         <div id="header-nav-top">
-          <div class="log-title">
+          <!-- <div class="log-title">
             <div class="log-title-text">中国电气装备</div>
             <div class="log-title-english">China Electrical Equipment</div>
-          </div>
+          </div> -->
           <div class="header-nav-top-bar">
             <i class="iconfont icon-a-MenuBar-show bar-icon"></i>
             <ul class="header-nav-top-bar-ul">
               <li v-for="item in header" :key="item.name">
-                <router-link @mouseenter="hoverContent(item.name)" :to="item.path">{{
-                  item.name
-                }}</router-link>
+                <router-link
+                  active-class="active-color"
+                  @mouseenter="hoverContent(item.name)"
+                  :to="item.path"
+                  >{{ item.name }}</router-link
+                >
               </li>
             </ul>
           </div>
         </div>
 
         <div class="header-nav-bottom">
-          <div id="header-nav-bottom-left">
+          <!-- <div id="header-nav-bottom-left">
             <div class="log-bottom-text">平 高 集 团 有 限 公 司</div>
             <div class="log-bottom-english">PINGGAO GROUP CO.,LTD.</div>
-          </div>
+          </div> -->
           <div id="header-nav-bottom-right">
             <div @mouseleave="inputFlag = false" v-show="inputFlag" class="header-nav-bottom-item">
               <i class="iconfont icon-sousuo"></i>
@@ -419,12 +430,15 @@ const props = defineProps({
     </div>
 
     <div v-if="!props.onlyHeaderFlag" class="header-body-box">
-      <div class="header-body">
-        <div class="header-body-title">{{ props.content.title }}</div>
-        <hr class="header-body-hr" style="width: 5%" />
-        <div class="header-body-content">{{ props.content.content }}</div>
-        <div class="header-body-footer">{{ props.content.footer }}</div>
-      </div>
+      <transition name="fade-float">
+        <div v-if="showText" class="header-body">
+          <div class="header-body-title">{{ props.content.title }}</div>
+          <hr class="header-body-hr" style="width: 5%" />
+          <div class="header-body-content">{{ props.content.content }}</div>
+          <div class="header-body-footer">{{ props.content.footer }}</div>
+        </div>
+      </transition>
+
       <div
         class="header-footer"
         :style="{ 'background-image': `url('${props.content.footerBg}') ` }"
@@ -445,6 +459,8 @@ const props = defineProps({
 }
 #header {
   position: relative;
+  display: flex;
+  flex-direction: column;
   width: auto;
   height: 100%;
   font-size: 0.8rem;
@@ -452,22 +468,21 @@ const props = defineProps({
 }
 #header-nav {
   position: relative;
-  height: auto;
-  padding: 1% 5em 0 5em;
+  padding: 1% 5% 0 5%;
   display: flex;
   box-sizing: content-box;
   cursor: pointer;
-  height: 20%;
+  height: auto;
+  flex-direction: column;
 }
 
 #header-nav:hover {
   background: #fff;
-  color: black;
 }
 
 #header-nav:hover .header-nav-bottom-item,
 #header-nav:hover .header-nav-bottom-input,
-#header-nav:hover #header-nav-top li a,
+#header-nav:hover .header-nav-top-bar a,
 #header-nav:hover .log-title-text,
 #header-nav:hover .log-title-english,
 #header-nav:hover .log-bottom-text,
@@ -484,17 +499,22 @@ const props = defineProps({
 }
 
 #header-nav-top {
+  position: absolute;
+  right: 0;
+  top: 85%;
   text-align: right;
   /* transform: translateY(150%); */
   display: flex;
-  border-bottom: 0.05rem solid #fff;
+  /* border-bottom: 0.05rem solid #fff; */
   padding-bottom: 0.3%;
   flex: 1 1 auto;
+  align-items: center;
+  transform: translateY(-200%);
 }
 
 .log-img {
-  width: 4.5%;
-  margin-right: 1%;
+  position: relative;
+  width: 100%;
 }
 
 .log-img img {
@@ -547,7 +567,7 @@ const props = defineProps({
   margin-right: 0;
 }
 
-#header-nav-top a {
+.header-nav-top-bar a {
   display: block;
   text-align: right;
   padding: 0 0 0 1rem;
@@ -558,11 +578,14 @@ const props = defineProps({
   font-size: 1.1rem;
 }
 
-#header-nav-top a:hover {
+#header-nav .header-nav-top-bar a:hover {
   color: #409eff;
 }
 
 .header-nav-bottom {
+  position: absolute;
+  right: 0;
+  bottom: 0;
   height: 45%;
   display: flex;
   align-items: center;
@@ -783,8 +806,9 @@ const props = defineProps({
 
 .header-body-box {
   position: relative;
-  height: 77%;
-  padding: 5% 0 0 11%;
+  /* height: 77%; */
+  flex: 1 1 auto;
+  padding: 3% 0 0 11%;
 }
 
 .header-body {
@@ -815,7 +839,21 @@ const props = defineProps({
   text-transform: uppercase;
   line-height: 1.2;
 }
+/* 定义过渡类 */
+.fade-float-enter-active {
+  animation: fadeFloatIn 1s ease;
+}
 
+@keyframes fadeFloatIn {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
 .header-footer {
   position: absolute;
   bottom: 0;
@@ -851,12 +889,16 @@ const props = defineProps({
   overflow: hidden;
 }
 
+.background-white {
+  background-color: #fff;
+}
+
 .active-border {
   border-bottom: 0.05rem solid var(--footerColor);
 }
 
-.active-color {
-  color: rgb(69, 179, 224);
+#header-nav #header-nav-top .header-nav-top-bar .active-color {
+  color: #409eff;
 }
 
 @media (max-width: 900px) {
