@@ -623,6 +623,7 @@ onMounted(() => {
   position: relative;
   justify-content: space-evenly;
   margin-bottom: 40px;
+  overflow: hidden;
 }
 
 .product_box {

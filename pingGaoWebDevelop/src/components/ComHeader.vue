@@ -13,7 +13,7 @@ import imgPath8 from "@/assets/imgs/_8_humanResourcesImgs/头部轮播-08.png";
 import imgPath9 from "@/assets/imgs/_9_contactUsImgs/头部轮播-09.png";
 import footerBg from "@/assets/imgs/_6_qualityAssuranceImgs/t6_topBar.png";
 import logoImg1 from "@/assets/imgs/common/logoImgAll.png";
-// import logoImg2 from "@/assets/imgs/common/logoImgAllBlack.png";
+import logoImg2 from "@/assets/imgs/common/logoImgAllBlack.png";
 
 let hidden = ref(true);
 let inputFlag = ref(false);
@@ -283,11 +283,11 @@ const props = defineProps({
   >
     <div
       id="header-nav"
-      @mouseenter="headerBottomFlag = false"
-      @mouseleave="headerBottomFlag = true"
+      @mouseenter="headerBottomFlag = true"
+      @mouseleave="headerBottomFlag = false"
     >
       <div class="log-img">
-        <img :src="logoImg1" alt="" />
+        <img :src="!headerBottomFlag ? logoImg1 : logoImg2" alt="" />
         <div id="header-nav-top">
           <!-- <div class="log-title">
             <div class="log-title-text">中国电气装备</div>
