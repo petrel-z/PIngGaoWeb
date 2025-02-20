@@ -287,7 +287,11 @@ const props = defineProps({
       @mouseleave="headerBottomFlag = false"
     >
       <div class="log-img">
-        <img :src="!headerBottomFlag ? logoImg1 : logoImg2" alt="" />
+        <div class="logo-active"></div>
+        <router-link to="/homePage-2">
+          <img :src="!headerBottomFlag ? logoImg1 : logoImg2" alt="" />
+        </router-link>
+
         <div id="header-nav-top">
           <!-- <div class="log-title">
             <div class="log-title-text">中国电气装备</div>
