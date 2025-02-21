@@ -1,26 +1,25 @@
-<script setup></script>
+<script setup>
+</script>
 <template>
   <div class="productSeriesDetail">
     <div class="detail_page">
       <div class="header">
         <div class="detail_title">
           <div class="img">
-            <img src="../../../assets/imgs/_4_productEngineeringImgs/dot.png" alt="" />
+            <img src="@/assets/imgs/_4_productEngineeringImgs/dot.png" alt="" />
           </div>
           <div class="title">高压电器产业</div>
         </div>
         <div class="detail_text">
           <div class="text">ZHW1-252（L）/T4000-50型复合式组合电器</div>
           <div class="button">
-            <div class="p" @click="this.$router.go(-1)" @mousedown="console.log(111)">
-              返回上一级
-            </div>
+            <div class="p" @click="this.$router.go(-1)" @mousedown="console.log(111)">返回上一级</div>
           </div>
         </div>
         <div class="long_line"></div>
       </div>
       <div class="product_img">
-        <img src="../../../assets/imgs/_4_productEngineeringImgs/product-img.png" alt="" />
+        <img src="@/assets/imgs/_4_productEngineeringImgs/product-img.png" alt="" />
       </div>
       <div class="special">
         <div class="special_header">
@@ -57,12 +56,12 @@
           <div class="h">主要技术参数</div>
         </div>
         <div class="parameter_img">
-          <img :src="require('@/assets/imgs/_4_productEngineeringImgs/parameter.png')" alt="" />
+          <img src="@/assets/imgs/_4_productEngineeringImgs/parameter.png" alt="" />
         </div>
       </div>
     </div>
     <div class="footer_img">
-      <img :src="require('@/assets/imgs/_4_productEngineeringImgs/product-footer.png')" alt="" />
+      <img src="@/assets/imgs/_4_productEngineeringImgs/product-footer.png" alt="" />
     </div>
   </div>
 </template>
@@ -71,7 +70,7 @@
   position: relative;
   margin: auto;
   width: 100%;
-  padding: 0px 11%;
+  padding: 0px 210px;
   border-radius: 20px;
   background-color: #fff;
 }
@@ -83,7 +82,7 @@
   background-color: #fff;
   z-index: 100;
 }
-.detail_page .header {
+.detail_page .header{
   width: 100%;
 }
 .detail_title {

@@ -91,7 +91,7 @@ const handleMouseLeave = () => {
         @mouseover="handleMouse"
         @mouseleave="handleMouseLeave"
       >
-        <span>电力储能业务</span>
+        <span >电力储能业务</span>
       </div>
       <div
         class="detail_product"
@@ -211,7 +211,7 @@ const handleMouseLeave = () => {
   border-radius: 20px;
   background-color: #fff;
   z-index: 100;
-  padding: 64px 11%;
+  padding: 64px 210px;
 }
 .detail_content {
   width: 1080px;
@@ -229,12 +229,15 @@ const handleMouseLeave = () => {
   height: 614px;
   position: absolute;
   z-index: -100;
-  transition: 0.2s;
+  transition: 0.5s ease-in-out; /* 添加过渡效果 */
+  opacity: 1; /* 初始透明度 */
 }
-.productSeries img {
+
+.productSeries .img img {
   height: 614px;
   width: 100%;
-  transition: 0.1s;
+  transition: 0.5s ease-in-out; /* 添加过渡效果 */
+  opacity: 1; /* 初始透明度 */
 }
 .detail_content .detail_product {
   border: 1px #1e8dce solid;
@@ -253,15 +256,9 @@ const handleMouseLeave = () => {
   font-size: 30px;
   font-family: "AlibabaPuHuiTi_2_35_Thin", sans-serif;
   color: #ffffff;
-  z-index: -100;
+  z-index:-100;
 }
-.active {
-  border: none !important;
-  background-color: #45b3e0;
-}
-.active span {
-  color: #ffffff;
-}
+
 .detail_page {
   margin-top: 150px;
   height: 1734px;
