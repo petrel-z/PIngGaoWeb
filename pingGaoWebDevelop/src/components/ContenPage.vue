@@ -61,26 +61,20 @@ const imgPath = ref(props.img);
         {{ props.title2 }}
       </div>
       <div class="hr">
-        <div
-          style="width: 135px; height: 3px"
-          :style="{ 'background-color': props.lineColor }"
-        ></div>
-        <div
-          style="width: 100%; height: 1px"
-          :style="{ 'background-color': props.lineColor }"
-        ></div>
+        <div style="width: 135px; height: 3px" :style="{ 'background-color': props.lineColor }"></div>
+        <div style="width: 100%; height: 1px" :style="{ 'background-color': props.lineColor }"></div>
       </div>
       <div class="content-text" :style="{ fontFamily: props.textFont, color: props.fontColor }">
         {{ props.text }}
       </div>
+      <!-- 查看详情按钮 -->
       <div class="content-btn" :style="{ 'background-color': props.btnColor }">
-        <span class="btn-text">{{ props.btnText }}</span>
+        <router-link to="/partyBuilding/partyspiritDetail"><span class="btn-text" style="margin-left: 13%;">{{ props.btnText }}</span></router-link>
         <!-- ********8 -->
         <span class="icon iconfont lookdetail-icon">&#xe504;</span>
       </div>
     </div>
-    <div 
- class="img">
+    <div class="img">
       <img style="width: 105%; height: 102%; object-fit: cover" :src="imgPath" alt="图片加载失败" />
     </div>
   </div>
@@ -96,25 +90,30 @@ const imgPath = ref(props.img);
   align-items: center;
   background-color: #003792;
   border-radius: 10px;
+
   .content-left {
     width: 40%;
     height: 100%;
   }
+
   .img {
     width: 55%;
     height: 100%;
     overflow: hidden;
     border-radius: 10px;
+
     img {
       position: relative;
       left: -1rem;
     }
   }
 }
+
 .content:hover .img img {
   transform: scale(1.15);
   transition: all 0.5s ease-in-out;
 }
+
 .title {
   font-size: 2.1rem;
   // font-family: 'Alibaba PuHuiTi 2.0';
@@ -164,9 +163,22 @@ const imgPath = ref(props.img);
 
   display: flex;
   justify-content: space-between;
-  .btn-text {
-    margin-left: 13%;
+
+  a {
+    width: 100%;
+    color: #fff;
+    text-align: left;
+    
   }
+  a:hover {
+    color: #d6c2c2;
+  }
+
+    .btn-text {
+      margin-left: 13%;
+    }
+
+
   .lookdetail-icon {
     margin-right: 15px;
     font-size: 30px;
