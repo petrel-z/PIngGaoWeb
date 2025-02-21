@@ -20,12 +20,35 @@ let inputFlag = ref(false);
 let searchFlag = ref(false);
 let headerBottomFlag = ref(false);
 let showText = ref(false);
+let imgFixed = ref(true);
 
 onMounted(() => {
   // 模拟延迟显示，触发过渡效果
   setTimeout(() => {
     showText.value = true;
   }, 0);
+
+  // 获取导航栏元素
+  const navbar = document.getElementById("header-nav");
+  // 定义滚动距离阈值
+  const scrollThreshold = 200;
+  console.log(navbar);
+
+  // 监听窗口滚动事件
+  window.addEventListener("scroll", function () {
+    // 获取当前滚动距离
+    const scrollTop = window.scrollY || document.documentElement.scrollTop;
+    // 判断滚动距离是否超过阈值
+    if (scrollTop > scrollThreshold) {
+      // 超过阈值则添加固定类名
+      navbar.classList.add("background-white");
+      imgFixed.value = false;
+    } else {
+      // 未超过阈值则移除固定类名
+      navbar.classList.remove("background-white");
+      imgFixed.value = true;
+    }
+  });
 });
 const header = ref([
   { name: "关于平高", path: "/aboutPingGao" },
@@ -281,147 +304,158 @@ const props = defineProps({
       '--footerColor': props.css.footerColor,
     }"
   >
-    <div
-      id="header-nav"
-      @mouseenter="headerBottomFlag = true"
-      @mouseleave="headerBottomFlag = false"
-    >
-      <div class="log-img">
-        <router-link class="logo-link" to="/homePage-2">
-          <img :src="!headerBottomFlag ? logoImg1 : logoImg2" alt="" />
-        </router-link>
+    <div class="header-nav-box">
+      <div
+        id="header-nav"
+        @mouseenter="headerBottomFlag = true"
+        @mouseleave="headerBottomFlag = false"
+      >
+        <div class="log-img">
+          <router-link class="logo-link" to="/homePage-2">
+            <img v-show="imgFixed" :src="!headerBottomFlag ? logoImg1 : logoImg2" alt="" />
+            <img v-show="!imgFixed" :src="logoImg2" alt="" />
+          </router-link>
 
-        <div id="header-nav-top">
-          <!-- <div class="log-title">
+          <div id="header-nav-top">
+            <!-- <div class="log-title">
             <div class="log-title-text">中国电气装备</div>
             <div class="log-title-english">China Electrical Equipment</div>
           </div> -->
-          <div class="header-nav-top-bar">
-            <i class="iconfont icon-a-MenuBar-show bar-icon"></i>
-            <ul class="header-nav-top-bar-ul">
-              <li v-for="item in header" :key="item.name">
-                <router-link
-                  active-class="active-color"
-                  @mouseenter="hoverContent(item.name)"
-                  :to="item.path"
-                  >{{ item.name }}</router-link
-                >
-              </li>
-            </ul>
-          </div>
-        </div>
-
-        <div class="header-nav-bottom">
-          <!-- <div id="header-nav-bottom-left">
-            <div class="log-bottom-text">平 高 集 团 有 限 公 司</div>
-            <div class="log-bottom-english">PINGGAO GROUP CO.,LTD.</div>
-          </div> -->
-          <div id="header-nav-bottom-right">
-            <div @mouseleave="inputFlag = false" v-show="inputFlag" class="header-nav-bottom-item">
-              <i class="iconfont icon-sousuo"></i>
-              <input
-                class="header-nav-bottom-input"
-                type="text"
-                @keydown.enter="searchFlag = true"
-                placeholder="输入关键词"
-              />
-            </div>
-            <div
-              v-show="!inputFlag"
-              @mouseenter="
-                () => {
-                  inputFlag = true;
-                  // hidden = true;
-                }
-              "
-              class="header-nav-bottom-item"
-            >
-              搜索
-              <i class="iconfont icon-sousuo" style="font-size: 1.125rem" />
-            </div>
-            <div class="header-nav-bottom-item">
-              邮箱
-              <i class="iconfont icon-youxiang" style="font-size: 1.125rem" />
-            </div>
-            <div class="header-nav-bottom-item">
-              CN
-              <i class="iconfont icon-repeat" style="font-size: 1.125rem"></i>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="header-nav-hover-box">
-      <div @mouseleave="hidden = true" class="header-nav-hover-content" :class="{ hidden: hidden }">
-        <div
-          style="width: 100%; height: 100%; background-size: cover; display: flex"
-          :style="{ 'background-image': `url(${imgPath})` }"
-        >
-          <div class="header-nav-hover-content-left">
-            <div class="header-nav-hover-content-title">
-              {{ hoverText.content.title }}
-            </div>
-            <hr style="display: inline-block; width: 5%; border: 0.1rem solid rgb(35, 24, 21)" />
-            <div class="header-nav-hover-content-text">
-              {{ hoverText.content.content }}
-            </div>
-            <div class="header-nav-hover-content-english">
-              {{ hoverText.content.footer }}
-            </div>
-          </div>
-          <div class="header-nav-hover-content-right">
-            <div class="right-left">
-              <ul>
-                <li v-for="item in hoverText.footer" :key="item.name">
-                  <router-link active-class="active-color" :to="item.path">{{
-                    item.name
-                  }}</router-link>
+            <div class="header-nav-top-bar">
+              <i class="iconfont icon-a-MenuBar-show bar-icon"></i>
+              <ul class="header-nav-top-bar-ul">
+                <li v-for="item in header" :key="item.name">
+                  <router-link
+                    active-class="active-color"
+                    @mouseenter="hoverContent(item.name)"
+                    :to="item.path"
+                    >{{ item.name }}</router-link
+                  >
                 </li>
               </ul>
             </div>
-            <div class="right-right">
-              <div>
-                <img :src="hoverText.content.imgPath" alt="" />
+          </div>
+
+          <div class="header-nav-bottom">
+            <!-- <div id="header-nav-bottom-left">
+            <div class="log-bottom-text">平 高 集 团 有 限 公 司</div>
+            <div class="log-bottom-english">PINGGAO GROUP CO.,LTD.</div>
+          </div> -->
+            <div id="header-nav-bottom-right">
+              <div
+                @mouseleave="inputFlag = false"
+                v-show="inputFlag"
+                class="header-nav-bottom-item"
+              >
+                <i class="iconfont icon-sousuo"></i>
+                <input
+                  class="header-nav-bottom-input"
+                  type="text"
+                  @keydown.enter="searchFlag = true"
+                  placeholder="输入关键词"
+                />
+              </div>
+              <div
+                v-show="!inputFlag"
+                @mouseenter="
+                  () => {
+                    inputFlag = true;
+                    // hidden = true;
+                  }
+                "
+                class="header-nav-bottom-item"
+              >
+                搜索
+                <i class="iconfont icon-sousuo" style="font-size: 1.125rem" />
+              </div>
+              <div class="header-nav-bottom-item">
+                邮箱
+                <i class="iconfont icon-youxiang" style="font-size: 1.125rem" />
+              </div>
+              <div class="header-nav-bottom-item">
+                CN
+                <i class="iconfont icon-repeat" style="font-size: 1.125rem"></i>
               </div>
             </div>
           </div>
         </div>
       </div>
-      <div
-        class="header-nav-search-content"
-        @mouseleave="searchFlag = false"
-        :class="{ hidden: !searchFlag }"
-      >
+      <div class="header-nav-hover-box">
         <div
-          style="width: 100%; height: 100%; background-size: cover; display: flex"
-          :style="{ 'background-image': `url(${imgPath})` }"
+          @mouseleave="hidden = true"
+          class="header-nav-hover-content"
+          :class="{ hidden: hidden }"
         >
-          <div class="header-nav-search-content-left">
-            <div class="header-nav-search-content-title">搜索结果</div>
-            <hr style="display: inline-block; width: 5%; border: 0.1rem solid rgb(35, 24, 21)" />
-            <div class="header-nav-search-content-text">
-              {{ hoverText.content.content }}
+          <div
+            style="width: 100%; height: 100%; background-size: cover; display: flex"
+            :style="{ 'background-image': `url(${imgPath})` }"
+          >
+            <div class="header-nav-hover-content-left">
+              <div class="header-nav-hover-content-title">
+                {{ hoverText.content.title }}
+              </div>
+              <hr style="display: inline-block; width: 5%; border: 0.1rem solid rgb(35, 24, 21)" />
+              <div class="header-nav-hover-content-text">
+                {{ hoverText.content.content }}
+              </div>
+              <div class="header-nav-hover-content-english">
+                {{ hoverText.content.footer }}
+              </div>
             </div>
-            <div class="header-nav-search-content-english">
-              {{ hoverText.content.footer }}
+            <div class="header-nav-hover-content-right">
+              <div class="right-left">
+                <ul>
+                  <li v-for="item in hoverText.footer" :key="item.name">
+                    <router-link active-class="active-color" :to="item.path">{{
+                      item.name
+                    }}</router-link>
+                  </li>
+                </ul>
+              </div>
+              <div class="right-right">
+                <div>
+                  <img :src="hoverText.content.imgPath" alt="" />
+                </div>
+              </div>
             </div>
           </div>
-          <div class="header-nav-search-content-right">
-            <div class="header-nav-search-content-right-title">
-              <ul>
-                <li>全部</li>
-                <li>新闻</li>
-                <li>产品</li>
-                <li>招聘</li>
-              </ul>
+        </div>
+        <div
+          class="header-nav-search-content"
+          @mouseleave="searchFlag = false"
+          :class="{ hidden: !searchFlag }"
+        >
+          <div
+            style="width: 100%; height: 100%; background-size: cover; display: flex"
+            :style="{ 'background-image': `url(${imgPath})` }"
+          >
+            <div class="header-nav-search-content-left">
+              <div class="header-nav-search-content-title">搜索结果</div>
+              <hr style="display: inline-block; width: 5%; border: 0.1rem solid rgb(35, 24, 21)" />
+              <div class="header-nav-search-content-text">
+                {{ hoverText.content.content }}
+              </div>
+              <div class="header-nav-search-content-english">
+                {{ hoverText.content.footer }}
+              </div>
             </div>
-            <div class="header-nav-search-content-right-content">
-              <ul>
-                <li>平高集团1家企业荣获2024年全国质量标杆奖</li>
-                <li>平高集团亮相CIGRE 2024 绿色智能产品吸引全球电力行业目光</li>
-                <li>共青团平高集团有限公司、河南平高电气股份有限公司第二...</li>
-                <li>平高集团亮相CIGRE 2024 绿色智能产品吸引全球电力行业目光</li>
-              </ul>
+            <div class="header-nav-search-content-right">
+              <div class="header-nav-search-content-right-title">
+                <ul>
+                  <li>全部</li>
+                  <li>新闻</li>
+                  <li>产品</li>
+                  <li>招聘</li>
+                </ul>
+              </div>
+              <div class="header-nav-search-content-right-content">
+                <ul>
+                  <li>平高集团1家企业荣获2024年全国质量标杆奖</li>
+                  <li>平高集团亮相CIGRE 2024 绿色智能产品吸引全球电力行业目光</li>
+                  <li>共青团平高集团有限公司、河南平高电气股份有限公司第二...</li>
+                  <li>平高集团亮相CIGRE 2024 绿色智能产品吸引全球电力行业目光</li>
+                </ul>
+              </div>
             </div>
           </div>
         </div>
@@ -465,6 +499,14 @@ const props = defineProps({
   font-size: 0.8rem;
   font-family: "AlibabaPuHuiTi_2_55_Regular";
 }
+
+.header-nav-box {
+  position: fixed;
+  width: 100%;
+  height: auto;
+  z-index: 9999;
+}
+
 #header-nav {
   position: relative;
   padding: 1% 5% 0 5%;
@@ -812,7 +854,7 @@ const props = defineProps({
   position: relative;
   /* height: 77%; */
   flex: 1 1 auto;
-  padding: 3% 0 0 11%;
+  padding: 11% 0 0 11%;
 }
 
 .header-body {
@@ -891,6 +933,24 @@ const props = defineProps({
 .hidden {
   height: 0px;
   overflow: hidden;
+}
+
+.background-white .header-nav-bottom-item,
+.background-white .header-nav-bottom-input,
+.background-white .header-nav-top-bar a,
+.background-white .log-title-text,
+.background-white .log-title-english,
+.background-white .log-bottom-text,
+.background-white .log-bottom-english,
+.background-white .header-nav-bottom-input::placeholder,
+.background-white i {
+  color: black;
+}
+
+.background-white #header-nav-top,
+.background-white .header-nav-bottom-input,
+.background-white .header-nav-bottom-item {
+  border-color: black;
 }
 
 .background-white {

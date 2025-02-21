@@ -87,6 +87,12 @@ const props = defineProps({
   width: 48%;
 }
 
+.content-right:hover {
+  cursor: pointer;
+  transform: scale(1.05);
+  transition: all 0.7s ease-in-out;
+}
+
 .title {
   font-size: 2.18rem;
   font-family: "AlibabaPuHuiTi_2_65_Medium";
@@ -129,8 +135,13 @@ const props = defineProps({
   height: auto;
   padding: 1.5%;
   margin-top: 3%;
-  border-radius: 5px;
+  border-radius: 0.8rem;
   cursor: pointer;
+}
+
+.content-btn:hover {
+  transform: scale(1.1);
+  transition: all 0.3s ease;
 }
 
 @media screen and (max-width: 900px) {

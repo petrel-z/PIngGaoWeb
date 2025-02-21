@@ -77,7 +77,8 @@ console.log(props.bottomItems);
     justify-content: start;
     align-items: center;
     position: relative;
-    padding: 8rem 4rem;
+    padding: 5rem 4rem;
+    padding-bottom: 4rem;
     width: 100%;
 
     h1,

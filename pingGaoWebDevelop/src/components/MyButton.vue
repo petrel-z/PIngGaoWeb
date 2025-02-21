@@ -55,8 +55,14 @@ const props = defineProps({
   cursor: pointer;
   width: auto;
   height: auto;
-  border-radius: 30.5px;
+  border-radius: 0.8rem;
 }
+
+.button:hover {
+  transform: scale(1.1);
+  transition: all 0.3s ease-in-out;
+}
+
 .button-text {
   width: 70%;
   font-size: 1.1rem;
@@ -89,7 +95,12 @@ const props = defineProps({
   background-color: var(--bgColor);
   width: 100%;
   height: auto;
-  border-radius: 5px;
+  border-radius: 0.8rem;
   cursor: pointer;
+}
+
+.content-btn:hover {
+  transform: scale(1.1);
+  transition: all 0.3s ease-in-out;
 }
 </style>
