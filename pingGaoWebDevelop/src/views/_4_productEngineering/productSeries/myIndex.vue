@@ -44,7 +44,7 @@ const handleMouse = (event) => {
 // 处理鼠标离开事件，恢复默认图片
 const handleMouseLeave = () => {
   imageSrc.value = new URL(
-    "@/assets/imgs/_4_productEngineeringImgs/bg-product1.png",
+    "@/assets/imgs/_4_productEngineeringImgs/product-1.png",
     import.meta.url
   ).href; // 恢复默认图片
   console.log("鼠标离开，恢复默认图片");
