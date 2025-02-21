@@ -4,21 +4,21 @@ import MyTitle from "@/components/MyTitle.vue";
 
 // 使用 ref 存储图片路径，并处理路径
 const imageSrc = ref(
-  new URL("@/assets/imgs/_4_productEngineeringImgs/bg-product1.png", import.meta.url).href
+  new URL("@/assets/imgs/_4_productEngineeringImgs/product-1.png", import.meta.url).href
 );
 
 // 处理 imgs 数组中的路径
 const imgs = ref(
   [
-    new URL("@/assets/imgs/_4_productEngineeringImgs/bg-product1.png", import.meta.url).href,
-    new URL("@/assets/imgs/_4_productEngineeringImgs/bg-product2.png", import.meta.url).href,
-    new URL("@/assets/imgs/_4_productEngineeringImgs/bg-product3.png", import.meta.url).href,
-    new URL("@/assets/imgs/_4_productEngineeringImgs/bg-product4.png", import.meta.url).href,
-    new URL("@/assets/imgs/_4_productEngineeringImgs/bg-product5.png", import.meta.url).href,
-    new URL("@/assets/imgs/_4_productEngineeringImgs/bg-product6.png", import.meta.url).href,
-    new URL("@/assets/imgs/_4_productEngineeringImgs/bg-product7.png", import.meta.url).href,
-    new URL("@/assets/imgs/_4_productEngineeringImgs/bg-product8.png", import.meta.url).href,
-    new URL("@/assets/imgs/_4_productEngineeringImgs/bg-product9.png", import.meta.url).href,
+    new URL("@/assets/imgs/_4_productEngineeringImgs/product-1.png", import.meta.url).href,
+    new URL("@/assets/imgs/_4_productEngineeringImgs/product-2.png", import.meta.url).href,
+    new URL("@/assets/imgs/_4_productEngineeringImgs/product-3.png", import.meta.url).href,
+    new URL("@/assets/imgs/_4_productEngineeringImgs/product-4.png", import.meta.url).href,
+    new URL("@/assets/imgs/_4_productEngineeringImgs/product-5.png", import.meta.url).href,
+    new URL("@/assets/imgs/_4_productEngineeringImgs/product-6.png", import.meta.url).href,
+    new URL("@/assets/imgs/_4_productEngineeringImgs/product-7.png", import.meta.url).href,
+    new URL("@/assets/imgs/_4_productEngineeringImgs/product-8.png", import.meta.url).href,
+    new URL("@/assets/imgs/_4_productEngineeringImgs/product-9.png", import.meta.url).href,
   ].map((path) => new URL(path, import.meta.url).href)
 );
 
