@@ -1,5 +1,38 @@
 <script setup>
 import MyTitle from "@/components/MyTitle.vue";
+import { ref, onMounted } from "vue";
+
+// 创建一个 ref 来引用图片元素
+const imageRef = ref(null);
+
+// 创建一个 ref 来跟踪图片是否可见
+const isVisible = ref(false);
+
+// 优化：创建和设置 Intersection Observer
+const setupObserver = () => {
+  const observer = new IntersectionObserver(
+    (entries, observer) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          // 图片进入视口时，触发动画
+          isVisible.value = true;
+          observer.disconnect(); // 确保动画只触发一次
+        }
+      });
+    },
+    {
+      root: null, // 监测整个视口
+      rootMargin: "0px",
+      threshold: 0.1, // 图片进入视口 50% 时触发
+    }
+  );
+
+  if (imageRef.value) {
+    observer.observe(imageRef.value); // 开始观察图片
+  }
+};
+
+onMounted(setupObserver); // 在组件挂载时设置观察器
 </script>
 <template>
   <!-- 集团简介 -->
@@ -155,7 +188,12 @@ import MyTitle from "@/components/MyTitle.vue";
       </div>
     </div>
     <div class="mind_map">
-      <img src="@/assets/imgs/_1_aboutPinggaoImgs/bg-footer.png" alt="" />
+      <img
+        ref="imageRef"
+        src="@/assets/imgs/_1_aboutPinggaoImgs/bg-footer.png"
+        alt="Image"
+        :class="{ 'slide-in': isVisible }"
+      />
     </div>
   </div>
 </template>
@@ -241,7 +279,7 @@ import MyTitle from "@/components/MyTitle.vue";
   padding-top: 10px;
   transition: 0.5s;
 }
-.text_word .img_right:hover{
+.text_word .img_right:hover {
   transform: scale(1.05);
 }
 
@@ -379,10 +417,10 @@ import MyTitle from "@/components/MyTitle.vue";
   display: flex;
   flex-wrap: wrap;
 }
-.basic_word{
+.basic_word {
   transition: 0.3s;
 }
-.basic_word:hover{
+.basic_word:hover {
   transform: scale(1.05);
 }
 .basic_culture_info {
@@ -392,7 +430,6 @@ import MyTitle from "@/components/MyTitle.vue";
   text-align: center;
   margin-bottom: 70px;
   min-width: 100px;
-
 }
 
 .basic_culture_info div {
@@ -425,16 +462,30 @@ import MyTitle from "@/components/MyTitle.vue";
   border-right: 1px solid #c4c4c4;
 }
 .mind_map {
+  background-color: #def1fb;
   bottom: 0px;
   left: 0;
   width: 100%;
   height: 1028px;
   position: absolute;
+  z-index: -1;
 }
+
 .mind_map img {
   width: 100%;
-  left: 0;
-  bottom: 0;
+  position: absolute;
   height: 1028px;
+  left: 0;
+  bottom: 0; /* 初始位置在容器底部 */
+  transform: translateY(50%); /* 图片初始隐藏在容器下方 */
+  visibility: hidden; /* 初始时不可见 */
+  transition: transform 1s ease;
+  will-change: transform; /* 告诉浏览器动画即将发生，提升性能 */
+  z-index: -1;
+}
+
+.mind_map img.slide-in {
+  visibility: visible;
+  transform: translateY(0); /* 从下方滑动到原位置 */
 }
 </style>

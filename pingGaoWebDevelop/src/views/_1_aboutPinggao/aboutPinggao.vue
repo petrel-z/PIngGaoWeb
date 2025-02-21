@@ -4,7 +4,7 @@
   </div>
   <router-view></router-view>
   <div style="width: auto">
-    <Footer />
+    <Footer class="footer" />
   </div>
   <!-- <div class="lsiefi">3r addEventListener</div> -->
   <div class="right_button">
@@ -41,7 +41,6 @@ import Footer from "@/components/Footer.vue";
   background-image: url("@/assets/imgs/_1_aboutPinggaoImgs/头部轮播-01.png");
   width: auto;
   height: 32vw;
-
   background-size: cover;
 }
 .right_button {
@@ -49,5 +48,8 @@ import Footer from "@/components/Footer.vue";
   top: 1400px;
   right: 0;
   z-index: 1001;
+}
+.footer{
+  z-index:100;
 }
 </style>
