@@ -4,9 +4,13 @@ import { ref, onMounted } from "vue";
 
 // 创建一个 ref 来引用图片元素
 const imageRef = ref(null);
-
+// 创建一个 ref 来引用图片或元素
+const wordLeft = ref(null);
+const imgRight = ref(null);
 // 创建一个 ref 来跟踪图片是否可见
-const isVisible = ref(false);
+const isVisibleImg = ref(false);
+const isVisibleLeftWord = ref(false);
+const isVisibleRightImg = ref(false);
 
 // 优化：创建和设置 Intersection Observer
 const setupObserver = () => {
@@ -15,7 +19,7 @@ const setupObserver = () => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
           // 图片进入视口时，触发动画
-          isVisible.value = true;
+          isVisibleImg.value = true;
           observer.disconnect(); // 确保动画只触发一次
         }
       });
@@ -26,13 +30,60 @@ const setupObserver = () => {
       threshold: 0.1, // 图片进入视口 50% 时触发
     }
   );
-
   if (imageRef.value) {
     observer.observe(imageRef.value); // 开始观察图片
   }
 };
 
+// 优化：创建和设置 Intersection Observer
+const setupObserver1 = () => {
+  const observer = new IntersectionObserver(
+    (entries, observer) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          // 图片进入视口时，触发动画
+          isVisibleLeftWord.value = true;
+          observer.disconnect(); // 确保动画只触发一次
+        }
+      });
+    },
+    {
+      root: null, // 监测整个视口
+      rootMargin: "0px",
+      threshold: 0.1, // 图片进入视口 50% 时触发
+    }
+  );
+  if (wordLeft.value) {
+    observer.observe(wordLeft.value); // 开始观察图片
+  }
+};
+
+// 优化：创建和设置 Intersection Observer
+const setupObserver2 = () => {
+  const observer = new IntersectionObserver(
+    (entries, observer) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          // 图片进入视口时，触发动画
+          isVisibleRightImg.value = true;
+          observer.disconnect(); // 确保动画只触发一次
+        }
+      });
+    },
+    {
+      root: null, // 监测整个视口
+      rootMargin: "0px",
+      threshold: 0.1, // 图片进入视口 50% 时触发
+    }
+  );
+  if (imgRight.value) {
+    observer.observe(imgRight.value); // 开始观察图片
+  }
+};
+
 onMounted(setupObserver); // 在组件挂载时设置观察器
+onMounted(setupObserver1); // 在组件挂载时设置观察器
+onMounted(setupObserver2); // 在组件挂载时设置观察器
 </script>
 <template>
   <!-- 集团简介 -->
@@ -65,7 +116,7 @@ onMounted(setupObserver); // 在组件挂载时设置观察器
       </div>
     </div>
     <div class="text_word">
-      <div class="word_left">
+      <div class="word_left" ref="wordLeft" :class="{ 'slide-in-left': isVisibleLeftWord }">
         <div class="text-section">
           <p class="word_left_firstp">
             平高集团隶属于中国电气装备集团有限公司，始建于1970年，是我国电工行业重大技术装备支柱企业，具备世界领先的规模化高端电力装备研发制造实力及行业领先的能源系统集成解决方案提供能力。是国家级高新技术企业、国家级创新型企业，先后荣获全国五一劳动奖状、中国机械工业100强企业、装备中国功勋企业、全国文明单位、国家技能人才培育突出贡献单位、中国储能产业最具影响力企业等荣誉称号。
@@ -81,8 +132,8 @@ onMounted(setupObserver); // 在组件挂载时设置观察器
           </p>
         </div>
       </div>
-      <div class="img_right">
-        <img src="@/assets/imgs/_10_homePageImgs/shipin.png" alt="" />
+      <div class="img_right" ref="imgRight" :class="{ 'slide-in-left': isVisibleRightImg }">
+        <img src="@/assets/imgs/_10_homePageImgs/shipin.png" alt="Image" />
       </div>
     </div>
     <div class="key">
@@ -192,7 +243,7 @@ onMounted(setupObserver); // 在组件挂载时设置观察器
         ref="imageRef"
         src="@/assets/imgs/_1_aboutPinggaoImgs/bg-footer.png"
         alt="Image"
-        :class="{ 'slide-in': isVisible }"
+        :class="{ 'slide-in': isVisibleImg }"
       />
     </div>
   </div>
@@ -207,9 +258,11 @@ onMounted(setupObserver); // 在组件挂载时设置观察器
   border-radius: 20px;
   background-color: #fff;
   z-index: 0;
+  overflow: hidden;
 }
 
 .introduce {
+  overflow: hidden;
   display: flex;
   margin-top: 55px;
   position: absolute;
@@ -260,11 +313,21 @@ onMounted(setupObserver); // 在组件挂载时设置观察器
   font-family: "AlibabaPuHuiTi_2_55_Regular", sans-serif;
   color: rgb(89, 87, 87);
   line-height: 1.85;
+  opacity: 0;
+  transform: translateX(-100%); /* 初始位置在左边 */
+  visibility: hidden;
+  transition: transform 1s ease, opacity 0.5s ease; /* 过渡效果 */
 }
 
 .text_word .word_left p {
   display: block;
   margin-bottom: 40px;
+}
+
+.word_left.slide-in-left {
+  opacity: 1;
+  transform: translateX(0);
+  visibility: visible;
 }
 
 .text_word .text-section {
@@ -278,7 +341,18 @@ onMounted(setupObserver); // 在组件挂载时设置观察器
   background-size: contain;
   padding-top: 10px;
   transition: 0.5s;
+  transform: translateX(100%); /* 初始位置在右边 */
+  opacity: 0; /* 初始时不可见 */
+  transition: transform 1s ease, opacity 0.5s ease; /* 过渡效果 */
+  visibility: hidden; /* 初始时隐藏 */
 }
+
+.img_right.slide-in-left {
+  transform: translateX(0); /* 滑动到最左边 */
+  opacity: 1; /* 可见 */
+  visibility: visible; /* 可见 */
+}
+
 .text_word .img_right:hover {
   transform: scale(1.05);
 }
@@ -469,9 +543,11 @@ onMounted(setupObserver); // 在组件挂载时设置观察器
   height: 1028px;
   position: absolute;
   z-index: -1;
+  overflow: hidden;
 }
 
 .mind_map img {
+
   width: 100%;
   position: absolute;
   height: 1028px;
@@ -479,7 +555,7 @@ onMounted(setupObserver); // 在组件挂载时设置观察器
   bottom: 0; /* 初始位置在容器底部 */
   transform: translateY(50%); /* 图片初始隐藏在容器下方 */
   visibility: hidden; /* 初始时不可见 */
-  transition: transform 1s ease;
+  transition: transform 1s ease, opacity 0.5s ease; /* 过渡效果 */
   will-change: transform; /* 告诉浏览器动画即将发生，提升性能 */
   z-index: -1;
 }
