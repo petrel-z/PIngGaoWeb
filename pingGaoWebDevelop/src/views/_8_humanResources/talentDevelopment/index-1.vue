@@ -1,23 +1,45 @@
 <script setup>
 import MyTitle from "@/components/MyTitle.vue";
+import { ref, onMounted } from "vue";
+
+const items = ref(null);
+onMounted(() => {
+  // 获取目标元素容器
+  const targetContainer = items.value;
+  if (targetContainer) {
+    // 监听页面滚动事件
+    window.addEventListener("scroll", () => {
+      if (!targetContainer) return;
+      // 获取元素顶部距离页面顶部的距离
+      const elementTop = targetContainer.getBoundingClientRect().top;
+      // 获取窗口的高度
+      const windowHeight = window.innerHeight;
+
+      // 判断元素是否进入可视区域
+      if (elementTop < windowHeight) {
+        targetContainer.classList.add("show");
+      } else {
+        targetContainer.classList.remove("show");
+      }
+    });
+  }
+});
 </script>
 
 <template>
-  <div
-    style="position: relative; width: 100%; height: auto; background-color: #def1fb; z-index: -2"
-  >
+  <div style="position: relative; width: 100%; height: auto; background-color: #def1fb">
     <div class="bodyBg">
       <img src="../../../assets/imgs/_8_humanResourcesImgs/bg-1.png" alt="" />
     </div>
-    <div class="body-content">
+    <div ref="items" class="body-content">
       <div>
         <MyTitle title="人才开发" English="TALENT DEVELOPMENT"></MyTitle>
       </div>
       <div style="margin-top: 59px; display: flex; width: 100%">
         <div class="body-content-left">
-          <div class="font-white bg-blue">职业通道</div>
-          <div class="font-blue bg-white">绩效薪酬</div>
-          <div class="font-blue bg-white">教育培训</div>
+          <div class="div-title font-white bg-blue">职业通道</div>
+          <div class="div-title font-blue bg-white">绩效薪酬</div>
+          <div class="div-title font-blue bg-white">教育培训</div>
         </div>
         <div class="body-content-right bg-white">
           <div class="title">职业通道</div>
@@ -66,7 +88,6 @@ import MyTitle from "@/components/MyTitle.vue";
   width: 100%;
   position: absolute;
   bottom: -10px;
-  z-index: -1;
 }
 
 .bodyBg img {
@@ -75,27 +96,41 @@ import MyTitle from "@/components/MyTitle.vue";
 }
 
 .body-content {
+  position: relative;
+  z-index: 99999;
   margin: 0 11%;
   padding-top: 66px;
   padding-bottom: 30vh;
 }
 
 .body-content-left {
+  position: relative;
+  left: -200%;
+  transition: left 0.5s ease;
   width: 20%;
   white-space: nowrap;
 }
 
-.body-content-left > div {
-  height: 101px;
-  border-radius: 10px;
-  margin-bottom: 11px;
+.div-title {
+  height: auto;
+  border-radius: 0.5rem;
+  margin-bottom: 1rem;
   text-align: center;
-  line-height: 101px;
+  padding: 1.5rem 0;
   overflow: hidden;
   text-overflow: ellipsis;
+  cursor: pointer;
+}
+
+.div-title:hover {
+  background-color: #006fc1;
+  color: #fff;
 }
 
 .body-content-right {
+  position: relative;
+  right: -200%;
+  transition: right 0.5s ease;
   width: 79%;
   height: auto;
   padding: 0 89px;
@@ -128,7 +163,7 @@ import MyTitle from "@/components/MyTitle.vue";
   text-align: left;
 }
 .font-white {
-  font-size: 32px;
+  font-size: 2rem;
   font-family: "AlibabaPuHuiTi_2_65_Medium";
   color: rgb(255, 255, 255);
   line-height: 1.156;
@@ -136,11 +171,19 @@ import MyTitle from "@/components/MyTitle.vue";
 }
 
 .font-blue {
-  font-size: 32px;
+  font-size: 2rem;
   font-family: "AlibabaPuHuiTi_2_65_Medium";
   color: rgb(0, 111, 193);
   line-height: 1.156;
   text-align: center;
+}
+
+.show .body-content-left {
+  left: 0;
+}
+
+.show .body-content-right {
+  right: 0;
 }
 
 .bg-white {

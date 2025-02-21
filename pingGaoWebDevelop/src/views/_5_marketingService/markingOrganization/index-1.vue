@@ -13,14 +13,14 @@ import MyContent from "@/components/MyContent.vue";
       <div class="body-content">
         <div class="bodyBg"></div>
         <div>
-          <MyTitle title="营销组织" English="MARKETING ORGANIZATION"/>
+          <MyTitle title="营销组织" English="MARKETING ORGANIZATION" />
         </div>
         <div
           style="
             margin-top: 55px;
             background-color: #45b3e0;
-            border-radius: 10px;
-            min-height: 525px;
+            border-radius: 0.5rem;
+            min-height: auto;
             width: 100%;
           "
         >
@@ -51,10 +51,10 @@ import MyContent from "@/components/MyContent.vue";
           <div class="items-title">平高集团各产业单位联系方式</div>
           <div class="items-content">
             <div class="item" v-for="i in 25" :key="i">
-              <hr class="item-hr1"/>
+              <hr class="item-hr1" />
               <div>
                 <div class="item-title">河南平高电气股份有限公司</div>
-                <hr class="item-hr-hr"/>
+                <hr class="item-hr-hr" />
                 <div class="item-phone">电话：400-6700312</div>
                 <div class="item-fax">传真：0375-3506431</div>
                 <div class="item-email">邮箱：service_pg@vip.163.com</div>
@@ -97,7 +97,7 @@ import MyContent from "@/components/MyContent.vue";
 }
 
 .my-content-bottom {
-  margin-top: 34px;
+  margin-top: 1rem;
   display: flex;
   justify-content: space-between;
   align-items: center;

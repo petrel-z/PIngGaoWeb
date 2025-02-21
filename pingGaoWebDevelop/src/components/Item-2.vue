@@ -1,4 +1,6 @@
 <script setup>
+import { ref, onMounted } from "vue";
+
 const props = defineProps({
   time: {
     type: String,
@@ -14,21 +16,52 @@ const props = defineProps({
   },
   timeColor: {
     type: String,
-    default: "#003792"
+    default: "#003792",
   },
   textColor: {
     type: String,
-    default: "#231815"
+    default: "#231815",
   },
   textFontFamily: {
     type: String,
-    default: "AlibabaPuHuiTi_2_55_Regular"
+    default: "AlibabaPuHuiTi_2_55_Regular",
+  },
+});
+
+const items = ref(null);
+onMounted(() => {
+  // 获取目标元素容器
+  const targetContainer = items.value;
+  if (targetContainer) {
+    // 监听页面滚动事件
+    window.addEventListener("scroll", () => {
+      if (!targetContainer) return;
+      // 获取元素顶部距离页面顶部的距离
+      const elementTop = targetContainer.getBoundingClientRect().top;
+      // 获取窗口的高度
+      const windowHeight = window.innerHeight;
+
+      // 判断元素是否进入可视区域
+      if (elementTop < windowHeight) {
+        targetContainer.classList.add("show");
+      } else {
+        targetContainer.classList.remove("show");
+      }
+    });
   }
 });
 </script>
 
 <template>
-  <div class="item" :style="{'--timeColor': props.timeColor, '--textColor': props.textColor, '--textFontFamily': props.textFontFamily}">
+  <div
+    ref="items"
+    class="item"
+    :style="{
+      '--timeColor': props.timeColor,
+      '--textColor': props.textColor,
+      '--textFontFamily': props.textFontFamily,
+    }"
+  >
     <div
       class="left"
       :style="{
@@ -69,6 +102,9 @@ const props = defineProps({
 }
 
 .left {
+  position: relative;
+  left: -200%;
+  transition: left 0.5s ease-in-out;
   margin-right: 1%;
   background-color: #fff;
   border-bottom-left-radius: 10px;
@@ -82,11 +118,22 @@ const props = defineProps({
 }
 
 .right {
+  position: relative;
+  right: -200%;
+  transition: right 0.5s ease-in-out;
   background-color: #fff;
   border-bottom-right-radius: 10px;
   border-top-right-radius: 10px;
   padding: 45px 36px;
   width: 79%;
+}
+
+.show .left {
+  left: 0;
+}
+
+.show .right {
+  right: 0;
 }
 
 .text {
