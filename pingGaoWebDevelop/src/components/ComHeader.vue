@@ -331,7 +331,7 @@ const props = defineProps({
               @mouseenter="
                 () => {
                   inputFlag = true;
-                  hidden = true;
+                  // hidden = true;
                 }
               "
               class="header-nav-bottom-item"
@@ -352,11 +352,7 @@ const props = defineProps({
       </div>
     </div>
     <div class="header-nav-hover-box">
-      <div
-        @mouseleave="hidden = true"
-        class="header-nav-hover-content"
-        :class="{ hidden: inputFlag || hidden }"
-      >
+      <div @mouseleave="hidden = true" class="header-nav-hover-content" :class="{ hidden: hidden }">
         <div
           style="width: 100%; height: 100%; background-size: cover; display: flex"
           :style="{ 'background-image': `url(${imgPath})` }"
