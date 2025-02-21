@@ -88,7 +88,7 @@ import MyContent from "@/components/F6_MyContent.vue";
   z-index: -10;
 }
 .content {
-  margin-top: 424px;
+  margin-top: 466px;
   border-bottom: 1px solid #006fc1;
 }
 .text {
@@ -105,7 +105,7 @@ import MyContent from "@/components/F6_MyContent.vue";
   background-color: #f4f4f4;
   padding: 78px 210px;
   left: 0;
-  top: 210px;
+  top: 310px;
 }
 .achievement_top {
   display: flex;
