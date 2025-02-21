@@ -4,7 +4,7 @@ import MyContent from "@/components/F6_MyContent.vue";
 </script>
 <template>
   <div class="scientificResearchAchievement">
-    <MyTitle h="科研成果" English="SCIENTIFIC RESEARCH ACHIEVEMENTS"></MyTitle>
+    <MyTitle title="科研成果" English="SCIENTIFIC RESEARCH ACHIEVEMENTS"></MyTitle>
     <div class="achievement">
       <div class="achievement_top">
         <div class="achievement_detail">
