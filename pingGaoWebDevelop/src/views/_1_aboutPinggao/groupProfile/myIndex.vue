@@ -55,29 +55,29 @@ import MyTitle from "@/components/MyTitle.vue";
     <div class="key">
       <div class="key_title"><span>核心集团六大核心概念</span></div>
       <div class="key_content">
-        <div class="key_content_one">
+        <div class="key_info key_content_one">
           <div class="key_content_h">企业革命</div>
           <div class="key_content_text">赋能智慧电气·创引绿色能源</div>
         </div>
-        <div class="key_content_two">
+        <div class="key_content_two key_info">
           <div class="key_content_h">战略定位</div>
           <div class="key_content_text">电气技术引领者·能源革命推动者 绿色发展践行者</div>
         </div>
-        <div class="key_content_three">
+        <div class="key_content_three key_info">
           <div class="key_content_h">战略目标</div>
           <div class="key_content_text">世界一流智慧电气装备集团</div>
         </div>
       </div>
       <div class="key_content">
-        <div class="key_content_four">
+        <div class="key_content_four key_info">
           <div class="key_content_h">总体布局</div>
           <div class="key_content_text">装备制造·集成增值服务 智慧能源服务</div>
         </div>
-        <div class="key_content_five">
+        <div class="key_content_five key_info">
           <div class="key_content_h">企业精神</div>
           <div class="key_content_text">追求卓越·争创一流</div>
         </div>
-        <div class="key_content_six">
+        <div class="key_content_six key_info">
           <div class="key_content_h">核心价值观</div>
           <div class="key_content_text">改革·创新·团结·奋斗·实干</div>
         </div>
@@ -89,52 +89,68 @@ import MyTitle from "@/components/MyTitle.vue";
       </div>
       <div class="basic_culture_content">
         <div class="basic_culture_info basic_culture_info_first">
-          <div class="basic_culture_h">管理理念</div>
-          <div class="basic_culture_line"></div>
-          <div class="basic_culture_p">守正创新坚持坚守坚韧</div>
-          <div class="basic_culture_num">01</div>
+          <div class="basic_word">
+            <div class="basic_culture_h">管理理念</div>
+            <div class="basic_culture_line"></div>
+            <div class="basic_culture_p">守正创新坚持坚守坚韧</div>
+            <div class="basic_culture_num">01</div>
+          </div>
         </div>
         <div class="basic_culture_info">
-          <div class="basic_culture_h">经营理念</div>
-          <div class="basic_culture_line"></div>
-          <div class="basic_culture_p">以客为中心推进高质量发展</div>
-          <div class="basic_culture_num">02</div>
+          <div class="basic_word">
+            <div class="basic_culture_h">经营理念</div>
+            <div class="basic_culture_line"></div>
+            <div class="basic_culture_p">以客为中心推进高质量发展</div>
+            <div class="basic_culture_num">02</div>
+          </div>
         </div>
         <div class="basic_culture_info">
-          <div class="basic_culture_h">服务理念</div>
-          <div class="basic_culture_line"></div>
-          <div class="basic_culture_p">始手客户需求为客户创造价值</div>
-          <div class="basic_culture_num">03</div>
+          <div class="basic_word">
+            <div class="basic_culture_h">服务理念</div>
+            <div class="basic_culture_line"></div>
+            <div class="basic_culture_p">始手客户需求为客户创造价值</div>
+            <div class="basic_culture_num">03</div>
+          </div>
         </div>
         <div class="basic_culture_info basic_culture_info_last">
-          <div class="basic_culture_h">科技理念</div>
-          <div class="basic_culture_line"></div>
-          <div class="basic_culture_p">开放协同创新成就未来</div>
-          <div class="basic_culture_num">04</div>
+          <div class="basic_word">
+            <div class="basic_culture_h">科技理念</div>
+            <div class="basic_culture_line"></div>
+            <div class="basic_culture_p">开放协同创新成就未来</div>
+            <div class="basic_culture_num">04</div>
+          </div>
         </div>
         <div class="basic_culture_info basic_culture_info_first">
-          <div class="basic_culture_h">质量理念</div>
-          <div class="basic_culture_line"></div>
-          <div class="basic_culture_p">以零缺陷铸就卓越呙质</div>
-          <div class="basic_culture_num">05</div>
+          <div class="basic_word">
+            <div class="basic_culture_h">质量理念</div>
+            <div class="basic_culture_line"></div>
+            <div class="basic_culture_p">以零缺陷铸就卓越呙质</div>
+            <div class="basic_culture_num">05</div>
+          </div>
         </div>
         <div class="basic_culture_info">
-          <div class="basic_culture_h">安全理念</div>
-          <div class="basic_culture_line"></div>
-          <div class="basic_culture_p">生命至上安全第一</div>
-          <div class="basic_culture_num">06</div>
+          <div class="basic_word">
+            <div class="basic_culture_h">安全理念</div>
+            <div class="basic_culture_line"></div>
+            <div class="basic_culture_p">生命至上安全第一</div>
+            <div class="basic_culture_num">06</div>
+          </div>
         </div>
         <div class="basic_culture_info">
-          <div class="basic_culture_h">人才理念</div>
-          <div class="basic_culture_line"></div>
-          <div class="basic_culture_p">集聚一流人才共创一流佳绩</div>
-          <div class="basic_culture_num">07</div>
+          <div class="basic_word">
+            <div class="basic_culture_h">人才理念</div>
+            <div class="basic_culture_line"></div>
+            <div class="basic_culture_p">集聚一流人才共创一流佳绩</div>
+            <div class="basic_culture_num">07</div>
+          </div>
         </div>
         <div class="basic_culture_info basic_culture_info_last">
-          <div class="basic_culture_h">廉洁理念</div>
-          <div class="basic_culture_line"></div>
-          <div class="basic_culture_p">守正创新坚持坚守坚韧</div>
-          <div class="basic_culture_num">08</div>
+          <div class="basic_word">
+            <div class="basic_culture_h">廉洁理念</div>
+            <div class="basic_culture_line"></div>
+            <div class="basic_culture_p">守正创新坚持坚守坚韧</div>
+            <div class="basic_culture_num">08</div>
+          </div>
         </div>
       </div>
     </div>
@@ -152,7 +168,7 @@ import MyTitle from "@/components/MyTitle.vue";
   padding: 64px 11%;
   border-radius: 20px;
   background-color: #fff;
-  z-index: -100;
+  z-index: 0;
 }
 
 .introduce {
@@ -220,7 +236,7 @@ import MyTitle from "@/components/MyTitle.vue";
 
 .text_word .img_right {
   margin-left: 10px;
-  width: 45%;
+  width: 44%;
   height: 365px;
   background-size: contain;
   padding-top: 10px;
@@ -236,6 +252,7 @@ import MyTitle from "@/components/MyTitle.vue";
   width: 100%;
   margin-bottom: 120px;
   margin-top: 40px;
+  z-index: 10;
 }
 
 .key .key_title {
@@ -248,55 +265,86 @@ import MyTitle from "@/components/MyTitle.vue";
 
 .key .key_content {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
+  flex-direction: row;
+  /* justify-content: space-between; */
 }
 
 .key_content_one {
-  margin-bottom: 10px;
+  width: 33.3%;
+  margin-bottom: 7px;
   position: relative;
-  width: 491px;
   height: 161px;
   background-image: url("@/assets/imgs/_1_aboutPinggaoImgs/content-1.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-color: #def1fb;
+  cursor: pointer;
 }
 
 .key_content_two {
+  margin-left: 14px;
+  width: 33.3%;
   margin-bottom: 10px;
   position: relative;
-  width: 491px;
   height: 161px;
   background-image: url("@/assets/imgs/_1_aboutPinggaoImgs/content-2.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  cursor: pointer;
+  background-color: #def1fb;
 }
 
 .key_content_three {
+  width: 33.3%;
+  margin-left: 14px;
   margin-bottom: 10px;
   position: relative;
-  width: 491px;
   height: 161px;
   background-image: url("@/assets/imgs/_1_aboutPinggaoImgs/content-3.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-color: #def1fb;
 }
 
 .key_content_four {
+  width: 33.3%;
   position: relative;
-  width: 491px;
   height: 161px;
   background-image: url("@/assets/imgs/_1_aboutPinggaoImgs/content-4.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-color: #def1fb;
 }
 
 .key_content_five {
+  width: 33.3%;
+  margin-left: 14px;
   position: relative;
-  width: 491px;
   height: 161px;
   background-image: url("@/assets/imgs/_1_aboutPinggaoImgs/content-5.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-color: #def1fb;
 }
 
 .key_content_six {
+  margin-left: 14px;
   position: relative;
-  width: 491px;
+  width: 33.3%;
   height: 161px;
   background-image: url("@/assets/imgs/_1_aboutPinggaoImgs/content-6.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-color: #def1fb;
 }
-
+.key .key_info {
+  cursor: pointer;
+  transition: 0.3s;
+}
+.key .key_info:hover {
+  transform: scale(1.01);
+  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.488);
+}
 .key_content_h {
   left: 188px;
   top: 32px;
@@ -328,6 +376,12 @@ import MyTitle from "@/components/MyTitle.vue";
   display: flex;
   flex-wrap: wrap;
 }
+.basic_word{
+  transition: 0.3s;
+}
+.basic_word:hover{
+  transform: scale(1.05);
+}
 .basic_culture_info {
   border-left: 1px solid #c4c4c4;
   width: 25%;
@@ -335,7 +389,9 @@ import MyTitle from "@/components/MyTitle.vue";
   text-align: center;
   margin-bottom: 70px;
   min-width: 100px;
+
 }
+
 .basic_culture_info div {
   margin-bottom: 2px;
 }
