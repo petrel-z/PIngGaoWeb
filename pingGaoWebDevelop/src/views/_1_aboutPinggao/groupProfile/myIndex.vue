@@ -33,7 +33,7 @@ import MyTitle from "@/components/MyTitle.vue";
     </div>
     <div class="text_word">
       <div class="word_left">
-        <div class="text - section">
+        <div class="text-section">
           <p class="word_left_firstp">
             平高集团隶属于中国电气装备集团有限公司，始建于1970年，是我国电工行业重大技术装备支柱企业，具备世界领先的规模化高端电力装备研发制造实力及行业领先的能源系统集成解决方案提供能力。是国家级高新技术企业、国家级创新型企业，先后荣获全国五一劳动奖状、中国机械工业100强企业、装备中国功勋企业、全国文明单位、国家技能人才培育突出贡献单位、中国储能产业最具影响力企业等荣誉称号。
           </p>
@@ -231,7 +231,6 @@ import MyTitle from "@/components/MyTitle.vue";
 
 .text_word .text-section {
   flex: 2;
-  padding: 20px;
 }
 
 .text_word .img_right {
@@ -240,6 +239,10 @@ import MyTitle from "@/components/MyTitle.vue";
   height: 365px;
   background-size: contain;
   padding-top: 10px;
+  transition: 0.5s;
+}
+.text_word .img_right:hover{
+  transform: scale(1.05);
 }
 
 .text_word .img_right img {
