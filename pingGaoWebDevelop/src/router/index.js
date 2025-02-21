@@ -235,6 +235,33 @@ const router = createRouter({
       ],
     },
   ],
+  scrollBehavior(to, from, savedPosition) {
+    // 定义需要回到顶部的路由路径数组
+    const scrollToTopPaths = [
+      '/aboutPinggao/groupProfile',
+      '/informationCenter/headquartersDynamics-1',
+      '/partyBuilding/partyspirit',
+      '/productEngineering/productSeries',
+      '/marketingService/performancePledge',
+      '/qualityAssurance/qualitySystem',
+      '/scientificResearchCenter/scientificResearchSystem',
+      '/humanResources/talentTeam',
+      '/contactUs/purchaseByBidding',
+    ];
+
+    // 检查目标路由是否在需要回到顶部的路径数组中
+    if (scrollToTopPaths.includes(to.path)) {
+      return { top: 0, behavior: 'smooth' };
+    }
+
+    // 如果有 savedPosition，即浏览器返回操作，则滚动到原来的位置
+    if (savedPosition) {
+      return savedPosition;
+    }
+
+    // 默认情况下，不处理滚动位置
+    return {};
+  }
 });
 
 export default router;

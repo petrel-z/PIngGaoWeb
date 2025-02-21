@@ -33,8 +33,8 @@ const headerCss = {
 </script>
 
 <template>
-  <div class="header"><ComHeader :content="content" :footer="footer" :css="headerCss" /></div>
-  <RouterView />
+  <!-- <div class="header"><ComHeader :content="content" :footer="footer" :css="headerCss" /></div>
+  <RouterView /> -->
   <div class="right_button"><RightButton></RightButton></div>
   <div style="width: auto">
     <div class="header">

@@ -19,69 +19,70 @@ defineOptions({
             <p class="bottom-p2">pinggao group co.,ltd.</p>
           </div>
           <div class="text-bottom">
-            <p>地址:河南省平顶山市南环东路22号</p>
+            <p>地址：河南省郑州市郑东新区龙源西三街39号3B栋</p>
             <p>邮箱:sales@pinggao.com</p>
-            <p>邮编:467001</p>
+            <p>邮编:450046</p>
             <p>电话:400-670-0312</p>
           </div>
         </div>
         <div class="f1">
-          <h3>关于平高</h3>
-          <p class="p-first">集团简介</p>
-          <p>领导成员</p>
-          <p>组织结构</p>
-          <p>资质荣誉</p>
-          <p>走进平高</p>
+          <router-link to="/aboutPinggao"><h3 to="">关于平高</h3></router-link>
+          <router-link to="/aboutPinggao/groupProfile"><p class="p-first">集团简介</p></router-link>
+          <router-link to="/aboutPinggao/lesadingMember"><p>领导成员</p></router-link>
+          <router-link to="/aboutPinggao/organizationalStructure"><p>组织结构</p></router-link>
+          <router-link to="/aboutPinggao/seniorHonor"><p>资质荣誉</p></router-link>
+          <router-link to="/aboutPinggao/approachPinggao"><p>走进平高</p></router-link>
         </div>
         <div class="f2">
-          <h3>资讯中心</h3>
-          <p class="p-first">集团新闻</p>
-          <p>媒体聚焦</p>
-          <p>热点视频</p>
-          <p>最新公告</p>
+          <router-link to="/informationCenter"><h3>资讯中心</h3></router-link>
+          <router-link to="/informationCenter/headquartersDynamics-1"><p class="p-first">总部动态</p></router-link>
+          <router-link to="/informationCenter/groupNews-1"><p >集团新闻</p></router-link>
+          <router-link to="/informationCenter/mediaFocus-1"><p>媒体聚焦</p></router-link>
+          <router-link to="/informationCenter/hotVideo"><p>热点视频</p></router-link>
+          <router-link to="/informationCenter/latestAnnouncement-1"><p>最新公告</p></router-link>
         </div>
         <div class="f3">
-          <h3>党的建设</h3>
-          <p class="p-first">党的精神</p>
-          <p>平高党建</p>
+          <router-link to="/partyBuilding"><h3>党的建设</h3></router-link>
+          <router-link to="/partyBuilding/partyspirit"><p class="p-first">党的精神</p></router-link>
+          <router-link to="/partyBuilding/pinggaoPartyBuilding"><p>平高党建</p></router-link>
         </div>
         <div class="f4">
-          <h3>产品工程</h3>
-          <p class="p-first">产品系列</p>
-          <p>国内重点工程</p>
-          <p>国外重点工程</p>
+          <router-link to="/productEngineering"><h3>产品工程</h3></router-link>
+          <router-link to="/productEngineering/productSeries"><p class="p-first">产品系列</p></router-link>
+          <router-link to="/productEngineering"><p>国内重点工程</p></router-link>
+          <router-link to="/productEngineering"><p>国外重点工程</p></router-link>
         </div>
         <div class="f5">
-          <h3>营销服务</h3>
-          <p class="p-first">服务承诺</p>
-          <p>营销组织</p>
-          <p>服务网络</p>
+          <router-link to="/marketingService"><h3>营销服务</h3></router-link>
+          <router-link to="/marketingService/performancePledge"><p class="p-first">服务承诺</p></router-link>
+          <router-link to="/marketingService/markingOrganization"><p>营销组织</p></router-link>
+          <router-link to="/marketingService/serviceNetWork"><p>服务网络</p></router-link>
         </div>
         <div class="f6">
-          <h3>品质保障</h3>
-          <p class="p-first">质量体系</p>
-          <p>生产制造</p>
-          <p>产品检测</p>
+          <router-link to="/qualityAssurance"><h3>品质保障</h3></router-link>
+          <router-link to="/qualityAssurance/qualitySystem"><p class="p-first">质量体系</p></router-link>
+          <router-link to="/qualityAssurance/manufacturing"><p>生产制造</p></router-link>
+          <router-link to="/qualityAssurance/productTesting"><p>产品检测</p></router-link>
         </div>
         <div class="f7">
-          <h3>科研中心</h3>
-          <p class="p-first">科研体系</p>
-          <p>科研成果</p>
-          <p>试验体系</p>
+          <router-link to="/scientificResearchCenter"><h3>科研中心</h3></router-link>
+          <router-link to="/scientificResearchCenter/scientificResearchAchievement"><p class="p-first">科研体系</p></router-link>
+          <router-link to="/scientificResearchCenter/scientificResearchSystem"><p>科研成果</p></router-link>
+          <router-link to="/scientificResearchCenter/testSystem"><p>试验体系</p></router-link>
         </div>
         <div class="f8">
-          <h3>人力资源</h3>
-          <p class="p-first">人才队伍</p>
-          <p>人才开发</p>
-          <p>人才招聘</p>
-          <p>博士后工作站</p>
+          <router-link to="/humanResources"><h3>人力资源</h3></router-link>
+          <router-link to="/humanResources/talentTeam"><p class="p-first">人才队伍</p></router-link>
+          <router-link to="/humanResources/talentDevelopment"><p>人才开发</p></router-link>
+          <router-link to="/humanResources/talentRecruitment-1"><p>人才招聘</p></router-link>
+          <router-link to="/humanResources/postdoctoralWorkstation"><p>博士后工作站</p></router-link>
         </div>
         <div class="f9">
-          <h3>联系我们</h3>
-          <p class="p-first">招标采购</p>
-          <p>成为伙伴</p>
-          <p>业务咨询</p>
-          <p>地址电话</p>
+          <router-link to="/contactUs"><h3>联系我们</h3></router-link>
+          <router-link to="/contactUs/purchaseByBidding"><p class="p-first">招标采购</p></router-link>
+          <router-link to="/contactUs/becomePartner"><p>成为伙伴</p></router-link>
+          <router-link to="/contactUs/businessConsulting"><p>业务咨询</p></router-link>
+          <router-link to="/contactUs/addressTelephone"><p>地址电话</p></router-link>
         </div>
         <div class="codeImg">
           <img src="../assets/imgs/common/codeImg.png" alt="" />
@@ -359,16 +360,16 @@ a {
         text-transform: uppercase;
         text-align: left;
         line-height: 1.841;
-        // transform: translate(1px, -2px);
       }
     }
 
     .text-bottom {
-      font-size: 0.85rem;
+      font-size: 0.8rem;
       font-family: "AlibabaPuHuiTi_2_55_Regular";
       color: rgb(114, 113, 113);
       line-height: 1.2;
       margin-top: 1%;
+      white-space: wrap;//地址太长需要换行
       p {
         margin-top: 5%;
       }
@@ -385,7 +386,6 @@ a {
   .f8,
   .f9 {
     width: 8%;
-    // height: 100%;
     padding: 0 1%;
     text-align: center;
     white-space: nowrap;
@@ -396,10 +396,12 @@ a {
     h3 {
       font-size: 1.2rem;
       font-family: "AlibabaPuHuiTi_2_65_Medium";
-      color: rgb(114, 113, 113);
-      // line-height: 1;
+      color: #727171;
     }
+    h3:hover {
+      color: #c6bebe;
 
+    }
     p {
       font-size: 0.85rem;
       font-family: "AlibabaPuHuiTi_2_55_Regular";
@@ -407,9 +409,12 @@ a {
       line-height: 2.214;
       margin-bottom: 1%;
     }
+    p:hover {
+      color: #c6bebe;
+
+    }
 
     .p-first {
-      // margin-top: 15px;
     }
   }
 
