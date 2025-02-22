@@ -3,7 +3,53 @@ import MyTitle from "@/components/MyTitle.vue";
 import headLine from "@/components/MyHeadLine.vue";
 import row from "@/assets/imgs/_1_aboutPinggaoImgs/row.png";
 import longLine from "@/assets/imgs/_1_aboutPinggaoImgs/long-line.png";
-// import footrow from "@/assets/imgs/_1_aboutPinggaoImgs/footrow.png";
+import { ref,onMounted } from "vue";
+const infoRef = ref(null)
+const isVisibleInfo = ref(false)
+const infoRef1 = ref(null)
+const isVisibleInfo1 = ref(false)
+const wordLeftRef = ref(null)
+const isVisibleWordLeft = ref(false)
+const wordRightRef = ref(null)
+const isVisibleWordRight = ref(false)
+const wordLeftRef1 = ref(null)
+const isVisibleWordLeft1 = ref(false)
+const wordRightRef1 = ref(null)
+const isVisibleWordRight1 = ref(false)
+// 创建交叉观察器
+const createObserver = (refElement, isVisible) => {
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        const { intersectionRatio } = entry;
+        // 设置触发条件：元素进入视口 50% 以上时触发
+        if (intersectionRatio >= 0.0001) {
+          isVisible.value = true;
+          observer.disconnect(); // 元素可见后停止观察
+        }
+      });
+    },
+    {
+      root: null, // 使用浏览器视口作为根元素
+      rootMargin: '0px', // 无额外的边距
+      threshold: 0, // 当元素的 50% 进入视口时触发
+    }
+  );
+  if (refElement.value) {
+    observer.observe(refElement.value);
+  }
+};
+// 初始化所有的观察器
+const initializeObservers = () => {
+  createObserver(infoRef, isVisibleInfo)
+  createObserver(infoRef1, isVisibleInfo1)
+  createObserver(wordLeftRef,isVisibleWordLeft)
+  createObserver(wordLeftRef1,isVisibleWordLeft1)
+  createObserver(wordRightRef,isVisibleWordRight)
+  createObserver(wordRightRef1,isVisibleWordRight1)
+}
+onMounted(initializeObservers); // 在组件挂载时调用
+
 </script>
 <template>
   <!-- 组织结构 -->
@@ -13,45 +59,52 @@ import longLine from "@/assets/imgs/_1_aboutPinggaoImgs/long-line.png";
       <div class="organization_title">平高集团有限公司</div>
       <div class="detail">
         <div class="introduce">
-          <div class="info">
+          <div class="info"  ref="infoRef"
+          :class="{ 'scale-up': isVisibleInfo}">
             <div class="info_top">5</div>
             <div class="info_bottom">全资子公司<span>/</span>家</div>
           </div>
         </div>
         <div class="introduce">
-          <div class="info">
+          <div class="info"  ref="infoRef"
+          :class="{ 'scale-up': isVisibleInfo}">
             <div class="info_top">6</div>
             <div class="info_bottom">投股子公司<span>/</span>家</div>
           </div>
         </div>
         <div class="introduce">
-          <div class="info">
+          <div class="info"  ref="infoRef"
+          :class="{ 'scale-up': isVisibleInfo}">
             <div class="info_top">1</div>
             <div class="info_bottom">合营公司<span>/</span>家</div>
           </div>
         </div>
         <div class="introduce">
-          <div class="info">
+          <div class="info"  ref="infoRef"
+          :class="{ 'scale-up': isVisibleInfo}">
             <div class="info_top">11</div>
             <div class="info_bottom">本部部门<span>/</span>家</div>
           </div>
         </div>
         <div class="introduce">
-          <div class="info">
+          <div class="info"  ref="infoRef"
+          :class="{ 'scale-up': isVisibleInfo}">
             <div class="info_top">20</div>
             <div class="info_bottom">直属分公司<span>/</span>家</div>
           </div>
         </div>
         <div class="introduce">
-          <div class="info">
+          <div class="info"  ref="infoRef"
+          :class="{ 'scale-up': isVisibleInfo}">
             <div class="info_top">3</div>
             <div class="info_bottom">支撑平台<span>/</span>家</div>
           </div>
         </div>
       </div>
     </div>
-    <div class="component">
-      <div class="content_top">
+    <div class="component" >
+      <div class="content_top" ref="wordLeftRef"
+      :class="{ 'move-left': isVisibleWordLeft}">
         <div class="content_left">
           <headLine title="本部部门"></headLine>
           <ul class="parts">
@@ -115,7 +168,8 @@ import longLine from "@/assets/imgs/_1_aboutPinggaoImgs/long-line.png";
           </div>
         </div>
       </div>
-      <div class="content_bottom">
+      <div class="content_bottom" ref="wordRightRef"
+      :class="{ 'move-right': isVisibleWordRight}">
         <div class="head">
           <div class="title">直属分公司</div>
           <div>
@@ -161,37 +215,43 @@ import longLine from "@/assets/imgs/_1_aboutPinggaoImgs/long-line.png";
       <div class="organization_title">平高集团控股子公司</div>
       <div class="detail">
         <div class="introduce">
-          <div class="info">
+          <div class="info"  ref="infoRef1"
+          :class="{ 'scale-up': isVisibleInfo1}">
             <div class="info_top">6</div>
             <div class="info_bottom">全资子公司<span>/</span>家</div>
           </div>
         </div>
         <div class="introduce">
-          <div class="info">
+          <div class="info" ref="infoRef1"
+          :class="{ 'scale-up': isVisibleInfo1}">
             <div class="info_top">6</div>
             <div class="info_bottom">投股子公司<span>/</span>家</div>
           </div>
         </div>
         <div class="introduce">
-          <div class="info">
+          <div class="info" ref="infoRef1"
+          :class="{ 'scale-up': isVisibleInfo1}">
             <div class="info_top">1</div>
             <div class="info_bottom">合营公司<span>/</span>家</div>
           </div>
         </div>
         <div class="introduce">
-          <div class="info">
+          <div class="info" ref="infoRef1"
+          :class="{ 'scale-up': isVisibleInfo1}">
             <div class="info_top">9</div>
             <div class="info_bottom">本部部门<span>/</span>家</div>
           </div>
         </div>
         <div class="introduce">
-          <div class="info">
+          <div class="info" ref="infoRef1"
+          :class="{ 'scale-up': isVisibleInfo1}">
             <div class="info_top">12</div>
             <div class="info_bottom">直属分公司<span>/</span>家</div>
           </div>
         </div>
         <div class="introduce">
-          <div class="info">
+          <div class="info" ref="infoRef1"
+          :class="{ 'scale-up': isVisibleInfo1}">
             <div class="info_top">4</div>
             <div class="info_bottom">支撑平台<span>/</span>家</div>
           </div>
@@ -199,7 +259,8 @@ import longLine from "@/assets/imgs/_1_aboutPinggaoImgs/long-line.png";
       </div>
     </div>
     <div class="component_2">
-      <div class="content_top_2">
+      <div class="content_top_2" ref="wordLeftRef1"
+      :class="{ 'move-left': isVisibleWordLeft1}">
         <div class="content_left_2">
           <headLine title="本部部门"></headLine>
           <ul class="parts">
@@ -240,7 +301,8 @@ import longLine from "@/assets/imgs/_1_aboutPinggaoImgs/long-line.png";
           </ul>
         </div>
       </div>
-      <div class="content_bottom_2">
+      <div class="content_bottom_2" ref="wordRightRef1"
+      :class="{ 'move-right': isVisibleWordRight1}">
         <div class="content_left_2">
           <headLine title="本部部门"></headLine>
           <ul class="parts">
@@ -323,9 +385,23 @@ import longLine from "@/assets/imgs/_1_aboutPinggaoImgs/long-line.png";
   color: #fff;
   padding-bottom: 5px;
 }
+
+
+
 .organization .info {
   position: relative;
+  transform: scale(0.3); /* 初始缩小 */
+  opacity: 0; /* 初始不可见 */
+  visibility: hidden; /* 初始隐藏 */
+  transition: transform 0.5s ease, opacity 0.5s ease; /* 过渡效果 */
 }
+
+.organization .info.scale-up {
+  transform: scale(1); /* 放大到原始大小 */
+  opacity: 1; /* 可见 */
+  visibility: visible; /* 可见 */
+}
+
 .organization .info .info_top {
   top: -1px;
   position: absolute;
@@ -359,7 +435,16 @@ import longLine from "@/assets/imgs/_1_aboutPinggaoImgs/long-line.png";
 .component .content_top {
   display: flex;
   justify-content: space-between;
+  transform: translateX(-100%); /* 初始位置在左边 */
+  visibility: hidden;
+  transition: transform 1s ease, opacity 0.5s ease; /* 过渡效果 */
 }
+.component .content_top.move-left {
+  opacity: 1;
+  transform: translateX(0);
+  visibility: visible;
+}
+
 .component .content_top .content_left {
   width: 33%;
   height: 530px;
@@ -380,6 +465,15 @@ import longLine from "@/assets/imgs/_1_aboutPinggaoImgs/long-line.png";
 }
 .component .content_bottom {
   margin-top: -20px;
+  transform: translateX(100%); /* 初始位置在左边 */
+  visibility: hidden;
+  transition: transform 1s ease, opacity 0.5s ease; /* 过渡效果 */
+}
+
+.component .content_bottom.move-right {
+  opacity: 1;
+  transform: translateX(0);
+  visibility: visible;
 }
 .component .content_bottom .title {
   font-size: 26px;
@@ -412,6 +506,7 @@ import longLine from "@/assets/imgs/_1_aboutPinggaoImgs/long-line.png";
   background-color: #45b3e0;
   border-radius: 15px;
 }
+
 .organization_2 .organization_title {
   margin: auto;
   position: absolute;
@@ -437,6 +532,16 @@ import longLine from "@/assets/imgs/_1_aboutPinggaoImgs/long-line.png";
 }
 .organization_2 .info {
   position: relative;
+  transform: scale(0.3); /* 初始缩小 */
+  opacity: 0; /* 初始不可见 */
+  visibility: hidden; /* 初始隐藏 */
+  transition: transform 0.5s ease, opacity 0.5s ease; /* 过渡效果 */
+}
+
+.organization_2 .info.scale-up {
+  transform: scale(1); /* 放大到原始大小 */
+  opacity: 1; /* 可见 */
+  visibility: visible; /* 可见 */
 }
 .organization_2 .info .info_top {
   top: -1px;
@@ -486,11 +591,27 @@ import longLine from "@/assets/imgs/_1_aboutPinggaoImgs/long-line.png";
 .component_2 .content_top_2 {
   display: flex;
   justify-content: space-between;
+  transform: translateX(-100%); /* 初始位置在左边 */
+  visibility: hidden;
+  transition: transform 1s ease, opacity 0.5s ease; /* 过渡效果 */
+}
+.component_2 .content_top_2.move-left {
+  opacity: 1;
+  transform: translateX(0);
+  visibility: visible;
 }
 .component_2 .content_bottom_2 {
   justify-content: space-between;
   display: flex;
   margin-top: -70px;
+  transform: translateX(100%); /* 初始位置在左边 */
+  visibility: hidden;
+  transition: transform 1s ease, opacity 0.5s ease; /* 过渡效果 */
+}
+.component_2 .content_bottom_2.move-right {
+  opacity: 1;
+  transform: translateX(0);
+  visibility: visible;
 }
 .component_2 .content_top_2 .content_left_2 {
   width: 33%;
