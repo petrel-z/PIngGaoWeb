@@ -91,7 +91,7 @@ onMounted(() => {
   margin-bottom: 1em;
 }
 .time {
-  font-size: 28px;
+  font-size: 1.5rem;
   font-family: "Avenir";
   color: var(--timeColor);
   line-height: 1.68;
@@ -149,7 +149,7 @@ onMounted(() => {
 }
 
 .text {
-  font-size: 24px;
+  font-size: 1.3rem;
   font-family: var(--textFontFamily);
   color: var(--textColor);
   line-height: 1.25;

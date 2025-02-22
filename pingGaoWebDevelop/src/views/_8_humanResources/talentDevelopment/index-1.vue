@@ -3,9 +3,15 @@ import MyTitle from "@/components/MyTitle.vue";
 import { ref, onMounted } from "vue";
 
 const items = ref(null);
+const divTitle1 = ref(null);
+const divTitle2 = ref(null);
+const divTitle3 = ref(null);
 onMounted(() => {
   // 获取目标元素容器
   const targetContainer = items.value;
+  const div1 = divTitle1.value;
+  const div2 = divTitle2.value;
+  const div3 = divTitle3.value;
   if (targetContainer) {
     // 监听页面滚动事件
     window.addEventListener("scroll", () => {
@@ -23,6 +29,50 @@ onMounted(() => {
       }
     });
   }
+  if (div1 && div2 && div3) {
+    div1.addEventListener("click", () => {
+      div1.classList.add("font-white");
+      div1.classList.add("bg-blue");
+      div1.classList.remove("font-blue");
+      div1.classList.remove("bg-white");
+      div2.classList.remove("font-white");
+      div2.classList.remove("bg-blue");
+      div2.classList.add("font-blue");
+      div2.classList.add("bg-white");
+      div3.classList.remove("font-white");
+      div3.classList.remove("bg-blue");
+      div3.classList.add("font-blue");
+      div3.classList.add("bg-white");
+    });
+    div2.addEventListener("click", () => {
+      div1.classList.remove("font-white");
+      div1.classList.remove("bg-blue");
+      div1.classList.add("font-blue");
+      div1.classList.add("bg-white");
+      div2.classList.add("font-white");
+      div2.classList.add("bg-blue");
+      div2.classList.remove("font-blue");
+      div2.classList.remove("bg-white");
+      div3.classList.remove("font-white");
+      div3.classList.remove("bg-blue");
+      div3.classList.add("font-blue");
+      div3.classList.add("bg-white");
+    });
+    div3.addEventListener("click", () => {
+      div1.classList.remove("font-white");
+      div1.classList.remove("bg-blue");
+      div1.classList.add("font-blue");
+      div1.classList.add("bg-white");
+      div2.classList.remove("font-white");
+      div2.classList.remove("bg-blue");
+      div2.classList.add("font-blue");
+      div2.classList.add("bg-white");
+      div3.classList.add("font-white");
+      div3.classList.add("bg-blue");
+      div3.classList.remove("font-blue");
+      div3.classList.remove("bg-white");
+    });
+  }
 });
 </script>
 
@@ -35,11 +85,11 @@ onMounted(() => {
       <div>
         <MyTitle title="人才开发" English="TALENT DEVELOPMENT"></MyTitle>
       </div>
-      <div style="margin-top: 59px; display: flex; width: 100%">
+      <div style="margin-top: 3rem; display: flex; width: 100%">
         <div class="body-content-left">
-          <div class="div-title font-white bg-blue">职业通道</div>
-          <div class="div-title font-blue bg-white">绩效薪酬</div>
-          <div class="div-title font-blue bg-white">教育培训</div>
+          <div ref="divTitle1" class="div-title font-white bg-blue">职业通道</div>
+          <div ref="divTitle2" class="div-title font-blue bg-white">绩效薪酬</div>
+          <div ref="divTitle3" class="div-title font-blue bg-white">教育培训</div>
         </div>
         <div class="body-content-right bg-white">
           <div class="title">职业通道</div>
@@ -97,7 +147,7 @@ onMounted(() => {
 
 .body-content {
   position: relative;
-  z-index: 99999;
+  z-index: 999;
   margin: 0 11%;
   padding-top: 66px;
   padding-bottom: 30vh;

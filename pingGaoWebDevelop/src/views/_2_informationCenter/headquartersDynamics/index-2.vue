@@ -54,14 +54,14 @@ const items = [
   <div style="position: relative">
     <div class="body">
       <div>
-        <div style="padding-top: 64px">
+        <div style="padding-top: 4rem">
           <my-title title="总部动态" English="HEADQUARTERS NEWS" />
         </div>
         <div
           style="
             display: flex;
             justify-content: space-between;
-            margin-top: 55px;
+            margin-top: 3.7rem;
             height: 100%;
             width: 100%;
           "
