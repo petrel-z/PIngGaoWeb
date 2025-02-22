@@ -42,11 +42,11 @@ onMounted(() => {
     if (scrollTop > scrollThreshold) {
       // 超过阈值则添加固定类名
       navbar.classList.add("background-white");
-      imgFixed.value = false;
+      imgFixed.value = true;
     } else {
       // 未超过阈值则移除固定类名
-      navbar.classList.remove("background-white");
-      imgFixed.value = true;
+      if (hidden.value && !headerBottomFlag.value) navbar.classList.remove("background-white");
+      imgFixed.value = false;
     }
   });
 });
@@ -309,11 +309,16 @@ const props = defineProps({
         id="header-nav"
         @mouseenter="headerBottomFlag = true"
         @mouseleave="headerBottomFlag = false"
+        :class="{ 'background-white': imgFixed || !hidden || headerBottomFlag }"
       >
         <div class="log-img">
           <router-link class="logo-link" to="/homePage-2">
-            <img v-show="imgFixed" :src="!headerBottomFlag ? logoImg1 : logoImg2" alt="" />
-            <img v-show="!imgFixed" :src="logoImg2" alt="" />
+            <img
+              v-show="!imgFixed"
+              :src="!headerBottomFlag && hidden ? logoImg1 : logoImg2"
+              alt=""
+            />
+            <img v-show="imgFixed" :src="logoImg2" alt="" />
           </router-link>
 
           <div id="header-nav-top">
@@ -722,7 +727,7 @@ const props = defineProps({
   top: -0.2vh;
   width: 100%;
   height: auto;
-  z-index: 999;
+  z-index: 999999;
   cursor: pointer;
   transition: all 0.3s ease;
   overflow: hidden;
