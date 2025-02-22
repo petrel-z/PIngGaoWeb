@@ -32,6 +32,10 @@ const props = defineProps({
     type: String,
     default: "#003792",
   },
+  toState: {
+    type: Boolean,
+    default: true,
+  }
 });
 </script>
 
@@ -50,13 +54,24 @@ const props = defineProps({
       <div class="content-text">
         {{ props.text }}
       </div>
-      <div class="content-btn" :style="{ 'background-color': props.btnColor }">
+      <router-link v-if="props.toState" to="/informationCenter/headquartersDynamics-3">
+        <div class="content-btn" :style="{ 'background-color': props.btnColor }">
         <span>{{ props.btnText }}</span>
         <i
           class="iconfont icon-chakanxiangqing-copy"
           style="font-size: 1.5rem; margin-left: 2em"
         ></i>
       </div>
+      </router-link>
+      <router-link v-else to="/informationCenter/groupNews-3">
+        <div class="content-btn" :style="{ 'background-color': props.btnColor }">
+        <span>{{ props.btnText }}</span>
+        <i
+          class="iconfont icon-chakanxiangqing-copy"
+          style="font-size: 1.5rem; margin-left: 2em"
+        ></i>
+      </div>
+      </router-link>
     </div>
     <div class="content-right">
       <img style="width: 100%; height: auto" :src="props.img" alt="图片加载失败" />

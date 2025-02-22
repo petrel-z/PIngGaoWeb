@@ -76,6 +76,7 @@ const itemContent = [
         :content-top="contentTop"
         :content-page="contentPage"
         :item-content="itemContent"
+        :to-state="false"
       ></partyContentDetail>
       <div class="white-div"></div>
     </div>

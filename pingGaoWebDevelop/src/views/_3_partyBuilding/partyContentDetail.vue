@@ -75,6 +75,10 @@ const props = defineProps({
       rightFontColorHover: "#fce3cc",
     }),
   },
+  toState: {
+    type: Boolean,
+    default: true,
+  }
 });
 </script>
 
@@ -82,48 +86,31 @@ const props = defineProps({
   <!-- 党的精神 -->
   <div class="partyContentDetail">
     <div class="spirit-top">
-      <MyTitle
-        :title="props.contentTop.h"
-        :English="props.contentTop.English"
-        :title-color="props.contentTop.titleColor"
-        :line-color="props.contentTop.lineColor"
-        :eng-color="props.contentTop.engColor"
-      ></MyTitle>
+      <MyTitle :title="props.contentTop.h" :English="props.contentTop.English"
+        :title-color="props.contentTop.titleColor" :line-color="props.contentTop.lineColor"
+        :eng-color="props.contentTop.engColor"></MyTitle>
     </div>
     <div class="spirit-span">
-      <ContenPage
-        :title1="props.contentPage.title1"
-        :title2="props.contentPage.title2"
-        :text="props.contentPage.text"
-        :img="props.contentPage.img"
-        :btn-color="props.contentPage.btnColor"
-        :bg-color="props.contentPage.bgColor"
-        :line-color="props.contentPage.lineColor"
-        :title-font="props.contentPage.titleFont"
-        :text-font="props.contentPage.textFont"
-        :font-color="props.contentPage.fontColor"
-      ></ContenPage>
+      <ContenPage :title1="props.contentPage.title1" :title2="props.contentPage.title2" :text="props.contentPage.text"
+        :img="props.contentPage.img" :btn-color="props.contentPage.btnColor" :bg-color="props.contentPage.bgColor"
+        :line-color="props.contentPage.lineColor" :title-font="props.contentPage.titleFont"
+        :text-font="props.contentPage.textFont" :font-color="props.contentPage.fontColor"
+        :to-state="props.toState"
+        ></ContenPage>
     </div>
     <div class="spirit-list">
       <div class="list-item" v-for="item in props.itemContent" :key="item.month">
-        <Item1
-          :month="item.month"
-          :title="item.title"
-          :text="item.text"
-          :title-font="props.itemCss.titleFont"
-          :text-font="props.itemCss.textFont"
-          :title-font-color="props.itemCss.titleFontColor"
-          :text-font-color="props.itemCss.textFontColor"
-          :bg-color1="props.itemCss.bgColor1"
-          :bg-color2="props.itemCss.bgColor2"
-          :left-font-color="props.itemCss.leftFontColor"
+        <Item1 :month="item.month" :title="item.title" :text="item.text" :title-font="props.itemCss.titleFont"
+          :text-font="props.itemCss.textFont" :title-font-color="props.itemCss.titleFontColor"
+          :text-font-color="props.itemCss.textFontColor" :bg-color1="props.itemCss.bgColor1"
+          :bg-color2="props.itemCss.bgColor2" :left-font-color="props.itemCss.leftFontColor"
           :left-font-color-hover="props.itemCss.leftFontColorHover"
-          :right-font-color-hover="props.itemCss.rightFontColorHover"
-        ></Item1>
+          :right-font-color-hover="props.itemCss.rightFontColorHover"></Item1>
       </div>
     </div>
     <div class="lookMore">
-      <MyButton :bgColor="'#e06e5f'"></MyButton>
+     <router-link v-if="props.toState" to="/partyBuilding/partyspiritMore"> <MyButton :bgColor="'#e06e5f'"></MyButton></router-link>
+     <router-link v-else to="/partyBuilding/PinggaoPartyBuildingMore"> <MyButton :bgColor="'#e06e5f'"></MyButton></router-link>
     </div>
   </div>
 </template>
@@ -148,6 +135,7 @@ const props = defineProps({
   .spirit-list {
     width: 100%;
     height: auto;
+
     .list-item {
       margin-bottom: 20px;
     }
@@ -161,4 +149,51 @@ const props = defineProps({
     padding: 2em 0;
   }
 }
+
+/* 大型设备（桌面，大于 900px） */
+@media (max-width: 900px) {
+  .partyContentDetail {
+    // overflow: hidden;
+
+    padding: 0 5%;
+
+    .spirit-top {
+      width: 100%;
+      padding: 3% 0;
+    }
+
+    .spirit-span {
+      padding: 0 0 72px 0;
+    }
+
+    .spirit-list {
+      width: 100%;
+      height: auto;
+
+      .list-item {
+        margin-bottom: 20px;
+      }
+    }
+
+    .lookMore {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 2em 0;
+    }
+  }
+
+}
+
+@media (max-width: 800px) {}
+
+/* 中型设备（平板，600px 到 900px） */
+@media (max-width: 700px) {}
+
+/* 小型设备（手机，小于 600px） */
+
+@media (max-width: 600px) {}
+
+@media (max-width: 500px) {}
 </style>

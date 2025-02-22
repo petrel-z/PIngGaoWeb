@@ -112,4 +112,30 @@ onMounted(() => {
     background-attachment: fixed;
   }
 }
+
+/* 大型设备（桌面，大于 900px） */
+@media (max-width: 900px) {
+  .productTesting-content {
+    padding: 0 5%;
+    .content-top {
+      .top-title {
+        margin-top: 3rem;
+        margin-bottom: 3rem;
+      }
+    }
+
+  }
+
+}
+
+@media (max-width: 800px) {}
+
+/* 中型设备（平板，600px 到 900px） */
+@media (max-width: 700px) {}
+
+/* 小型设备（手机，小于 600px） */
+
+@media (max-width: 600px) {}
+
+@media (max-width: 500px) {}
 </style>

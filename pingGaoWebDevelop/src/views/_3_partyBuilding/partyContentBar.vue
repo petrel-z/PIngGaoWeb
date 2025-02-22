@@ -57,7 +57,7 @@ const props = defineProps({
     height: 401px;
     text-align: center;
     background-color: #a51617;
-    border-radius: 10px;
+    border-radius: 0;
     font-family: "SourceHanSerifCN";
     display: flex;
     justify-content: center;
@@ -150,5 +150,73 @@ const props = defineProps({
     left: 11%;
     top:10%;
   }
+}
+
+/* 大型设备（桌面，大于 900px） */
+@media (max-width: 900px) {
+  .partyContentBar {
+
+  height: auto;
+  padding: 15% 0 10% 0;
+  .center-container {
+    height: 50%;
+    .content {
+
+      width: 90%;
+
+      position: relative;
+      top: 5%;
+
+
+      // h1 {
+      //   font-size: 2.5rem;
+      //   font-family: "AlibabaPuHuiTi_2_65_Medium";
+      //   color: #fce3cc;
+      //   line-height: 1.156;
+      // }
+
+      // .h1-1 {
+      //   margin-bottom: 1.3rem;
+      // }
+
+      .h1-2 {
+        margin-bottom: 2.5rem;
+      }
+
+    
+
+      p {
+        font-size: 2rem;
+        margin-top: 2.5rem;
+        padding: 0 ;
+      }
+    }
+  }
+
+  .important-logo {
+    width: 14%;
+    height: 12%;
+    left: 5%;
+    top:5%;
+    img {
+      width: 100%;
+      height: 100%;
+    }
+  }
+}
+}
+
+@media (max-width: 800px) {
+}
+
+/* 中型设备（平板，600px 到 900px） */
+@media (max-width: 700px) {
+} /* 小型设备（手机，小于 600px） */
+
+@media (max-width: 600px) {
+}
+
+@media (max-width: 500px) {
+
 }
 </style>

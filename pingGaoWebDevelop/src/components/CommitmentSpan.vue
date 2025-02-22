@@ -113,16 +113,35 @@ const props = defineProps({
       border: none;
       background-color: #45b3e0;
     }
+  }
+}
 
-    // p {
-    //     font-size: 20px;
-    //     font-family: "AlibabaPuHuiTi_2_45_Light";
-    //     color: rgb(255, 255, 255);
-    //     line-height: 1.85;
-    // }
-    // .first-p {
-    //     margin-top: 25px;
-    // }
+/* 大型设备（桌面，大于 900px） */
+@media (max-width: 900px) {
+  .commitment-span {
+    height: 550px;
+    .content {
+      top: 10%;
+    }
+  }
+
+}
+
+@media (max-width: 800px) {}
+
+/* 中型设备（平板，600px 到 900px） */
+@media (max-width: 700px) {}
+
+/* 小型设备（手机，小于 600px） */
+
+@media (max-width: 600px) {}
+
+@media (max-width: 500px) {
+  .commitment-span {
+    height: 580px;
+    .content {
+      top: 10%;
+    }
   }
 }
 </style>

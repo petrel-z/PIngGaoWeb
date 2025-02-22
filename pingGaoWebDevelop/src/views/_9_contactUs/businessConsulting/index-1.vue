@@ -3,7 +3,7 @@ import MyTitle from "@/components/MyTitle.vue";
 </script>
 
 <template>
-  <div class="becomePartner-content">
+  <div class="businessConsulting-content">
 
     <div class="content-top">
       <div class="top-title">
@@ -22,13 +22,14 @@ import MyTitle from "@/components/MyTitle.vue";
 
     </div>
     <div class="content-bgimg">
-      <img :style="{width: '100%', height: 'auto'}" src="../../../assets/imgs/_9_contactUsImgs/t9_p1_contentBg.png" alt="" />
+      <img :style="{ width: '100%', height: 'auto' }" src="../../../assets/imgs/_9_contactUsImgs/t9_p1_contentBg.png"
+        alt="" />
     </div>
   </div>
 </template>
 
 <style lang="less" scoped>
-.becomePartner-content {
+.businessConsulting-content {
   z-index: 999;
   width: 100%;
   // padding: 0 11%;
@@ -38,26 +39,28 @@ import MyTitle from "@/components/MyTitle.vue";
   align-items: start;
   position: relative;
   background-image: url("../../../assets/imgs/_9_contactUsImgs/t9_p2_contentBg.png");
+
   .content-top {
     margin: 0 11%;
     z-index: 999;
     width: 100%;
+
     .top-title {
-      margin-top: 60px;
-      margin-bottom: 60px;
+      margin-top: 6rem;
+      margin-bottom: 6rem;
     }
 
     .online-consultation {
-      height: 860px;
+      height: 86rem;
       background-color: #fff;
-      border-radius: 10px;
+      border-radius: 1rem;
 
       h1 {
         width: 100%;
-        height: 82px;
-        line-height: 82px;
+        height: 8.2rem;
+        line-height: 8.2rem;
         text-align: center;
-        font-size: 32px;
+        font-size: 3.2rem;
         font-family: "AlibabaPuHuiTi_2_65_Medium";
         color: #fff;
         background-color: #45b3e0;
@@ -66,25 +69,21 @@ import MyTitle from "@/components/MyTitle.vue";
 
       .center-consultation {
         width: 100%;
-        height: 555px;
+        height: 55.5rem;
         border-bottom: 1px solid #333;
       }
 
       .bottom-question {
         width: 100%;
-        height: 227px;
+        height: 22.7rem;
         position: relative;
 
         .text {
-          padding-top: 35px;
-          padding-left: 80px;
-          padding-right: 80px;
-          padding-bottom: 35px;
+          padding: 3.5rem 8rem 3.5rem 8rem;
 
           textarea {
-            // width: 1040px;
-            height: 155px;
-            font-size: 20px;
+            height: 15.5rem;
+            font-size: 2rem;
             font-family: "AlibabaPuHuiTi_2_45_Light";
             color: rgb(89, 87, 87);
             text-align: justifyLeft;
@@ -93,14 +92,14 @@ import MyTitle from "@/components/MyTitle.vue";
 
         .sent {
           position: absolute;
-          bottom: 37px;
-          right: 45px;
-          width: 327px;
-          height: 81px;
-          line-height: 81px;
+          bottom: 3.7rem;
+          right: 4.5rem;
+          width: 32.7rem;
+          height: 8rem;
+          line-height: 8rem;
           color: #fff;
           text-align: center;
-          font-size: 22px;
+          font-size: 2.2rem;
           font-family: "AlibabaPuHuiTi_2_65_Medium";
           background-color: #45b3e0;
           letter-spacing: 5px;
@@ -121,4 +120,63 @@ import MyTitle from "@/components/MyTitle.vue";
     height: 100%;
   }
 }
+
+/* 大型设备（桌面，大于 900px） */
+@media (max-width: 900px) {
+  .businessConsulting-content {
+
+    .content-top {
+      margin: 0 5%;
+
+      .top-title {
+        margin: 3rem 0;
+      }
+
+      .online-consultation {
+        height: 70rem;
+
+        .center-consultation {
+          height: 40rem;
+        }
+
+        .bottom-question {
+          .text {
+            padding: 2rem 4rem 3.5rem 4rem;
+          }
+
+          .sent {
+            bottom: 4rem;
+            right: 4.3rem;
+            width: 16rem;
+            height: 6rem;
+            line-height: 6rem;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 800px) {}
+
+/* 中型设备（平板，600px 到 900px） */
+@media (max-width: 700px) {}
+
+/* 小型设备（手机，小于 600px） */
+
+@media (max-width: 600px) {
+  .businessConsulting-content {
+    .content-top {
+      .online-consultation {
+        .bottom-question {
+          .sent {
+            bottom: 5rem;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 500px) {}
 </style>

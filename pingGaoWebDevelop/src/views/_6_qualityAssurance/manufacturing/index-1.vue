@@ -76,8 +76,8 @@ onMounted(() => {
     width: 100%;
 
     .top-title {
-      margin-top: 60px;
-      margin-bottom: 60px;
+      margin-top: 6rem;
+      margin-bottom: 6rem;
 
       position: relative;
       right: -100%;
@@ -107,6 +107,7 @@ onMounted(() => {
       position: relative;
       left: -100%;
       transition: all 0.5s;
+
       .right-text {
         // width: 1010px;
         font-size: 20px;
@@ -125,6 +126,7 @@ onMounted(() => {
     .topDetailListClass {
       left: 0;
     }
+
     .top-whiteSpan {
       width: 100%;
       // height: 880px;
@@ -144,6 +146,31 @@ onMounted(() => {
   }
 }
 
-// .manufacture-content .content-top .topTitleClass {
-//   right: 0;
-// }</style>
+
+/* 大型设备（桌面，大于 900px） */
+@media (max-width: 900px) {
+  .manufacture-content {
+    padding: 0 5%;
+
+    .content-top {
+      .top-title {
+        margin-top: 3rem;
+        margin-bottom: 3rem;
+      }
+    }
+
+  }
+
+}
+
+@media (max-width: 800px) {}
+
+/* 中型设备（平板，600px 到 900px） */
+@media (max-width: 700px) {}
+
+/* 小型设备（手机，小于 600px） */
+
+@media (max-width: 600px) {}
+
+@media (max-width: 500px) {}
+</style>

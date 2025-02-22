@@ -104,7 +104,7 @@ function handleClick(e) {
         </div>
       </div>
       <div class="button-container">
-        <myButton @childButton="handleClick" />
+        <router-link to="/informationCenter/mediaFocus-2"><myButton @childButton="handleClick" /></router-link>
       </div>
     </div>
   </div>
