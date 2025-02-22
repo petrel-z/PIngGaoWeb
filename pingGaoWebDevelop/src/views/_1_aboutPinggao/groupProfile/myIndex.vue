@@ -1,163 +1,56 @@
 <script setup>
-import MyTitle from "@/components/MyTitle.vue";
-import { ref, onMounted } from "vue";
-
-// 创建一个 ref 来引用图片元素
+import { ref, onMounted } from 'vue';
+// 定义所有的 ref 和 isVisible 变量
 const imageRef = ref(null);
-// 创建一个 ref 来引用图片或元素
 const wordLeft = ref(null);
 const imgRight = ref(null);
 const keyContent1 = ref(null);
 const keyContent2 = ref(null);
 const basicCultureInfo = ref(null);
-const isVisibleBaseInfo = ref(false);
-// 创建一个 ref 来跟踪图片是否可见
+
 const isVisibleImg = ref(false);
 const isVisibleLeftWord = ref(false);
 const isVisibleRightImg = ref(false);
 const isVisibleContent1 = ref(false);
 const isVisibleContent2 = ref(false);
+const isVisibleBaseInfo = ref(false);
 
-// 优化：创建和设置 Intersection Observer
-const setupObserver = () => {
-  const observer = new IntersectionObserver(
-    (entries, observer) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          // 图片进入视口时，触发动画
-          isVisibleImg.value = true;
-          observer.disconnect(); // 确保动画只触发一次
-        }
-      });
-    },
-    {
-      root: null, // 监测整个视口
-      rootMargin: "0px",
-      threshold: 0.1, // 图片进入视口 50% 时触发
-    }
-  );
-  if (imageRef.value) {
-    observer.observe(imageRef.value); // 开始观察图片
-  }
-};
-
-// 优化：创建和设置 Intersection Observer
-const setupObserver1 = () => {
-  const observer = new IntersectionObserver(
-    (entries, observer) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          // 图片进入视口时，触发动画
-          isVisibleLeftWord.value = true;
-          observer.disconnect(); // 确保动画只触发一次
-        }
-      });
-    },
-    {
-      root: null, // 监测整个视口
-      rootMargin: "0px",
-      threshold: 0.1, // 图片进入视口 50% 时触发
-    }
-  );
-  if (wordLeft.value) {
-    observer.observe(wordLeft.value); // 开始观察图片
-  }
-};
-
-// 优化：创建和设置 Intersection Observer
-const setupObserver2 = () => {
-  const observer = new IntersectionObserver(
-    (entries, observer) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          // 图片进入视口时，触发动画
-          isVisibleRightImg.value = true;
-          observer.disconnect(); // 确保动画只触发一次
-        }
-      });
-    },
-    {
-      root: null, // 监测整个视口
-      rootMargin: "0px",
-      threshold: 0.1, // 图片进入视口 50% 时触发
-    }
-  );
-  if (imgRight.value) {
-    observer.observe(imgRight.value); // 开始观察图片
-  }
-};
-// 优化：创建和设置 Intersection Observer
-const setupObserver3 = () => {
-  const observer = new IntersectionObserver(
-    (entries, observer) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          // 图片进入视口时，触发动画
-          isVisibleContent1.value = true;
-          observer.disconnect(); // 确保动画只触发一次
-        }
-      });
-    },
-    {
-      root: null, // 监测整个视口
-      rootMargin: "0px",
-      threshold: 0.1, // 图片进入视口 50% 时触发
-    }
-  );
-  if (keyContent1.value) {
-    observer.observe(keyContent1.value); // 开始观察图片
-  }
-};
-const setupObserver4 = () => {
+// 通用的 Intersection Observer 函数
+const createObserver = (refElement, isVisible) => {
   const observer = new IntersectionObserver(
     (entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
-          isVisibleContent2.value = true;
+          isVisible.value = true;
           observer.disconnect();
         }
       });
     },
     {
       root: null,
-      rootMargin: "0px",
-      threshold: 0.1,
+      rootMargin: '0px',
+      threshold: 0.06,
     }
   );
 
-  if (keyContent2.value) {
-    observer.observe(keyContent2.value);
-  }
-};
-const setupObserver5 = () => {
-  const observer = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          isVisibleBaseInfo.value = true; // 触发动画
-          observer.disconnect(); // 确保动画只触发一次
-        }
-      });
-    },
-    {
-      root: null, // 监测整个视口
-      rootMargin: "0px",
-      threshold: 0.1, // 元素进入视口 10% 时触发
-    }
-  );
-
-  if (basicCultureInfo.value) {
-    observer.observe(basicCultureInfo.value); // 开始观察元素
+  if (refElement.value) {
+    observer.observe(refElement.value);
   }
 };
 
-onMounted(setupObserver); // 在组件挂载时设置观察器
-onMounted(setupObserver1); // 在组件挂载时设置观察器
-onMounted(setupObserver2); // 在组件挂载时设置观察器
-onMounted(setupObserver3); // 在组件挂载时设置观察器
-onMounted(setupObserver4); // 在组件挂载时设置观察器
-onMounted(setupObserver5); // 在组件挂载时设置观察器
+// 初始化所有的观察器
+const initializeObservers = () => {
+  createObserver(imageRef, isVisibleImg);
+  createObserver(wordLeft, isVisibleLeftWord);
+  createObserver(imgRight, isVisibleRightImg);
+  createObserver(keyContent1, isVisibleContent1);
+  createObserver(keyContent2, isVisibleContent2);
+  createObserver(basicCultureInfo, isVisibleBaseInfo);
+};
+
+onMounted(initializeObservers); // 在组件挂载时调用
 </script>
+
 <template>
   <!-- 集团简介 -->
   <div class="groupProfile">

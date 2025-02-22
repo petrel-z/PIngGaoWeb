@@ -78,7 +78,7 @@ onMounted(() => {
 
     // 计算位移百分比（每个项目占33.333%）
     const translateX = -currentIndex * (100 / visibleItems / 1.07);
-    container.style.transition = `1s`
+    container.style.transition = `1s`;
     container.style.transform = `translateX(${translateX}%)`;
 
     // 重置动画状态
@@ -492,7 +492,7 @@ onMounted(() => {
   position: absolute;
   top: 0;
   left: 0;
-  z-index: 100;
+  z-index: 101;
 }
 .my_carousel {
   width: 100%;
@@ -837,7 +837,7 @@ onMounted(() => {
   min-width: 400px;
   transition: ease 0.5s;
 }
-.introduction_content .img_right:hover{
+.introduction_content .img_right:hover {
   transform: scale(1.04);
   box-shadow: 0 6px 10px rgba(0, 0, 0, 0.488); /* 悬浮时显示黑色阴影 */
 }
@@ -1013,7 +1013,7 @@ onMounted(() => {
   color: rgb(89, 87, 87);
 }
 .great_flag_content .content_detail_text .text .title:hover {
-   color: rgb(34, 56, 147);
+  color: rgb(34, 56, 147);
 }
 .great_flag_content .content_detail_text .text .line {
   width: 43px;

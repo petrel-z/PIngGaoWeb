@@ -65,7 +65,7 @@ onMounted(() => {
     <div
       class="left"
       :style="{
-        'background-color': props.bgColor,
+        '--background-color': props.bgColor,
       }"
     >
       <span class="time">{{ props.time }}</span>
@@ -73,7 +73,7 @@ onMounted(() => {
     <div
       class="right"
       :style="{
-        'background-color': props.bgColor,
+        '--background-color': props.bgColor,
       }"
     >
       <div class="text">
@@ -106,7 +106,7 @@ onMounted(() => {
   left: -200%;
   transition: left 0.5s ease-in-out;
   margin-right: 1%;
-  background-color: #fff;
+  background-color: var(--background-color);
   border-bottom-left-radius: 10px;
   border-top-left-radius: 10px;
   text-align: right;
@@ -115,17 +115,29 @@ onMounted(() => {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  /* transition: all 0.3s ease-in-out; */
 }
 
 .right {
   position: relative;
   right: -200%;
   transition: right 0.5s ease-in-out;
-  background-color: #fff;
+  background-color: var(--background-color);
   border-bottom-right-radius: 10px;
   border-top-right-radius: 10px;
   padding: 45px 36px;
   width: 79%;
+  /* transition: all 0.3s ease-in-out; */
+}
+
+.item:hover .left,
+.item:hover .right {
+  background-color: #003792;
+}
+
+.item:hover .time,
+.item:hover .text {
+  color: #fff;
 }
 
 .show .left {
