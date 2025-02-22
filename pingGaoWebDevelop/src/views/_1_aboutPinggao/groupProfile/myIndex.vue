@@ -1,5 +1,162 @@
 <script setup>
 import MyTitle from "@/components/MyTitle.vue";
+import { ref, onMounted } from "vue";
+
+// 创建一个 ref 来引用图片元素
+const imageRef = ref(null);
+// 创建一个 ref 来引用图片或元素
+const wordLeft = ref(null);
+const imgRight = ref(null);
+const keyContent1 = ref(null);
+const keyContent2 = ref(null);
+const basicCultureInfo = ref(null);
+const isVisibleBaseInfo = ref(false);
+// 创建一个 ref 来跟踪图片是否可见
+const isVisibleImg = ref(false);
+const isVisibleLeftWord = ref(false);
+const isVisibleRightImg = ref(false);
+const isVisibleContent1 = ref(false);
+const isVisibleContent2 = ref(false);
+
+// 优化：创建和设置 Intersection Observer
+const setupObserver = () => {
+  const observer = new IntersectionObserver(
+    (entries, observer) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          // 图片进入视口时，触发动画
+          isVisibleImg.value = true;
+          observer.disconnect(); // 确保动画只触发一次
+        }
+      });
+    },
+    {
+      root: null, // 监测整个视口
+      rootMargin: "0px",
+      threshold: 0.1, // 图片进入视口 50% 时触发
+    }
+  );
+  if (imageRef.value) {
+    observer.observe(imageRef.value); // 开始观察图片
+  }
+};
+
+// 优化：创建和设置 Intersection Observer
+const setupObserver1 = () => {
+  const observer = new IntersectionObserver(
+    (entries, observer) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          // 图片进入视口时，触发动画
+          isVisibleLeftWord.value = true;
+          observer.disconnect(); // 确保动画只触发一次
+        }
+      });
+    },
+    {
+      root: null, // 监测整个视口
+      rootMargin: "0px",
+      threshold: 0.1, // 图片进入视口 50% 时触发
+    }
+  );
+  if (wordLeft.value) {
+    observer.observe(wordLeft.value); // 开始观察图片
+  }
+};
+
+// 优化：创建和设置 Intersection Observer
+const setupObserver2 = () => {
+  const observer = new IntersectionObserver(
+    (entries, observer) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          // 图片进入视口时，触发动画
+          isVisibleRightImg.value = true;
+          observer.disconnect(); // 确保动画只触发一次
+        }
+      });
+    },
+    {
+      root: null, // 监测整个视口
+      rootMargin: "0px",
+      threshold: 0.1, // 图片进入视口 50% 时触发
+    }
+  );
+  if (imgRight.value) {
+    observer.observe(imgRight.value); // 开始观察图片
+  }
+};
+// 优化：创建和设置 Intersection Observer
+const setupObserver3 = () => {
+  const observer = new IntersectionObserver(
+    (entries, observer) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          // 图片进入视口时，触发动画
+          isVisibleContent1.value = true;
+          observer.disconnect(); // 确保动画只触发一次
+        }
+      });
+    },
+    {
+      root: null, // 监测整个视口
+      rootMargin: "0px",
+      threshold: 0.1, // 图片进入视口 50% 时触发
+    }
+  );
+  if (keyContent1.value) {
+    observer.observe(keyContent1.value); // 开始观察图片
+  }
+};
+const setupObserver4 = () => {
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          isVisibleContent2.value = true;
+          observer.disconnect();
+        }
+      });
+    },
+    {
+      root: null,
+      rootMargin: "0px",
+      threshold: 0.1,
+    }
+  );
+
+  if (keyContent2.value) {
+    observer.observe(keyContent2.value);
+  }
+};
+const setupObserver5 = () => {
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          isVisibleBaseInfo.value = true; // 触发动画
+          observer.disconnect(); // 确保动画只触发一次
+        }
+      });
+    },
+    {
+      root: null, // 监测整个视口
+      rootMargin: "0px",
+      threshold: 0.1, // 元素进入视口 10% 时触发
+    }
+  );
+
+  if (basicCultureInfo.value) {
+    observer.observe(basicCultureInfo.value); // 开始观察元素
+  }
+};
+
+onMounted(setupObserver); // 在组件挂载时设置观察器
+onMounted(setupObserver1); // 在组件挂载时设置观察器
+onMounted(setupObserver2); // 在组件挂载时设置观察器
+onMounted(setupObserver3); // 在组件挂载时设置观察器
+onMounted(setupObserver4); // 在组件挂载时设置观察器
+onMounted(setupObserver5); // 在组件挂载时设置观察器
 </script>
 <template>
   <!-- 集团简介 -->
@@ -7,33 +164,45 @@ import MyTitle from "@/components/MyTitle.vue";
     <MyTitle title="平高集团" English="PINGGAO GROUP"></MyTitle>
     <div class="introduce">
       <div class="introduce_content introduce_content_first">
-        <span class="introduce_content_top">国家级</span>
-        <span class="introduce_content_bottom">高新技术企业</span>
+        <div class="introduce_text">
+          <span class="introduce_content_top">国家级</span>
+          <span class="introduce_content_bottom">高新技术企业</span>
+        </div>
       </div>
       <div class="introduce_content">
-        <span class="introduce_content_top">国家级</span>
-        <span class="introduce_content_bottom">创新型企业</span>
+        <div class="introduce_text">
+          <span class="introduce_content_top">国家级</span>
+          <span class="introduce_content_bottom">创新型企业</span>
+        </div>
       </div>
       <div class="introduce_content">
-        <span class="introduce_content_top">全国</span>
-        <span class="introduce_content_bottom">五一劳动奖状</span>
+        <div class="introduce_text">
+          <span class="introduce_content_top">全国</span>
+          <span class="introduce_content_bottom">五一劳动奖状</span>
+        </div>
       </div>
       <div class="introduce_content">
-        <span class="introduce_content_top">中国</span>
-        <span class="introduce_content_bottom">机械工程100强</span>
+        <div class="introduce_text">
+          <span class="introduce_content_top">中国</span>
+          <span class="introduce_content_bottom">机械工程100强</span>
+        </div>
       </div>
       <div class="introduce_content">
-        <span class="introduce_content_top">装备</span>
-        <span class="introduce_content_bottom">中国功勋企业</span>
+        <div class="introduce_text">
+          <span class="introduce_content_top">装备</span>
+          <span class="introduce_content_bottom">中国功勋企业</span>
+        </div>
       </div>
       <div class="introduce_content introduce_content_last">
-        <span class="introduce_content_top">全国</span>
-        <span class="introduce_content_bottom">文明单位</span>
+        <div class="introduce_text">
+          <span class="introduce_content_top">全国</span>
+          <span class="introduce_content_bottom">文明单位</span>
+        </div>
       </div>
     </div>
     <div class="text_word">
-      <div class="word_left">
-        <div class="text - section">
+      <div class="word_left" ref="wordLeft" :class="{ 'slide-in-left': isVisibleLeftWord }">
+        <div class="text-section">
           <p class="word_left_firstp">
             平高集团隶属于中国电气装备集团有限公司，始建于1970年，是我国电工行业重大技术装备支柱企业，具备世界领先的规模化高端电力装备研发制造实力及行业领先的能源系统集成解决方案提供能力。是国家级高新技术企业、国家级创新型企业，先后荣获全国五一劳动奖状、中国机械工业100强企业、装备中国功勋企业、全国文明单位、国家技能人才培育突出贡献单位、中国储能产业最具影响力企业等荣誉称号。
           </p>
@@ -48,36 +217,40 @@ import MyTitle from "@/components/MyTitle.vue";
           </p>
         </div>
       </div>
-      <div class="img_right">
-        <img src="@/assets/imgs/_10_homePageImgs/shipin.png" alt="" />
+      <div class="img_right" ref="imgRight" :class="{ 'slide-in-right': isVisibleRightImg }">
+        <img src="@/assets/imgs/_10_homePageImgs/shipin.png" alt="Image" />
       </div>
     </div>
     <div class="key">
       <div class="key_title"><span>核心集团六大核心概念</span></div>
-      <div class="key_content">
-        <div class="key_content_one">
+      <div class="key_content1" ref="keyContent1" :class="{ key_content1_left: isVisibleContent1 }">
+        <div class="key_info key_content_one">
           <div class="key_content_h">企业革命</div>
           <div class="key_content_text">赋能智慧电气·创引绿色能源</div>
         </div>
-        <div class="key_content_two">
+        <div class="key_content_two key_info">
           <div class="key_content_h">战略定位</div>
           <div class="key_content_text">电气技术引领者·能源革命推动者 绿色发展践行者</div>
         </div>
-        <div class="key_content_three">
+        <div class="key_content_three key_info">
           <div class="key_content_h">战略目标</div>
           <div class="key_content_text">世界一流智慧电气装备集团</div>
         </div>
       </div>
-      <div class="key_content">
-        <div class="key_content_four">
+      <div
+        class="key_content2"
+        ref="keyContent2"
+        :class="{ key_content2_right: isVisibleContent2 }"
+      >
+        <div class="key_content_four key_info">
           <div class="key_content_h">总体布局</div>
           <div class="key_content_text">装备制造·集成增值服务 智慧能源服务</div>
         </div>
-        <div class="key_content_five">
+        <div class="key_content_five key_info">
           <div class="key_content_h">企业精神</div>
           <div class="key_content_text">追求卓越·争创一流</div>
         </div>
-        <div class="key_content_six">
+        <div class="key_content_six key_info">
           <div class="key_content_h">核心价值观</div>
           <div class="key_content_text">改革·创新·团结·奋斗·实干</div>
         </div>
@@ -88,58 +261,111 @@ import MyTitle from "@/components/MyTitle.vue";
         <span>平高集团企业文化八大基本理念</span>
       </div>
       <div class="basic_culture_content">
-        <div class="basic_culture_info basic_culture_info_first">
-          <div class="basic_culture_h">管理理念</div>
-          <div class="basic_culture_line"></div>
-          <div class="basic_culture_p">守正创新坚持坚守坚韧</div>
-          <div class="basic_culture_num">01</div>
+        <div
+          class="basic_culture_info basic_culture_info_first"
+          ref="basicCultureInfo"
+          :class="{ 'scale-up': isVisibleBaseInfo }"
+        >
+          <div class="basic_word">
+            <div class="basic_culture_h">管理理念</div>
+            <div class="basic_culture_line"></div>
+            <div class="basic_culture_p">守正创新坚持坚守坚韧</div>
+            <div class="basic_culture_num">01</div>
+          </div>
         </div>
-        <div class="basic_culture_info">
-          <div class="basic_culture_h">经营理念</div>
-          <div class="basic_culture_line"></div>
-          <div class="basic_culture_p">以客为中心推进高质量发展</div>
-          <div class="basic_culture_num">02</div>
+        <div
+          class="basic_culture_info"
+          ref="basicCultureInfo"
+          :class="{ 'scale-up': isVisibleBaseInfo }"
+        >
+          <div class="basic_word">
+            <div class="basic_culture_h">经营理念</div>
+            <div class="basic_culture_line"></div>
+            <div class="basic_culture_p">以客为中心推进高质量发展</div>
+            <div class="basic_culture_num">02</div>
+          </div>
         </div>
-        <div class="basic_culture_info">
-          <div class="basic_culture_h">服务理念</div>
-          <div class="basic_culture_line"></div>
-          <div class="basic_culture_p">始手客户需求为客户创造价值</div>
-          <div class="basic_culture_num">03</div>
+        <div
+          class="basic_culture_info"
+          ref="basicCultureInfo"
+          :class="{ 'scale-up': isVisibleBaseInfo }"
+        >
+          <div class="basic_word">
+            <div class="basic_culture_h">服务理念</div>
+            <div class="basic_culture_line"></div>
+            <div class="basic_culture_p">始手客户需求为客户创造价值</div>
+            <div class="basic_culture_num">03</div>
+          </div>
         </div>
-        <div class="basic_culture_info basic_culture_info_last">
-          <div class="basic_culture_h">科技理念</div>
-          <div class="basic_culture_line"></div>
-          <div class="basic_culture_p">开放协同创新成就未来</div>
-          <div class="basic_culture_num">04</div>
+        <div
+          class="basic_culture_info basic_culture_info_last"
+          ref="basicCultureInfo"
+          :class="{ 'scale-up': isVisibleBaseInfo }"
+        >
+          <div class="basic_word">
+            <div class="basic_culture_h">科技理念</div>
+            <div class="basic_culture_line"></div>
+            <div class="basic_culture_p">开放协同创新成就未来</div>
+            <div class="basic_culture_num">04</div>
+          </div>
         </div>
-        <div class="basic_culture_info basic_culture_info_first">
-          <div class="basic_culture_h">质量理念</div>
-          <div class="basic_culture_line"></div>
-          <div class="basic_culture_p">以零缺陷铸就卓越呙质</div>
-          <div class="basic_culture_num">05</div>
+        <div
+          class="basic_culture_info basic_culture_info_first"
+          ref="basicCultureInfo"
+          :class="{ 'scale-up': isVisibleBaseInfo }"
+        >
+          <div class="basic_word">
+            <div class="basic_culture_h">质量理念</div>
+            <div class="basic_culture_line"></div>
+            <div class="basic_culture_p">以零缺陷铸就卓越呙质</div>
+            <div class="basic_culture_num">05</div>
+          </div>
         </div>
-        <div class="basic_culture_info">
-          <div class="basic_culture_h">安全理念</div>
-          <div class="basic_culture_line"></div>
-          <div class="basic_culture_p">生命至上安全第一</div>
-          <div class="basic_culture_num">06</div>
+        <div
+          class="basic_culture_info"
+          ref="basicCultureInfo"
+          :class="{ 'scale-up': isVisibleBaseInfo }"
+        >
+          <div class="basic_word">
+            <div class="basic_culture_h">安全理念</div>
+            <div class="basic_culture_line"></div>
+            <div class="basic_culture_p">生命至上安全第一</div>
+            <div class="basic_culture_num">06</div>
+          </div>
         </div>
-        <div class="basic_culture_info">
-          <div class="basic_culture_h">人才理念</div>
-          <div class="basic_culture_line"></div>
-          <div class="basic_culture_p">集聚一流人才共创一流佳绩</div>
-          <div class="basic_culture_num">07</div>
+        <div
+          class="basic_culture_info"
+          ref="basicCultureInfo"
+          :class="{ 'scale-up': isVisibleBaseInfo }"
+        >
+          <div class="basic_word">
+            <div class="basic_culture_h">人才理念</div>
+            <div class="basic_culture_line"></div>
+            <div class="basic_culture_p">集聚一流人才共创一流佳绩</div>
+            <div class="basic_culture_num">07</div>
+          </div>
         </div>
-        <div class="basic_culture_info basic_culture_info_last">
-          <div class="basic_culture_h">廉洁理念</div>
-          <div class="basic_culture_line"></div>
-          <div class="basic_culture_p">守正创新坚持坚守坚韧</div>
-          <div class="basic_culture_num">08</div>
+        <div
+          class="basic_culture_info basic_culture_info_last"
+          ref="basicCultureInfo"
+          :class="{ 'scale-up': isVisibleBaseInfo }"
+        >
+          <div class="basic_word">
+            <div class="basic_culture_h">廉洁理念</div>
+            <div class="basic_culture_line"></div>
+            <div class="basic_culture_p">守正创新坚持坚守坚韧</div>
+            <div class="basic_culture_num">08</div>
+          </div>
         </div>
       </div>
     </div>
     <div class="mind_map">
-      <img src="@/assets/imgs/_1_aboutPinggaoImgs/bg-footer.png" alt="" />
+      <img
+        ref="imageRef"
+        src="@/assets/imgs/_1_aboutPinggaoImgs/bg-footer.png"
+        alt="Image"
+        :class="{ 'slide-in': isVisibleImg }"
+      />
     </div>
   </div>
 </template>
@@ -152,10 +378,12 @@ import MyTitle from "@/components/MyTitle.vue";
   padding: 64px 11%;
   border-radius: 20px;
   background-color: #fff;
-  z-index: -100;
+  z-index: 0;
+  overflow: hidden;
 }
 
 .introduce {
+  overflow: hidden;
   display: flex;
   margin-top: 55px;
   position: absolute;
@@ -166,10 +394,17 @@ import MyTitle from "@/components/MyTitle.vue";
   padding: 85px 11%;
 }
 .introduce_content {
-  position: relative;
   width: 16.7%;
   border-left: 2px solid #8abade;
   text-align: center;
+}
+.introduce_text {
+  position: relative;
+  width: 100%;
+  transition: 0.5s;
+}
+.introduce_text:hover {
+  transform: scale(1.03);
 }
 .introduce_content span {
   width: 100%;
@@ -188,7 +423,8 @@ import MyTitle from "@/components/MyTitle.vue";
 }
 
 .introduce_content_bottom {
-  bottom: -3px;
+  position: absolute;
+  top: 27px;
 }
 .introduce_content_last {
   border-right: 2px solid #8abade;
@@ -206,6 +442,10 @@ import MyTitle from "@/components/MyTitle.vue";
   font-family: "AlibabaPuHuiTi_2_55_Regular", sans-serif;
   color: rgb(89, 87, 87);
   line-height: 1.85;
+  opacity: 0;
+  transform: translateX(-100%); /* 初始位置在左边 */
+  visibility: hidden;
+  transition: transform 1s ease, opacity 0.5s ease; /* 过渡效果 */
 }
 
 .text_word .word_left p {
@@ -213,17 +453,37 @@ import MyTitle from "@/components/MyTitle.vue";
   margin-bottom: 40px;
 }
 
+.word_left.slide-in-left {
+  opacity: 1;
+  transform: translateX(0);
+  visibility: visible;
+}
+
 .text_word .text-section {
   flex: 2;
-  padding: 20px;
 }
 
 .text_word .img_right {
   margin-left: 10px;
-  width: 45%;
+  width: 44%;
   height: 365px;
   background-size: contain;
   padding-top: 10px;
+  transition: 0.5s;
+  transform: translateX(100%); /* 初始位置在右边 */
+  opacity: 0; /* 初始时不可见 */
+  transition: transform 1s ease, opacity 0.5s ease; /* 过渡效果 */
+  visibility: hidden; /* 初始时隐藏 */
+}
+
+.img_right.slide-in-right {
+  transform: translateX(0); /* 滑动到最左边 */
+  opacity: 1; /* 可见 */
+  visibility: visible; /* 可见 */
+}
+
+.text_word .img_right:hover {
+  transform: scale(1.05);
 }
 
 .text_word .img_right img {
@@ -236,6 +496,7 @@ import MyTitle from "@/components/MyTitle.vue";
   width: 100%;
   margin-bottom: 120px;
   margin-top: 40px;
+  z-index: 10;
 }
 
 .key .key_title {
@@ -246,57 +507,110 @@ import MyTitle from "@/components/MyTitle.vue";
   margin-bottom: 35px;
 }
 
-.key .key_content {
+.key .key_content1 {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
+  flex-direction: row;
+  /* justify-content: space-between; */
+  transform: translateX(-100%); /* 初始位置在左边 */
+  visibility: hidden;
+  transition: transform 1s ease, opacity 0.5s ease; /* 过渡效果 */
+}
+.key .key_content1.key_content1_left {
+  opacity: 1;
+  transform: translateX(0);
+  visibility: visible;
 }
 
+.key .key_content2 {
+  display: flex;
+  flex-direction: row;
+  /* justify-content: space-between; */
+  transform: translateX(100%); /* 初始位置在左边 */
+  visibility: hidden;
+  transition: transform 1s ease, opacity 0.5s ease; /* 过渡效果 */
+  opacity: 0;
+}
+.key .key_content2.key_content2_right {
+  transform: translateX(0%); /* 从右到左滑动 */
+  opacity: 1;
+  visibility: visible;
+}
 .key_content_one {
-  margin-bottom: 10px;
+  width: 33.3%;
+  margin-bottom: 7px;
   position: relative;
-  width: 491px;
   height: 161px;
   background-image: url("@/assets/imgs/_1_aboutPinggaoImgs/content-1.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-color: #def1fb;
+  cursor: pointer;
 }
 
 .key_content_two {
+  margin-left: 14px;
+  width: 33.3%;
   margin-bottom: 10px;
   position: relative;
-  width: 491px;
   height: 161px;
   background-image: url("@/assets/imgs/_1_aboutPinggaoImgs/content-2.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  cursor: pointer;
+  background-color: #def1fb;
 }
 
 .key_content_three {
+  width: 33.3%;
+  margin-left: 14px;
   margin-bottom: 10px;
   position: relative;
-  width: 491px;
   height: 161px;
   background-image: url("@/assets/imgs/_1_aboutPinggaoImgs/content-3.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-color: #def1fb;
 }
 
 .key_content_four {
+  width: 33.3%;
   position: relative;
-  width: 491px;
   height: 161px;
   background-image: url("@/assets/imgs/_1_aboutPinggaoImgs/content-4.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-color: #def1fb;
 }
 
 .key_content_five {
+  width: 33.3%;
+  margin-left: 14px;
   position: relative;
-  width: 491px;
   height: 161px;
   background-image: url("@/assets/imgs/_1_aboutPinggaoImgs/content-5.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-color: #def1fb;
 }
 
 .key_content_six {
+  margin-left: 14px;
   position: relative;
-  width: 491px;
+  width: 33.3%;
   height: 161px;
   background-image: url("@/assets/imgs/_1_aboutPinggaoImgs/content-6.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-color: #def1fb;
 }
-
+.key .key_info {
+  cursor: pointer;
+  transition: 0.3s;
+}
+.key .key_info:hover {
+  transform: scale(1.01);
+  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.488);
+}
 .key_content_h {
   left: 188px;
   top: 32px;
@@ -328,6 +642,12 @@ import MyTitle from "@/components/MyTitle.vue";
   display: flex;
   flex-wrap: wrap;
 }
+.basic_word {
+  transition: 0.3s;
+}
+.basic_word:hover {
+  transform: scale(1.05);
+}
 .basic_culture_info {
   border-left: 1px solid #c4c4c4;
   width: 25%;
@@ -335,6 +655,15 @@ import MyTitle from "@/components/MyTitle.vue";
   text-align: center;
   margin-bottom: 70px;
   min-width: 100px;
+  transform: scale(0.5); /* 初始缩小 */
+  opacity: 0; /* 初始不可见 */
+  visibility: hidden; /* 初始隐藏 */
+  transition: transform 0.5s ease, opacity 0.5s ease; /* 过渡效果 */
+}
+.basic_culture_info.scale-up {
+  transform: scale(1); /* 放大到原始大小 */
+  opacity: 1; /* 可见 */
+  visibility: visible; /* 可见 */
 }
 .basic_culture_info div {
   margin-bottom: 2px;
@@ -366,16 +695,31 @@ import MyTitle from "@/components/MyTitle.vue";
   border-right: 1px solid #c4c4c4;
 }
 .mind_map {
+  background-color: #def1fb;
   bottom: 0px;
   left: 0;
   width: 100%;
   height: 1028px;
   position: absolute;
+  z-index: -1;
+  overflow: hidden;
 }
+
 .mind_map img {
   width: 100%;
-  left: 0;
-  bottom: 0;
+  position: absolute;
   height: 1028px;
+  left: 0;
+  bottom: 0; /* 初始位置在容器底部 */
+  transform: translateY(50%); /* 图片初始隐藏在容器下方 */
+  visibility: hidden; /* 初始时不可见 */
+  transition: transform 1s ease, opacity 0.5s ease; /* 过渡效果 */
+  will-change: transform; /* 告诉浏览器动画即将发生，提升性能 */
+  z-index: -1;
+}
+
+.mind_map img.slide-in {
+  visibility: visible;
+  transform: translateY(0); /* 从下方滑动到原位置 */
 }
 </style>

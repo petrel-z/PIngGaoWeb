@@ -1,5 +1,29 @@
 <script setup>
 import MyTitle from "@/components/MyTitle.vue";
+import { ref, onMounted } from "vue";
+
+const items = ref(null);
+onMounted(() => {
+  // 获取目标元素容器
+  const targetContainer = items.value;
+  if (targetContainer) {
+    // 监听页面滚动事件
+    window.addEventListener("scroll", () => {
+      if (!targetContainer) return;
+      // 获取元素顶部距离页面顶部的距离
+      const elementTop = targetContainer.getBoundingClientRect().top;
+      // 获取窗口的高度
+      const windowHeight = window.innerHeight;
+
+      // 判断元素是否进入可视区域
+      if (elementTop < windowHeight) {
+        targetContainer.classList.add("show");
+      } else {
+        targetContainer.classList.remove("show");
+      }
+    });
+  }
+});
 </script>
 
 <template>
@@ -25,7 +49,7 @@ import MyTitle from "@/components/MyTitle.vue";
         进站开展科研工作
       </div>
     </div>
-    <div class="content">
+    <div ref="items" class="content">
       <div class="text">
         <p>
           平高集团有限公司博士后科研工作站（以下简称“工作站”）于2008年6月经国家人力资源与
@@ -88,11 +112,15 @@ import MyTitle from "@/components/MyTitle.vue";
   height: auto;
   display: flex;
   padding: 0 11%;
+  overflow: hidden;
   /* justify-content: space-between; */
 }
 
 .text {
   width: 50%;
+  position: relative;
+  left: -100%;
+  transition: left 0.8s ease-in-out;
 }
 
 .text > p {
@@ -104,13 +132,30 @@ import MyTitle from "@/components/MyTitle.vue";
 }
 
 .img {
+  position: relative;
+  right: -100%;
+  transition: right 0.8s ease-in-out;
   width: 48%;
   margin-left: 2%;
+  cursor: pointer;
+}
+
+.img img:hover {
+  transform: scale(1.05);
+  transition: all 0.5s ease-in-out;
 }
 
 .img img {
   width: 100%;
   height: auto;
+}
+
+.show .text {
+  left: 0;
+}
+
+.show .img {
+  right: 0;
 }
 
 .bottom-bg {

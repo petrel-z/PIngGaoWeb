@@ -36,7 +36,7 @@ const footer = ref([
 .header {
   background-image: url("../../assets/imgs/_4_productEngineeringImgs/头部轮播-04.png");
   width: auto;
-  height: 32vw;
+  height: 68.3vh;
   background-size: cover;
 }
 .right_button {

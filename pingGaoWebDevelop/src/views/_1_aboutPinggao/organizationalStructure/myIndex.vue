@@ -3,7 +3,7 @@ import MyTitle from "@/components/MyTitle.vue";
 import headLine from "@/components/MyHeadLine.vue";
 import row from "@/assets/imgs/_1_aboutPinggaoImgs/row.png";
 import longLine from "@/assets/imgs/_1_aboutPinggaoImgs/long-line.png";
-import footrow from "@/assets/imgs/_1_aboutPinggaoImgs/footrow.png";
+// import footrow from "@/assets/imgs/_1_aboutPinggaoImgs/footrow.png";
 </script>
 <template>
   <!-- 组织结构 -->
@@ -159,8 +159,6 @@ import footrow from "@/assets/imgs/_1_aboutPinggaoImgs/footrow.png";
     </div>
     <div class="organization_2">
       <div class="organization_title">平高集团控股子公司</div>
-      <div class="pic"><img :src="footrow" alt="" /></div>
-      <div class="text">河南平高电气股份有限公司</div>
       <div class="detail">
         <div class="introduce">
           <div class="info">
@@ -410,7 +408,7 @@ import footrow from "@/assets/imgs/_1_aboutPinggaoImgs/footrow.png";
   position: relative;
   margin-top: 60px;
   width: 100%;
-  height: 410px;
+  height: 342px;
   background-color: #45b3e0;
   border-radius: 15px;
 }
