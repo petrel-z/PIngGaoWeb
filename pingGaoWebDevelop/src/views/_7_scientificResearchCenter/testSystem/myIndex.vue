@@ -4,7 +4,7 @@ import F6_MyContent from "@/components/F6_MyContent.vue";
 </script>
 <template>
   <div class="testSystem">
-    <MyTitle h="试验体系" English="TEST SYSTEM"></MyTitle>
+    <MyTitle title="试验体系" English="TEST SYSTEM"></MyTitle>
     <div class="content">
       <F6_MyContent class="my_content" title="三院两所两中心一基地">
         <span class="left">

@@ -3,7 +3,7 @@ import MyTitle from "@/components/MyTitle.vue";
 </script>
 <template>
   <div class="keyProject">
-    <MyTitle h="重点工程" English="KEY PROJECTS"></MyTitle>
+    <MyTitle title="重点工程" English="KEY PROJECTS"></MyTitle>
     <div class="project_content">
       <div class="content_left">
         <div class="top_button">

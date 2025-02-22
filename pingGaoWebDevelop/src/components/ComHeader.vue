@@ -287,8 +287,7 @@ const props = defineProps({
       @mouseleave="headerBottomFlag = false"
     >
       <div class="log-img">
-        <div class="logo-active"></div>
-        <router-link to="/homePage-2">
+        <router-link class="logo-link" to="/homePage-2">
           <img :src="!headerBottomFlag ? logoImg1 : logoImg2" alt="" />
         </router-link>
 
@@ -516,14 +515,19 @@ const props = defineProps({
   transform: translateY(-200%);
 }
 
+.logo-link {
+  display: block;
+  width: 100%;
+}
+
 .log-img {
   position: relative;
   width: 100%;
 }
 
 .log-img img {
-  height: 84px;
-  width: auto;
+  height: auto;
+  width: 100%;
 }
 
 .log-title {

@@ -59,7 +59,7 @@ const handleMouseLeave = () => {
       <img :src="imageSrc" />
     </div>
     <MyTitle
-      h="产品系列"
+      title="产品系列"
       English="PRODUCT SERIES"
       title-color="#fff"
       line-color="#fff"
