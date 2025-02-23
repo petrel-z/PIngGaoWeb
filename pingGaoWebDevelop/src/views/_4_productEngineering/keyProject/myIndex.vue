@@ -86,9 +86,9 @@ onMounted(initializeObservers); // 在组件挂载时调用
   position: relative;
   margin: auto;
   width: 100%;
-  height: 2380px;
-  padding: 64px 210px;
-  border-radius: 20px;
+  height: 148.75rem;
+  padding: 4rem 13.125rem;
+  border-radius: 1.25rem;
   background-color: #fff;
   z-index: -100;
 }
@@ -96,12 +96,12 @@ onMounted(initializeObservers); // 在组件挂载时调用
   display: flex;
   justify-content: space-between;
   width: 100%;
-  height: 1580px;
-  margin-top: 60px;
+  height: 98.75rem;
+  margin-top: 3.75rem;
 }
 .content_left {
   width: 20.5%;
-  margin-right: 23px;
+  margin-right: 1.4375rem;
   transform: translateX(-100%); /* 初始位置在左边 */
   visibility: hidden;
   transition: transform 1s ease, opacity 0.5s ease; /* 过渡效果 */
@@ -113,35 +113,35 @@ onMounted(initializeObservers); // 在组件挂载时调用
 }
 .top_button {
   width: 100%;
-  height: 100px;
-  border-radius: 10px;
+  height: 6.25rem;
+  border-radius: 0.625rem;
   background-color: #006fc1;
-  margin-bottom: 10px;
+  margin-bottom: 0.625rem;
 }
 .bottom_button {
   width: 100%;
-  height: 100px;
-  border-radius: 10px;
+  height: 6.25rem;
+  border-radius: 0.625rem;
   background-color: #fff;
 }
 .top_button .p {
-  font-size: 32px;
+  font-size: 2rem;
   font-family: "AlibabaPuHuiTi_2_65_Medium", sans-serif;
   color: rgb(255, 255, 255);
   text-align: center;
-  line-height: 100px;
-  margin-bottom: 5px;
+  line-height: 6.25rem;
+  margin-bottom: 0.3125rem;
 }
 .bottom_button .p {
-  font-size: 32px;
+  font-size: 2rem;
   font-family: "AlibabaPuHuiTi_2_65_Medium", sans-serif;
   color: #006fc1;
   text-align: center;
-  line-height: 100px;
+  line-height: 6.25rem;
 }
 .content_right {
   width: 79%;
-  height: 1560px;
+  height: 97.5rem;
   transform: translateX(100%); /* 初始位置在左边 */
   visibility: hidden;
   transition: transform 1s ease, opacity 0.5s ease; /* 过渡效果 */
@@ -156,40 +156,39 @@ onMounted(initializeObservers); // 在组件挂载时调用
 .pic_content {
   position: relative;
   width: 100%;
-  height: 500px;
-  margin-bottom: 30px;
+  height: 31.25rem;
+  margin-bottom: 1.875rem;
 }
 .pic_content .pic {
   width: 100%;
-  height: 500px;
+  height: 31.25rem;
 }
 .pic_content .pic img{
   width: 100%;
-  height: 500px;
+  height: 31.25rem;
   background-size: cover;
 }
 .pic_content .bg_black {
   position: absolute;
   bottom: 0;
   width: 100%;
-  height: 83px;
+  height: 5.1875rem;
   background-color: #38383859;
-  border-radius: 6px;
-  line-height: 83px;
+  border-radius: 0.375rem;
+  line-height: 5.1875rem;
   text-align: center;
 }
 .pic_content .bg_black .p {
-  font-size: 26px;
+  font-size: 1.625rem;
   font-family: "AlibabaPuHuiTi_2_45_Light", sans-serif;
   color: rgb(255, 255, 255);
 }
 .footer_img {
   position: absolute;
-  bottom: -10px;
+  bottom: -0.625rem;
   left: 0;
   z-index: -10;
   width: 100%;
-
 }
 .footer_img img {
   width: 100%;

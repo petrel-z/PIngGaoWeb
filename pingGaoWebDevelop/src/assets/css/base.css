@@ -187,7 +187,7 @@ html {
 
 @media (max-width: 800px) {
   html {
-    font-size: 10px;
+    font-size: 9px;
   }
 }
 
@@ -210,8 +210,14 @@ html {
   }
 }
 
-/* @media (max-width: 400px) {
+@media (max-width: 400px) {
   html {
-    font-size: 4px;
+    font-size: 3px;
   }
-} */
+}
+
+@media (max-width: 300px) {
+  html {
+    font-size: 2px;
+  }
+}

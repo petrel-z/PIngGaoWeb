@@ -83,15 +83,15 @@ onMounted(initializeObservers); // 在组件挂载时调用
   position: relative;
   margin: auto;
   width: 100%;
-  height: 1960px;
-  padding: 64px 11%;
-  border-radius: 20px;
+  height: 122.5rem;
+  padding: 4rem 11%;
+  border-radius: 1.25rem;
   background-color: #fff;
   z-index: -100;
 }
 .content {
-  margin-top: 46px;
-  border-bottom: 1px solid #006fc1;
+  margin-top: 2.875rem;
+  border-bottom: 0.0625rem solid #006fc1;
 }
 .content1{
   width: 100%;
@@ -116,16 +116,16 @@ onMounted(initializeObservers); // 在组件挂载时调用
   visibility: visible;
 }
 .text {
-  font-size: 20px;
+  font-size: 1.25rem;
   font-family: "AlibabaPuHuiTi_2_55_Regular", sans-serif;
   color: rgb(89, 87, 87);
   line-height: 1.56;
-  margin-bottom: 24px;
+  margin-bottom: 1.5rem;
 }
 .footer_img {
   position: absolute;
   width: 100%;
-  height: 1064px;
+  height: 66.5rem;
   bottom: 0;
   left: 0;
   z-index: -20;

@@ -179,19 +179,19 @@ const imageSrc = ref(
     <div class="detail_page">
       <div class="detail_page_title">高压电器产业</div>
       <div class="detail_page_content" >
-        <div class="detail_page_info" style="border-top: 1px solid #1078c5" ref="infoRef"
+        <div class="detail_page_info" style="border-top: 0.0625rem solid #1078c5" ref="infoRef"
         :class="{ 'scale-up': isVisibleInfo}">
           <div class="h">01</div>
           <div class="p1">ZHW1-252（L）/T4000-50型</div>
           <div class="p2">复合式组合电器</div>
         </div>
-        <div class="detail_page_info" style="border-top: 1px solid #1078c5" ref="infoRef"
+        <div class="detail_page_info" style="border-top: 0.0625rem solid #1078c5" ref="infoRef"
         :class="{ 'scale-up': isVisibleInfo}">
           <div class="h">02</div>
           <div class="p1">ZHW1-145(L)/T3150-40型</div>
           <div class="p2">复合式组合电器</div>
         </div>
-        <div class="detail_page_info" style="border-top: 1px solid #1078c5" ref="infoRef"
+        <div class="detail_page_info" style="border-top: 0.0625rem solid #1078c5" ref="infoRef"
         :class="{ 'scale-up': isVisibleInfo}">
           <div class="h">03</div>
           <div class="p1">ZHW1-126（L）/T4000-50型</div>
@@ -251,20 +251,20 @@ const imageSrc = ref(
   position: relative;
   margin: auto;
   width: 100%;
-  border: 1px solid rgb(177, 177, 177);
-  border-radius: 20px;
+  border: 0.0625rem solid rgb(177, 177, 177);
+  border-radius: 1.25rem;
   background-color: #fff;
   z-index: 100;
-  padding: 64px 210px;
+  padding: 4rem 13.125rem;
 }
 
 .detail_content {
-  width: 1080px;
-  height: 271px;
+  width: 67.5rem;
+  height: 16.9375rem;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  margin-top: 66px;
+  margin-top: 4.125rem;
   position: relative;
   transform: translateX(-100%); /* 初始位置在左边 */
   visibility: hidden;
@@ -281,7 +281,7 @@ const imageSrc = ref(
   left: 0;
   top: 0;
   width: 100%;
-  height: 614px;
+  height: 38.375rem;
   position: absolute;
   z-index: -100;
   transition: 0.5s ease-in-out; /* 添加过渡效果 */
@@ -289,41 +289,41 @@ const imageSrc = ref(
 }
 
 .productSeries .img img {
-  height: 614px;
+  height: 38.375rem;
   width: 100%;
   transition: 0.5s ease-in-out; /* 添加过渡效果 */
   opacity: 1; /* 初始透明度 */
 }
 .detail_content .detail_product {
-  border: 1px #1e8dce solid;
-  border-radius: 10px;
-  width: 342px;
-  height: 77px;
-  margin-bottom: 25px;
+  border: 0.0625rem #1e8dce solid;
+  border-radius: 0.625rem;
+  width: 21.375rem;
+  height: 4.8125rem;
+  margin-bottom: 1.5625rem;
   text-align: center;
-  line-height: 75px;
+  line-height: 4.6875rem;
   z-index: 100;
   cursor: pointer;
   transition: 0.1s;
 }
 .detail_product span {
   display: block;
-  font-size: 30px;
+  font-size: 1.875rem;
   font-family: "AlibabaPuHuiTi_2_35_Thin", sans-serif;
   color: #ffffff;
   z-index:-100;
 }
 
 .detail_page {
-  margin-top: 150px;
-  height: 1734px;
+  margin-top: 9.375rem;
+  height: 108.375rem;
 }
 .detail_page_title {
-  font-size: 32px;
+  font-size: 2rem;
   font-family: "AlibabaPuHuiTi_2_65_Medium", sans-serif;
   color: rgb(0, 111, 193);
   text-align: center;
-  margin-bottom: 63px;
+  margin-bottom: 3.9375rem;
 }
 .detail_page_content {
   display: flex;
@@ -332,8 +332,8 @@ const imageSrc = ref(
 }
 .detail_page_info {
   width: 32%;
-  height: 225px;
-  border-bottom: 1px #1078c5 solid;
+  height: 14.0625rem;
+  border-bottom: 0.0625rem #1078c5 solid;
   z-index: 100;
   transform: scale(0.3); /* 初始缩小 */
   opacity: 0; /* 初始不可见 */
@@ -347,18 +347,18 @@ const imageSrc = ref(
   visibility: visible; /* 可见 */
 }
 .detail_page_info .h {
-  font-size: 36px;
+  font-size: 2.25rem;
   font-family: "AlibabaPuHuiTi_2_85_Bold", sans-serif;
   color: rgb(0, 111, 193);
-  margin-top: 30px;
+  margin-top: 1.875rem;
 }
 .detail_page_info .p1 {
-  font-size: 26px;
+  font-size: 1.625rem;
   font-family: "AlibabaPuHuiTi_2_55_Regular", sans-serif;
   color: rgb(89, 87, 87);
 }
 .detail_page_info .p2 {
-  font-size: 26px;
+  font-size: 1.625rem;
   font-family: "AlibabaPuHuiTi_2_55_Regular", sans-serif;
   color: rgb(89, 87, 87);
 }
@@ -370,6 +370,6 @@ const imageSrc = ref(
 }
 .footer_img img {
   width: 100%;
-  margin-bottom: -8px;
+  margin-bottom: -0.5rem;
 }
 </style>

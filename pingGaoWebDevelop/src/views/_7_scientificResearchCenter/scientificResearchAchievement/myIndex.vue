@@ -128,16 +128,16 @@ onMounted(initializeObservers); // 在组件挂载时调用
 .scientificResearchAchievement {
   position: relative;
   width: 100%;
-  height: 2040px;
-  /* border: 1px solid rgb(206, 206, 206); */
+  height: 127.5rem;
+  /* border: 0.0625rem solid rgb(206, 206, 206); */
   background-color: #fff;
-  padding: 64px 11%;
-  border-radius: 20px;
+  padding: 4rem 11%;
+  border-radius: 1.25rem;
   z-index: -10;
 }
 .content {
-  margin-top: 466px;
-  border-bottom: 1px solid #006fc1;
+  margin-top: 29.125rem;
+  border-bottom: 0.0625rem solid #006fc1;
 }
 .content1{
   width: 100%;
@@ -151,26 +151,26 @@ onMounted(initializeObservers); // 在组件挂载时调用
   visibility: visible;
 }
 .text {
-  font-size: 20px;
+  font-size: 1.25rem;
   font-family: "AlibabaPuHuiTi_2_55_Regular", sans-serif;
   color: rgb(89, 87, 87);
   line-height: 1.66;
-  margin-bottom: 24px;
+  margin-bottom: 1.5rem;
 }
 .achievement {
   position: absolute;
   width: 100%;
-  height: 400px;
+  height: 25rem;
   background-color: #f4f4f4;
-  padding: 78px 210px;
+  padding: 4.875rem 13.125rem;
   left: 0;
-  top: 310px;
+  top: 19.375rem;
 }
 .achievement_top {
   display: flex;
   width: 100%;
-  margin-bottom: 64px;
-  border-right: 2px solid #6ba9d7;
+  margin-bottom: 4rem;
+  border-right: 0.125rem solid #6ba9d7;
 }
 .achievement_bottom {
   display: flex;
@@ -179,8 +179,8 @@ onMounted(initializeObservers); // 在组件挂载时调用
 }
  .achievement_detail {
   width: 16%;
-  height: 75px;
-  border-left: 2px solid #6ba9d7;
+  height: 4.6875rem;
+  border-left: 0.125rem solid #6ba9d7;
   position: relative;
   transform: scale(0.3); /* 初始缩小 */
   opacity: 0; /* 初始不可见 */
@@ -193,28 +193,28 @@ onMounted(initializeObservers); // 在组件挂载时调用
   visibility: visible; /* 可见 */
 }
 .achievement_bottom .achievement_detail {
-  width: 250px;
-  height: 108px;
-  border-left: 2px solid #6ba9d7;
+  width: 15.625rem;
+  height: 6.75rem;
+  border-left: 0.125rem solid #6ba9d7;
   position: relative;
 }
 .achievement_top .achievement_detail .num {
   position: absolute;
-  font-size: 44px;
+  font-size: 2.75rem;
   font-family: "AlibabaPuHuiTi_2_95_ExtraBold", sans-serif;
   color: rgb(0, 111, 193);
   left: 50%;
   transform: translateX(-50%);
-  top: -15px;
+  top: -0.9375rem;
 }
 .achievement_top .achievement_detail .p {
   position: absolute;
-  font-size: 24px;
+  font-size: 1.5rem;
   font-family: "AlibabaPuHuiTi_2_65_Medium", sans-serif;
   color: rgb(0, 111, 193);
   text-align: center;
-  top: 40px;
-  width: 250px;
+  top: 2.5rem;
+  width: 15.625rem;
   left: 50%;
   transform: translateX(-50%);
 }
@@ -226,48 +226,48 @@ onMounted(initializeObservers); // 在组件挂载时调用
 }
 .achievement_bottom .achievement_detail .num {
   position: absolute;
-  font-size: 44px;
+  font-size: 2.75rem;
   font-family: "AlibabaPuHuiTi_2_95_ExtraBold", sans-serif;
   color: rgb(0, 111, 193);
   left: 50%;
   transform: translateX(-50%);
-  top: -15px;
+  top: -0.9375rem;
 }
 .achievement_bottom .achievement_detail .p1 {
   position: absolute;
-  font-size: 24px;
+  font-size: 1.5rem;
   font-family: "AlibabaPuHuiTi_2_65_Medium", sans-serif;
   color: rgb(0, 111, 193);
   text-align: center;
-  top: 40px;
-  width: 250px;
+  top: 2.5rem;
+  width: 15.625rem;
   left: 50%;
   transform: translateX(-50%);
 }
 .achievement_bottom .achievement_detail .p2 {
   position: absolute;
-  font-size: 24px;
+  font-size: 1.5rem;
   font-family: "AlibabaPuHuiTi_2_65_Medium", sans-serif;
   color: rgb(0, 111, 193);
   text-align: center;
-  top: 72px;
+  top: 4.5rem;
   width: 100%;
   left: 50%;
   transform: translateX(-50%);
 }
 .detail_last {
-  border-right: 2px solid #6ba9d7;
+  border-right: 0.125rem solid #6ba9d7;
 }
 .footer_img {
   position: absolute;
   width: 100%;
-  height: 1064px;
+  height: 66.5rem;
   bottom: 0;
   left: 0;
   z-index: -1;
 }
 .footer_img img {
   width: 100%;
-  height: 1064px;
+  height: 66.5rem;
 }
 </style>

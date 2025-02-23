@@ -77,17 +77,17 @@ onMounted(initializeObservers); // 在组件挂载时调用
   position: relative;
   margin: auto;
   width: 100%;
-  padding: 64px 11%;
-  border-radius: 20px;
+  padding: 4rem 11%;
+  border-radius: 1.25rem;
   background-color: #fff;
   z-index: -100;
 }
 .pics {
-  margin-top: 60px;
+  margin-top: 3.75rem;
   display: grid;
   grid-template-columns: repeat(3, 1fr); /* 3列 */
   grid-template-rows: repeat(6, 1fr); /* 6行 */
-  gap: 10px;
+  gap: 0.625rem;
   grid-template-areas:
     "a b c"
     "d d e"
@@ -153,10 +153,10 @@ onMounted(initializeObservers); // 在组件挂载时调用
   width: 100%;
   height: 100%;
   object-fit: cover;
-  border-radius: 8px;
+  border-radius: 0.5rem;
 }
 .footer {
-  margin-top: 110px;
+  margin-top: 6.875rem;
   text-align: center;
 }
 .footer .myButton {

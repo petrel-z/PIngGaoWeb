@@ -38,11 +38,11 @@ const goHome = () => {
 
 <style scoped>
 .button {
-  width: 100px;
-  height: 360px;
+  width: 6.25rem;
+  height: 22.5rem;
   background-color: #333333;
-  border-radius: 15px 0 0 15px;
-  padding-top: 16px;
+  border-radius: 0.9375rem 0 0 0.9375rem;
+  padding-top: 1rem;
   z-index: 1000;
   position: fixed;
   right: 0;
@@ -51,11 +51,11 @@ const goHome = () => {
 }
 
 .box {
-  width: 63px;
-  height: 83px;
+  width: 3.9375rem;
+  height: 5.1875rem;
   color: #898989;
   text-align: center;
-  margin: 24px 23px;
+  margin: 1.5rem 1.4375rem;
   cursor: pointer;
   transition: all 0.3s ease;
 }
@@ -70,17 +70,17 @@ const goHome = () => {
 }
 
 .box .p {
-  font-size: 18px;
+  font-size: 1.125rem;
   font-family: 'AlibabaPuHuiTi_2_55_Regular', sans-serif;
   color: rgb(137, 137, 137);
-  margin-top: -16px;
+  margin-top: -1rem;
   transition: inherit;
 }
 
 .box .icon {
-  font-size: 35px;
+  font-size: 2.1875rem;
   font-weight: 600;
-  margin-bottom: 8px;
+  margin-bottom: 0.5rem;
   transition: inherit;
 }
 </style>

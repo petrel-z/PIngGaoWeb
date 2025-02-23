@@ -124,15 +124,15 @@ onMounted(initializeObservers); // 在组件挂载时调用
   position: relative;
   margin: auto;
   width: 100%;
-  padding: 0px 210px;
-  border-radius: 20px;
+  padding: 0rem 13.125rem;
+  border-radius: 1.25rem;
   background-color: #fff;
 }
 .detail_page {
-  padding: 0px 100px;
+  padding: 0rem 6.25rem;
   width: 100%;
-  height: 2010px;
-  padding-top: 80px;
+  height: 125.625rem;
+  padding-top: 5rem;
   background-color: #fff;
   z-index: 100;
 }
@@ -140,28 +140,33 @@ onMounted(initializeObservers); // 在组件挂载时调用
   width: 100%;
 }
 .detail_title {
-  height: 30px;
+  position: relative;
+  height: 1.875rem;
   display: flex;
-  margin-bottom: 30px;
+  margin-bottom: 1.875rem;
   width: 100%;
 }
 .detail_title .title {
-  font-size: 35px;
+  font-size: 2.1875rem;
   font-family: "AlibabaPuHuiTi_2_65_Medium", sans-serif;
   color: rgb(35, 24, 21);
-  line-height: 30px;
-  margin-left: 5px;
+  line-height: 1.875rem;
+  margin-left: 0.3125rem;
+}
+.detail_title img{
+  width: 2.2rem;
+  margin-bottom: 2rem;
 }
 .detail_text {
   display: flex;
   justify-content: space-between;
   width: 100%;
-  height: 54px;
-  margin-bottom: 23px;
+  height: 3.375rem;
+  margin-bottom: 1.4375rem;
   z-index: 100;
 }
 .detail_text .text {
-  font-size: 35px;
+  font-size: 2.1875rem;
   font-family: "AlibabaPuHuiTi_2_65_Medium", sans-serif;
   color: rgb(0, 55, 146);
   transform: translateX(-100%); /* 初始位置在左边 */
@@ -175,10 +180,10 @@ onMounted(initializeObservers); // 在组件挂载时调用
 }
 
 .detail_text .button {
-  width: 186px;
-  height: 54px;
+  width: 11.625rem;
+  height: 3.375rem;
   background-color: #45b3e0;
-  border-radius: 27px;
+  border-radius: 1.6875rem;
   cursor: pointer;
   transform: translateX(100%); /* 初始位置在左边 */
   visibility: hidden;
@@ -191,28 +196,28 @@ onMounted(initializeObservers); // 在组件挂载时调用
   visibility: visible;
 }
 .detail_text .button .p {
-  font-size: 21.219px;
+  font-size: 1.3262rem;
   font-family: "AlibabaPuHuiTi_2_55_Regular", sans-serif;
   color: rgb(255, 255, 255);
   text-align: center;
-  line-height: 54px;
+  line-height: 3.375rem;
   z-index: 1000;
 }
 .long_line {
   width: 100%;
-  height: 4px;
+  height: 0.25rem;
   background-color: #003792;
-  margin-bottom: 60px;
+  margin-bottom: 3.75rem;
 }
 .product_img {
-  width: 760px;
-  height: 474px;
+  width: 47.5rem;
+  height: 29.625rem;
   margin: auto;
-  margin-bottom: 50px;
+  margin-bottom: 3.125rem;
 }
 .product_img img {
-  width: 760px;
-  height: 474px;
+  width: 47.5rem;
+  height: 29.625rem;
   transform: scale(0.3); /* 初始缩小 */
   opacity: 0; /* 初始不可见 */
   visibility: hidden; /* 初始隐藏 */
@@ -226,22 +231,22 @@ onMounted(initializeObservers); // 在组件挂载时调用
 }
 .special {
   width: 100%;
-  height: 380px;
-  margin-bottom: 54px;
+  height: 23.75rem;
+  margin-bottom: 3.375rem;
 }
 .special_header {
   width: 100%;
-  height: 60px;
-  border-radius: 8px;
+  height: 3.75rem;
+  border-radius: 0.5rem;
   background-color: #006fc1;
-  margin-bottom: 30px;
+  margin-bottom: 1.875rem;
   text-align: center;
 }
 .special_header .h {
-  font-size: 24px;
+  font-size: 1.5rem;
   font-family: "AlibabaPuHuiTi_2_65_Medium", sans-serif;
   color: rgb(255, 255, 255);
-  line-height: 60px;
+  line-height: 3.75rem;
 }
 .special .special_word {
   overflow: hidden;
@@ -260,7 +265,7 @@ onMounted(initializeObservers); // 在组件挂载时调用
 }
 
 .special_word .introduction {
-  font-size: 20px;
+  font-size: 1.25rem;
   font-family: "AlibabaPuHuiTi_2_55_Regular", sans-serif;
   color: rgb(89, 87, 87);
   line-height: 1.498;
@@ -271,13 +276,13 @@ onMounted(initializeObservers); // 在组件挂载时调用
 }
 
 .parameter_img {
-  width: 733px;
-  height: 600px;
+  width: 45.8125rem;
+  height: 37.5rem;
   margin: auto;
 }
 .parameter_img img {
-  width: 733px;
-  height: 600px;
+  width: 45.8125rem;
+  height: 37.5rem;
   transform: scale(0.3); /* 初始缩小 */
   opacity: 0; /* 初始不可见 */
   visibility: hidden; /* 初始隐藏 */
@@ -293,11 +298,11 @@ onMounted(initializeObservers); // 在组件挂载时调用
   position: absolute;
   left: 0;
   bottom: 0;
-  width: 1920px;
-  height: 2500px;
+  width: 120rem;
+  height: 156.25rem;
   z-index: -10;
 }
 .footer_img img {
-  width: 1916px;
+  width: 119.75rem;
 }
 </style>

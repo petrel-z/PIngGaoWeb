@@ -267,9 +267,9 @@ onMounted(initializeObservers); // 在组件挂载时调用
   position: relative;
   margin: auto;
   width: 100%;
-  height: 3560px;
-  padding: 64px 11%;
-  border-radius: 20px;
+  height: 222.5rem;
+  padding: 4rem 11%;
+  border-radius: 1.25rem;
   background-color: #fff;
   z-index: 0;
   overflow: hidden;
@@ -278,17 +278,17 @@ onMounted(initializeObservers); // 在组件挂载时调用
 .introduce {
   overflow: hidden;
   display: flex;
-  margin-top: 55px;
+  margin-top: 3.4375rem;
   position: absolute;
   width: 100%;
-  height: 232px;
+  height: 14.5rem;
   left: 0;
   background-color: #f4f4f4;
-  padding: 85px 11%;
+  padding: 5.3125rem 11%;
 }
 .introduce_content {
   width: 16.7%;
-  border-left: 2px solid #8abade;
+  border-left: 0.125rem solid #8abade;
   text-align: center;
 }
 .introduce_text {
@@ -305,33 +305,33 @@ onMounted(initializeObservers); // 在组件挂载时调用
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
-  font-size: 26px;
+  font-size: 1.625rem;
   font-family: "AlibabaPuHuiTi_2_65_Medium", sans-serif;
   color: rgb(0, 111, 193);
   line-height: 1.423;
 }
 
 .introduce_content_top {
-  top: -7px;
+  top: -0.4375rem;
 }
 
 .introduce_content_bottom {
   position: absolute;
-  top: 27px;
+  top: 1.6875rem;
 }
 .introduce_content_last {
-  border-right: 2px solid #8abade;
+  border-right: 0.125rem solid #8abade;
 }
 
 .text_word {
   display: flex;
-  margin-top: 335px;
+  margin-top: 20.9375rem;
 }
 
 .text_word .word_left {
   display: flex;
   width: 55%;
-  font-size: 20px;
+  font-size: 1.25rem;
   font-family: "AlibabaPuHuiTi_2_55_Regular", sans-serif;
   color: rgb(89, 87, 87);
   line-height: 1.85;
@@ -343,7 +343,7 @@ onMounted(initializeObservers); // 在组件挂载时调用
 
 .text_word .word_left p {
   display: block;
-  margin-bottom: 40px;
+  margin-bottom: 2.5rem;
 }
 
 .word_left.slide-in-left {
@@ -357,11 +357,11 @@ onMounted(initializeObservers); // 在组件挂载时调用
 }
 
 .text_word .img_right {
-  margin-left: 10px;
+  margin-left: 0.625rem;
   width: 44%;
-  height: 365px;
+  height: 22.8125rem;
   background-size: contain;
-  padding-top: 10px;
+  padding-top: 0.625rem;
   transition: 0.5s;
   transform: translateX(100%); /* 初始位置在右边 */
   opacity: 0; /* 初始时不可见 */
@@ -380,24 +380,24 @@ onMounted(initializeObservers); // 在组件挂载时调用
 }
 
 .text_word .img_right img {
-  margin-left: 44px;
+  margin-left: 2.75rem;
   width: 100%;
-  height: 365px;
+  height: 22.8125rem;
 }
 
 .key {
   width: 100%;
-  margin-bottom: 120px;
-  margin-top: 40px;
+  margin-bottom: 7.5rem;
+  margin-top: 2.5rem;
   z-index: 10;
 }
 
 .key .key_title {
-  font-size: 32px;
+  font-size: 2rem;
   font-family: "AlibabaPuHuiTi_2_65_Medium", sans-serif;
   color: rgb(0, 111, 193);
   text-align: center;
-  margin-bottom: 35px;
+  margin-bottom: 2.1875rem;
 }
 
 .key .key_content1 {
@@ -430,9 +430,9 @@ onMounted(initializeObservers); // 在组件挂载时调用
 }
 .key_content_one {
   width: 33.3%;
-  margin-bottom: 7px;
+  margin-bottom: 0.4375rem;
   position: relative;
-  height: 161px;
+  height: 10.0625rem;
   background-image: url("@/assets/imgs/_1_aboutPinggaoImgs/content-1.png");
   background-repeat: no-repeat;
   background-size: contain;
@@ -441,11 +441,11 @@ onMounted(initializeObservers); // 在组件挂载时调用
 }
 
 .key_content_two {
-  margin-left: 14px;
+  margin-left: 0.875rem;
   width: 33.3%;
-  margin-bottom: 10px;
+  margin-bottom: 0.625rem;
   position: relative;
-  height: 161px;
+  height: 10.0625rem;
   background-image: url("@/assets/imgs/_1_aboutPinggaoImgs/content-2.png");
   background-repeat: no-repeat;
   background-size: contain;
@@ -455,10 +455,10 @@ onMounted(initializeObservers); // 在组件挂载时调用
 
 .key_content_three {
   width: 33.3%;
-  margin-left: 14px;
-  margin-bottom: 10px;
+  margin-left: 0.875rem;
+  margin-bottom: 0.625rem;
   position: relative;
-  height: 161px;
+  height: 10.0625rem;
   background-image: url("@/assets/imgs/_1_aboutPinggaoImgs/content-3.png");
   background-repeat: no-repeat;
   background-size: contain;
@@ -468,7 +468,7 @@ onMounted(initializeObservers); // 在组件挂载时调用
 .key_content_four {
   width: 33.3%;
   position: relative;
-  height: 161px;
+  height: 10.0625rem;
   background-image: url("@/assets/imgs/_1_aboutPinggaoImgs/content-4.png");
   background-repeat: no-repeat;
   background-size: contain;
@@ -477,9 +477,9 @@ onMounted(initializeObservers); // 在组件挂载时调用
 
 .key_content_five {
   width: 33.3%;
-  margin-left: 14px;
+  margin-left: 0.875rem;
   position: relative;
-  height: 161px;
+  height: 10.0625rem;
   background-image: url("@/assets/imgs/_1_aboutPinggaoImgs/content-5.png");
   background-repeat: no-repeat;
   background-size: contain;
@@ -487,10 +487,10 @@ onMounted(initializeObservers); // 在组件挂载时调用
 }
 
 .key_content_six {
-  margin-left: 14px;
+  margin-left: 0.875rem;
   position: relative;
   width: 33.3%;
-  height: 161px;
+  height: 10.0625rem;
   background-image: url("@/assets/imgs/_1_aboutPinggaoImgs/content-6.png");
   background-repeat: no-repeat;
   background-size: contain;
@@ -502,36 +502,36 @@ onMounted(initializeObservers); // 在组件挂载时调用
 }
 .key .key_info:hover {
   transform: scale(1.01);
-  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.488);
+  box-shadow: 0 0.1875rem 0.3125rem rgba(0, 0, 0, 0.488);
 }
 .key_content_h {
-  left: 188px;
-  top: 32px;
+  left: 11.75rem;
+  top: 2rem;
   position: absolute;
-  font-size: 22px;
+  font-size: 1.375rem;
   font-family: "AlibabaPuHuiTi_2_65_Medium", sans-serif;
   color: rgb(35, 24, 21);
 }
 
 .key_content_text {
-  left: 188px;
-  top: 71px;
+  left: 11.75rem;
+  top: 4.4375rem;
   position: absolute;
-  font-size: 20px;
+  font-size: 1.25rem;
   font-family: "AlibabaPuHuiTi_2_45_Light", sans-serif;
   color: rgb(89, 87, 87);
 }
 
 .basic_culture_title {
-  font-size: 32px;
+  font-size: 2rem;
   font-family: "AlibabaPuHuiTi_2_65_Medium", sans-serif;
   color: rgb(0, 111, 193);
   text-align: center;
-  margin-bottom: 70px;
+  margin-bottom: 4.375rem;
 }
 .basic_culture_content {
   width: 100%;
-  height: 310px;
+  height: 19.375rem;
   display: flex;
   flex-wrap: wrap;
 }
@@ -542,12 +542,12 @@ onMounted(initializeObservers); // 在组件挂载时调用
   transform: scale(1.05);
 }
 .basic_culture_info {
-  border-left: 1px solid #c4c4c4;
+  border-left: 0.0625rem solid #c4c4c4;
   width: 25%;
-  height: 112px;
+  height: 7rem;
   text-align: center;
-  margin-bottom: 70px;
-  min-width: 100px;
+  margin-bottom: 4.375rem;
+  min-width: 6.25rem;
   transform: scale(0.5); /* 初始缩小 */
   opacity: 0; /* 初始不可见 */
   visibility: hidden; /* 初始隐藏 */
@@ -559,40 +559,40 @@ onMounted(initializeObservers); // 在组件挂载时调用
   visibility: visible; /* 可见 */
 }
 .basic_culture_info div {
-  margin-bottom: 2px;
+  margin-bottom: 0.125rem;
 }
 .basic_culture_info .basic_culture_h {
-  font-size: 22px;
+  font-size: 1.375rem;
   font-family: "AlibabaPuHuiTi_2_65_Medium", sans-serif;
   color: rgb(0, 111, 193);
 }
 .basic_culture_info .basic_culture_p {
-  font-size: 20px;
+  font-size: 1.25rem;
   font-family: "AlibabaPuHuiTi_2_45_Light", sans-serif;
   color: rgb(89, 87, 87);
 }
 .basic_culture_line {
-  width: 40px;
-  height: 1px;
+  width: 2.5rem;
+  height: 0.0625rem;
   background-color: #4093d1;
-  margin-left: 165px;
+  margin-left: 10.3125rem;
   margin: auto;
 }
 .basic_culture_info .basic_culture_num {
   white-space: pre;
-  font-size: 27.587px;
+  font-size: 1.7242rem;
   font-family: "AlibabaPuHuiTi_2_85_Bold", sans-serif;
   color: rgb(0, 111, 193);
 }
 .basic_culture_info_last {
-  border-right: 1px solid #c4c4c4;
+  border-right: 0.0625rem solid #c4c4c4;
 }
 .mind_map {
   background-color: #def1fb;
-  bottom: 0px;
+  bottom: 0rem;
   left: 0;
   width: 100%;
-  height: 1028px;
+  height: 64.25rem;
   position: absolute;
   z-index: -1;
   overflow: hidden;
@@ -601,7 +601,7 @@ onMounted(initializeObservers); // 在组件挂载时调用
 .mind_map img {
   width: 100%;
   position: absolute;
-  height: 1028px;
+  height: 64.25rem;
   left: 0;
   bottom: 0; /* 初始位置在容器底部 */
   transform: translateY(50%); /* 图片初始隐藏在容器下方 */
