@@ -34,7 +34,7 @@
 .homePage {
   position: relative;
   width: 100%;
-  // height: 100%;
+  height: 100%;
   background-image: url("../../assets/imgs/_11_welcomeImgs/homePageBg.png");
   background-repeat: no-repeat;
   background-size: cover;
@@ -52,8 +52,8 @@
       position: absolute;
       top: 0;
       left: 0;
-      img{
-        width:15rem;
+      img {
+        width: 15rem;
       }
     }
 
@@ -147,6 +147,11 @@
     color: rgb(255, 255, 255);
     text-align: center;
     margin-bottom: 5.3125rem;
+  }
+}
+@media (min-width: 576px) and (max-width: 992px) {
+  body {
+    background-color: lightgreen;
   }
 }
 </style>

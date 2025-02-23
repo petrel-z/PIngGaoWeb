@@ -200,16 +200,9 @@ onMounted(initializeObservers); // 在组件挂载时调用
   text-align: center;
 }
 
-@media (min-width: 475px) and (max-width: 780px) {
-  .content .info {
-    width: 21%;
-    height: 17.25rem;
-    margin-bottom: 3.125rem;
-    text-align: center;
-  }
-}
 .content .info .img img {
-  height: 14.875rem;
+  width: 26.9375rem;
+  height: 18.625rem;
   transform: scale(0.5); /* 初始缩小 */
   opacity: 0; /* 初始不可见 */
   visibility: hidden; /* 初始隐藏 */
@@ -234,4 +227,5 @@ onMounted(initializeObservers); // 在组件挂载时调用
 .footer .myButton {
   margin: auto;
 }
+
 </style>

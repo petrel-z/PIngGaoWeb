@@ -261,7 +261,7 @@ onMounted(() => {
         </div>
       </div>
     </div>
-    <hr style="border: 1px solid #80b7e0" />
+    <hr style="border: 0.0625rem solid #80b7e0" />
     <div class="product_content">
       <div class="product_box">
         <div class="product_content_box">
@@ -528,7 +528,6 @@ onMounted(() => {
   width: 7.375rem;
   height: 0.1875rem;
   background-color: rgb(255, 255, 255);
-  border-radius: 50%;
   margin: 0 0.3125rem;
   cursor: pointer;
 }
@@ -558,6 +557,7 @@ onMounted(() => {
 }
 
 .nav_introduction .p {
+  display: block;
   font-size: 1.5rem;
   font-family: "AlibabaPuHuiTi_2_55_Regular";
   color: rgb(255, 255, 255);
