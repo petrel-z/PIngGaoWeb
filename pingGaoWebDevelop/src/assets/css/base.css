@@ -210,8 +210,14 @@ html {
   }
 }
 
-/* @media (max-width: 400px) {
+@media (max-width: 400px) {
   html {
     font-size: 4px;
   }
-} */
+}
+
+@media (max-width: 300px) {
+  html {
+    font-size: 3px;
+  }
+}

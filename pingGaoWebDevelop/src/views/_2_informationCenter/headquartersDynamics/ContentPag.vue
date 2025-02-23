@@ -35,7 +35,7 @@ const props = defineProps({
   toState: {
     type: Boolean,
     default: true,
-  }
+  },
 });
 </script>
 
@@ -48,29 +48,29 @@ const props = defineProps({
         {{ props.title2 }}
       </div>
       <div class="hr">
-        <div style="width: 30%; height: 3px; background-color: #389cd1"></div>
-        <div style="width: 100%; height: 1px; background-color: #389cd1"></div>
+        <div style="width: 30%; height: 0.2rem; background-color: #389cd1"></div>
+        <div style="width: 100%; height: 0.1rem; background-color: #389cd1"></div>
       </div>
       <div class="content-text">
         {{ props.text }}
       </div>
       <router-link v-if="props.toState" to="/informationCenter/headquartersDynamics-3">
         <div class="content-btn" :style="{ 'background-color': props.btnColor }">
-        <span>{{ props.btnText }}</span>
-        <i
-          class="iconfont icon-chakanxiangqing-copy"
-          style="font-size: 1.5rem; margin-left: 2em"
-        ></i>
-      </div>
+          <span>{{ props.btnText }}</span>
+          <i
+            class="iconfont icon-chakanxiangqing-copy"
+            style="font-size: 1.5rem; margin-left: 2em"
+          ></i>
+        </div>
       </router-link>
       <router-link v-else to="/informationCenter/groupNews-3">
         <div class="content-btn" :style="{ 'background-color': props.btnColor }">
-        <span>{{ props.btnText }}</span>
-        <i
-          class="iconfont icon-chakanxiangqing-copy"
-          style="font-size: 1.5rem; margin-left: 2em"
-        ></i>
-      </div>
+          <span>{{ props.btnText }}</span>
+          <i
+            class="iconfont icon-chakanxiangqing-copy"
+            style="font-size: 1.5rem; margin-left: 2em"
+          ></i>
+        </div>
       </router-link>
     </div>
     <div class="content-right">
@@ -171,9 +171,18 @@ const props = defineProps({
   }
   .content-left {
     margin-top: 3rem;
-    width: 80%;
+    width: 85%;
     flex: 0 0 auto;
   }
+
+  .content-text {
+    font-size: 2.5rem;
+  }
+
+  .title {
+    font-size: 2.9rem;
+  }
+
   .content-right {
     width: 100%;
     height: auto;

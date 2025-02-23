@@ -12,44 +12,21 @@ import imgPath7 from "@/assets/imgs/_7_scientificResearchCenterImgs/头部轮播
 import imgPath8 from "@/assets/imgs/_8_humanResourcesImgs/头部轮播-08.png";
 import imgPath9 from "@/assets/imgs/_9_contactUsImgs/头部轮播-09.png";
 import footerBg from "@/assets/imgs/_6_qualityAssuranceImgs/t6_topBar.png";
-import logoImg1 from "@/assets/imgs/common/logoImgAll.png";
-import logoImg2 from "@/assets/imgs/common/logoImgAllBlack.png";
+import logoBig1 from "@/assets/imgs/common/logoImgAll.png";
+import logoBig2 from "@/assets/imgs/common/logoImgAllBlack.png";
+import logoSmall1 from "@/assets/imgs/common/logoImg.png";
+import logoSmall2 from "@/assets/imgs/common/logoImgBlack.png";
 
 let hidden = ref(true);
 let inputFlag = ref(false);
 let searchFlag = ref(false);
 let headerBottomFlag = ref(false);
 let showText = ref(false);
-let imgFixed = ref(true);
+let imgFixed = ref(false);
+let logoImg1 = ref(logoBig1);
+let logoImg2 = ref(logoBig2);
+const headerNavBottomRightBox = ref(null);
 
-onMounted(() => {
-  // 模拟延迟显示，触发过渡效果
-  setTimeout(() => {
-    showText.value = true;
-  }, 0);
-
-  // 获取导航栏元素
-  const navbar = document.getElementById("header-nav");
-  // 定义滚动距离阈值
-  const scrollThreshold = 200;
-  console.log(navbar);
-
-  // 监听窗口滚动事件
-  window.addEventListener("scroll", function () {
-    // 获取当前滚动距离
-    const scrollTop = window.scrollY || document.documentElement.scrollTop;
-    // 判断滚动距离是否超过阈值
-    if (scrollTop > scrollThreshold) {
-      // 超过阈值则添加固定类名
-      navbar.classList.add("background-white");
-      imgFixed.value = true;
-    } else {
-      // 未超过阈值则移除固定类名
-      if (hidden.value && !headerBottomFlag.value) navbar.classList.remove("background-white");
-      imgFixed.value = false;
-    }
-  });
-});
 const header = ref([
   { name: "关于平高", path: "/aboutPingGao" },
   { name: "资讯中心", path: "/informationCenter" },
@@ -292,6 +269,58 @@ const props = defineProps({
       footerColor: "#fff",
     }),
   },
+  footerBgColor: {
+    type: String,
+    default: "#409eff",
+  },
+});
+
+onMounted(() => {
+  function handleResize() {
+    if (this.window.innerWidth < 900) {
+      // 如果窗口宽度小于900px，切换到小图片
+      logoImg1.value = logoSmall1;
+      logoImg2.value = logoSmall2;
+      // 隐藏导航栏底部
+      if (headerNavBottomRightBox.value) headerNavBottomRightBox.value.style.display = "none";
+    } else {
+      // 否则，切换回大图片
+      logoImg1.value = logoBig1;
+      logoImg2.value = logoBig2;
+      // 显示导航栏底部
+      if (headerNavBottomRightBox.value) headerNavBottomRightBox.value.style.display = "flex";
+    }
+  }
+
+  // 模拟延迟显示，触发过渡效果
+  setTimeout(() => {
+    showText.value = true;
+  }, 0);
+
+  // 获取导航栏元素
+  const navbar = document.getElementById("header-nav");
+  // 定义滚动距离阈值
+  const scrollThreshold = 1;
+  console.log(navbar);
+
+  // 监听窗口滚动事件
+  window.addEventListener("scroll", function () {
+    // 获取当前滚动距离
+    const scrollTop = window.scrollY || document.documentElement.scrollTop;
+    // 判断滚动距离是否超过阈值
+    if (scrollTop > scrollThreshold) {
+      // 超过阈值则添加固定类名
+      navbar.classList.add("background-white");
+      imgFixed.value = true;
+    } else {
+      // 未超过阈值则移除固定类名
+      if (hidden.value && !headerBottomFlag.value) navbar.classList.remove("background-white");
+      imgFixed.value = false;
+    }
+  });
+
+  //监听窗口大小变化事件
+  window.addEventListener("resize", handleResize);
 });
 </script>
 
@@ -314,11 +343,12 @@ const props = defineProps({
         <div class="log-img">
           <router-link class="logo-link" to="/homePage-2">
             <img
+              ref="logo1"
               v-show="!imgFixed"
               :src="!headerBottomFlag && hidden ? logoImg1 : logoImg2"
               alt=""
             />
-            <img v-show="imgFixed" :src="logoImg2" alt="" />
+            <img ref="logo2" v-show="imgFixed" :src="logoImg2" alt="" />
           </router-link>
 
           <div id="header-nav-top">
@@ -327,7 +357,7 @@ const props = defineProps({
             <div class="log-title-english">China Electrical Equipment</div>
           </div> -->
             <div class="header-nav-top-bar">
-              <i class="iconfont icon-a-MenuBar-show bar-icon"></i>
+              <i class="iconfont icon-liebiao2 bar-icon"></i>
               <ul class="header-nav-top-bar-ul">
                 <li v-for="item in header" :key="item.name">
                   <router-link
@@ -346,7 +376,7 @@ const props = defineProps({
             <div class="log-bottom-text">平 高 集 团 有 限 公 司</div>
             <div class="log-bottom-english">PINGGAO GROUP CO.,LTD.</div>
           </div> -->
-            <div id="header-nav-bottom-right">
+            <div ref="headerNavBottomRightBox" id="header-nav-bottom-right">
               <div
                 @mouseleave="inputFlag = false"
                 v-show="inputFlag"
@@ -479,7 +509,10 @@ const props = defineProps({
 
       <div
         class="header-footer"
-        :style="{ 'background-image': `url('${props.content.footerBg}') ` }"
+        :style="{
+          '--backgroundImg': `url(${props.content.footerBg})`,
+          '--footerBgColor': props.footerBgColor,
+        }"
       >
         <ul>
           <li v-for="item in footer" :key="item.name">
@@ -494,7 +527,12 @@ const props = defineProps({
 <style scoped>
 .bar-icon {
   display: none;
+  font-size: 1.5rem;
+  position: absolute;
+  bottom: 400%;
+  right: 0;
 }
+
 #header {
   position: relative;
   display: flex;
@@ -561,6 +599,11 @@ const props = defineProps({
 .logo-link {
   display: block;
   width: 100%;
+  border: none;
+}
+
+.logo-link img {
+  border: none;
 }
 
 .log-img {
@@ -671,6 +714,7 @@ const props = defineProps({
   align-items: center;
   position: relative;
   z-index: 1000;
+  margin-bottom: 2%;
 }
 
 .header-nav-bottom-item {
@@ -689,7 +733,7 @@ const props = defineProps({
   font-size: 0.8rem;
   transition: all 0.3s ease;
   flex: 0 0 auto;
-  height: auto;
+  height: 1.5rem;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -698,13 +742,19 @@ const props = defineProps({
 .header-nav-bottom-input {
   background-color: transparent;
   border: none;
-  /* padding: 0.05rem; */
+  box-sizing: border-box; /* padding: 0.05rem; */
   color: #fff;
-  height: auto;
+  width: 10rem;
+  height: 1rem;
+  display: flex;
+  align-items: center;
 }
 
 .header-nav-bottom-input::placeholder {
+  position: absolute;
+  top: 0;
   color: #fff;
+  vertical-align: middle;
   font-size: 0.8rem;
   font-family: "AlibabaPuHuiTi_2_45_Light";
 }
@@ -913,7 +963,10 @@ const props = defineProps({
   font-size: 1.2rem;
   font-family: "AlibabaPuHuiTi_2_55_Regular";
   color: rgb(255, 255, 255);
-  background-image: url("../assets/imgs/_6_qualityAssuranceImgs/t6_topBar.png");
+  background-image: var(
+    --backgroundImg,
+    url("../assets/imgs/_6_qualityAssuranceImgs/t6_topBar.png")
+  );
   background-size: cover;
   padding: 0.5em 0;
   padding-left: 4%;
@@ -972,10 +1025,10 @@ const props = defineProps({
 
 @media (max-width: 900px) {
   #header-nav {
-    padding: 1% 0.5% 0 0;
+    padding: 1% 4% 0 4%;
   }
   .header-body-box {
-    padding: 5% 0 0 5%;
+    padding: 20% 0 0 7%;
   }
   .bar-icon {
     display: inline-block;
@@ -983,7 +1036,7 @@ const props = defineProps({
     height: auto;
     padding: 0;
     margin: 0;
-    font-size: 2rem;
+    font-size: 2.7rem;
     color: #fff;
   }
   .header-nav-top-bar-ul {
@@ -998,6 +1051,29 @@ const props = defineProps({
   }
   #header-nav-bottom-left {
     border-top: 0.05rem solid #fff;
+  }
+  .header-footer {
+    background-image: none;
+    width: 100%;
+    left: 0;
+    background-color: var(--footerBgColor, #409eff);
+    padding: 2% 10%;
+  }
+
+  .header-footer ul {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  .header-footer ul li {
+    font-size: 2rem;
+  }
+
+  .log-img img {
+    width: 20%;
   }
 }
 </style>

@@ -183,7 +183,7 @@ onMounted(() => {
   font-size: 2.5rem;
   line-height: 1.85;
   text-align: right;
-  border-bottom: 2px solid var(--leftFontColor);
+  border-bottom: 0.125rem solid var(--leftFontColor);
   /*底部蓝色线条*/
   display: block;
   width: 100%;
@@ -211,9 +211,9 @@ onMounted(() => {
   height: auto;
   margin-right: 2%;
   background-color: #def1fb;
-  border-radius: 10px;
+  border-radius: 0.625rem;
   text-align: right;
-  padding: 0 2em;
+  padding: 0 2rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -227,8 +227,8 @@ onMounted(() => {
   width: 80%;
   height: auto;
   background-color: #def1fb;
-  border-radius: 10px;
-  padding: 2em 3em;
+  border-radius: 0.625rem;
+  padding: 2rem 3rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -268,12 +268,39 @@ onMounted(() => {
   }
 }
 
-@media (max-width: 400px) {
+@media (max-width: 900px) {
+  .left {
+    border-bottom-right-radius: 0;
+    border-top-right-radius: 0;
+    width: 20%;
+    margin: 0;
+  }
+  .right {
+    border-bottom-left-radius: 0;
+    border-top-left-radius: 0;
+    width: 80%;
+    margin: 0;
+  }
+  .title {
+    font-size: 3.1rem;
+  }
+  .text {
+    font-size: 2.5rem;
+  }
   .month {
-    font-size: 1.5rem;
+    font-size: 3.2rem;
   }
   .year {
-    font-size: 1rem;
+    font-size: 1.8rem;
+  }
+}
+
+@media (max-width: 500px) {
+  .month {
+    font-size: 4rem;
+  }
+  .year {
+    font-size: 2rem;
   }
 }
 </style>

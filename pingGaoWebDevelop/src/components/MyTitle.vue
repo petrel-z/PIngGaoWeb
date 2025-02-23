@@ -30,7 +30,6 @@ const props = defineProps({
   </div>
 </template>
 <style scoped>
-
 .groupProfile {
   margin: auto;
   width: auto;
@@ -61,11 +60,22 @@ const props = defineProps({
   margin: 0.15rem 0px;
 }
 .English {
-
   font-size: 1.7rem;
   font-family: "Avenir-Medium-woff-7";
   color: rgb(159, 160, 160);
   text-transform: uppercase;
   z-index: 5;
+}
+
+@media (max-width: 900px) {
+  .h {
+    font-size: 4rem;
+  }
+  .line {
+    width: 7rem;
+  }
+  .English {
+    font-size: 3rem;
+  }
 }
 </style>
