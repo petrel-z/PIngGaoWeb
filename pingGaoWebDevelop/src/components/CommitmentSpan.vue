@@ -27,10 +27,7 @@ const props = defineProps({
 </script>
 
 <template>
-  <div
-    class="commitment-span"
-    :style="{ '--top': props.top, '--bottomMarginH1': props.bottomMarginH1 }"
-  >
+  <div class="commitment-span" :style="{ '--top': props.top, '--bottomMarginH1': props.bottomMarginH1 }">
     <div class="content">
       <h1>{{ props.title }}</h1>
       <div class="short-line">
@@ -78,10 +75,12 @@ const props = defineProps({
       line-height: 1.156;
       margin-bottom: var(--bottomMarginH1);
     }
+
     .short-line {
       display: flex;
       justify-content: center;
       transform: translateY(3px);
+
       .triangle-left {
         width: 0px;
         height: 0px;
@@ -92,11 +91,13 @@ const props = defineProps({
         left: 3px;
         top: 1px;
       }
+
       .line-center {
         width: 140px;
         height: 0;
         border: 2px solid #45b3e0;
       }
+
       .triangle-right {
         width: 0px;
         height: 0px;
@@ -108,6 +109,7 @@ const props = defineProps({
         top: 1px;
       }
     }
+
     .long-line {
       height: 1px;
       border: none;
@@ -116,10 +118,22 @@ const props = defineProps({
   }
 }
 
+@media (max-width: 1300px) {
+  .commitment-span {
+    .content {
+      h1 {
+        font-size: 30px;
+        padding: 0 7%;
+      }
+    }
+  }
+}
+
 /* 大型设备（桌面，大于 900px） */
 @media (max-width: 900px) {
   .commitment-span {
-    height: 550px;
+    height: 500px;
+
     .content {
       top: 10%;
     }
@@ -139,8 +153,26 @@ const props = defineProps({
 @media (max-width: 500px) {
   .commitment-span {
     height: 580px;
+
     .content {
       top: 10%;
+      h1 {
+        font-size: 26px;
+      }
+    }
+  }
+  
+}
+
+@media (max-width: 400px) {
+  .commitment-span {
+    height: 600px;
+
+    .content {
+      top: 10%;
+      h1 {
+        font-size: 23px;
+      }
     }
   }
 }

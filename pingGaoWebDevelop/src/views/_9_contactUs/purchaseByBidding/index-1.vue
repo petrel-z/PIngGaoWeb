@@ -110,12 +110,78 @@ import CommitmentSpan from "@/components/CommitmentSpan.vue";
     height: 100%;
   }
 }
-
+@media (max-width: 1800px) {
+  .purchaseByBidding-content {
+    .content-top {
+      .top-span {
+        .top-span-content {
+          .enter-bidding {
+            margin-top: 2rem;
+          }
+        }
+      }
+    }
+  }
+}
 /* 大型设备（桌面，大于 900px） */
 @media (max-width: 900px) {
   .purchaseByBidding-content {
     padding: 0 5%;
 
+    .content-top {
+      .top-span {
+        .top-span-content {
+          width: 100%;
+          p {
+            white-space: wrap;
+            text-align: center;
+          }
+
+          .enter-bidding {
+            width: 100%;
+            margin-top: 6rem;
+
+            a {
+              width: 100%;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 800px) {
+  .purchaseByBidding-content {
+    .content-top {
+      .top-span {
+        .top-span-content {
+          .enter-bidding {
+            margin-top: 5rem;
+          }
+        }
+      }
+    }
+  }
+}
+
+/* 中型设备（平板，600px 到 900px） */
+@media (max-width: 700px) {
+  .purchaseByBidding-content {
+    .content-top {
+      .top-span {
+        .top-span-content {
+          .enter-bidding {
+            margin-top: 4rem;
+          }
+        }
+      }
+    }
+  }
+}
+/* 小型设备（手机，小于 600px） */
+@media (max-width: 600px) {
+  .purchaseByBidding-content {
     .content-top {
       .top-span {
         .top-span-content {
@@ -128,7 +194,7 @@ import CommitmentSpan from "@/components/CommitmentSpan.vue";
 
           .enter-bidding {
             width: 100%;
-            margin-top: 10rem;
+            margin-top: 5rem;
 
             a {
               width: 100%;
@@ -140,14 +206,30 @@ import CommitmentSpan from "@/components/CommitmentSpan.vue";
   }
 }
 
-@media (max-width: 800px) {}
-
-/* 中型设备（平板，600px 到 900px） */
-@media (max-width: 700px) {}
-
-/* 小型设备（手机，小于 600px） */
-
-@media (max-width: 600px) {}
-
-@media (max-width: 500px) {}
+@media (max-width: 500px) {
+  .purchaseByBidding-content {
+    .content-top {
+      .top-span {
+        .top-span-content {
+          .enter-bidding {
+            margin-top: 7rem;
+          }
+        }
+      }
+    }
+  }
+}
+@media (max-width: 400px) {
+  .purchaseByBidding-content {
+    .content-top {
+      .top-span {
+        .top-span-content {
+          .enter-bidding {
+            margin-top: 6rem;
+          }
+        }
+      }
+    }
+  }
+}
 </style>

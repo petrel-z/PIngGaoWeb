@@ -175,14 +175,13 @@ const imgPath = ref(props.img);
   background-color: var(--btnColor);
   width: 38%;
   min-height: 10%;
+  height: 10%;
   margin-top: 10%;
   border-radius: 5px;
   cursor: pointer;
   font-family: "AlibabaPuHuiTi_2_45_Light";
-
   display: flex;
   justify-content: space-between;
-
   a {
     width: 100%;
     height: 100%;
@@ -209,7 +208,14 @@ const imgPath = ref(props.img);
     color: var(--btnColor);
   }
 }
-
+@media (max-width: 1200px) {
+  .content-btn {
+    .lookdetail-icon {
+    margin-right: 1.5rem;
+    font-size: 2.4rem;
+  }
+  }
+}
 /* 大型设备（桌面，大于 900px） */
 @media (max-width: 900px) {
   .content {
@@ -247,6 +253,7 @@ const imgPath = ref(props.img);
     position: relative;
     left: 50%;
     transform: translateX(-50%);
+    width: 30%;
     font-size: 2rem;
     margin-top: 5%;
     padding: 1% 0;

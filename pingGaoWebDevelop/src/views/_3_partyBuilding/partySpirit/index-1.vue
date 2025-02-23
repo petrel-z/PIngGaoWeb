@@ -57,7 +57,7 @@ import partyContentDetail from "../partyContentDetail.vue";
       width: 100%;
       position: absolute;
       // height: 70vh;
-      height: 600px;
+      height: 30%;
       background-color: #f8f1e5;
     }
   }
