@@ -12,7 +12,7 @@ const props = defineProps({
   content: {
     type: String,
     default:
-      "十九大以来的五年，是极不寻常、极不平凡的五年。党中央统筹中华民族伟大复兴战略全局和世界百年未有之大变局，召开七次全会，分别就宪法修改，深化党和国家机构改革，坚持和完善中国特色社会主义制度、推进国家治",
+      "十九大以来的五年，是极不寻常、极不平凡的五年。党中央统筹中华民族伟大复兴战略全局和世界百年未有之大变局，召开七次全会，分别就宪法修改，深化党和国家机构改革，坚持和完善中国特色社会主义制度、推进国家治理体系和治",
   },
 });
 </script>
@@ -22,8 +22,9 @@ const props = defineProps({
   <div class="partyContentBar">
     <div class="center-container">
       <div class="content">
-        <h1 class="h1-1">{{ props.title1 }}</h1>
-        <h1 class="h1-2">{{ props.title2 }}</h1>
+        <h1 class="h1-1">
+          {{ props.title1 }}<br>{{ props.title2 }}
+        </h1>
         <div class="short-line">
           <div class="triangle-left"></div>
           <div class="line-center"></div>
@@ -33,7 +34,6 @@ const props = defineProps({
         <p class="first-p">
           {{ props.content }}
         </p>
-        <!-- <p>法修改，深化党和国家机构改革，坚持和完善中国特色社会主义制度、推进国家治</p> -->
       </div>
     </div>
     <div class="important-logo">
@@ -62,6 +62,7 @@ const props = defineProps({
     display: flex;
     justify-content: center;
     align-items: center;
+
     .content {
       display: flex;
       flex-direction: column;
@@ -78,18 +79,12 @@ const props = defineProps({
       }
 
       h1 {
-        font-size: 32px;
+        font-size: 2rem;
         font-family: "AlibabaPuHuiTi_2_65_Medium";
         color: #fce3cc;
         line-height: 1.156;
-      }
-
-      .h1-1 {
-        margin-bottom: 13px;
-      }
-
-      .h1-2 {
         margin-bottom: 35px;
+        line-height: 1.5;
       }
 
       .short-line {
@@ -132,9 +127,8 @@ const props = defineProps({
         background-color: #fce3cc;
       }
 
-      p {
-        text-align: left;
-        font-size: 20px;
+      .first-p {
+        font-size: 1.2rem;
         color: #fce3cc;
         line-height: 1.85;
         font-family: "SourceHanSerifCN";
@@ -148,75 +142,211 @@ const props = defineProps({
   .important-logo {
     position: absolute;
     left: 11%;
-    top:10%;
+    top: 10%;
   }
 }
 
+@media (max-width: 1700px) {
+  .partyContentBar {
+    .center-container {
+      .content {
+        h1 {
+          font-size: 1.7rem;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 1400px) {
+  .partyContentBar {
+    .center-container {
+      .content {
+        h1 {
+          font-size: 2.1rem;
+          margin-bottom: 25px;
+          margin-top: 10px;
+        }
+
+        .first-p {
+          margin-top: 20px;
+          font-size: 1.7rem;
+        }
+      }
+    }
+  }
+}
+@media (max-width: 1300px) {
+  .partyContentBar {
+    .center-container {
+      .content {
+        h1 {
+          font-size: 1.95rem;
+          margin-bottom: 25px;
+          margin-top: 10px;
+        }
+
+        .first-p {
+          margin-top: 20px;
+          font-size: 1.5rem;
+        }
+      }
+    }
+  }
+}
+@media (max-width: 1200px) {
+  .partyContentBar {
+    .center-container {
+      .content {
+        h1 {
+          font-size: 2.4rem;
+          margin-bottom: 25px;
+          margin-top: 10px;
+        }
+
+        .first-p {
+          margin-top: 20px;
+          font-size: 1.7rem;
+        }
+      }
+    }
+  }
+}
+@media (max-width: 1100px) {
+  .partyContentBar {
+    .center-container {
+      .content {
+        h1 {
+          font-size: 2.4rem;
+          margin-bottom: 20px;
+          margin-top: 35px;
+          br {
+            display: none;
+          }
+        }
+
+        .first-p {
+          font-size: 1.8rem;
+        }
+      }
+    }
+  }
+}
 /* 大型设备（桌面，大于 900px） */
 @media (max-width: 900px) {
   .partyContentBar {
+    height: auto;
+    padding: 12% 0 10% 0;
 
-  height: auto;
-  padding: 15% 0 10% 0;
-  .center-container {
-    height: 50%;
-    .content {
+    .center-container {
+      height: 50%;
 
-      width: 90%;
+      .content {
 
-      position: relative;
+        width: 90%;
+
+        position: relative;
+        top: 5%;
+
+
+        h1 {
+          padding: 0 1%;
+          font-size: 2.4rem;
+          margin-bottom: 2rem;
+          margin-top: 0;
+          br {
+            display: none;
+          }
+        }
+
+        .first-p {
+          height: 9rem;
+          font-size: 1.9rem;
+          margin-top: 1rem;
+          padding: 0;
+        }
+      }
+    }
+
+    .important-logo {
+      width: 14%;
+      height: 12%;
+      left: 5%;
       top: 5%;
 
-
-      // h1 {
-      //   font-size: 2.5rem;
-      //   font-family: "AlibabaPuHuiTi_2_65_Medium";
-      //   color: #fce3cc;
-      //   line-height: 1.156;
-      // }
-
-      // .h1-1 {
-      //   margin-bottom: 1.3rem;
-      // }
-
-      .h1-2 {
-        margin-bottom: 2.5rem;
-      }
-
-    
-
-      p {
-        font-size: 2rem;
-        margin-top: 2.5rem;
-        padding: 0 ;
+      img {
+        width: 100%;
+        height: 100%;
       }
     }
   }
-
-  .important-logo {
-    width: 14%;
-    height: 12%;
-    left: 5%;
-    top:5%;
-    img {
-      width: 100%;
-      height: 100%;
-    }
-  }
-}
 }
 
 @media (max-width: 800px) {
+  .partyContentBar {
+    height: auto;
+    padding: 11% 0 10% 0;
+
+    .center-container {
+      .content {
+
+        h1 {
+          padding: 0 1%;
+          font-size: 2.8rem;
+          margin-bottom: 2.5rem;
+        }
+
+        .first-p {
+          height: 13rem;
+          font-size: 2.3rem;
+          margin-top: 2rem;
+          padding: 0;
+        }
+      }
+    }
+  }
 }
 
 /* 中型设备（平板，600px 到 900px） */
-@media (max-width: 700px) {
-} /* 小型设备（手机，小于 600px） */
+@media (max-width: 700px) {}
+
+/* 小型设备（手机，小于 600px） */
 
 @media (max-width: 600px) {
+  .partyContentBar {
+    .center-container {
+      .content {
+
+        h1 {
+          font-size: 3.5rem;
+        }
+
+        .first-p {
+          height: auto;
+          font-size: 2.8rem;
+        }
+      }
+    }
+  }
 }
 
-@media (max-width: 500px) {
+@media (max-width: 500px) {}
 
+@media (max-width: 400px) {
+  .partyContentBar {
+    .center-container {
+      .content {
+
+        h1 {
+          font-size: 3rem;
+        }
+
+        .first-p {
+          height: auto;
+          font-size: 2.4rem;
+        }
+      }
+    }
+  }
 }
 </style>

@@ -15,7 +15,7 @@ const props = defineProps({
   leftFontColor: {
     type: String,
     default: "#006fc1",
-  
+
   },
   rightFontColor: {
     type: String,
@@ -25,7 +25,8 @@ const props = defineProps({
 </script>
 
 <template>
-  <div class="com-double-div" :style="{ '--bgColor': props.bgColor, '--leftFontColor': props.leftFontColor, '--rightFontColor': props.rightFontColor}">
+  <div class="com-double-div"
+    :style="{ '--bgColor': props.bgColor, '--leftFontColor': props.leftFontColor, '--rightFontColor': props.rightFontColor }">
     <div class="left">{{ props.title }}</div>
     <div class="right">{{ props.content }}</div>
   </div>
@@ -39,40 +40,41 @@ const props = defineProps({
   width: 100%;
   height: 100%;
 }
-.left {
-  padding: 7% 3%;
+
+.left,
+.right {
   height: 100%;
+  font-size: 1.1rem;
+  background-color: var(--bgColor);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  line-height: 1.5;
+  display: flex;
+  align-items: center;
+}
+
+.left {
   width: 20%;
-  font-size: 20px;
+  padding: 7% 6%;
   font-family: "AlibabaPuHuiTi_2_75_SemiBold";
   color: var(--leftFontColor);
   font-weight: bold;
-  line-height: 1.5;
-  text-align: center;
   position: relative;
   z-index: 146;
-  background-color: var(--bgColor);
+  text-align: center;
+  margin-right: 2%;
   border-top-left-radius: 15px;
   border-bottom-left-radius: 15px;
-  margin-right: 2%;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
 }
+
 .right {
-  padding: 7% 3%;
-  height: 100%;
   width: 78%;
-  background-color: var(--bgColor);
-  font-size: 20px;
+  padding: 7% 3%;
   font-family: "AlibabaPuHuiTi_2_55_Regular";
   color: var(--rightFontColor);
-  line-height: 1.5;
-  text-align: center;
   border-top-right-radius: 15px;
   border-bottom-right-radius: 15px;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
 }
+
 </style>

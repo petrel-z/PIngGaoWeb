@@ -79,6 +79,7 @@ onMounted(() => {
   align-items: start;
   background-color: #fff;
   position: relative;
+
   .content-top {
     width: 100%;
 
@@ -104,16 +105,18 @@ onMounted(() => {
         margin-top: 30px;
 
         p {
-          font-size: 20px;
+          font-size: 1.3rem;
           font-family: "AlibabaPuHuiTi_2_45_Light";
           color: #ffffff;
           line-height: 1.85;
         }
       }
     }
+
     .topSpanClass {
       left: 0; // 动画效果
     }
+
     .top-detailList {
       margin-top: 35px;
       position: relative;
@@ -163,28 +166,170 @@ onMounted(() => {
   }
 }
 
+@media (max-width: 2800px) {
+  .quality-content {
+    .content-top {
+
+      .top-span {
+
+        .top-span-content {
+
+          p {
+            font-size: 1.1rem;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 1600px) {
+  .quality-content {
+    .content-top {
+
+      .top-span {
+
+        .top-span-content {
+
+          p {
+            font-size: 1rem;
+          }
+        }
+      }
+    }
+  }
+}
+@media (max-width: 1430px) {
+  .quality-content {
+    .content-top {
+
+      .top-span {
+
+        .top-span-content {
+
+          p {
+            font-size: 0.96rem;
+          }
+        }
+      }
+    }
+  }
+}
+@media (max-width: 1400px) {
+  .quality-content {
+    .content-top {
+
+      .top-span {
+
+        .top-span-content {
+
+          p {
+            font-size: 1.2rem;
+          }
+        }
+      }
+    }
+  }
+}
+@media (max-width: 1300px) {
+  .quality-content {
+    .content-top {
+
+      .top-span {
+
+        .top-span-content {
+
+          p {
+            font-size: 1.1rem;
+          }
+        }
+      }
+    }
+  }
+}
+
 /* 大型设备（桌面，大于 900px） */
 @media (max-width: 900px) {
   .quality-content {
-    padding: 0 5%;
     .content-top {
-      .top-title {
-        margin-top: 3rem;
-        margin-bottom: 3rem;
+
+      .top-span {
+
+        .top-span-content {
+
+          p {
+            font-size: 1.5rem;
+            br {
+              display: none;
+            }
+          }
+        }
       }
     }
   }
 
 }
 
-@media (max-width: 800px) {}
+@media (max-width: 800px) {
+  .quality-content {
+    .content-top {
+
+      .top-span {
+
+        .top-span-content {
+
+          p {
+            font-size: 1.7rem;
+          }
+        }
+      }
+    }
+  }
+}
 
 /* 中型设备（平板，600px 到 900px） */
-@media (max-width: 700px) {}
+@media (max-width: 700px) {
+  .quality-content {
+    .content-top {
+      .top-span {
+        .top-span-content {
+          p {
+            font-size: 1.8rem;
+          }
+        }
+      }
+    }
+  }
+}
+
 
 /* 小型设备（手机，小于 600px） */
 
-@media (max-width: 600px) {}
+@media (max-width: 600px) {
+  .quality-content {
+    .content-top {
+      .top-span {
+        .top-span-content {
+          p {
+            font-size: 2.3rem;
+          }
+        }
+      }
+    }
+  }
+}
 
-@media (max-width: 500px) {}
+@media (max-width: 500px) {
+  .quality-content {
+    .content-top {
+      .top-span {
+        .top-span-content {
+          p {
+            font-size: 2.9rem;
+          }
+        }
+      }
+    }
+  }
+}
 </style>
