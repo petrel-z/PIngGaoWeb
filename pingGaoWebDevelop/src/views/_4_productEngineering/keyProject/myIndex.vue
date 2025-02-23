@@ -1,10 +1,10 @@
 <script setup>
 import MyTitle from "@/components/MyTitle.vue";
-import { ref,onMounted } from "vue";
-const isVisibleWordLeft = ref(false)
-const isVisibleWordRight = ref(false)
-const wordLeftRef = ref(null)
-const wordRightRef = ref(null)
+import { ref, onMounted } from "vue";
+const isVisibleWordLeft = ref(false);
+const isVisibleWordRight = ref(false);
+const wordLeftRef = ref(null);
+const wordRightRef = ref(null);
 // 创建交叉观察器
 const createObserver = (refElement, isVisible) => {
   const observer = new IntersectionObserver(
@@ -20,7 +20,7 @@ const createObserver = (refElement, isVisible) => {
     },
     {
       root: null, // 使用浏览器视口作为根元素
-      rootMargin: '0px', // 无额外的边距
+      rootMargin: "0px", // 无额外的边距
       threshold: 0, // 当元素的 50% 进入视口时触发
     }
   );
@@ -30,17 +30,16 @@ const createObserver = (refElement, isVisible) => {
 };
 // 初始化所有的观察器
 const initializeObservers = () => {
-  createObserver(wordLeftRef,isVisibleWordLeft)
-  createObserver(wordRightRef,isVisibleWordRight)
-}
+  createObserver(wordLeftRef, isVisibleWordLeft);
+  createObserver(wordRightRef, isVisibleWordRight);
+};
 onMounted(initializeObservers); // 在组件挂载时调用
 </script>
 <template>
   <div class="keyProject">
     <MyTitle title="重点工程" English="KEY PROJECTS"></MyTitle>
     <div class="project_content">
-      <div class="content_left" ref="wordLeftRef"
-      :class="{ 'move-left': isVisibleWordLeft}" >
+      <div class="content_left" ref="wordLeftRef" :class="{ 'move-left': isVisibleWordLeft }">
         <div class="top_button">
           <div class="p">国内重点工程</div>
         </div>
@@ -48,8 +47,7 @@ onMounted(initializeObservers); // 在组件挂载时调用
           <div class="p">国外重点工程</div>
         </div>
       </div>
-      <div class="content_right"  ref="wordRightRef"
-      :class="{ 'move-right': isVisibleWordRight}">
+      <div class="content_right" ref="wordRightRef" :class="{ 'move-right': isVisibleWordRight }">
         <div class="pic_content">
           <div class="pic">
             <img src="@/assets/imgs/_4_productEngineeringImgs/project-pic1.png" alt="" />
@@ -124,6 +122,7 @@ onMounted(initializeObservers); // 在组件挂载时调用
   border-radius: 0.625rem;
   background-color: #fff;
 }
+
 .top_button .p {
   font-size: 2rem;
   font-family: "AlibabaPuHuiTi_2_65_Medium", sans-serif;
@@ -146,7 +145,64 @@ onMounted(initializeObservers); // 在组件挂载时调用
   visibility: hidden;
   transition: transform 1s ease, opacity 0.5s ease; /* 过渡效果 */
 }
-
+@media (min-width: 600px) and (max-width: 800px) {
+  .top_button .p {
+    font-size: 1.5rem;
+  }
+  .bottom_button .p {
+    font-size: 1.5rem;
+  }
+  .top_button {
+    width: 100%;
+    height: 4.25rem;
+    border-radius: 0.625rem;
+    background-color: #006fc1;
+    margin-bottom: 0.625rem;
+  }
+  .bottom_button {
+    width: 100%;
+    height: 4.25rem;
+    border-radius: 0.625rem;
+    background-color: #fff;
+  }
+  .top_button .p {
+    font-size: 1.3rem;
+    line-height: 4.25rem;
+  }
+  .bottom_button .p {
+    font-size: 1.3rem;
+    line-height: 4.25rem;
+  }
+}
+@media (min-width: 1500px) and (max-width: 1600px) {
+  .top_button .p {
+    font-size: 1.5rem;
+  }
+  .bottom_button .p {
+    font-size: 1.5rem;
+  }
+  .top_button {
+    width: 100%;
+    height: 4.25rem;
+    border-radius: 0.625rem;
+    background-color: #006fc1;
+    margin-bottom: 0.625rem;
+  }
+  .bottom_button {
+    width: 100%;
+    height: 4.25rem;
+    border-radius: 0.625rem;
+    background-color: #fff;
+  }
+  .top_button .p {
+    font-size: 1.4rem;
+    line-height: 4.25rem;
+  }
+  .bottom_button .p {
+    font-size: 1.4rem;
+    line-height: 4.25rem;
+  }
+}
 .content_right.move-right {
   opacity: 1;
   transform: translateX(0);
@@ -163,15 +219,15 @@ onMounted(initializeObservers); // 在组件挂载时调用
   width: 100%;
   height: 31.25rem;
 }
-.pic_content .pic img{
-  width: 100%;
+.pic_content .pic img {
+  width: 72.5rem;
   height: 31.25rem;
   background-size: cover;
 }
 .pic_content .bg_black {
   position: absolute;
   bottom: 0;
-  width: 100%;
+  width: 72.5rem;
   height: 5.1875rem;
   background-color: #38383859;
   border-radius: 0.375rem;
@@ -185,10 +241,11 @@ onMounted(initializeObservers); // 在组件挂载时调用
 }
 .footer_img {
   position: absolute;
-  bottom: -0.625rem;
+  bottom: -0.025rem;
   left: 0;
   z-index: -10;
   width: 100%;
+  height: 100%;
 }
 .footer_img img {
   width: 100%;

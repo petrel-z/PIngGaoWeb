@@ -134,4 +134,9 @@ onMounted(initializeObservers); // 在组件挂载时调用
   width: 100%;
   height: 100%;
 }
+@media (min-width: 500px) and (max-width: 800px) {
+  .text {
+  font-size: 0.8rem !important;
+}
+}
 </style>

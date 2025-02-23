@@ -1,5 +1,5 @@
 <script setup>
-import { ref, onMounted } from 'vue';
+import { ref, onMounted } from "vue";
 // 定义所有的 ref 和 isVisible 变量
 const imageRef = ref(null);
 const wordLeft = ref(null);
@@ -28,7 +28,7 @@ const createObserver = (refElement, isVisible) => {
     },
     {
       root: null,
-      rootMargin: '0px',
+      rootMargin: "0px",
       threshold: 0.06,
     }
   );
@@ -286,6 +286,7 @@ onMounted(initializeObservers); // 在组件挂载时调用
   background-color: #f4f4f4;
   padding: 5.3125rem 11%;
 }
+
 .introduce_content {
   width: 16.7%;
   border-left: 0.125rem solid #8abade;
@@ -322,7 +323,6 @@ onMounted(initializeObservers); // 在组件挂载时调用
 .introduce_content_last {
   border-right: 0.125rem solid #8abade;
 }
-
 .text_word {
   display: flex;
   margin-top: 20.9375rem;
@@ -521,6 +521,123 @@ onMounted(initializeObservers); // 在组件挂载时调用
   font-family: "AlibabaPuHuiTi_2_45_Light", sans-serif;
   color: rgb(89, 87, 87);
 }
+@media (min-width: 400px) and (max-width: 900px) {
+  .introduce_content span {
+    font-size: 1.4rem;
+  }
+  .text_word .word_left p {
+    font-size: 1rem;
+  }
+}
+@media (min-width: 400px) and (max-width: 500px) {
+  .key_content_h {
+    left: 9.1rem;
+    top: 1.5rem;
+    font-size: 1.175rem;
+  }
+  .key_content_text {
+    left: 9.1rem;
+    top: 3.4rem;
+    font-size: 0.9rem;
+  }
+}
+@media (min-width:600px) and (max-width: 700px) {
+  .key_content_h {
+    left: 7.7rem;
+    top: 1.4rem;
+    font-size: 1rem;
+  }
+  .key_content_text {
+    left: 7.7rem;
+    top: 3.1rem;
+    font-size: 0.9rem;
+  }
+}
+@media (min-width:700px) and (max-width: 800px) {
+  .key_content_h {
+    left: 8.1rem;
+    top: 1.4rem;
+    font-size: 1rem;
+  }
+  .key_content_text {
+    left: 8.1rem;
+    top: 3.1rem;
+    font-size: 0.9rem;
+  }
+}
+@media (min-width:800px) and (max-width: 1000px) {
+  .key_content_h {
+    left: 10.3rem;
+    top: 1.8rem;
+    font-size: 1.2rem;
+  }
+  .key_content_text {
+    left: 10.3rem;
+    top:4.1rem;
+    font-size: 1rem;
+  }
+}
+@media (min-width:1000px) and (max-width: 1200px) {
+  .key_content_h {
+    left: 10.3rem;
+    top: 1.8rem;
+    font-size: 1.15rem;
+  }
+  .key_content_text {
+    left: 10.3rem;
+    top:4.1rem;
+    font-size: 0.95rem;
+  }
+}
+@media (min-width:1200px) and (max-width: 1400px) {
+  .key_content_h {
+    left: 10.3rem;
+    top: 1.8rem;
+    font-size: 1.15rem;
+  }
+  .key_content_text {
+    left: 10.3rem;
+    top:4.1rem;
+    font-size: 0.95rem;
+  }
+}
+@media (min-width:1400px) and (max-width: 1600px) {
+  .key_content_h {
+    left: 9.3rem;
+    top: 1.7rem;
+    font-size: 1.15rem;
+  }
+  .key_content_text {
+    left: 9.3rem;
+    top:3.7rem;
+    font-size: 0.95rem;
+  }
+}
+@media (min-width:1600px) and (max-width: 1800px) {
+  .key_content_h {
+    left: 10.5rem;
+    top: 1.9rem;
+    font-size: 1.25rem;
+  }
+  .key_content_text {
+    left: 10.5rem;
+    top:4rem;
+    font-size:1.03rem;
+  }
+}
+@media (min-width:2100px) and (max-width: 2300px) {
+  .key_content_h {
+    left: 10.3rem;
+    top: 1.9rem;
+    font-size: 1.25rem;
+  }
+  .key_content_text {
+    left: 10.3rem;
+    top:4rem;
+    font-size:1.03rem;
+  }
+}
+
 
 .basic_culture_title {
   font-size: 2rem;

@@ -1,11 +1,10 @@
 <script setup>
 import MyTitle from "@/components/MyTitle.vue";
-import { ref,onMounted } from "vue";
-const boxRef = ref(null)
-const isVisibleBox = ref(false)
-const infoRef = ref(null)
-const isVisibleInfo = ref(null)
-
+import { ref, onMounted } from "vue";
+const boxRef = ref(null);
+const isVisibleBox = ref(false);
+const infoRef = ref(null);
+const isVisibleInfo = ref(null);
 
 // 处理 imgs 数组中的路径
 const imgs = ref(
@@ -66,7 +65,7 @@ const createObserver = (refElement, isVisible) => {
     },
     {
       root: null, // 使用浏览器视口作为根元素
-      rootMargin: '0px', // 无额外的边距
+      rootMargin: "0px", // 无额外的边距
       threshold: 0.1, // 当元素的 50% 进入视口时触发
     }
   );
@@ -98,8 +97,7 @@ const imageSrc = ref(
       line-color="#fff"
       engColor="#fff"
     ></MyTitle>
-    <div class="detail_content" ref="boxRef"
-    :class="{ 'move-left': isVisibleBox}" >
+    <div class="detail_content" ref="boxRef" :class="{ 'move-left': isVisibleBox }">
       <div
         class="detail_product"
         :style="{ 'background-color': activeIndex === 0 ? '#45b3e0' : 'transparent' }"
@@ -125,7 +123,7 @@ const imageSrc = ref(
         @mouseover="handleMouse"
         @mouseleave="handleMouseLeave"
       >
-        <span >电力储能业务</span>
+        <span>电力储能业务</span>
       </div>
       <div
         class="detail_product"
@@ -178,63 +176,68 @@ const imageSrc = ref(
     </div>
     <div class="detail_page">
       <div class="detail_page_title">高压电器产业</div>
-      <div class="detail_page_content" >
-        <div class="detail_page_info" style="border-top: 0.0625rem solid #1078c5" ref="infoRef"
-        :class="{ 'scale-up': isVisibleInfo}">
+      <div class="detail_page_content">
+        <div
+          class="detail_page_info"
+          style="border-top: 0.0625rem solid #1078c5"
+          ref="infoRef"
+          :class="{ 'scale-up': isVisibleInfo }"
+        >
           <div class="h">01</div>
           <div class="p1">ZHW1-252（L）/T4000-50型</div>
           <div class="p2">复合式组合电器</div>
         </div>
-        <div class="detail_page_info" style="border-top: 0.0625rem solid #1078c5" ref="infoRef"
-        :class="{ 'scale-up': isVisibleInfo}">
+        <div
+          class="detail_page_info"
+          style="border-top: 0.0625rem solid #1078c5"
+          ref="infoRef"
+          :class="{ 'scale-up': isVisibleInfo }"
+        >
           <div class="h">02</div>
           <div class="p1">ZHW1-145(L)/T3150-40型</div>
           <div class="p2">复合式组合电器</div>
         </div>
-        <div class="detail_page_info" style="border-top: 0.0625rem solid #1078c5" ref="infoRef"
-        :class="{ 'scale-up': isVisibleInfo}">
+        <div
+          class="detail_page_info"
+          style="border-top: 0.0625rem solid #1078c5"
+          ref="infoRef"
+          :class="{ 'scale-up': isVisibleInfo }"
+        >
           <div class="h">03</div>
           <div class="p1">ZHW1-126（L）/T4000-50型</div>
           <div class="p2">复合式组合电器</div>
         </div>
-        <div class="detail_page_info"  ref="infoRef"
-        :class="{ 'scale-up': isVisibleInfo}" >
+        <div class="detail_page_info" ref="infoRef" :class="{ 'scale-up': isVisibleInfo }">
           <div class="h">04</div>
           <div class="p1">ZHW1-72.5(L)/T3150-40型</div>
           <div class="p2">复合式组合电器</div>
         </div>
-        <div class="detail_page_info"  ref="infoRef"
-        :class="{ 'scale-up': isVisibleInfo}">
+        <div class="detail_page_info" ref="infoRef" :class="{ 'scale-up': isVisibleInfo }">
           <div class="h">05</div>
           <div class="p1">LW55-72.5/T3150-31.5型</div>
           <div class="p2">罐式六氟化硫断路器</div>
         </div>
-        <div class="detail_page_info"  ref="infoRef"
-        :class="{ 'scale-up': isVisibleInfo}">
+        <div class="detail_page_info" ref="infoRef" :class="{ 'scale-up': isVisibleInfo }">
           <div class="h">06</div>
           <div class="p1">LW35A-72.5/T3150-31.5型</div>
           <div class="p2">高压六氟化硫断路器</div>
         </div>
-        <div class="detail_page_info"  ref="infoRef"
-        :class="{ 'scale-up': isVisibleInfo}">
+        <div class="detail_page_info" ref="infoRef" :class="{ 'scale-up': isVisibleInfo }">
           <div class="h">07</div>
           <div class="p1">LW35-126/T3150-40型</div>
           <div class="p2">自能式六氟化硫断路器</div>
         </div>
-        <div class="detail_page_info"  ref="infoRef"
-        :class="{ 'scale-up': isVisibleInfo}">
+        <div class="detail_page_info" ref="infoRef" :class="{ 'scale-up': isVisibleInfo }">
           <div class="h">08</div>
           <div class="p1">GXL5-1100(L) 型</div>
           <div class="p2">刚性气体绝缘输电线路</div>
         </div>
-        <div class="detail_page_info"  ref="infoRef"
-        :class="{ 'scale-up': isVisibleInfo}">
+        <div class="detail_page_info" ref="infoRef" :class="{ 'scale-up': isVisibleInfo }">
           <div class="h">09</div>
           <div class="p1">GXL5-550(L) 型</div>
           <div class="p2">刚性气体绝缘输电线路</div>
         </div>
-        <div class="detail_page_info"  ref="infoRef"
-        :class="{ 'scale-up': isVisibleInfo}">
+        <div class="detail_page_info" ref="infoRef" :class="{ 'scale-up': isVisibleInfo }">
           <div class="h">10</div>
           <div class="p1">GXL5-252(L) 型</div>
           <div class="p2">刚性气体绝缘输电线路</div>
@@ -311,9 +314,140 @@ const imageSrc = ref(
   font-size: 1.875rem;
   font-family: "AlibabaPuHuiTi_2_35_Thin", sans-serif;
   color: #ffffff;
-  z-index:-100;
+  z-index: -100;
 }
-
+@media (min-width: 400px) and (max-width: 500px) {
+  .detail_product span {
+    font-size: 1.575rem;
+  }
+  .detail_page_info .h {
+    font-size: 1.85rem !important;
+    margin-top: 1.875rem;
+  }
+  .detail_page_info .p1 {
+    font-size: 1.225rem !important;
+  }
+  .detail_page_info .p2 {
+    font-size: 1.225rem !important;
+  }
+  .detail_page_info {
+    width: 32%;
+    height: 10.0625rem !important;
+  }
+}
+@media (min-width: 600px) and (max-width: 700px) {
+  .detail_product span {
+    font-size: 1.575rem;
+  }
+  .detail_page_info .h {
+    font-size: 1.75rem !important;
+    margin-top: 1.875rem;
+  }
+  .detail_page_info .p1 {
+    font-size: 1.025rem !important;
+  }
+  .detail_page_info .p2 {
+    font-size: 1.025rem !important;
+  }
+  .detail_page_info {
+    width: 32%;
+    height: 10.0625rem !important;
+  }
+  .detail_content {
+    width: 50rem;
+  }
+  .detail_content .detail_product {
+    width: 16.375rem;
+    height: 4.4125rem;
+  }
+  .detail_product span {
+    display: block;
+    font-size: 1.475rem;
+  }
+  .productSeries {
+    padding: 4rem 10.125rem;
+  }
+  .detail_content {
+    width: 50rem;
+  }
+  .detail_content .detail_product {
+    width: 16.375rem;
+    height: 4.4125rem;
+  }
+  .detail_product span {
+    display: block;
+    font-size: 1.475rem;
+  }
+  .productSeries {
+    padding: 4rem 10.125rem;
+  }
+}
+@media (min-width: 700px) and (max-width: 800px) {
+  .detail_product span {
+    font-size: 1.575rem;
+  }
+  .detail_page_info .h {
+    font-size: 1.85rem !important;
+    margin-top: 1.875rem;
+  }
+  .detail_page_info .p1 {
+    font-size: 1.225rem !important;
+  }
+  .detail_page_info .p2 {
+    font-size: 1.225rem !important;
+  }
+  .detail_page_info {
+    width: 32%;
+    height: 10.0625rem !important;
+  }
+  .detail_content {
+    width: 50rem;
+  }
+  .detail_content .detail_product {
+    width: 16.375rem;
+    height: 4.4125rem;
+  }
+  .detail_product span {
+    display: block;
+    font-size: 1.475rem;
+  }
+  .productSeries {
+    padding: 4rem 10.125rem;
+  }
+}
+@media (min-width: 1500px) and (max-width: 1600px) {
+  .detail_product span {
+    font-size: 1.575rem;
+  }
+  .detail_page_info .h {
+    font-size: 1.75rem !important;
+    margin-top: 1.875rem;
+  }
+  .detail_page_info .p1 {
+    font-size: 1.025rem !important;
+  }
+  .detail_page_info .p2 {
+    font-size: 1.025rem !important;
+  }
+  .detail_page_info {
+    width: 32%;
+    height: 10.0625rem !important;
+  }
+  .detail_content {
+    width: 50rem;
+  }
+  .detail_content .detail_product {
+    width: 16.375rem;
+    height: 4.4125rem;
+  }
+  .detail_product span {
+    display: block;
+    font-size: 1.475rem;
+  }
+  .productSeries {
+    padding: 4rem 10.125rem;
+  }
+}
 .detail_page {
   margin-top: 9.375rem;
   height: 108.375rem;

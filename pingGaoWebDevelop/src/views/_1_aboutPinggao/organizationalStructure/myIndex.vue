@@ -3,19 +3,19 @@ import MyTitle from "@/components/MyTitle.vue";
 import headLine from "@/components/MyHeadLine.vue";
 import row from "@/assets/imgs/_1_aboutPinggaoImgs/row.png";
 import longLine from "@/assets/imgs/_1_aboutPinggaoImgs/long-line.png";
-import { ref,onMounted } from "vue";
-const infoRef = ref(null)
-const isVisibleInfo = ref(false)
-const infoRef1 = ref(null)
-const isVisibleInfo1 = ref(false)
-const wordLeftRef = ref(null)
-const isVisibleWordLeft = ref(false)
-const wordRightRef = ref(null)
-const isVisibleWordRight = ref(false)
-const wordLeftRef1 = ref(null)
-const isVisibleWordLeft1 = ref(false)
-const wordRightRef1 = ref(null)
-const isVisibleWordRight1 = ref(false)
+import { ref, onMounted } from "vue";
+const infoRef = ref(null);
+const isVisibleInfo = ref(false);
+const infoRef1 = ref(null);
+const isVisibleInfo1 = ref(false);
+const wordLeftRef = ref(null);
+const isVisibleWordLeft = ref(false);
+const wordRightRef = ref(null);
+const isVisibleWordRight = ref(false);
+const wordLeftRef1 = ref(null);
+const isVisibleWordLeft1 = ref(false);
+const wordRightRef1 = ref(null);
+const isVisibleWordRight1 = ref(false);
 // 创建交叉观察器
 const createObserver = (refElement, isVisible) => {
   const observer = new IntersectionObserver(
@@ -31,7 +31,7 @@ const createObserver = (refElement, isVisible) => {
     },
     {
       root: null, // 使用浏览器视口作为根元素
-      rootMargin: '0px', // 无额外的边距
+      rootMargin: "0px", // 无额外的边距
       threshold: 0, // 当元素的 50% 进入视口时触发
     }
   );
@@ -41,15 +41,14 @@ const createObserver = (refElement, isVisible) => {
 };
 // 初始化所有的观察器
 const initializeObservers = () => {
-  createObserver(infoRef, isVisibleInfo)
-  createObserver(infoRef1, isVisibleInfo1)
-  createObserver(wordLeftRef,isVisibleWordLeft)
-  createObserver(wordLeftRef1,isVisibleWordLeft1)
-  createObserver(wordRightRef,isVisibleWordRight)
-  createObserver(wordRightRef1,isVisibleWordRight1)
-}
+  createObserver(infoRef, isVisibleInfo);
+  createObserver(infoRef1, isVisibleInfo1);
+  createObserver(wordLeftRef, isVisibleWordLeft);
+  createObserver(wordLeftRef1, isVisibleWordLeft1);
+  createObserver(wordRightRef, isVisibleWordRight);
+  createObserver(wordRightRef1, isVisibleWordRight1);
+};
 onMounted(initializeObservers); // 在组件挂载时调用
-
 </script>
 <template>
   <!-- 组织结构 -->
@@ -59,52 +58,45 @@ onMounted(initializeObservers); // 在组件挂载时调用
       <div class="organization_title">平高集团有限公司</div>
       <div class="detail">
         <div class="introduce">
-          <div class="info"  ref="infoRef"
-          :class="{ 'scale-up': isVisibleInfo}">
+          <div class="info" ref="infoRef" :class="{ 'scale-up': isVisibleInfo }">
             <div class="info_top">5</div>
             <div class="info_bottom">全资子公司<span>/</span>家</div>
           </div>
         </div>
         <div class="introduce">
-          <div class="info"  ref="infoRef"
-          :class="{ 'scale-up': isVisibleInfo}">
+          <div class="info" ref="infoRef" :class="{ 'scale-up': isVisibleInfo }">
             <div class="info_top">6</div>
             <div class="info_bottom">投股子公司<span>/</span>家</div>
           </div>
         </div>
         <div class="introduce">
-          <div class="info"  ref="infoRef"
-          :class="{ 'scale-up': isVisibleInfo}">
+          <div class="info" ref="infoRef" :class="{ 'scale-up': isVisibleInfo }">
             <div class="info_top">1</div>
             <div class="info_bottom">合营公司<span>/</span>家</div>
           </div>
         </div>
         <div class="introduce">
-          <div class="info"  ref="infoRef"
-          :class="{ 'scale-up': isVisibleInfo}">
+          <div class="info" ref="infoRef" :class="{ 'scale-up': isVisibleInfo }">
             <div class="info_top">11</div>
             <div class="info_bottom">本部部门<span>/</span>家</div>
           </div>
         </div>
         <div class="introduce">
-          <div class="info"  ref="infoRef"
-          :class="{ 'scale-up': isVisibleInfo}">
+          <div class="info" ref="infoRef" :class="{ 'scale-up': isVisibleInfo }">
             <div class="info_top">20</div>
             <div class="info_bottom">直属分公司<span>/</span>家</div>
           </div>
         </div>
         <div class="introduce">
-          <div class="info"  ref="infoRef"
-          :class="{ 'scale-up': isVisibleInfo}">
+          <div class="info" ref="infoRef" :class="{ 'scale-up': isVisibleInfo }">
             <div class="info_top">3</div>
             <div class="info_bottom">支撑平台<span>/</span>家</div>
           </div>
         </div>
       </div>
     </div>
-    <div class="component" >
-      <div class="content_top" ref="wordLeftRef"
-      :class="{ 'move-left': isVisibleWordLeft}">
+    <div class="component">
+      <div class="content_top" ref="wordLeftRef" :class="{ 'move-left': isVisibleWordLeft }">
         <div class="content_left">
           <headLine title="本部部门"></headLine>
           <ul class="parts">
@@ -168,11 +160,10 @@ onMounted(initializeObservers); // 在组件挂载时调用
           </div>
         </div>
       </div>
-      <div class="content_bottom" ref="wordRightRef"
-      :class="{ 'move-right': isVisibleWordRight}">
+      <div class="content_bottom" ref="wordRightRef" :class="{ 'move-right': isVisibleWordRight }">
         <div class="head">
           <div class="title">直属分公司</div>
-          <div>
+          <div class="img">
             <img :src="longLine" alt="" />
           </div>
         </div>
@@ -215,43 +206,37 @@ onMounted(initializeObservers); // 在组件挂载时调用
       <div class="organization_title">平高集团控股子公司</div>
       <div class="detail">
         <div class="introduce">
-          <div class="info"  ref="infoRef1"
-          :class="{ 'scale-up': isVisibleInfo1}">
+          <div class="info" ref="infoRef1" :class="{ 'scale-up': isVisibleInfo1 }">
             <div class="info_top">6</div>
             <div class="info_bottom">全资子公司<span>/</span>家</div>
           </div>
         </div>
         <div class="introduce">
-          <div class="info" ref="infoRef1"
-          :class="{ 'scale-up': isVisibleInfo1}">
+          <div class="info" ref="infoRef1" :class="{ 'scale-up': isVisibleInfo1 }">
             <div class="info_top">6</div>
             <div class="info_bottom">投股子公司<span>/</span>家</div>
           </div>
         </div>
         <div class="introduce">
-          <div class="info" ref="infoRef1"
-          :class="{ 'scale-up': isVisibleInfo1}">
+          <div class="info" ref="infoRef1" :class="{ 'scale-up': isVisibleInfo1 }">
             <div class="info_top">1</div>
             <div class="info_bottom">合营公司<span>/</span>家</div>
           </div>
         </div>
         <div class="introduce">
-          <div class="info" ref="infoRef1"
-          :class="{ 'scale-up': isVisibleInfo1}">
+          <div class="info" ref="infoRef1" :class="{ 'scale-up': isVisibleInfo1 }">
             <div class="info_top">9</div>
             <div class="info_bottom">本部部门<span>/</span>家</div>
           </div>
         </div>
         <div class="introduce">
-          <div class="info" ref="infoRef1"
-          :class="{ 'scale-up': isVisibleInfo1}">
+          <div class="info" ref="infoRef1" :class="{ 'scale-up': isVisibleInfo1 }">
             <div class="info_top">12</div>
             <div class="info_bottom">直属分公司<span>/</span>家</div>
           </div>
         </div>
         <div class="introduce">
-          <div class="info" ref="infoRef1"
-          :class="{ 'scale-up': isVisibleInfo1}">
+          <div class="info" ref="infoRef1" :class="{ 'scale-up': isVisibleInfo1 }">
             <div class="info_top">4</div>
             <div class="info_bottom">支撑平台<span>/</span>家</div>
           </div>
@@ -259,8 +244,7 @@ onMounted(initializeObservers); // 在组件挂载时调用
       </div>
     </div>
     <div class="component_2">
-      <div class="content_top_2" ref="wordLeftRef1"
-      :class="{ 'move-left': isVisibleWordLeft1}">
+      <div class="content_top_2" ref="wordLeftRef1" :class="{ 'move-left': isVisibleWordLeft1 }">
         <div class="content_left_2">
           <headLine title="本部部门"></headLine>
           <ul class="parts">
@@ -301,8 +285,11 @@ onMounted(initializeObservers); // 在组件挂载时调用
           </ul>
         </div>
       </div>
-      <div class="content_bottom_2" ref="wordRightRef1"
-      :class="{ 'move-right': isVisibleWordRight1}">
+      <div
+        class="content_bottom_2"
+        ref="wordRightRef1"
+        :class="{ 'move-right': isVisibleWordRight1 }"
+      >
         <div class="content_left_2">
           <headLine title="本部部门"></headLine>
           <ul class="parts">
@@ -362,6 +349,7 @@ onMounted(initializeObservers); // 在组件挂载时调用
   background-color: #006fc1;
   border-radius: 0.9375rem;
 }
+
 .organization .organization_title {
   margin: auto;
   position: absolute;
@@ -385,8 +373,6 @@ onMounted(initializeObservers); // 在组件挂载时调用
   color: #fff;
   padding-bottom: 0.3125rem;
 }
-
-
 
 .organization .info {
   position: relative;
@@ -424,13 +410,73 @@ onMounted(initializeObservers); // 在组件挂载时调用
   left: 50%;
   transform: translate(-50%, -50%);
 }
+@media (min-width: 600px) and (max-width: 700px) {
+  .organization .info .info_top {
+    font-size: 3.25rem !important;
+  }
+  .organization .info .info_bottom {
+    font-size: 1.2rem !important;
+  }
+  .organization .info .info_bottom span {
+    font-size: 1.3rem !important;
+    display: block;
+    margin: 0.0325rem;
+  }
+  .organization_2 .info .info_top {
+    font-size: 3.25rem !important;
+  }
+  .organization_2 .info .info_bottom {
+    font-size: 1.2rem !important;
+    transform: translate(-50%, -50%);
+  }
+  .organization_2 .info .info_bottom span {
+    font-size: 1.3rem !important;
+    margin: 0.0625rem;
+  }
+  .component .content_top .content_middle .bottom_2 {
+    margin-top: 2.9rem !important;
+  }
+}
+@media (min-width: 701px) and (max-width: 800px) {
+  .organization .info .info_top {
+    font-size: 3.25rem;
+  }
+  .organization .info .info_bottom {
+    font-size: 3.25rem;
+  }
+  .organization .info .info_bottom span {
+    font-size: 1.3rem !important;
+    margin: 0.0325rem;
+  }
+  .organization_2 .info .info_top {
+    font-size: 3.25rem !important;
+  }
+  .organization_2 .info .info_bottom {
+    font-size: 3.25rem !important;
+  }
+  .organization_2 .info .info_bottom span {
+    font-size: 1.3rem !important;
+    margin: 0.0325rem;
+  }
+}
 .organization .info .info_bottom span {
-  font-size: 1.5rem;
+  font-size: 1.6rem;
   display: block;
   margin: 0.0625rem;
 }
 .component {
   margin-top: 2.75rem;
+}
+@media (min-width: 600px) and (max-width: 700px) {
+  .component li {
+    font-size: 0.9rem !important;
+  }
+  .component_2 li {
+    font-size: 0.9rem !important;
+  }
+}
+.component img {
+  width: 1.5rem;
 }
 .component .content_top {
   display: flex;
@@ -463,11 +509,21 @@ onMounted(initializeObservers); // 在组件挂载时调用
 .component .content_top .content_middle .bottom_2 {
   margin-top: 3.3125rem;
 }
+.component .content_top .bottom_3 {
+  margin-top: 1.0125rem;
+}
+
 .component .content_bottom {
   margin-top: -1.25rem;
   transform: translateX(100%); /* 初始位置在左边 */
   visibility: hidden;
   transition: transform 1s ease, opacity 0.5s ease; /* 过渡效果 */
+}
+.component .content_bottom .img {
+  width: 100%;
+}
+.component .content_bottom .img img {
+  width: 100%;
 }
 
 .component .content_bottom.move-right {

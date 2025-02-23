@@ -152,4 +152,9 @@ onMounted(initializeObservers); // 在组件挂载时调用
 .content .right {
   width: 26.25rem;
 }
+@media (min-width:400px) and (max-width: 800px) {
+  .text ,.p{
+  font-size: 0.9rem !important;
+}
+}
 </style>

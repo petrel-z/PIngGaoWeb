@@ -180,7 +180,7 @@ onMounted(initializeObservers); // 在组件挂载时调用
   position: relative;
   margin: auto;
   width: 100%;
-  height: 86.8125rem;
+  height: 100%;
   /* border: 0.0625rem solid rgb(177, 177, 177); */
   padding: 4rem 11%;
   border-radius: 1.25rem;
@@ -194,15 +194,16 @@ onMounted(initializeObservers); // 在组件挂载时调用
   justify-content: space-between;
 }
 .content .info {
-  width: 24%;
-  height: 17.25rem;
-  margin-bottom: 3.125rem;
+  width: 21%;
+  height: 90%;
+  margin-bottom: 4.2rem;
   text-align: center;
 }
 
+
 .content .info .img img {
-  width: 26.9375rem;
-  height: 18.625rem;
+  width: 100%;
+  height: 90%;
   transform: scale(0.5); /* 初始缩小 */
   opacity: 0; /* 初始不可见 */
   visibility: hidden; /* 初始隐藏 */
@@ -217,6 +218,7 @@ onMounted(initializeObservers); // 在组件挂载时调用
   font-size: 1.25rem;
   font-family: "AlibabaPuHuiTi_2_55_Regular", sans-serif;
   color: rgb(182, 141, 55);
+  margin: 0.7rem 0rem;
 }
 .footer {
   width: 100%;
