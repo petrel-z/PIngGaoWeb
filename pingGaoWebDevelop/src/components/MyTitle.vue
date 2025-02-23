@@ -30,20 +30,22 @@ const props = defineProps({
   </div>
 </template>
 <style scoped>
+
 .groupProfile {
   margin: auto;
-  /* width: 1500px; */
   width: auto;
   height: 3907px;
   border: 1px solid rgb(177, 177, 177);
   padding: 64px 210px;
   border-radius: 20px;
 }
+
 .h {
   display: block;
   font-weight: 550;
-  font-size: 3.5rem;
-  /* width: 1500px; */
+
+  font-size: 2.2rem;
+
   width: auto;
   font-family: "AlibabaPuHuiTi_2_75_SemiBold";
   color: #000000;
@@ -51,15 +53,16 @@ const props = defineProps({
   margin-top: 4px;
 }
 .line {
-  top: 3px;
+  top: 0.2rem;
   position: relative;
   background-color: #70aedc;
-  width: 66px;
-  height: 3px;
-  margin: 2px 0px;
+  width: 4rem;
+  height: 0.2rem;
+  margin: 0.15rem 0px;
 }
 .English {
-  font-size: 3rem;
+
+  font-size: 1.7rem;
   font-family: "Avenir-Medium-woff-7";
   color: rgb(159, 160, 160);
   text-transform: uppercase;

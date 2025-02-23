@@ -48,39 +48,40 @@ const props = defineProps({
     type: String,
     default: "#ffffff",
   },
+  toState: {
+    type: Boolean,
+    default: true,
+  }
 });
 const imgPath = ref(props.img);
 </script>
 
 <template>
-  <div class="content" :style="{ 'background-color': props.bgColor }">
+  <div class="content" :style="{ '--bgColor': props.bgColor, '--btnColor': props.btnColor, '--lineColor': props.lineColor,
+    '--titleFont': props.titleFont, '--textFont': props.textFont, '--fontColor': props.fontColor
+   }">
     <div class="content-left">
-      <div class="title" :style="{ fontFamily: props.titleFont, color: props.fontColor }">
+      <div class="title" >
         {{ props.title1 }}
         <br />
         {{ props.title2 }}
       </div>
       <div class="hr">
-        <div
-          style="width: 135px; height: 3px"
-          :style="{ 'background-color': props.lineColor }"
-        ></div>
-        <div
-          style="width: 100%; height: 1px"
-          :style="{ 'background-color': props.lineColor }"
-        ></div>
+        <div class="hr-shortline" ></div>
+        <div class="hr-longline" ></div>
       </div>
-      <div class="content-text" :style="{ fontFamily: props.textFont, color: props.fontColor }">
+      <div class="content-text" >
         {{ props.text }}
       </div>
-      <div class="content-btn" :style="{ 'background-color': props.btnColor }">
-        <span class="btn-text">{{ props.btnText }}</span>
+      <!-- 查看详情按钮 -->
+      <div class="content-btn" >
+        <router-link v-if="props.toState" to="/partyBuilding/partyspiritDetail" ><span class="btn-text">{{ props.btnText }}</span></router-link>
+        <router-link v-else  to="/partyBuilding/pinggaoPartyBuildingDetail"><span class="btn-text">{{ props.btnText }}</span></router-link>
         <!-- ********8 -->
         <span class="icon iconfont lookdetail-icon">&#xe504;</span>
       </div>
     </div>
-    <div 
- class="img">
+    <div class="img">
       <img style="width: 105%; height: 102%; object-fit: cover" :src="imgPath" alt="图片加载失败" />
     </div>
   </div>
@@ -94,31 +95,36 @@ const imgPath = ref(props.img);
   padding: 4%;
   justify-content: space-between;
   align-items: center;
-  background-color: #003792;
+  background-color: var(--bgColor);
   border-radius: 10px;
+
   .content-left {
     width: 40%;
     height: 100%;
   }
+
   .img {
     width: 55%;
     height: 100%;
     overflow: hidden;
     border-radius: 10px;
+
     img {
       position: relative;
       left: -1rem;
     }
   }
 }
+
 .content:hover .img img {
   transform: scale(1.15);
   transition: all 0.5s ease-in-out;
 }
+
 .title {
   font-size: 2.1rem;
-  // font-family: 'Alibaba PuHuiTi 2.0';
-  color: rgb(255, 255, 255);
+  font-family: var(--titleFont);
+  color: var(--fontColor);
   line-height: 1.4;
   text-align: justifyLeft;
   position: relative;
@@ -128,12 +134,24 @@ const imgPath = ref(props.img);
 
 .hr {
   margin: 4% 0;
+
+  .hr-shortline {
+    width: 13.5rem;
+    height: 0.3rem;
+    background-color: var(--lineColor);
+  }
+
+  .hr-longline {
+    width: 100%;
+    height: 1px;
+    background-color: var(--lineColor);
+  }
 }
 
 .content-text {
   font-size: 1.38rem;
-  font-family: "Alibaba PuHuiTi 2.0";
-  color: rgb(255, 255, 255);
+  font-family: var(--textFont);
+  color: var(--fontColor);
   line-height: 1.85;
   position: relative;
   width: 100%;
@@ -154,7 +172,7 @@ const imgPath = ref(props.img);
   align-items: center;
   text-align: center;
   z-index: 143;
-  background-color: #45b3e0;
+  background-color: var(--btnColor);
   width: 38%;
   min-height: 10%;
   margin-top: 10%;
@@ -164,12 +182,91 @@ const imgPath = ref(props.img);
 
   display: flex;
   justify-content: space-between;
+
+  a {
+    width: 100%;
+    height: 100%;
+    color: #fff;
+    text-align: left; 
+  }
+
   .btn-text {
     margin-left: 13%;
   }
+
+
   .lookdetail-icon {
-    margin-right: 15px;
+    margin-right: 1.5rem;
     font-size: 30px;
   }
+
 }
+
+.content-btn:hover {
+  background-color: #fef2f2;
+  color: var(--btnColor);
+  a {
+    color: var(--btnColor);
+  }
+}
+
+/* 大型设备（桌面，大于 900px） */
+@media (max-width: 900px) {
+  .content {
+    padding: 0;
+    flex-direction: column-reverse;
+    justify-content: space-between;
+    align-items: center;
+
+    .content-left {
+      width: 100%;
+      height: 100%;
+      padding: 5%;
+    }
+
+    .img {
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  .title {
+    font-size: 3rem;
+    margin-top: 1%;
+  }
+
+  .hr {
+    margin: 3% 0;
+  }
+
+  .content-text {
+    font-size: 2.6rem;
+  }
+
+  .content-btn {
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 2rem;
+    margin-top: 5%;
+    padding: 1% 0;
+    border-radius: 0.5rem;
+
+    .btn-text {
+      margin-left: 20%;
+    }
+
+  }
+}
+
+@media (max-width: 800px) {}
+
+/* 中型设备（平板，600px 到 900px） */
+@media (max-width: 700px) {}
+
+/* 小型设备（手机，小于 600px） */
+
+@media (max-width: 600px) {}
+
+@media (max-width: 500px) {}
 </style>

@@ -3,8 +3,8 @@ import MyTitle from "@/components/MyTitle.vue";
 </script>
 
 <template>
-  <div class="becomePartner-content">
-    
+  <div class="addressTelephone-content">
+
 
     <div class="content-top">
       <div class="top-title">
@@ -15,7 +15,8 @@ import MyTitle from "@/components/MyTitle.vue";
     <div class="address">
       <div class="left">
         <div class="image">
-          <img :style="{width: '100%', height: 'auto'}" src="../../../assets/imgs/_9_contactUsImgs/t9_p4_map.png" alt="" />
+          <img :style="{ width: '100%', height: 'auto' }" src="../../../assets/imgs/_9_contactUsImgs/t9_p4_map.png"
+            alt="" />
         </div>
       </div>
       <div class="right">
@@ -43,25 +44,27 @@ import MyTitle from "@/components/MyTitle.vue";
       </div>
     </div>
     <div class="content-bgimg">
-      <img :style="{width: '100%', height: 'auto'}" src="../../../assets/imgs/_9_contactUsImgs/t9_p1_contentBg.png" alt="" />
+      <img :style="{ width: '100%', height: 'auto' }" src="../../../assets/imgs/_9_contactUsImgs/t9_p1_contentBg.png"
+        alt="" />
     </div>
     <!-- <div class="top-whiteSpan"></div> -->
   </div>
 </template>
 
 <style lang="less" scoped>
-
 @keyframes eases {
   from {
     left: -100%;
 
   }
+
   to {
     left: 0;
 
   }
 }
-.becomePartner-content {
+
+.addressTelephone-content {
   z-index: 999;
   width: 100%;
   height: auto;
@@ -73,9 +76,10 @@ import MyTitle from "@/components/MyTitle.vue";
 
   .content-top {
     width: 78%;
-    margin-left:11%;
-    padding: 60px 0;
+    margin-left: 11%;
+    padding: 6rem 0;
   }
+
   .address {
     width: 100%;
 
@@ -90,24 +94,25 @@ import MyTitle from "@/components/MyTitle.vue";
       height: auto;
       background-color: #fff;
       margin-right: 1.5em;
+
       .image {
         padding-top: 6%;
         padding-bottom: 6%;
         padding-right: 6%;
         width: 100%;
         height: 100%;
-        overflow: hidden; 
+        overflow: hidden;
         display: flex;
         align-items: center;
 
         position: relative;
         animation: eases 1.5s;
-        
+
         img {
           width: 100%;
           height: 100%;
-          height:auto;
-          border-radius: 10px;
+          height: auto;
+          border-radius: 1rem;
         }
       }
     }
@@ -121,73 +126,72 @@ import MyTitle from "@/components/MyTitle.vue";
       flex-direction: column;
       align-items: start;
       justify-content: center;
-      // padding-top: 5%;
       padding-left: 3%;
       padding-right: 11%;
-      // padding-bottom: 2%;
 
       .company-name {
         width: 100%;
-        font-size: 32px;
+        font-size: 3rem;
         font-family: "AlibabaPuHuiTi_2_65_Medium";
         color: rgb(255, 255, 255);
         border-bottom: 2px solid #fff;
         padding: 33px 0 14px 0;
         overflow: hidden;
-      white-space: nowrap;
-      text-overflow: ellipsis;
+        white-space: nowrap;
+        text-overflow: ellipsis;
       }
 
       .common {
-        width:100%;
-        padding: 25px 0;
+        width: 100%;
+        padding: 2.5rem 0;
         border-bottom: 1px solid #fff;
         color: rgb(255, 255, 255);
         display: flex;
         justify-content: start;
         align-items: center;
-        
+
 
         div {
           height: 30px;
           line-height: 30px;
           overflow: hidden;
-      white-space: nowrap;
-      text-overflow: ellipsis;
+          white-space: nowrap;
+          text-overflow: ellipsis;
         }
 
         .span-left {
-          font-size: 24px;
+          font-size: 2.4rem;
           font-family: "AlibabaPuHuiTi_2_55_Regular";
           overflow: hidden;
-      white-space: nowrap;
-      text-overflow: ellipsis;
+          white-space: nowrap;
+          text-overflow: ellipsis;
         }
 
         .span-center {
           margin: 0 10px;
-          font-size: 22px;
+          font-size: 2.2rem;
           overflow: hidden;
-      white-space: nowrap;
-      text-overflow: ellipsis;
+          white-space: nowrap;
+          text-overflow: ellipsis;
         }
 
         .span-right {
-          font-size: 30.692px;
+          font-size: 3.0692rem;
           font-family: "Avenir";
           overflow: hidden;
-      white-space: nowrap;
-      text-overflow: ellipsis;
+          white-space: nowrap;
+          text-overflow: ellipsis;
         }
       }
 
       .last {
-        font-size: 24px;
-        padding: 10px 0 14px 0;
+        font-size: 2.4rem;
+        padding: 1rem 0 1.4rem 0;
         display: block;
+
         div {
           width: 100%;
-          margin: 9px 0;
+          margin: 0.9rem 0;
         }
       }
     }
@@ -204,4 +208,68 @@ import MyTitle from "@/components/MyTitle.vue";
     height: 723px;
   }
 }
+
+
+/* 大型设备（桌面，大于 900px） */
+@media (max-width: 900px) {
+  .addressTelephone-content {
+    background-image: none;
+
+    .content-top {
+      margin-left: 5%;
+      padding: 3rem 0;
+    }
+
+    .address {
+      padding: 0 5%;
+      flex-direction: column;
+
+      .left,
+      .right {
+        width: 100%;
+        border-radius: 10px;
+
+      }
+
+      .left {
+        padding: 0;
+        overflow: hidden;
+        margin-bottom: 1rem;
+        background-color: #fff;
+
+        .image {
+          padding: 0;
+
+          img {}
+        }
+      }
+
+      .right {
+        padding: 5% 20% 8% 5%;
+
+        .company-name {
+          font-size: 3.5rem;
+          padding: 0;
+        }
+        .common {
+          padding: 2rem 0;
+        }
+      }
+    }
+
+  }
+}
+
+@media (max-width: 800px) {}
+
+/* 中型设备（平板，600px 到 900px） */
+@media (max-width: 700px) {
+
+}
+
+/* 小型设备（手机，小于 600px） */
+
+@media (max-width: 600px) {}
+
+@media (max-width: 500px) {}
 </style>

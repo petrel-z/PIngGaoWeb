@@ -69,6 +69,7 @@ function handleClick(e) {
 团所属平高综合能源服务有限公司（以下简称“综合能源公
 司”）凭借其在综合能源领域的卓越贡献和创享…"
             bgColor="#006fc1"
+            :to-state="false"
           />
         </div>
         <div class="item-container">
@@ -84,7 +85,7 @@ function handleClick(e) {
         </div>
       </div>
       <div class="button-container">
-        <myButton @childButton="handleClick" />
+        <router-link to="/informationCenter/groupNews-2"><myButton @childButton="handleClick" /></router-link>
       </div>
     </div>
   </div>

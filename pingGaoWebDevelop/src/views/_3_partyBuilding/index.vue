@@ -65,6 +65,8 @@ const headerCss = {
 
 /* 大型设备（桌面，大于 900px） */
 @media (max-width: 900px) {
+
+
 }
 
 @media (max-width: 800px) {
@@ -78,12 +80,6 @@ const headerCss = {
 }
 
 @media (max-width: 500px) {
-  // =======
-  // .right_button {
-  //  position: absolute;
-  //  top: 1400px;
-  //  right: 0;
-  //  z-index: 1001;
-  // >>>>>>> 2a18161dd19e33a74b6522d4e7afd9722888a541
+
 }
 </style>

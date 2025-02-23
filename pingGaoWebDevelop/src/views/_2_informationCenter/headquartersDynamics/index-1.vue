@@ -61,13 +61,13 @@ function handleClick(e) {
           <my-title title="总部动态" English="HEADQUARTERS NEWS" />
         </div>
         <div style="margin-top: 4rem">
-          <ContentPag />
+          <ContentPag :to-state="true"/>
         </div>
         <div class="item-container">
           <Item1
             v-for="(item, index) in items"
             :key="index"
-            :month="item.month"
+            :month="item.month"       
             :year="item.year"
             :title="item.title"
             :text="item.text"
@@ -75,7 +75,7 @@ function handleClick(e) {
         </div>
       </div>
       <div class="button-container">
-        <myButton @childButton="handleClick" />
+        <router-link to="/informationCenter/headquartersDynamics-2"><myButton @childButton="handleClick" /></router-link>
       </div>
     </div>
   </div>
