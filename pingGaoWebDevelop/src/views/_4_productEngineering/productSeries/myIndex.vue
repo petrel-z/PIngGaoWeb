@@ -1,11 +1,11 @@
 <script setup>
-import { ref } from "vue";
 import MyTitle from "@/components/MyTitle.vue";
+import { ref,onMounted } from "vue";
+const boxRef = ref(null)
+const isVisibleBox = ref(false)
+const infoRef = ref(null)
+const isVisibleInfo = ref(null)
 
-// 使用 ref 存储图片路径，并处理路径
-const imageSrc = ref(
-  new URL("@/assets/imgs/_4_productEngineeringImgs/product-1.png", import.meta.url).href
-);
 
 // 处理 imgs 数组中的路径
 const imgs = ref(
@@ -51,6 +51,39 @@ const handleMouseLeave = () => {
   // 鼠标离开时，将 activeIndex 重置为 -1
   activeIndex.value = 0;
 };
+// 创建交叉观察器
+const createObserver = (refElement, isVisible) => {
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        const { intersectionRatio } = entry;
+        // 设置触发条件：元素进入视口 50% 以上时触发
+        if (intersectionRatio >= 0) {
+          isVisible.value = true;
+          observer.disconnect(); // 元素可见后停止观察
+        }
+      });
+    },
+    {
+      root: null, // 使用浏览器视口作为根元素
+      rootMargin: '0px', // 无额外的边距
+      threshold: 0.1, // 当元素的 50% 进入视口时触发
+    }
+  );
+  if (refElement.value) {
+    observer.observe(refElement.value);
+  }
+};
+// 初始化所有的观察器
+const initializeObservers = () => {
+  createObserver(boxRef, isVisibleBox);
+  createObserver(infoRef, isVisibleInfo);
+};
+onMounted(initializeObservers); // 在组件挂载时调用
+// 使用 ref 存储图片路径，并处理路径
+const imageSrc = ref(
+  new URL("@/assets/imgs/_4_productEngineeringImgs/product-1.png", import.meta.url).href
+);
 </script>
 
 <template>
@@ -65,7 +98,8 @@ const handleMouseLeave = () => {
       line-color="#fff"
       engColor="#fff"
     ></MyTitle>
-    <div class="detail_content">
+    <div class="detail_content" ref="boxRef"
+    :class="{ 'move-left': isVisibleBox}" >
       <div
         class="detail_product"
         :style="{ 'background-color': activeIndex === 0 ? '#45b3e0' : 'transparent' }"
@@ -144,53 +178,63 @@ const handleMouseLeave = () => {
     </div>
     <div class="detail_page">
       <div class="detail_page_title">高压电器产业</div>
-      <div class="detail_page_content">
-        <div class="detail_page_info" style="border-top: 1px solid #1078c5">
+      <div class="detail_page_content" >
+        <div class="detail_page_info" style="border-top: 1px solid #1078c5" ref="infoRef"
+        :class="{ 'scale-up': isVisibleInfo}">
           <div class="h">01</div>
           <div class="p1">ZHW1-252（L）/T4000-50型</div>
           <div class="p2">复合式组合电器</div>
         </div>
-        <div class="detail_page_info" style="border-top: 1px solid #1078c5">
+        <div class="detail_page_info" style="border-top: 1px solid #1078c5" ref="infoRef"
+        :class="{ 'scale-up': isVisibleInfo}">
           <div class="h">02</div>
           <div class="p1">ZHW1-145(L)/T3150-40型</div>
           <div class="p2">复合式组合电器</div>
         </div>
-        <div class="detail_page_info" style="border-top: 1px solid #1078c5">
+        <div class="detail_page_info" style="border-top: 1px solid #1078c5" ref="infoRef"
+        :class="{ 'scale-up': isVisibleInfo}">
           <div class="h">03</div>
           <div class="p1">ZHW1-126（L）/T4000-50型</div>
           <div class="p2">复合式组合电器</div>
         </div>
-        <div class="detail_page_info">
+        <div class="detail_page_info"  ref="infoRef"
+        :class="{ 'scale-up': isVisibleInfo}" >
           <div class="h">04</div>
           <div class="p1">ZHW1-72.5(L)/T3150-40型</div>
           <div class="p2">复合式组合电器</div>
         </div>
-        <div class="detail_page_info">
+        <div class="detail_page_info"  ref="infoRef"
+        :class="{ 'scale-up': isVisibleInfo}">
           <div class="h">05</div>
           <div class="p1">LW55-72.5/T3150-31.5型</div>
           <div class="p2">罐式六氟化硫断路器</div>
         </div>
-        <div class="detail_page_info">
+        <div class="detail_page_info"  ref="infoRef"
+        :class="{ 'scale-up': isVisibleInfo}">
           <div class="h">06</div>
           <div class="p1">LW35A-72.5/T3150-31.5型</div>
           <div class="p2">高压六氟化硫断路器</div>
         </div>
-        <div class="detail_page_info">
+        <div class="detail_page_info"  ref="infoRef"
+        :class="{ 'scale-up': isVisibleInfo}">
           <div class="h">07</div>
           <div class="p1">LW35-126/T3150-40型</div>
           <div class="p2">自能式六氟化硫断路器</div>
         </div>
-        <div class="detail_page_info">
+        <div class="detail_page_info"  ref="infoRef"
+        :class="{ 'scale-up': isVisibleInfo}">
           <div class="h">08</div>
           <div class="p1">GXL5-1100(L) 型</div>
           <div class="p2">刚性气体绝缘输电线路</div>
         </div>
-        <div class="detail_page_info">
+        <div class="detail_page_info"  ref="infoRef"
+        :class="{ 'scale-up': isVisibleInfo}">
           <div class="h">09</div>
           <div class="p1">GXL5-550(L) 型</div>
           <div class="p2">刚性气体绝缘输电线路</div>
         </div>
-        <div class="detail_page_info">
+        <div class="detail_page_info"  ref="infoRef"
+        :class="{ 'scale-up': isVisibleInfo}">
           <div class="h">10</div>
           <div class="p1">GXL5-252(L) 型</div>
           <div class="p2">刚性气体绝缘输电线路</div>
@@ -213,6 +257,7 @@ const handleMouseLeave = () => {
   z-index: 100;
   padding: 64px 210px;
 }
+
 .detail_content {
   width: 1080px;
   height: 271px;
@@ -221,7 +266,17 @@ const handleMouseLeave = () => {
   justify-content: space-between;
   margin-top: 66px;
   position: relative;
+  transform: translateX(-100%); /* 初始位置在左边 */
+  visibility: hidden;
+  transition: transform 1s ease, opacity 0.5s ease; /* 过渡效果 */
 }
+
+.detail_content.move-left {
+  opacity: 1;
+  transform: translateX(0);
+  visibility: visible;
+}
+
 .productSeries .img {
   left: 0;
   top: 0;
@@ -280,8 +335,17 @@ const handleMouseLeave = () => {
   height: 225px;
   border-bottom: 1px #1078c5 solid;
   z-index: 100;
+  transform: scale(0.3); /* 初始缩小 */
+  opacity: 0; /* 初始不可见 */
+  visibility: hidden; /* 初始隐藏 */
+  transition: transform 0.5s ease, opacity 0.5s ease; /* 过渡效果 */
 }
 
+.detail_page_info.scale-up {
+  transform: scale(1); /* 放大到原始大小 */
+  opacity: 1; /* 可见 */
+  visibility: visible; /* 可见 */
+}
 .detail_page_info .h {
   font-size: 36px;
   font-family: "AlibabaPuHuiTi_2_85_Bold", sans-serif;
