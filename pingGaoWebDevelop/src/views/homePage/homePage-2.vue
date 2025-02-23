@@ -63,22 +63,37 @@ onMounted(() => {
   const rightIcon = document.querySelector(".right_icon");
   const items1 = document.querySelectorAll(".product_detail");
   const itemCount = items1.length;
-  const visibleItems = 3;
   let currentIndex = 0;
-  // 是否定时播放
   let isAnimating = false;
   let autoSlideInterval;
+  let visibleItems = 3; // 初始值
 
-  // 添加CSS过渡
-  container.style.transition = "transform 0.5s cubic - bezier(0.4, 0, 0.2, 1)";
+  // 初始化
+  updateCarousel();
+
+  // 监听视窗大小变化
+  window.addEventListener("resize", () => {
+    updateVisibleItems();
+    updateCarousel();
+  });
+
+  function updateVisibleItems() {
+    const windowWidth = window.innerWidth;
+    if (windowWidth < 768) {
+      visibleItems = 1;
+    } else if (windowWidth >= 768 && windowWidth < 1900) {
+      visibleItems = 2;
+    } else {
+      visibleItems = 3;
+    }
+  }
 
   function updateCarousel() {
     if (isAnimating) return;
     isAnimating = true;
 
-    // 计算位移百分比（每个项目占33.333%）
+    // 计算位移百分比（每个项目占 1/visibleItems）
     const translateX = -currentIndex * (100 / visibleItems / 1.07);
-    container.style.transition = `1s`;
     container.style.transform = `translateX(${translateX}%)`;
 
     // 重置动画状态
@@ -669,7 +684,17 @@ onMounted(() => {
   transition: transform 0.3s ease;
   animation: scaleIn 1s ease-in-out;
 }
+@media (min-width: 768px) and (max-width: 1900px) {
+  .product_detail {
+  width: calc(50%);
+}
+}
+@media (min-width: 400px) and (max-width: 768px) {
+  .product_detail {
+  width: calc(100%);
+}
 
+}
 .product_topImg {
   position: relative;
   width: 26.25rem;
@@ -1010,7 +1035,7 @@ onMounted(() => {
   box-shadow: 0 0.25rem 0.625rem rgba(0, 0, 0, 0.286); /* 悬浮时显示黑色阴影 */
 }
 .great_flag .top_img img {
-  width: 100%;
+  height: 23.25rem;
   height: 23.25rem;
   background-size: cover;
 }

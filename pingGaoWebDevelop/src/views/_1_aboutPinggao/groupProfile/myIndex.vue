@@ -541,7 +541,7 @@ onMounted(initializeObservers); // 在组件挂载时调用
     font-size: 0.9rem;
   }
 }
-@media (min-width:600px) and (max-width: 700px) {
+@media (min-width: 600px) and (max-width: 700px) {
   .key_content_h {
     left: 7.7rem;
     top: 1.4rem;
@@ -553,7 +553,7 @@ onMounted(initializeObservers); // 在组件挂载时调用
     font-size: 0.9rem;
   }
 }
-@media (min-width:700px) and (max-width: 800px) {
+@media (min-width: 700px) and (max-width: 800px) {
   .key_content_h {
     left: 8.1rem;
     top: 1.4rem;
@@ -565,7 +565,7 @@ onMounted(initializeObservers); // 在组件挂载时调用
     font-size: 0.9rem;
   }
 }
-@media (min-width:800px) and (max-width: 1000px) {
+@media (min-width: 800px) and (max-width: 1000px) {
   .key_content_h {
     left: 10.3rem;
     top: 1.8rem;
@@ -573,11 +573,11 @@ onMounted(initializeObservers); // 在组件挂载时调用
   }
   .key_content_text {
     left: 10.3rem;
-    top:4.1rem;
+    top: 4.1rem;
     font-size: 1rem;
   }
 }
-@media (min-width:1000px) and (max-width: 1200px) {
+@media (min-width: 1000px) and (max-width: 1200px) {
   .key_content_h {
     left: 10.3rem;
     top: 1.8rem;
@@ -585,11 +585,11 @@ onMounted(initializeObservers); // 在组件挂载时调用
   }
   .key_content_text {
     left: 10.3rem;
-    top:4.1rem;
+    top: 4.1rem;
     font-size: 0.95rem;
   }
 }
-@media (min-width:1200px) and (max-width: 1400px) {
+@media (min-width: 1200px) and (max-width: 1400px) {
   .key_content_h {
     left: 10.3rem;
     top: 1.8rem;
@@ -597,11 +597,11 @@ onMounted(initializeObservers); // 在组件挂载时调用
   }
   .key_content_text {
     left: 10.3rem;
-    top:4.1rem;
+    top: 4.1rem;
     font-size: 0.95rem;
   }
 }
-@media (min-width:1400px) and (max-width: 1600px) {
+@media (min-width: 1400px) and (max-width: 1600px) {
   .key_content_h {
     left: 9.3rem;
     top: 1.7rem;
@@ -609,11 +609,11 @@ onMounted(initializeObservers); // 在组件挂载时调用
   }
   .key_content_text {
     left: 9.3rem;
-    top:3.7rem;
+    top: 3.7rem;
     font-size: 0.95rem;
   }
 }
-@media (min-width:1600px) and (max-width: 1800px) {
+@media (min-width: 1600px) and (max-width: 1800px) {
   .key_content_h {
     left: 10.5rem;
     top: 1.9rem;
@@ -621,11 +621,11 @@ onMounted(initializeObservers); // 在组件挂载时调用
   }
   .key_content_text {
     left: 10.5rem;
-    top:4rem;
-    font-size:1.03rem;
+    top: 4rem;
+    font-size: 1.03rem;
   }
 }
-@media (min-width:2100px) and (max-width: 2300px) {
+@media (min-width: 2100px) and (max-width: 2300px) {
   .key_content_h {
     left: 10.3rem;
     top: 1.9rem;
@@ -633,11 +633,10 @@ onMounted(initializeObservers); // 在组件挂载时调用
   }
   .key_content_text {
     left: 10.3rem;
-    top:4rem;
-    font-size:1.03rem;
+    top: 4rem;
+    font-size: 1.03rem;
   }
 }
-
 
 .basic_culture_title {
   font-size: 2rem;
@@ -731,5 +730,10 @@ onMounted(initializeObservers); // 在组件挂载时调用
 .mind_map img.slide-in {
   visibility: visible;
   transform: translateY(0); /* 从下方滑动到原位置 */
+}
+@media (min-width: 1500px) and (max-width: 1800px) {
+  .mind_map {
+    height: 61.25rem !important;
+  }
 }
 </style>

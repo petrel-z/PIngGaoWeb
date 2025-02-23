@@ -157,4 +157,9 @@ onMounted(initializeObservers); // 在组件挂载时调用
   font-size: 0.9rem !important;
 }
 }
+@media (min-width:1500px) and (max-width: 1800px) {
+  .text ,.p{
+  font-size: 1rem !important;
+}
+}
 </style>
