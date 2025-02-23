@@ -31,8 +31,16 @@ import imgPath from "@/assets/imgs/_2_informationCenterImgs/MZFUZt.png";
         </p>
       </div>
       <div class="footer">
-        <ComDoubleDiv title="上一篇" content="平高集团1家企业荣获2024年全国质量标杆奖" />
-        <ComDoubleDiv title="下一篇" content="平高集团1家企业荣获2024年全国质量标杆奖" />
+        <ComDoubleDiv
+          class="footer-left"
+          title="上一篇"
+          content="平高集团1家企业荣获2024年全国质量标杆奖"
+        />
+        <ComDoubleDiv
+          class="footer-right"
+          title="下一篇"
+          content="平高集团1家企业荣获2024年全国质量标杆奖"
+        />
       </div>
     </div>
   </div>

@@ -487,7 +487,7 @@ onMounted(() => {
 
 .header {
   height: 68vh;
-  // min-width: 1920px;
+  // min-width: 120rem;
   width: 100%;
   position: absolute;
   top: 0;
@@ -496,17 +496,17 @@ onMounted(() => {
 }
 .my_carousel {
   width: 100%;
-  height: 990px;
+  height: 61.875rem;
   position: relative;
 }
 .my_carousel .carousel {
   width: 100%;
-  height: 990px;
+  height: 61.875rem;
   overflow: hidden;
 }
 .my_carousel .carousel img {
   width: 100%;
-  height: 990px;
+  height: 61.875rem;
 }
 .carousel-inner {
   display: flex;
@@ -520,16 +520,16 @@ onMounted(() => {
   display: flex;
   justify-content: center;
   z-index: 100;
-  bottom: 30px;
+  bottom: 1.875rem;
   width: 100%;
   align-items: center;
 }
 .dots li {
-  width: 118px;
-  height: 3px;
+  width: 7.375rem;
+  height: 0.1875rem;
   background-color: rgb(255, 255, 255);
   border-radius: 50%;
-  margin: 0 5px;
+  margin: 0 0.3125rem;
   cursor: pointer;
 }
 .dots .active {
@@ -537,55 +537,55 @@ onMounted(() => {
 }
 .nav {
   width: 100%;
-  height: 103px;
+  height: 6.4375rem;
   background-color: #45b3e0;
-  padding: 30px 164px;
+  padding: 1.875rem 10.25rem;
 }
 .nav_content {
   width: 100%;
-  height: 40px;
-  border-right: 1px solid #fff;
+  height: 2.5rem;
+  border-right: 0.0625rem solid #fff;
   display: flex;
   justify-content: space-between;
   margin: auto;
 }
 .nav_introduction {
   width: 100%;
-  height: 40px;
-  border-left: 1px solid #fff;
+  height: 2.5rem;
+  border-left: 0.0625rem solid #fff;
   text-align: center;
   margin: auto;
 }
 
 .nav_introduction .p {
-  font-size: 24px;
+  font-size: 1.5rem;
   font-family: "AlibabaPuHuiTi_2_55_Regular";
   color: rgb(255, 255, 255);
   // text-align: center;
   transition: 0.3s;
 }
 .nav_introduction .p:hover {
-  font-size: 26px;
+  font-size: 1.625rem;
 }
 .announcement {
   display: flex;
-  height: 78px;
-  line-height: 78px;
-  margin-left: 160px;
+  height: 4.875rem;
+  line-height: 4.875rem;
+  margin-left: 10rem;
 }
 .announcement_icon {
   color: #338bcd;
 }
 .announcement_icon .iconfont {
-  font-size: 29px;
+  font-size: 1.8125rem;
   font-weight: 600;
 }
 .announcement_title {
-  font-size: 22px;
+  font-size: 1.375rem;
   font-family: "AlibabaPuHuiTi_2_55_Regular", sans-serif;
   color: rgb(0, 111, 193);
-  margin-left: 6px;
-  margin-right: 12px;
+  margin-left: 0.375rem;
+  margin-right: 0.75rem;
 }
 .announcement_text {
   flex: 0.908;
@@ -596,7 +596,7 @@ onMounted(() => {
   width: 100%;
   white-space: nowrap;
   display: flex;
-  font-size: 22px;
+  font-size: 1.375rem;
   font-family: "AlibabaPuHuiTi_2_45_Light", sans-serif;
   color: rgb(89, 87, 87);
 }
@@ -607,7 +607,7 @@ onMounted(() => {
 }
 
 .pad_right {
-  padding-right: 50px; /* 创建间隔避免文字粘连 */
+  padding-right: 3.125rem; /* 创建间隔避免文字粘连 */
 }
 
 @keyframes marquee {
@@ -625,12 +625,12 @@ onMounted(() => {
 }
 .product_content {
   width: 100%;
-  height: 922px;
+  height: 57.625rem;
   display: flex;
-  padding-top: 80px;
+  padding-top: 5rem;
   position: relative;
   justify-content: space-evenly;
-  margin-bottom: 40px;
+  margin-bottom: 2.5rem;
 }
 @keyframes scaleIn {
   from {
@@ -645,10 +645,10 @@ onMounted(() => {
 .product_box {
   /* overflow: hidden; */
   width: 94%;
-  min-width: 1920px;
+  min-width: 120rem;
   margin: auto;
-  padding-left: 30px;
-  padding-right: 70px;
+  padding-left: 1.875rem;
+  padding-right: 4.375rem;
 }
 
 .product_content_box {
@@ -661,8 +661,8 @@ onMounted(() => {
   flex-shrink: 0;
   width: calc(33.333%);
   /* 每个图标占据三分之一的视口宽度 */
-  height: 700px;
-  margin: 10px;
+  height: 43.75rem;
+  margin: 0.625rem;
   color: white;
   align-items: center;
   justify-content: center;
@@ -672,15 +672,17 @@ onMounted(() => {
 
 .product_topImg {
   position: relative;
-  width: 420px;
-  height: 420px;
+  width: 26.25rem;
+  height: 26.25rem;
   margin: auto;
   cursor: pointer;
   z-index: 1000;
   animation: floatAnimation 3s ease-in-out infinite;
 }
 .product_topImg img {
-  margin-left: -5px;
+  width: 100%;
+  height: 100%;
+  margin-left: -0.3125rem;
   margin: auto;
 }
 @keyframes floatAnimation {
@@ -689,7 +691,7 @@ onMounted(() => {
     transform: translateY(0);
   }
   50% {
-    transform: translateY(-25px);
+    transform: translateY(-1.5625rem);
   }
 }
 .product_topImg:before {
@@ -716,27 +718,27 @@ onMounted(() => {
 }
 
 .product_h {
-  font-size: 40px;
+  font-size: 2.5rem;
   font-family: "AlibabaPuHuiTi_2_55_Regular", sans-serif;
   color: rgb(0, 111, 193);
   text-align: center;
 }
 
 .product_hr {
-  width: 106px;
-  height: 2px;
+  width: 6.625rem;
+  height: 0.125rem;
   background-color: #2081c9;
   text-align: center;
-  margin: 20px 0px;
+  margin: 1.25rem 0rem;
   margin: auto;
-  margin-top: 10px;
-  margin-bottom: 15px;
+  margin-top: 0.625rem;
+  margin-bottom: 0.9375rem;
 }
 
 .product_p {
-  width: 346px;
-  height: 72px;
-  font-size: 20px;
+  width: 21.625rem;
+  height: 4.5rem;
+  font-size: 1.25rem;
   font-family: "AlibabaPuHuiTi_2_45_Light", sans-serif;
   color: rgb(89, 87, 87);
   text-align: center;
@@ -744,50 +746,55 @@ onMounted(() => {
 }
 
 .product_button {
-  width: 139px;
-  height: 32px;
+  position: relative;
+  width: 8.6875rem;
+  height: 2rem;
   margin: auto;
   text-align: center;
   background-image: url("@/assets/imgs/_10_homePageImgs/button.png");
-  margin-top: 30px;
+  background-size: contain;
+  margin-top: 1.875rem;
   transition: all 0.3s ease;
   cursor: pointer;
 }
 .product_button:hover {
   transform: scale(1.1);
-  /* translate(0, -5px) 使文字在Y轴方向向上移动5px，scale(1.1) 使文字放大到原来的1.1倍 */
+  /* translate(0, -0.3125rem) 使文字在Y轴方向向上移动0.3125rem，scale(1.1) 使文字放大到原来的1.1倍 */
   color: #58ffa9;
   /* 改变文字颜色 */
 }
 .product_button span {
-  font-size: 18px;
-  line-height: 32px;
+  position: absolute;
+  top: 0;
+  left: 2.1rem;
+  font-size: 1.125rem;
+  line-height: 2rem;
   font-family: "AlibabaPuHuiTi_2_45_Light", sans-serif;
   color: rgb(0, 111, 193);
 }
 .left_icon .icon {
-  top: 320px;
-  left: 60px;
+  top: 20rem;
+  left: 3.75rem;
   position: absolute;
-  font-size: 70px;
+  font-size: 4.375rem;
   color: #006fc1;
   z-index: 100;
   cursor: pointer;
 }
 .right_icon .icon {
   position: absolute;
-  font-size: 70px;
-  top: 320px;
-  right: 50px;
+  font-size: 4.375rem;
+  top: 20rem;
+  right: 3.125rem;
   color: #006fc1;
   z-index: 100;
   cursor: pointer;
 }
 .company_introduction {
   position: relative;
-  height: 1140px;
+  height: 71.25rem;
   width: 100%;
-  padding: 100px 160px;
+  padding: 6.25rem 10rem;
   background-size: cover; /* 实现图片等比例缩放 */
   background-repeat: no-repeat;
 }
@@ -796,112 +803,112 @@ onMounted(() => {
   left: 0;
   position: absolute;
   width: 100%;
-  height: 1140px;
+  height: 71.25rem;
   z-index: -100;
 }
 .company_introduction .bg_img img {
   width: 100%;
-  height: 1140px;
+  height: 71.25rem;
 }
 .introduction_title {
-  font-size: 44px;
+  font-size: 2.75rem;
   font-family: "AlibabaPuHuiTi_2_65_Medium";
   color: rgb(0, 0, 0);
-  margin-bottom: 65px;
+  margin-bottom: 4.0625rem;
   width: 100%;
 }
 .introduction_small_title {
-  font-size: 36px;
-  margin-bottom: 10px;
+  font-size: 2.25rem;
+  margin-bottom: 0.625rem;
   font-family: "AlibabaPuHuiTi_2_65_Medium";
   color: rgb(0, 0, 0);
   width: 100%;
 }
 .introduction_content {
   width: 100%;
-  height: 510px;
+  height: 31.875rem;
   display: flex;
-  margin-bottom: 140px;
+  margin-bottom: 8.75rem;
   object-fit: cover;
 }
 .introduction_content .text_left {
   width: 45%;
-  height: 510px;
-  margin-right: 100px;
-  border-top: 1px solid #313a3d;
-  padding-top: 13px;
+  height: 31.875rem;
+  margin-right: 6.25rem;
+  border-top: 0.0625rem solid #313a3d;
+  padding-top: 0.8125rem;
 }
 .introduction_content .img_right {
   width: 55%;
   height: 100%;
-  min-width: 400px;
+  min-width: 25rem;
   transition: ease 0.5s;
 }
 .introduction_content .img_right:hover {
   transform: scale(1.04);
-  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.488); /* 悬浮时显示黑色阴影 */
+  box-shadow: 0 0.375rem 0.625rem rgba(0, 0, 0, 0.488); /* 悬浮时显示黑色阴影 */
 }
 .introduction_content .img_right img {
   width: 100%;
   height: 100%;
   object-fit: cover; /* 实现图片等比例缩放 */
-  min-width: 400px;
+  min-width: 25rem;
 }
 .introduction_content .p {
-  font-size: 20px;
+  font-size: 1.25rem;
   font-family: "AlibabaPuHuiTi_2_45_Light";
   color: rgb(89, 87, 87);
   line-height: 1.7;
 }
 .introduction_content .p1 {
-  margin-bottom: 30px;
+  margin-bottom: 1.875rem;
 }
 
 .introduction_honor {
-  margin-bottom: 118px;
+  margin-bottom: 7.375rem;
   display: flex;
   width: 100%;
-  height: 57px;
-  border-right: 1px solid #fff;
+  height: 3.5625rem;
+  border-right: 0.0625rem solid #fff;
 }
 .introduction_honor .honor_info {
   width: 100%;
-  border-left: 1px solid #fff;
+  border-left: 0.0625rem solid #fff;
   text-align: center;
   margin: auto;
 }
 .introduction_honor .honor_info .p {
-  font-size: 26px;
+  font-size: 1.625rem;
   font-family: "AlibabaPuHuiTi_2_45_Light", sans-serif;
   color: rgb(255, 255, 255);
-  margin-top: -10px;
+  margin-top: -0.625rem;
 }
 .great_flag {
   position: relative;
-  padding: 152px 156px;
+  padding: 9.5rem 9.75rem;
   background-color: #def1fb;
-  height: 1474px;
+  height: 92.125rem;
   width: 100%;
 }
 .great_flag_title {
   display: flex;
   justify-content: space-between;
-  margin-bottom: 100px;
+  margin-bottom: 6.25rem;
 }
 .great_flag_title .h {
-  font-size: 44px;
+  font-size: 2.75rem;
   font-family: "AlibabaPuHuiTi_2_65_Medium", sans-serif;
   color: rgb(35, 24, 21);
 }
 .great_flag_title .title_right {
   display: flex;
-  line-height: 70px;
+  line-height: 4.375rem;
 }
 .great_flag_title .p {
-  font-size: 24px;
+  font-size: 1.5rem;
   font-family: "AlibabaPuHuiTi_2_55_Regular", sans-serif;
   color: #595757;
-  margin-right: 20px;
+  margin-right: 1.25rem;
 }
 .great_flag_title .p:hover {
   color: #006fc1;
@@ -909,55 +916,55 @@ onMounted(() => {
 }
 .great_flag_content {
   width: 100%;
-  height: 579px;
+  height: 36.1875rem;
   display: flex;
   justify-content: space-between;
-  margin-bottom: 73px;
+  margin-bottom: 4.5625rem;
 }
 .great_flag_content .content_detail {
   width: 32%;
-  height: 575px;
+  height: 35.9375rem;
   background-color: #ffffff;
   transition: 0.5s;
   cursor: pointer;
 }
 .great_flag_content .content_detail:hover {
   transform: scale(0.99);
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.286); /* 悬浮时显示黑色阴影 */
+  box-shadow: 0 0.25rem 0.625rem rgba(0, 0, 0, 0.286); /* 悬浮时显示黑色阴影 */
 }
 
 .great_flag_content .bottom_text {
-  padding: 36px 40px;
+  padding: 2.25rem 2.5rem;
 }
 .great_flag_content .bottom_text .time {
-  font-size: 20px;
+  font-size: 1.25rem;
   font-family: "AvenirNext";
   color: rgb(34, 56, 147);
 }
 .great_flag_content .bottom_text .hr {
-  width: 43px;
-  height: 2px;
+  width: 2.6875rem;
+  height: 0.125rem;
   background-color: rgb(34, 56, 147);
-  margin: 4px 0px;
+  margin: 0.25rem 0rem;
 }
 .great_flag_content .bottom_text .p {
-  font-size: 22px;
+  font-size: 1.375rem;
   font-family: "AlibabaPuHuiTi_2_55_Regular", sans-serif;
   color: rgb(89, 87, 87);
 }
 .great_flag_button {
   margin: auto;
-  width: 196px;
-  height: 47px;
+  width: 12.25rem;
+  height: 2.9375rem;
   background-color: #ffffff;
   display: flex;
   transition: transform 0.3s ease;
 }
 .button_left {
-  width: 150px;
+  width: 9.375rem;
   height: 100%;
-  line-height: 47px;
-  font-size: 18px;
+  line-height: 2.9375rem;
+  font-size: 1.125rem;
   font-family: "AlibabaPuHuiTi_2_45_Light";
   background-color: #006fc1;
   color: #fff;
@@ -971,44 +978,44 @@ onMounted(() => {
   width: 10%;
   height: 100%;
   color: rgb(255, 255, 255);
-  line-height: 47px;
+  line-height: 2.9375rem;
   text-align: center;
 }
 .great_flag_button .icon {
-  font-size: 30px;
+  font-size: 1.875rem;
   color: #006fc1;
-  margin-left: 8px;
+  margin-left: 0.5rem;
 }
 .great_flag_footer {
   width: 100%;
   position: absolute;
-  bottom: -7px;
+  bottom: -0.4375rem;
   left: 0;
 }
 .great_flag_footer img {
-  height: 420px;
+  height: 26.25rem;
   width: 100%;
 }
 .great_flag_content .content_detail_text {
   width: 33%;
-  height: 575px;
+  height: 35.9375rem;
   background-color: #fff;
-  padding-top: 48px;
-  padding-left: 40px;
+  padding-top: 3rem;
+  padding-left: 2.5rem;
   transition: 0.5s;
   cursor: pointer;
 }
 .great_flag_content .content_detail_text:hover {
   transform: scale(0.99);
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.286); /* 悬浮时显示黑色阴影 */
+  box-shadow: 0 0.25rem 0.625rem rgba(0, 0, 0, 0.286); /* 悬浮时显示黑色阴影 */
 }
 .great_flag .top_img img {
   width: 100%;
-  height: 372px;
+  height: 23.25rem;
   background-size: cover;
 }
 .great_flag_content .content_detail_text .text .title {
-  font-size: 22px;
+  font-size: 1.375rem;
   font-family: "AlibabaPuHuiTi_2_55_Regular";
   color: rgb(89, 87, 87);
 }
@@ -1016,15 +1023,15 @@ onMounted(() => {
   color: rgb(34, 56, 147);
 }
 .great_flag_content .content_detail_text .text .line {
-  width: 43px;
-  height: 2px;
+  width: 2.6875rem;
+  height: 0.125rem;
   background-color: rgb(34, 56, 147);
-  margin: 4px 0px;
+  margin: 0.25rem 0rem;
 }
 .great_flag_content .content_detail_text .time {
-  font-size: 20px;
+  font-size: 1.25rem;
   font-family: "AvenirNext";
   color: rgb(34, 56, 147);
-  margin-bottom: 28px;
+  margin-bottom: 1.75rem;
 }
 </style>

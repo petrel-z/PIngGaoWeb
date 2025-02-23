@@ -28,7 +28,9 @@ import MyPagination from "@/components/MyPagination.vue";
         <div class="items">
           <ul>
             <li v-for="i in 5" :key="i">
-              <Item2 bgColor="#def1fb" size="big" />
+              <router-link to="/informationCenter/latestAnnouncement-2">
+                <Item2 bgColor="#def1fb" size="big" />
+              </router-link>
             </li>
           </ul>
         </div>

@@ -4,7 +4,7 @@ defineOptions({
 });
 import ContentPag from "@/views/_2_informationCenter/headquartersDynamics/ContentPag.vue";
 import MyTitle from "@/components/MyTitle.vue";
-import Item1 from "@/components/Item-1.vue";
+import Item1 from "@/components/item-1.vue";
 import MyButton from "@/components/MyButton.vue";
 
 const items = [

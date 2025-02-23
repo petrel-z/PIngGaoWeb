@@ -85,26 +85,30 @@ function handleClick(e) {
 </script>
 
 <template>
-  <div style="position: relative; overflow: hidden;">
+  <div style="position: relative; overflow: hidden">
     <div class="body">
       <div>
         <div style="padding-top: 64px">
           <my-title title="媒体聚焦" English="MEDIA FOCUS" />
         </div>
         <div class="item-container">
-          <Item1
-            v-for="(item, index) in items"
-            :key="index"
-            :month="item.month"
-            :year="item.year"
-            :title="item.title"
-            :text="item.text"
-            hoverColor="#006fc1"
-          />
+          <router-link to="/informationCenter/mediaFocus-3">
+            <Item1
+              v-for="(item, index) in items"
+              :key="index"
+              :month="item.month"
+              :year="item.year"
+              :title="item.title"
+              :text="item.text"
+              hoverColor="#006fc1"
+            />
+          </router-link>
         </div>
       </div>
       <div class="button-container">
-        <router-link to="/informationCenter/mediaFocus-2"><myButton @childButton="handleClick" /></router-link>
+        <router-link to="/informationCenter/mediaFocus-2"
+          ><myButton @childButton="handleClick"
+        /></router-link>
       </div>
     </div>
   </div>

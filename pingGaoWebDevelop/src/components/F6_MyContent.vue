@@ -28,36 +28,36 @@ const props = defineProps({
 <style lang="less" scoped>
 .framework {
   width: 100%;
-  border-top: 1px solid #006fc1;
-  padding-top: 46px;
-  padding-bottom: 36px;
+  border-top: 0.0625rem solid #006fc1;
+  padding-top: 2.875rem;
+  padding-bottom: 2.25rem;
   display: flex;
-  min-height: 300px;
+  min-height: 18.75rem;
 }
 
 .left {
   width: 32%;
   position: relative;
   .icon-right {
-    font-size: 79px;
+    font-size: 4.9375rem;
     color: #006fc1;
-    margin-left: 15px;
+    margin-left: 0.9375rem;
     position: absolute;
-    width: 68px;
-    height: 68px;
-    margin-top: 45px;
+    width: 4.25rem;
+    height: 4.25rem;
+    margin-top: 2.8125rem;
   }
 }
 
 
 .left .h {
-  font-size: 32px;
+  font-size: 2rem;
   font-family: "AlibabaPuHuiTi_2_65_Medium", sans-serif;
   color: rgb(0, 111, 193);
 }
 
 .right {
   width: 70%;
-  margin-left: 20px;
+  margin-left: 1.25rem;
 }
 </style>

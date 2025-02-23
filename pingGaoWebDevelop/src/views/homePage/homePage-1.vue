@@ -34,25 +34,27 @@
 .homePage {
   position: relative;
   width: 100%;
-  height: 100vh;
+  // height: 100%;
   background-image: url("../../assets/imgs/_11_welcomeImgs/homePageBg.png");
   background-repeat: no-repeat;
   background-size: cover;
-  padding: 75px 75px 55px 75px;
+  padding: 4.6875rem 4.6875rem 3.4375rem 4.6875rem;
 
   .top {
     width: 100%;
-    height: 140px;
-    margin-bottom: 55px;
+    height: 8.75rem;
+    margin-bottom: 3.4375rem;
     position: relative;
     .top-left {
-      width: 690px;
+      width: 43.125rem;
       height: 100%;
       color: #fff;
-
       position: absolute;
       top: 0;
       left: 0;
+      img{
+        width:15rem;
+      }
     }
 
     .top-right {
@@ -62,41 +64,42 @@
       justify-content: center;
 
       img {
-        height: 30px;
+        width: 24rem;
+        height: 1.875rem;
       }
     }
   }
 
   .center {
     width: 100%;
-    height: 410px;
+    height: 25.625rem;
 
     .center-left,
     .center-right {
       display: inline-block;
       width: 50%;
       height: 100%;
-      padding-top: 100px;
+      padding-top: 6.25rem;
 
       .image {
-        width: 320px;
-        height: 110px;
+        width: 20rem;
+        height: 6.875rem;
         background-image: url("../../assets/imgs/_11_welcomeImgs/homePageLogo.png");
         background-repeat: no-repeat;
-        background-size: auto;
+        background-size: cover;
       }
 
       .button {
         clear: both;
-        width: 230px;
-        height: 52px;
-        line-height: 52px;
+        width: 14.375rem;
+        height: 3.25rem;
+        line-height: 3.25rem;
         text-align: center;
         background-color: #fff;
-        border-radius: 52px;
-        margin-top: 40px;
+        border-radius: 3.25rem;
+        margin-top: 2.5rem;
 
-        font-size: 20px;
+        font-size: 1.25rem;
         font-family: "AlibabaPuHuiTi_2_65_Medium";
         color: rgb(0, 111, 193);
       }
@@ -108,8 +111,8 @@
     }
 
     .center-left {
-      border-right: 1px solid #fff;
-      padding-right: 245px;
+      border-right: 0.0625rem solid #fff;
+      padding-right: 15.3125rem;
 
       .image {
         float: right;
@@ -121,7 +124,7 @@
     }
 
     .center-right {
-      padding-left: 245px;
+      padding-left: 15.3125rem;
 
       .image {
         float: left;
@@ -129,7 +132,7 @@
 
       .button {
         float: left;
-        margin-left: 90px;
+        margin-left: 5.625rem;
       }
     }
   }
@@ -139,11 +142,11 @@
     left: 50%;
     transform: translateX(-50%);
     bottom: 0;
-    font-size: 24.675px;
+    font-size: 1.5422rem;
     font-family: "Avenir Black";
     color: rgb(255, 255, 255);
     text-align: center;
-    margin-bottom: 85px;
+    margin-bottom: 5.3125rem;
   }
 }
 </style>

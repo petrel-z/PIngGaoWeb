@@ -91,14 +91,14 @@ onMounted(initializeObservers); // 在组件挂载时调用
   position: relative;
   margin: auto;
   width: 100%;
-  padding: 64px 11%;
-  border-radius: 20px;
+  padding: 4rem 11%;
+  border-radius: 1.25rem;
   background-color: #f7f8f8;
   z-index: -100;
 }
 .content {
   width: 100%;
-  margin-top: 50px;
+  margin-top: 3.125rem;
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
@@ -106,9 +106,9 @@ onMounted(initializeObservers); // 在组件挂载时调用
 .content .info {
   position: relative;
   width: 33%;
-  height: 301px;
+  height: 18.8125rem;
   background-size: cover;
-  margin-bottom: 10px;
+  margin-bottom: 0.625rem;
   transform: scale(0.5); /* 初始缩小 */
   opacity: 0; /* 初始不可见 */
   visibility: hidden; /* 初始隐藏 */
@@ -128,42 +128,42 @@ onMounted(initializeObservers); // 在组件挂载时调用
 
 }
 .info .h {
-  top: 42px;
-  left: 32px;
+  top: 2.625rem;
+  left: 2rem;
   position: absolute;
-  font-size: 29px;
+  font-size: 1.8125rem;
   font-family: "AlibabaPuHuiTi_2_65_Medium", sans-serif;
   color: rgb(0, 111, 193);
 }
 .info .hr {
   width: 40%;
-  height: 1px;
-  left: 32px;
+  height: 0.0625rem;
+  left: 2rem;
   background-color: #4093d1;
-  top: 85px;
+  top: 5.3125rem;
   position: absolute;
 }
 .info .p1 {
-  top: 88px;
+  top: 5.5rem;
   position: absolute;
-  left: 32px;
-  font-size: 20px;
+  left: 2rem;
+  font-size: 1.25rem;
   font-family: "AlibabaPuHuiTi_2_45_Light", sans-serif;
   color: rgb(89, 87, 87);
 }
 .info .p2 {
-  top: 118px;
+  top: 7.375rem;
   position: absolute;
-  left: 32px;
-  font-size: 20px;
+  left: 2rem;
+  font-size: 1.25rem;
   font-family: "AlibabaPuHuiTi_2_45_Light", sans-serif;
   color: rgb(89, 87, 87);
 }
 .info .p3 {
-  top: 146px;
+  top: 9.125rem;
   position: absolute;
-  left: 32px;
-  font-size: 20px;
+  left: 2rem;
+  font-size: 1.25rem;
   font-family: "AlibabaPuHuiTi_2_45_Light", sans-serif;
   color: rgb(89, 87, 87);
 }
