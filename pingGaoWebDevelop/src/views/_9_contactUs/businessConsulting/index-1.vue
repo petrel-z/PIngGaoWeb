@@ -48,9 +48,31 @@ import MyTitle from "@/components/MyTitle.vue";
     .top-title {
       margin-top: 6rem;
       margin-bottom: 6rem;
+      position: relative;
+      animation: toptitle 0.7s ease-out forwards;
     }
-
+    @keyframes toptitle {
+      from {
+        left: 100%;
+      }
+      to {
+        left: 0;
+      }
+    }
+    @keyframes online-consultation {
+      from {
+        opacity: 0;
+        top: 200px;
+      }
+      to {
+        opacity: 1;
+        top: 0;
+      }
+    }
     .online-consultation {
+      position: relative;
+      animation: online-consultation 1s ease forwards;
+
       height: 86rem;
       background-color: #fff;
       border-radius: 1rem;

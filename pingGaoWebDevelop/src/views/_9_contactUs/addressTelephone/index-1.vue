@@ -77,6 +77,21 @@ import MyTitle from "@/components/MyTitle.vue";
     width: 78%;
     margin-left: 11%;
     padding: 6rem 0;
+
+    .top-title {
+      position: relative;
+      animation: toptitle 0.7s ease-out forwards;
+    }
+
+    @keyframes toptitle {
+      from {
+        left: 100%;
+      }
+
+      to {
+        left: 0;
+      }
+    }
   }
 
   .address {
@@ -85,7 +100,16 @@ import MyTitle from "@/components/MyTitle.vue";
     display: flex;
     justify-content: space-between;
 
+    @keyframes opacity-in {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
     .left {
+      animation: opacity-in 0.5s ease-out forwards;
       z-index: 999;
 
       padding-left: 11%;
@@ -117,6 +141,8 @@ import MyTitle from "@/components/MyTitle.vue";
     }
 
     .right {
+      animation: opacity-in 1s ease-out forwards;
+
       z-index: 999;
       height: auto;
       width: 40%;
@@ -228,6 +254,7 @@ import MyTitle from "@/components/MyTitle.vue";
 
         .common {
           padding: 1.3rem 0;
+
           .span-left {
             font-size: 1.4rem;
           }
@@ -250,6 +277,7 @@ import MyTitle from "@/components/MyTitle.vue";
           div {
             margin: 0.5rem 0;
           }
+
           div:nth-child(1) {
             line-height: 1.2;
           }
@@ -258,44 +286,46 @@ import MyTitle from "@/components/MyTitle.vue";
     }
   }
 }
+
 @media (max-width: 1200px) {
 
-.addressTelephone-content {
-  .address {
-    .right {
-      .company-name {
-        font-size: 2.8rem;
-        padding: 0rem 0 1rem 0;
-      }
-
-      .common {
-        padding: 1.8rem 0;
-        .span-left {
-          font-size: 1.8rem;
+  .addressTelephone-content {
+    .address {
+      .right {
+        .company-name {
+          font-size: 2.8rem;
+          padding: 0rem 0 1rem 0;
         }
 
-        .span-center {
-          margin: 0 0.8rem;
-          font-size: 1.8rem;
+        .common {
+          padding: 1.8rem 0;
+
+          .span-left {
+            font-size: 1.8rem;
+          }
+
+          .span-center {
+            margin: 0 0.8rem;
+            font-size: 1.8rem;
+          }
+
+          .span-right {
+            font-size: 2.2rem;
+          }
         }
 
-        .span-right {
-          font-size: 2.2rem;
-        }
-      }
-
-      .last {
-        font-size: 1.7rem;
-        padding: 0.5rem 0 0.5rem 0;
+        .last {
+          font-size: 1.7rem;
+          padding: 0.5rem 0 0.5rem 0;
 
 
-        div {
-          margin: 0.6rem 0;
+          div {
+            margin: 0.6rem 0;
+          }
         }
       }
     }
   }
-}
 }
 
 /* 大型设备（桌面，大于 900px） */
