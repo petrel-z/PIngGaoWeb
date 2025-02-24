@@ -598,7 +598,12 @@ onMounted(() => {
 .announcement_icon .iconfont {
   font-size: 1.8125rem;
   font-weight: 600;
-
+}
+@media (min-width:200px) and (max-width: 400px) {
+  .announcement_icon .iconfont {
+    display: block;
+    margin-top: 0rem;
+}
 }
 .announcement_title {
   font-size: 1.375rem;

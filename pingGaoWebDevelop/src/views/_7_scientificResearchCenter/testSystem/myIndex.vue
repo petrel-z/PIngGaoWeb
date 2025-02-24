@@ -41,8 +41,7 @@ onMounted(initializeObservers); // 在组件挂载时调用
     <MyTitle title="试验体系" English="TEST SYSTEM"></MyTitle>
     <div class="content">
       <MyContent class="my_content" title="三院两所两中心一基地">
-        <div class="content1"  ref="wordRightRef1"
-        :class="{ 'move-right': isVisibleWordRight1}">
+        <div class="content1" ref="wordRightRef1" :class="{ 'move-right': isVisibleWordRight1 }">
           <span class="left">
             <div class="p">国家级企业技术中心</div>
             <div class="p">机械工业交流高压开关设备工程技术研究中心</div>
@@ -63,8 +62,7 @@ onMounted(initializeObservers); // 在组件挂载时调用
         </div>
       </MyContent>
       <MyContent title="科技创新平台">
-        <div class="content2"  ref="wordRightRef2"
-        :class="{ 'move-right': isVisibleWordRight2}">
+        <div class="content2" ref="wordRightRef2" :class="{ 'move-right': isVisibleWordRight2 }">
           <div class="text">
             高压开关设备绝缘实验室、金属材料成型及热处理实验室、煤接技术及压力容实验室，表面处理及金属防高实验室，拥有自主开发，集低压直流配用电、低压动模仿真、直流用电展示等功能于一体智慧物联直流共享试验室。势发布研究、试验、成果等资源，推动科技资源在公司内的充分共享:提高实验室研究能力，储全实验率协作配合，探罗建立有偿共享和对外开故的商业化梗式。
           </div>
@@ -92,7 +90,7 @@ onMounted(initializeObservers); // 在组件挂载时调用
   margin-top: 2.875rem;
   border-bottom: 0.0625rem solid #006fc1;
 }
-.content1{
+.content1 {
   width: 100%;
   transform: translateX(100%); /* 初始位置在左边 */
   visibility: hidden;
@@ -103,7 +101,7 @@ onMounted(initializeObservers); // 在组件挂载时调用
   transform: translateX(0);
   visibility: visible;
 }
-.content2{
+.content2 {
   width: 100%;
   transform: translateX(100%); /* 初始位置在左边 */
   visibility: hidden;
@@ -152,14 +150,16 @@ onMounted(initializeObservers); // 在组件挂载时调用
 .content .right {
   width: 26.25rem;
 }
-@media (min-width:400px) and (max-width: 800px) {
-  .text ,.p{
-  font-size: 0.9rem !important;
+@media (min-width: 400px) and (max-width: 800px) {
+  .text,
+  .p {
+    font-size: 0.9rem !important;
+  }
 }
-}
-@media (min-width:1500px) and (max-width: 1800px) {
-  .text ,.p{
-  font-size: 1rem !important;
-}
+@media (min-width: 1500px) and (max-width: 1800px) {
+  .text,
+  .p {
+    font-size: 1rem !important;
+  }
 }
 </style>
