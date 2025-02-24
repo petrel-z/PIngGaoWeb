@@ -6,18 +6,21 @@ const items = ref(null);
 const divTitle1 = ref(null);
 const divTitle2 = ref(null);
 const divTitle3 = ref(null);
+const titleBox = ref(null);
 onMounted(() => {
   // 获取目标元素容器
   const targetContainer = items.value;
+  const titleBoxContainer = titleBox.value;
   const div1 = divTitle1.value;
   const div2 = divTitle2.value;
   const div3 = divTitle3.value;
-  if (targetContainer) {
+  if (targetContainer && titleBoxContainer) {
     // 监听页面滚动事件
     window.addEventListener("scroll", () => {
       if (!targetContainer) return;
       // 获取元素顶部距离页面顶部的距离
       const elementTop = targetContainer.getBoundingClientRect().top;
+      const titleBoxTop = titleBoxContainer.getBoundingClientRect().top;
       // 获取窗口的高度
       const windowHeight = window.innerHeight;
 
@@ -26,6 +29,11 @@ onMounted(() => {
         targetContainer.classList.add("show");
       } else {
         targetContainer.classList.remove("show");
+      }
+      if (titleBoxTop < windowHeight) {
+        titleBoxContainer.classList.add("show");
+      } else {
+        titleBoxContainer.classList.remove("show");
       }
     });
   }
@@ -82,8 +90,8 @@ onMounted(() => {
       <img src="../../../assets/imgs/_8_humanResourcesImgs/bg-1.png" alt="" />
     </div>
     <div ref="items" class="body-content">
-      <div>
-        <MyTitle title="人才开发" English="TALENT DEVELOPMENT"></MyTitle>
+      <div ref="titleBox">
+        <MyTitle class="my-title" title="人才开发" English="TALENT DEVELOPMENT"></MyTitle>
       </div>
       <div style="margin-top: 3rem; display: flex; width: 100%">
         <div class="body-content-left">
@@ -151,6 +159,7 @@ onMounted(() => {
   margin: 0 11%;
   padding-top: 66px;
   padding-bottom: 30vh;
+  overflow: hidden;
 }
 
 .body-content-left {
@@ -242,5 +251,15 @@ onMounted(() => {
 
 .bg-blue {
   background-color: #006fc1;
+}
+
+.show .my-title {
+  left: 0;
+}
+
+.my-title {
+  position: relative;
+  left: -200%;
+  transition: left 0.5s ease;
 }
 </style>

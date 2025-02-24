@@ -1,10 +1,47 @@
 <script setup>
+import { ref, onMounted } from "vue";
+
 defineOptions({
   name: "marketing-serviceIndex2-1",
 });
 
 import MyTitle from "@/components/MyTitle.vue";
 import MyContent from "@/components/MyContent.vue";
+
+const titleBox = ref(null);
+const contentBox = ref(null);
+const itemsContent = ref(null);
+onMounted(() => {
+  if (titleBox.value && contentBox.value && itemsContent.value) {
+    // 监听页面滚动事件
+    window.addEventListener("scroll", () => {
+      if (!titleBox.value || !contentBox.value || !itemsContent.value) return;
+      // 获取元素顶部距离页面顶部的距离
+      const titleTop = titleBox.value.getBoundingClientRect().top;
+      const contentTop = contentBox.value.getBoundingClientRect().top;
+      const itemsTop = itemsContent.value.getBoundingClientRect().top;
+      // 获取窗口的高度
+      const windowHeight = window.innerHeight;
+
+      // 判断元素是否进入可视区域
+      if (titleTop < windowHeight) {
+        titleBox.value.classList.add("show");
+      } else {
+        titleBox.value.classList.remove("show");
+      }
+      if (contentTop < windowHeight) {
+        contentBox.value.classList.add("show");
+      } else {
+        contentBox.value.classList.remove("show");
+      }
+      if (itemsTop < windowHeight) {
+        itemsContent.value.classList.add("show");
+      } else {
+        itemsContent.value.classList.remove("show");
+      }
+    });
+  }
+});
 </script>
 
 <template>
@@ -12,45 +49,54 @@ import MyContent from "@/components/MyContent.vue";
     <div style="position: relative; min-height: 1120px">
       <div class="body-content">
         <div class="bodyBg"></div>
-        <div>
-          <MyTitle title="营销组织" English="MARKETING ORGANIZATION" />
+        <div ref="titleBox">
+          <MyTitle class="title" title="营销组织" English="MARKETING ORGANIZATION" />
         </div>
-        <div
-          style="
-            margin-top: 55px;
-            background-color: #45b3e0;
-            border-radius: 0.5rem;
-            min-height: auto;
-            width: 100%;
-          "
-        >
-          <MyContent
-            title="中国最先进的电力装备供应商之一"
-            content1="五十年来，在电厂、冶金、化工、纺织、煤炭、电气化铁路等领域，为遍及六十多个国家和地区的客户提供创新型的产品、服务和"
-            content2="解决方案，逐渐成为行业的佼佼者，并以先进的技术、完善的服务，影响和改善更多人的工作和生活。"
-          />
-          <div class="my-content-bottom">
-            <div class="my-content-bottom-item">
-              <span>国内销售</span>
-              <div></div>
-              <span>0371-66968576</span>
-            </div>
-            <div class="my-content-bottom-item">
-              <span>国外销售</span>
-              <div></div>
-              <span>0371-58505793</span>
-            </div>
-            <div class="my-content-bottom-item">
-              <span>客服电话</span>
-              <div></div>
-              <span>400-6700-312</span>
+        <div ref="contentBox">
+          <div
+            class="content"
+            style="
+              margin-top: 55px;
+              background-color: #45b3e0;
+              border-radius: 0.5rem;
+              min-height: auto;
+              width: 100%;
+            "
+          >
+            <MyContent
+              title="中国最先进的电力装备供应商之一"
+              content1="五十年来，在电厂、冶金、化工、纺织、煤炭、电气化铁路等领域，为遍及六十多个国家和地区的客户提供创新型的产品、服务和"
+              content2="解决方案，逐渐成为行业的佼佼者，并以先进的技术、完善的服务，影响和改善更多人的工作和生活。"
+            />
+            <div class="my-content-bottom">
+              <div class="my-content-bottom-item">
+                <span>国内销售</span>
+                <div></div>
+                <span>0371-66968576</span>
+              </div>
+              <div class="my-content-bottom-item">
+                <span>国外销售</span>
+                <div></div>
+                <span>0371-58505793</span>
+              </div>
+              <div class="my-content-bottom-item">
+                <span>客服电话</span>
+                <div></div>
+                <span>400-6700-312</span>
+              </div>
             </div>
           </div>
         </div>
+
         <div class="items-div">
           <div class="items-title">平高集团各产业单位联系方式</div>
-          <div class="items-content">
-            <div class="item" v-for="i in 25" :key="i">
+          <div class="items-content" ref="itemsContent">
+            <div
+              class="item"
+              v-for="i in 25"
+              :key="i"
+              :class="{ left: i % 3 === 1, right: i % 3 === 0 || i % 3 === 2 }"
+            >
               <hr class="item-hr1" />
               <div>
                 <div class="item-title">河南平高电气股份有限公司</div>
@@ -161,6 +207,7 @@ import MyContent from "@/components/MyContent.vue";
   justify-content: space-between;
   width: 100%;
   margin-top: 47px;
+  overflow: hidden;
 }
 
 .item {
@@ -209,5 +256,45 @@ import MyContent from "@/components/MyContent.vue";
   left: 0px;
   bottom: 0px;
   z-index: -1;
+}
+
+.show .title {
+  left: 0;
+}
+
+.show .content {
+  right: 0;
+}
+
+.show .left {
+  left: 0;
+}
+
+.show .right {
+  right: 0;
+}
+
+.title {
+  position: relative;
+  left: -200%;
+  transition: left 0.5s ease;
+}
+
+.content {
+  position: relative;
+  right: -200%;
+  transition: right 0.5s ease;
+}
+
+.left {
+  position: relative;
+  left: -200%;
+  transition: left 1s ease;
+}
+
+.right {
+  position: relative;
+  right: -200%;
+  transition: right 1s ease;
 }
 </style>

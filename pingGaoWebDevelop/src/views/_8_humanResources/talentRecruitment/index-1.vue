@@ -1,26 +1,56 @@
 <script setup>
+import { ref, onMounted } from "vue";
+
 import MyTitle from "@/components/MyTitle.vue";
 import Item2 from "@/components/Item-2.vue";
+
+const titleBox = ref(null);
+const itemBox = ref(null);
+onMounted(() => {
+  if (titleBox.value && itemBox.value) {
+    // 监听页面滚动事件
+    window.addEventListener("scroll", () => {
+      // 获取元素顶部距离页面顶部的距离
+      const titleTop = titleBox.value.getBoundingClientRect().top;
+      const itemTop = itemBox.value.getBoundingClientRect().top;
+      // 获取窗口的高度
+      const windowHeight = window.innerHeight;
+
+      // 判断元素是否进入可视区域
+
+      if (titleTop < windowHeight) {
+        titleBox.value.classList.add("show");
+      } else {
+        titleBox.value.classList.remove("show");
+      }
+      if (itemTop < windowHeight) {
+        itemBox.value.classList.add("show");
+      } else {
+        itemBox.value.classList.remove("show");
+      }
+    });
+  }
+});
 </script>
 
 <template>
   <div style="position: relative; min-height: 1562px; background-color: #def1fb; z-index: -2">
     <div class="bodyBg"></div>
     <div class="body-content">
-      <div>
-        <MyTitle title="人才招聘" English="TALENT RECRUITMENT"></MyTitle>
+      <div ref="titleBox">
+        <MyTitle class="my-title" title="人才招聘" English="TALENT RECRUITMENT"></MyTitle>
       </div>
-      <div style="display: flex; margin-top: 40px">
+      <div ref="itemBox" style="display: flex; margin-top: 3rem">
         <div class="left">高校毕业生招聘</div>
         <div class="right">社会公开招聘</div>
       </div>
-      <div style="margin-top: 70px">
+      <div style="margin-top: 4.9rem">
         <div class="title">高校毕业生招聘</div>
-        <div style="margin-top: 37px">
+        <div style="margin-top: 3.7rem">
           <Item2
             v-for="i in 3"
             :key="i"
-            style="margin-bottom: 17px"
+            style="margin-bottom: 1.7rem"
             time="2022.03.08"
             text="国电气装备旗下平高集团2022年社会招聘公告"
             size="big"
@@ -44,6 +74,25 @@ import Item2 from "@/components/Item-2.vue";
 .body-content {
   margin: 0 11%;
   padding-top: 66px;
+  overflow: hidden;
+}
+
+.show .left {
+  left: 0;
+}
+
+.show .right {
+  right: 0;
+}
+
+.show .my-title {
+  left: 0;
+}
+
+.my-title {
+  position: relative;
+  left: -200%;
+  transition: left 0.5s ease;
 }
 
 .left {
@@ -61,6 +110,9 @@ import Item2 from "@/components/Item-2.vue";
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  position: relative;
+  left: -200%;
+  transition: left 0.5s ease;
 }
 
 .right {
@@ -79,6 +131,9 @@ import Item2 from "@/components/Item-2.vue";
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  position: relative;
+  right: -200%;
+  transition: right 0.5s ease;
 }
 
 .title {

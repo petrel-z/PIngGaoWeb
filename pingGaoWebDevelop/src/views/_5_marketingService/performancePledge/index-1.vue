@@ -1,20 +1,50 @@
 <script setup>
+import { ref, onMounted } from "vue";
+
 defineOptions({
   name: "marketing-serviceIndex1-1",
 });
 import MyTitle from "@/components/MyTitle.vue";
 import MyContent from "@/components/MyContent.vue";
+
+const titleBox = ref(null);
+const contentBox = ref(null);
+onMounted(() => {
+  if (titleBox.value && contentBox.value) {
+    // 监听页面滚动事件
+    window.addEventListener("scroll", () => {
+      if (!titleBox.value || !contentBox.value) return;
+      // 获取元素顶部距离页面顶部的距离
+      const titleTop = titleBox.value.getBoundingClientRect().top;
+      const contentTop = contentBox.value.getBoundingClientRect().top;
+      // 获取窗口的高度
+      const windowHeight = window.innerHeight;
+
+      // 判断元素是否进入可视区域
+      if (titleTop < windowHeight) {
+        titleBox.value.classList.add("show");
+      } else {
+        titleBox.value.classList.remove("show");
+      }
+      if (contentTop < windowHeight) {
+        contentBox.value.classList.add("show");
+      } else {
+        contentBox.value.classList.remove("show");
+      }
+    });
+  }
+});
 </script>
 
 <template>
   <div style="position: relative; min-height: 1120px">
     <div class="bodyBg"></div>
     <div class="body-content">
-      <div>
-        <MyTitle title="服务承诺" English="SERVICE COMMITMENT" />
+      <div ref="titleBox">
+        <MyTitle class="title" title="服务承诺" English="SERVICE COMMITMENT" />
       </div>
-      <div style="margin-top: 55px">
-        <MyContent />
+      <div ref="contentBox" style="margin-top: 55px">
+        <MyContent class="content" />
       </div>
     </div>
   </div>
@@ -30,8 +60,30 @@ import MyContent from "@/components/MyContent.vue";
   top: 310px;
   z-index: -1;
 }
+
 .body-content {
   margin: 0 11%;
   padding-top: 65px;
+  overflow: hidden;
+}
+
+.show .title {
+  left: 0;
+}
+
+.show .content {
+  right: 0;
+}
+
+.title {
+  position: relative;
+  left: -200%;
+  transition: left 0.5s ease;
+}
+
+.content {
+  position: relative;
+  right: -200%;
+  transition: right 0.5s ease;
 }
 </style>

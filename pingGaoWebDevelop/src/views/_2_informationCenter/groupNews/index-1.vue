@@ -1,4 +1,5 @@
 <script setup>
+import { onMounted, ref } from "vue";
 defineOptions({
   name: "NewsCenterIndex2-1",
 });
@@ -48,20 +49,49 @@ const items = [
 function handleClick(e) {
   console.log(e);
 }
+
+const titleBox = ref(null);
+const contentBox = ref(null);
+onMounted(() => {
+  if (titleBox.value && contentBox.value) {
+    // 监听页面滚动事件
+    window.addEventListener("scroll", () => {
+      if (!titleBox.value || !contentBox.value) return;
+      // 获取元素顶部距离页面顶部的距离
+      const titleTop = titleBox.value.getBoundingClientRect().top;
+      const contentTop = contentBox.value.getBoundingClientRect().top;
+      // 获取窗口的高度
+      const windowHeight = window.innerHeight;
+
+      // 判断元素是否进入可视区域
+      if (titleTop < windowHeight) {
+        titleBox.value.classList.add("show");
+      } else {
+        titleBox.value.classList.remove("show");
+      }
+      if (contentTop < windowHeight) {
+        contentBox.value.classList.add("show");
+      } else {
+        contentBox.value.classList.remove("show");
+      }
+    });
+  }
+});
 </script>
 
 <template>
-  <div style="position: relative; overflow: hidden;" >
+  <div style="position: relative; overflow: hidden">
     <div class="bodyBg">
       <div class="bodyBg1"></div>
     </div>
     <div class="body">
       <div>
-        <div style="padding-top: 64px">
-          <my-title title="集团新闻" English="GROUP NEWS" />
+        <div ref="titleBox" style="padding-top: 64px">
+          <my-title class="title" title="集团新闻" English="GROUP NEWS" />
         </div>
-        <div style="margin-top: 59px">
+        <div ref="contentBox" style="margin-top: 59px">
           <ContentPag
+            class="content"
             title1="平高集团1家企业"
             title2="荣获2024年全国质量标杆奖"
             text="9月4日，从平高集团获悉，在近日召开的2024年全国质协系
@@ -85,16 +115,16 @@ function handleClick(e) {
         </div>
       </div>
       <div class="button-container">
-        <router-link to="/informationCenter/groupNews-2"><myButton @childButton="handleClick" /></router-link>
+        <router-link to="/informationCenter/groupNews-2"
+          ><myButton @childButton="handleClick"
+        /></router-link>
       </div>
     </div>
   </div>
 </template>
 
 <style scoped>
-
 .body {
-
   margin: 0 11%;
 }
 .bodyBg1 {
@@ -124,5 +154,25 @@ function handleClick(e) {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.show .title {
+  left: 0;
+}
+
+.show .content {
+  right: 0;
+}
+
+.title {
+  position: relative;
+  left: -200%;
+  transition: left 0.5s ease;
+}
+
+.content {
+  position: relative;
+  right: -200%;
+  transition: right 0.5s ease;
 }
 </style>

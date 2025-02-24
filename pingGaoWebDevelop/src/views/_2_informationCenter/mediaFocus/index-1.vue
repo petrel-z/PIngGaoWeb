@@ -1,4 +1,6 @@
 <script setup>
+import { ref, onMounted } from "vue";
+
 defineOptions({
   name: "NewsCenterIndex3-1",
 });
@@ -82,14 +84,35 @@ HGIS设备进行例行巡检，自今年6月份投运行以来，`,
 function handleClick(e) {
   console.log(e);
 }
+
+const titleBox = ref(null);
+onMounted(() => {
+  if (titleBox.value) {
+    // 监听页面滚动事件
+    window.addEventListener("scroll", () => {
+      if (!titleBox.value) return;
+      // 获取元素顶部距离页面顶部的距离
+      const titleTop = titleBox.value.getBoundingClientRect().top;
+      // 获取窗口的高度
+      const windowHeight = window.innerHeight;
+
+      // 判断元素是否进入可视区域
+      if (titleTop < windowHeight) {
+        titleBox.value.classList.add("show");
+      } else {
+        titleBox.value.classList.remove("show");
+      }
+    });
+  }
+});
 </script>
 
 <template>
   <div style="position: relative; overflow: hidden">
     <div class="body">
       <div>
-        <div style="padding-top: 64px">
-          <my-title title="媒体聚焦" English="MEDIA FOCUS" />
+        <div ref="titleBox" style="padding-top: 64px">
+          <my-title class="title" title="媒体聚焦" English="MEDIA FOCUS" />
         </div>
         <div class="item-container">
           <router-link to="/informationCenter/mediaFocus-3">
@@ -136,5 +159,15 @@ function handleClick(e) {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.show .title {
+  left: 0;
+}
+
+.title {
+  position: relative;
+  left: -200%;
+  transition: left 0.5s ease;
 }
 </style>
