@@ -178,6 +178,7 @@ import MyTitle from "@/components/MyTitle.vue";
             margin-right: 1.5rem;
             margin-bottom: 2.5rem;
             background-image: url("../../../assets/imgs/_9_contactUsImgs/t9_p2_code.png");
+            background-size: contain;
           }
         }
 
@@ -247,7 +248,6 @@ import MyTitle from "@/components/MyTitle.vue";
 
     .top-whiteSpan {
       width: 100%;
-      // height: 700px;
     }
   }
 
@@ -258,15 +258,108 @@ import MyTitle from "@/components/MyTitle.vue";
   }
 }
 
+@media (max-width: 1700px) {
+  .becomePartner-content {
+    .content-top {
+      .top-information {
+        .write-info {
+          .left,
+          .right {
+            margin: 0 6rem;
+          }
+        }
+      }
+    }
+  }
+}
+
 /* 大型设备（桌面，大于 900px） */
 @media (max-width: 900px) {
   .becomePartner-content {
     .content-top {
       padding: 0 5%;
       width: 100%;
+
       .top-title {
         margin-top: 3rem;
         margin-bottom: 3rem;
+      }
+
+      .top-information {
+        height: 130rem;
+        background-color: #fff;
+        border-radius: 10px;
+
+        h1 {
+          font-size: 2.5rem;
+          padding: 3rem 0;
+        }
+
+        .write-info {
+          width: 100%;
+          height: 90rem;
+          flex-direction: column;
+
+          .left,
+          .right {
+            width: 100%;
+            margin: 0;
+            padding: 0 3rem;
+          }
+
+          .right {
+            padding-bottom: 13rem;
+          }
+
+
+          .left {
+            .last {
+              border-bottom: none;
+            }
+          }
+
+          .common {
+            height: 10rem;
+
+            .common-title {
+              margin-top: 2rem;
+
+              .star {
+                margin-left: 0;
+                font-size: 2rem;
+              }
+
+              .text {
+                font-size: 2rem;
+              }
+            }
+
+            .select {
+              padding-left: 1.3rem;
+              margin-top: 0;
+
+              input {
+                font-size: 1.8rem;
+              }
+            }
+          }
+
+          .submit,
+          .reset {
+            width: 44%;
+            height: 7rem;
+            line-height: 7rem;
+          }
+
+          .submit {
+            bottom: -63rem; //要和五个common的高及加上.right的padding-bottom的和一致
+          }
+
+          .reset {
+            bottom: 0;
+            right: 3rem;
+          }
+        }
       }
     }
   }

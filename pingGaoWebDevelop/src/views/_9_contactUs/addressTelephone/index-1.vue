@@ -37,8 +37,8 @@ import MyTitle from "@/components/MyTitle.vue";
           <div class="span-right">400 6700 312</div>
         </div>
         <div class="common last">
-          <div>地址：河南省平顶山市南环路东22号</div>
-          <div>邮编：467001</div>
+          <div>地址：河南省郑州市郑东新区龙源西三街39号3B栋</div>
+          <div>邮编：450046</div>
           <div>信访举报电话：03753804106</div>
         </div>
       </div>
@@ -47,7 +47,6 @@ import MyTitle from "@/components/MyTitle.vue";
       <img :style="{ width: '100%', height: 'auto' }" src="../../../assets/imgs/_9_contactUsImgs/t9_p1_contentBg.png"
         alt="" />
     </div>
-    <!-- <div class="top-whiteSpan"></div> -->
   </div>
 </template>
 
@@ -127,15 +126,15 @@ import MyTitle from "@/components/MyTitle.vue";
       align-items: start;
       justify-content: center;
       padding-left: 3%;
-      padding-right: 11%;
+      padding-right: 10%;
 
       .company-name {
         width: 100%;
-        font-size: 3rem;
+        font-size: 2.8rem;
         font-family: "AlibabaPuHuiTi_2_65_Medium";
         color: rgb(255, 255, 255);
         border-bottom: 2px solid #fff;
-        padding: 33px 0 14px 0;
+        padding: 3rem 0 1rem 0;
         overflow: hidden;
         white-space: nowrap;
         text-overflow: ellipsis;
@@ -143,24 +142,23 @@ import MyTitle from "@/components/MyTitle.vue";
 
       .common {
         width: 100%;
-        padding: 2.5rem 0;
+        padding: 1.5rem 0;
         border-bottom: 1px solid #fff;
         color: rgb(255, 255, 255);
         display: flex;
         justify-content: start;
         align-items: center;
 
-
         div {
-          height: 30px;
-          line-height: 30px;
+          height: 100%;
+          line-height: 1;
           overflow: hidden;
           white-space: nowrap;
           text-overflow: ellipsis;
         }
 
         .span-left {
-          font-size: 2.4rem;
+          font-size: 1.8rem;
           font-family: "AlibabaPuHuiTi_2_55_Regular";
           overflow: hidden;
           white-space: nowrap;
@@ -168,15 +166,16 @@ import MyTitle from "@/components/MyTitle.vue";
         }
 
         .span-center {
-          margin: 0 10px;
-          font-size: 2.2rem;
+          margin: 0 1rem;
+          font-size: 2rem;
           overflow: hidden;
           white-space: nowrap;
           text-overflow: ellipsis;
         }
 
         .span-right {
-          font-size: 3.0692rem;
+          font-size: 2.3rem;
+          font-weight: bold;
           font-family: "Avenir";
           overflow: hidden;
           white-space: nowrap;
@@ -185,13 +184,21 @@ import MyTitle from "@/components/MyTitle.vue";
       }
 
       .last {
-        font-size: 2.4rem;
-        padding: 1rem 0 1.4rem 0;
+
+        font-size: 1.7rem;
+        padding: 0.5rem 0 0.5rem 0;
         display: block;
 
         div {
+          height: auto;
+          white-space: wrap;
           width: 100%;
           margin: 0.9rem 0;
+          text-align: justify;
+        }
+
+        div:nth-child(1) {
+          line-height: 1.3;
         }
       }
     }
@@ -209,6 +216,87 @@ import MyTitle from "@/components/MyTitle.vue";
   }
 }
 
+@media (max-width: 1700px) {
+
+  .addressTelephone-content {
+    .address {
+      .right {
+        .company-name {
+          font-size: 2.2rem;
+          padding: 0rem 0 1rem 0;
+        }
+
+        .common {
+          padding: 1.3rem 0;
+          .span-left {
+            font-size: 1.4rem;
+          }
+
+          .span-center {
+            margin: 0 0.6rem;
+            font-size: 1.5rem;
+          }
+
+          .span-right {
+            font-size: 1.8rem;
+          }
+        }
+
+        .last {
+          font-size: 1.4rem;
+          padding: 0.3rem 0 0.5rem 0;
+
+
+          div {
+            margin: 0.5rem 0;
+          }
+          div:nth-child(1) {
+            line-height: 1.2;
+          }
+        }
+      }
+    }
+  }
+}
+@media (max-width: 1200px) {
+
+.addressTelephone-content {
+  .address {
+    .right {
+      .company-name {
+        font-size: 2.8rem;
+        padding: 0rem 0 1rem 0;
+      }
+
+      .common {
+        padding: 1.8rem 0;
+        .span-left {
+          font-size: 1.8rem;
+        }
+
+        .span-center {
+          margin: 0 0.8rem;
+          font-size: 1.8rem;
+        }
+
+        .span-right {
+          font-size: 2.2rem;
+        }
+      }
+
+      .last {
+        font-size: 1.7rem;
+        padding: 0.5rem 0 0.5rem 0;
+
+
+        div {
+          margin: 0.6rem 0;
+        }
+      }
+    }
+  }
+}
+}
 
 /* 大型设备（桌面，大于 900px） */
 @media (max-width: 900px) {
@@ -251,6 +339,7 @@ import MyTitle from "@/components/MyTitle.vue";
           font-size: 3.5rem;
           padding: 0;
         }
+
         .common {
           padding: 2rem 0;
         }
@@ -263,9 +352,7 @@ import MyTitle from "@/components/MyTitle.vue";
 @media (max-width: 800px) {}
 
 /* 中型设备（平板，600px 到 900px） */
-@media (max-width: 700px) {
-
-}
+@media (max-width: 700px) {}
 
 /* 小型设备（手机，小于 600px） */
 

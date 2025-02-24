@@ -42,13 +42,12 @@ const props = defineProps({
 .news-bar {
   display: flex;
   justify-content: space-between;
-  // width: 1300px;
-  height: 72px;
-  line-height: 72px;
+  height: 6.6rem;
+  line-height: 6.6rem;
   border-top: 1px solid;
   border-bottom: 1px solid;
 
-  font-size: 24px;
+  font-size: 1.6rem;
   font-family: "AlibabaPuHuiTi_2_55_Regular";
   color: rgb(165, 22, 23);
   text-align: justifyLeft;
@@ -56,17 +55,60 @@ const props = defineProps({
   .bar-left {
     display: flex;
     justify-content: start;
+
     .left-browse {
-      margin-left: 88px;
+      margin-left: 7.6rem;
     }
   }
+
   .bar-right {
     display: flex;
     align-items: center;
+
     .icon {
-      margin-left: 19px;
-      // width: 5%;
-      font-size: 40px;
+      margin-left: 1.5rem;
+      font-size: 3.5rem;
+    }
+  }
+}
+@media (max-width: 1500px) {
+  .news-bar {
+    height: 5rem;
+    line-height: 5rem;
+    font-size: 1.2rem;
+    .bar-left {
+      .left-browse {
+        margin-left: 7rem;
+      }
+    }
+  }
+}
+
+@media (max-width: 1400px) {
+  .news-bar {
+    .bar-left {
+      .left-browse {
+        margin-left: 7rem;
+      }
+    }
+  }
+}
+
+@media (max-width: 900px) {
+  .news-bar {
+    height: 5rem;
+    line-height: 5rem;
+    font-size: 1.3rem;
+    .bar-left {
+      .left-browse {
+        margin-left: 2rem;
+      }
+    }
+    .bar-right {
+      .icon {
+        margin-left: 1rem;
+        font-size: 2rem;
+      }
     }
   }
 }

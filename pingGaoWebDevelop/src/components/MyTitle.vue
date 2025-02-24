@@ -30,15 +30,6 @@ const props = defineProps({
   </div>
 </template>
 <style scoped>
-.groupProfile {
-  margin: auto;
-  width: auto;
-  height: 3907px;
-  border: 1px solid rgb(177, 177, 177);
-  padding: 64px 210px;
-  border-radius: 20px;
-}
-
 .h {
   display: block;
   font-weight: 550;
@@ -49,7 +40,7 @@ const props = defineProps({
   font-family: "AlibabaPuHuiTi_2_75_SemiBold";
   color: #000000;
   z-index: 4;
-  margin-top: 4px;
+  margin-top: 0.25rem;
 }
 .line {
   top: 0.2rem;
@@ -57,9 +48,10 @@ const props = defineProps({
   background-color: #70aedc;
   width: 4rem;
   height: 0.2rem;
-  margin: 0.15rem 0px;
+  margin: 0.25rem 0rem;
 }
 .English {
+  display: block;
   font-size: 1.7rem;
   font-family: "Avenir-Medium-woff-7";
   color: rgb(159, 160, 160);

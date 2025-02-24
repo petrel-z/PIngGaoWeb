@@ -149,12 +149,22 @@ const props = defineProps({
     padding: 2em 0;
   }
 }
+@media (max-width: 1400px) {
+  .partyContentDetail {
+
+    // .lookMore {
+    //   width: 100%;
+    //   display: flex;
+    //   justify-content: center;
+    //   align-items: center;
+    //   padding: 2em 0;
+    // }
+  }
+}
 
 /* 大型设备（桌面，大于 900px） */
 @media (max-width: 900px) {
   .partyContentDetail {
-    // overflow: hidden;
-
     padding: 0 5%;
 
     .spirit-top {

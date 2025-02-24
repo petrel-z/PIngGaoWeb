@@ -1,9 +1,9 @@
 <script setup>
 import MyTitle from "@/components/MyTitle.vue";
 import MyButton from "@/components/MyButton.vue";
-import { ref,onMounted } from "vue";
-const imgRef = ref(null)
-const isVisible = ref(null)
+import { ref, onMounted } from "vue";
+const imgRef = ref(null);
+const isVisible = ref(null);
 // 创建交叉观察器
 const createObserver = (refElement, isVisible) => {
   const observer = new IntersectionObserver(
@@ -19,7 +19,7 @@ const createObserver = (refElement, isVisible) => {
     },
     {
       root: null, // 使用浏览器视口作为根元素
-      rootMargin: '0px', // 无额外的边距
+      rootMargin: "0px", // 无额外的边距
       threshold: 0, // 当元素的 50% 进入视口时触发
     }
   );
@@ -38,63 +38,135 @@ onMounted(initializeObservers); // 在组件挂载时调用
     <myTitle title="资质荣誉" English="QUALIFICATION AND HONOR"></myTitle>
     <div class="content">
       <div class="info">
-        <div class="img"><img src="@/assets/imgs/_1_aboutPinggaoImgs/create.png" alt="" ref="imgRef"
-          :class="{ 'scale-up': isVisible}" /></div>
+        <div class="img">
+          <img
+            src="@/assets/imgs/_1_aboutPinggaoImgs/create.png"
+            alt=""
+            ref="imgRef"
+            :class="{ 'scale-up': isVisible }"
+          />
+        </div>
         <div class="p">创新型企业</div>
       </div>
       <div class="info">
-        <div class="img"><img src="@/assets/imgs/_1_aboutPinggaoImgs/create.png" alt="" ref="imgRef"
-          :class="{ 'scale-up': isVisible}"/></div>
+        <div class="img">
+          <img
+            src="@/assets/imgs/_1_aboutPinggaoImgs/create.png"
+            alt=""
+            ref="imgRef"
+            :class="{ 'scale-up': isVisible }"
+          />
+        </div>
         <div class="p">创新型企业</div>
       </div>
       <div class="info">
-        <div class="img"><img src="@/assets/imgs/_1_aboutPinggaoImgs/create.png" alt="" ref="imgRef"
-          :class="{ 'scale-up': isVisible}"/></div>
+        <div class="img">
+          <img
+            src="@/assets/imgs/_1_aboutPinggaoImgs/create.png"
+            alt=""
+            ref="imgRef"
+            :class="{ 'scale-up': isVisible }"
+          />
+        </div>
         <div class="p">创新型企业</div>
       </div>
       <div class="info">
-        <div class="img"><img src="@/assets/imgs/_1_aboutPinggaoImgs/create.png" alt="" ref="imgRef"
-          :class="{ 'scale-up': isVisible}"/></div>
+        <div class="img">
+          <img
+            src="@/assets/imgs/_1_aboutPinggaoImgs/create.png"
+            alt=""
+            ref="imgRef"
+            :class="{ 'scale-up': isVisible }"
+          />
+        </div>
         <div class="p">创新型企业</div>
       </div>
       <div class="info">
-        <div class="img"><img src="@/assets/imgs/_1_aboutPinggaoImgs/create.png" alt="" ref="imgRef"
-          :class="{ 'scale-up': isVisible}"/></div>
+        <div class="img">
+          <img
+            src="@/assets/imgs/_1_aboutPinggaoImgs/create.png"
+            alt=""
+            ref="imgRef"
+            :class="{ 'scale-up': isVisible }"
+          />
+        </div>
         <div class="p">创新型企业</div>
       </div>
       <div class="info">
-        <div class="img"><img src="@/assets/imgs/_1_aboutPinggaoImgs/create.png" alt="" ref="imgRef"
-          :class="{ 'scale-up': isVisible}"/></div>
+        <div class="img">
+          <img
+            src="@/assets/imgs/_1_aboutPinggaoImgs/create.png"
+            alt=""
+            ref="imgRef"
+            :class="{ 'scale-up': isVisible }"
+          />
+        </div>
         <div class="p">创新型企业</div>
       </div>
       <div class="info">
-        <div class="img"><img src="@/assets/imgs/_1_aboutPinggaoImgs/create.png" alt="" ref="imgRef"
-          :class="{ 'scale-up': isVisible}"/></div>
+        <div class="img">
+          <img
+            src="@/assets/imgs/_1_aboutPinggaoImgs/create.png"
+            alt=""
+            ref="imgRef"
+            :class="{ 'scale-up': isVisible }"
+          />
+        </div>
         <div class="p">创新型企业</div>
       </div>
       <div class="info">
-        <div class="img"><img src="@/assets/imgs/_1_aboutPinggaoImgs/create.png" alt="" ref="imgRef"
-          :class="{ 'scale-up': isVisible}" /></div>
+        <div class="img">
+          <img
+            src="@/assets/imgs/_1_aboutPinggaoImgs/create.png"
+            alt=""
+            ref="imgRef"
+            :class="{ 'scale-up': isVisible }"
+          />
+        </div>
         <div class="p">创新型企业</div>
       </div>
       <div class="info">
-        <div class="img"><img src="@/assets/imgs/_1_aboutPinggaoImgs/create.png" alt="" ref="imgRef"
-          :class="{ 'scale-up': isVisible}"/></div>
+        <div class="img">
+          <img
+            src="@/assets/imgs/_1_aboutPinggaoImgs/create.png"
+            alt=""
+            ref="imgRef"
+            :class="{ 'scale-up': isVisible }"
+          />
+        </div>
         <div class="p">创新型企业</div>
       </div>
       <div class="info">
-        <div class="img"><img src="@/assets/imgs/_1_aboutPinggaoImgs/create.png" alt="" ref="imgRef"
-          :class="{ 'scale-up': isVisible}"/></div>
+        <div class="img">
+          <img
+            src="@/assets/imgs/_1_aboutPinggaoImgs/create.png"
+            alt=""
+            ref="imgRef"
+            :class="{ 'scale-up': isVisible }"
+          />
+        </div>
         <div class="p">创新型企业</div>
       </div>
       <div class="info">
-        <div class="img"><img src="@/assets/imgs/_1_aboutPinggaoImgs/create.png" alt="" ref="imgRef"
-          :class="{ 'scale-up': isVisible}"/></div>
+        <div class="img">
+          <img
+            src="@/assets/imgs/_1_aboutPinggaoImgs/create.png"
+            alt=""
+            ref="imgRef"
+            :class="{ 'scale-up': isVisible }"
+          />
+        </div>
         <div class="p">创新型企业</div>
       </div>
       <div class="info">
-        <div class="img"><img src="@/assets/imgs/_1_aboutPinggaoImgs/create.png" alt="" ref="imgRef"
-          :class="{ 'scale-up': isVisible}"/></div>
+        <div class="img">
+          <img
+            src="@/assets/imgs/_1_aboutPinggaoImgs/create.png"
+            alt=""
+            ref="imgRef"
+            :class="{ 'scale-up': isVisible }"
+          />
+        </div>
         <div class="p">创新型企业</div>
       </div>
     </div>
@@ -108,27 +180,30 @@ onMounted(initializeObservers); // 在组件挂载时调用
   position: relative;
   margin: auto;
   width: 100%;
-  height: 1389px;
-  /* border: 1px solid rgb(177, 177, 177); */
-  padding: 64px 11%;
-  border-radius: 20px;
+  height: 100%;
+  /* border: 0.0625rem solid rgb(177, 177, 177); */
+  padding: 4rem 11%;
+  border-radius: 1.25rem;
   background-color: #fff;
   z-index: 0;
 }
 .content {
-  margin-top: 50px;
+  margin-top: 3.125rem;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
 }
 .content .info {
-  width: 24%;
-  height: 276px;
-  margin-bottom: 50px;
+  width: 21%;
+  height: 90%;
+  margin-bottom: 4.2rem;
   text-align: center;
 }
-.content .info .img img{
-  height: 238px;
+
+
+.content .info .img img {
+  width: 100%;
+  height: 90%;
   transform: scale(0.5); /* 初始缩小 */
   opacity: 0; /* 初始不可见 */
   visibility: hidden; /* 初始隐藏 */
@@ -140,17 +215,19 @@ onMounted(initializeObservers); // 在组件挂载时调用
   visibility: visible; /* 可见 */
 }
 .content .info .p {
-  font-size: 20px;
+  font-size: 1.25rem;
   font-family: "AlibabaPuHuiTi_2_55_Regular", sans-serif;
   color: rgb(182, 141, 55);
+  margin: 0.7rem 0rem;
 }
 .footer {
   width: 100%;
-  margin-top: 10px;
+  margin-top: 0.625rem;
   text-align: center;
   cursor: pointer;
 }
 .footer .myButton {
   margin: auto;
 }
+
 </style>

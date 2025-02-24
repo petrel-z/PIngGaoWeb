@@ -31,23 +31,13 @@ defineOptions({
 
           <div class="button">
             <div class="button-left">
-              <ComDoubleDiv
-                :title="'上一篇'"
-                :content="'中国共产党第二十届中央委员会第三次全体会议公报'"
-                :bgColor="'#f8f1e5'"
-                :leftFontColor="'#a51617'"
-                :rightFontColor="'#7b6a5d'"
-              >
+              <ComDoubleDiv :title="'上一篇'" :content="'中国共产党第二十届中央委员会第三次全体会议公报'" :bgColor="'#f8f1e5'"
+                :leftFontColor="'#a51617'" :rightFontColor="'#7b6a5d'">
               </ComDoubleDiv>
             </div>
             <div class="button-right">
-              <ComDoubleDiv
-                :title="'下一篇'"
-                :content="'中国共产党第二十届中央委员会第三次全体会议公报'"
-                :bgColor="'#f8f1e5'"
-                :leftFontColor="'#a51617'"
-                :rightFontColor="'#7b6a5d'"
-              >
+              <ComDoubleDiv :title="'下一篇'" :content="'中国共产党第二十届中央委员会第三次全体会议公报'" :bgColor="'#f8f1e5'"
+                :leftFontColor="'#a51617'" :rightFontColor="'#7b6a5d'">
               </ComDoubleDiv>
             </div>
           </div>
@@ -60,6 +50,7 @@ defineOptions({
 <style lang="less" scoped>
 .spirit-detail {
   position: relative;
+
   .detail {
     width: 100%;
     padding: 0 11%;
@@ -73,16 +64,14 @@ defineOptions({
 
     .detail-content {
       width: 100%;
-      // height: 1996px;
-      // height: 1549px;
       background-color: #fff;
-      // margin: 0 100px 0 100px;
 
       .title {
         width: 100%;
-        height: 110px;
+        height: 8rem;
+        line-height: 8rem;
         text-align: center;
-        font-size: 35px;
+        font-size: 2.3rem;
         font-family: "SourceHanSerifCN";
         color: #a51617;
       }
@@ -113,7 +102,7 @@ defineOptions({
 
           img {
             width: 100%;
-            height:auto;
+            height: auto;
           }
         }
       }
@@ -123,6 +112,13 @@ defineOptions({
         justify-content: space-between;
         margin-top: 3%;
         width: 100%;
+        height: 5rem;
+
+        .button-left,
+        .button-right {
+          width: 48%;
+          height: 100%;
+        }
       }
     }
   }
@@ -135,6 +131,22 @@ defineOptions({
     background-repeat: repeat;
     position: absolute;
     top: -3px;
+  }
+}
+
+@media (max-width: 1600px) {}
+
+@media (max-width: 900px) {
+  .spirit-detail {
+    .detail {
+      .detail-content {
+        .title {
+          height: 6rem;
+          line-height: 6rem;
+          font-size: 1.6rem;
+        }
+      }
+    }
   }
 }
 </style>
