@@ -5,6 +5,7 @@ const isVisibleWordLeft = ref(false);
 const isVisibleWordRight = ref(false);
 const wordLeftRef = ref(null);
 const wordRightRef = ref(null);
+let index = ref(1);
 // 创建交叉观察器
 const createObserver = (refElement, isVisible) => {
   const observer = new IntersectionObserver(
@@ -40,14 +41,19 @@ onMounted(initializeObservers); // 在组件挂载时调用
     <MyTitle title="重点工程" English="KEY PROJECTS"></MyTitle>
     <div class="project_content">
       <div class="content_left" ref="wordLeftRef" :class="{ 'move-left': isVisibleWordLeft }">
-        <div class="top_button">
+        <div class="top_button" :class="{ active: index === 1 }"  @click="index = 1">
           <div class="p">国内重点工程</div>
         </div>
-        <div class="bottom_button">
+        <div class="bottom_button" :class="{ active: index === 2 }"  @click="index = 2">
           <div class="p">国外重点工程</div>
         </div>
       </div>
-      <div class="content_right" ref="wordRightRef" :class="{ 'move-right': isVisibleWordRight }">
+      <div
+        class="content_right"
+        ref="wordRightRef"
+        v-if="index === 1"
+        :class="{ 'move-right': isVisibleWordRight }"
+      >
         <div class="pic_content">
           <div class="pic">
             <img src="@/assets/imgs/_4_productEngineeringImgs/project-pic1.png" alt="" />
@@ -73,6 +79,37 @@ onMounted(initializeObservers); // 在组件挂载时调用
           </div>
         </div>
       </div>
+      <div
+        class="content_right"
+        ref="wordRightRef"
+        v-if="index === 2"
+        :class="{ 'move-right': isVisibleWordRight }"
+      >
+        <div class="pic_content">
+          <div class="pic">
+            <img src="@/assets/imgs/_4_productEngineeringImgs/project-pic1.png" alt="" />
+          </div>
+          <div class="bg_black">
+            <div class="p">中国首台自主研发的ZF27-800（L）型GIS在青海管亭变电站投入运行</div>
+          </div>
+        </div>
+        <div class="pic_content">
+          <div class="pic">
+            <img src="@/assets/imgs/_4_productEngineeringImgs/project-pic3.png" alt="" />
+          </div>
+          <div class="bg_black">
+            <div class="p">中国首台自主研发的ZF27-800（L）型GIS在青海管亭变电站投入运行</div>
+          </div>
+        </div>
+        <div class="pic_content">
+          <div class="pic">
+            <img src="@/assets/imgs/_4_productEngineeringImgs/project-pic2.png" alt="" />
+          </div>
+          <div class="bg_black">
+            <div class="p">中国首台自主研发的ZF27-800（L）型GIS在青海管亭变电站投入运行</div>
+          </div>
+        </div>
+      </div>
     </div>
     <div class="footer_img">
       <img src="@/assets/imgs/_4_productEngineeringImgs/project-footer.png" alt="" />
@@ -88,7 +125,7 @@ onMounted(initializeObservers); // 在组件挂载时调用
   padding: 4rem 13.125rem;
   border-radius: 1.25rem;
   background-color: #fff;
-  z-index: -100;
+  z-index: 0;
 }
 .project_content {
   display: flex;
@@ -113,20 +150,23 @@ onMounted(initializeObservers); // 在组件挂载时调用
   width: 100%;
   height: 6.25rem;
   border-radius: 0.625rem;
-  background-color: #006fc1;
   margin-bottom: 0.625rem;
+  cursor: pointer;
+  background-color: #fff;
 }
+
 .bottom_button {
   width: 100%;
   height: 6.25rem;
   border-radius: 0.625rem;
   background-color: #fff;
+  cursor: pointer;
 }
 
 .top_button .p {
   font-size: 2rem;
   font-family: "AlibabaPuHuiTi_2_65_Medium", sans-serif;
-  color: rgb(255, 255, 255);
+  color: #006fc1;
   text-align: center;
   line-height: 6.25rem;
   margin-bottom: 0.3125rem;
@@ -138,12 +178,19 @@ onMounted(initializeObservers); // 在组件挂载时调用
   text-align: center;
   line-height: 6.25rem;
 }
+.active .p {
+  color: #fff;
+}
+.active {
+  background-color: #006fc1;
+}
 .content_right {
   width: 79%;
   height: 97.5rem;
   transform: translateX(100%); /* 初始位置在左边 */
   visibility: hidden;
   transition: transform 1s ease, opacity 0.5s ease; /* 过渡效果 */
+  z-index: 100;
 }
 @media (min-width: 600px) and (max-width: 800px) {
   .top_button .p {

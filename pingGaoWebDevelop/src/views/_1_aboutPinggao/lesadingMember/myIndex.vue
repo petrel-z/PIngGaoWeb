@@ -41,7 +41,7 @@ onMounted(initializeObservers); // 在组件挂载时调用
         <img src="@/assets/imgs/_1_aboutPinggaoImgs/peoplebg.png" alt=""  />
         <div class="h">孙继强</div>
         <div class="hr"></div>
-        <div class="p1">党委书记</div>
+        <div class="p1">平高集团限公司党委书记</div>
         <div class="p2">董事长</div>
       </div>
       <div class="info"  ref="imgRef"
@@ -49,31 +49,33 @@ onMounted(initializeObservers); // 在组件挂载时调用
         <img src="@/assets/imgs/_1_aboutPinggaoImgs/peoplebg.png" alt=""  />
         <div class="h">刘立成</div>
         <div class="hr"></div>
-        <div class="p1">党委副书记</div>
-        <div class="p2">总经理</div>
+        <div class="p1">平高集团限公司党委副书记</div>
+        <div class="p2">董事</div>
+        <div class="p3">总经理</div>
+      </div>
+      <div class="info"  ref="imgRef"
+      :class="{ 'scale-up': isVisible}">
+        <img src="@/assets/imgs/_1_aboutPinggaoImgs/peoplebg.png" alt=""   />
+        <div class="h">刘刚</div>
+        <div class="hr"></div>
+        <div class="p1">平高集团限公司党委副书记</div>
       </div>
       <div class="info"  ref="imgRef"
       :class="{ 'scale-up': isVisible}">
         <img src="@/assets/imgs/_1_aboutPinggaoImgs/peoplebg.png" alt=""   />
         <div class="h">宋晗光</div>
         <div class="hr"></div>
-        <div class="p1">党委委员</div>
+        <div class="p1">平高集团限公司党委委员</div>
         <div class="p2">纪委书记</div>
         <div class="p3">监事</div>
       </div>
-      <div class="info"  ref="imgRef"
-      :class="{ 'scale-up': isVisible}">
-        <img src="@/assets/imgs/_1_aboutPinggaoImgs/peoplebg.png" alt=""   />
-        <div class="h">李亚军</div>
-        <div class="hr"></div>
-        <div class="p1">党委委员</div>
-      </div>
+
       <div class="info"  ref="imgRef"
       :class="{ 'scale-up': isVisible}">
         <img src="@/assets/imgs/_1_aboutPinggaoImgs/peoplebg.png" alt=""   />
         <div class="h">张友鹏</div>
         <div class="hr"></div>
-        <div class="p1">党委委员</div>
+        <div class="p1">平高集团限公司党委委员</div>
         <div class="p2">副总经理</div>
       </div>
       <div class="info"  ref="imgRef"
