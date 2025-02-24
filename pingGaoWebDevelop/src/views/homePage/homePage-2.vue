@@ -599,11 +599,11 @@ onMounted(() => {
   font-size: 1.8125rem;
   font-weight: 600;
 }
-@media (min-width:200px) and (max-width: 400px) {
+@media (min-width: 200px) and (max-width: 400px) {
   .announcement_icon .iconfont {
     display: block;
     margin-top: 0rem;
-}
+  }
 }
 .announcement_title {
   font-size: 1.375rem;
@@ -837,6 +837,100 @@ onMounted(() => {
   width: 100%;
   height: 71.25rem;
 }
+@media (min-width: 400px) and (max-width: 500px) {
+}
+@media (min-width: 600px) and (max-width: 700px) {
+  .company_introduction {
+    position: relative;
+    height: 67.25rem;
+    width: 100%;
+    padding: 3.25rem 7rem !important;
+  }
+  .company_introduction .bg_img {
+    top: 0;
+    left: 0;
+    position: absolute;
+    width: 100%;
+    height: 56.25rem !important;
+    z-index: -100;
+  }
+  .company_introduction .bg_img img {
+    width: 100%;
+    height: 56.25rem !important;
+  }
+  .introduction_title {
+    font-size: 2.25rem !important;
+    margin-bottom: 3.0625rem !important;
+    width: 100%;
+  }
+  .introduction_small_title {
+    font-size: 1.8rem !important;
+    margin-bottom: 0.625rem;
+    width: 100%;
+  }
+  .introduction_content {
+    width: 100%;
+    height: 31.875rem;
+    margin-bottom: 8.75rem;
+  }
+  .introduction_content .text_left {
+    width: 50% !important;
+    height: 31.875rem;
+    margin-right: 3.25rem !important;
+    padding-top: 0.8125rem;
+  }
+  .introduction_content .img_right {
+    width: 53% !important;
+    height: 60% !important;
+    min-width: 25rem;
+    transition: ease 0.5s;
+  }
+  .introduction_content .img_right img {
+    width: 100%;
+    height: 100%;
+  }
+  .introduction_content .p {
+    font-size: 0.8rem !important;
+    line-height: 1.7;
+  }
+  .introduction_content .p1 {
+    margin-bottom: 0.875rem !important;
+  }
+
+  .introduction_honor {
+    display: flex;
+    width: 100%;
+    height: 3.5625rem;
+    border-right: 0.0625rem solid #fff;
+    position: absolute;
+    bottom: 10rem;
+    left: 0.4rem !important;
+    transform: scale(0.9);
+  }
+  .introduction_honor .honor_info {
+    width: 80%;
+    margin: auto;
+  }
+  .introduction_honor .honor_info .p {
+    font-size: 1.425rem !important;
+    margin-top: -0.625rem;
+  }
+}
+@media (min-width: 700px) and (max-width: 800px) {
+}
+@media (min-width: 800px) and (max-width: 1000px) {
+}
+@media (min-width: 1000px) and (max-width: 1200px) {
+}
+@media (min-width: 1200px) and (max-width: 1400px) {
+}
+@media (min-width: 1400px) and (max-width: 1600px) {
+}
+@media (min-width: 1600px) and (max-width: 1800px) {
+}
+@media (min-width: 2100px) and (max-width: 2300px) {
+}
+
 .introduction_title {
   font-size: 2.75rem;
   font-family: "AlibabaPuHuiTi_2_65_Medium";
@@ -950,10 +1044,14 @@ onMounted(() => {
 }
 .great_flag_content .content_detail {
   width: 32%;
-  height: 35.9375rem;
+  height: 36.1875rem;
   background-color: #ffffff;
   transition: 0.5s;
   cursor: pointer;
+}
+.great_flag_content .content_detail .top_img img {
+  width: 100%;
+  height: 100%;
 }
 .great_flag_content .content_detail:hover {
   transform: scale(0.99);
@@ -1061,5 +1159,4 @@ onMounted(() => {
   color: rgb(34, 56, 147);
   margin-bottom: 1.75rem;
 }
-
 </style>
