@@ -25,7 +25,8 @@ let showText = ref(false);
 let imgFixed = ref(false);
 let logoImg1 = ref(logoBig1);
 let logoImg2 = ref(logoBig2);
-const headerNavBottomRightBox = ref(null);
+
+let moveFlag = ref(false);
 
 const header = ref([
   { name: "关于平高", path: "/aboutPingGao" },
@@ -224,11 +225,21 @@ let hoverText = ref({
     { name: "最新公告", path: "/informationCenter/latestAnnouncement-1" },
   ],
 });
+
 function hoverContent(name) {
   hidden.value = false;
   allContent.value.forEach((item) => {
     if (item.content.title === name) {
       hoverText.value = item;
+    }
+  });
+}
+
+let moveNavBodyItemUl = ref(null);
+function changeMoveNavBodyItemUl(name) {
+  allContent.value.forEach((item) => {
+    if (item.content.title === name) {
+      moveNavBodyItemUl.value = item.footer;
     }
   });
 }
@@ -275,9 +286,11 @@ const props = defineProps({
   },
 });
 
+const headerNavBottomRightBox = ref(null);
+const moveNav = ref(null);
 onMounted(() => {
   function handleResize() {
-    if (this.window.innerWidth < 900) {
+    if (window.innerWidth < 900) {
       // 如果窗口宽度小于900px，切换到小图片
       logoImg1.value = logoSmall1;
       logoImg2.value = logoSmall2;
@@ -289,6 +302,8 @@ onMounted(() => {
       logoImg2.value = logoBig2;
       // 显示导航栏底部
       if (headerNavBottomRightBox.value) headerNavBottomRightBox.value.style.display = "flex";
+      // 隐藏移动端导航栏
+      if (moveNav.value) moveNav.value.style.display = "none";
     }
   }
 
@@ -301,8 +316,6 @@ onMounted(() => {
   const navbar = document.getElementById("header-nav");
   // 定义滚动距离阈值
   const scrollThreshold = 1;
-  console.log(navbar);
-
   // 监听窗口滚动事件
   window.addEventListener("scroll", function () {
     // 获取当前滚动距离
@@ -320,6 +333,7 @@ onMounted(() => {
   });
 
   //监听窗口大小变化事件
+  handleResize();
   window.addEventListener("resize", handleResize);
 });
 </script>
@@ -357,7 +371,11 @@ onMounted(() => {
             <div class="log-title-english">China Electrical Equipment</div>
           </div> -->
             <div class="header-nav-top-bar">
-              <i class="iconfont icon-liebiao2 bar-icon"></i>
+              <i
+                class="iconfont icon-liebiao2 bar-icon"
+                @click="moveFlag = !moveFlag"
+                v-show="!moveFlag"
+              ></i>
               <ul class="header-nav-top-bar-ul">
                 <li v-for="item in header" :key="item.name">
                   <router-link
@@ -521,6 +539,37 @@ onMounted(() => {
         </ul>
       </div>
     </div>
+    <div v-show="moveFlag" class="moveNav-box" ref="moveNav">
+      <div class="moveNav-box-bg"></div>
+      <div class="moveNav">
+        <div class="moveNav-header">
+          <div class="moveNav-header-back-btn">
+            <i class="iconfont icon-xiangzuo"></i>
+            返回
+          </div>
+        </div>
+        <ul class="moveNav-body">
+          <li>
+            <router-link active-class="active-border" to="/homePage-2">首页</router-link>
+          </li>
+          <li v-for="item1 in header" :key="item1.name">
+            <div class="moveNav-boty-item-ul-top">
+              <router-link active-class="active-border" :to="item1.path">{{
+                item1.name
+              }}</router-link>
+              <i class="iconfont icon-lineleft" @click="changeMoveNavBodyItemUl(item1.name)"></i>
+            </div>
+            <ul class="moveNav-body-item-ul">
+              <li v-for="item2 in moveNavBodyItemUl" :key="item2.path">
+                <router-link active-class="active-border" :to="item2.path">{{
+                  item2.name
+                }}</router-link>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -529,7 +578,7 @@ onMounted(() => {
   display: none;
   font-size: 1.5rem;
   position: absolute;
-  bottom: 400%;
+  bottom: 0;
   right: 0;
 }
 
@@ -585,8 +634,10 @@ onMounted(() => {
 #header-nav-top {
   position: absolute;
   right: 0;
-  top: 85%;
+  bottom: -10%;
   text-align: right;
+  height: auto;
+
   /* transform: translateY(150%); */
   display: flex;
   /* border-bottom: 0.05rem solid #fff; */
@@ -594,6 +645,8 @@ onMounted(() => {
   flex: 1 1 auto;
   align-items: center;
   transform: translateY(-200%);
+  border: none;
+  z-index: 9999999;
 }
 
 .logo-link {
@@ -645,7 +698,7 @@ onMounted(() => {
 }
 
 .header-nav-top-bar-ul {
-  display: inline-flex;
+  display: flex;
   margin: 0;
   padding: 0;
   align-items: center;
@@ -1039,13 +1092,7 @@ onMounted(() => {
     font-size: 2.7rem;
     color: #fff;
   }
-  .header-nav-top-bar-ul {
-    display: none;
-  }
 
-  #header-nav-top {
-    border: none;
-  }
   .header-nav-bottom {
     height: auto;
   }
@@ -1074,6 +1121,20 @@ onMounted(() => {
 
   .log-img img {
     width: 20%;
+  }
+
+  .header-nav-top-bar-ul {
+    display: none;
+  }
+
+  .moveNav-box {
+    width: 100vw;
+    height: 100vh;
+  }
+
+  .moveNav-box-bg {
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.5);
   }
 }
 </style>
