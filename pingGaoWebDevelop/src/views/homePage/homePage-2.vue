@@ -73,20 +73,8 @@ onMounted(() => {
 
   // 监听视窗大小变化
   window.addEventListener("resize", () => {
-    updateVisibleItems();
     updateCarousel();
   });
-
-  function updateVisibleItems() {
-    const windowWidth = window.innerWidth;
-    if (windowWidth < 768) {
-      visibleItems = 1;
-    } else if (windowWidth >= 768 && windowWidth < 1900) {
-      visibleItems = 2;
-    } else {
-      visibleItems = 3;
-    }
-  }
 
   function updateCarousel() {
     if (isAnimating) return;
@@ -549,6 +537,21 @@ onMounted(() => {
 .dots .active {
   background-color: rgb(189, 206, 255);
 }
+@media (min-width: 1700px) and (max-width: 1900px) {
+  html {
+    font-size: 10px;
+  }
+}
+@media (min-width: 1000px) and (max-width: 1700px) {
+  html {
+    font-size: 7px;
+  }
+}
+@media (min-width: 400px) and (max-width: 600px) {
+  html {
+    font-size: 4px !important;
+  }
+}
 .nav {
   width: 100%;
   height: 6.4375rem;
@@ -590,10 +593,12 @@ onMounted(() => {
 }
 .announcement_icon {
   color: #338bcd;
+  line-height: 4.875rem;
 }
 .announcement_icon .iconfont {
   font-size: 1.8125rem;
   font-weight: 600;
+
 }
 .announcement_title {
   font-size: 1.375rem;
@@ -647,6 +652,7 @@ onMounted(() => {
   justify-content: space-evenly;
   margin-bottom: 2.5rem;
 }
+
 @keyframes scaleIn {
   from {
     transform: scale(0.5);
@@ -684,17 +690,7 @@ onMounted(() => {
   transition: transform 0.3s ease;
   animation: scaleIn 1s ease-in-out;
 }
-@media (min-width: 768px) and (max-width: 1900px) {
-  .product_detail {
-  width: calc(50%);
-}
-}
-@media (min-width: 400px) and (max-width: 768px) {
-  .product_detail {
-  width: calc(100%);
-}
 
-}
 .product_topImg {
   position: relative;
   width: 26.25rem;
@@ -781,6 +777,7 @@ onMounted(() => {
   margin-top: 1.875rem;
   transition: all 0.3s ease;
   cursor: pointer;
+  background-repeat: no-repeat;
 }
 .product_button:hover {
   transform: scale(1.1);
@@ -1059,4 +1056,5 @@ onMounted(() => {
   color: rgb(34, 56, 147);
   margin-bottom: 1.75rem;
 }
+
 </style>

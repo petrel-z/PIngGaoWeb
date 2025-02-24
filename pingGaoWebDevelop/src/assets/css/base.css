@@ -159,7 +159,7 @@ html {
 }
 @media (max-width: 2800px) {
   html {
-    font-size: 20px;
+    font-size: 18px;
   }
 }
 
@@ -168,14 +168,21 @@ html {
     font-size: 16px;
   }
 }
+
+@media (max-width: 1800px) {
+  html {
+    font-size: 13px;
+  }
+}
+
 @media (max-width: 1400px) {
   html {
-    font-size: 12px;
+    font-size: 11px;
   }
 }
 @media (max-width: 1200px) {
   html {
-    font-size: 9px;
+    font-size: 8px;
   }
 }
 /* 大型设备（桌面，大于 900px） */
@@ -206,7 +213,7 @@ html {
 
 @media (max-width: 500px) {
   html {
-    font-size: 5px;
+    font-size: 4px;
   }
 }
 
