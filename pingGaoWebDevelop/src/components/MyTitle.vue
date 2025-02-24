@@ -23,13 +23,17 @@ const props = defineProps({
 });
 </script>
 <template>
-  <div>
+  <div class="title">
     <span class="h" :style="{ color: props.titleColor }">{{ props.title }}</span>
     <div class="line" :style="{ backgroundColor: props.lineColor }"></div>
     <span class="English" :style="{ color: props.engColor }">{{ props.English }}</span>
   </div>
 </template>
 <style scoped>
+.title {
+  position: relative;
+  animation: right-in 0.7s ease-in-out forwards;
+}
 .h {
   display: block;
   font-weight: 550;
@@ -57,6 +61,15 @@ const props = defineProps({
   color: rgb(159, 160, 160);
   text-transform: uppercase;
   z-index: 5;
+}
+
+@keyframes right-in {
+  from {
+    left: 100%;
+  }
+  to {
+    left: 0;
+  }
 }
 
 @media (max-width: 900px) {

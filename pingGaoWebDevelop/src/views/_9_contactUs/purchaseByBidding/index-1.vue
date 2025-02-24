@@ -51,9 +51,22 @@ import CommitmentSpan from "@/components/CommitmentSpan.vue";
     .top-title {
       margin-top: 6rem;
       margin-bottom: 6rem;
+      position: relative;
+      animation: toptitle 0.7s ease-out forwards;
     }
 
+    @keyframes toptitle {
+      from {
+        left: 100%;
+      }
+      to {
+        left: 0;
+      }
+    }
     .top-span {
+      animation: topspan 1s ease forwards;
+      position: relative;
+      top: 0;
       .top-span-content {
 
         margin-top: 2rem;
@@ -98,6 +111,16 @@ import CommitmentSpan from "@/components/CommitmentSpan.vue";
       }
     }
 
+    @keyframes topspan {
+      from {
+        opacity: 0;
+        top: 200px;
+      }
+      to {
+        opacity: 1;
+        top: 0;
+      }
+    }
     .top-whiteSpan {
       width: 100%;
       height: 500px;
