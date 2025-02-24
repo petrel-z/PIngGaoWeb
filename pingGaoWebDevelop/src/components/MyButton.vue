@@ -46,16 +46,15 @@ const props = defineProps({
   background-color: var(--bgColor);
   border: none;
   color: white;
-  padding: 15px 32px;
+  padding: 1rem 5rem;
   text-align: center;
   text-decoration: none;
   display: inline-block;
   font-size: 1rem;
-  margin: 4px 2px;
   cursor: pointer;
   width: auto;
   height: auto;
-  border-radius: 0.8rem;
+  border-radius: 5rem;
 }
 
 .button:hover {

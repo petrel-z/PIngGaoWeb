@@ -34,6 +34,13 @@
       "unicode_decimal": 58926
     },
     {
+      "icon_id": "1167171",
+      "name": "列表2",
+      "font_class": "liebiao2",
+      "unicode": "e639",
+      "unicode_decimal": 58937
+    },
+    {
       "icon_id": "1312057",
       "name": "微博",
       "font_class": "weibo",

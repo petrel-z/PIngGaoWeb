@@ -44,5 +44,8 @@ import RightButton from "@/components/RightButton.vue";
     background-image: url("@/assets/imgs/_2_informationCenterImgs/moveHeaderBg.png");
     background-size: cover;
   }
+  .right_button {
+    display: none;
+  }
 }
 </style>

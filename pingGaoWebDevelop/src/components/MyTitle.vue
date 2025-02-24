@@ -71,4 +71,16 @@ const props = defineProps({
     left: 0;
   }
 }
+
+@media (max-width: 900px) {
+  .h {
+    font-size: 4rem;
+  }
+  .line {
+    width: 7rem;
+  }
+  .English {
+    font-size: 3rem;
+  }
+}
 </style>

@@ -51,23 +51,23 @@ function handleClick(e) {
 </script>
 
 <template>
-  <div style="position: relative; width: auto; overflow: hidden;">
+  <div style="position: relative; width: auto; overflow: hidden">
     <div class="bodyBg">
       <div class="bodyBg1"></div>
     </div>
     <div class="body">
       <div>
-        <div style="padding-top: 4rem">
+        <div style="padding-top: 2.5rem">
           <my-title title="总部动态" English="HEADQUARTERS NEWS" />
         </div>
-        <div style="margin-top: 4rem">
-          <ContentPag :to-state="true"/>
+        <div style="margin-top: 2.5rem">
+          <ContentPag :to-state="true" />
         </div>
         <div class="item-container">
           <Item1
             v-for="(item, index) in items"
             :key="index"
-            :month="item.month"       
+            :month="item.month"
             :year="item.year"
             :title="item.title"
             :text="item.text"
@@ -75,7 +75,9 @@ function handleClick(e) {
         </div>
       </div>
       <div class="button-container">
-        <router-link to="/informationCenter/headquartersDynamics-2"><myButton @childButton="handleClick" /></router-link>
+        <router-link to="/informationCenter/headquartersDynamics-2"
+          ><myButton @childButton="handleClick"
+        /></router-link>
       </div>
     </div>
   </div>
@@ -98,7 +100,7 @@ function handleClick(e) {
 .item-container {
   width: 100%;
   height: auto;
-  margin-top: 72px;
+  margin-top: 3rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -108,7 +110,7 @@ function handleClick(e) {
 .button-container {
   width: 100%;
   height: auto;
-  margin: 3em 0;
+  margin: 2.5rem 0;
   display: flex;
   justify-content: center;
   align-items: center;
