@@ -129,14 +129,14 @@ onMounted(() => {
 
     .top-whiteSpan {
       width: 100%;
-      // height: 880px;
-      height: 1050px;
+      height: 880px;
+      // height: 1050px;
     }
   }
 
   .content-bgimg {
     z-index: 0;
-    background-attachment: fixed;
+    // background-attachment: fixed;
     position: absolute;
     bottom: 0;
     width: 100%;

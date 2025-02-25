@@ -41,6 +41,12 @@ import ComDoubleDiv from "@/components/ComDoubleDiv.vue";
           content="平高集团1家企业荣获2024年全国质量标杆奖"
         />
       </div>
+      <!-- Add a select element with a custom dropdown arrow -->
+      <!-- <select class="custom-select">
+        <option value="1">Option 1</option>
+        <option value="2">Option 2</option>
+        <option value="3">Option 3</option>
+      </select> -->
     </div>
   </div>
 </template>
@@ -104,4 +110,16 @@ import ComDoubleDiv from "@/components/ComDoubleDiv.vue";
 .footer-right {
   width: 49%;
 }
+
+/* Custom select styles */
+/* .custom-select {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background: transparent;
+  border: 1px solid #ccc;
+  padding: 5px;
+  width: 200px;
+  margin-top: 20px; 
+} */
 </style>

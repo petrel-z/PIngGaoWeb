@@ -83,6 +83,13 @@
       "unicode_decimal": 58630
     },
     {
+      "icon_id": "8169766",
+      "name": "勾选@2x",
+      "font_class": "gouxuanx",
+      "unicode": "e62d",
+      "unicode_decimal": 58925
+    },
+    {
       "icon_id": "8774558",
       "name": "更多",
       "font_class": "gengduo",

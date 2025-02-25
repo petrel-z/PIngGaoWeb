@@ -1,5 +1,27 @@
 <script setup>
 import MyTitle from "@/components/MyTitle.vue";
+import { ref } from "vue";
+
+const options = ref(null);
+function toggleOptions(num) {
+  const options = document.querySelector(`.options${num}`);
+  options.style.display = options.style.display === 'block' ? 'none' : 'block';
+}
+
+function selectOption(event, num) {
+  const selectedText = event.target.textContent;
+  // console.log(selectedText);
+  const selectOption = document.querySelector(`.selected-option${num}`);
+  if (selectedText === "请输入") {
+    selectOption.style.color = '#999';
+    // console.log('请输入');
+  }else {
+    selectOption.style.color = '#231815';
+    // console.log('asdf');
+  }
+  selectOption.textContent = selectedText;
+  toggleOptions(num);
+}
 </script>
 
 <template>
@@ -18,7 +40,25 @@ import MyTitle from "@/components/MyTitle.vue";
                 <span class="star">*</span><span class="text">申请伙伴类型</span>
               </div>
               <div class="select">
-                <input type="text" placeholder="请选择" />
+                <div class="custom-select">
+                  <div class="selected-option selected-option1" @click="toggleOptions(1)">请选择</div>
+                  <ul class="options options1" ref="options">
+                    <li class="first-option" @click="selectOption($event, 1)">
+                      <!-- <span class="icon iconfont icon-down">&#xe62d;</span> -->请选择
+                    </li>
+                    <li @click="selectOption($event, 1)">工商业储能合作伙伴</li>
+                    <li @click="selectOption($event, 1)">重卡换电合作伙伴</li>
+                    <li @click="selectOption($event, 1)">工业PLC合作伙伴</li>
+                    <li @click="selectOption($event, 1)">智慧消防合作伙伴</li>
+                    <li @click="selectOption($event, 1)">电力电源与充电桩合作伙伴</li>
+                    <li @click="selectOption($event, 1)">综合自动化系统合作伙伴</li>
+                    <li @click="selectOption($event, 1)">智能计量（电能表）合作伙伴</li>
+                    <li @click="selectOption($event, 1)">变压器合作伙伴</li>
+                    <li @click="selectOption($event, 1)">开关断路器合作伙伴</li>
+                    <li @click="selectOption($event, 1)">其他合作伙伴</li>
+                  </ul>
+                </div>
+                <!-- <input type="text" placeholder="请选择" /> -->
               </div>
             </div>
             <div class="common">
@@ -42,7 +82,7 @@ import MyTitle from "@/components/MyTitle.vue";
                 <span class="star">*</span><span class="text">国家</span>
               </div>
               <div class="select">
-                <input type="text" placeholder="请选择" />
+                <input type="text" placeholder="中国" />
               </div>
             </div>
             <div class="common last">
@@ -50,7 +90,35 @@ import MyTitle from "@/components/MyTitle.vue";
                 <span class="star">*</span><span class="text">市</span>
               </div>
               <div class="select">
-                <input type="text" placeholder="请选择" />
+                <div class="custom-select">
+                  <div class="selected-option selected-option2" @click="toggleOptions(2)">请选择</div>
+                  <ul class="options options2" ref="options">
+                    <li @click="selectOption($event, 2)">
+                      <span class="icon iconfont icon-down">&#xe62d;</span>
+                      请选择
+                    </li>
+                    <li @click="selectOption($event, 2)">三门峡市</li>
+                    <li @click="selectOption($event, 2)">信阳市</li>
+                    <li @click="selectOption($event, 2)">南阳市</li>
+                    <li @click="selectOption($event, 2)">周口市</li>
+                    <li @click="selectOption($event, 2)">商丘市</li>
+                    <li @click="selectOption($event, 2)">安阳市</li>
+                    <li @click="selectOption($event, 2)">平顶山市</li>
+                    <li @click="selectOption($event, 2)">开封市</li>
+                    <li @click="selectOption($event, 2)">新乡市</li>
+                    <li @click="selectOption($event, 2)">洛阳市</li>
+                    <li @click="selectOption($event, 2)">漯河市</li>
+                    <li @click="selectOption($event, 2)">濮阳市</li>
+                    <li @click="selectOption($event, 2)">焦作市</li>
+                    <li @click="selectOption($event, 2)">省直辖县级行政区划</li>
+                    <li @click="selectOption($event, 2)">许昌市</li>
+                    <li @click="selectOption($event, 2)">郑州市</li>
+                    <li @click="selectOption($event, 2)">驻马店市</li>
+                    <li @click="selectOption($event, 2)">鹤壁市</li>
+
+                  </ul>
+                </div>
+                <!-- <input type="text" placeholder="请选择" /> -->
               </div>
             </div>
 
@@ -62,7 +130,7 @@ import MyTitle from "@/components/MyTitle.vue";
                 <span class="star">*</span><span class="text">合作意向</span>
               </div>
               <div class="select">
-                <input type="text" placeholder="请选择" />
+                <input type="text" placeholder="请输入" />
               </div>
             </div>
             <div class="common">
@@ -70,7 +138,18 @@ import MyTitle from "@/components/MyTitle.vue";
                 <span class="star">*</span><span class="text">是否加入经销商</span>
               </div>
               <div class="select">
-                <input type="text" placeholder="请选择" />
+                <div class="custom-select">
+                  <div class="selected-option selected-option3" @click="toggleOptions(3)">请选择</div>
+                  <ul class="options options3" ref="options">
+                    <li @click="selectOption($event, 3)">
+                      <!-- <span class="icon iconfont icon-down">&#xe62d;</span> -->
+                      请选择
+                    </li>
+                    <li @click="selectOption($event, 3)">是</li>
+                    <li @click="selectOption($event, 3)">否</li>
+                  </ul>
+                </div>
+                <!-- <input type="text" placeholder="请选择" /> -->
               </div>
             </div>
             <div class="common">
@@ -86,7 +165,50 @@ import MyTitle from "@/components/MyTitle.vue";
                 <span class="star">*</span><span class="text">省</span>
               </div>
               <div class="select">
-                <input type="text" placeholder="请选择" />
+                <div class="custom-select">
+                  <div class="selected-option selected-option4" @click="toggleOptions(4)">请选择</div>
+                  <ul class="options options4" ref="options">
+                    <li @click="selectOption($event, 4)">
+                      <!-- <span class="icon iconfont icon-down">&#xe62d;</span> -->
+                      请选择
+                    </li>
+                    <li @click="selectOption($event, 4)">台湾省</li>
+                    <li @click="selectOption($event, 4)">澳门特别行政区</li>
+                    <li @click="selectOption($event, 4)">香港特别行政区</li>
+                    <li @click="selectOption($event, 4)">上海市</li>
+                    <li @click="selectOption($event, 4)">云南省</li>
+                    <li @click="selectOption($event, 4)">内蒙古自治区</li>
+                    <li @click="selectOption($event, 4)">北京市</li>
+                    <li @click="selectOption($event, 4)">吉林省</li>
+                    <li @click="selectOption($event, 4)">四川省</li>
+                    <li @click="selectOption($event, 4)">天津市</li>
+                    <li @click="selectOption($event, 4)">宁夏回族自治区</li>
+                    <li @click="selectOption($event, 4)">安徽省</li>
+                    <li @click="selectOption($event, 4)">山东省</li>
+                    <li @click="selectOption($event, 4)">山西省</li>
+                    <li @click="selectOption($event, 4)">广东省</li>
+                    <li @click="selectOption($event, 4)">广西壮族自治区</li>
+                    <li @click="selectOption($event, 4)">新疆维吾尔自治区</li>
+                    <li @click="selectOption($event, 4)">江苏省</li>
+                    <li @click="selectOption($event, 4)">江西省</li>
+                    <li @click="selectOption($event, 4)">河北省</li>
+                    <li @click="selectOption($event, 4)">河南省</li>
+                    <li @click="selectOption($event, 4)">浙江省</li>
+                    <li @click="selectOption($event, 4)">海南省</li>
+                    <li @click="selectOption($event, 4)">湖北省</li>
+                    <li @click="selectOption($event, 4)">湖南省</li>
+                    <li @click="selectOption($event, 4)">甘肃省</li>
+                    <li @click="selectOption($event, 4)">福建省</li>
+                    <li @click="selectOption($event, 4)">西藏自治区</li>
+                    <li @click="selectOption($event, 4)">贵州省</li>
+                    <li @click="selectOption($event, 4)">辽宁省</li>
+                    <li @click="selectOption($event, 4)">重庆市</li>
+                    <li @click="selectOption($event, 4)">陕西省</li>
+                    <li @click="selectOption($event, 4)">青海省</li>
+                    <li @click="selectOption($event, 4)">黑龙江省</li>
+                  </ul>
+                </div>
+                <!-- <input type="text" placeholder="请选择" /> -->
               </div>
             </div>
             <div class="common last verify">
@@ -114,7 +236,7 @@ import MyTitle from "@/components/MyTitle.vue";
 
 <style lang="less" scoped>
 .becomePartner-content {
-  z-index: 999;
+  z-index: 0;
   width: 100%;
   display: flex;
   justify-content: center;
@@ -136,24 +258,29 @@ import MyTitle from "@/components/MyTitle.vue";
       position: relative;
       animation: toptitle 0.7s ease-out forwards;
     }
+
     @keyframes toptitle {
       from {
         left: 100%;
       }
+
       to {
         left: 0;
       }
     }
+
     @keyframes top-information {
       from {
         opacity: 0;
         top: 200px;
       }
+
       to {
         opacity: 1;
         top: 0;
       }
     }
+
     .top-information {
       position: relative;
       animation: top-information 1s ease forwards;
@@ -228,15 +355,76 @@ import MyTitle from "@/components/MyTitle.vue";
           }
 
           .select {
-            font-size: 2rem;
+            font-size: 1.8rem;
             font-family: "AlibabaPuHuiTi_2_45_Light";
             color: rgb(89, 87, 87);
             text-align: justifyLeft;
             padding-left: 1.8rem;
             margin-top: 0.4rem;
 
+            .custom-select {
+              z-index: 999;
+              position: relative;
+
+              .selected-option {
+                cursor: pointer;
+                font-size: 1.8rem;
+              }
+              
+              .options {
+                box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+                font-size: 1.8rem;
+                display: none;
+                width: 100%;
+                background-color: rgb(255, 255, 255);
+                list-style: none;
+
+                height: 30rem;
+                overflow: scroll;
+                .icon-down {
+                  display: none;
+                }
+                .first-option {
+                  color: #999999;
+                }
+                li {
+                  padding: 5px;
+                  cursor: pointer;
+                  color: #231815;
+                }
+
+                li:hover {
+                  background-color: #45b3e0;
+                }
+              }
+              .options3 {
+                height: 13rem;
+                overflow: scroll;
+              }
+            }
+
+            select {
+              border: 1px solid #ccc;
+              padding: 5px;
+              width: 100%;
+              /* 去除默认的边框 */
+              border: none;
+              /* 去除默认的轮廓线 */
+              outline: none;
+              /* 去除默认的下拉箭头（不同浏览器实现方式不同） */
+              -webkit-appearance: none;
+              -moz-appearance: none;
+              appearance: none;
+              /* 自定义背景颜色 */
+              background-color: #fff;
+              /* 自定义内边距 */
+              padding: 8px 0;
+              /* 自定义字体样式 */
+              font-size: 1.8rem;
+            }
+
             input {
-              font-size: 2rem;
+              font-size: 1.8rem;
               font-family: "AlibabaPuHuiTi_2_45_Light";
               color: rgb(89, 87, 87);
               text-align: justifyLeft;
@@ -286,6 +474,7 @@ import MyTitle from "@/components/MyTitle.vue";
     .content-top {
       .top-information {
         .write-info {
+
           .left,
           .right {
             margin: 0 6rem;
