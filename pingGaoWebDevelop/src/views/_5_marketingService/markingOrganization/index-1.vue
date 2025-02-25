@@ -123,7 +123,7 @@ onMounted(() => {
 .bodyBg {
   background-color: #def1fb;
   width: 100%;
-  height: 493px;
+  height: 60vh;
   position: absolute;
   top: 0px;
   left: 0px;
@@ -145,27 +145,27 @@ onMounted(() => {
 }
 
 .my-content-bottom-item:hover {
-  border-bottom: 1px solid #fff;
+  border-bottom: 0.05rem solid #fff;
   cursor: pointer;
 }
 
 .my-content-bottom-item {
   display: flex;
-  width: 34%;
+  width: 32%;
   height: auto;
   justify-content: space-evenly;
   align-items: center;
 }
 
 .my-content-bottom-item div {
-  height: 2em;
-  width: 2px;
-  margin: 0 15px;
+  height: 2rem;
+  width: 0.125rem;
+  margin: 0 0.9375rem;
   background-color: #fff;
 }
 
 .my-content-bottom-item span:nth-of-type(1) {
-  font-size: 24px;
+  font-size: 1.5rem;
   font-family: "AlibabaPuHuiTi_2_65_Medium";
   color: rgb(255, 255, 255);
   line-height: 1.542;
@@ -174,21 +174,27 @@ onMounted(() => {
 }
 
 .my-content-bottom-item span:nth-of-type(2) {
-  font-size: 38.737px;
+  font-size: 2.4375rem;
   font-family: "Avenir";
   color: rgb(255, 255, 255);
   line-height: 1.156;
   text-align: left;
-  padding-top: 0.2em;
+  padding-top: 0.2rem;
+}
+
+.my-content-bottom-item span {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .items-div {
-  padding-top: 82px;
+  padding-top: 5.125rem;
   width: 100%;
 }
 
 .items-title {
-  font-size: 32px;
+  font-size: 2rem;
   font-family: "Alibaba_PuHuiTi_2_65_Medium";
   color: rgb(69, 179, 224);
   line-height: 1.156;
@@ -200,31 +206,31 @@ onMounted(() => {
   flex-wrap: wrap;
   justify-content: space-between;
   width: 100%;
-  margin-top: 47px;
+  margin-top: 2.9375rem;
   overflow: hidden;
 }
 
 .item {
   position: relative;
-  width: calc((100% - 2 * 43px) / 3);
-  min-height: 271px;
+  width: calc((100% - 2 * 2.6875rem) / 3);
+  min-height: 16.9375rem;
 }
 
 .item hr {
-  border: 1px solid rgb(69, 179, 224);
+  border: 0.05rem solid rgb(69, 179, 224);
 }
 
 .item-hr-hr {
-  width: 61px;
-  margin: 22px 0;
+  width: 3.8125rem;
+  margin: 1.375rem 0;
 }
 
 .item-hr1 {
-  margin-bottom: 50px;
+  margin-bottom: 3.125rem;
 }
 
 .item-title {
-  font-size: 24px;
+  font-size: 1.5rem;
   font-family: "AlibabaPuHuiTi_2_65_Medium";
   color: rgb(69, 179, 224);
   line-height: 1.543;
@@ -234,7 +240,7 @@ onMounted(() => {
 .item-phone,
 .item-fax,
 .item-email {
-  font-size: 22px;
+  font-size: 1.375rem;
   font-family: "AlibabaPuHuiTi_2_45_Light";
   color: rgb(89, 87, 87);
   line-height: 1.684;
