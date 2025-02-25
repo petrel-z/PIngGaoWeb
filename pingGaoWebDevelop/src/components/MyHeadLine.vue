@@ -8,7 +8,7 @@ import imgPath from "@/assets/imgs/_1_aboutPinggaoImgs/line.png";
   <div class="title">{{ props.title }}</div>
   <div class="img"><img :src="imgPath" alt="" /></div>
 </template>
-<style>
+<style scoped>
 .title {
   font-size: 1.625rem;
   font-family: "AlibabaPuHuiTi_2_65_Medium", sans-serif;
@@ -16,11 +16,11 @@ import imgPath from "@/assets/imgs/_1_aboutPinggaoImgs/line.png";
   font-weight: 500;
   z-index: 139;
 }
-.img{
+.img {
   width: 100%;
   background-size: contain;
 }
-.img img{
+.img img {
   width: 100%;
 }
 </style>

@@ -42,16 +42,8 @@ const props = defineProps({
 
 <style lang="less" scoped>
 @import "@/assets/iconfont/icons/iconfont.css";
-@font-face {
-  font-family: "iconfont";
-  src: url("iconfont.ttf?t=1738824929065") format("truetype");
-}
 .iconfont {
-  font-family: "iconfont" !important;
   font-size: 45px;
-  font-style: normal;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
 }
 .news-bar {
   display: flex;

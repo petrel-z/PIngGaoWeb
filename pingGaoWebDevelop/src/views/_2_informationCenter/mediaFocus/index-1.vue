@@ -1,4 +1,6 @@
 <script setup>
+import { ref, onMounted } from "vue";
+
 defineOptions({
   name: "NewsCenterIndex3-1",
 });

@@ -1,6 +1,4 @@
 <script setup>
-import { defineProps } from "vue";
-
 // 定义一个方法来判断是否应该应用 border-bottom 样式
 const shouldApplyBorder = (index) => {
   // 计算总行数

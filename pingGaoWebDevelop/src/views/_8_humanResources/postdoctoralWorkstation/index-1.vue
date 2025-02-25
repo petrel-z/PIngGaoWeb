@@ -28,7 +28,7 @@ onMounted(() => {
 
 <template>
   <div style="width: 100%; position: relative; min-height: 1605px">
-    <div class="title">
+    <div class="content-title">
       <MyTitle title="博士后工作站" English="POSTDOCTORAL WORKSTATION" />
     </div>
     <div class="center">
@@ -81,7 +81,7 @@ onMounted(() => {
 </template>
 
 <style scoped>
-.title {
+.content-title {
   padding: 65px 11% 0 11%;
 }
 

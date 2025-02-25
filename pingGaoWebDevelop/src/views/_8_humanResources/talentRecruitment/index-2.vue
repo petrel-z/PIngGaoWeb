@@ -16,9 +16,9 @@ import TextTitle from "@/components/TextTitle.vue";
       <img src="../../../assets/imgs/_8_humanResourcesImgs/bg-1.png" alt="" />
     </div>
     <div class="body-content">
-      <div class="bg-white" style="padding: 5em; width: 100%">
-        <div class="title">国电气装备旗下平高集团2022年社会招聘公告</div>
-        <div style="margin-top: 70px; margin-bottom: 56px">
+      <div class="bg-white" style="padding: 4.7rem; width: 100%">
+        <div class="content-title">国电气装备旗下平高集团2022年社会招聘公告</div>
+        <div style="margin-top: 4.7rem; margin-bottom: 4.7rem">
           <TextTitle time="2025-01-14" browse="488" color="#1c4e9f" />
         </div>
         <div class="text">
@@ -87,7 +87,7 @@ import TextTitle from "@/components/TextTitle.vue";
 .bg-white {
   background-color: #ffffff;
 }
-.title {
+.content-title {
   font-size: 35px;
   font-family: "AlibabaPuHuiTi_2_65_Medium";
   color: rgb(0, 55, 146);
