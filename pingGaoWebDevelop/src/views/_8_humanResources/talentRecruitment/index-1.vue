@@ -45,7 +45,7 @@ onMounted(() => {
         <div class="right">社会公开招聘</div>
       </div>
       <div style="margin-top: 4.9rem">
-        <div class="title">高校毕业生招聘</div>
+        <div class="content-title">高校毕业生招聘</div>
         <div style="margin-top: 3.7rem">
           <Item2
             v-for="i in 3"
@@ -83,16 +83,6 @@ onMounted(() => {
 
 .show .right {
   right: 0;
-}
-
-.show .my-title {
-  left: 0;
-}
-
-.my-title {
-  position: relative;
-  left: -200%;
-  transition: left 0.5s ease;
 }
 
 .left {
@@ -136,7 +126,7 @@ onMounted(() => {
   transition: right 0.5s ease;
 }
 
-.title {
+.content-title {
   font-size: 32px;
   font-family: "AlibabaPuHuiTi_2_65_Medium";
   color: rgb(0, 111, 193);

@@ -10,17 +10,15 @@ const titleBox = ref(null);
 onMounted(() => {
   // 获取目标元素容器
   const targetContainer = items.value;
-  const titleBoxContainer = titleBox.value;
   const div1 = divTitle1.value;
   const div2 = divTitle2.value;
   const div3 = divTitle3.value;
-  if (targetContainer && titleBoxContainer) {
+  if (targetContainer) {
     // 监听页面滚动事件
     window.addEventListener("scroll", () => {
       if (!targetContainer) return;
       // 获取元素顶部距离页面顶部的距离
       const elementTop = targetContainer.getBoundingClientRect().top;
-      const titleBoxTop = titleBoxContainer.getBoundingClientRect().top;
       // 获取窗口的高度
       const windowHeight = window.innerHeight;
 
@@ -29,11 +27,6 @@ onMounted(() => {
         targetContainer.classList.add("show");
       } else {
         targetContainer.classList.remove("show");
-      }
-      if (titleBoxTop < windowHeight) {
-        titleBoxContainer.classList.add("show");
-      } else {
-        titleBoxContainer.classList.remove("show");
       }
     });
   }
@@ -90,8 +83,8 @@ onMounted(() => {
       <img src="../../../assets/imgs/_8_humanResourcesImgs/bg-1.png" alt="" />
     </div>
     <div ref="items" class="body-content">
-      <div ref="titleBox">
-        <MyTitle class="my-title" title="人才开发" English="TALENT DEVELOPMENT"></MyTitle>
+      <div>
+        <MyTitle title="人才开发" English="TALENT DEVELOPMENT"></MyTitle>
       </div>
       <div style="margin-top: 3rem; display: flex; width: 100%">
         <div class="body-content-left">
@@ -100,7 +93,7 @@ onMounted(() => {
           <div ref="divTitle3" class="div-title font-blue bg-white">教育培训</div>
         </div>
         <div class="body-content-right bg-white">
-          <div class="title">职业通道</div>
+          <div class="content-title">职业通道</div>
           <div class="text">
             <p>
               为畅通员工晋升通道，打破职务晋升单一发展路径，平高集团构建了全方位、全覆盖的“322”员工职业发展
@@ -197,8 +190,8 @@ onMounted(() => {
   border-radius: 10px;
 }
 
-.title {
-  font-size: 32px;
+.content-title {
+  font-size: 2.5rem;
   font-family: "AlibabaPuHuiTi_2_65_Medium";
   color: rgb(0, 111, 193);
   line-height: 1.156;
@@ -251,15 +244,5 @@ onMounted(() => {
 
 .bg-blue {
   background-color: #006fc1;
-}
-
-.show .my-title {
-  left: 0;
-}
-
-.my-title {
-  position: relative;
-  left: -200%;
-  transition: left 0.5s ease;
 }
 </style>

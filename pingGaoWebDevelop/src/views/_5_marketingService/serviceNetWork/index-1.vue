@@ -8,27 +8,20 @@ defineOptions({
 import MyTitle from "@/components/MyTitle.vue";
 import MyContent from "@/components/MyContent.vue";
 
-const titleBox = ref(null);
 const contentBox = ref(null);
 const processBox = ref(null);
 onMounted(() => {
-  if (titleBox.value && contentBox.value && processBox.value) {
+  if (contentBox.value && processBox.value) {
     // 监听页面滚动事件
     window.addEventListener("scroll", () => {
-      if (!titleBox.value || !contentBox.value || !processBox.value) return;
+      if (!contentBox.value || !processBox.value) return;
       // 获取元素顶部距离页面顶部的距离
-      const titleTop = titleBox.value.getBoundingClientRect().top;
       const contentTop = contentBox.value.getBoundingClientRect().top;
       const processTop = processBox.value.getBoundingClientRect().top;
       // 获取窗口的高度
       const windowHeight = window.innerHeight;
 
       // 判断元素是否进入可视区域
-      if (titleTop < windowHeight) {
-        titleBox.value.classList.add("show");
-      } else {
-        titleBox.value.classList.remove("show");
-      }
       if (contentTop < windowHeight) {
         contentBox.value.classList.add("show");
       } else {
@@ -49,8 +42,8 @@ onMounted(() => {
     <div style="position: relative; min-height: 1120px">
       <div class="body-content">
         <div class="bodyBg"></div>
-        <div ref="titleBox">
-          <MyTitle class="title" title="服务网络" English="SERVICE PROCESS" />
+        <div>
+          <MyTitle title="服务网络" English="SERVICE PROCESS" />
         </div>
         <div ref="contentBox" style="margin-top: 3.7rem">
           <MyContent
@@ -133,22 +126,12 @@ onMounted(() => {
   height: auto;
 }
 
-.show .title {
-  left: 0;
-}
-
 .show .content {
   right: 0;
 }
 
 .show .process-box {
   left: 0;
-}
-
-.title {
-  position: relative;
-  left: -200%;
-  transition: left 0.5s ease;
 }
 
 .content {

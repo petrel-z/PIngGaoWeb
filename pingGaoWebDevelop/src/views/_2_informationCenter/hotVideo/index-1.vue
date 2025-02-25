@@ -9,11 +9,10 @@ import hotVideoImg from "@/assets/imgs/_2_informationCenterImgs/hotVideoImg.png"
 const flag = ref(false);
 
 const items = ref(null);
-const titleBox = ref(null);
 onMounted(() => {
   // 获取目标元素容器
   const targetContainer = items.value;
-  if (targetContainer && titleBox.value) {
+  if (targetContainer) {
     // 监听页面滚动事件
     window.addEventListener("scroll", () => {
       if (!targetContainer) return;
@@ -25,10 +24,8 @@ onMounted(() => {
       // 判断元素是否进入可视区域
       if (elementTop < windowHeight) {
         targetContainer.classList.add("show");
-        titleBox.value.classList.add("show");
       } else {
         targetContainer.classList.remove("show");
-        titleBox.value.classList.remove("show");
       }
     });
   }
@@ -41,8 +38,8 @@ onMounted(() => {
       <div class="bodyBg1"></div>
       <div class="body">
         <div>
-          <div ref="titleBox" style="padding-top: 64px">
-            <my-title class="title" title="热点视频" English="HOT VIDEOS" />
+          <div style="padding-top: 64px">
+            <my-title title="热点视频" English="HOT VIDEOS" />
           </div>
         </div>
 
@@ -151,16 +148,6 @@ onMounted(() => {
 
 .show .right {
   right: 0;
-}
-
-.show .title {
-  left: 0;
-}
-
-.title {
-  position: relative;
-  left: -200%;
-  transition: left 0.5s ease;
 }
 
 .left {

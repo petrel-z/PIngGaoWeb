@@ -56,27 +56,20 @@ const HumanContentItems = ref([
 ]);
 import HumanContent from "@/components/HumanContent.vue";
 
-const titleBox = ref(null);
 const contentBox = ref(null);
 const humanContentBox = ref(null);
 onMounted(() => {
-  if (titleBox.value && contentBox.value && humanContentBox.value) {
+  if (contentBox.value && humanContentBox.value) {
     // 监听页面滚动事件
     window.addEventListener("scroll", () => {
-      if (!titleBox.value || !contentBox.value || !humanContentBox.value) return;
+      if (!contentBox.value || !humanContentBox.value) return;
       // 获取元素顶部距离页面顶部的距离
-      const titleTop = titleBox.value.getBoundingClientRect().top;
       const contentTop = contentBox.value.getBoundingClientRect().top;
       const humanContentTop = humanContentBox.value.getBoundingClientRect().top;
       // 获取窗口的高度
       const windowHeight = window.innerHeight;
 
       // 判断元素是否进入可视区域
-      if (titleTop < windowHeight) {
-        titleBox.value.classList.add("show");
-      } else {
-        titleBox.value.classList.remove("show");
-      }
       if (contentTop < windowHeight) {
         contentBox.value.classList.add("show");
       } else {
@@ -96,8 +89,8 @@ onMounted(() => {
   <div style="position: relative; min-height: 2290px">
     <div class="bodyBg"></div>
     <div class="body-content">
-      <div ref="titleBox">
-        <MyTitle class="title" title="人才队伍" English="TALENT TEAM"></MyTitle>
+      <div>
+        <MyTitle title="人才队伍" English="TALENT TEAM"></MyTitle>
       </div>
       <div ref="contentBox" style="margin-top: 55px">
         <MyContent
@@ -133,10 +126,6 @@ onMounted(() => {
   overflow: hidden;
 }
 
-.show .title {
-  left: 0;
-}
-
 .show .content {
   right: 0;
 }
@@ -147,12 +136,6 @@ onMounted(() => {
 
 .show .right {
   right: 0;
-}
-
-.title {
-  position: relative;
-  left: -200%;
-  transition: left 0.5s ease;
 }
 
 .content {

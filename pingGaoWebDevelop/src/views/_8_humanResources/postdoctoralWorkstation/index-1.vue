@@ -3,18 +3,15 @@ import MyTitle from "@/components/MyTitle.vue";
 import { ref, onMounted } from "vue";
 
 const items = ref(null);
-const titleBox = ref(null);
 onMounted(() => {
   // 获取目标元素容器
   const targetContainer = items.value;
-  const titleBoxContainer = titleBox.value;
-  if (targetContainer && titleBoxContainer) {
+  if (targetContainer) {
     // 监听页面滚动事件
     window.addEventListener("scroll", () => {
       if (!targetContainer) return;
       // 获取元素顶部距离页面顶部的距离
       const elementTop = targetContainer.getBoundingClientRect().top;
-      const titleBoxTop = titleBoxContainer.getBoundingClientRect().top;
       // 获取窗口的高度
       const windowHeight = window.innerHeight;
 
@@ -24,11 +21,6 @@ onMounted(() => {
       } else {
         targetContainer.classList.remove("show");
       }
-      if (titleBoxTop < windowHeight) {
-        titleBoxContainer.classList.add("show");
-      } else {
-        titleBoxContainer.classList.remove("show");
-      }
     });
   }
 });
@@ -36,8 +28,8 @@ onMounted(() => {
 
 <template>
   <div style="width: 100%; position: relative; min-height: 1605px">
-    <div ref="titleBox" class="title">
-      <MyTitle class="my-title" title="博士后工作站" English="POSTDOCTORAL WORKSTATION" />
+    <div class="content-title">
+      <MyTitle title="博士后工作站" English="POSTDOCTORAL WORKSTATION" />
     </div>
     <div class="center">
       <div
@@ -89,7 +81,7 @@ onMounted(() => {
 </template>
 
 <style scoped>
-.title {
+.content-title {
   padding: 65px 11% 0 11%;
 }
 
@@ -177,15 +169,5 @@ onMounted(() => {
 .bottom-bg img {
   width: 100%;
   height: auto;
-}
-
-.show .my-title {
-  left: 0;
-}
-
-.my-title {
-  position: relative;
-  left: -200%;
-  transition: left 0.5s ease;
 }
 </style>

@@ -50,25 +50,20 @@ function handleClick(e) {
   console.log(e);
 }
 
-const titleBox = ref(null);
 const contentBox = ref(null);
 onMounted(() => {
-  if (titleBox.value && contentBox.value) {
+  if (contentBox.value) {
     // 监听页面滚动事件
     window.addEventListener("scroll", () => {
-      if (!titleBox.value || !contentBox.value) return;
+      if (!contentBox.value) return;
       // 获取元素顶部距离页面顶部的距离
-      const titleTop = titleBox.value.getBoundingClientRect().top;
+
       const contentTop = contentBox.value.getBoundingClientRect().top;
       // 获取窗口的高度
       const windowHeight = window.innerHeight;
 
       // 判断元素是否进入可视区域
-      if (titleTop < windowHeight) {
-        titleBox.value.classList.add("show");
-      } else {
-        titleBox.value.classList.remove("show");
-      }
+
       if (contentTop < windowHeight) {
         contentBox.value.classList.add("show");
       } else {
@@ -86,8 +81,8 @@ onMounted(() => {
     </div>
     <div class="body">
       <div>
-        <div ref="titleBox" style="padding-top: 2.5rem">
-          <my-title class="title" title="总部动态" English="HEADQUARTERS NEWS" />
+        <div style="padding-top: 2.5rem">
+          <my-title title="总部动态" English="HEADQUARTERS NEWS" />
         </div>
         <div ref="contentBox" style="margin-top: 2.5rem">
           <ContentPag class="content" :to-state="true" />
@@ -145,18 +140,8 @@ onMounted(() => {
   align-items: center;
 }
 
-.show .title {
-  left: 0;
-}
-
 .show .content {
   right: 0;
-}
-
-.title {
-  position: relative;
-  left: -200%;
-  transition: left 0.5s ease;
 }
 
 .content {

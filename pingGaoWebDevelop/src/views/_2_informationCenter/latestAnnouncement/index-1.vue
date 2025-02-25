@@ -9,25 +9,19 @@ import MyContent from "@/components/MyContent.vue";
 import Item2 from "@/components/Item-2.vue";
 import MyPagination from "@/components/MyPagination.vue";
 
-const titleBox = ref(null);
 const contentBox = ref(null);
 onMounted(() => {
-  if (titleBox.value && contentBox.value) {
+  if (contentBox.value) {
     // 监听页面滚动事件
     window.addEventListener("scroll", () => {
-      if (!titleBox.value || !contentBox.value) return;
+      if (!contentBox.value) return;
       // 获取元素顶部距离页面顶部的距离
-      const titleTop = titleBox.value.getBoundingClientRect().top;
       const contentTop = contentBox.value.getBoundingClientRect().top;
       // 获取窗口的高度
       const windowHeight = window.innerHeight;
 
       // 判断元素是否进入可视区域
-      if (titleTop < windowHeight) {
-        titleBox.value.classList.add("show");
-      } else {
-        titleBox.value.classList.remove("show");
-      }
+
       if (contentTop < windowHeight) {
         contentBox.value.classList.add("show");
       } else {
@@ -102,18 +96,8 @@ onMounted(() => {
   margin-top: 14px;
 }
 
-.show .title {
-  left: 0;
-}
-
 .show .content {
   right: 0;
-}
-
-.title {
-  position: relative;
-  left: -200%;
-  transition: left 0.5s ease;
 }
 
 .content {
