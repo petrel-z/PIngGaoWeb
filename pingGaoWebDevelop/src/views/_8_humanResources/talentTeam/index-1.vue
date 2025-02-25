@@ -1,5 +1,5 @@
 <script setup>
-import { ref } from "vue";
+import { ref, onMounted } from "vue";
 import MyContent from "@/components/MyContent.vue";
 import MyTitle from "@/components/MyTitle.vue";
 const items = ref([
@@ -55,6 +55,34 @@ const HumanContentItems = ref([
   },
 ]);
 import HumanContent from "@/components/HumanContent.vue";
+
+const contentBox = ref(null);
+const humanContentBox = ref(null);
+onMounted(() => {
+  if (contentBox.value && humanContentBox.value) {
+    // 监听页面滚动事件
+    window.addEventListener("scroll", () => {
+      if (!contentBox.value || !humanContentBox.value) return;
+      // 获取元素顶部距离页面顶部的距离
+      const contentTop = contentBox.value.getBoundingClientRect().top;
+      const humanContentTop = humanContentBox.value.getBoundingClientRect().top;
+      // 获取窗口的高度
+      const windowHeight = window.innerHeight;
+
+      // 判断元素是否进入可视区域
+      if (contentTop < windowHeight) {
+        contentBox.value.classList.add("show");
+      } else {
+        contentBox.value.classList.remove("show");
+      }
+      if (humanContentTop < windowHeight) {
+        humanContentBox.value.classList.add("show");
+      } else {
+        humanContentBox.value.classList.remove("show");
+      }
+    });
+  }
+});
 </script>
 
 <template>
@@ -64,17 +92,18 @@ import HumanContent from "@/components/HumanContent.vue";
       <div>
         <MyTitle title="人才队伍" English="TALENT TEAM"></MyTitle>
       </div>
-      <div style="margin-top: 55px">
+      <div ref="contentBox" style="margin-top: 55px">
         <MyContent
+          class="content"
           title="平高集团"
           content1="平高集团始终坚持以人为本，关注员工成长成才，优化人才成长环境，将人才强企战略纳入集团发展战略之一，引进和培育"
           content2="了一支高素质的优秀人才队伍。"
           :bottom-items="items"
         />
       </div>
-      <div style="margin-top: 94px">
-        <HumanContent style="margin-bottom: -2px" />
-        <HumanContent title="拥有省部行业级人才126人" :items="HumanContentItems" />
+      <div ref="humanContentBox" style="margin-top: 94px">
+        <HumanContent class="left" style="margin-bottom: -2px" />
+        <HumanContent class="right" title="拥有省部行业级人才126人" :items="HumanContentItems" />
       </div>
     </div>
   </div>
@@ -90,8 +119,40 @@ import HumanContent from "@/components/HumanContent.vue";
   bottom: 0px;
   z-index: -1;
 }
+
 .body-content {
   margin: 0 11%;
   padding-top: 66px;
+  overflow: hidden;
+}
+
+.show .content {
+  right: 0;
+}
+
+.show .left {
+  left: 0;
+}
+
+.show .right {
+  right: 0;
+}
+
+.content {
+  position: relative;
+  right: -200%;
+  transition: right 0.5s ease;
+}
+
+.left {
+  position: relative;
+  left: -200%;
+  transition: left 1s ease;
+}
+
+.right {
+  position: relative;
+  right: -200%;
+  transition: right 1s ease;
 }
 </style>

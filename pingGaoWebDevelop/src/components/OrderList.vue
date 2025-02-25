@@ -92,14 +92,25 @@ const props = defineProps({
 }
 
 .order {
+  position: relative;
   width: auto;
   height: auto;
   background-color: #003792;
   border-radius: 10px;
   padding: 0 34px;
+  animation: right-in 0.5s ease-in-out;
 }
 
 .order ul li:last-child {
   border-bottom: none;
+}
+
+@keyframes right-in {
+  from {
+    left: 100%;
+  }
+  to {
+    left: 0;
+  }
 }
 </style>

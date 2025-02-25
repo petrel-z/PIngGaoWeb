@@ -1,10 +1,40 @@
 <script setup>
+import { ref, onMounted } from "vue";
+
 defineOptions({
   name: "marketing-serviceIndex1-1",
 });
 
 import MyTitle from "@/components/MyTitle.vue";
 import MyContent from "@/components/MyContent.vue";
+
+const contentBox = ref(null);
+const processBox = ref(null);
+onMounted(() => {
+  if (contentBox.value && processBox.value) {
+    // 监听页面滚动事件
+    window.addEventListener("scroll", () => {
+      if (!contentBox.value || !processBox.value) return;
+      // 获取元素顶部距离页面顶部的距离
+      const contentTop = contentBox.value.getBoundingClientRect().top;
+      const processTop = processBox.value.getBoundingClientRect().top;
+      // 获取窗口的高度
+      const windowHeight = window.innerHeight;
+
+      // 判断元素是否进入可视区域
+      if (contentTop < windowHeight) {
+        contentBox.value.classList.add("show");
+      } else {
+        contentBox.value.classList.remove("show");
+      }
+      if (processTop < windowHeight) {
+        processBox.value.classList.add("show");
+      } else {
+        processBox.value.classList.remove("show");
+      }
+    });
+  }
+});
 </script>
 
 <template>
@@ -15,17 +45,20 @@ import MyContent from "@/components/MyContent.vue";
         <div>
           <MyTitle title="服务网络" English="SERVICE PROCESS" />
         </div>
-        <div style="margin-top: 55px">
+        <div ref="contentBox" style="margin-top: 3.7rem">
           <MyContent
+            class="content"
             title="始终以支撑电网安全稳定运行为使命"
             content1="坚持以客户为中心，以客户满意和价值提升为目标，完善服务功能、健全服务标准、创新服务模式、多样化服务保障，不断提升客户"
             content2="服务水平，全力打造建设现代企业客户服务体系，切实提升客户满意度、获得感，为集团高质量跨越发展提供有力支撑。"
           />
         </div>
-        <div class="process-box">
-          <div class="process-title">服务流程图</div>
-          <div class="process">
-            <img src="../../../assets/imgs/_5_marketingServiceImgs/process.png" alt="" />
+        <div ref="processBox">
+          <div class="process-box">
+            <div class="process-title">服务流程图</div>
+            <div class="process">
+              <img src="../../../assets/imgs/_5_marketingServiceImgs/process.png" alt="" />
+            </div>
           </div>
         </div>
       </div>
@@ -48,6 +81,7 @@ import MyContent from "@/components/MyContent.vue";
   margin: 0 11%;
   padding-top: 65px;
   min-height: 2520px;
+  overflow: hidden;
 }
 
 .footer-bg {
@@ -68,6 +102,9 @@ import MyContent from "@/components/MyContent.vue";
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  position: relative;
+  left: -200%;
+  transition: left 0.5s ease;
 }
 
 .process-title {
@@ -87,5 +124,19 @@ import MyContent from "@/components/MyContent.vue";
 .process img {
   width: 100%;
   height: auto;
+}
+
+.show .content {
+  right: 0;
+}
+
+.show .process-box {
+  left: 0;
+}
+
+.content {
+  position: relative;
+  right: -200%;
+  transition: right 0.5s ease;
 }
 </style>

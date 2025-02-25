@@ -1,4 +1,5 @@
 <script setup>
+import { onMounted, ref } from "vue";
 defineOptions({
   name: "NewsCenterIndex1-1",
 });
@@ -48,6 +49,29 @@ const items = [
 function handleClick(e) {
   console.log(e);
 }
+
+const contentBox = ref(null);
+onMounted(() => {
+  if (contentBox.value) {
+    // 监听页面滚动事件
+    window.addEventListener("scroll", () => {
+      if (!contentBox.value) return;
+      // 获取元素顶部距离页面顶部的距离
+
+      const contentTop = contentBox.value.getBoundingClientRect().top;
+      // 获取窗口的高度
+      const windowHeight = window.innerHeight;
+
+      // 判断元素是否进入可视区域
+
+      if (contentTop < windowHeight) {
+        contentBox.value.classList.add("show");
+      } else {
+        contentBox.value.classList.remove("show");
+      }
+    });
+  }
+});
 </script>
 
 <template>
@@ -60,8 +84,8 @@ function handleClick(e) {
         <div style="padding-top: 2.5rem">
           <my-title title="总部动态" English="HEADQUARTERS NEWS" />
         </div>
-        <div style="margin-top: 2.5rem">
-          <ContentPag :to-state="true" />
+        <div ref="contentBox" style="margin-top: 2.5rem">
+          <ContentPag class="content" :to-state="true" />
         </div>
         <div class="item-container">
           <Item1
@@ -115,6 +139,17 @@ function handleClick(e) {
   justify-content: center;
   align-items: center;
 }
+
+.show .content {
+  right: 0;
+}
+
+.content {
+  position: relative;
+  right: -200%;
+  transition: right 0.5s ease;
+}
+
 @media screen and (max-width: 900px) {
   .body {
     margin: 0 5%;

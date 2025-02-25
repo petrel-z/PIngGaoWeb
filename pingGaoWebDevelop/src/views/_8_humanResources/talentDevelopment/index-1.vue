@@ -6,6 +6,7 @@ const items = ref(null);
 const divTitle1 = ref(null);
 const divTitle2 = ref(null);
 const divTitle3 = ref(null);
+const titleBox = ref(null);
 onMounted(() => {
   // 获取目标元素容器
   const targetContainer = items.value;
@@ -92,7 +93,7 @@ onMounted(() => {
           <div ref="divTitle3" class="div-title font-blue bg-white">教育培训</div>
         </div>
         <div class="body-content-right bg-white">
-          <div class="title">职业通道</div>
+          <div class="content-title">职业通道</div>
           <div class="text">
             <p>
               为畅通员工晋升通道，打破职务晋升单一发展路径，平高集团构建了全方位、全覆盖的“322”员工职业发展
@@ -151,6 +152,7 @@ onMounted(() => {
   margin: 0 11%;
   padding-top: 66px;
   padding-bottom: 30vh;
+  overflow: hidden;
 }
 
 .body-content-left {
@@ -188,8 +190,8 @@ onMounted(() => {
   border-radius: 10px;
 }
 
-.title {
-  font-size: 32px;
+.content-title {
+  font-size: 2.5rem;
   font-family: "AlibabaPuHuiTi_2_65_Medium";
   color: rgb(0, 111, 193);
   line-height: 1.156;
