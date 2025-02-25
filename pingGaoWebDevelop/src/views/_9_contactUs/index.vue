@@ -39,7 +39,7 @@ const footer = ref([
 
 <template>
   <div class="header">
-    <ComHeader :content="content" :footer="footer" :footerImg="footerImg" />
+    <ComHeader :content="content" :footer="footer" />
   </div>
   <router-view />
   <div class="right_button"> <RightButton></RightButton> </div>
