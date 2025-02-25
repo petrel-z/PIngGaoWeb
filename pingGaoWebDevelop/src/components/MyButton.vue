@@ -1,5 +1,5 @@
 <script setup>
-import { ref, defineEmits } from "vue";
+import { ref } from "vue";
 
 const button = ref(null);
 const emits = defineEmits(["childButton"]);
