@@ -13,42 +13,64 @@ const props = defineProps({
     default: () => [
       {
         name: "中国电器装备召开一届二次啊啊啊啊啊",
-        num: "浏览量:4039",
+        num: 4039,
       },
       {
         name: "中国电器装备召开一届二次啊啊啊啊啊",
-        num: "浏览量:4039",
+        num: 4039,
       },
       {
         name: "中国电器装备召开一届二次啊啊啊啊啊",
-        num: "浏览量:4039",
+        num: 4039,
       },
       {
         name: "中国电器装备召开一届二次啊啊啊啊啊",
-        num: "浏览量:4039",
+        num: 4039,
       },
       {
         name: "中国电器装备召开一届二次啊啊啊啊啊",
-        num: "浏览量:4039",
+        num: 4039,
+      },
+      {
+        name: "中国电器装备召开一届二次啊啊啊啊啊",
+        num: 4039,
+      },
+      {
+        name: "中国电器装备召开一届二次啊啊啊啊啊",
+        num: 4039,
       },
     ],
   },
 });
+
+function sortOrderList(orderList) {
+  orderList = orderList
+    .map((item) => {
+      return {
+        ...item,
+        num: typeof item.num === "number" ? item.num : 4039,
+      };
+    })
+    .sort(function (a, b) {
+      return b.num - a.num;
+    });
+  return orderList.slice(0, 5);
+}
 </script>
 
 <template>
   <div class="order" :style="{ backgroundColor: props.bgColor }">
     <ul>
-      <li class="list-item" style="height: 105px">
+      <li class="list-item">
         <span>{{ props.title }}</span>
         <i
           class="iconfont icon-a-MenuBar-show"
           style="font-size: 24px; color: #fff; transform: rotate(180deg)"
         ></i>
       </li>
-      <li class="list-item" v-for="(item, index) in props.orderList" :key="index">
+      <li class="list-item" v-for="(item, index) in sortOrderList(props.orderList)" :key="index">
         <span> {{ item.name }}</span>
-        <span>{{ item.num }}</span>
+        <span>{{ `浏览量：${item.num}` }}</span>
       </li>
     </ul>
   </div>
@@ -57,16 +79,19 @@ const props = defineProps({
 <style scoped>
 .list-item {
   display: flex;
-  font-size: 24px;
+  height: auto;
+  padding: 9% 0;
+  font-size: 1.3rem;
   font-family: "AlibabaPuHuiTi_2_65_Medium";
   color: rgb(255, 255, 255);
-  line-height: 113px;
-  text-align: justifyLeft;
+  text-align: left;
   position: relative;
   z-index: 237;
   height: auto;
   justify-content: space-between;
-  border-bottom: 1px solid #fff;
+  align-items: center;
+  border-bottom: 0.05rem solid #fff;
+  cursor: pointer;
 }
 
 .list-item span:nth-child(1) {
@@ -79,7 +104,7 @@ const props = defineProps({
 }
 
 .list-item span:nth-child(2) {
-  font-size: 18px;
+  font-size: 1.125rem;
   font-family: "AlibabaPuHuiTi_2_65_Medium";
   color: rgb(255, 255, 255);
   text-align: justifyLeft;
@@ -96,8 +121,8 @@ const props = defineProps({
   width: auto;
   height: auto;
   background-color: #003792;
-  border-radius: 10px;
-  padding: 0 34px;
+  border-radius: 0.625rem;
+  padding: 0 2.125rem;
   animation: right-in 0.5s ease-in-out;
 }
 

@@ -8,6 +8,27 @@ import MyButton from "@/components/MyButton.vue";
 import hotVideoImg from "@/assets/imgs/_2_informationCenterImgs/hotVideoImg.png";
 const flag = ref(false);
 
+const videos = ref([
+  { videoUrl: hotVideoImg, videoName: "视频名称" },
+  { videoUrl: hotVideoImg, videoName: "视频名称" },
+  { videoUrl: hotVideoImg, videoName: "视频名称" },
+  { videoUrl: hotVideoImg, videoName: "视频名称" },
+  { videoUrl: hotVideoImg, videoName: "视频名称" },
+  { videoUrl: hotVideoImg, videoName: "视频名称" },
+]);
+let text = ref("加载更多");
+function addVideos() {
+  if (videos.value.length >= 18) {
+    return;
+  }
+  for (let i = 0; i < 6; i++) {
+    videos.value.push({ videoUrl: hotVideoImg, videoName: "视频名称" });
+  }
+  if (videos.value.length >= 18) {
+    text.value = "没有更多了";
+  }
+}
+
 const items = ref(null);
 onMounted(() => {
   // 获取目标元素容器
@@ -38,23 +59,28 @@ onMounted(() => {
       <div class="bodyBg1"></div>
       <div class="body">
         <div>
-          <div style="padding-top: 64px">
+          <div style="padding-top: 4rem">
             <my-title title="热点视频" English="HOT VIDEOS" />
           </div>
         </div>
 
         <div class="content" ref="items">
-          <div class="video-box" v-for="i in 6" :class="i % 2 == 0 ? 'right' : 'left'" :key="i">
+          <div
+            class="video-box"
+            v-for="(i, index) in videos"
+            :class="(index + 1) % 2 == 0 ? 'right' : 'left'"
+            :key="i"
+          >
             <div class="video-item" @click="flag = true">
-              <img class="video-img" :src="hotVideoImg" alt="video图片" />
+              <img class="video-img" :src="i.videoUrl" alt="video图片" />
             </div>
             <div class="video-name">
-              <span>视频名称</span>
+              <span>{{ i.videoName }}</span>
             </div>
           </div>
         </div>
         <div class="button-container">
-          <myButton @childButton="handleClick" />
+          <myButton :text="text" @click="addVideos" />
         </div>
       </div>
     </div>
@@ -67,17 +93,19 @@ onMounted(() => {
 <style scoped>
 .body {
   padding: 0 11%;
+  height: auto;
 }
 
 .bodyBg {
   width: 100%;
+  height: auto;
   position: relative;
   background-size: cover;
   background-image: url("../../../assets/imgs/_2_informationCenterImgs/videosBg.png");
 }
 
 .content {
-  padding-top: 1em;
+  padding-top: 2%;
   width: 100%;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -85,6 +113,7 @@ onMounted(() => {
   gap: 35px;
   height: auto;
   overflow: hidden;
+  transition: all 0.5s ease-in-out;
 }
 
 .video-box {
@@ -92,6 +121,7 @@ onMounted(() => {
   border-radius: 0.5rem;
   overflow: hidden;
   height: auto;
+  transition: all 0.5s ease-in-out;
 }
 
 .video-img {
@@ -113,7 +143,8 @@ onMounted(() => {
 }
 .button-container {
   width: 100%;
-  height: 276px;
+  height: auto;
+  padding: 5% 0;
   display: flex;
   justify-content: center;
   align-items: center;

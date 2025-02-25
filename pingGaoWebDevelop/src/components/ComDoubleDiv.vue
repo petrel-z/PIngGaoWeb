@@ -15,20 +15,37 @@ const props = defineProps({
   leftFontColor: {
     type: String,
     default: "#006fc1",
-
   },
   rightFontColor: {
     type: String,
     default: "#595757",
-  }
+  },
+  leftPath: {
+    type: String,
+    default: "",
+  },
+  rightPath: {
+    type: String,
+    default: "",
+  },
 });
 </script>
 
 <template>
-  <div class="com-double-div"
-    :style="{ '--bgColor': props.bgColor, '--leftFontColor': props.leftFontColor, '--rightFontColor': props.rightFontColor }">
-    <div class="left">{{ props.title }}</div>
-    <div class="right">{{ props.content }}</div>
+  <div
+    class="com-double-div"
+    :style="{
+      '--bgColor': props.bgColor,
+      '--leftFontColor': props.leftFontColor,
+      '--rightFontColor': props.rightFontColor,
+    }"
+  >
+    <router-link :to="props.leftPath" class="leftLink">
+      <div class="left">{{ props.title }}</div>
+    </router-link>
+    <router-link :to="props.rightPath" class="rightLink">
+      <div class="right">{{ props.content }}</div>
+    </router-link>
   </div>
 </template>
 
@@ -39,10 +56,11 @@ const props = defineProps({
   align-items: center;
   width: 100%;
   height: 100%;
+  cursor: pointer;
 }
 
-.left,
-.right {
+.leftLink,
+.rightLink {
   height: 100%;
   font-size: 1.1rem;
   background-color: var(--bgColor);
@@ -54,7 +72,7 @@ const props = defineProps({
   align-items: center;
 }
 
-.left {
+.leftLink {
   width: 20%;
   padding: 7% 6%;
   font-family: "AlibabaPuHuiTi_2_75_SemiBold";
@@ -68,7 +86,7 @@ const props = defineProps({
   border-bottom-left-radius: 15px;
 }
 
-.right {
+.rightLink {
   width: 78%;
   padding: 7% 3%;
   font-family: "AlibabaPuHuiTi_2_55_Regular";
@@ -76,5 +94,4 @@ const props = defineProps({
   border-top-right-radius: 15px;
   border-bottom-right-radius: 15px;
 }
-
 </style>
