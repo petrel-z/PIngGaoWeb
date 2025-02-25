@@ -39,7 +39,7 @@ onMounted(() => {
 
 <template>
   <div>
-    <div style="position: relative; min-height: 1120px">
+    <div style="position: relative">
       <div class="body-content">
         <div class="bodyBg"></div>
         <div>
@@ -71,7 +71,7 @@ onMounted(() => {
 .bodyBg {
   background-color: #def1fb;
   width: 100%;
-  min-height: 493px;
+  height: 50vh;
   position: absolute;
   top: 0px;
   left: 0px;
@@ -79,8 +79,8 @@ onMounted(() => {
 }
 .body-content {
   margin: 0 11%;
-  padding-top: 65px;
-  min-height: 2520px;
+  padding: 4.0625rem 0;
+  height: auto;
   overflow: hidden;
 }
 
@@ -113,8 +113,8 @@ onMounted(() => {
   color: rgb(69, 179, 224);
   line-height: 1.156;
   text-align: center;
-  padding-top: 62px;
-  padding-bottom: 47px;
+  padding-top: 4rem;
+  padding-bottom: 2.9375rem;
 }
 
 .process {

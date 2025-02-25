@@ -40,7 +40,7 @@ onMounted(() => {
 
 <template>
   <div>
-    <div style="position: relative; min-height: 1120px">
+    <div style="position: relative">
       <div class="body-content">
         <div class="bodyBg"></div>
         <div>
@@ -50,10 +50,9 @@ onMounted(() => {
           <div
             class="content"
             style="
-              margin-top: 55px;
+              margin-top: 3.4375rem;
               background-color: #45b3e0;
               border-radius: 0.5rem;
-              min-height: auto;
               width: 100%;
             "
           >
@@ -132,8 +131,9 @@ onMounted(() => {
 
 .body-content {
   margin: 0 11%;
-  padding-top: 65px;
-  min-height: 3855px;
+  padding-top: 4.0625rem;
+  padding-bottom: 56vh;
+  height: auto;
 }
 
 .my-content-bottom {
