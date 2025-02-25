@@ -35,7 +35,7 @@ onMounted(initializeObservers); // 在组件挂载时调用
 <template>
   <div class="lesadingMember">
     <MyTitle title="领导成员" English="LENDING MEMBERS"></MyTitle>
-    <div class="content">
+    <div class="content1">
       <div class="info" ref="imgRef" :class="{ 'scale-up': isVisible }">
         <img src="@/assets/imgs/_1_aboutPinggaoImgs/peoplebg.png" alt="" />
         <div class="h">孙继强</div>
@@ -57,6 +57,8 @@ onMounted(initializeObservers); // 在组件挂载时调用
         <div class="hr"></div>
         <div class="p1">平高集团限公司党委副书记</div>
       </div>
+    </div>
+    <div class="content2">
       <div class="info" ref="imgRef" :class="{ 'scale-up': isVisible }">
         <img src="@/assets/imgs/_1_aboutPinggaoImgs/peoplebg.png" alt="" />
         <div class="h">宋晗光</div>
@@ -73,12 +75,6 @@ onMounted(initializeObservers); // 在组件挂载时调用
         <div class="p1">平高集团限公司党委委员</div>
         <div class="p2">副总经理</div>
       </div>
-      <div class="info" ref="imgRef" :class="{ 'scale-up': isVisible }">
-        <img src="@/assets/imgs/_1_aboutPinggaoImgs/peoplebg.png" alt="" />
-        <div class="h">庞庆平</div>
-        <div class="hr"></div>
-        <div class="p1">三级顾问</div>
-      </div>
     </div>
   </div>
 </template>
@@ -92,16 +88,17 @@ onMounted(initializeObservers); // 在组件挂载时调用
   background-color: #f7f8f8;
   z-index: -100;
 }
-.content {
+.content1 {
   width: 100%;
   margin-top: 3.125rem;
   display: flex;
-  justify-content: space-between;
+  /* justify-content: space-between; */
   flex-wrap: wrap;
+
 }
-.content .info {
+.content1 .info {
   position: relative;
-  width: 33%;
+  width: 31%;
   height: 100%;
   background-size: cover;
   margin-bottom: 0.625rem;
@@ -109,15 +106,48 @@ onMounted(initializeObservers); // 在组件挂载时调用
   opacity: 0; /* 初始不可见 */
   visibility: hidden; /* 初始隐藏 */
   transition: transform 0.5s ease, opacity 0.5s ease; /* 过渡效果 */
+  margin-right: 2rem;
 }
 
-.content .info.scale-up {
+.content1 .info.scale-up {
   transform: scale(1); /* 放大到原始大小 */
   opacity: 1; /* 可见 */
   visibility: visible; /* 可见 */
 }
 
-.content .info img {
+.content1 .info img {
+  width: 100%;
+  height: 100%;
+  /* object-fit: cover; */
+}
+.content2 {
+  width: 100%;
+  margin-top: 3.125rem;
+  display: flex;
+  /* justify-content: space-between; */
+  flex-wrap: wrap;
+
+}
+.content2 .info {
+  position: relative;
+  width: 31%;
+  height: 100%;
+  background-size: cover;
+  margin-bottom: 0.625rem;
+  transform: scale(0.5); /* 初始缩小 */
+  opacity: 0; /* 初始不可见 */
+  visibility: hidden; /* 初始隐藏 */
+  transition: transform 0.5s ease, opacity 0.5s ease; /* 过渡效果 */
+  margin-right: 2rem;
+}
+
+.content2 .info.scale-up {
+  transform: scale(1); /* 放大到原始大小 */
+  opacity: 1; /* 可见 */
+  visibility: visible; /* 可见 */
+}
+
+.content2 .info img {
   width: 100%;
   height: 100%;
   /* object-fit: cover; */
@@ -212,7 +242,7 @@ onMounted(initializeObservers); // 在组件挂载时调用
     color: rgb(89, 87, 87);
   }
   .info .p3 {
-    top:8.3rem;
+    top: 8.3rem;
     position: absolute;
     left: 2rem;
     font-size: 1rem;
@@ -444,7 +474,7 @@ onMounted(initializeObservers); // 在组件挂载时调用
     color: rgb(89, 87, 87);
   }
   .info .p3 {
-    top:9rem;
+    top: 9rem;
     position: absolute;
     left: 2rem;
     font-size: 1.2rem;

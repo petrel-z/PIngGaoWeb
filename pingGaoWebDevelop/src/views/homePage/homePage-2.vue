@@ -467,8 +467,10 @@ onMounted(() => {
         </div>
       </div>
       <div class="great_flag_button">
-        <div class="button_left">了解更多</div>
-        <div class="button_right"><span class="icon iconfont">&#xe6a3;</span></div>
+        <router-link :to="'/informationCenter/headquartersDynamics-1'" style="display: flex;">
+          <div class="button_left">了解更多</div>
+          <div class="button_right"><span class="icon iconfont">&#xe6a3;</span></div>
+        </router-link>
       </div>
       <div class="great_flag_footer">
         <img src="@/assets/imgs/_10_homePageImgs/footer.png" alt="" />
