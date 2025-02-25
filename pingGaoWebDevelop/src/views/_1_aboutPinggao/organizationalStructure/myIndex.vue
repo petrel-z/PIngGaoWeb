@@ -260,7 +260,7 @@ onMounted(initializeObservers); // 在组件挂载时调用
           </ul>
         </div>
         <div class="content_middle_2">
-          <headLine title="本部部门"></headLine>
+          <headLine title="全资子公司"></headLine>
           <ul class="parts">
             <li>平高集团国际工程有限公司</li>
             <li>平高集团有限公司波兰分公司</li>
@@ -272,7 +272,7 @@ onMounted(initializeObservers); // 在组件挂载时调用
           </ul>
         </div>
         <div class="content_right_2">
-          <headLine title="本部部门"></headLine>
+          <headLine title="投股子公司"></headLine>
           <ul class="parts">
             <li>河南平芝高压开关有限公司</li>
             <li>上海平高天灵开关有限公司</li>
@@ -291,13 +291,13 @@ onMounted(initializeObservers); // 在组件挂载时调用
         :class="{ 'move-right': isVisibleWordRight1 }"
       >
         <div class="content_left_2">
-          <headLine title="本部部门"></headLine>
+          <headLine title="合营公司"></headLine>
           <ul class="parts">
             <li>平高东芝(廊坊)避雷器有限公司</li>
           </ul>
         </div>
         <div class="content_middle_2">
-          <headLine title="本部部门"></headLine>
+          <headLine title="支撑平台"></headLine>
           <ul class="parts">
             <li>工程技术中心(计量中心)</li>
             <li>市场营销中心</li>
@@ -306,7 +306,7 @@ onMounted(initializeObservers); // 在组件挂载时调用
           </ul>
         </div>
         <div class="content_right_2">
-          <headLine title="本部部门"></headLine>
+          <headLine title="分厂 ，事业部"></headLine>
           <div class="two_parts">
             <ul class="parts">
               <li>超特高压事业部</li>
