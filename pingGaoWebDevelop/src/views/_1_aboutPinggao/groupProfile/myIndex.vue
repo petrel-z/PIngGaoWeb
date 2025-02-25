@@ -1,5 +1,7 @@
 <script setup>
 import { ref, onMounted } from "vue";
+import MyTitle from "@/components/MyTitle.vue";
+
 // 定义所有的 ref 和 isVisible 变量
 const imageRef = ref(null);
 const wordLeft = ref(null);
