@@ -599,11 +599,11 @@ onMounted(() => {
   font-size: 1.8125rem;
   font-weight: 600;
 }
-@media (min-width:200px) and (max-width: 400px) {
+@media (min-width: 200px) and (max-width: 400px) {
   .announcement_icon .iconfont {
     display: block;
     margin-top: 0rem;
-}
+  }
 }
 .announcement_title {
   font-size: 1.375rem;
@@ -837,6 +837,480 @@ onMounted(() => {
   width: 100%;
   height: 71.25rem;
 }
+@media (min-width: 400px) and (max-width: 500px) {
+  .company_introduction {
+    position: relative;
+    height: 56.25rem;
+    width: 100%;
+    padding: 3.25rem 8rem !important;
+  }
+  .company_introduction .bg_img {
+    top: 0;
+    left: 0;
+    position: absolute;
+    width: 100%;
+    height: 56.25rem !important;
+    z-index: -100;
+  }
+  .company_introduction .bg_img img {
+    width: 100%;
+    height: 56.25rem !important;
+  }
+  .introduction_title {
+    font-size: 2.25rem !important;
+    margin-bottom: 3.0625rem !important;
+    width: 100%;
+  }
+  .introduction_small_title {
+    font-size: 1.8rem !important;
+    margin-bottom: 0.625rem;
+    width: 100%;
+  }
+  .introduction_content {
+    width: 100%;
+    height: 31.875rem;
+    margin-bottom: 8.75rem;
+  }
+  .introduction_content .text_left {
+    width: 50% !important;
+    height: 31.875rem;
+    margin-right: 3.25rem !important;
+    padding-top: 0.8125rem;
+  }
+  .introduction_content .img_right {
+    width: 53% !important;
+    height: 80% !important;
+    min-width: 25rem;
+    transition: ease 0.5s;
+  }
+  .introduction_content .img_right img {
+    width: 100%;
+    height: 100%;
+  }
+  .introduction_content .p {
+    font-size: 1.2rem !important;
+    line-height: 1.7;
+  }
+  .introduction_content .p1 {
+    margin-bottom: 1rem !important;
+  }
+
+  .introduction_honor {
+    display: flex;
+    width: 100%;
+    height: 3.5625rem;
+    border-right: 0.0625rem solid #fff;
+    position: absolute;
+    bottom: -1rem;
+    left: 0.4rem !important;
+    transform: scale(0.9);
+  }
+  .introduction_honor .honor_info {
+    width: 80%;
+    margin: auto;
+  }
+  .introduction_honor .honor_info .p {
+    font-size: 1.425rem !important;
+    margin-top: -0.625rem;
+  }
+}
+@media (min-width: 600px) and (max-width: 700px) {
+  .company_introduction {
+    position: relative;
+    height: 56rem;
+    width: 100%;
+    padding: 3.25rem 7rem !important;
+  }
+  .company_introduction .bg_img {
+    top: 0;
+    left: 0;
+    position: absolute;
+    width: 100%;
+    height: 56.25rem !important;
+    z-index: -100;
+  }
+  .company_introduction .bg_img img {
+    width: 100%;
+    height: 56.25rem !important;
+  }
+  .introduction_title {
+    font-size: 2.25rem !important;
+    margin-bottom: 3.0625rem !important;
+    width: 100%;
+  }
+  .introduction_small_title {
+    font-size: 1.8rem !important;
+    margin-bottom: 0.625rem;
+    width: 100%;
+  }
+  .introduction_content {
+    width: 100%;
+    height: 31.875rem;
+    margin-bottom: 8.75rem;
+  }
+  .introduction_content .text_left {
+    width: 50% !important;
+    height: 31.875rem;
+    margin-right: 3.25rem !important;
+    padding-top: 0.8125rem;
+  }
+  .introduction_content .img_right {
+    width: 53% !important;
+    height: 60% !important;
+    min-width: 25rem;
+    transition: ease 0.5s;
+  }
+  .introduction_content .img_right img {
+    width: 100%;
+    height: 100%;
+  }
+  .introduction_content .p {
+    font-size: 0.8rem !important;
+    line-height: 1.7;
+  }
+  .introduction_content .p1 {
+    margin-bottom: 0.875rem !important;
+  }
+
+  .introduction_honor {
+    display: flex;
+    width: 100%;
+    height: 3.5625rem;
+    border-right: 0.0625rem solid #fff;
+    position: absolute;
+    bottom: 0rem;
+    left: 0.4rem !important;
+    transform: scale(0.9);
+  }
+  .introduction_honor .honor_info {
+    width: 80%;
+    margin: auto;
+  }
+  .introduction_honor .honor_info .p {
+    font-size: 1.425rem !important;
+    margin-top: -0.625rem;
+  }
+  .great_flag_content .content_detail {
+    width: 32%;
+    height: 22.1875rem !important;
+    background-color: #ffffff;
+    transition: 0.5s;
+    cursor: pointer;
+  }
+  .great_flag {
+    position: relative;
+    padding: 7.5rem 5.75rem !important;
+    background-color: #def1fb;
+    height: 74.125rem !important;
+    width: 100%;
+  }
+  .great_flag_content .content_detail_text {
+    width: 33%;
+    height: 22.1875rem !important;
+    background-color: #fff;
+    padding-top: 1rem !important;
+    padding-left: 1.5rem !important;
+  }
+  .great_flag_button {
+    margin: auto;
+    width: 12.25rem;
+    height: 2.9375rem;
+    position: absolute;
+    top: 44rem;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  .great_flag_title {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 6.25rem;
+  }
+  .great_flag_title .h {
+    font-size: 2rem !important;
+  }
+  .great_flag_title .title_right .p {
+    display: flex;
+    line-height: 4.375rem;
+    font-size: 1.1rem !important;
+  }
+  .great_flag_title .p {
+    font-size: 1.2rem !important;
+    margin-right: 1.25rem;
+  }
+  .great_flag_content .bottom_text {
+    padding: 1rem 2rem !important;
+  }
+  .great_flag_content .bottom_text .time {
+    font-size: 1rem !important;
+  }
+  .great_flag_content .bottom_text .hr {
+    width: 2.6875rem;
+    height: 0.1rem !important;
+    margin: 0.25rem 0rem;
+  }
+  .great_flag_content .bottom_text .p {
+    font-size: 0.9rem !important;
+  }
+  .great_flag_content .content_detail_text .text .title {
+    font-size: 0.8rem !important;
+  }
+  .great_flag_content .content_detail_text .text .line {
+    width: 2.6875rem;
+    height: 0.1rem !important;
+    margin: 0.25rem 0rem;
+  }
+  .great_flag_content .content_detail_text .time {
+    font-size: 0.8rem !important;
+    margin-bottom: 0.7rem !important;
+  }
+  .great_flag_footer {
+    width: 100%;
+    position: absolute;
+    bottom: -0.4375rem;
+    left: 0;
+  }
+  .great_flag_footer img {
+    height: 20rem !important;
+    width: 100%;
+  }
+}
+@media (min-width: 700px) and (max-width: 800px) {
+  .company_introduction {
+    position: relative;
+    height: 52rem;
+    width: 100%;
+    padding: 3.25rem 7rem !important;
+  }
+  .company_introduction .bg_img {
+    top: 0;
+    left: 0;
+    position: absolute;
+    width: 100%;
+    height: 56.25rem !important;
+    z-index: -100;
+  }
+  .company_introduction .bg_img img {
+    width: 100%;
+    height: 56.25rem !important;
+  }
+  .introduction_title {
+    font-size: 2.25rem !important;
+    margin-bottom: 3.0625rem !important;
+    width: 100%;
+  }
+  .introduction_small_title {
+    font-size: 1.8rem !important;
+    margin-bottom: 0.625rem;
+    width: 100%;
+  }
+  .introduction_content {
+    width: 100%;
+    height: 31.875rem;
+    margin-bottom: 8.75rem;
+  }
+  .introduction_content .text_left {
+    width: 50% !important;
+    height: 31.875rem;
+    margin-right: 3.25rem !important;
+    padding-top: 0.8125rem;
+  }
+  .introduction_content .img_right {
+    width: 53% !important;
+    height: 60% !important;
+    min-width: 25rem;
+    transition: ease 0.5s;
+  }
+  .introduction_content .img_right img {
+    width: 100%;
+    height: 100%;
+  }
+  .introduction_content .p {
+    font-size: 0.8rem !important;
+    line-height: 1.7;
+  }
+  .introduction_content .p1 {
+    margin-bottom: 0.875rem !important;
+  }
+
+  .introduction_honor {
+    display: flex;
+    width: 100%;
+    height: 3.5625rem;
+    border-right: 0.0625rem solid #fff;
+    position: absolute;
+    bottom: -4rem;
+    left: 0.4rem !important;
+    transform: scale(0.9);
+  }
+  .introduction_honor .honor_info {
+    width: 80%;
+    margin: auto;
+  }
+  .introduction_honor .honor_info .p {
+    font-size: 1.425rem !important;
+    margin-top: -0.625rem;
+  }
+  .great_flag_content .content_detail {
+    width: 32%;
+    height: 22.1875rem !important;
+    background-color: #ffffff;
+    transition: 0.5s;
+    cursor: pointer;
+  }
+  .great_flag {
+    position: relative;
+    padding: 7.5rem 7.75rem !important;
+    background-color: #def1fb;
+    height: 74.125rem !important;
+    width: 100%;
+  }
+  .great_flag_content .content_detail_text {
+    width: 33%;
+    height: 22.1875rem !important;
+    background-color: #fff;
+    padding-top: 1rem !important;
+    padding-left: 1.5rem !important;
+  }
+  .great_flag_button {
+    margin: auto;
+    width: 12.25rem;
+    height: 2.9375rem;
+    position: absolute;
+    top: 44rem;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  .great_flag_title {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 6.25rem;
+  }
+  .great_flag_title .h {
+    font-size: 2rem !important;
+  }
+  .great_flag_title .title_right .p {
+    display: flex;
+    line-height: 4.375rem;
+    font-size: 1.1rem !important;
+  }
+  .great_flag_title .p {
+    font-size: 1.2rem !important;
+    margin-right: 1.25rem;
+  }
+  .great_flag_content .bottom_text {
+    padding: 1rem 2rem !important;
+  }
+  .great_flag_content .bottom_text .time {
+    font-size: 1rem !important;
+  }
+  .great_flag_content .bottom_text .hr {
+    width: 2.6875rem;
+    height: 0.1rem !important;
+    margin: 0.25rem 0rem;
+  }
+  .great_flag_content .bottom_text .p {
+    font-size: 0.9rem !important;
+  }
+  .great_flag_content .content_detail_text .text .title {
+    font-size: 0.8rem !important;
+  }
+  .great_flag_content .content_detail_text .text .line {
+    width: 2.6875rem;
+    height: 0.1rem !important;
+    margin: 0.25rem 0rem;
+  }
+  .great_flag_content .content_detail_text .time {
+    font-size: 0.8rem !important;
+    margin-bottom: 0.7rem !important;
+  }
+  .great_flag_footer {
+    width: 100%;
+    position: absolute;
+    bottom: -0.4375rem;
+    left: 0;
+  }
+  .great_flag_footer img {
+    height: 20rem !important;
+    width: 100%;
+  }
+}
+@media (min-width: 800px) and (max-width: 1000px) {
+}
+@media (min-width: 1000px) and (max-width: 1200px) {
+}
+@media (min-width: 1200px) and (max-width: 1400px) {
+}
+@media (min-width: 1400px) and (max-width: 1600px) {
+}
+@media (min-width: 1600px) and (max-width: 1800px) {
+}
+@media (min-width: 2100px) and (max-width: 2300px) {
+}
+@media (min-width: 5000px) and (max-width: 8000px) {
+  .great_flag_content .content_detail {
+    width: 32%;
+    height: 42.1875rem !important;
+    background-color: #ffffff;
+    transition: 0.5s;
+    cursor: pointer;
+  }
+  .great_flag {
+    position: relative;
+    padding: 9.5rem 9.75rem;
+    background-color: #def1fb;
+    height: 101.125rem !important;
+    width: 100%;
+  }
+  .great_flag_content .content_detail_text {
+    width: 33%;
+    height: 42.1875rem !important;
+    background-color: #fff;
+    padding-top: 3rem;
+    padding-left: 2.5rem;
+  }
+  .great_flag_button {
+    margin: auto;
+    width: 12.25rem;
+    height: 2.9375rem;
+    position: absolute;
+    top: 70rem;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}
+@media (min-width: 2400px) and (max-width: 3000px) {
+  .great_flag_content .content_detail {
+    width: 32%;
+    height: 42.1875rem !important;
+    background-color: #ffffff;
+    transition: 0.5s;
+    cursor: pointer;
+  }
+  .great_flag {
+    position: relative;
+    padding: 9.5rem 9.75rem;
+    background-color: #def1fb;
+    height: 101.125rem !important;
+    width: 100%;
+  }
+  .great_flag_content .content_detail_text {
+    width: 33%;
+    height: 42.1875rem !important;
+    background-color: #fff;
+    padding-top: 3rem;
+    padding-left: 2.5rem;
+  }
+  .great_flag_button {
+    margin: auto;
+    width: 12.25rem;
+    height: 2.9375rem;
+    position: absolute;
+    top: 70rem;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}
+
 .introduction_title {
   font-size: 2.75rem;
   font-family: "AlibabaPuHuiTi_2_65_Medium";
@@ -950,14 +1424,21 @@ onMounted(() => {
 }
 .great_flag_content .content_detail {
   width: 32%;
-  height: 35.9375rem;
+  height: 36.1875rem;
   background-color: #ffffff;
   transition: 0.5s;
   cursor: pointer;
+  overflow: hidden;
 }
 .great_flag_content .content_detail:hover {
   transform: scale(0.99);
   box-shadow: 0 0.25rem 0.625rem rgba(0, 0, 0, 0.286); /* 悬浮时显示黑色阴影 */
+}
+
+.great_flag_content .content_detail .top_img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .great_flag_content .bottom_text {
@@ -1061,5 +1542,4 @@ onMounted(() => {
   color: rgb(34, 56, 147);
   margin-bottom: 1.75rem;
 }
-
 </style>

@@ -1,5 +1,7 @@
 <script setup>
 import { ref, onMounted } from "vue";
+import MyTitle from "@/components/MyTitle.vue";
+
 // 定义所有的 ref 和 isVisible 变量
 const imageRef = ref(null);
 const wordLeft = ref(null);
@@ -531,110 +533,238 @@ onMounted(initializeObservers); // 在组件挂载时调用
 }
 @media (min-width: 400px) and (max-width: 500px) {
   .key_content_h {
-    left: 9.1rem;
-    top: 1.5rem;
+    left: 11.4rem;
+    top: 2.4rem;
     font-size: 1.175rem;
   }
   .key_content_text {
-    left: 9.1rem;
-    top: 3.4rem;
-    font-size: 0.9rem;
+    left: 11.4rem;
+    top: 4.4rem;
+    font-size: 1.1rem;
+  }
+  .groupProfile {
+    width: 100%;
+    height: 200.5rem !important;
   }
 }
 @media (min-width: 600px) and (max-width: 700px) {
   .key_content_h {
     left: 7.7rem;
-    top: 1.4rem;
+    top: 1.3rem;
     font-size: 1rem;
   }
   .key_content_text {
     left: 7.7rem;
-    top: 3.1rem;
-    font-size: 0.9rem;
+    top: 2.9rem;
+    font-size: 0.85rem;
+  }
+  .key .key_info {
+    height: 6.5rem;
+  }
+  .basic_culture_info .basic_culture_h {
+    font-size: 1rem !important;
+  }
+  .basic_culture_info .basic_culture_p {
+    font-size: 0.9rem !important;
+  }
+  .basic_culture_line {
+    width: 2rem !important;
+    height: 0.0625rem;
+  }
+  .basic_culture_info .basic_culture_num {
+    white-space: pre;
+    font-size: 1.3242rem !important;
+  }
+  .basic_culture_info {
+    border-left: 0.0625rem solid #c4c4c4;
+    width: 25%;
+    height: 6rem !important;
+  }
+  .text_word .word_left {
+    display: flex;
+    width: 57%;
+  }
+  .text_word .word_left p {
+    font-size: 0.75rem !important;
+  }
+  .text_word .img_right {
+    margin-left: -0.325rem;
+    width: 40% !important;
+    height: 14.8125rem !important;
+  }
+  .text_word .img_right img {
+    width: 100%;
+    height: 14rem !important;
+  }
+  .mind_map {
+    background-color: #def1fb;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 54.25rem !important;
+  }
+
+  .mind_map img {
+    width: 100%;
+    position: absolute;
+    height: 50.25rem !important;
+  }
+  .groupProfile {
+    width: 100%;
+    height: 175.5rem !important;
   }
 }
 @media (min-width: 700px) and (max-width: 800px) {
   .key_content_h {
-    left: 8.1rem;
-    top: 1.4rem;
-    font-size: 1rem;
+    left: 7.6rem;
+    top: 1.2rem;
+    font-size: 0.9rem;
   }
   .key_content_text {
-    left: 8.1rem;
-    top: 3.1rem;
-    font-size: 0.9rem;
+    left: 7.6rem;
+    top: 3rem;
+    font-size: 0.8rem;
+  }
+  .key .key_info {
+    height: 6.5rem;
+  }
+  .basic_culture_info .basic_culture_h {
+    font-size: 1rem !important;
+  }
+  .basic_culture_info .basic_culture_p {
+    font-size: 0.9rem !important;
+  }
+  .basic_culture_line {
+    width: 2rem !important;
+    height: 0.0625rem;
+  }
+  .basic_culture_info .basic_culture_num {
+    white-space: pre;
+    font-size: 1.3242rem !important;
+  }
+  .basic_culture_info {
+    border-left: 0.0625rem solid #c4c4c4;
+    width: 25%;
+    height: 6rem !important;
+  }
+  .text_word .word_left {
+    display: flex;
+    width: 57%;
+  }
+  .text_word .word_left p {
+    font-size: 0.8rem !important;
+  }
+  .text_word .img_right {
+    margin-left: -0.325rem;
+    width: 40% !important;
+    height: 14.8125rem !important;
+  }
+  .text_word .img_right img {
+    width: 100%;
+    height: 14rem !important;
+  }
+  .groupProfile {
+    width: 100%;
+    height: 187.5rem !important;
   }
 }
 @media (min-width: 800px) and (max-width: 1000px) {
   .key_content_h {
-    left: 10.3rem;
+    left: 10rem;
     top: 1.8rem;
     font-size: 1.2rem;
   }
   .key_content_text {
-    left: 10.3rem;
-    top: 4.1rem;
-    font-size: 1rem;
+    left: 10rem;
+    top: 3.9rem;
+    font-size: 1.1rem;
+  }
+  .key .key_info {
+    height: 8.5rem;
+  }
+  .groupProfile {
+    width: 100%;
+    height: 215.5rem !important;
   }
 }
 @media (min-width: 1000px) and (max-width: 1200px) {
   .key_content_h {
-    left: 10.3rem;
-    top: 1.8rem;
-    font-size: 1.15rem;
+    left: 11.6rem;
+    top: 2.2rem;
+    font-size: 1.3rem;
   }
   .key_content_text {
-    left: 10.3rem;
-    top: 4.1rem;
-    font-size: 0.95rem;
+    left: 11.6rem;
+    top: 4.55rem;
+    font-size: 1.18rem;
+  }
+  .groupProfile {
+    width: 100%;
+    height: 213.5rem !important;
   }
 }
 @media (min-width: 1200px) and (max-width: 1400px) {
   .key_content_h {
-    left: 10.3rem;
-    top: 1.8rem;
-    font-size: 1.15rem;
+    left: 11.3rem;
+    top: 2rem;
+    font-size: 1.3rem;
   }
   .key_content_text {
-    left: 10.3rem;
-    top: 4.1rem;
-    font-size: 0.95rem;
+    left: 11.3rem;
+    top: 4.3rem;
+    font-size: 1.13rem;
+  }
+  .groupProfile {
+    width: 100%;
+    height: 217.5rem !important;
   }
 }
 @media (min-width: 1400px) and (max-width: 1600px) {
   .key_content_h {
-    left: 9.3rem;
-    top: 1.7rem;
-    font-size: 1.15rem;
+    left: 11.5rem;
+    top: 2.2rem;
+    font-size: 1.3rem;
   }
   .key_content_text {
-    left: 9.3rem;
-    top: 3.7rem;
-    font-size: 0.95rem;
+    left: 11.5rem;
+    top: 4.3rem;
+    font-size: 1.1rem;
+  }
+  .groupProfile {
+    width: 100%;
+    height: 217.5rem !important;
   }
 }
 @media (min-width: 1600px) and (max-width: 1800px) {
   .key_content_h {
-    left: 10.5rem;
-    top: 1.9rem;
-    font-size: 1.25rem;
+    left: 11.7rem;
+    top: 2.2rem;
+    font-size: 1.3rem;
   }
   .key_content_text {
-    left: 10.5rem;
-    top: 4rem;
-    font-size: 1.03rem;
+    left: 11.7rem;
+    top: 4.5rem;
+    font-size: 1.15rem;
+  }
+  .groupProfile {
+    width: 100%;
+    height: 214.5rem !important;
   }
 }
 @media (min-width: 2100px) and (max-width: 2300px) {
   .key_content_h {
-    left: 10.3rem;
-    top: 1.9rem;
-    font-size: 1.25rem;
+    left: 11.5rem;
+    top: 2.1rem;
+    font-size: 1.3rem;
   }
   .key_content_text {
-    left: 10.3rem;
-    top: 4rem;
-    font-size: 1.03rem;
+    left: 11.5rem;
+    top: 4.4rem;
+    font-size: 1.15rem;
+  }
+  .groupProfile {
+    width: 100%;
+    height: 217.5rem !important;
   }
 }
 
