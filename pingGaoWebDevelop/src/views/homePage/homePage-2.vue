@@ -954,10 +954,17 @@ onMounted(() => {
   background-color: #ffffff;
   transition: 0.5s;
   cursor: pointer;
+  overflow: hidden;
 }
+
 .great_flag_content .content_detail:hover {
   transform: scale(0.99);
   box-shadow: 0 0.25rem 0.625rem rgba(0, 0, 0, 0.286); /* 悬浮时显示黑色阴影 */
+}
+
+.great_flag_content .content_detail .top_img img {
+  width: 100%;
+  object-fit: cover;
 }
 
 .great_flag_content .bottom_text {
