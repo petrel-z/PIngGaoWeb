@@ -10,17 +10,129 @@ function toggleOptions(num) {
 
 function selectOption(event, num) {
   const selectedText = event.target.textContent;
-  // console.log(selectedText);
   const selectOption = document.querySelector(`.selected-option${num}`);
   if (selectedText === "请输入") {
     selectOption.style.color = '#999';
-    // console.log('请输入');
-  }else {
+  } else {
     selectOption.style.color = '#231815';
-    // console.log('asdf');
   }
   selectOption.textContent = selectedText;
   toggleOptions(num);
+}
+const partnerType = ref(null);
+const companyName = ref('');
+const contactName = ref('');
+const country = ref(null);
+const city = ref(null);
+
+const intention = ref('');
+const joinDealer = ref(null);
+const contactPhone = ref('');
+const province = ref(null);
+const verifyCode = ref('');
+
+const partnerTypeMust = ref(null);
+const companyNameMust = ref(null);
+const contactNameMust = ref(null);
+const countryMust = ref(null);
+const cityMust = ref(null);
+
+const intentionMust = ref(null);
+const joinDealerMust = ref(null);
+const contactPhoneMust = ref(null);
+const provinceMust = ref(null);
+const verifyCodeMust = ref(null);
+
+
+function submit() {
+  if (partnerType.value.textContent === "请选择" || companyName.value === "" ||
+    contactName.value === "" || city.value.textContent === "请选择" ||
+    intention.value === "" || joinDealer.value.textContent === "请选择" ||
+    contactPhone.value === "" || province.value.textContent === "请选择" ||
+    verifyCode.value === "") {
+    if (partnerType.value.textContent === "请选择") {
+      partnerTypeMust.value.style.display = 'block';
+    } else {
+      partnerTypeMust.value.style.display = 'none';
+    }
+    if (companyName.value === "") {
+      companyNameMust.value.style.display = 'block';
+    } else {
+      companyNameMust.value.style.display = 'none';
+    }
+
+    if (contactName.value === "") {
+      contactNameMust.value.style.display = 'block';
+    } else {
+      contactNameMust.value.style.display = 'none';
+    }
+
+    if (city.value.textContent === "请选择") {
+      cityMust.value.style.display = 'block';
+    } else {
+      cityMust.value.style.display = 'none';
+    }
+    if (intention.value === "") {
+      intentionMust.value.style.display = 'block';
+    } else {
+      intentionMust.value.style.display = 'none';
+    }
+    if (joinDealer.value.textContent === "请选择") {
+      joinDealerMust.value.style.display = 'block';
+    } else {
+      joinDealerMust.value.style.display = 'none';
+    }
+    if (contactPhone.value === "") {
+      contactPhoneMust.value.style.display = 'block';
+    } else {
+      contactPhoneMust.value.style.display = 'none';
+    }
+    if (province.value.textContent === "请选择") {
+      provinceMust.value.style.display = 'block';
+    } else {
+      provinceMust.value.style.display = 'none';
+    }
+    if (verifyCode.value === "") {
+      verifyCodeMust.value.style.display = 'block';
+    } else {
+      verifyCodeMust.value.style.display = 'none';
+    }
+    alert("请填写完整信息");
+    return;
+
+  }
+  const information = {
+    partnerType: partnerType.value.textContent,
+    companyName: companyName.value,
+    contactName: contactName.value,
+    country: '中国',
+    city: city.value.textContent,
+    intention: intention.value,
+    joinDealer: joinDealer.value.textContent,
+    contactPhone: contactPhone.value,
+    province: province.value.textContent,
+    verifyCode: verifyCode.value,
+  }
+  reset1();
+  alert("提交成功,信息打印在控制台");
+  console.log(information);
+}
+function reset1 () {
+  partnerType.value.textContent = "请选择";
+  companyName.value = "";
+  contactName.value = "";
+  country.value.textContent = "";
+  city.value.textContent = "请选择";
+  intention.value = "";
+  joinDealer.value.textContent = "请选择";
+  contactPhone.value = "";
+  province.value.textContent = "请选择";
+  verifyCode.value = "";
+}
+function reset () {
+  reset1();
+  alert("重置成功");
+
 }
 </script>
 
@@ -41,10 +153,10 @@ function selectOption(event, num) {
               </div>
               <div class="select">
                 <div class="custom-select">
-                  <div class="selected-option selected-option1" @click="toggleOptions(1)">请选择</div>
+                  <div ref="partnerType"  class="selected-option selected-option1" @click="toggleOptions(1)">请选择</div>
                   <ul class="options options1" ref="options">
                     <li class="first-option" @click="selectOption($event, 1)">
-                      <!-- <span class="icon iconfont icon-down">&#xe62d;</span> -->请选择
+                      请选择
                     </li>
                     <li @click="selectOption($event, 1)">工商业储能合作伙伴</li>
                     <li @click="selectOption($event, 1)">重卡换电合作伙伴</li>
@@ -60,30 +172,36 @@ function selectOption(event, num) {
                 </div>
                 <!-- <input type="text" placeholder="请选择" /> -->
               </div>
+              <div ref="partnerTypeMust" class="mustWrite">该项是必填项</div>
             </div>
             <div class="common">
               <div class="common-title">
                 <span class="star">*</span><span class="text">伙伴公司名称</span>
               </div>
               <div class="select">
-                <input type="text" placeholder="请输入" />
+                <input v-model="companyName"  type="text" placeholder="请输入" />
               </div>
+              <div ref="companyNameMust" class="mustWrite">该项是必填项</div>
             </div>
             <div class="common">
               <div class="common-title">
                 <span class="star">*</span><span class="text">伙伴联系人</span>
               </div>
               <div class="select">
-                <input type="text" placeholder="请输入" />
+                <input v-model="contactName" type="text" placeholder="请输入" />
               </div>
+              <div ref="contactNameMust" class="mustWrite">该项是必填项</div>
+
             </div>
             <div class="common">
               <div class="common-title">
                 <span class="star">*</span><span class="text">国家</span>
               </div>
               <div class="select">
-                <input type="text" placeholder="中国" />
+                <input readonly ref="country" type="text" placeholder="中国" />
               </div>
+              <div ref="countryMust" class="mustWrite">该项是必填项</div>
+
             </div>
             <div class="common last">
               <div class="common-title">
@@ -91,10 +209,9 @@ function selectOption(event, num) {
               </div>
               <div class="select">
                 <div class="custom-select">
-                  <div class="selected-option selected-option2" @click="toggleOptions(2)">请选择</div>
+                  <div ref="city" class="selected-option selected-option2" @click="toggleOptions(2)">请选择</div>
                   <ul class="options options2" ref="options">
                     <li @click="selectOption($event, 2)">
-                      <span class="icon iconfont icon-down">&#xe62d;</span>
                       请选择
                     </li>
                     <li @click="selectOption($event, 2)">三门峡市</li>
@@ -118,11 +235,12 @@ function selectOption(event, num) {
 
                   </ul>
                 </div>
-                <!-- <input type="text" placeholder="请选择" /> -->
               </div>
+              <div ref="cityMust" class="mustWrite">该项是必填项</div>
+
             </div>
 
-            <div class="submit">提交资料</div>
+            <div class="submit" @click="submit()">提交资料</div>
           </div>
           <div class="right">
             <div class="common">
@@ -130,8 +248,10 @@ function selectOption(event, num) {
                 <span class="star">*</span><span class="text">合作意向</span>
               </div>
               <div class="select">
-                <input type="text" placeholder="请输入" />
+                <input v-model="intention" type="text" placeholder="请输入" />
               </div>
+              <div ref="intentionMust" class="mustWrite">该项是必填项</div>
+
             </div>
             <div class="common">
               <div class="common-title">
@@ -139,26 +259,28 @@ function selectOption(event, num) {
               </div>
               <div class="select">
                 <div class="custom-select">
-                  <div class="selected-option selected-option3" @click="toggleOptions(3)">请选择</div>
+                  <div ref="joinDealer" class="selected-option selected-option3" @click="toggleOptions(3)">请选择</div>
                   <ul class="options options3" ref="options">
                     <li @click="selectOption($event, 3)">
-                      <!-- <span class="icon iconfont icon-down">&#xe62d;</span> -->
                       请选择
                     </li>
                     <li @click="selectOption($event, 3)">是</li>
                     <li @click="selectOption($event, 3)">否</li>
                   </ul>
                 </div>
-                <!-- <input type="text" placeholder="请选择" /> -->
               </div>
+              <div ref="joinDealerMust" class="mustWrite">该项是必填项</div>
+
             </div>
             <div class="common">
               <div class="common-title">
                 <span class="star">*</span><span class="text">伙伴联系电话</span>
               </div>
               <div class="select">
-                <input type="text" placeholder="请输入" />
+                <input v-model="contactPhone" type="text" placeholder="请输入" />
               </div>
+              <div  ref="contactPhoneMust" class="mustWrite">该项是必填项</div>
+
             </div>
             <div class="common">
               <div class="common-title">
@@ -166,10 +288,9 @@ function selectOption(event, num) {
               </div>
               <div class="select">
                 <div class="custom-select">
-                  <div class="selected-option selected-option4" @click="toggleOptions(4)">请选择</div>
+                  <div ref="province" class="selected-option selected-option4" @click="toggleOptions(4)">请选择</div>
                   <ul class="options options4" ref="options">
                     <li @click="selectOption($event, 4)">
-                      <!-- <span class="icon iconfont icon-down">&#xe62d;</span> -->
                       请选择
                     </li>
                     <li @click="selectOption($event, 4)">台湾省</li>
@@ -208,20 +329,22 @@ function selectOption(event, num) {
                     <li @click="selectOption($event, 4)">黑龙江省</li>
                   </ul>
                 </div>
-                <!-- <input type="text" placeholder="请选择" /> -->
               </div>
+              <div ref="provinceMust" class="mustWrite">该项是必填项</div>
+
             </div>
             <div class="common last verify">
               <div class="common-title">
                 <span class="star">*</span><span class="text">验证码</span>
               </div>
               <div class="select">
-                <input type="text" placeholder="请输入" />
+                <input v-model="verifyCode" type="text" placeholder="请输入" />
               </div>
               <div class="codeImg"></div>
+              <div ref="verifyCodeMust" class="mustWrite">该项是必填项</div>
             </div>
 
-            <div class="reset">重置资料</div>
+            <div class="reset" @click="reset()">重置资料</div>
           </div>
         </div>
       </div>
@@ -336,6 +459,16 @@ function selectOption(event, num) {
           width: 100%;
           height: 11.8rem;
           border-top: 1px solid #006fc1;
+          position: relative;
+
+          .mustWrite {
+            display: none;
+            position: absolute;
+            bottom: 0;
+            color: red;
+            font-size: 1.3rem;
+            padding-left: 1.8rem;
+          }
 
           .common-title {
             margin-top: 2.2rem;
@@ -363,14 +496,14 @@ function selectOption(event, num) {
             margin-top: 0.4rem;
 
             .custom-select {
-              z-index: 999;
+              z-index: 9999;
               position: relative;
 
               .selected-option {
                 cursor: pointer;
                 font-size: 1.8rem;
               }
-              
+
               .options {
                 box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
                 font-size: 1.8rem;
@@ -381,12 +514,15 @@ function selectOption(event, num) {
 
                 height: 30rem;
                 overflow: scroll;
+
                 .icon-down {
                   display: none;
                 }
+
                 .first-option {
                   color: #999999;
                 }
+
                 li {
                   padding: 5px;
                   cursor: pointer;
@@ -397,6 +533,7 @@ function selectOption(event, num) {
                   background-color: #45b3e0;
                 }
               }
+
               .options3 {
                 height: 13rem;
                 overflow: scroll;
@@ -434,6 +571,7 @@ function selectOption(event, num) {
 
         .submit,
         .reset {
+          z-index: 999;
           width: 100%;
           height: 8.1rem;
           line-height: 8.1rem;
@@ -444,6 +582,13 @@ function selectOption(event, num) {
           text-align: justifyLeft;
           position: absolute;
           bottom: 0;
+          transition: all 0.3s ease;
+        }
+
+        .submit:hover,
+        .reset:hover {
+          cursor: pointer;
+          font-size: 2.5rem;
         }
 
         .submit {
