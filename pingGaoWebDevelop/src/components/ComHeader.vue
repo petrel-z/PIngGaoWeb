@@ -421,10 +421,13 @@ onMounted(() => {
                 搜索
                 <i class="iconfont icon-sousuo" style="font-size: 1.125rem" />
               </div>
-              <div class="header-nav-bottom-item">
-                邮箱
-                <i class="iconfont icon-youxiang" style="font-size: 1.125rem" />
-              </div>
+              <router-link active-class="active-border" to="/contactUs/addressTelephone">
+                <div class="header-nav-bottom-item">
+                  邮箱
+                  <i class="iconfont icon-youxiang" style="font-size: 1.125rem" />
+                </div>
+              </router-link>
+
               <div class="header-nav-bottom-item">
                 CN
                 <i class="iconfont icon-repeat" style="font-size: 1.125rem"></i>

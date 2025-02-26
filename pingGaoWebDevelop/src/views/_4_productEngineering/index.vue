@@ -3,7 +3,7 @@
     <ComHeader :content="info" :footer="footer"></ComHeader>
   </div>
   <router-view></router-view>
-  <div class="right_button"> <RightButton></RightButton> </div>
+  <div class="right_button"><RightButton></RightButton></div>
   <div style="width: auto">
     <Footer />
   </div>
@@ -40,9 +40,9 @@ const footer = ref([
   background-size: cover;
 }
 .right_button {
- position: absolute;
- top: 1400px;
- right: 0;
- z-index: 1001;
+  position: absolute;
+  top: 1400px;
+  right: 0;
+  z-index: 1001;
 }
 </style>

@@ -4,17 +4,14 @@ const props = defineProps({
   title: {
     type: String,
     default: "始于客户需求，为客户创造价值",
-    required: true,
   },
   content1: {
     type: String,
     default: "坚持客户至上，一切为客户着想，关注和满足客户需求，为客户提供全方位、",
-    required: true,
   },
   content2: {
     type: String,
     default: "系统化整体服务方案，在真诚服务、赢得信赖的同时，为客户创造价值。",
-    required: true,
   },
   buttonFlag: {
     type: Boolean,
@@ -25,7 +22,6 @@ const props = defineProps({
     default: () => [],
   },
 });
-console.log(props.bottomItems);
 </script>
 
 <template>

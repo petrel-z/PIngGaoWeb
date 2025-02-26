@@ -1,6 +1,6 @@
 @font-face {
   font-family: "iconfont"; /* Project id  */
-  src: url('./iconfont.ttf?t=1740298075202') format('truetype');
+  src: url('iconfont.ttf?t=1740473106191') format('truetype');
 }
 
 .iconfont {
@@ -53,6 +53,10 @@
 
 .icon-icon-test:before {
   content: "\e506";
+}
+
+.icon-gouxuanx:before {
+  content: "\e62d";
 }
 
 .icon-gengduo:before {

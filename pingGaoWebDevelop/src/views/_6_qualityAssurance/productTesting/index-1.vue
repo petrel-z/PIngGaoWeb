@@ -97,8 +97,8 @@ onMounted(() => {
 
     .top-whiteSpan {
       width: 100%;
-      // height: 880px;
-      height: 1050px;
+      height: 880px;
+      // height: 1050px;
     }
   }
 
@@ -109,7 +109,7 @@ onMounted(() => {
     height: 1013px;
     background-image: url("../../../assets/imgs/_6_qualityAssuranceImgs/t6_p1_contentBg.png");
     background-size: cover;
-    background-attachment: fixed;
+    // background-attachment: fixed;
   }
 }
 

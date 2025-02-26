@@ -115,6 +115,7 @@ const orderList = [
 .body {
   padding: 0 11%;
   background-color: #def1fb;
+  overflow: hidden;
 }
 
 .item-container {
