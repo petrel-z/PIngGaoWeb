@@ -1,8 +1,6 @@
 <script setup>
 import MyTitle from "@/components/MyTitle.vue";
 import headLine from "@/components/MyHeadLine.vue";
-import row from "@/assets/imgs/_1_aboutPinggaoImgs/row.png";
-import longLine from "@/assets/imgs/_1_aboutPinggaoImgs/long-line.png";
 import { ref, onMounted } from "vue";
 const infoRef = ref(null);
 const isVisibleInfo = ref(false);
@@ -23,7 +21,7 @@ const createObserver = (refElement, isVisible) => {
       entries.forEach((entry) => {
         const { intersectionRatio } = entry;
         // 设置触发条件：元素进入视口 50% 以上时触发
-        if (intersectionRatio >= 0.0001) {
+        if (intersectionRatio >= 0) {
           isVisible.value = true;
           observer.disconnect(); // 元素可见后停止观察
         }
@@ -59,7 +57,7 @@ onMounted(initializeObservers); // 在组件挂载时调用
       <div class="detail">
         <div class="introduce">
           <div class="info" ref="infoRef" :class="{ 'scale-up': isVisibleInfo }">
-            <div class="info_top">5</div>
+            <div class="info_top">12</div>
             <div class="info_bottom">全资子公司<span>/</span>家</div>
           </div>
         </div>
@@ -83,28 +81,29 @@ onMounted(initializeObservers); // 在组件挂载时调用
         </div>
         <div class="introduce">
           <div class="info" ref="infoRef" :class="{ 'scale-up': isVisibleInfo }">
-            <div class="info_top">20</div>
-            <div class="info_bottom">直属分公司<span>/</span>家</div>
+            <div class="info_top">2</div>
+            <div class="info_bottom">分公司<span>/</span>家</div>
           </div>
         </div>
         <div class="introduce">
           <div class="info" ref="infoRef" :class="{ 'scale-up': isVisibleInfo }">
-            <div class="info_top">3</div>
+            <div class="info_top">1</div>
             <div class="info_bottom">支撑平台<span>/</span>家</div>
           </div>
         </div>
       </div>
     </div>
     <div class="component">
-      <div class="content_top" ref="wordLeftRef" :class="{ 'move-left': isVisibleWordLeft }">
-        <div class="content_left">
+      <div class="content_top1" ref="wordLeftRef" :class="{ 'move-left': isVisibleWordLeft }">
+        <div class="left">
           <headLine title="本部部门"></headLine>
           <ul class="parts">
-            <li>办公室（党委办公室、董事会办公室、国际部）</li>
-            <li>发展策划部 财务资产部（资本管理部）</li>
-            <li>党委组织部（人力资源部、全面深化改革办公室）</li>
+            <li>办公室(党委办公室、董事会办公室)</li>
+            <li>发展策划部</li>
+            <li>财务资产部(资本管理部)</li>
+            <li>党委组织部(人力资源部、全面深化改革办公室)</li>
             <li>科信部</li>
-            <li>纪委办公室（党委巡察办）</li>
+            <li>纪委（党委巡察办）</li>
             <li>合规管理部（审计部）</li>
             <li>党委工作部(党委宣传部、工会、团委)</li>
             <li>市场运营部</li>
@@ -112,93 +111,62 @@ onMounted(initializeObservers); // 在组件挂载时调用
             <li>生产物资部</li>
           </ul>
         </div>
-        <div class="content_middle">
-          <div class="top_2">
-            <headLine title="全资子公司"></headLine>
-            <ul class="parts">
-              <li>北京平高清大科技发展有限公司</li>
-              <li>河南省高压电器研究所有限公司</li>
-              <li>河南平高电力设备有限公司</li>
-              <li>
-                <img :src="row" alt="" />
-                河南九域平高科技发展有限公司
-              </li>
-              <li>平高集团智能电气有限公司</li>
-              <li>平高集团能源发展有限公司</li>
-            </ul>
-          </div>
-          <div class="bottom_2">
-            <headLine title="合营公司"></headLine>
-            <ul class="parts">
-              <li>平高东芝(河南)开关零部件制造有限公司</li>
-            </ul>
-          </div>
+        <div class="middle">
+          <headLine title="全资子公司"></headLine>
+          <ul class="parts">
+            <li>北京平高清大科技发展有限公司</li>
+            <li>河南平高祥和电气有限公司</li>
+            <li>平高集团(河南)电力器材科技有限公司</li>
+            <li>平高集团物链科技有限公司</li>
+            <li>平高集团电力检修工程有限公司</li>
+            <li>西安平高智慧能源有限公司</li>
+            <li>雄安平高新能源科技有限公司</li>
+            <li>平高综合能源服务有限公司</li>
+            <li>平高集团智能电气有限公司</li>
+            <li>南京平高信息通信技术有限公司</li>
+            <li>河南平高电力设备有限公司</li>
+          </ul>
         </div>
-        <div class="content_right">
-          <div class="top_3">
-            <headLine title="本部部门"></headLine>
-            <ul class="parts">
-              <li>平高集团华生电力设计有限公司</li>
-              <li>
-                <img :src="row" alt="" />
-                平高集团华生电力设计有限公司郑州分公司
-              </li>
-              <li>平高集团储能科技有限公司</li>
-              <li>湖南平高开关有限公司</li>
-              <li>平高集团智能电力科技有限公司</li>
-              <li>江苏平高泰事达电气有限公司</li>
-              <li>河南平高电气股份有限公司</li>
-            </ul>
-          </div>
-          <div class="bottom_3">
-            <headLine title="支撑平台"></headLine>
-            <ul class="parts">
-              <li>平高集团有限公司配电网业务部</li>
-              <li>平高集团有限公司教育培训中心(平高集团技工学校)</li>
-              <li>运行服务中心</li>
-            </ul>
-          </div>
+        <div class="right">
+          <headLine title="控股子公司"></headLine>
+          <ul class="parts">
+            <li>天津平高易电科技有限公司</li>
+            <li>江苏平高泰事达电气有限公司</li>
+            <li>平高集团智能电力科技有限公司</li>
+            <li>平高集团华生电力设计有限公司</li>
+            <li>湖南平高开关有限公司</li>
+            <li>上海平高智联科技有限公司</li>
+          </ul>
         </div>
       </div>
-      <div class="content_bottom" ref="wordRightRef" :class="{ 'move-right': isVisibleWordRight }">
-        <div class="head">
-          <div class="title">直属分公司</div>
-          <div class="img">
-            <img :src="longLine" alt="" />
-          </div>
+
+      <div class="content_middle1" ref="wordRightRef" :class="{ 'move-right': isVisibleWordRight }">
+        <div class="left">
+          <headLine title="支撑平台"></headLine>
+          <ul class="parts">
+            <li>平高集团工程项目管理中心</li>
+          </ul>
         </div>
-        <div class="foot">
-          <div class="foot_left">
-            <ul class="parts">
-              <li>平高集团有限公司技术中心</li>
-              <li>平高集团有限公司配网技术中心</li>
-              <li>平高集团运维检修服务公司</li>
-              <li>平高集团综合能源服务有限公司</li>
-              <li>平高集团电力储能事业部</li>
-              <li>平高集团有限公司河北雄安综合能源科技分公司</li>
-              <li>平高集团客户服务中心</li>
-            </ul>
-          </div>
-          <div class="foot_middle">
-            <ul class="parts">
-              <li>平高集团物质分公司</li>
-              <li>平高集团电力金具公司</li>
-              <li>平高集团电锅炉事业部</li>
-              <li>平高集团营销中心</li>
-              <li>平高集团有限公司综合服务分公司</li>
-              <li>平高集团大连交大轨道电气技术研究院</li>
-            </ul>
-          </div>
-          <div class="foot_right">
-            <ul class="parts">
-              <li>平高集团有限公司西安智慧新能源分公司</li>
-              <li>清华大学(电机系)平高集团有限公司电气技术联合研究中心</li>
-              <li>平高集团信息科技分公司</li>
-              <li>平高集团中试基地</li>
-              <li>平高集团储能研究所</li>
-              <li>平高集团综合能源研究所</li>
-            </ul>
-          </div>
+        <div class="middle">
+          <headLine title="营销平台"></headLine>
+          <ul class="parts">
+            <li>平高集团营销服务中心</li>
+          </ul>
+        </div>
+        <div class="right">
+          <headLine title="营销平台"></headLine>
+          <ul class="parts">
+            <li>平高东芝(河南)开关零部件制造有限公司</li>
+          </ul>
+        </div>
+      </div>
+      <div class="content_bottom1" ref="wordLeftRef" :class="{ 'move-left': isVisibleWordLeft }">
+        <div class="left">
+          <headLine title="分公司"></headLine>
+          <ul class="parts">
+            <li>平高集团有限公司综合能源服务分公司</li>
+            <li>平高集团电力储能事业部</li>
+          </ul>
         </div>
       </div>
     </div>
@@ -433,30 +401,36 @@ onMounted(initializeObservers); // 在组件挂载时调用
     font-size: 1.3rem !important;
     margin: 0.0625rem;
   }
-  .component .content_top .content_middle .bottom_2 {
-    margin-top: 2.9rem !important;
-  }
+  // .component .content_top .content_middle .bottom_2 {
+  //   margin-top: 2.9rem !important;
+  // }
 }
 @media (min-width: 701px) and (max-width: 800px) {
   .organization .info .info_top {
     font-size: 3.25rem;
   }
   .organization .info .info_bottom {
-    font-size: 3.25rem;
+    font-size: 1.55rem;
   }
   .organization .info .info_bottom span {
-    font-size: 1.3rem !important;
+    font-size: 1.5rem !important;
     margin: 0.0325rem;
   }
   .organization_2 .info .info_top {
-    font-size: 3.25rem !important;
+    font-size:3.25rem !important;
   }
   .organization_2 .info .info_bottom {
-    font-size: 3.25rem !important;
+    font-size: 1.55rem !important;
   }
   .organization_2 .info .info_bottom span {
-    font-size: 1.3rem !important;
+    font-size: 1.5rem !important;
     margin: 0.0325rem;
+  }
+  .component li{
+    font-size: 0.9rem !important;
+  }
+  .component_2 li{
+    font-size: 0.9rem !important;
   }
 }
 .organization .info .info_bottom span {
@@ -474,86 +448,72 @@ onMounted(initializeObservers); // 在组件挂载时调用
   .component_2 li {
     font-size: 0.9rem !important;
   }
+
 }
-.component img {
-  width: 1.5rem;
-}
-.component .content_top {
+.component .content_top1,.component .content_bottom1{
   display: flex;
   justify-content: space-between;
   transform: translateX(-100%); /* 初始位置在左边 */
   visibility: hidden;
   transition: transform 1s ease, opacity 0.5s ease; /* 过渡效果 */
+  margin-bottom: 4rem;
 }
-.component .content_top.move-left {
-  opacity: 1;
-  transform: translateX(0);
-  visibility: visible;
-}
-
-.component .content_top .content_left {
-  width: 33%;
-  height: 33.125rem;
-}
-.component .content_top .content_middle {
-  margin-left: 0.75rem;
-  width: 33%;
-  height: 33.125rem;
-}
-.component .content_top .content_right {
-  margin-left: 0.8125rem;
-  width: 33%;
-  height: 33.125rem;
-}
-
-.component .content_top .content_middle .bottom_2 {
-  margin-top: 3.3125rem;
-}
-.component .content_top .bottom_3 {
-  margin-top: 1.0125rem;
-}
-
-.component .content_bottom {
-  margin-top: -1.25rem;
+.component .content_middle1{
+  display: flex;
+  justify-content: space-between;
   transform: translateX(100%); /* 初始位置在左边 */
   visibility: hidden;
   transition: transform 1s ease, opacity 0.5s ease; /* 过渡效果 */
+  margin-bottom: 4rem;
 }
-.component .content_bottom .img {
-  width: 100%;
-}
-.component .content_bottom .img img {
-  width: 100%;
-}
-
-.component .content_bottom.move-right {
+.component .content_top1.move-left {
   opacity: 1;
   transform: translateX(0);
   visibility: visible;
 }
-.component .content_bottom .title {
-  font-size: 1.625rem;
-  font-family: "AlibabaPuHuiTi_2_65_Medium", sans-serif;
-  color: rgb(0, 111, 193);
-  font-weight: 500;
-  z-index: 139;
+.component .content_bottom1.move-left {
+  opacity: 1;
+  transform: translateX(0);
+  visibility: visible;
 }
-.component .content_bottom .foot {
-  display: flex;
-  justify-content: space-between;
-  width: 100%;
+.component  .content_middle1.move-right{
+  opacity: 1;
+  transform: translateX(0);
+  visibility: visible;
 }
-.component .content_bottom .foot_middle {
-  margin-left: 0.75rem;
+.component .content_top1 .left .middle .right{
+  width: 32%;
+}
+
+.component .content_top1 .left{
+  width: 33%;
+  margin-right: 2rem;
+}
+.component .content_top1 .middle{
+  width: 33%;
+  margin-right: 2rem;
+}
+.component .content_top1 .right{
   width: 33%;
 }
-.component .content_bottom .foot_left {
+
+
+.component .content_middle1 .left{
+  margin-right: 2rem;
   width: 33%;
 }
-.component .content_bottom .foot_right {
-  margin-left: 0.75rem;
+.component .content_middle1 .middle{
+  margin-right: 2rem;
   width: 33%;
 }
+.component .content_middle1 .right{
+  width: 33%;
+}
+
+.component .content_bottom1 .left{
+  width: 33%;
+}
+
 .organization_2 {
   position: relative;
   margin-top: 3.75rem;

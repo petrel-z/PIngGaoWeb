@@ -584,9 +584,6 @@ onMounted(() => {
   // text-align: center;
   transition: 0.3s;
 }
-.nav_introduction .p:hover {
-  font-size: 1.625rem;
-}
 .announcement {
   display: flex;
   height: 4.875rem;
@@ -994,7 +991,7 @@ onMounted(() => {
   }
   .great_flag_content .content_detail {
     width: 32%;
-    height: 22.1875rem !important;
+    height: 23.1875rem !important;
     background-color: #ffffff;
     transition: 0.5s;
     cursor: pointer;
@@ -1008,7 +1005,7 @@ onMounted(() => {
   }
   .great_flag_content .content_detail_text {
     width: 33%;
-    height: 22.1875rem !important;
+    height: 23.1875rem !important;
     background-color: #fff;
     padding-top: 1rem !important;
     padding-left: 1.5rem !important;
@@ -1054,7 +1051,7 @@ onMounted(() => {
     font-size: 0.9rem !important;
   }
   .great_flag_content .content_detail_text .text .title {
-    font-size: 0.8rem !important;
+    font-size: 1rem !important;
   }
   .great_flag_content .content_detail_text .text .line {
     width: 2.6875rem;
@@ -1062,7 +1059,7 @@ onMounted(() => {
     margin: 0.25rem 0rem;
   }
   .great_flag_content .content_detail_text .time {
-    font-size: 0.8rem !important;
+    font-size: 0.9rem !important;
     margin-bottom: 0.7rem !important;
   }
   .great_flag_footer {
@@ -1154,7 +1151,7 @@ onMounted(() => {
   }
   .great_flag_content .content_detail {
     width: 32%;
-    height: 22.1875rem !important;
+    height: 24.1875rem !important;
     background-color: #ffffff;
     transition: 0.5s;
     cursor: pointer;
@@ -1166,9 +1163,10 @@ onMounted(() => {
     height: 74.125rem !important;
     width: 100%;
   }
+
   .great_flag_content .content_detail_text {
     width: 33%;
-    height: 22.1875rem !important;
+    height: 24.1875rem !important;
     background-color: #fff;
     padding-top: 1rem !important;
     padding-left: 1.5rem !important;
@@ -1181,6 +1179,9 @@ onMounted(() => {
     top: 44rem;
     left: 50%;
     transform: translateX(-50%);
+  }
+  .great_flag_content{
+    margin-bottom: 7rem !important;
   }
   .great_flag_title {
     display: flex;
@@ -1211,10 +1212,10 @@ onMounted(() => {
     margin: 0.25rem 0rem;
   }
   .great_flag_content .bottom_text .p {
-    font-size: 0.9rem !important;
+    font-size:1rem !important;
   }
   .great_flag_content .content_detail_text .text .title {
-    font-size: 0.8rem !important;
+    font-size:1rem !important;
   }
   .great_flag_content .content_detail_text .text .line {
     width: 2.6875rem;
@@ -1222,7 +1223,7 @@ onMounted(() => {
     margin: 0.25rem 0rem;
   }
   .great_flag_content .content_detail_text .time {
-    font-size: 0.8rem !important;
+    font-size: 1rem !important;
     margin-bottom: 0.7rem !important;
   }
   .great_flag_footer {
@@ -1237,21 +1238,210 @@ onMounted(() => {
   }
 }
 @media (min-width: 800px) and (max-width: 1000px) {
+
 }
 @media (min-width: 1000px) and (max-width: 1200px) {
+  .great_flag_content .content_detail {
+    width: 32%;
+    height: 39rem !important;
+    background-color: #ffffff;
+    transition: 0.5s;
+    cursor: pointer;
+  }
+  .great_flag {
+    position: relative;
+    padding: 9.5rem 9.75rem;
+    background-color: #def1fb;
+    height: 101.125rem !important;
+    width: 100%;
+  }
+  .great_flag_content .content_detail_text {
+    width: 33%;
+    height: 39rem !important;
+    background-color: #fff;
+    padding-top: 2rem;
+    padding-left: 2.5rem;
+  }
+  .great_flag_content{
+    margin-bottom: 7rem !important;
+  }
+  .great_flag_content .bottom_text .time {
+    font-size: 1.4rem !important;
+  }
+  .great_flag_content .bottom_text .hr {
+    width: 2.6875rem;
+    height: 0.1rem !important;
+    margin: 0.25rem 0rem;
+  }
+  .great_flag_content .bottom_text .p {
+    font-size: 1.4rem !important;
+  }
+  .great_flag_content .content_detail_text .text .title {
+    font-size: 1.4rem !important;
+  }
+  .great_flag_content .content_detail_text .text .line {
+    width: 2.6875rem;
+    height: 0.1rem !important;
+    margin: 0.25rem 0rem;
+  }
+  .great_flag_content .content_detail_text .time {
+    font-size: 1.4rem !important;
+    margin-bottom: 1.4rem !important;
+  }
 }
 @media (min-width: 1200px) and (max-width: 1400px) {
 }
 @media (min-width: 1400px) and (max-width: 1600px) {
+  .great_flag_content .content_detail {
+    width: 32%;
+    height: 34rem !important;
+    background-color: #ffffff;
+    transition: 0.5s;
+    cursor: pointer;
+  }
+  .great_flag {
+    position: relative;
+    padding: 9.5rem 9.75rem;
+    background-color: #def1fb;
+    height: 101.125rem !important;
+    width: 100%;
+  }
+  .great_flag_content .content_detail_text {
+    width: 33%;
+    height: 34rem !important;
+    background-color: #fff;
+    padding-top: 2rem;
+    padding-left: 2.5rem;
+  }
+  .great_flag_content{
+    margin-bottom: 2rem !important;
+  }
+  .great_flag_content .bottom_text .time {
+    font-size: 1。2rem !important;
+  }
+  .great_flag_content .bottom_text .hr {
+    width: 2.6875rem;
+    height: 0.1rem !important;
+    margin: 0.25rem 0rem;
+  }
+  .great_flag_content .bottom_text .p {
+    font-size: 1.3rem !important;
+  }
+  .great_flag_content .content_detail_text .text .title {
+    font-size: 1.3rem !important;
+  }
+  .great_flag_content .content_detail_text .text .line {
+    width: 2.6875rem;
+    height: 0.1rem !important;
+    margin: 0.25rem 0rem;
+  }
+  .great_flag_content .content_detail_text .time {
+    font-size: 1.2rem !important;
+    margin-bottom: 1.1rem !important;
+  }
 }
 @media (min-width: 1600px) and (max-width: 1800px) {
+  .great_flag_content .content_detail {
+    width: 32%;
+    height: 38rem !important;
+    background-color: #ffffff;
+    transition: 0.5s;
+    cursor: pointer;
+  }
+  .great_flag {
+    position: relative;
+    padding: 9.5rem 9.75rem;
+    background-color: #def1fb;
+    height: 101.125rem !important;
+    width: 100%;
+  }
+  .great_flag_content .content_detail_text {
+    width: 33%;
+    height: 38rem !important;
+    background-color: #fff;
+    padding-top: 2rem;
+    padding-left: 2.5rem;
+  }
+  .great_flag_content{
+    margin-bottom: 6rem !important;
+  }
+  .great_flag_content .bottom_text .time {
+    font-size: 1。2rem !important;
+  }
+  .great_flag_content .bottom_text .hr {
+    width: 2.6875rem;
+    height: 0.1rem !important;
+    margin: 0.25rem 0rem;
+  }
+  .great_flag_content .bottom_text .p {
+    font-size: 1.3rem !important;
+  }
+  .great_flag_content .content_detail_text .text .title {
+    font-size: 1.3rem !important;
+  }
+  .great_flag_content .content_detail_text .text .line {
+    width: 2.6875rem;
+    height: 0.1rem !important;
+    margin: 0.25rem 0rem;
+  }
+  .great_flag_content .content_detail_text .time {
+    font-size: 1.3rem !important;
+    margin-bottom: 1 !important;
+  }
 }
 @media (min-width: 2100px) and (max-width: 2300px) {
+  .great_flag_content .content_detail {
+    width: 32%;
+    height: 32rem !important;
+    background-color: #ffffff;
+    transition: 0.5s;
+    cursor: pointer;
+  }
+  .great_flag {
+    position: relative;
+    padding: 9.5rem 9.75rem;
+    background-color: #def1fb;
+    height: 101.125rem !important;
+    width: 100%;
+  }
+  .great_flag_content .content_detail_text {
+    width: 33%;
+    height: 32rem !important;
+    background-color: #fff;
+    padding-top: 2rem;
+    padding-left: 2.5rem;
+  }
+  .great_flag_content{
+    margin-bottom: 2rem !important;
+  }
+  .great_flag_content .bottom_text .time {
+    font-size: 1。2rem !important;
+  }
+  .great_flag_content .bottom_text .hr {
+    width: 2.6875rem;
+    height: 0.1rem !important;
+    margin: 0.25rem 0rem;
+  }
+  .great_flag_content .bottom_text .p {
+    font-size: 1.1rem !important;
+  }
+  .great_flag_content .content_detail_text .text .title {
+    font-size: 1.1rem !important;
+  }
+  .great_flag_content .content_detail_text .text .line {
+    width: 2.6875rem;
+    height: 0.1rem !important;
+    margin: 0.25rem 0rem;
+  }
+  .great_flag_content .content_detail_text .time {
+    font-size: 1。2rem !important;
+    margin-bottom: 0.8rem !important;
+  }
 }
 @media (min-width: 5000px) and (max-width: 8000px) {
   .great_flag_content .content_detail {
     width: 32%;
-    height: 42.1875rem !important;
+    height: 40rem !important;
     background-color: #ffffff;
     transition: 0.5s;
     cursor: pointer;
@@ -1262,31 +1452,30 @@ onMounted(() => {
     background-color: #def1fb;
     height: 101.125rem !important;
     width: 100%;
+
+  }
+  .great_flag_content{
+    margin-bottom: 8rem !important;
   }
   .great_flag_content .content_detail_text {
     width: 33%;
-    height: 42.1875rem !important;
+    height: 40rem !important;
     background-color: #fff;
     padding-top: 3rem;
     padding-left: 2.5rem;
   }
-  .great_flag_button {
-    margin: auto;
-    width: 12.25rem;
-    height: 2.9375rem;
-    position: absolute;
-    top: 70rem;
-    left: 50%;
-    transform: translateX(-50%);
-  }
+
 }
-@media (min-width: 2400px) and (max-width: 3000px) {
+@media (min-width: 2300px) and (max-width: 2600px) {
   .great_flag_content .content_detail {
     width: 32%;
-    height: 42.1875rem !important;
+    height: 36rem !important;
     background-color: #ffffff;
     transition: 0.5s;
     cursor: pointer;
+  }
+  .content_detail .bottom_text{
+    padding: 1rem 2rem !important;
   }
   .great_flag {
     position: relative;
@@ -1297,19 +1486,65 @@ onMounted(() => {
   }
   .great_flag_content .content_detail_text {
     width: 33%;
-    height: 42.1875rem !important;
+    height: 36rem !important;
     background-color: #fff;
     padding-top: 3rem;
     padding-left: 2.5rem;
   }
-  .great_flag_button {
-    margin: auto;
-    width: 12.25rem;
-    height: 2.9375rem;
-    position: absolute;
-    top: 70rem;
-    left: 50%;
-    transform: translateX(-50%);
+  .great_flag_content{
+    margin-bottom: 5rem !important;
+  }
+}
+@media (min-width: 2600px) and (max-width: 3000px) {
+  .great_flag_content .content_detail {
+    width: 32%;
+    height: 32rem !important;
+    background-color: #ffffff;
+    transition: 0.5s;
+    cursor: pointer;
+  }
+  .content_detail .bottom_text{
+    padding: 1rem 2rem !important;
+  }
+  .great_flag {
+    position: relative;
+    padding: 9.5rem 9.75rem;
+    background-color: #def1fb;
+    height: 101.125rem !important;
+    width: 100%;
+  }
+  .great_flag_content .content_detail_text {
+    width: 33%;
+    height: 32rem !important;
+    background-color: #fff;
+    padding-top: 2rem;
+    padding-left: 2.5rem;
+  }
+  .great_flag_content{
+    margin-bottom: 5rem !important;
+  }
+  .great_flag_content .bottom_text .time {
+    font-size: 1。2rem !important;
+  }
+  .great_flag_content .bottom_text .hr {
+    width: 2.6875rem;
+    height: 0.1rem !important;
+    margin: 0.25rem 0rem;
+  }
+  .great_flag_content .bottom_text .p {
+    font-size: 1.1rem !important;
+  }
+  .great_flag_content .content_detail_text .text .title {
+    font-size: 1.1rem !important;
+  }
+  .great_flag_content .content_detail_text .text .line {
+    width: 2.6875rem;
+    height: 0.1rem !important;
+    margin: 0.25rem 0rem;
+  }
+  .great_flag_content .content_detail_text .time {
+    font-size: 1。2rem !important;
+    margin-bottom: 0.8rem !important;
   }
 }
 
