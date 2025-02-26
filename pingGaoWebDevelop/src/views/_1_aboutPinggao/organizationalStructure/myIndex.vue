@@ -511,7 +511,7 @@ onMounted(initializeObservers); // 在组件挂载时调用
 }
 
 .component .content_bottom1 .left{
-  width: 33%;
+  width: 32.2%;
 }
 
 .organization_2 {

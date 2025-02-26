@@ -83,6 +83,7 @@ onMounted(() => {
     // 计算位移百分比（每个项目占 1/visibleItems）
     const translateX = -currentIndex * (100 / visibleItems / 1.07);
     container.style.transform = `translateX(${translateX}%)`;
+    container.style.transition = '1s';
 
     // 重置动画状态
     setTimeout(() => {
@@ -91,6 +92,7 @@ onMounted(() => {
   }
 
   function nextSlide1() {
+    stopAutoSlide()
     if (currentIndex >= itemCount - visibleItems) {
       // 到达最后时回到第一个
       currentIndex = 0;
@@ -101,6 +103,7 @@ onMounted(() => {
   }
 
   function prevSlide1() {
+    stopAutoSlide()
     if (currentIndex <= 0) {
       // 到达第一个时跳到最后
       currentIndex = itemCount - visibleItems;
@@ -111,8 +114,17 @@ onMounted(() => {
   }
 
   function startAutoSlide() {
-    autoSlideInterval = setInterval(nextSlide1, 3000); // 每3秒切换一次
+    autoSlideInterval = setInterval(nextSlide1, 4000); // 每3秒切换一次
   }
+
+    // 停止自动轮播的函数
+    function stopAutoSlide() {
+      if (autoSlideInterval) {
+        clearInterval(autoSlideInterval);
+        autoSlideInterval = null;
+        console.log('轮播已停止');
+      }
+    }
 
   // 添加按钮事件
   rightIcon.addEventListener("click", nextSlide1);
@@ -538,21 +550,6 @@ onMounted(() => {
 }
 .dots .active {
   background-color: rgb(189, 206, 255);
-}
-@media (min-width: 1700px) and (max-width: 1900px) {
-  html {
-    font-size: 10px;
-  }
-}
-@media (min-width: 1000px) and (max-width: 1700px) {
-  html {
-    font-size: 7px;
-  }
-}
-@media (min-width: 400px) and (max-width: 600px) {
-  html {
-    font-size: 4px !important;
-  }
 }
 .nav {
   width: 100%;
