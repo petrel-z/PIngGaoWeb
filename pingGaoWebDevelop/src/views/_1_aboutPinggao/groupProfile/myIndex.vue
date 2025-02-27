@@ -523,6 +523,25 @@ onMounted(initializeObservers); // 在组件挂载时调用
   font-family: "AlibabaPuHuiTi_2_45_Light", sans-serif;
   color: rgb(89, 87, 87);
 }
+@media (min-width: 300px) and (max-width: 400px) {
+  .mind_map {
+    background-color: #def1fb;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 72.25rem !important;
+  }
+
+  .mind_map img {
+    width: 100%;
+    position: absolute;
+    height: 72.25rem !important;
+  }
+  .groupProfile {
+    width: 100%;
+    height: 238.5rem !important;
+  }
+}
 @media (min-width: 400px) and (max-width: 900px) {
   .introduce_content span {
     font-size: 1.4rem;
@@ -601,13 +620,13 @@ onMounted(initializeObservers); // 在组件挂载时调用
     bottom: 0;
     left: 0;
     width: 100%;
-    height: 54.25rem !important;
+    height: 46.25rem !important;
   }
 
   .mind_map img {
     width: 100%;
     position: absolute;
-    height: 50.25rem !important;
+    height: 45.25rem !important;
   }
   .groupProfile {
     width: 100%;
@@ -663,9 +682,22 @@ onMounted(initializeObservers); // 在组件挂载时调用
     width: 100%;
     height: 14rem !important;
   }
+  .mind_map {
+    background-color: #def1fb;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 50.25rem !important;
+  }
+
+  .mind_map img {
+    width: 100%;
+    position: absolute;
+    height: 50.25rem !important;
+  }
   .groupProfile {
     width: 100%;
-    height: 187.5rem !important;
+    height: 184.5rem !important;
   }
 }
 @media (min-width: 800px) and (max-width: 1000px) {
@@ -682,9 +714,22 @@ onMounted(initializeObservers); // 在组件挂载时调用
   .key .key_info {
     height: 8.5rem;
   }
+  .mind_map {
+    background-color: #def1fb;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 65.25rem !important;
+  }
+
+  .mind_map img {
+    width: 100%;
+    position: absolute;
+    height: 65.25rem !important;
+  }
   .groupProfile {
     width: 100%;
-    height: 215.5rem !important;
+    height: 222.5rem !important;
   }
 }
 @media (min-width: 1000px) and (max-width: 1200px) {
@@ -698,9 +743,22 @@ onMounted(initializeObservers); // 在组件挂载时调用
     top: 4.55rem;
     font-size: 1.18rem;
   }
+  .mind_map {
+    background-color: #def1fb;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 70.25rem !important;
+  }
+
+  .mind_map img {
+    width: 100%;
+    position: absolute;
+    height: 70.25rem !important;
+  }
   .groupProfile {
     width: 100%;
-    height: 213.5rem !important;
+    height: 227.5rem !important;
   }
 }
 @media (min-width: 1200px) and (max-width: 1400px) {
@@ -714,9 +772,22 @@ onMounted(initializeObservers); // 在组件挂载时调用
     top: 4.3rem;
     font-size: 1.13rem;
   }
+  .mind_map {
+    background-color: #def1fb;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 62.25rem !important;
+  }
+
+  .mind_map img {
+    width: 100%;
+    position: absolute;
+    height: 62.25rem !important;
+  }
   .groupProfile {
     width: 100%;
-    height: 217.5rem !important;
+    height: 220.5rem !important;
   }
 }
 @media (min-width: 1400px) and (max-width: 1600px) {
@@ -746,12 +817,25 @@ onMounted(initializeObservers); // 在组件挂载时调用
     top: 4.5rem;
     font-size: 1.15rem;
   }
+  .mind_map {
+    background-color: #def1fb;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 70.25rem !important;
+  }
+
+  .mind_map img {
+    width: 100%;
+    position: absolute;
+    height: 70.25rem !important;
+  }
   .groupProfile {
     width: 100%;
-    height: 214.5rem !important;
+    height: 220.5rem !important;
   }
 }
-@media (min-width: 2100px) and (max-width: 2300px) {
+@media (min-width: 2100px) and (max-width: 2400px) {
   .key_content_h {
     left: 11.5rem;
     top: 2.1rem;
@@ -762,9 +846,79 @@ onMounted(initializeObservers); // 在组件挂载时调用
     top: 4.4rem;
     font-size: 1.15rem;
   }
+  .mind_map {
+    background-color: #def1fb;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 70.25rem !important;
+  }
+
+  .mind_map img {
+    width: 100%;
+    position: absolute;
+    height: 70.25rem !important;
+  }
   .groupProfile {
     width: 100%;
-    height: 217.5rem !important;
+    height: 223.5rem !important;
+  }
+}
+@media (min-width: 2400px) and (max-width: 2600px) {
+  .mind_map {
+    background-color: #def1fb;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 74.25rem !important;
+  }
+
+  .mind_map img {
+    width: 100%;
+    position: absolute;
+    height: 74.25rem !important;
+  }
+  .groupProfile {
+    width: 100%;
+    height: 229.5rem !important;
+  }
+}
+@media (min-width: 3000px) and (max-width: 5000px) {
+  .mind_map {
+    background-color: #def1fb;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 71.25rem !important;
+  }
+
+  .mind_map img {
+    width: 100%;
+    position: absolute;
+    height: 71.25rem !important;
+  }
+  .groupProfile {
+    width: 100%;
+    height: 229.5rem !important;
+  }
+}
+@media (min-width: 5000px) and (max-width: 8000px) {
+  .mind_map {
+    background-color: #def1fb;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 78.25rem !important;
+  }
+
+  .mind_map img {
+    width: 100%;
+    position: absolute;
+    height: 78.25rem !important;
+  }
+  .groupProfile {
+    width: 100%;
+    height: 234.5rem !important;
   }
 }
 
