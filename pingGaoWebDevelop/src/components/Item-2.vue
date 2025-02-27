@@ -107,10 +107,10 @@ onMounted(() => {
   transition: left 0.5s ease-in-out;
   margin-right: 1%;
   background-color: var(--background-color);
-  border-bottom-left-radius: 10px;
-  border-top-left-radius: 10px;
+  border-bottom-left-radius: 0.625rem;
+  border-top-left-radius: 0.625rem;
   text-align: right;
-  padding: 35px 1em;
+  padding: 2.18rem 1rem;
   width: 20%;
   display: flex;
   flex-direction: column;
@@ -123,9 +123,9 @@ onMounted(() => {
   right: -200%;
   transition: right 0.5s ease-in-out;
   background-color: var(--background-color);
-  border-bottom-right-radius: 10px;
-  border-top-right-radius: 10px;
-  padding: 45px 36px;
+  border-bottom-right-radius: 0.625rem;
+  border-top-right-radius: 0.625rem;
+  padding: 2.8rem 2.2rem;
   width: 79%;
   /* transition: all 0.3s ease-in-out; */
 }

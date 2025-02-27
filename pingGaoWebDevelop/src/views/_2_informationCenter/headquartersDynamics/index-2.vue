@@ -2,6 +2,7 @@
 defineOptions({
   name: "NewsCenterIndex1-2",
 });
+import { ref, onMounted } from "vue";
 import MyTitle from "@/components/MyTitle.vue";
 import Item2 from "@/components/Item-2.vue";
 import OrderList from "@/components/OrderList.vue";
@@ -48,11 +49,26 @@ const items = [
     text: "中国电气装备召开一届二次职工代表大会暨2025年工作会议",
   },
 ];
+
+// 监听窗口大小变化事件
+let onceChange = ref(false);
+onMounted(() => {
+  window.addEventListener("resize", () => {
+    // 获取当前窗口的宽度和高度
+    const width = window.innerWidth;
+    if (width <= 900) {
+      // 根据窗口大小改变dom元素
+      onceChange.value = true;
+    } else {
+      onceChange.value = false;
+    }
+  });
+});
 </script>
 
 <template>
   <div style="position: relative">
-    <div class="body">
+    <div class="body" ref="bodyBox">
       <div>
         <div style="padding-top: 4rem">
           <my-title title="总部动态" English="HEADQUARTERS NEWS" />
@@ -74,13 +90,16 @@ const items = [
               :text="item.text"
             />
           </div>
-          <div class="order-container">
+          <div v-show="!onceChange" class="order-container">
             <OrderList />
           </div>
         </div>
       </div>
       <div class="pagination-container">
         <MyPagination />
+      </div>
+      <div v-show="onceChange" class="order-container">
+        <OrderList />
       </div>
     </div>
   </div>
@@ -91,6 +110,7 @@ const items = [
   padding: 0 11%;
   background-color: #def1fb;
   height: auto;
+  overflow: hidden;
 }
 
 .item-container {
@@ -109,9 +129,20 @@ const items = [
 
 .pagination-container {
   width: 100%;
-  padding: 3em 0;
+  padding-bottom: 3rem;
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+@media (max-width: 900px) {
+  .item-container {
+    width: 100%;
+  }
+
+  .order-container {
+    width: 100%;
+    margin-bottom: 15%;
+  }
 }
 </style>

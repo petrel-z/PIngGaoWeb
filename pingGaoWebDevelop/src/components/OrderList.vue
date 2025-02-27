@@ -63,10 +63,7 @@ function sortOrderList(orderList) {
     <ul>
       <li class="list-item">
         <span>{{ props.title }}</span>
-        <i
-          class="iconfont icon-a-MenuBar-show"
-          style="font-size: 24px; color: #fff; transform: rotate(180deg)"
-        ></i>
+        <i class="iconfont icon-a-MenuBar-show list-item-icon"></i>
       </li>
       <li class="list-item" v-for="(item, index) in sortOrderList(props.orderList)" :key="index">
         <span> {{ item.name }}</span>
@@ -80,8 +77,8 @@ function sortOrderList(orderList) {
 .list-item {
   display: flex;
   height: auto;
-  padding: 9% 0;
-  font-size: 1.3rem;
+  padding: 2.5rem 0;
+  font-size: 1.5rem;
   font-family: "AlibabaPuHuiTi_2_65_Medium";
   color: rgb(255, 255, 255);
   text-align: left;
@@ -104,13 +101,13 @@ function sortOrderList(orderList) {
 }
 
 .list-item span:nth-child(2) {
-  font-size: 1.125rem;
+  font-size: 1.2rem;
   font-family: "AlibabaPuHuiTi_2_65_Medium";
   color: rgb(255, 255, 255);
   text-align: left;
   position: relative;
   z-index: 238;
-  width: 29%;
+  width: auto;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -130,12 +127,32 @@ function sortOrderList(orderList) {
   border-bottom: none;
 }
 
+.list-item-icon {
+  font-size: 3rem;
+  color: #fff;
+  transform: rotate(180deg);
+}
+
 @keyframes right-in {
   from {
     left: 100%;
   }
   to {
     left: 0;
+  }
+}
+
+@media (max-width: 900px) {
+  .list-item {
+    font-size: 2.8rem;
+  }
+
+  .list-item span:nth-child(2) {
+    font-size: 1.8rem;
+  }
+
+  .list-item-icon {
+    font-size: 4rem;
   }
 }
 </style>

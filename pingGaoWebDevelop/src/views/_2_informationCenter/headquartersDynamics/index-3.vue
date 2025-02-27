@@ -18,7 +18,10 @@ import imgPath from "@/assets/imgs/_2_informationCenterImgs/LehYXF.png";
           想为指导，深入贯彻党的二十大和二十届二中、三中全会精神，全面落实中央经济工作会议和中央企业负责人会议各项要求，总结2024年工作，分析
           当前形势，研究部署2025年重点工作，奋力开创集团公司高质量发展新篇章。
         </p>
-        <img style="margin-top: 79px; margin-bottom: 81px" :src="imgPath" alt="" />
+        <div class="img-box">
+          <img style="margin-top: 4.8rem; margin-bottom: 5rem" :src="imgPath" alt="" />
+        </div>
+
         <p>
           集团公司党委书记、董事长李洪凤作题为《一步不停 一刻不歇
           推动集团持续高质量发展》的讲话。党委副书记、董事、总经理周群作题为《强基固本 蓄势能
@@ -57,7 +60,8 @@ import imgPath from "@/assets/imgs/_2_informationCenterImgs/LehYXF.png";
 }
 .body {
   background-color: #fff;
-  padding: 0 100px;
+  padding: 0 6.25rem;
+  overflow: hidden;
 }
 .title {
   font-size: 35px;
@@ -77,6 +81,18 @@ import imgPath from "@/assets/imgs/_2_informationCenterImgs/LehYXF.png";
   color: rgb(89, 87, 87);
   line-height: 1.498;
   width: 100%;
+}
+
+.img-box {
+  display: flex;
+  justify-self: center;
+  width: 80%;
+}
+
+.img-box img {
+  width: 100%;
+  height: auto;
+  border-radius: 0.625rem;
 }
 
 .content p:first-child {
@@ -102,5 +118,19 @@ import imgPath from "@/assets/imgs/_2_informationCenterImgs/LehYXF.png";
 
 .footer-right {
   width: 49%;
+}
+
+@media (max-width: 900px) {
+  .footer-left {
+    width: 100%;
+  }
+
+  .footer-right {
+    width: 100%;
+  }
+
+  .footer {
+    flex-wrap: wrap;
+  }
 }
 </style>
