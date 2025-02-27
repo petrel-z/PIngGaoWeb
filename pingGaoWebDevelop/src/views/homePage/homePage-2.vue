@@ -100,6 +100,7 @@ onMounted(() => {
       currentIndex++;
     }
     updateCarousel();
+    startAutoSlide()
   }
 
   function prevSlide1() {
@@ -111,10 +112,11 @@ onMounted(() => {
       currentIndex--;
     }
     updateCarousel();
+    startAutoSlide()
   }
 
   function startAutoSlide() {
-    autoSlideInterval = setInterval(nextSlide1, 4000); // 每3秒切换一次
+    autoSlideInterval = setInterval(nextSlide1, 3000); // 每3秒切换一次
   }
 
     // 停止自动轮播的函数
@@ -194,7 +196,6 @@ onMounted(() => {
         <ComHeader :isfooter="false" :onlyHeaderFlag="true"></ComHeader>
       </div>
     </div>
-
     <div class="my_carousel">
       <div class="carousel" id="carousel" @mouseover="stopTimer" @mouseout="startTimer">
         <div class="carousel-inner">
