@@ -523,6 +523,25 @@ onMounted(initializeObservers); // 在组件挂载时调用
   font-family: "AlibabaPuHuiTi_2_45_Light", sans-serif;
   color: rgb(89, 87, 87);
 }
+@media (min-width: 300px) and (max-width: 400px) {
+  .mind_map {
+    background-color: #def1fb;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 72.25rem !important;
+  }
+
+  .mind_map img {
+    width: 100%;
+    position: absolute;
+    height: 72.25rem !important;
+  }
+  .groupProfile {
+    width: 100%;
+    height: 238.5rem !important;
+  }
+}
 @media (min-width: 400px) and (max-width: 900px) {
   .introduce_content span {
     font-size: 1.4rem;
