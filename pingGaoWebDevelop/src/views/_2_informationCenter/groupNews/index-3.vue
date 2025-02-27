@@ -3,7 +3,7 @@ defineOptions({
   name: "NewsCenterIndex2-3",
 });
 
-import TextTitle from "@/components/TextTitle.vue";
+import NewsBar from "@/components/newsBar.vue";
 import ComDoubleDiv from "@/components/ComDoubleDiv.vue";
 import imgPath from "../../../assets/imgs/_2_informationCenterImgs/MZFUZt.png";
 </script>
@@ -12,7 +12,7 @@ import imgPath from "../../../assets/imgs/_2_informationCenterImgs/MZFUZt.png";
   <div class="body-bg">
     <div class="body">
       <div class="title">平高集团亮相CIGRE 2024 绿色智能产品吸引全球电力行业目光</div>
-      <TextTitle :color="'#1c4e9f'" :time="'2025-01-14'" :browse="488" />
+      <NewsBar :color="'#1c4e9f'" :time="'2025-01-14'" :browse="488"></NewsBar>
       <div class="content">
         <p>
           8月28日，平高集团凭借其在绿色环保和智能制造领域的优异表现，在巴黎CIGRE

@@ -14,7 +14,7 @@ defineOptions({
       <div class="detail-content">
         <div style="width: 100%; padding: 5em 5em">
           <div class="title">中国电气装备召开一届二次职工代表大会暨2025年工作会议</div>
-          <newsBar :time="'2025-01-14'" :browse="'488'"></newsBar>
+          <newsBar :time="'2025-01-14'" :browse="488"></newsBar>
           <div class="text">
             <p>
               中国共产党第二十届中央委员会第三次全体会议，于2024年7月15日至18日在北京举行出席这次全会的有，中央委员199人，候补中央委员165人。中央纪律检查委员会常务委员会委员和有关方面负责同志列席会议
@@ -31,13 +31,15 @@ defineOptions({
 
           <div class="button">
             <div class="button-left">
-              <ComDoubleDiv :title="'上一篇'" :content="'中国共产党第二十届中央委员会第三次全体会议公报'" :bgColor="'#f8f1e5'"
-                :leftFontColor="'#a51617'" :rightFontColor="'#7b6a5d'">
+              <ComDoubleDiv :title="'上一篇'" :content="'中国共产党第二十届中央委员会第三次全体会议公报'" 
+              :bgColor="'#f8f1e5'"
+              :leftFontColor="'#a51617'" :rightFontColor="'#7b6a5d'">
               </ComDoubleDiv>
             </div>
             <div class="button-right">
-              <ComDoubleDiv :title="'下一篇'" :content="'中国共产党第二十届中央委员会第三次全体会议公报'" :bgColor="'#f8f1e5'"
-                :leftFontColor="'#a51617'" :rightFontColor="'#7b6a5d'">
+              <ComDoubleDiv :title="'下一篇'" :content="'中国共产党第二十届中央委员会第三次全体会议公报'" 
+              :bgColor="'#f8f1e5'"
+              :leftFontColor="'#a51617'" :rightFontColor="'#7b6a5d'">
               </ComDoubleDiv>
             </div>
           </div>
@@ -54,7 +56,6 @@ defineOptions({
   .detail {
     width: 100%;
     padding: 0 11%;
-
     height: auto;
     background-image: url("../../../assets/imgs/_3_partyBuildingImgs/t3_p1_detailBg.png");
     background-size: auto;

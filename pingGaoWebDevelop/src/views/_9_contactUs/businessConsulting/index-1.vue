@@ -108,7 +108,7 @@ import MyTitle from "@/components/MyTitle.vue";
             font-size: 2rem;
             font-family: "AlibabaPuHuiTi_2_45_Light";
             color: rgb(89, 87, 87);
-            text-align: justifyLeft;
+            text-align: justify;
           }
         }
 

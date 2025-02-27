@@ -6,20 +6,16 @@ const props = defineProps({
   color: {
     type: String,
     default: "#ab2526",
-    required: true,
   },
   time: {
     type: String,
-    required: true,
     default: "2022-01-01",
   },
   browse: {
     type: Number,
-    required: true,
     default: 0,
   },
 });
-
 
 import { ElMessageBox } from 'element-plus'
 
@@ -78,16 +74,10 @@ const openmore = () => {
     {
       dangerouslyUseHTMLString: true,
       customStyle: {
-        // display: 'flex',
-        // justifyContent: 'center',
-        // alignItems: 'center',
         width: '200px',
         height: '30%',
         color: 'black',
         overflow: 'scroll',
-        // top: '50%',
-        // left: '50%',
-        // transform: 'translate(-50%, -50%)',
       }
     }
   )

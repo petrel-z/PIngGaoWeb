@@ -1,7 +1,7 @@
 <script setup>
 import MyTitle from "@/components/MyTitle.vue";
 import ContenPage from "@/components/ContenPage.vue";
-import Item1 from "@/components/item-1.vue";
+import Item1 from "@/components/Item-1.vue";
 import MyButton from "@/components/MyButton.vue";
 import img1 from "@/assets/imgs/_3_partyBuildingImgs/t3_p2_person.png";
 
