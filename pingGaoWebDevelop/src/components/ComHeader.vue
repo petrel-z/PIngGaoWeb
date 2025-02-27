@@ -235,13 +235,18 @@ function hoverContent(name) {
   });
 }
 
-let moveNavBodyItemUl = ref(null);
-function changeMoveNavBodyItemUl(name) {
-  allContent.value.forEach((item) => {
-    if (item.content.title === name) {
-      moveNavBodyItemUl.value = item.footer;
-    }
-  });
+// let moveNavBodyItemUl = ref(null);
+// function changeMoveNavBodyItemUl(name) {
+//   allContent.value.forEach((item) => {
+//     if (item.content.title === name) {
+//       moveNavBodyItemUl.value = item.footer;
+//     }
+//   });
+// }
+
+let moveShowUl = ref([]);
+function changeMoveShowUl(index) {
+  moveShowUl.value[index] = !moveShowUl.value[index];
 }
 
 const props = defineProps({
@@ -546,27 +551,27 @@ onMounted(() => {
       <div class="moveNav-box-bg"></div>
       <div class="moveNav">
         <div class="moveNav-header">
-          <div class="moveNav-header-back-btn">
+          <div class="moveNav-header-back-btn" @click="moveFlag = false">
             <i class="iconfont icon-xiangzuo"></i>
             返回
           </div>
         </div>
         <ul class="moveNav-body">
-          <li>
+          <li class="moveNav-body-item">
             <router-link active-class="active-border" to="/homePage-2">首页</router-link>
           </li>
-          <li v-for="item1 in header" :key="item1.name">
-            <div class="moveNav-boty-item-ul-top">
-              <router-link active-class="active-border" :to="item1.path">{{
-                item1.name
-              }}</router-link>
-              <i class="iconfont icon-lineleft" @click="changeMoveNavBodyItemUl(item1.name)"></i>
+          <li class="moveNav-body-item" v-for="(item1, index) in header" :key="item1.name">
+            <div class="moveNav-body-item-ul-top">
+              <router-link :to="item1.path">{{ item1.name }}</router-link>
+              <i
+                class="iconfont icon-lineleft moveNav-body-item-ul-icon"
+                @click="changeMoveShowUl(index)"
+                :class="{ 'icon-rotate': moveShowUl[index] }"
+              ></i>
             </div>
-            <ul class="moveNav-body-item-ul">
-              <li v-for="item2 in moveNavBodyItemUl" :key="item2.path">
-                <router-link active-class="active-border" :to="item2.path">{{
-                  item2.name
-                }}</router-link>
+            <ul class="moveNav-body-item-ul" v-show="moveShowUl[index]">
+              <li v-for="item2 in allContent[index].footer" :key="item2.path">
+                <router-link :to="item2.path">{{ item2.name }}</router-link>
               </li>
             </ul>
           </li>
@@ -1138,6 +1143,99 @@ onMounted(() => {
   .moveNav-box-bg {
     position: absolute;
     background-color: rgba(0, 0, 0, 0.5);
+  }
+
+  .moveNav-box {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 999999999;
+    color: #fff;
+  }
+
+  .moveNav-box-bg {
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5);
+  }
+
+  .moveNav {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 30vw;
+    height: 100vh;
+    background-color: rgb(51, 51, 51);
+    padding: 0 1.5%;
+    overflow: auto;
+  }
+
+  .moveNav::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+  }
+
+  .moveNav-header {
+    display: flex;
+    padding: 6% 0;
+    border-bottom: 0.05rem solid #727171;
+  }
+
+  .moveNav-header-back-btn {
+    display: flex;
+    align-items: center;
+    flex: 0 0 auto;
+    color: #727171;
+    font-size: 1.3rem;
+    font-family: "AalibabaPuHuiTi_2_55_Regular";
+    border: 0.05rem solid #727171;
+    border-radius: 2rem;
+    padding: 0.2rem 0.5rem;
+    cursor: pointer;
+  }
+
+  .moveNav-header-back-btn i {
+    font-size: 1.3rem;
+  }
+
+  .moveNav-body-item {
+    padding: 4% 0;
+    border-bottom: 0.05rem solid #727171;
+    font-size: 1.3rem;
+    position: relative;
+  }
+
+  .moveNav-body-item a {
+    color: #fff;
+  }
+
+  .moveNav-body-item i {
+    font-size: 1.3rem;
+    display: inline-block;
+    transform: rotate(90deg);
+    transform-origin: center;
+    position: absolute;
+    right: 5%;
+    transition: all 0.3s ease;
+  }
+
+  .moveNav-body-item-ul a {
+    font-size: 1.2rem;
+    color: #9fa0a0;
+  }
+
+  .moveNav-body-item-ul li {
+    padding-left: 2%;
+  }
+
+  .moveNav-body-item-ul-icon {
+    cursor: pointer;
+  }
+
+  .moveNav-body-item-ul-top .icon-rotate {
+    transform: rotate(270deg);
   }
 }
 </style>

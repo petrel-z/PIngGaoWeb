@@ -1,18 +1,18 @@
 <script setup>
-import { ref } from 'vue';
+import { ref } from "vue";
 let hover = ref(false);
 const props = defineProps({
   month: {
     type: String,
-    default: '01.14',
+    default: "01.14",
   },
   year: {
     type: String,
-    default: '2025',
+    default: "2025",
   },
   title: {
     type: String,
-    default: '中国电气装备召开一届二次职工代表大会暨2025年工作会议',
+    default: "中国电气装备召开一届二次职工代表大会暨2025年工作会议",
   },
   text: {
     type: String,
@@ -21,59 +21,65 @@ const props = defineProps({
   },
   hoverColor: {
     type: String,
-    default: '#003792',
+    default: "#003792",
   },
   // css
   titleFont: {
     type: String,
-    default: 'AlibabaPuHuiTi_2_65_Medium',
+    default: "AlibabaPuHuiTi_2_65_Medium",
   },
   textFont: {
     type: String,
-    default: 'AlibabaPuHuiTi_2_45_Light'
+    default: "AlibabaPuHuiTi_2_45_Light",
   },
   titleFontColor: {
     type: String,
-    default: '#231815'
+    default: "#231815",
   },
   textFontColor: {
     type: String,
-    default: '#595757'
+    default: "#595757",
   },
   bgColor1: {
     type: String,
-    default: '#def1fb',// 默认背景为淡蓝色
+    default: "#def1fb", // 默认背景为淡蓝色
   },
   bgColor2: {
     type: String,
-    default: '#003792', // 默认悬停背景为蓝色
+    default: "#003792", // 默认悬停背景为蓝色
   },
   leftFontColor: {
     type: String,
-    default: '#003792', // 默认 左侧字体为蓝色
+    default: "#003792", // 默认 左侧字体为蓝色
   },
   leftFontColorHover: {
     type: String,
-    default: '#fff',  // 默认 左侧字体悬停颜色为白色
+    default: "#fff", // 默认 左侧字体悬停颜色为白色
   },
   rightFontColor: {
     type: String,
-    default: '#fff', 
+    default: "#fff",
   },
   rightFontColorHover: {
     type: String,
-    default: '#fff',   // 默认 右侧字体悬停颜色为白色
+    default: "#fff", // 默认 右侧字体悬停颜色为白色
   },
 });
 </script>
 
 <template>
-  <div class="item"
-  :style="{'--bgColor1': props.bgColor1,'--bgColor2': props.bgColor2,
-   '--leftFontColor': props.leftFontColor, '--leftFontColorHover': props.leftFontColorHover,
-    '--rightFontColorHover': props.rightFontColorHover,
-    '--titleFont': props.titleFont, '--textFont': props.textFont,
-    '--titleFontColor': props.titleFontColor, '--textFontColor': props.textFontColor
+  <div
+    class="item"
+    :style="{
+      '--bgColor1': props.bgColor1,
+      '--bgColor2': props.bgColor2,
+      '--leftFontColor': props.leftFontColor,
+      '--leftFontColorHover': props.leftFontColorHover,
+      '--rightFontColorHover': props.rightFontColorHover,
+      '--titleFont': props.titleFont,
+      '--textFont': props.textFont,
+      '--titleFontColor': props.titleFontColor,
+      '--textFontColor': props.textFontColor,
     }"
   >
     <div
@@ -112,7 +118,7 @@ const props = defineProps({
 }
 
 .item:hover .month,
-.item:hover .year{
+.item:hover .year {
   color: var(--leftFontColorHover);
 }
 .item:hover .month,
@@ -131,7 +137,7 @@ const props = defineProps({
 }
 .month {
   font-size: 49.313px;
-  font-family: 'Avenir Black';
+  font-family: "Avenir Black";
   color: var(--leftFontColor);
   line-height: 1.85;
   text-align: right;
@@ -141,7 +147,7 @@ const props = defineProps({
 
 .year {
   font-size: 25.426px;
-  font-family: 'Avenir Black';
+  font-family: "Avenir Black";
   color: var(--leftFontColor);
   line-height: 1.85;
   text-align: right;
@@ -169,7 +175,7 @@ const props = defineProps({
   font-family: var(--titleFont);
   color: var(--titleFontColor);
   line-height: 1.75;
-  text-align: justifyLeft;
+  text-align: left;
 }
 
 .text {
@@ -177,10 +183,8 @@ const props = defineProps({
   font-family: var(--textFont);
   color: var(--textFontColor);
   line-height: 1.498;
-  text-align: justifyLeft;
+  text-align: left;
   width: 1075px;
   height: 50px;
 }
-
-
 </style>

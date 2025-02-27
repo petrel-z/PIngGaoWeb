@@ -113,7 +113,7 @@ const props = defineProps({
   font-family: "AlibabaPuHuiTi_2_65_Medium";
   color: rgb(255, 255, 255);
   line-height: 1.4;
-  text-align: justifyLeft;
+  text-align: left;
   position: relative;
   z-index: 135;
 }
@@ -127,7 +127,7 @@ const props = defineProps({
   font-family: "AlibabaPuHuiTi_2_45_Light";
   color: rgb(255, 255, 255);
   line-height: 1.85;
-  text-align: justifyLeft;
+  text-align: left;
   position: relative;
   width: 100%;
   height: 40%;

@@ -107,7 +107,7 @@ function sortOrderList(orderList) {
   font-size: 1.125rem;
   font-family: "AlibabaPuHuiTi_2_65_Medium";
   color: rgb(255, 255, 255);
-  text-align: justifyLeft;
+  text-align: left;
   position: relative;
   z-index: 238;
   width: 29%;

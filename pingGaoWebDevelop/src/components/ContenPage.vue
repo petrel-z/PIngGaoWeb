@@ -51,32 +51,44 @@ const props = defineProps({
   toState: {
     type: Boolean,
     default: true,
-  }
+  },
 });
 const imgPath = ref(props.img);
 </script>
 
 <template>
-  <div class="content" :style="{ '--bgColor': props.bgColor, '--btnColor': props.btnColor, '--lineColor': props.lineColor,
-    '--titleFont': props.titleFont, '--textFont': props.textFont, '--fontColor': props.fontColor
-   }">
+  <div
+    class="content"
+    :style="{
+      '--bgColor': props.bgColor,
+      '--btnColor': props.btnColor,
+      '--lineColor': props.lineColor,
+      '--titleFont': props.titleFont,
+      '--textFont': props.textFont,
+      '--fontColor': props.fontColor,
+    }"
+  >
     <div class="content-left">
-      <div class="title" >
+      <div class="title">
         {{ props.title1 }}
         <br />
         {{ props.title2 }}
       </div>
       <div class="hr">
-        <div class="hr-shortline" ></div>
-        <div class="hr-longline" ></div>
+        <div class="hr-shortline"></div>
+        <div class="hr-longline"></div>
       </div>
-      <div class="content-text" >
+      <div class="content-text">
         {{ props.text }}
       </div>
       <!-- 查看详情按钮 -->
-      <div class="content-btn" >
-        <router-link v-if="props.toState" to="/partyBuilding/partyspiritDetail" ><span class="btn-text">{{ props.btnText }}</span></router-link>
-        <router-link v-else  to="/partyBuilding/pinggaoPartyBuildingDetail"><span class="btn-text">{{ props.btnText }}</span></router-link>
+      <div class="content-btn">
+        <router-link v-if="props.toState" to="/partyBuilding/partyspiritDetail"
+          ><span class="btn-text">{{ props.btnText }}</span></router-link
+        >
+        <router-link v-else to="/partyBuilding/pinggaoPartyBuildingDetail"
+          ><span class="btn-text">{{ props.btnText }}</span></router-link
+        >
         <!-- ********8 -->
         <span class="icon iconfont lookdetail-icon">&#xe504;</span>
       </div>
@@ -126,7 +138,7 @@ const imgPath = ref(props.img);
   font-family: var(--titleFont);
   color: var(--fontColor);
   line-height: 1.4;
-  text-align: justifyLeft;
+  text-align: left;
   position: relative;
   z-index: 135;
   margin-top: 10%;
@@ -186,19 +198,17 @@ const imgPath = ref(props.img);
     width: 100%;
     height: 100%;
     color: #fff;
-    text-align: left; 
+    text-align: left;
   }
 
   .btn-text {
     margin-left: 13%;
   }
 
-
   .lookdetail-icon {
     margin-right: 1.5rem;
     font-size: 30px;
   }
-
 }
 
 .content-btn:hover {
@@ -211,9 +221,9 @@ const imgPath = ref(props.img);
 @media (max-width: 1200px) {
   .content-btn {
     .lookdetail-icon {
-    margin-right: 1.5rem;
-    font-size: 2.4rem;
-  }
+      margin-right: 1.5rem;
+      font-size: 2.4rem;
+    }
   }
 }
 /* 大型设备（桌面，大于 900px） */
@@ -262,18 +272,21 @@ const imgPath = ref(props.img);
     .btn-text {
       margin-left: 20%;
     }
-
   }
 }
 
-@media (max-width: 800px) {}
+@media (max-width: 800px) {
+}
 
 /* 中型设备（平板，600px 到 900px） */
-@media (max-width: 700px) {}
+@media (max-width: 700px) {
+}
 
 /* 小型设备（手机，小于 600px） */
 
-@media (max-width: 600px) {}
+@media (max-width: 600px) {
+}
 
-@media (max-width: 500px) {}
+@media (max-width: 500px) {
+}
 </style>

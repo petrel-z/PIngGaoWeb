@@ -4,7 +4,6 @@ import MyTitle from "@/components/MyTitle.vue";
 
 <template>
   <div class="businessConsulting-content">
-
     <div class="content-top">
       <div class="top-title">
         <MyTitle :title="'在线咨询'" :English="'Online consultation'"></MyTitle>
@@ -19,11 +18,13 @@ import MyTitle from "@/components/MyTitle.vue";
           <div class="sent">发送</div>
         </div>
       </div>
-
     </div>
     <div class="content-bgimg">
-      <img :style="{ width: '100%', height: 'auto' }" src="../../../assets/imgs/_9_contactUsImgs/t9_p1_contentBg.png"
-        alt="" />
+      <img
+        :style="{ width: '100%', height: 'auto' }"
+        src="../../../assets/imgs/_9_contactUsImgs/t9_p1_contentBg.png"
+        alt=""
+      />
     </div>
   </div>
 </template>
@@ -108,7 +109,7 @@ import MyTitle from "@/components/MyTitle.vue";
             font-size: 2rem;
             font-family: "AlibabaPuHuiTi_2_45_Light";
             color: rgb(89, 87, 87);
-            text-align: justifyLeft;
+            text-align: left;
           }
         }
 
@@ -146,7 +147,6 @@ import MyTitle from "@/components/MyTitle.vue";
 /* 大型设备（桌面，大于 900px） */
 @media (max-width: 900px) {
   .businessConsulting-content {
-
     .content-top {
       margin: 0 5%;
 
@@ -179,10 +179,12 @@ import MyTitle from "@/components/MyTitle.vue";
   }
 }
 
-@media (max-width: 800px) {}
+@media (max-width: 800px) {
+}
 
 /* 中型设备（平板，600px 到 900px） */
-@media (max-width: 700px) {}
+@media (max-width: 700px) {
+}
 
 /* 小型设备（手机，小于 600px） */
 
@@ -200,5 +202,6 @@ import MyTitle from "@/components/MyTitle.vue";
   }
 }
 
-@media (max-width: 500px) {}
+@media (max-width: 500px) {
+}
 </style>

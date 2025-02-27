@@ -5,31 +5,31 @@ import { ref } from "vue";
 const options = ref(null);
 function toggleOptions(num) {
   const options = document.querySelector(`.options${num}`);
-  options.style.display = options.style.display === 'block' ? 'none' : 'block';
+  options.style.display = options.style.display === "block" ? "none" : "block";
 }
 
 function selectOption(event, num) {
   const selectedText = event.target.textContent;
   const selectOption = document.querySelector(`.selected-option${num}`);
   if (selectedText === "请输入") {
-    selectOption.style.color = '#999';
+    selectOption.style.color = "#999";
   } else {
-    selectOption.style.color = '#231815';
+    selectOption.style.color = "#231815";
   }
   selectOption.textContent = selectedText;
   toggleOptions(num);
 }
 const partnerType = ref(null);
-const companyName = ref('');
-const contactName = ref('');
+const companyName = ref("");
+const contactName = ref("");
 const country = ref(null);
 const city = ref(null);
 
-const intention = ref('');
+const intention = ref("");
 const joinDealer = ref(null);
-const contactPhone = ref('');
+const contactPhone = ref("");
 const province = ref(null);
-const verifyCode = ref('');
+const verifyCode = ref("");
 
 const partnerTypeMust = ref(null);
 const companyNameMust = ref(null);
@@ -43,81 +43,85 @@ const contactPhoneMust = ref(null);
 const provinceMust = ref(null);
 const verifyCodeMust = ref(null);
 
-
 function submit() {
-  if (partnerType.value.textContent === "请选择" || companyName.value === "" ||
-    contactName.value === "" || city.value.textContent === "请选择" ||
-    intention.value === "" || joinDealer.value.textContent === "请选择" ||
-    contactPhone.value === "" || province.value.textContent === "请选择" ||
-    verifyCode.value === "") {
+  if (
+    partnerType.value.textContent === "请选择" ||
+    companyName.value === "" ||
+    contactName.value === "" ||
+    city.value.textContent === "请选择" ||
+    intention.value === "" ||
+    joinDealer.value.textContent === "请选择" ||
+    contactPhone.value === "" ||
+    province.value.textContent === "请选择" ||
+    verifyCode.value === ""
+  ) {
     if (partnerType.value.textContent === "请选择") {
-      partnerTypeMust.value.style.display = 'block';
+      partnerTypeMust.value.style.display = "block";
     } else {
-      partnerTypeMust.value.style.display = 'none';
+      partnerTypeMust.value.style.display = "none";
     }
     if (companyName.value === "") {
-      companyNameMust.value.style.display = 'block';
+      companyNameMust.value.style.display = "block";
     } else {
-      companyNameMust.value.style.display = 'none';
+      companyNameMust.value.style.display = "none";
     }
 
     if (contactName.value === "") {
-      contactNameMust.value.style.display = 'block';
+      contactNameMust.value.style.display = "block";
     } else {
-      contactNameMust.value.style.display = 'none';
+      contactNameMust.value.style.display = "none";
     }
 
     if (city.value.textContent === "请选择") {
-      cityMust.value.style.display = 'block';
+      cityMust.value.style.display = "block";
     } else {
-      cityMust.value.style.display = 'none';
+      cityMust.value.style.display = "none";
     }
     if (intention.value === "") {
-      intentionMust.value.style.display = 'block';
+      intentionMust.value.style.display = "block";
     } else {
-      intentionMust.value.style.display = 'none';
+      intentionMust.value.style.display = "none";
     }
     if (joinDealer.value.textContent === "请选择") {
-      joinDealerMust.value.style.display = 'block';
+      joinDealerMust.value.style.display = "block";
     } else {
-      joinDealerMust.value.style.display = 'none';
+      joinDealerMust.value.style.display = "none";
     }
     if (contactPhone.value === "") {
-      contactPhoneMust.value.style.display = 'block';
+      contactPhoneMust.value.style.display = "block";
     } else {
-      contactPhoneMust.value.style.display = 'none';
+      contactPhoneMust.value.style.display = "none";
     }
     if (province.value.textContent === "请选择") {
-      provinceMust.value.style.display = 'block';
+      provinceMust.value.style.display = "block";
     } else {
-      provinceMust.value.style.display = 'none';
+      provinceMust.value.style.display = "none";
     }
     if (verifyCode.value === "") {
-      verifyCodeMust.value.style.display = 'block';
+      verifyCodeMust.value.style.display = "block";
     } else {
-      verifyCodeMust.value.style.display = 'none';
+      verifyCodeMust.value.style.display = "none";
     }
     alert("请填写完整信息");
     return;
-
   }
   const information = {
     partnerType: partnerType.value.textContent,
     companyName: companyName.value,
     contactName: contactName.value,
-    country: '中国',
+    country: "中国",
     city: city.value.textContent,
     intention: intention.value,
     joinDealer: joinDealer.value.textContent,
     contactPhone: contactPhone.value,
     province: province.value.textContent,
     verifyCode: verifyCode.value,
-  }
+  };
   reset1();
   alert("提交成功,信息打印在控制台");
   console.log(information);
 }
-function reset1 () {
+function reset1() {
   partnerType.value.textContent = "请选择";
   companyName.value = "";
   contactName.value = "";
@@ -129,16 +133,14 @@ function reset1 () {
   province.value.textContent = "请选择";
   verifyCode.value = "";
 }
-function reset () {
+function reset() {
   reset1();
   alert("重置成功");
-
 }
 </script>
 
 <template>
   <div class="becomePartner-content">
-
     <div class="content-top">
       <div class="top-title">
         <MyTitle :title="'成为伙伴'" :English="'become partner'"></MyTitle>
@@ -153,11 +155,15 @@ function reset () {
               </div>
               <div class="select">
                 <div class="custom-select">
-                  <div ref="partnerType"  class="selected-option selected-option1" @click="toggleOptions(1)">请选择</div>
+                  <div
+                    ref="partnerType"
+                    class="selected-option selected-option1"
+                    @click="toggleOptions(1)"
+                  >
+                    请选择
+                  </div>
                   <ul class="options options1" ref="options">
-                    <li class="first-option" @click="selectOption($event, 1)">
-                      请选择
-                    </li>
+                    <li class="first-option" @click="selectOption($event, 1)">请选择</li>
                     <li @click="selectOption($event, 1)">工商业储能合作伙伴</li>
                     <li @click="selectOption($event, 1)">重卡换电合作伙伴</li>
                     <li @click="selectOption($event, 1)">工业PLC合作伙伴</li>
@@ -179,7 +185,7 @@ function reset () {
                 <span class="star">*</span><span class="text">伙伴公司名称</span>
               </div>
               <div class="select">
-                <input v-model="companyName"  type="text" placeholder="请输入" />
+                <input v-model="companyName" type="text" placeholder="请输入" />
               </div>
               <div ref="companyNameMust" class="mustWrite">该项是必填项</div>
             </div>
@@ -191,7 +197,6 @@ function reset () {
                 <input v-model="contactName" type="text" placeholder="请输入" />
               </div>
               <div ref="contactNameMust" class="mustWrite">该项是必填项</div>
-
             </div>
             <div class="common">
               <div class="common-title">
@@ -201,7 +206,6 @@ function reset () {
                 <input readonly ref="country" type="text" placeholder="中国" />
               </div>
               <div ref="countryMust" class="mustWrite">该项是必填项</div>
-
             </div>
             <div class="common last">
               <div class="common-title">
@@ -209,11 +213,15 @@ function reset () {
               </div>
               <div class="select">
                 <div class="custom-select">
-                  <div ref="city" class="selected-option selected-option2" @click="toggleOptions(2)">请选择</div>
+                  <div
+                    ref="city"
+                    class="selected-option selected-option2"
+                    @click="toggleOptions(2)"
+                  >
+                    请选择
+                  </div>
                   <ul class="options options2" ref="options">
-                    <li @click="selectOption($event, 2)">
-                      请选择
-                    </li>
+                    <li @click="selectOption($event, 2)">请选择</li>
                     <li @click="selectOption($event, 2)">三门峡市</li>
                     <li @click="selectOption($event, 2)">信阳市</li>
                     <li @click="selectOption($event, 2)">南阳市</li>
@@ -232,12 +240,10 @@ function reset () {
                     <li @click="selectOption($event, 2)">郑州市</li>
                     <li @click="selectOption($event, 2)">驻马店市</li>
                     <li @click="selectOption($event, 2)">鹤壁市</li>
-
                   </ul>
                 </div>
               </div>
               <div ref="cityMust" class="mustWrite">该项是必填项</div>
-
             </div>
 
             <div class="submit" @click="submit()">提交资料</div>
@@ -251,7 +257,6 @@ function reset () {
                 <input v-model="intention" type="text" placeholder="请输入" />
               </div>
               <div ref="intentionMust" class="mustWrite">该项是必填项</div>
-
             </div>
             <div class="common">
               <div class="common-title">
@@ -259,18 +264,21 @@ function reset () {
               </div>
               <div class="select">
                 <div class="custom-select">
-                  <div ref="joinDealer" class="selected-option selected-option3" @click="toggleOptions(3)">请选择</div>
+                  <div
+                    ref="joinDealer"
+                    class="selected-option selected-option3"
+                    @click="toggleOptions(3)"
+                  >
+                    请选择
+                  </div>
                   <ul class="options options3" ref="options">
-                    <li @click="selectOption($event, 3)">
-                      请选择
-                    </li>
+                    <li @click="selectOption($event, 3)">请选择</li>
                     <li @click="selectOption($event, 3)">是</li>
                     <li @click="selectOption($event, 3)">否</li>
                   </ul>
                 </div>
               </div>
               <div ref="joinDealerMust" class="mustWrite">该项是必填项</div>
-
             </div>
             <div class="common">
               <div class="common-title">
@@ -279,8 +287,7 @@ function reset () {
               <div class="select">
                 <input v-model="contactPhone" type="text" placeholder="请输入" />
               </div>
-              <div  ref="contactPhoneMust" class="mustWrite">该项是必填项</div>
-
+              <div ref="contactPhoneMust" class="mustWrite">该项是必填项</div>
             </div>
             <div class="common">
               <div class="common-title">
@@ -288,11 +295,15 @@ function reset () {
               </div>
               <div class="select">
                 <div class="custom-select">
-                  <div ref="province" class="selected-option selected-option4" @click="toggleOptions(4)">请选择</div>
+                  <div
+                    ref="province"
+                    class="selected-option selected-option4"
+                    @click="toggleOptions(4)"
+                  >
+                    请选择
+                  </div>
                   <ul class="options options4" ref="options">
-                    <li @click="selectOption($event, 4)">
-                      请选择
-                    </li>
+                    <li @click="selectOption($event, 4)">请选择</li>
                     <li @click="selectOption($event, 4)">台湾省</li>
                     <li @click="selectOption($event, 4)">澳门特别行政区</li>
                     <li @click="selectOption($event, 4)">香港特别行政区</li>
@@ -331,7 +342,6 @@ function reset () {
                 </div>
               </div>
               <div ref="provinceMust" class="mustWrite">该项是必填项</div>
-
             </div>
             <div class="common last verify">
               <div class="common-title">
@@ -348,11 +358,13 @@ function reset () {
           </div>
         </div>
       </div>
-
     </div>
     <div class="content-bgimg">
-      <img :style="{ width: '100%', height: 'auto' }" src="../../../assets/imgs/_9_contactUsImgs/t9_p1_contentBg.png"
-        alt="" />
+      <img
+        :style="{ width: '100%', height: 'auto' }"
+        src="../../../assets/imgs/_9_contactUsImgs/t9_p1_contentBg.png"
+        alt=""
+      />
     </div>
   </div>
 </template>
@@ -491,7 +503,7 @@ function reset () {
             font-size: 1.8rem;
             font-family: "AlibabaPuHuiTi_2_45_Light";
             color: rgb(89, 87, 87);
-            text-align: justifyLeft;
+            text-align: left;
             padding-left: 1.8rem;
             margin-top: 0.4rem;
 
@@ -564,7 +576,7 @@ function reset () {
               font-size: 1.8rem;
               font-family: "AlibabaPuHuiTi_2_45_Light";
               color: rgb(89, 87, 87);
-              text-align: justifyLeft;
+              text-align: left;
             }
           }
         }
@@ -579,7 +591,7 @@ function reset () {
           text-align: center;
           font-size: 2.2rem;
           font-family: "AlibabaPuHuiTi_2_65_Medium";
-          text-align: justifyLeft;
+          text-align: left;
           position: absolute;
           bottom: 0;
           transition: all 0.3s ease;
@@ -619,7 +631,6 @@ function reset () {
     .content-top {
       .top-information {
         .write-info {
-
           .left,
           .right {
             margin: 0 6rem;
@@ -667,7 +678,6 @@ function reset () {
           .right {
             padding-bottom: 13rem;
           }
-
 
           .left {
             .last {
@@ -722,14 +732,18 @@ function reset () {
   }
 }
 
-@media (max-width: 800px) {}
+@media (max-width: 800px) {
+}
 
 /* 中型设备（平板，600px 到 900px） */
-@media (max-width: 700px) {}
+@media (max-width: 700px) {
+}
 
 /* 小型设备（手机，小于 600px） */
 
-@media (max-width: 600px) {}
+@media (max-width: 600px) {
+}
 
-@media (max-width: 500px) {}
+@media (max-width: 500px) {
+}
 </style>
