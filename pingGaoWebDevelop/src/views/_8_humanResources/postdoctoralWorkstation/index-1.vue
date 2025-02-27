@@ -27,7 +27,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <div style="width: 100%; position: relative; min-height: 1605px">
+  <div style="width: 100%; position: relative; min-height: 1605px; overflow: hidden">
     <div class="content-title">
       <MyTitle title="博士后工作站" English="POSTDOCTORAL WORKSTATION" />
     </div>

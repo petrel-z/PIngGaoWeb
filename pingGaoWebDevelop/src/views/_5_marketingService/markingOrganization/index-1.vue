@@ -134,6 +134,7 @@ onMounted(() => {
   padding-top: 4.0625rem;
   padding-bottom: 56vh;
   height: auto;
+  overflow: hidden;
 }
 
 .my-content-bottom {

@@ -94,6 +94,7 @@ onMounted(() => {
 .body {
   padding: 0 11%;
   height: auto;
+  overflow: hidden;
 }
 
 .bodyBg {

@@ -75,6 +75,7 @@ onMounted(() => {
 }
 .body {
   margin: 0 11%;
+  overflow: hidden;
 }
 
 .bodyBg1 {
