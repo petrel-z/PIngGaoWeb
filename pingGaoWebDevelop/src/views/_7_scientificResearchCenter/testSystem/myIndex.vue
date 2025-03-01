@@ -38,7 +38,7 @@ onMounted(initializeObservers); // 在组件挂载时调用
 </script>
 <template>
   <div class="testSystem">
-    <MyTitle title="试验体系" English="TEST SYSTEM"></MyTitle>
+    <MyTitle title="试验体系" english="TEST SYSTEM"></MyTitle>
     <div class="content">
       <MyContent class="my_content" title="三院两所两中心一基地">
         <div class="content1" ref="wordRightRef1" :class="{ 'move-right': isVisibleWordRight1 }">

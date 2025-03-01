@@ -26,6 +26,10 @@ const props = defineProps({
     type: String,
     default: "AlibabaPuHuiTi_2_55_Regular",
   },
+  hoverBgColor: {
+    type: String,
+    default: "#003792",
+  }
 });
 
 const items = ref(null);
@@ -60,6 +64,7 @@ onMounted(() => {
       '--timeColor': props.timeColor,
       '--textColor': props.textColor,
       '--textFontFamily': props.textFontFamily,
+      '--hoverBgColor': props.hoverBgColor,
     }"
   >
     <div
@@ -132,7 +137,7 @@ onMounted(() => {
 
 .item:hover .left,
 .item:hover .right {
-  background-color: #003792;
+  background-color: var(--hoverBgColor);
 }
 
 .item:hover .time,

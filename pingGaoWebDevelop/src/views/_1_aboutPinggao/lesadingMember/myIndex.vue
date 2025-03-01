@@ -34,7 +34,7 @@ onMounted(initializeObservers); // 在组件挂载时调用
 </script>
 <template>
   <div class="lesadingMember">
-    <MyTitle title="领导成员" English="LENDING MEMBERS"></MyTitle>
+    <MyTitle title="领导成员" english="LENDING MEMBERS"></MyTitle>
     <div class="content1">
       <div class="info" ref="imgRef" :class="{ 'scale-up': isVisible }">
         <img src="@/assets/imgs/_1_aboutPinggaoImgs/peoplebg.png" alt="" />

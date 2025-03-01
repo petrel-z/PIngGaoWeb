@@ -1,7 +1,7 @@
 <script setup>
 import MyTitle from "@/components/MyTitle.vue";
 import ContenPage from "@/components/ContenPage.vue";
-import Item1 from "@/components/item-1.vue";
+import Item1 from "@/components/Item-1.vue";
 import MyButton from "@/components/MyButton.vue";
 import img1 from "@/assets/imgs/_3_partyBuildingImgs/t3_p2_person.png";
 
@@ -10,7 +10,7 @@ const props = defineProps({
     type: Object,
     default: () => ({
       h: "党的精神",
-      English: "The spirit of the Party",
+      english: "The spirit of the Party",
       titleColor: "#a51617",
       lineColor: "#a51517",
       engColor: "#a51517",
@@ -86,9 +86,13 @@ const props = defineProps({
   <!-- 党的精神 -->
   <div class="partyContentDetail">
     <div class="spirit-top">
-      <MyTitle :title="props.contentTop.h" :English="props.contentTop.English"
-        :title-color="props.contentTop.titleColor" :line-color="props.contentTop.lineColor"
-        :eng-color="props.contentTop.engColor"></MyTitle>
+      <MyTitle
+        :title="props.contentTop.h"
+        :english="props.contentTop.english"
+        :title-color="props.contentTop.titleColor"
+        :line-color="props.contentTop.lineColor"
+        :eng-color="props.contentTop.engColor"
+      ></MyTitle>
     </div>
     <div class="spirit-span">
       <ContenPage :title1="props.contentPage.title1" :title2="props.contentPage.title2" :text="props.contentPage.text"

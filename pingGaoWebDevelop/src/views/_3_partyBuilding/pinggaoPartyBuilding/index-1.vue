@@ -13,7 +13,7 @@ const contentBar = {
 };
 const contentTop = {
   h: "平高建党",
-  English: "Pg Party Building",
+  english: "Pg Party Building",
   titleColor: "#a51517",
   lineColor: "#a51517",
   engColor: "#a51517",

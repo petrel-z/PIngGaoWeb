@@ -51,7 +51,7 @@ onMounted(initializeObservers); // 在组件挂载时调用
 <template>
   <!-- 组织结构 -->
   <div class="organizationalStructure">
-    <MyTitle class="mytitle" title="组织机构" English="organization structure"></MyTitle>
+    <MyTitle class="mytitle" title="组织机构" english="organization structure"></MyTitle>
     <div class="organization">
       <div class="organization_title">平高集团有限公司</div>
       <div class="detail">

@@ -26,7 +26,7 @@ onMounted(() => {
   <div class="manufacture-content" style="overflow: auto;">
     <div class="content-top">
       <div ref="topTitle" class="top-title">
-        <MyTitle :title="'生产制造'" :English="'manufacture'"></MyTitle>
+        <MyTitle :title="'生产制造'" :english="'manufacture'"></MyTitle>
       </div>
 
       <div ref="topDetailList" class="top-detailList">

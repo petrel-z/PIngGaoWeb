@@ -29,10 +29,10 @@ const rightList = [
 
 <template>
   <div class="spirit-more">
-    <div class="title">
+    <div class="mytitle">
       <myTitle
         :title="'党的精神'"
-        :English="'The spirit of the Party'"
+        :english="'The spirit of the Party'"
         :titleColor="'#fce3cd'"
         :lineColor="'#fce3cd'"
         :engColor="'#fce3cd'"
@@ -48,6 +48,7 @@ const rightList = [
             :timeColor="'#a51617'"
             :textColor="'#7b6a5d'"
             :text-font-family="'SourceHanSerifCN_Bold'"
+            :hover-bg-color="'#e06e5f'"
           >
           </Item2>
         </div>
@@ -73,20 +74,19 @@ const rightList = [
 <style lang="less" scoped>
 
 .spirit-more {
-  // padding: 0 11%;
   position: relative;
   display: flex;
   flex-direction: column;
   justify-content: start;
-  // align-items: center;
   width: 100%;
   background-image: url("../../../assets/imgs/_3_partyBuildingImgs/t3_p1_moreBg.png");
   background-size: cover;
   height: auto;
-  .title {
+  .mytitle {
+    width: 100%;
     margin-top: 22px;
     margin-bottom: 22px;
-    margin-left: 11%;
+    padding-left: 11%;
   }
 
   .list {
@@ -130,6 +130,7 @@ const rightList = [
     height: auto;
     display: flex;
     justify-content: center;
+    padding: 3em 0;
   }
 }
 </style>

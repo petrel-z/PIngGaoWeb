@@ -29,7 +29,7 @@ onMounted(() => {
 <template>
   <div style="width: 100%; position: relative; min-height: 1605px; overflow: hidden">
     <div class="content-title">
-      <MyTitle title="博士后工作站" English="POSTDOCTORAL WORKSTATION" />
+      <MyTitle title="博士后工作站" english="POSTDOCTORAL WORKSTATION" />
     </div>
     <div class="center">
       <div

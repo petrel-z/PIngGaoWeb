@@ -56,7 +56,7 @@ onMounted(initializeObservers); // 在组件挂载时调用
 <template>
   <!-- 集团简介 -->
   <div class="groupProfile">
-    <MyTitle title="平高集团" English="PINGGAO GROUP"></MyTitle>
+    <MyTitle title="平高集团" english="PINGGAO GROUP"></MyTitle>
     <div class="introduce">
       <div class="introduce_content introduce_content_first">
         <div class="introduce_text">

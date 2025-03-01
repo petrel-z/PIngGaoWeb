@@ -37,7 +37,7 @@ onMounted(initializeObservers); // 在组件挂载时调用
 
 <template>
   <div class="approachPinggao">
-    <MyTitle title="走进平高" English="ENTERING PINGGAO"></MyTitle>
+    <MyTitle title="走进平高" english="ENTERING PINGGAO"></MyTitle>
     <div class="pics">
       <img src="@/assets/imgs/_1_aboutPinggaoImgs/pic1.png" alt="Image 1" class="grid-item1 grid_item "  ref="imgRef"
       :class="{ 'scale-up': isVisible}" />

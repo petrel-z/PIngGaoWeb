@@ -128,6 +128,15 @@ function reset1 () {
   contactPhone.value = "";
   province.value.textContent = "请选择";
   verifyCode.value = "";
+  partnerTypeMust.value.style.display = 'none';
+  companyNameMust.value.style.display = 'none';
+  contactNameMust.value.style.display = 'none';
+  cityMust.value.style.display = 'none';
+  intentionMust.value.style.display = 'none';
+  joinDealerMust.value.style.display = 'none';
+  contactPhoneMust.value.style.display = 'none';
+  provinceMust.value.style.display = 'none';
+  verifyCodeMust.value.style.display = 'none';
 }
 function reset () {
   reset1();
@@ -141,7 +150,7 @@ function reset () {
 
     <div class="content-top">
       <div class="top-title">
-        <MyTitle :title="'成为伙伴'" :English="'become partner'"></MyTitle>
+        <MyTitle :title="'成为伙伴'" english="become partner"></MyTitle>
       </div>
       <div class="top-information">
         <h1>填写资料</h1>
@@ -429,7 +438,7 @@ function reset () {
 
         .left,
         .right {
-          width: 42%;
+          width: calc(42% - 13rem);
           height: 100%;
           position: relative;
           margin: 0 10rem;
@@ -491,7 +500,7 @@ function reset () {
             font-size: 1.8rem;
             font-family: "AlibabaPuHuiTi_2_45_Light";
             color: rgb(89, 87, 87);
-            text-align: justifyLeft;
+            text-align: justify;
             padding-left: 1.8rem;
             margin-top: 0.4rem;
 
@@ -540,31 +549,11 @@ function reset () {
               }
             }
 
-            select {
-              border: 1px solid #ccc;
-              padding: 5px;
-              width: 100%;
-              /* 去除默认的边框 */
-              border: none;
-              /* 去除默认的轮廓线 */
-              outline: none;
-              /* 去除默认的下拉箭头（不同浏览器实现方式不同） */
-              -webkit-appearance: none;
-              -moz-appearance: none;
-              appearance: none;
-              /* 自定义背景颜色 */
-              background-color: #fff;
-              /* 自定义内边距 */
-              padding: 8px 0;
-              /* 自定义字体样式 */
-              font-size: 1.8rem;
-            }
-
             input {
               font-size: 1.8rem;
               font-family: "AlibabaPuHuiTi_2_45_Light";
               color: rgb(89, 87, 87);
-              text-align: justifyLeft;
+              text-align: justify;
             }
           }
         }
@@ -579,7 +568,6 @@ function reset () {
           text-align: center;
           font-size: 2.2rem;
           font-family: "AlibabaPuHuiTi_2_65_Medium";
-          text-align: justifyLeft;
           position: absolute;
           bottom: 0;
           transition: all 0.3s ease;
@@ -611,22 +599,6 @@ function reset () {
     z-index: 1;
     width: 100%;
     height: 100%;
-  }
-}
-
-@media (max-width: 1700px) {
-  .becomePartner-content {
-    .content-top {
-      .top-information {
-        .write-info {
-
-          .left,
-          .right {
-            margin: 0 6rem;
-          }
-        }
-      }
-    }
   }
 }
 

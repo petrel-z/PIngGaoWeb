@@ -1,6 +1,4 @@
 <script setup>
-import { ref, onMounted } from "vue";
-
 defineOptions({
   name: "NewsCenterIndex3-1",
 });
@@ -91,7 +89,7 @@ function handleClick(e) {
     <div class="body">
       <div>
         <div style="padding-top: 64px">
-          <my-title title="媒体聚焦" English="MEDIA FOCUS" />
+          <my-title title="媒体聚焦" english="MEDIA FOCUS" />
         </div>
         <div class="item-container">
           <router-link to="/informationCenter/mediaFocus-3">
