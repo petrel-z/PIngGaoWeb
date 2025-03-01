@@ -60,7 +60,7 @@ onMounted(() => {
       <div class="body">
         <div>
           <div style="padding-top: 4rem">
-            <my-title title="热点视频" English="HOT VIDEOS" />
+            <my-title title="热点视频" english="HOT VIDEOS" />
           </div>
         </div>
 

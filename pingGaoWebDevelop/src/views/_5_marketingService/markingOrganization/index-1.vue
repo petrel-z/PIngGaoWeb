@@ -44,7 +44,7 @@ onMounted(() => {
       <div class="body-content">
         <div class="bodyBg"></div>
         <div>
-          <MyTitle title="营销组织" English="MARKETING ORGANIZATION" />
+          <MyTitle title="营销组织" english="MARKETING ORGANIZATION" />
         </div>
         <div ref="contentBox">
           <div

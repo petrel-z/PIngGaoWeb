@@ -20,7 +20,7 @@ onMounted(() => {
   <div class="productTesting-content" style="overflow: auto;">
     <div class="content-top">
       <div ref="topTitle" class="top-title">
-        <MyTitle :title="'产品检测'" :English="'productTesting'"></MyTitle>
+        <MyTitle :title="'产品检测'" :english="'productTesting'"></MyTitle>
       </div>
 
       <div ref="topDetailList" class="top-detailList">
@@ -83,7 +83,7 @@ onMounted(() => {
         color: #595757;
         line-height: 1.85;
         text-align: justify;
-        
+
         // white-space: nowrap;
         p {
           width: 100%;

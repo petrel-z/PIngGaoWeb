@@ -6,7 +6,7 @@ import MyTitle from "@/components/MyTitle.vue";
   <div class="businessConsulting-content">
     <div class="content-top">
       <div class="top-title">
-        <MyTitle :title="'在线咨询'" :English="'Online consultation'"></MyTitle>
+        <MyTitle :title="'在线咨询'" :english="'Online consultation'"></MyTitle>
       </div>
       <div class="online-consultation">
         <h1>平高集团在线客服</h1>
@@ -109,7 +109,7 @@ import MyTitle from "@/components/MyTitle.vue";
             font-size: 2rem;
             font-family: "AlibabaPuHuiTi_2_45_Light";
             color: rgb(89, 87, 87);
-            text-align: left;
+            text-align: justify;
           }
         }
 

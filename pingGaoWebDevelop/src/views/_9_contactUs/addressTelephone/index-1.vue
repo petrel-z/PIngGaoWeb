@@ -8,7 +8,7 @@ import MyTitle from "@/components/MyTitle.vue";
 
     <div class="content-top">
       <div class="top-title">
-        <MyTitle :title="'地址电话 '" :English="'Address and Phone Number'"></MyTitle>
+        <MyTitle :title="'地址电话 '" :english="'Address and Phone Number'"></MyTitle>
       </div>
     </div>
 

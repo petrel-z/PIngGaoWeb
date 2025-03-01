@@ -42,7 +42,7 @@ onMounted(() => {
     </div>
     <div class="body-content">
       <div ref="titleBox">
-        <MyTitle class="my-title" title="人才招聘" English="TALENT RECRUITMENT"></MyTitle>
+        <MyTitle class="my-title" title="人才招聘" english="TALENT RECRUITMENT"></MyTitle>
       </div>
       <div ref="itemBox" style="display: flex; margin-top: 3rem">
         <div class="left">高校毕业生招聘</div>

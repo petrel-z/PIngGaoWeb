@@ -92,7 +92,7 @@ onMounted(() => {
     </div>
     <div class="body-content">
       <div>
-        <MyTitle title="人才队伍" English="TALENT TEAM"></MyTitle>
+        <MyTitle title="人才队伍" english="TALENT TEAM"></MyTitle>
       </div>
       <div ref="contentBox" style="margin-top: 3.4375rem">
         <MyContent

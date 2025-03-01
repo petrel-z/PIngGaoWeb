@@ -35,7 +35,7 @@ onMounted(initializeObservers); // 在组件挂载时调用
 </script>
 <template>
   <div class="seniorHonor">
-    <myTitle title="资质荣誉" English="QUALIFICATION AND HONOR"></myTitle>
+    <myTitle title="资质荣誉" english="QUALIFICATION AND HONOR"></myTitle>
     <div class="content">
       <div class="info">
         <div class="img">

@@ -2,7 +2,7 @@
 defineOptions({
   name: "NewsCenterIndex1-3",
 });
-import TextTitle from "@/components/TextTitle.vue";
+import NewsBar from "@/components/newsBar.vue";
 import ComDoubleDiv from "@/components/ComDoubleDiv.vue";
 import imgPath from "@/assets/imgs/_2_informationCenterImgs/LehYXF.png";
 </script>
@@ -12,9 +12,8 @@ import imgPath from "@/assets/imgs/_2_informationCenterImgs/LehYXF.png";
     <div class="body">
       <div class="title-box">
         <div class="title">中国电气装备召开一届二次职工代表大会暨2025年工作会议</div>
-        <TextTitle :color="'#1c4e9f'" :time="'2025-01-14'" :browse="488" />
+        <NewsBar :color="'#1c4e9f'" :time="'2025-01-14'" :browse="488"></NewsBar>
       </div>
-
       <div class="content">
         <p>
           1月13日至14日，中国电气装备集团有限公司第一届职工代表大会第二次会议暨2025年工作会议在沪召开。会议以习近平新时代中国特色社会主义思

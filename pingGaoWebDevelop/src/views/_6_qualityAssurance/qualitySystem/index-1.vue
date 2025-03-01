@@ -22,7 +22,7 @@ onMounted(() => {
   <div class="quality-content" style="overflow: hidden;">
     <div class="content-top">
       <div ref="topTitle" class="top-title">
-        <MyTitle :title="'质量体系'" :English="'Quality System'"></MyTitle>
+        <MyTitle :title="'质量体系'" :english="'Quality System'"></MyTitle>
       </div>
       <div ref="topSpan" class="top-span">
         <CommitmentSpan :title="'平高集团在中国电气行业率先导入国际先进的质量管理体系'">

@@ -37,7 +37,7 @@ onMounted(() => {
     <div style="position: relative">
       <div class="content-header-box">
         <div ref="titleBox" style="padding-top: 4rem">
-          <MyTitle class="title" title="最新公告" English="LATEST ANNOUNCEMENT" />
+          <MyTitle class="title" title="最新公告" english="LATEST ANNOUNCEMENT" />
         </div>
         <div ref="contentBox" style="margin-top: 3.6rem">
           <MyContent

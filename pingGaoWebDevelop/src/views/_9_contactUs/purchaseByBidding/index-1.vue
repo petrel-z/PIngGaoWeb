@@ -8,7 +8,7 @@ import CommitmentSpan from "@/components/CommitmentSpan.vue";
 
     <div class="content-top">
       <div class="top-title">
-        <MyTitle :title="'招标采购'" :English="'bidding procurement'"></MyTitle>
+        <MyTitle :title="'招标采购'" :english="'bidding procurement'"></MyTitle>
       </div>
       <div class="top-span">
         <CommitmentSpan :title="'平高集团'" :top="'50px'" :bottom-margin-h1="'18px'">

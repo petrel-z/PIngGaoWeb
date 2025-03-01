@@ -38,7 +38,7 @@ onMounted(initializeObservers); // 在组件挂载时调用
 </script>
 <template>
   <div class="keyProject">
-    <MyTitle title="重点工程" English="KEY PROJECTS"></MyTitle>
+    <MyTitle title="重点工程" english="KEY PROJECTS"></MyTitle>
     <div class="project_content">
       <div class="content_left" ref="wordLeftRef" :class="{ 'move-left': isVisibleWordLeft }">
         <div class="top_button" :class="{ active: index === 1 }"  @click="index = 1">

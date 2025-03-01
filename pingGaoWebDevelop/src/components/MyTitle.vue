@@ -4,7 +4,7 @@ const props = defineProps({
     type: String,
     default: "组织结构",
   },
-  English: {
+  english: {
     type: String,
     default: "organization structure",
   },
@@ -26,7 +26,7 @@ const props = defineProps({
   <div class="title">
     <span class="h" :style="{ color: props.titleColor }">{{ props.title }}</span>
     <div class="line" :style="{ backgroundColor: props.lineColor }"></div>
-    <span class="English" :style="{ color: props.engColor }">{{ props.English }}</span>
+    <span class="english" :style="{ color: props.engColor }">{{ props.english }}</span>
   </div>
 </template>
 <style scoped>
@@ -54,7 +54,7 @@ const props = defineProps({
   height: 0.2rem;
   margin: 0.25rem 0rem;
 }
-.English {
+.english {
   display: block;
   font-size: 2rem;
   font-family: "Avenir-Medium-woff-7";
@@ -79,7 +79,7 @@ const props = defineProps({
   .line {
     width: 7rem;
   }
-  .English {
+  .english {
     font-size: 3rem;
   }
 }

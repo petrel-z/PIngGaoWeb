@@ -83,7 +83,7 @@ onMounted(() => {
     </div>
     <div ref="items" class="body-content">
       <div>
-        <MyTitle title="人才开发" English="TALENT DEVELOPMENT"></MyTitle>
+        <MyTitle title="人才开发" english="TALENT DEVELOPMENT"></MyTitle>
       </div>
       <div class="body-content-box">
         <div class="body-content-left">

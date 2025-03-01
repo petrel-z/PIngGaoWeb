@@ -5,7 +5,7 @@ defineOptions({
 });
 import ContentPag from "@/views/_2_informationCenter/headquartersDynamics/ContentPag.vue";
 import MyTitle from "@/components/MyTitle.vue";
-import Item1 from "@/components/item-1.vue";
+import Item1 from "@/components/Item-1.vue";
 import MyButton from "@/components/MyButton.vue";
 
 const items = [
@@ -80,7 +80,7 @@ onMounted(() => {
     <div class="body">
       <div>
         <div style="padding-top: 2.5rem">
-          <my-title title="集团新闻" English="GROUP NEWS" />
+          <my-title title="集团新闻" english="GROUP NEWS" />
         </div>
         <div ref="contentBox" style="margin-top: 2.5rem">
           <ContentPag

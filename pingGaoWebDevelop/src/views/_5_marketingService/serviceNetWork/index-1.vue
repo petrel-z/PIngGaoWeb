@@ -43,7 +43,7 @@ onMounted(() => {
       <div class="body-content">
         <div class="bodyBg"></div>
         <div>
-          <MyTitle title="服务网络" English="SERVICE PROCESS" />
+          <MyTitle title="服务网络" english="SERVICE PROCESS" />
         </div>
         <div ref="contentBox" style="margin-top: 3.7rem">
           <MyContent

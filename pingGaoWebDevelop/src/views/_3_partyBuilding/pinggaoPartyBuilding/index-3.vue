@@ -32,7 +32,7 @@ const rightList = [
     <div class="title">
       <myTitle
         :title="'平高建党'"
-        :English="'Pg Party Building'"
+        :english="'Pg Party Building'"
         :titleColor="'#fce3cd'"
         :lineColor="'#fce3cd'"
         :engColor="'#fce3cd'"
@@ -48,7 +48,7 @@ const rightList = [
             :timeColor="'#a51617'"
             :textColor="'#7b6a5d'"
             :text-font-family="'SourceHanSerifCN_Bold'"
-
+            :hover-bg-color="'#e06e5f'"
           >
           </Item2>
         </div>
@@ -126,6 +126,7 @@ const rightList = [
     height: auto;
     display: flex;
     justify-content: center;
+    padding: 3em 0;
   }
 }
 </style>

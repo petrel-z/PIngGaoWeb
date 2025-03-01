@@ -34,7 +34,7 @@ onMounted(initializeObservers); // 在组件挂载时调用
 </script>
 <template>
   <div class="lesadingMember">
-    <MyTitle title="领导成员" English="LENDING MEMBERS"></MyTitle>
+    <MyTitle title="领导成员" english="LENDING MEMBERS"></MyTitle>
     <div class="content1">
       <div class="info" ref="imgRef" :class="{ 'scale-up': isVisible }">
         <img src="@/assets/imgs/_1_aboutPinggaoImgs/peoplebg.png" alt="" />
@@ -172,7 +172,7 @@ onMounted(initializeObservers); // 在组件挂载时调用
   top: 5.5rem;
   position: absolute;
   left: 2rem;
-  font-size: 1.15rem;
+  font-size: 1.05rem;
   font-family: "AlibabaPuHuiTi_2_45_Light", sans-serif;
   color: rgb(89, 87, 87);
 }
@@ -180,7 +180,7 @@ onMounted(initializeObservers); // 在组件挂载时调用
   top: 7.375rem;
   position: absolute;
   left: 2rem;
-  font-size: 1.15rem;
+  font-size: 1.05rem;
   font-family: "AlibabaPuHuiTi_2_45_Light", sans-serif;
   color: rgb(89, 87, 87);
 }
@@ -188,7 +188,7 @@ onMounted(initializeObservers); // 在组件挂载时调用
   top: 9.125rem;
   position: absolute;
   left: 2rem;
-  font-size: 1.15rem;
+  font-size: 1.05rem;
   font-family: "AlibabaPuHuiTi_2_45_Light", sans-serif;
   color: rgb(89, 87, 87);
 }

@@ -92,7 +92,7 @@ const imageSrc = ref(
     </div>
     <MyTitle
       title="产品系列"
-      English="PRODUCT SERIES"
+      english="PRODUCT SERIES"
       title-color="#fff"
       line-color="#fff"
       engColor="#fff"
