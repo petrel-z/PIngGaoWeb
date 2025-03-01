@@ -38,7 +38,7 @@ onMounted(initializeObservers); // 在组件挂载时调用
 </script>
 <template>
   <div class="scientificResearchAchievement">
-    <MyTitle title="科研成果" English="SCIENTIFIC RESEARCH ACHIEVEMENTS"></MyTitle>
+    <MyTitle title="科研成果" english="SCIENTIFIC RESEARCH ACHIEVEMENTS"></MyTitle>
     <div class="achievement">
       <div class="achievement_top">
         <div class="achievement_detail" ref="infoRef" :class="{ 'scale-up': isVisibleInfo }">

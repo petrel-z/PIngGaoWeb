@@ -6,7 +6,7 @@ const items = ref(null);
 const divTitle1 = ref(null);
 const divTitle2 = ref(null);
 const divTitle3 = ref(null);
-const titleBox = ref(null);
+
 onMounted(() => {
   // 获取目标元素容器
   const targetContainer = items.value;
@@ -84,7 +84,7 @@ onMounted(() => {
     </div>
     <div ref="items" class="body-content">
       <div>
-        <MyTitle title="人才开发" English="TALENT DEVELOPMENT"></MyTitle>
+        <MyTitle title="人才开发" english="TALENT DEVELOPMENT"></MyTitle>
       </div>
       <div style="margin-top: 3rem; display: flex; width: 100%">
         <div class="body-content-left">

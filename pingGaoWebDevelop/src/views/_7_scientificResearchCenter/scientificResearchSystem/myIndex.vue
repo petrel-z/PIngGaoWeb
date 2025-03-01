@@ -38,7 +38,7 @@ onMounted(initializeObservers); // 在组件挂载时调用
 </script>
 <template>
   <div class="scientificResearchSystem">
-    <MyTitle title="科研体系" English="SCIENTIFIC RESEARCH SYSTEM"></MyTitle>
+    <MyTitle title="科研体系" english="SCIENTIFIC RESEARCH SYSTEM"></MyTitle>
     <div class="content">
       <MyContent title="三院两所两中心一基地">
       <div class="content1"  ref="wordRightRef1"

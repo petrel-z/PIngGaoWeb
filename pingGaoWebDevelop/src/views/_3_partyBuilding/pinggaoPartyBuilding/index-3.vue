@@ -32,7 +32,7 @@ const rightList = [
     <div class="title">
       <myTitle
         :title="'平高建党'"
-        :English="'Pg Party Building'"
+        :english="'Pg Party Building'"
         :titleColor="'#fce3cd'"
         :lineColor="'#fce3cd'"
         :engColor="'#fce3cd'"

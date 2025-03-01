@@ -55,7 +55,7 @@ const items = [
     <div class="body">
       <div>
         <div style="padding-top: 4rem">
-          <my-title title="总部动态" English="HEADQUARTERS NEWS" />
+          <my-title title="总部动态" english="HEADQUARTERS NEWS" />
         </div>
         <div
           style="

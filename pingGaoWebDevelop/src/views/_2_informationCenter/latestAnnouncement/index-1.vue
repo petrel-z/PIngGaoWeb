@@ -38,7 +38,7 @@ onMounted(() => {
       <div class="bodyBg1"></div>
       <div class="body">
         <div ref="titleBox" style="padding-top: 64px">
-          <MyTitle class="title" title="最新公告" English="LATEST ANNOUNCEMENT" />
+          <MyTitle class="title" title="最新公告" english="LATEST ANNOUNCEMENT" />
         </div>
         <div ref="contentBox" style="margin-top: 58px">
           <MyContent

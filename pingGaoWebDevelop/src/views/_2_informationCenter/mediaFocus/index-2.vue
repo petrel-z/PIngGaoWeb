@@ -77,7 +77,7 @@ const orderList = [
     <div class="body">
       <div>
         <div style="padding-top: 64px">
-          <my-title title="媒体聚焦" English="MEDIA FOCUS" />
+          <my-title title="媒体聚焦" english="MEDIA FOCUS" />
         </div>
         <div
           style="

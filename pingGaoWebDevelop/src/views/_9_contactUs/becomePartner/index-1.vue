@@ -150,7 +150,7 @@ function reset () {
 
     <div class="content-top">
       <div class="top-title">
-        <MyTitle :title="'成为伙伴'" :English="'become partner'"></MyTitle>
+        <MyTitle :title="'成为伙伴'" english="become partner"></MyTitle>
       </div>
       <div class="top-information">
         <h1>填写资料</h1>

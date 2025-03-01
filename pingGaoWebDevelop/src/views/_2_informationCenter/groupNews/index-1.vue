@@ -80,7 +80,7 @@ onMounted(() => {
     <div class="body">
       <div>
         <div style="padding-top: 64px">
-          <my-title title="集团新闻" English="GROUP NEWS" />
+          <my-title title="集团新闻" english="GROUP NEWS" />
         </div>
         <div ref="contentBox" style="margin-top: 59px">
           <ContentPag
