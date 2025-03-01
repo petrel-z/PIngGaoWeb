@@ -83,7 +83,7 @@ onMounted(() => {
     // 计算位移百分比（每个项目占 1/visibleItems）
     const translateX = -currentIndex * (100 / visibleItems / 1.07);
     container.style.transform = `translateX(${translateX}%)`;
-    container.style.transition = '1s';
+    container.style.transition = "1s";
 
     // 重置动画状态
     setTimeout(() => {
@@ -92,7 +92,7 @@ onMounted(() => {
   }
 
   function nextSlide1() {
-    stopAutoSlide()
+    stopAutoSlide();
     if (currentIndex >= itemCount - visibleItems) {
       // 到达最后时回到第一个
       currentIndex = 0;
@@ -100,11 +100,11 @@ onMounted(() => {
       currentIndex++;
     }
     updateCarousel();
-    startAutoSlide()
+    startAutoSlide();
   }
 
   function prevSlide1() {
-    stopAutoSlide()
+    stopAutoSlide();
     if (currentIndex <= 0) {
       // 到达第一个时跳到最后
       currentIndex = itemCount - visibleItems;
@@ -112,21 +112,21 @@ onMounted(() => {
       currentIndex--;
     }
     updateCarousel();
-    startAutoSlide()
+    startAutoSlide();
   }
 
   function startAutoSlide() {
     autoSlideInterval = setInterval(nextSlide1, 3000); // 每3秒切换一次
   }
 
-    // 停止自动轮播的函数
-    function stopAutoSlide() {
-      if (autoSlideInterval) {
-        clearInterval(autoSlideInterval);
-        autoSlideInterval = null;
-        console.log('轮播已停止');
-      }
+  // 停止自动轮播的函数
+  function stopAutoSlide() {
+    if (autoSlideInterval) {
+      clearInterval(autoSlideInterval);
+      autoSlideInterval = null;
+      console.log("轮播已停止");
     }
+  }
 
   // 添加按钮事件
   rightIcon.addEventListener("click", nextSlide1);
@@ -480,7 +480,7 @@ onMounted(() => {
         </div>
       </div>
       <div class="great_flag_button">
-        <router-link :to="'/informationCenter/headquartersDynamics-1'" style="display: flex;">
+        <router-link :to="'/informationCenter/headquartersDynamics-1'" style="display: flex">
           <div class="button_left">了解更多</div>
           <div class="button_right"><span class="icon iconfont">&#xe6a3;</span></div>
         </router-link>
@@ -834,7 +834,7 @@ onMounted(() => {
   width: 100%;
   height: 71.25rem;
 }
-@media (min-width: 400px) and (max-width: 500px) {
+@media (min-width: 380px) and (max-width: 500px) {
   .company_introduction {
     position: relative;
     height: 56.25rem;
@@ -909,6 +909,11 @@ onMounted(() => {
   .introduction_honor .honor_info .p {
     font-size: 1.425rem !important;
     margin-top: -0.625rem;
+  }
+  .button_right span{
+    display: block;
+    line-height: -1rem !important;
+    // vertical-align: middle;
   }
 }
 @media (min-width: 600px) and (max-width: 700px) {
@@ -1178,7 +1183,7 @@ onMounted(() => {
     left: 50%;
     transform: translateX(-50%);
   }
-  .great_flag_content{
+  .great_flag_content {
     margin-bottom: 7rem !important;
   }
   .great_flag_title {
@@ -1210,10 +1215,10 @@ onMounted(() => {
     margin: 0.25rem 0rem;
   }
   .great_flag_content .bottom_text .p {
-    font-size:1rem !important;
+    font-size: 1rem !important;
   }
   .great_flag_content .content_detail_text .text .title {
-    font-size:1rem !important;
+    font-size: 1rem !important;
   }
   .great_flag_content .content_detail_text .text .line {
     width: 2.6875rem;
@@ -1236,7 +1241,6 @@ onMounted(() => {
   }
 }
 @media (min-width: 800px) and (max-width: 1000px) {
-
 }
 @media (min-width: 1000px) and (max-width: 1200px) {
   .great_flag_content .content_detail {
@@ -1260,7 +1264,7 @@ onMounted(() => {
     padding-top: 2rem;
     padding-left: 2.5rem;
   }
-  .great_flag_content{
+  .great_flag_content {
     margin-bottom: 7rem !important;
   }
   .great_flag_content .bottom_text .time {
@@ -1311,7 +1315,7 @@ onMounted(() => {
     padding-top: 2rem;
     padding-left: 2.5rem;
   }
-  .great_flag_content{
+  .great_flag_content {
     margin-bottom: 2rem !important;
   }
   .great_flag_content .bottom_text .time {
@@ -1360,7 +1364,7 @@ onMounted(() => {
     padding-top: 2rem;
     padding-left: 2.5rem;
   }
-  .great_flag_content{
+  .great_flag_content {
     margin-bottom: 6rem !important;
   }
   .great_flag_content .bottom_text .time {
@@ -1409,7 +1413,7 @@ onMounted(() => {
     padding-top: 2rem;
     padding-left: 2.5rem;
   }
-  .great_flag_content{
+  .great_flag_content {
     margin-bottom: 2rem !important;
   }
   .great_flag_content .bottom_text .time {
@@ -1450,9 +1454,8 @@ onMounted(() => {
     background-color: #def1fb;
     height: 101.125rem !important;
     width: 100%;
-
   }
-  .great_flag_content{
+  .great_flag_content {
     margin-bottom: 8rem !important;
   }
   .great_flag_content .content_detail_text {
@@ -1462,7 +1465,6 @@ onMounted(() => {
     padding-top: 3rem;
     padding-left: 2.5rem;
   }
-
 }
 @media (min-width: 2300px) and (max-width: 2600px) {
   .great_flag_content .content_detail {
@@ -1472,7 +1474,7 @@ onMounted(() => {
     transition: 0.5s;
     cursor: pointer;
   }
-  .content_detail .bottom_text{
+  .content_detail .bottom_text {
     padding: 1rem 2rem !important;
   }
   .great_flag {
@@ -1489,7 +1491,7 @@ onMounted(() => {
     padding-top: 3rem;
     padding-left: 2.5rem;
   }
-  .great_flag_content{
+  .great_flag_content {
     margin-bottom: 5rem !important;
   }
 }
@@ -1501,7 +1503,7 @@ onMounted(() => {
     transition: 0.5s;
     cursor: pointer;
   }
-  .content_detail .bottom_text{
+  .content_detail .bottom_text {
     padding: 1rem 2rem !important;
   }
   .great_flag {
@@ -1518,7 +1520,7 @@ onMounted(() => {
     padding-top: 2rem;
     padding-left: 2.5rem;
   }
-  .great_flag_content{
+  .great_flag_content {
     margin-bottom: 5rem !important;
   }
   .great_flag_content .bottom_text .time {
