@@ -61,7 +61,6 @@ const props = defineProps({
 
 .leftLink,
 .rightLink {
-  font-size: 1.4rem;
   background-color: var(--bgColor);
   white-space: nowrap;
   overflow: hidden;
@@ -72,20 +71,29 @@ const props = defineProps({
 
 .left,
 .right {
+  font-size: 1.4rem;
+  width: 100%;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
 
+.left {
+  text-align: center;
+}
+
+.right {
+  text-align: left;
+}
+
 .leftLink {
   width: 20%;
-  padding: 4rem 2rem;
+  padding: 2.5rem 2rem;
   font-family: "AlibabaPuHuiTi_2_75_SemiBold";
   color: var(--leftFontColor);
   font-weight: bold;
   position: relative;
   z-index: 146;
-  text-align: center;
   margin-right: 2%;
   border-top-left-radius: 0.9rem;
   border-bottom-left-radius: 0.9rem;
@@ -93,10 +101,24 @@ const props = defineProps({
 
 .rightLink {
   width: 78%;
-  padding: 4rem 3rem;
+  padding: 2.5rem 2rem;
   font-family: "AlibabaPuHuiTi_2_55_Regular";
   color: var(--rightFontColor);
   border-top-right-radius: 0.9rem;
   border-bottom-right-radius: 0.9rem;
+}
+
+@media (max-width: 768px) {
+  .left,
+  .right {
+    font-size: 2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .left,
+  .right {
+    font-size: 2.5rem;
+  }
 }
 </style>

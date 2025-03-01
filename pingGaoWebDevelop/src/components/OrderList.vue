@@ -119,7 +119,7 @@ function sortOrderList(orderList) {
   height: auto;
   background-color: #003792;
   border-radius: 0.625rem;
-  padding: 0 2.125rem;
+  padding: 0 5rem;
   animation: right-in 0.5s ease-in-out;
 }
 

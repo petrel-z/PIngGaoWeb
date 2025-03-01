@@ -86,13 +86,15 @@ onMounted(() => {
 </script>
 
 <template>
-  <div style="position: relative; min-height: 2290px">
-    <div class="bodyBg"></div>
+  <div class="body-box">
+    <div class="bodyBg">
+      <img src="@/assets/imgs/_8_humanResourcesImgs/bg-1.png" alt="" />
+    </div>
     <div class="body-content">
       <div>
         <MyTitle title="人才队伍" English="TALENT TEAM"></MyTitle>
       </div>
-      <div ref="contentBox" style="margin-top: 55px">
+      <div ref="contentBox" style="margin-top: 3.4375rem">
         <MyContent
           class="content"
           title="平高集团"
@@ -101,8 +103,8 @@ onMounted(() => {
           :bottom-items="items"
         />
       </div>
-      <div ref="humanContentBox" style="margin-top: 94px">
-        <HumanContent class="left" style="margin-bottom: -2px" />
+      <div ref="humanContentBox" style="margin-top: 5.875rem">
+        <HumanContent class="left" style="margin-bottom: -0.125rem" />
         <HumanContent class="right" title="拥有省部行业级人才126人" :items="HumanContentItems" />
       </div>
     </div>
@@ -110,20 +112,30 @@ onMounted(() => {
 </template>
 
 <style scoped>
-.bodyBg {
-  background-image: url("../../../assets/imgs/_8_humanResourcesImgs/bg-1.png");
-  background-size: cover;
+.body-box {
+  position: relative;
   width: 100%;
-  min-height: 884px;
+  height: auto;
+}
+
+.bodyBg {
+  width: 100%;
+  height: auto;
   position: absolute;
-  bottom: 0px;
+  bottom: -1rem;
   z-index: -1;
+}
+
+.bodyBg img {
+  width: 100%;
+  height: auto;
 }
 
 .body-content {
   margin: 0 11%;
-  padding-top: 66px;
+  padding-top: 4.125rem;
   overflow: hidden;
+  padding-bottom: 30rem;
 }
 
 .show .content {

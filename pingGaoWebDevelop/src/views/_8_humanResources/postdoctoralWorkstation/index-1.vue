@@ -27,26 +27,19 @@ onMounted(() => {
 </script>
 
 <template>
-  <div style="width: 100%; position: relative; min-height: 1605px; overflow: hidden">
+  <div style="width: 100%; position: relative; overflow: hidden">
     <div class="content-title">
       <MyTitle title="博士后工作站" English="POSTDOCTORAL WORKSTATION" />
     </div>
     <div class="center">
-      <div
-        style="border-left: 2px solid rgb(0, 111, 193); border-right: 2px solid rgb(0, 111, 193)"
-      >
-        2008年6月<br />
-        国家人力资源与社会保障部批准设立
+      <div class="center-left">
+        {{ `2008年6月\n国家人力资源与社会保障部批准设立` }}
       </div>
-      <div>
-        连续四次被授予<br />
-        河南省优秀博士后工作站
+      <div class="center-center">
+        {{ `连续四次被授予\n河南省优秀博士后工作站` }}
       </div>
-      <div
-        style="border-left: 2px solid rgb(0, 111, 193); border-right: 2px solid rgb(0, 111, 193)"
-      >
-        累计接收12名博士<br />
-        进站开展科研工作
+      <div class="center-right">
+        {{ `累计接收12名博士\n进站开展科研工作` }}
       </div>
     </div>
     <div ref="items" class="content">
@@ -82,38 +75,51 @@ onMounted(() => {
 
 <style scoped>
 .content-title {
-  padding: 65px 11% 0 11%;
+  padding: 4.5rem 11% 0 11%;
 }
 
 .center {
   width: 100%;
-  height: 233px;
   background-color: #e8f5fc;
   display: flex;
   align-items: center;
-  margin-top: 55px;
-  padding: 0 11%;
+  margin-top: 4rem;
+  padding: 4% 11%;
   display: flex;
   justify-content: center;
 }
 
-.center > div {
+.center-center,
+.center-left,
+.center-right {
   width: 33%;
-  height: auto;
-  font-size: 26px;
+  height: 100%;
+  font-size: 1.9rem;
   font-family: "AlibabaPuHuiTi_2_65_Medium";
   color: rgb(0, 111, 193);
   text-align: center;
+  white-space: pre;
+}
+
+.center-left {
+  border-left: 0.18rem solid rgb(0, 111, 193);
+  border-right: 0.18rem solid rgb(0, 111, 193);
+}
+
+.center-right {
+  border-left: 0.18rem solid rgb(0, 111, 193);
+  border-right: 0.18rem solid rgb(0, 111, 193);
 }
 
 .content {
   width: 100%;
-  margin-top: 45px;
+  margin-top: 3.5rem;
   height: auto;
   display: flex;
   padding: 0 11%;
   overflow: hidden;
   /* justify-content: space-between; */
+  padding-bottom: 28%;
 }
 
 .text {
@@ -128,7 +134,7 @@ onMounted(() => {
   font-family: "AlibabaPuHuiTi_2_45_Light";
   color: rgb(89, 87, 87);
   text-align: left;
-  margin-bottom: 2em;
+  margin-bottom: 3rem;
 }
 
 .img {
@@ -169,5 +175,73 @@ onMounted(() => {
 .bottom-bg img {
   width: 100%;
   height: auto;
+}
+
+@media (max-width: 768px) {
+  .content-title {
+    padding: 4.5rem 7% 0 7%;
+  }
+
+  .center {
+    padding: 0 7%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .center-center,
+  .center-left,
+  .center-right {
+    width: 100%;
+    white-space: nowrap;
+    border: none;
+    padding: 4% 0;
+    font-size: 3rem;
+  }
+
+  .center-center {
+    border-top: 0.18rem solid rgb(0, 111, 193);
+    border-bottom: 0.18rem solid rgb(0, 111, 193);
+  }
+
+  .content {
+    padding: 0 7%;
+    flex-direction: column;
+    padding-bottom: 35%;
+  }
+
+  .text {
+    width: 100%;
+    margin: 0;
+  }
+
+  .text > p {
+    font-size: 3rem;
+  }
+
+  .img {
+    width: 100%;
+    margin: 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .center-center,
+  .center-left,
+  .center-right {
+    width: 100%;
+    white-space: nowrap;
+    border: none;
+    padding: 4% 0;
+    font-size: 4.5rem;
+  }
+
+  .center-center {
+    border-top: 0.18rem solid rgb(0, 111, 193);
+    border-bottom: 0.18rem solid rgb(0, 111, 193);
+  }
+
+  .text > p {
+    font-size: 4rem;
+  }
 }
 </style>

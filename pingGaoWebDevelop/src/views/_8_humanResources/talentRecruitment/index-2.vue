@@ -3,24 +3,19 @@ import TextTitle from "@/components/TextTitle.vue";
 </script>
 
 <template>
-  <div
-    style="
-      position: relative;
-      width: 100%;
-      min-height: 1860px;
-      background-color: #def1fb;
-      z-index: -2;
-    "
-  >
+  <div class="body-box">
     <div class="bodyBg">
       <img src="../../../assets/imgs/_8_humanResourcesImgs/bg-1.png" alt="" />
     </div>
     <div class="body-content">
       <div class="bg-white" style="padding: 4.7rem; width: 100%">
-        <div class="content-title">国电气装备旗下平高集团2022年社会招聘公告</div>
-        <div style="margin-top: 4.7rem; margin-bottom: 4.7rem">
-          <TextTitle time="2025-01-14" browse="488" color="#1c4e9f" />
+        <div class="title-box">
+          <div class="content-title">国电气装备旗下平高集团2022年社会招聘公告</div>
+          <div style="margin-top: 4.7rem; margin-bottom: 4.7rem">
+            <TextTitle time="2025-01-14" :browse="488" color="#1c4e9f" />
+          </div>
         </div>
+
         <div class="text">
           <p>
             一、单位简介<br />
@@ -65,11 +60,17 @@ import TextTitle from "@/components/TextTitle.vue";
 </template>
 
 <style scoped>
+.body-box {
+  position: relative;
+  width: 100%;
+  background-color: #def1fb;
+  padding-bottom: 18%;
+}
+
 .bodyBg {
   width: 100%;
   position: absolute;
-  bottom: -10px;
-  z-index: -1;
+  bottom: -5px;
 }
 
 .bodyBg img {
@@ -80,6 +81,7 @@ import TextTitle from "@/components/TextTitle.vue";
 }
 
 .body-content {
+  position: relative;
   padding: 0 11%;
   height: auto;
   width: 100%;
@@ -88,19 +90,58 @@ import TextTitle from "@/components/TextTitle.vue";
   background-color: #ffffff;
 }
 .content-title {
-  font-size: 35px;
+  font-size: 2.5rem;
   font-family: "AlibabaPuHuiTi_2_65_Medium";
   color: rgb(0, 55, 146);
-  line-height: 1.4;
   text-align: center;
 }
 
 .text > p {
-  font-size: 20px;
+  font-size: 1.5rem;
   font-family: "AlibabaPuHuiTi_2_45_Light";
   color: rgb(89, 87, 87);
-  line-height: 1.498;
   text-align: left;
   width: 100%;
+}
+
+@media (max-width: 900px) {
+  .body-box {
+    padding-bottom: 50%;
+  }
+
+  .body-bg {
+    padding: 0 7%;
+  }
+
+  .body {
+    padding: 0;
+  }
+
+  .title-box {
+    padding: 0 2.5rem;
+  }
+
+  .content-title {
+    font-size: 3rem;
+  }
+
+  .body-content p {
+    font-size: 2rem;
+  }
+
+  .body-content {
+    /* margin-bottom: 3rem; */
+    padding: 0 2.5rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .content-title {
+    font-size: 4rem;
+  }
+
+  .body-content p {
+    font-size: 3rem;
+  }
 }
 </style>

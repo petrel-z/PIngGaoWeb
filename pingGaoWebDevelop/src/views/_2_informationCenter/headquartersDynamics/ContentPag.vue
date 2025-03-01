@@ -66,10 +66,7 @@ const props = defineProps({
       <router-link v-else to="/informationCenter/groupNews-3">
         <div class="content-btn" :style="{ 'background-color': props.btnColor }">
           <span>{{ props.btnText }}</span>
-          <i
-            class="iconfont icon-chakanxiangqing-copy"
-            style="font-size: 1.5rem; margin-left: 2em"
-          ></i>
+          <i class="iconfont icon-chakanxiangqing-copy"></i>
         </div>
       </router-link>
     </div>
@@ -146,12 +143,17 @@ const props = defineProps({
   position: relative;
   z-index: 143;
   background-color: #45b3e0;
-  width: 10em;
+  width: 20rem;
   height: auto;
   padding: 1.5%;
   margin-top: 3%;
   border-radius: 0.8rem;
   cursor: pointer;
+}
+
+.content-btn i {
+  font-size: 1.25rem;
+  margin-left: 3rem;
 }
 
 .content-btn:hover {
@@ -166,9 +168,16 @@ const props = defineProps({
     padding: 0;
     align-items: start;
   }
+
   .content-btn {
     margin: 3rem auto;
+    font-size: 2rem;
   }
+
+  .content-btn i {
+    font-size: 2rem;
+  }
+
   .content-left {
     margin-top: 3rem;
     width: 85%;

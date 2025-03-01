@@ -88,13 +88,12 @@ onMounted(() => {
   width: 100%;
   display: flex;
   cursor: pointer;
-  margin-bottom: 1em;
+  margin-bottom: 1rem;
 }
 .time {
   font-size: 1.5rem;
-  font-family: "Avenir";
+  font-family: "Avenir-black-4";
   color: var(--timeColor);
-  line-height: 1.68;
   text-align: center;
   white-space: nowrap;
   overflow: hidden;
@@ -109,12 +108,11 @@ onMounted(() => {
   background-color: var(--background-color);
   border-bottom-left-radius: 0.625rem;
   border-top-left-radius: 0.625rem;
-  text-align: right;
-  padding: 2.18rem 1rem;
+  text-align: center;
   width: 20%;
   display: flex;
-  flex-direction: column;
   justify-content: center;
+  align-items: center;
   /* transition: all 0.3s ease-in-out; */
 }
 
@@ -152,10 +150,19 @@ onMounted(() => {
   font-size: 1.3rem;
   font-family: var(--textFontFamily);
   color: var(--textColor);
-  line-height: 1.25;
   text-align: left;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+
+@media (max-width: 768px) {
+  .time {
+    font-size: 2rem;
+  }
+
+  .text {
+    font-size: 2rem;
+  }
 }
 </style>

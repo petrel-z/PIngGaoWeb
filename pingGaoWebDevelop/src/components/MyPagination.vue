@@ -30,7 +30,7 @@ const props = defineProps({
 
 <style scoped>
 .my-pagination {
-  width: 25%;
+  padding: 3rem 0 3.5rem 0;
 }
 
 .my-pagination ul {
@@ -49,19 +49,20 @@ const props = defineProps({
 }
 
 .my-pagination li {
-  font-size: 1.2rem;
+  font-size: 2rem;
   font-family: "AlibabaPuHuiTi_2_55_Regular";
   color: var(--fontColor);
-  line-height: 2em;
-  height: 2em;
-  width: 2em;
-  border: 0.05remsolid var(--fontColor);
-  border-radius: 1.5em;
+  line-height: 5rem;
+  width: 5rem;
+  height: 5rem;
+  border: 0.05rem solid var(--fontColor);
+  border-radius: 5rem;
   text-align: center;
   cursor: pointer;
+  margin-right: 2rem;
 }
 
 .my-pagination li:last-child {
-  width: 5em;
+  width: 5rem;
 }
 </style>

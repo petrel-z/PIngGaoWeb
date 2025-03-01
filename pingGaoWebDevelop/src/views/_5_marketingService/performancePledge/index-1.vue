@@ -30,33 +30,42 @@ onMounted(() => {
 </script>
 
 <template>
-  <div style="position: relative; min-height: 1120px">
-    <div class="bodyBg"></div>
+  <div class="body-box">
     <div class="body-content">
       <div>
         <MyTitle title="服务承诺" English="SERVICE COMMITMENT" />
       </div>
-      <div ref="contentBox" style="margin-top: 55px">
+      <div ref="contentBox" style="margin-top: 3.4rem">
         <MyContent class="content" />
       </div>
+    </div>
+    <div class="bodyBg">
+      <img src="@/assets/imgs/_5_marketingServiceImgs/serviceBg1.png" alt="" />
     </div>
   </div>
 </template>
 
 <style scoped>
+.body-box {
+  position: relative;
+  padding-bottom: 50%;
+}
+
 .bodyBg {
-  background-image: url("../../../assets/imgs/_5_marketingServiceImgs/serviceBg1.png");
-  background-size: cover;
   width: 100%;
-  min-height: 811px;
   position: absolute;
-  top: 310px;
+  bottom: -1%;
   z-index: -1;
+}
+
+.bodyBg img {
+  width: 100%;
+  height: auto;
 }
 
 .body-content {
   margin: 0 11%;
-  padding-top: 65px;
+  padding-top: 5rem;
   overflow: hidden;
 }
 
@@ -68,5 +77,11 @@ onMounted(() => {
   position: relative;
   right: -200%;
   transition: right 0.5s ease;
+}
+
+@media (max-width: 768px) {
+  .body-content {
+    margin: 0 7%;
+  }
 }
 </style>

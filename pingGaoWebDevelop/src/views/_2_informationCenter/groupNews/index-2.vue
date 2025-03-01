@@ -2,7 +2,7 @@
 defineOptions({
   name: "NewsCenterIndex2-2",
 });
-
+import { ref, onMounted } from "vue";
 import MyTitle from "@/components/MyTitle.vue";
 
 import Item2 from "@/components/Item-2.vue";
@@ -72,20 +72,37 @@ const orderList = [
     num: "浏览量:4039",
   },
 ];
+
+// 监听窗口大小变化事件
+let onceChange = ref(false);
+function changeOnce() {
+  // 获取当前窗口的宽度和高度
+  const width = window.innerWidth;
+  if (width <= 900) {
+    // 根据窗口大小改变dom元素
+    onceChange.value = true;
+  } else {
+    onceChange.value = false;
+  }
+}
+onMounted(() => {
+  changeOnce();
+  window.addEventListener("resize", changeOnce);
+});
 </script>
 
 <template>
   <div style="position: relative">
     <div class="body">
       <div>
-        <div style="padding-top: 64px">
+        <div style="padding-top: 4rem">
           <my-title title="总部动态" English="HEADQUARTERS NEWS" />
         </div>
         <div
           style="
             display: flex;
             justify-content: space-between;
-            margin-top: 55px;
+            margin-top: 3.7rem;
             height: 100%;
             width: 100%;
           "
@@ -99,13 +116,16 @@ const orderList = [
               class="item"
             />
           </div>
-          <div class="order-container">
+          <div v-show="!onceChange" class="order-container">
             <OrderList :orderList="orderList" bgColor="#006fc1" />
           </div>
         </div>
       </div>
       <div class="pagination-container">
         <MyPagination class="pagination" />
+      </div>
+      <div v-show="onceChange" class="order-container">
+        <OrderList :orderList="orderList" bgColor="#006fc1" />
       </div>
     </div>
   </div>
@@ -134,9 +154,24 @@ const orderList = [
 
 .pagination-container {
   width: 100%;
-  padding: 3em 0;
+  padding-bottom: 3rem;
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+@media (max-width: 900px) {
+  .body {
+    padding: 0 7%;
+  }
+
+  .item-container {
+    width: 100%;
+  }
+
+  .order-container {
+    width: 100%;
+    margin-bottom: 15%;
+  }
 }
 </style>

@@ -1,4 +1,6 @@
 <script setup>
+import { ref, onMounted } from "vue";
+
 defineOptions({
   name: "NewsCenterIndex3-2",
 });
@@ -70,20 +72,37 @@ const orderList = [
     num: "浏览量:4039",
   },
 ];
+
+// 监听窗口大小变化事件
+let onceChange = ref(false);
+function changeOnce() {
+  // 获取当前窗口的宽度和高度
+  const width = window.innerWidth;
+  if (width <= 900) {
+    // 根据窗口大小改变dom元素
+    onceChange.value = true;
+  } else {
+    onceChange.value = false;
+  }
+}
+onMounted(() => {
+  changeOnce();
+  window.addEventListener("resize", changeOnce);
+});
 </script>
 
 <template>
   <div style="position: relative">
     <div class="body">
       <div>
-        <div style="padding-top: 64px">
+        <div style="padding-top: 4rem">
           <my-title title="媒体聚焦" English="MEDIA FOCUS" />
         </div>
         <div
           style="
             display: flex;
             justify-content: space-between;
-            margin-top: 55px;
+            margin-top: 3.43rem;
             height: 100%;
             width: 100%;
           "
@@ -96,7 +115,7 @@ const orderList = [
               :text="item.text"
             />
           </div>
-          <div class="order-container">
+          <div v-show="!onceChange" class="order-container">
             <OrderList :orderList="orderList" bgColor="#006fc1" />
           </div>
         </div>
@@ -104,19 +123,18 @@ const orderList = [
       <div class="pagination-container">
         <MyPagination />
       </div>
+      <div v-show="onceChange" class="order-container">
+        <OrderList :orderList="orderList" bgColor="#006fc1" />
+      </div>
     </div>
   </div>
 </template>
 
 <style scoped>
-.header {
-  height: 611px;
-  background-image: url("../../../assets/imgs/_2_informationCenterImgs/headerBg.png");
-  background-size: cover;
-}
 .body {
   padding: 0 11%;
   background-color: #def1fb;
+  overflow: hidden;
 }
 
 .item-container {
@@ -135,9 +153,24 @@ const orderList = [
 
 .pagination-container {
   width: 100%;
-  padding: 3em 0;
+  padding: 3rem 0;
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+@media (max-width: 900px) {
+  .body {
+    padding: 0 7%;
+  }
+
+  .item-container {
+    width: 100%;
+  }
+
+  .order-container {
+    width: 100%;
+    margin-bottom: 15%;
+  }
 }
 </style>

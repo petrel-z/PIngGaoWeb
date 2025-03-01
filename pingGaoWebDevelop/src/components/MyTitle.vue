@@ -38,7 +38,7 @@ const props = defineProps({
   display: block;
   font-weight: 550;
 
-  font-size: 2.2rem;
+  font-size: 2.5rem;
 
   width: auto;
   font-family: "AlibabaPuHuiTi_2_75_SemiBold";
@@ -56,7 +56,7 @@ const props = defineProps({
 }
 .English {
   display: block;
-  font-size: 1.7rem;
+  font-size: 2rem;
   font-family: "Avenir-Medium-woff-7";
   color: rgb(159, 160, 160);
   text-transform: uppercase;
@@ -81,6 +81,18 @@ const props = defineProps({
   }
   .English {
     font-size: 3rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .h {
+    font-size: 5rem;
+  }
+  .line {
+    width: 8rem;
+  }
+  .English {
+    font-size: 4rem;
   }
 }
 </style>

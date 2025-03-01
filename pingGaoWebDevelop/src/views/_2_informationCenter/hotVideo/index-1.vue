@@ -111,7 +111,7 @@ onMounted(() => {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   grid-template-rows: repeat(3, 1fr);
-  gap: 35px;
+  gap: 3rem;
   height: auto;
   overflow: hidden;
   transition: all 0.5s ease-in-out;
@@ -125,6 +125,13 @@ onMounted(() => {
   transition: all 0.5s ease-in-out;
 }
 
+.video-item {
+  width: 100%;
+  height: 85%;
+  border-radius: 0.5rem;
+  overflow: hidden;
+}
+
 .video-img {
   width: 100%;
   height: auto;
@@ -136,12 +143,6 @@ onMounted(() => {
   transition: all 0.5s ease-in-out;
 }
 
-.video-item {
-  width: 100%;
-  height: auto;
-  border-radius: 0.5rem;
-  overflow: hidden;
-}
 .button-container {
   width: 100%;
   height: auto;
@@ -152,13 +153,17 @@ onMounted(() => {
 }
 
 .video-name {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   font-size: 1.3rem;
   font-family: "AlibabaPuHuiTi_2_65_Medium";
   color: rgb(0, 111, 193);
   line-height: 1.423;
   text-align: center;
-  padding: 1em;
+
   background-color: rgb(215, 244, 255);
+  height: 15%;
 }
 
 .video {
@@ -194,5 +199,30 @@ onMounted(() => {
   right: -200%;
   /* top: 0; */
   transition: right 1s ease;
+}
+
+@media (max-width: 768px) {
+  .body {
+    padding: 0 7%;
+  }
+
+  .content {
+    grid-template-columns: repeat(1, 1fr);
+    gap: 4rem;
+  }
+
+  .video-name {
+    font-size: 2.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .video-name {
+    font-size: 3rem;
+  }
+
+  .content {
+    gap: 5rem;
+  }
 }
 </style>

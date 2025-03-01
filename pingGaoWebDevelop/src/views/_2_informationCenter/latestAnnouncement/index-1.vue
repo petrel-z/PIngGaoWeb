@@ -35,21 +35,23 @@ onMounted(() => {
 <template>
   <div>
     <div style="position: relative">
-      <div class="bodyBg1"></div>
-      <div class="body">
-        <div ref="titleBox" style="padding-top: 64px">
+      <div class="content-header-box">
+        <div ref="titleBox" style="padding-top: 4rem">
           <MyTitle class="title" title="最新公告" English="LATEST ANNOUNCEMENT" />
         </div>
-        <div ref="contentBox" style="margin-top: 58px">
+        <div ref="contentBox" style="margin-top: 3.6rem">
           <MyContent
             class="content"
             title="关于开设拖欠中小企业账款诉求受理渠道的公示"
             content1="为认真落实国务院国资委关于助力中小企业纾困解难促进协同发展的工作要求，根据《保障中小企业款项支付条例》有关规定，完善应付账款管理
 机制，平高集团有限公司（以下简称“集团”）开设清理拖欠中小企业款项诉求反映受理渠道。请各中小企业供应商、服务商对集团所属子企业拖
 欠无争议应付账款行为进行监督。"
-            buttonFlag="true"
+            :buttonFlag="true"
           />
         </div>
+        <div class="bodyBg1"></div>
+      </div>
+      <div class="body">
         <div class="items">
           <ul>
             <li v-for="i in 5" :key="i">
@@ -59,7 +61,9 @@ onMounted(() => {
             </li>
           </ul>
         </div>
-        <div style="display: flex; justify-content: center; margin-top: 55px; margin-bottom: 85px">
+        <div
+          style="display: flex; justify-content: center; margin-top: 3.5rem; margin-bottom: 5.3rem"
+        >
           <MyPagination />
         </div>
       </div>
@@ -68,11 +72,6 @@ onMounted(() => {
 </template>
 
 <style scoped>
-.header {
-  height: 611px;
-  background-image: url("../../../assets/imgs/_2_informationCenterImgs/headerBg.png");
-  background-size: cover;
-}
 .body {
   margin: 0 11%;
   overflow: hidden;
@@ -83,18 +82,18 @@ onMounted(() => {
   top: 0;
   left: 0;
   width: 100%;
-  height: 600px;
+  height: 80%;
   background-color: #def1fb;
   z-index: -1;
 }
 
 .items ul {
   justify-content: space-between;
-  margin-top: 56px;
+  margin-top: 3.5rem;
 }
 
 .items ul li {
-  margin-top: 14px;
+  margin-top: 0.875rem;
 }
 
 .show .content {
@@ -105,5 +104,23 @@ onMounted(() => {
   position: relative;
   right: -200%;
   transition: right 0.5s ease;
+}
+
+.content-header-box {
+  position: relative;
+  box-sizing: content-box;
+  padding-bottom: 3rem;
+  overflow: hidden;
+  padding: 0 11%;
+}
+
+@media (max-width: 768px) {
+  .content-header-box {
+    padding: 0 7%;
+  }
+
+  .body {
+    margin: 0 7%;
+  }
 }
 </style>

@@ -287,7 +287,7 @@ const props = defineProps({
   },
   footerBgColor: {
     type: String,
-    default: "#409eff",
+    default: "#1dc2ff",
   },
 });
 
@@ -558,7 +558,7 @@ onMounted(() => {
         </div>
         <ul class="moveNav-body">
           <li class="moveNav-body-item">
-            <router-link active-class="active-border" to="/homePage-2">首页</router-link>
+            <router-link to="/homePage-2">首页</router-link>
           </li>
           <li class="moveNav-body-item" v-for="(item1, index) in header" :key="item1.name">
             <div class="moveNav-body-item-ul-top">
@@ -994,8 +994,9 @@ onMounted(() => {
   color: var(--fontColor);
   line-height: 1.2;
 }
+
 .header-body-footer {
-  font-size: 1.25;
+  font-size: 2.125rem;
   font-family: "Avenir";
   color: rgba(255, 255, 255, 0.6);
   text-transform: uppercase;
@@ -1029,7 +1030,7 @@ onMounted(() => {
     url("../assets/imgs/_6_qualityAssuranceImgs/t6_topBar.png")
   );
   background-size: cover;
-  padding: 0.5em 0;
+  padding: 0.5rem 0;
   padding-left: 4%;
   white-space: nowrap;
 }
@@ -1042,7 +1043,7 @@ onMounted(() => {
 }
 
 .header-footer ul li {
-  margin-right: 1.5em;
+  margin-right: 1.5rem;
 }
 
 .header-footer ul li a {
@@ -1097,7 +1098,7 @@ onMounted(() => {
     height: auto;
     padding: 0;
     margin: 0;
-    font-size: 2.7rem;
+    font-size: 5rem;
     color: #fff;
   }
 
@@ -1111,24 +1112,24 @@ onMounted(() => {
     background-image: none;
     width: 100%;
     left: 0;
-    background-color: var(--footerBgColor, #409eff);
+    background-color: var(--footerBgColor, #1dc2ff);
     padding: 2% 10%;
   }
 
   .header-footer ul {
     width: 100%;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
-    flex-wrap: wrap;
   }
 
   .header-footer ul li {
     font-size: 2rem;
+    margin-right: 3rem;
   }
 
   .log-img img {
-    width: 20%;
+    width: 35%;
   }
 
   .header-nav-top-bar-ul {
@@ -1236,6 +1237,94 @@ onMounted(() => {
 
   .moveNav-body-item-ul-top .icon-rotate {
     transform: rotate(270deg);
+  }
+}
+
+@media (max-width: 700px) {
+  .moveNav {
+    width: 50vw;
+  }
+
+  .moveNav-header-back-btn {
+    font-size: 3rem;
+    padding: 0.2rem 1rem;
+  }
+
+  .moveNav-header-back-btn i {
+    font-size: 3rem;
+  }
+
+  .moveNav-body-item i {
+    font-size: 3rem;
+  }
+
+  .moveNav-body-item-ul a {
+    font-size: 2.5rem;
+  }
+
+  .moveNav-body-item {
+    padding: 4% 0;
+    font-size: 3rem;
+  }
+
+  .header-body-title {
+    font-size: 4.5rem;
+  }
+
+  .header-body-content {
+    font-size: 2.5rem;
+  }
+
+  .header-body-footer {
+    font-size: 2.5rem;
+  }
+
+  .header-footer ul li {
+    font-size: 2.8rem;
+  }
+}
+
+@media (max-width: 500px) {
+  .moveNav {
+    width: 70vw;
+  }
+
+  .moveNav-header-back-btn {
+    font-size: 5rem;
+    padding: 0.2rem 1rem;
+  }
+
+  .moveNav-header-back-btn i {
+    font-size: 5rem;
+  }
+
+  .moveNav-body-item i {
+    font-size: 5rem;
+  }
+
+  .moveNav-body-item-ul a {
+    font-size: 4rem;
+  }
+
+  .moveNav-body-item {
+    padding: 4% 0;
+    font-size: 5rem;
+  }
+
+  .header-body-title {
+    font-size: 5rem;
+  }
+
+  .header-body-content {
+    font-size: 3.2rem;
+  }
+
+  .header-body-footer {
+    font-size: 3.2rem;
+  }
+
+  .header-footer ul li {
+    font-size: 3.5rem;
   }
 }
 </style>

@@ -62,7 +62,9 @@ onMounted(() => {
           </div>
         </div>
       </div>
-      <div class="footer-bg"></div>
+      <div class="footer-bg">
+        <img src="@/assets/imgs/_5_marketingServiceImgs/serviceBg1.png" alt="" />
+      </div>
     </div>
   </div>
 </template>
@@ -80,19 +82,23 @@ onMounted(() => {
 .body-content {
   margin: 0 11%;
   padding: 4.0625rem 0;
+  padding-bottom: 50rem;
   height: auto;
   overflow: hidden;
 }
 
 .footer-bg {
   width: 100%;
-  height: 90vh;
-  background-image: url("../../../assets/imgs/_5_marketingServiceImgs/serviceBg1.png");
-  background-size: cover;
+  height: auto;
   position: absolute;
   left: 0px;
-  bottom: 0px;
+  bottom: -2rem;
   z-index: -1;
+}
+
+.footer-bg img {
+  width: 100%;
+  height: auto;
 }
 
 .process-box {

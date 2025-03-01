@@ -9,8 +9,11 @@ import ComDoubleDiv from "@/components/ComDoubleDiv.vue";
 <template>
   <div class="body-bg">
     <div class="body">
-      <div class="title">平高集团亮相CIGRE 2024 绿色智能产品吸引全球电力行业目光</div>
-      <TextTitle :color="'#1c4e9f'" :time="'2025-01-14'" :browse="488" />
+      <div class="title-box">
+        <div class="title">平高集团亮相CIGRE 2024 绿色智能产品吸引全球电力行业目光</div>
+        <TextTitle :color="'#1c4e9f'" :time="'2025-01-14'" :browse="488" />
+      </div>
+
       <div class="content">
         <p>
           8月28日，平高集团凭借其在绿色环保和智能制造领域的优异表现，在巴黎CIGRE
@@ -61,28 +64,28 @@ import ComDoubleDiv from "@/components/ComDoubleDiv.vue";
 .body {
   position: relative;
   background-color: #fff;
-  padding: 0 100px;
+  padding: 0 6.25rem;
   height: auto;
 }
 .title {
-  font-size: 35px;
+  font-size: 2.18rem;
   font-family: "AlibabaPuHuiTi_2_65_Medium";
   color: rgb(0, 55, 146);
   line-height: 1.4;
   text-align: center;
-  padding-top: 117px;
-  margin-bottom: 70px;
+  padding-top: 7.3rem;
+  margin-bottom: 4.3rem;
 }
 
 .content {
-  margin-top: 56px;
+  margin-top: 3.5rem;
   text-align: center;
-  font-size: 20px;
+  font-size: 1.25rem;
   font-family: "AlibabaPuHuiTi_2_45_Light";
   color: rgb(89, 87, 87);
   line-height: 1.498;
   width: 100%;
-  min-height: 80vh;
+  padding-bottom: 10%;
 }
 
 .content p:first-child {
@@ -98,7 +101,7 @@ import ComDoubleDiv from "@/components/ComDoubleDiv.vue";
 .footer {
   display: flex;
   justify-content: space-between;
-  padding: 10vh 0;
+  padding: 5% 0;
   width: 100%;
 }
 
@@ -120,6 +123,59 @@ import ComDoubleDiv from "@/components/ComDoubleDiv.vue";
   border: 1px solid #ccc;
   padding: 5px;
   width: 200px;
-  margin-top: 20px; 
+  margin-top: 20px;
 } */
+
+@media (max-width: 900px) {
+  .body {
+    padding: 0;
+  }
+
+  .body-bg {
+    padding: 0 7%;
+  }
+
+  .title-box {
+    padding: 0 2.5rem;
+  }
+
+  .title {
+    font-size: 3rem;
+  }
+
+  .content p {
+    font-size: 2rem;
+  }
+
+  .content {
+    margin-bottom: 3rem;
+    padding: 0 2.5rem;
+  }
+
+  .footer-left {
+    width: 100%;
+    margin: 0;
+    margin-bottom: 0.8rem;
+  }
+
+  .footer-right {
+    width: 100%;
+  }
+
+  .footer {
+    width: 100%;
+    flex-wrap: wrap;
+    margin-bottom: 3rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .title {
+    font-size: 4rem;
+  }
+
+  .content p {
+    font-size: 3rem;
+  }
+}
 </style>

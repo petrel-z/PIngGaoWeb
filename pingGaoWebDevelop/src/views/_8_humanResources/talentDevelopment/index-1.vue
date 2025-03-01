@@ -6,7 +6,6 @@ const items = ref(null);
 const divTitle1 = ref(null);
 const divTitle2 = ref(null);
 const divTitle3 = ref(null);
-const titleBox = ref(null);
 onMounted(() => {
   // 获取目标元素容器
   const targetContainer = items.value;
@@ -86,7 +85,7 @@ onMounted(() => {
       <div>
         <MyTitle title="人才开发" English="TALENT DEVELOPMENT"></MyTitle>
       </div>
-      <div style="margin-top: 3rem; display: flex; width: 100%">
+      <div class="body-content-box">
         <div class="body-content-left">
           <div ref="divTitle1" class="div-title font-white bg-blue">职业通道</div>
           <div ref="divTitle2" class="div-title font-blue bg-white">绩效薪酬</div>
@@ -138,7 +137,7 @@ onMounted(() => {
   background-size: cover;
   width: 100%;
   position: absolute;
-  bottom: -10px;
+  bottom: -4px;
 }
 
 .bodyBg img {
@@ -150,9 +149,15 @@ onMounted(() => {
   position: relative;
   z-index: 999;
   margin: 0 11%;
-  padding-top: 66px;
-  padding-bottom: 30vh;
+  padding-top: 4.3rem;
+  padding-bottom: 25rem;
   overflow: hidden;
+}
+
+.body-content-box {
+  margin-top: 3rem;
+  display: flex;
+  width: 100%;
 }
 
 .body-content-left {
@@ -185,9 +190,9 @@ onMounted(() => {
   transition: right 0.5s ease;
   width: 79%;
   height: auto;
-  padding: 0 89px;
+  padding: 0 5.8rem;
   margin-left: 1%;
-  border-radius: 10px;
+  border-radius: 0.625rem;
 }
 
 .content-title {
@@ -196,22 +201,22 @@ onMounted(() => {
   color: rgb(0, 111, 193);
   line-height: 1.156;
   text-align: center;
-  padding-top: 67px;
+  padding-top: 4.3rem;
 }
 
 .text {
   width: 100%;
-  padding-top: 35px;
-  margin-top: 32px;
-  border-top: 2px solid #006fc1;
-  padding-bottom: 20vh;
+  padding-top: 2.3rem;
+  margin-top: 2.5rem;
+  border-top: 0.2rem solid #006fc1;
+  padding-bottom: 5rem;
 }
 
 .text > p {
-  font-size: 20px;
+  font-size: 1.5rem;
   font-family: "AlibabaPuHuiTi_2_45_Light";
   color: rgb(89, 87, 87);
-  line-height: 1.85;
+  margin-bottom: 2.8rem;
   text-align: left;
 }
 .font-white {
@@ -244,5 +249,32 @@ onMounted(() => {
 
 .bg-blue {
   background-color: #006fc1;
+}
+
+@media (max-width: 768px) {
+  .body-content {
+    margin: 0 7%;
+  }
+
+  .body-content-box {
+    flex-direction: column;
+  }
+
+  .body-content-left {
+    display: grid;
+    width: 100%;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.5rem;
+    margin-bottom: 2rem;
+  }
+
+  .body-content-right {
+    width: 100%;
+    margin: 0;
+  }
+
+  .div-title {
+    padding: 2.5rem 0;
+  }
 }
 </style>

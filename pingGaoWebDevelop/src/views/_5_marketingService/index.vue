@@ -38,7 +38,7 @@ const footer = ref([
     <ComHeader :content="content" :footer="footer" />
   </div>
   <router-view />
-  <div class="right_button"> <RightButton></RightButton> </div>
+  <div class="right_button"><RightButton></RightButton></div>
   <div>
     <Footer />
   </div>
@@ -53,9 +53,21 @@ const footer = ref([
   background-size: cover;
 }
 .right_button {
- position: absolute;
- top: 1400px;
- right: 0;
- z-index: 1001;
+  position: absolute;
+  top: 1400px;
+  right: 0;
+  z-index: 1001;
+}
+
+@media (max-width: 900px) {
+  .header {
+    height: 53vw;
+    width: 100%;
+    background-image: url("@/assets/imgs/_5_marketingServiceImgs/moveHeaderBg.png");
+    background-size: cover;
+  }
+  .right_button {
+    display: none;
+  }
 }
 </style>

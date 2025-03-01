@@ -18,7 +18,7 @@ const props = defineProps({
     type: Array,
     default: () => [
       {
-        title: "国家科技创新\n领军人才/人",
+        title: `国家科技创新\n领军人才/人`,
         num: 1,
       },
       {
@@ -76,65 +76,101 @@ const props = defineProps({
   justify-content: space-between;
   align-items: start;
   width: 100%;
-  min-height: 370px;
-  border-top: 2px solid rgb(0, 111, 193);
-  border-bottom: 2px solid rgb(0, 111, 193);
+  height: auto;
+  border-top: 0.125rem solid rgb(0, 111, 193);
+  border-bottom: 0.125rem solid rgb(0, 111, 193);
+  padding: 4rem 0;
 }
 
 .human-content-left {
-  padding-top: 55px;
   width: 30%;
+  margin-right: 7%;
 }
 
 .human-content-left-title {
-  font-size: 32px;
-  font-family: "Alibaba PuHuiTi 2.0";
+  font-size: 2.5rem;
+  font-family: "AlibabaPuHuiTi_2_55_Regular";
   color: rgb(0, 111, 193);
-  line-height: 1.156;
-  margin-bottom: 62px;
 }
 
 .human-content-left-icon i {
   color: rgb(0, 111, 193);
-  font-size: 68px;
+  font-size: 5rem;
 }
 
 .human-content-right {
-  display: flex;
+  display: grid;
   justify-content: space-between;
   align-items: center;
-  flex-wrap: wrap;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 5rem;
   width: 100%;
-  min-height: 410px;
+  height: auto;
 }
 
 .border-bottom {
-  border-bottom: 2px solid rgb(0, 111, 193);
+  border-bottom: 0.125rem solid rgb(0, 111, 193);
 }
 
 .human-content-right-item {
-  width: calc((100% - 65 * 2px) / 3);
-  height: 205px;
+  width: 100%;
+  height: auto;
+  padding-bottom: 5rem;
   display: flex;
   justify-content: space-between;
-  align-items: start;
-  padding-top: 55px;
+  align-items: center;
 }
 
 .human-content-right-item-title {
-  white-space: pre-wrap;
-  font-size: 26px;
-  font-family: "Alibaba PuHuiTi 2.0";
+  white-space: pre;
+  font-size: 2.5rem;
+  font-family: "AlibabaPuHuiTi_2_55_Regular";
   color: rgb(89, 87, 87);
-  line-height: 1.5;
+  margin-right: 1rem;
 }
 
 .human-content-right-item-num {
-  font-size: 50.446px;
-  font-family: "Avenir";
+  font-size: 3.5rem;
+  font-family: "Avenir-black-4";
   color: rgb(0, 111, 193);
-  line-height: 1.563;
-  text-align: right;
-  margin-right: 65px;
+}
+
+@media (max-width: 768px) {
+  .human-content-right {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .human-content-right-item {
+    border-bottom: 0.125rem solid rgb(0, 111, 193);
+  }
+
+  .human-content {
+    flex-direction: column;
+    border: none;
+  }
+
+  .human-content-left {
+    width: 100%;
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: left;
+    align-items: center;
+    border-bottom: 0.125rem solid rgb(0, 111, 193);
+    margin-bottom: 5rem;
+    padding-bottom: 2rem;
+  }
+
+  .human-content-left-title {
+    font-size: 3rem;
+  }
+
+  .human-content-left-icon {
+    transform: rotate(90deg);
+    margin-right: 2rem;
+  }
+
+  .human-content-left-icon i {
+    font-size: 4rem;
+  }
 }
 </style>

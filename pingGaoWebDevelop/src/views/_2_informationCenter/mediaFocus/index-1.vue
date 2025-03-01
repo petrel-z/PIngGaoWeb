@@ -1,6 +1,4 @@
 <script setup>
-import { ref, onMounted } from "vue";
-
 defineOptions({
   name: "NewsCenterIndex3-1",
 });
@@ -90,7 +88,7 @@ function handleClick(e) {
   <div style="position: relative; overflow: hidden">
     <div class="body">
       <div>
-        <div style="padding-top: 64px">
+        <div style="padding-top: 4rem">
           <my-title title="媒体聚焦" English="MEDIA FOCUS" />
         </div>
         <div class="item-container">
@@ -124,7 +122,7 @@ function handleClick(e) {
 .item-container {
   width: 100%;
   height: auto;
-  margin-top: 72px;
+  margin-top: 4.5rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -134,7 +132,7 @@ function handleClick(e) {
 .button-container {
   width: 100%;
   height: auto;
-  margin: 3em 0;
+  margin: 3rem 0;
   display: flex;
   justify-content: center;
   align-items: center;

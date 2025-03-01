@@ -50,11 +50,14 @@ const props = defineProps({
   text-align: center;
   text-decoration: none;
   display: inline-block;
-  font-size: 1rem;
   cursor: pointer;
   width: auto;
   height: auto;
-  border-radius: 5rem;
+  border-radius: 0.8rem;
+}
+
+.button i {
+  font-size: 1.5rem;
 }
 
 .button:hover {
@@ -64,7 +67,7 @@ const props = defineProps({
 
 .button-text {
   width: 70%;
-  font-size: 1.1rem;
+  font-size: 1.5rem;
   font-family: "AlibabaPuHuiTi_2_55_Regular";
   color: rgb(255, 255, 255);
   line-height: 1.542;
@@ -82,7 +85,6 @@ const props = defineProps({
 }
 
 .content-btn {
-  font-size: 1.1rem;
   font-family: "AlibabaPuHuiTi_2_45_Light";
   color: rgb(255, 255, 255);
   display: flex;
@@ -98,8 +100,26 @@ const props = defineProps({
   cursor: pointer;
 }
 
+.content-btn i {
+  font-size: 1.5rem;
+}
+
 .content-btn:hover {
   transform: scale(1.1);
   transition: all 0.3s ease-in-out;
+}
+
+@media (max-width: 400px) {
+  .button-text {
+    font-size: 2rem;
+  }
+
+  .button i {
+    font-size: 2rem;
+  }
+
+  .content-btn i {
+    font-size: 2rem;
+  }
 }
 </style>

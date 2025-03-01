@@ -79,10 +79,10 @@ onMounted(() => {
     </div>
     <div class="body">
       <div>
-        <div style="padding-top: 64px">
+        <div style="padding-top: 2.5rem">
           <my-title title="集团新闻" English="GROUP NEWS" />
         </div>
-        <div ref="contentBox" style="margin-top: 59px">
+        <div ref="contentBox" style="margin-top: 2.5rem">
           <ContentPag
             class="content"
             title1="平高集团1家企业"
@@ -133,7 +133,7 @@ onMounted(() => {
 .item-container {
   width: 100%;
   height: auto;
-  margin-top: 72px;
+  margin-top: 4.5rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -143,7 +143,7 @@ onMounted(() => {
 .button-container {
   width: 100%;
   height: auto;
-  margin: 3em 0;
+  margin: 3rem 0;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -157,5 +157,15 @@ onMounted(() => {
   position: relative;
   right: -200%;
   transition: right 0.5s ease;
+}
+
+@media screen and (max-width: 900px) {
+  .body {
+    margin: 0 5%;
+  }
+
+  .bodyBg1 {
+    height: 100vw;
+  }
 }
 </style>

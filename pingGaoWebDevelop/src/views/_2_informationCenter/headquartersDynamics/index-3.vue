@@ -10,8 +10,11 @@ import imgPath from "@/assets/imgs/_2_informationCenterImgs/LehYXF.png";
 <template>
   <div class="body-bg">
     <div class="body">
-      <div class="title">中国电气装备召开一届二次职工代表大会暨2025年工作会议</div>
-      <TextTitle :color="'#1c4e9f'" :time="'2025-01-14'" :browse="488" />
+      <div class="title-box">
+        <div class="title">中国电气装备召开一届二次职工代表大会暨2025年工作会议</div>
+        <TextTitle :color="'#1c4e9f'" :time="'2025-01-14'" :browse="488" />
+      </div>
+
       <div class="content">
         <p>
           1月13日至14日，中国电气装备集团有限公司第一届职工代表大会第二次会议暨2025年工作会议在沪召开。会议以习近平新时代中国特色社会主义思
@@ -64,19 +67,19 @@ import imgPath from "@/assets/imgs/_2_informationCenterImgs/LehYXF.png";
   overflow: hidden;
 }
 .title {
-  font-size: 35px;
+  font-size: 4rem;
   font-family: "AlibabaPuHuiTi_2_65_Medium";
   color: rgb(0, 55, 146);
   line-height: 1.4;
   text-align: center;
-  padding-top: 117px;
-  margin-bottom: 70px;
+  padding-top: 7.4rem;
+  margin-bottom: 4.4rem;
 }
 
 .content {
-  margin-top: 56px;
+  margin-top: 3.5rem;
   text-align: center;
-  font-size: 20px;
+  font-size: 1.25rem;
   font-family: "AlibabaPuHuiTi_2_45_Light";
   color: rgb(89, 87, 87);
   line-height: 1.498;
@@ -107,7 +110,7 @@ import imgPath from "@/assets/imgs/_2_informationCenterImgs/LehYXF.png";
 .footer {
   display: flex;
   justify-content: space-between;
-  padding: 10vh 0;
+  padding: 5% 0;
   width: 100%;
 }
 
@@ -121,8 +124,35 @@ import imgPath from "@/assets/imgs/_2_informationCenterImgs/LehYXF.png";
 }
 
 @media (max-width: 900px) {
+  .body-bg {
+    padding: 0 7%;
+  }
+
+  .body {
+    padding: 0;
+  }
+
+  .title-box {
+    padding: 0 2.5rem;
+  }
+
+  .title {
+    font-size: 3rem;
+  }
+
+  .content p {
+    font-size: 2rem;
+  }
+
+  .content {
+    margin-bottom: 3rem;
+    padding: 0 2.5rem;
+  }
+
   .footer-left {
     width: 100%;
+    margin: 0;
+    margin-bottom: 0.8rem;
   }
 
   .footer-right {
@@ -130,7 +160,19 @@ import imgPath from "@/assets/imgs/_2_informationCenterImgs/LehYXF.png";
   }
 
   .footer {
+    width: 100%;
     flex-wrap: wrap;
+    margin-bottom: 3rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .title {
+    font-size: 4rem;
+  }
+
+  .content p {
+    font-size: 3rem;
   }
 }
 </style>

@@ -62,20 +62,22 @@ onMounted(() => {
               content2="解决方案，逐渐成为行业的佼佼者，并以先进的技术、完善的服务，影响和改善更多人的工作和生活。"
             />
             <div class="my-content-bottom">
-              <div class="my-content-bottom-item">
-                <span>国内销售</span>
-                <div></div>
-                <span>0371-66968576</span>
-              </div>
-              <div class="my-content-bottom-item">
-                <span>国外销售</span>
-                <div></div>
-                <span>0371-58505793</span>
-              </div>
-              <div class="my-content-bottom-item">
-                <span>客服电话</span>
-                <div></div>
-                <span>400-6700-312</span>
+              <div class="my-content-bottom-item-box">
+                <div class="my-content-bottom-item">
+                  <span>国内销售</span>
+                  <div></div>
+                  <span>0371-66968576</span>
+                </div>
+                <div class="my-content-bottom-item">
+                  <span>国外销售</span>
+                  <div></div>
+                  <span>0371-58505793</span>
+                </div>
+                <div class="my-content-bottom-item">
+                  <span>客服电话</span>
+                  <div></div>
+                  <span>400-6700-312</span>
+                </div>
               </div>
             </div>
           </div>
@@ -91,7 +93,7 @@ onMounted(() => {
               :class="{ left: i % 3 === 1, right: i % 3 === 0 || i % 3 === 2 }"
             >
               <hr class="item-hr1" />
-              <div>
+              <div class="item-content">
                 <div class="item-title">河南平高电气股份有限公司</div>
                 <hr class="item-hr-hr" />
                 <div class="item-phone">电话：400-6700312</div>
@@ -105,7 +107,7 @@ onMounted(() => {
                   bottom: 0px;
                   left: 0px;
                   width: 100%;
-                  height: 1px;
+                  height: 0.05rem;
                   background-color: rgb(69, 179, 224);
                 "
               />
@@ -113,7 +115,9 @@ onMounted(() => {
           </div>
         </div>
       </div>
-      <div class="footer-bg"></div>
+      <div class="footer-bg">
+        <img src="@/assets/imgs/_5_marketingServiceImgs/serviceBg1.png" alt="" />
+      </div>
     </div>
   </div>
 </template>
@@ -132,7 +136,7 @@ onMounted(() => {
 .body-content {
   margin: 0 11%;
   padding-top: 4.0625rem;
-  padding-bottom: 56vh;
+  padding-bottom: 50rem;
   height: auto;
   overflow: hidden;
 }
@@ -142,7 +146,16 @@ onMounted(() => {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0 2em 2em;
+  padding: 0 2rem 2rem;
+}
+
+.my-content-bottom-item-box {
+  margin-top: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 0 2rem 2rem;
 }
 
 .my-content-bottom-item:hover {
@@ -171,7 +184,7 @@ onMounted(() => {
   color: rgb(255, 255, 255);
   line-height: 1.542;
   text-align: left;
-  padding-top: 0.7em;
+  padding-top: 0.7rem;
 }
 
 .my-content-bottom-item span:nth-of-type(2) {
@@ -203,9 +216,9 @@ onMounted(() => {
 }
 
 .items-content {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 2rem;
   width: 100%;
   margin-top: 2.9375rem;
   overflow: hidden;
@@ -213,7 +226,6 @@ onMounted(() => {
 
 .item {
   position: relative;
-  width: calc((100% - 2 * 2.6875rem) / 3);
   min-height: 16.9375rem;
 }
 
@@ -250,13 +262,16 @@ onMounted(() => {
 
 .footer-bg {
   width: 100%;
-  height: 90vh;
-  background-image: url("../../../assets/imgs/_5_marketingServiceImgs/serviceBg1.png");
-  background-size: cover;
+  height: auto;
   position: absolute;
   left: 0px;
-  bottom: 0px;
+  bottom: -2rem;
   z-index: -1;
+}
+
+.footer-bg img {
+  width: 100%;
+  height: auto;
 }
 
 .show .content {
@@ -287,5 +302,82 @@ onMounted(() => {
   position: relative;
   right: -200%;
   transition: right 1s ease;
+}
+
+@media (max-width: 768px) {
+  .items-content {
+    grid-template-columns: repeat(1, 1fr);
+  }
+
+  .item-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .my-content-bottom {
+    flex-direction: column;
+    align-content: center;
+    padding: 0 4rem 4rem;
+  }
+
+  .my-content-bottom-item-box {
+    flex-direction: column;
+    align-content: center;
+    width: auto;
+  }
+
+  .my-content-bottom-item {
+    width: 100%;
+    justify-content: left;
+    margin-top: 2.5rem;
+  }
+
+  .my-content-bottom-item span:nth-of-type(1) {
+    font-size: 3rem;
+  }
+
+  .my-content-bottom-item span:nth-of-type(2) {
+    font-size: 4rem;
+  }
+
+  .items-title {
+    font-size: 3.3rem;
+  }
+
+  .item-title {
+    font-size: 2.6rem;
+  }
+
+  .item-phone,
+  .item-fax,
+  .item-email {
+    font-size: 2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .my-content-bottom-item span:nth-of-type(1) {
+    font-size: 3.5rem;
+  }
+
+  .my-content-bottom-item span:nth-of-type(2) {
+    font-size: 4.5rem;
+  }
+
+  .items-title {
+    font-size: 3.8rem;
+  }
+
+  .item-title {
+    font-size: 3.1rem;
+  }
+
+  .item-phone,
+  .item-fax,
+  .item-email {
+    font-size: 2.6rem;
+  }
 }
 </style>

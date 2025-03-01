@@ -11,22 +11,24 @@ onMounted(() => {
     // 监听页面滚动事件
     window.addEventListener("scroll", () => {
       // 获取元素顶部距离页面顶部的距离
-      const titleTop = titleBox.value.getBoundingClientRect().top;
-      const itemTop = itemBox.value.getBoundingClientRect().top;
-      // 获取窗口的高度
-      const windowHeight = window.innerHeight;
+      if (titleBox.value && itemBox.value) {
+        const titleTop = titleBox.value.getBoundingClientRect().top;
+        const itemTop = itemBox.value.getBoundingClientRect().top;
+        // 获取窗口的高度
+        const windowHeight = window.innerHeight;
 
-      // 判断元素是否进入可视区域
+        // 判断元素是否进入可视区域
 
-      if (titleTop < windowHeight) {
-        titleBox.value.classList.add("show");
-      } else {
-        titleBox.value.classList.remove("show");
-      }
-      if (itemTop < windowHeight) {
-        itemBox.value.classList.add("show");
-      } else {
-        itemBox.value.classList.remove("show");
+        if (titleTop < windowHeight) {
+          titleBox.value.classList.add("show");
+        } else {
+          titleBox.value.classList.remove("show");
+        }
+        if (itemTop < windowHeight) {
+          itemBox.value.classList.add("show");
+        } else {
+          itemBox.value.classList.remove("show");
+        }
       }
     });
   }
@@ -34,8 +36,10 @@ onMounted(() => {
 </script>
 
 <template>
-  <div style="position: relative; min-height: 1562px; background-color: #def1fb; z-index: -2">
-    <div class="bodyBg"></div>
+  <div class="body-box">
+    <div class="bodyBg">
+      <img src="@/assets/imgs/_8_humanResourcesImgs/bg-1.png" alt="" />
+    </div>
     <div class="body-content">
       <div ref="titleBox">
         <MyTitle class="my-title" title="人才招聘" English="TALENT RECRUITMENT"></MyTitle>
@@ -47,14 +51,14 @@ onMounted(() => {
       <div style="margin-top: 4.9rem">
         <div class="content-title">高校毕业生招聘</div>
         <div style="margin-top: 3.7rem">
-          <Item2
-            v-for="i in 3"
-            :key="i"
-            style="margin-bottom: 1.7rem"
-            time="2022.03.08"
-            text="国电气装备旗下平高集团2022年社会招聘公告"
-            size="big"
-          />
+          <router-link to="/humanResources/talentRecruitment-2" v-for="i in 3" :key="i">
+            <Item2
+              style="margin-bottom: 1.7rem"
+              time="2022.03.08"
+              text="国电气装备旗下平高集团2022年社会招聘公告"
+              size="big"
+            />
+          </router-link>
         </div>
       </div>
     </div>
@@ -62,18 +66,27 @@ onMounted(() => {
 </template>
 
 <style scoped>
+.body-box {
+  position: relative;
+  background-color: #def1fb;
+  padding-bottom: 40%;
+}
+
 .bodyBg {
-  background-image: url("../../../assets/imgs/_8_humanResourcesImgs/bg-1.png");
-  background-size: cover;
   width: 100%;
-  min-height: 884px;
   position: absolute;
-  top: 705px;
+  bottom: -5px;
   z-index: -1;
 }
+
+.bodyBg img {
+  width: 100%;
+  height: auto;
+}
+
 .body-content {
   margin: 0 11%;
-  padding-top: 66px;
+  padding-top: 4.2rem;
   overflow: hidden;
 }
 
@@ -87,13 +100,15 @@ onMounted(() => {
 
 .left {
   width: 48%;
-  height: 30vh;
-  line-height: 30vh;
+  aspect-ratio: 721/237; /* 宽高比为 721:237 */
+  display: flex;
+  justify-content: center;
+  align-items: center;
   cursor: pointer;
   background-image: url("../../../assets/imgs/_8_humanResourcesImgs/divBg-1.png");
   background-size: cover;
-  border-radius: 10px;
-  font-size: 32px;
+  border-radius: 0.625rem;
+  font-size: 2.5rem;
   font-family: "AlibabaPuHuiTi_2_65_Medium";
   color: rgb(255, 255, 255);
   text-align: center;
@@ -106,15 +121,16 @@ onMounted(() => {
 }
 
 .right {
-  font-size: 32px;
+  font-size: 2.5rem;
   font-family: "AlibabaPuHuiTi_2_65_Medium";
   color: rgb(255, 255, 255);
-  border-radius: 10px;
+  border-radius: 0.625rem;
   text-align: center;
   width: 48%;
-  height: 30vh;
-  line-height: 30vh;
-  cursor: pointer;
+  aspect-ratio: 721/237;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   background-image: url("../../../assets/imgs/_8_humanResourcesImgs/divBg-2.png");
   background-size: cover;
   margin-left: 4%;
@@ -127,10 +143,9 @@ onMounted(() => {
 }
 
 .content-title {
-  font-size: 32px;
+  font-size: 2.5rem;
   font-family: "AlibabaPuHuiTi_2_65_Medium";
   color: rgb(0, 111, 193);
-  line-height: 1.156;
   text-align: center;
 }
 </style>

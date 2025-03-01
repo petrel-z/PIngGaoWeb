@@ -52,17 +52,19 @@ const items = [
 
 // 监听窗口大小变化事件
 let onceChange = ref(false);
+function changeOnce() {
+  // 获取当前窗口的宽度和高度
+  const width = window.innerWidth;
+  if (width <= 900) {
+    // 根据窗口大小改变dom元素
+    onceChange.value = true;
+  } else {
+    onceChange.value = false;
+  }
+}
 onMounted(() => {
-  window.addEventListener("resize", () => {
-    // 获取当前窗口的宽度和高度
-    const width = window.innerWidth;
-    if (width <= 900) {
-      // 根据窗口大小改变dom元素
-      onceChange.value = true;
-    } else {
-      onceChange.value = false;
-    }
-  });
+  changeOnce();
+  window.addEventListener("resize", changeOnce);
 });
 </script>
 
@@ -120,6 +122,7 @@ onMounted(() => {
   align-items: center;
   flex-direction: column;
   margin-right: 1%;
+  margin-bottom: 2%;
 }
 
 .order-container {
@@ -136,6 +139,10 @@ onMounted(() => {
 }
 
 @media (max-width: 900px) {
+  .body {
+    padding: 0 7%;
+  }
+
   .item-container {
     width: 100%;
   }
