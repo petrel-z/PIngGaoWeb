@@ -2,7 +2,7 @@
 defineOptions({
   name: "NewsCenterIndex3-3",
 });
-import TextTitle from "@/components/TextTitle.vue";
+import newsBar from "@/components/newsBar.vue";
 import ComDoubleDiv from "@/components/ComDoubleDiv.vue";
 import imgPath from "@/assets/imgs/_2_informationCenterImgs/MZFUZt.png";
 </script>
@@ -12,7 +12,7 @@ import imgPath from "@/assets/imgs/_2_informationCenterImgs/MZFUZt.png";
     <div class="body">
       <div class="title-box">
         <div class="title">平高集团亮相CIGRE 2024 绿色智能产品吸引全球电力行业目光</div>
-        <TextTitle :color="'#1c4e9f'" :time="'2025-01-14'" :browse="488" />
+        <newsBar :color="'#1c4e9f'" :time="'2025-01-14'" :browse="488" />
       </div>
       <div class="content">
         <p>

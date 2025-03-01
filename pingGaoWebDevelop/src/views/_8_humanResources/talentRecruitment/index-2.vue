@@ -1,5 +1,5 @@
 <script setup>
-import TextTitle from "@/components/TextTitle.vue";
+import newsBar from "@/components/newsBar.vue";
 </script>
 
 <template>
@@ -12,7 +12,7 @@ import TextTitle from "@/components/TextTitle.vue";
         <div class="title-box">
           <div class="content-title">国电气装备旗下平高集团2022年社会招聘公告</div>
           <div style="margin-top: 4.7rem; margin-bottom: 4.7rem">
-            <TextTitle time="2025-01-14" :browse="488" color="#1c4e9f" />
+            <newsBar time="2025-01-14" :browse="488" color="#1c4e9f" />
           </div>
         </div>
 
