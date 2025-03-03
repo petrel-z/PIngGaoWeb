@@ -1,14 +1,53 @@
 <script setup>
 import MyTitle from "@/components/MyTitle.vue";
+import HttpUtils from "@/utils/httpUtils.js";
 import { ref } from "vue";
+import { useCascaderAreaData } from "@/utils/areaUtils.js";
+import { ElMessageBox } from "element-plus";
+import httpUtils from "@/utils/httpUtils.js";
 
 const options = ref(null);
-function toggleOptions(num) {
-  const options = document.querySelector(`.options${num}`);
-  options.style.display = options.style.display === "block" ? "none" : "block";
+
+const requestVerifyId = ref("");
+const requestVerifyImage = ref("");
+const areaData = ref(useCascaderAreaData());
+const areaDefault = ref("北京市");
+const partnerTypeList = ref([
+  "工商业储能合作伙伴",
+  "重卡换电合作伙伴",
+  "工业PLC合作伙伴",
+  "智慧消防合作伙伴",
+  "电力电源与充电桩合作伙伴",
+  "综合自动化系统合作伙伴",
+  "智能计量（电能表）合作伙伴",
+  "变压器合作伙伴",
+  "开关断路器合作伙伴",
+  "其他合作伙伴",
+]);
+
+async function getVerifyCode () {
+  const res = await HttpUtils.get(`/cms/partner/request_join`);
+  const result = await res.json();
+
+  requestVerifyId.value = result.data.uuid;
+  requestVerifyImage.value = result.data.image;
 }
 
-function selectOption(event, num) {
+getVerifyCode();
+
+function toggleOptions (num) {
+  const allOptions = document.querySelectorAll(`.options.active`);
+  const options = document.querySelector(`.options${num}`);
+  allOptions.forEach(i => {
+    if (i !== options) {
+      i.classList.remove("active");
+    }
+  });
+
+  options.classList.toggle("active");
+}
+
+function selectOption (event, num) {
   const selectedText = event.target.textContent;
   const selectOption = document.querySelector(`.selected-option${num}`);
   if (selectedText === "请输入") {
@@ -16,9 +55,20 @@ function selectOption(event, num) {
   } else {
     selectOption.style.color = "#231815";
   }
+
+  if (num === 4 && selectOption.textContent !== selectedText) {
+    document.querySelector(`.selected-option2`).textContent = "请选择";
+  }
+
   selectOption.textContent = selectedText;
+
+  if (num === 4) {
+    areaDefault.value = selectedText;
+  }
+
   toggleOptions(num);
 }
+
 const partnerType = ref(null);
 const companyName = ref("");
 const contactName = ref("");
@@ -43,18 +93,12 @@ const contactPhoneMust = ref(null);
 const provinceMust = ref(null);
 const verifyCodeMust = ref(null);
 
-function submit() {
-  if (
-    partnerType.value.textContent === "请选择" ||
-    companyName.value === "" ||
-    contactName.value === "" ||
-    city.value.textContent === "请选择" ||
-    intention.value === "" ||
-    joinDealer.value.textContent === "请选择" ||
-    contactPhone.value === "" ||
-    province.value.textContent === "请选择" ||
-    verifyCode.value === ""
-  ) {
+async function submit () {
+  if (partnerType.value.textContent === "请选择" || companyName.value === ""
+    || contactName.value === "" || city.value.textContent === "请选择"
+    || intention.value === "" || joinDealer.value.textContent === "请选择"
+    || contactPhone.value === "" || province.value.textContent === "请选择"
+    || verifyCode.value === "") {
     if (partnerType.value.textContent === "请选择") {
       partnerTypeMust.value.style.display = "block";
     } else {
@@ -102,26 +146,38 @@ function submit() {
     } else {
       verifyCodeMust.value.style.display = "none";
     }
-    alert("请填写完整信息");
+    ElMessageBox.alert("有内容未填写", "提示");
     return;
   }
-  const information = {
-    partnerType: partnerType.value.textContent,
+
+  const response = await httpUtils.post("/cms/partner/join", {
+    type: partnerType.value.textContent,
+
+    country: "中国",
+    province: province.value.textContent,
+    city: city.value.textContent,
+
     companyName: companyName.value,
     contactName: contactName.value,
-    country: "中国",
-    city: city.value.textContent,
-    intention: intention.value,
-    joinDealer: joinDealer.value.textContent,
     contactPhone: contactPhone.value,
-    province: province.value.textContent,
-    verifyCode: verifyCode.value,
-  };
-  reset1();
-  alert("提交成功,信息打印在控制台");
-  console.log(information);
+
+    intention: intention.value,
+    joinDistributor: joinDealer.value.textContent,
+
+    requestId: requestVerifyId.value,
+    code: verifyCode.value
+  });
+  const { data } = await response.json();
+
+  if (data.data === 1) {
+    reset1();
+    await ElMessageBox.alert("提交成功", "提示");
+  } else {
+    await ElMessageBox.alert(data.msg, "提示");
+  }
 }
-function reset1() {
+
+function reset1 () {
   partnerType.value.textContent = "请选择";
   companyName.value = "";
   contactName.value = "";
@@ -132,19 +188,11 @@ function reset1() {
   contactPhone.value = "";
   province.value.textContent = "请选择";
   verifyCode.value = "";
-  partnerTypeMust.value.style.display = "none";
-  companyNameMust.value.style.display = "none";
-  contactNameMust.value.style.display = "none";
-  cityMust.value.style.display = "none";
-  intentionMust.value.style.display = "none";
-  joinDealerMust.value.style.display = "none";
-  contactPhoneMust.value.style.display = "none";
-  provinceMust.value.style.display = "none";
-  verifyCodeMust.value.style.display = "none";
 }
-function reset() {
+
+function reset () {
   reset1();
-  alert("重置成功");
+  ElMessageBox.alert("重置成功", "提示");
 }
 </script>
 
@@ -152,7 +200,7 @@ function reset() {
   <div class="becomePartner-content">
     <div class="content-top">
       <div class="top-title">
-        <MyTitle :title="'成为伙伴'" english="become partner"></MyTitle>
+        <MyTitle title="成为伙伴" english="become partner"></MyTitle>
       </div>
       <div class="top-information">
         <h1>填写资料</h1>
@@ -171,18 +219,11 @@ function reset() {
                   >
                     请选择
                   </div>
-                  <ul class="options options1" ref="options">
-                    <li class="first-option" @click="selectOption($event, 1)">请选择</li>
-                    <li @click="selectOption($event, 1)">工商业储能合作伙伴</li>
-                    <li @click="selectOption($event, 1)">重卡换电合作伙伴</li>
-                    <li @click="selectOption($event, 1)">工业PLC合作伙伴</li>
-                    <li @click="selectOption($event, 1)">智慧消防合作伙伴</li>
-                    <li @click="selectOption($event, 1)">电力电源与充电桩合作伙伴</li>
-                    <li @click="selectOption($event, 1)">综合自动化系统合作伙伴</li>
-                    <li @click="selectOption($event, 1)">智能计量（电能表）合作伙伴</li>
-                    <li @click="selectOption($event, 1)">变压器合作伙伴</li>
-                    <li @click="selectOption($event, 1)">开关断路器合作伙伴</li>
-                    <li @click="selectOption($event, 1)">其他合作伙伴</li>
+                  <ul ref="options" class="options options1">
+                    <li v-for="type in partnerTypeList" :key="type"
+                        @click="selectOption($event, 1)">
+                      {{ type }}
+                    </li>
                   </ul>
                 </div>
                 <!-- <input type="text" placeholder="请选择" /> -->
@@ -229,26 +270,10 @@ function reset() {
                   >
                     请选择
                   </div>
-                  <ul class="options options2" ref="options">
-                    <li @click="selectOption($event, 2)">请选择</li>
-                    <li @click="selectOption($event, 2)">三门峡市</li>
-                    <li @click="selectOption($event, 2)">信阳市</li>
-                    <li @click="selectOption($event, 2)">南阳市</li>
-                    <li @click="selectOption($event, 2)">周口市</li>
-                    <li @click="selectOption($event, 2)">商丘市</li>
-                    <li @click="selectOption($event, 2)">安阳市</li>
-                    <li @click="selectOption($event, 2)">平顶山市</li>
-                    <li @click="selectOption($event, 2)">开封市</li>
-                    <li @click="selectOption($event, 2)">新乡市</li>
-                    <li @click="selectOption($event, 2)">洛阳市</li>
-                    <li @click="selectOption($event, 2)">漯河市</li>
-                    <li @click="selectOption($event, 2)">濮阳市</li>
-                    <li @click="selectOption($event, 2)">焦作市</li>
-                    <li @click="selectOption($event, 2)">省直辖县级行政区划</li>
-                    <li @click="selectOption($event, 2)">许昌市</li>
-                    <li @click="selectOption($event, 2)">郑州市</li>
-                    <li @click="selectOption($event, 2)">驻马店市</li>
-                    <li @click="selectOption($event, 2)">鹤壁市</li>
+                  <ul ref="options" class="options options2">
+                    <li v-for="city in areaData.find(i=>i.text === areaDefault).children"
+                        :key="city.value" @click="selectOption($event, 2)">{{ city.text }}
+                    </li>
                   </ul>
                 </div>
               </div>
@@ -280,8 +305,7 @@ function reset() {
                   >
                     请选择
                   </div>
-                  <ul class="options options3" ref="options">
-                    <li @click="selectOption($event, 3)">请选择</li>
+                  <ul ref="options" class="options options3">
                     <li @click="selectOption($event, 3)">是</li>
                     <li @click="selectOption($event, 3)">否</li>
                   </ul>
@@ -311,42 +335,10 @@ function reset() {
                   >
                     请选择
                   </div>
-                  <ul class="options options4" ref="options">
-                    <li @click="selectOption($event, 4)">请选择</li>
-                    <li @click="selectOption($event, 4)">台湾省</li>
-                    <li @click="selectOption($event, 4)">澳门特别行政区</li>
-                    <li @click="selectOption($event, 4)">香港特别行政区</li>
-                    <li @click="selectOption($event, 4)">上海市</li>
-                    <li @click="selectOption($event, 4)">云南省</li>
-                    <li @click="selectOption($event, 4)">内蒙古自治区</li>
-                    <li @click="selectOption($event, 4)">北京市</li>
-                    <li @click="selectOption($event, 4)">吉林省</li>
-                    <li @click="selectOption($event, 4)">四川省</li>
-                    <li @click="selectOption($event, 4)">天津市</li>
-                    <li @click="selectOption($event, 4)">宁夏回族自治区</li>
-                    <li @click="selectOption($event, 4)">安徽省</li>
-                    <li @click="selectOption($event, 4)">山东省</li>
-                    <li @click="selectOption($event, 4)">山西省</li>
-                    <li @click="selectOption($event, 4)">广东省</li>
-                    <li @click="selectOption($event, 4)">广西壮族自治区</li>
-                    <li @click="selectOption($event, 4)">新疆维吾尔自治区</li>
-                    <li @click="selectOption($event, 4)">江苏省</li>
-                    <li @click="selectOption($event, 4)">江西省</li>
-                    <li @click="selectOption($event, 4)">河北省</li>
-                    <li @click="selectOption($event, 4)">河南省</li>
-                    <li @click="selectOption($event, 4)">浙江省</li>
-                    <li @click="selectOption($event, 4)">海南省</li>
-                    <li @click="selectOption($event, 4)">湖北省</li>
-                    <li @click="selectOption($event, 4)">湖南省</li>
-                    <li @click="selectOption($event, 4)">甘肃省</li>
-                    <li @click="selectOption($event, 4)">福建省</li>
-                    <li @click="selectOption($event, 4)">西藏自治区</li>
-                    <li @click="selectOption($event, 4)">贵州省</li>
-                    <li @click="selectOption($event, 4)">辽宁省</li>
-                    <li @click="selectOption($event, 4)">重庆市</li>
-                    <li @click="selectOption($event, 4)">陕西省</li>
-                    <li @click="selectOption($event, 4)">青海省</li>
-                    <li @click="selectOption($event, 4)">黑龙江省</li>
+                  <ul ref="options" class="options options4">
+                    <li v-for="province in areaData" :key="province.value"
+                        @click="selectOption($event, 4)">{{ province.text }}
+                    </li>
                   </ul>
                 </div>
               </div>
@@ -359,10 +351,14 @@ function reset() {
               <div class="select">
                 <input v-model="verifyCode" type="text" placeholder="请输入" />
               </div>
-              <div class="codeImg"></div>
+              <div
+                class="codeImg"
+                @click="getVerifyCode"
+              >
+                <img :src="requestVerifyImage" alt="验证码">
+              </div>
               <div ref="verifyCodeMust" class="mustWrite">该项是必填项</div>
             </div>
-
             <div class="reset" @click="reset()">重置资料</div>
           </div>
         </div>
