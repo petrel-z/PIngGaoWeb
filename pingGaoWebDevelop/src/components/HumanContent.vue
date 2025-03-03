@@ -18,7 +18,7 @@ const props = defineProps({
     type: Array,
     default: () => [
       {
-        title: `国家科技创新\n领军人才/人`,
+        title: "国家科技创新\n领军人才/人",
         num: 1,
       },
       {

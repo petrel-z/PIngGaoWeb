@@ -1,7 +1,11 @@
 <script setup>
 import { onMounted, ref } from "vue";
-let hover = ref(false);
+
 const props = defineProps({
+  detailId: {
+    type: Number,
+    default: 1,
+  },
   month: {
     type: String,
     default: "01.14",
@@ -69,7 +73,10 @@ const props = defineProps({
   },
 });
 
+const emit = defineEmits(["clickItem"]);
+const hover = ref(false);
 const items = ref(null);
+
 onMounted(() => {
   // 获取目标元素容器
   const targetContainer = items.value;
@@ -108,6 +115,7 @@ onMounted(() => {
       '--titleFontColor': props.titleFontColor,
       '--textFontColor': props.textFontColor,
     }"
+    @click="emit('clickItem', props.detailId)"
   >
     <div
       class="left"
@@ -127,9 +135,7 @@ onMounted(() => {
       <div class="title">
         {{ props.title }}
       </div>
-      <div class="text">
-        {{ props.text }}
-      </div>
+      <div class="text" v-html="props.text"/>
     </div>
   </div>
 </template>
@@ -275,21 +281,26 @@ onMounted(() => {
     width: 20%;
     margin: 0;
   }
+
   .right {
     border-bottom-left-radius: 0;
     border-top-left-radius: 0;
     width: 80%;
     margin: 0;
   }
+
   .title {
     font-size: 3.1rem;
   }
+
   .text {
     font-size: 2.5rem;
   }
+
   .month {
     font-size: 3.2rem;
   }
+
   .year {
     font-size: 1.8rem;
   }
@@ -299,6 +310,7 @@ onMounted(() => {
   .month {
     font-size: 4rem;
   }
+
   .year {
     font-size: 2rem;
   }

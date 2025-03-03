@@ -1,7 +1,11 @@
 <script setup>
-import { ref, onMounted } from "vue";
+import { onMounted, ref } from "vue";
 
 const props = defineProps({
+  detailId: {
+    type: Number,
+    default: 1,
+  },
   time: {
     type: String,
     default: "2025.01.14",
@@ -26,13 +30,11 @@ const props = defineProps({
     type: String,
     default: "AlibabaPuHuiTi_2_55_Regular",
   },
-  hoverBgColor: {
-    type: String,
-    default: "#003792",
-  }
 });
 
+const emit = defineEmits(["clickItem"]);
 const items = ref(null);
+
 onMounted(() => {
   // 获取目标元素容器
   const targetContainer = items.value;
@@ -64,8 +66,8 @@ onMounted(() => {
       '--timeColor': props.timeColor,
       '--textColor': props.textColor,
       '--textFontFamily': props.textFontFamily,
-      '--hoverBgColor': props.hoverBgColor,
     }"
+    @click="emit('clickItem', props.detailId)"
   >
     <div
       class="left"
@@ -95,6 +97,7 @@ onMounted(() => {
   cursor: pointer;
   margin-bottom: 1rem;
 }
+
 .time {
   font-size: 1.5rem;
   font-family: "Avenir-black-4";

@@ -1,6 +1,12 @@
 <script setup>
-import MyButton from "@/components/MyButton.vue";
+import MyButton from "@/components/MyButton.vue"
+
 const props = defineProps({
+  detailId: {
+    type: Number,
+    default: 1,
+    required: true,
+  },
   title: {
     type: String,
     default: "始于客户需求，为客户创造价值",
@@ -21,11 +27,13 @@ const props = defineProps({
     type: Array,
     default: () => [],
   },
-});
+})
+
+const emit = defineEmits(["clickItem"])
 </script>
 
 <template>
-  <div class="commitment-span">
+  <div class="commitment-span" @click="emit('clickItem', props.detailId)">
     <div class="content">
       <h1>{{ props.title }}</h1>
       <div class="short-line">
@@ -33,7 +41,7 @@ const props = defineProps({
         <div class="line-center"></div>
         <div class="triangle-right"></div>
       </div>
-      <hr class="long-line" />
+      <hr class="long-line"/>
       <div v-if="!props.buttonFlag">
         <p class="first-p">{{ props.content1 }}</p>
         <p>{{ props.content2 }}</p>
@@ -41,7 +49,7 @@ const props = defineProps({
       <div v-else>
         <p class="one-p">{{ props.content1 }}</p>
       </div>
-      <div class="my-content-bottom" v-if="props.bottomItems.length != 0">
+      <div v-if="props.bottomItems.length !== 0" class="my-content-bottom">
         <div
           v-for="(item, index) in props.bottomItems"
           :key="index"
@@ -53,8 +61,8 @@ const props = defineProps({
         </div>
       </div>
     </div>
-    <div class="button-div" v-if="props.buttonFlag">
-      <myButton text="查看详情" type="detail" />
+    <div v-if="props.buttonFlag" class="button-div">
+      <MyButton text="查看详情" type="detail"/>
     </div>
   </div>
 </template>
@@ -96,9 +104,10 @@ const props = defineProps({
       display: flex;
       justify-content: center;
       transform: translateY(3px);
+
       .triangle-left {
-        width: 0px;
-        height: 0px;
+        width: 0;
+        height: 0;
         border: 3px solid transparent;
         border-top: 3px solid #45b3e0;
         transform: rotate(-45deg);
@@ -106,14 +115,16 @@ const props = defineProps({
         left: 3px;
         top: 1px;
       }
+
       .line-center {
         width: 140px;
         height: 0;
         border: 2px solid #45b3e0;
       }
+
       .triangle-right {
-        width: 0px;
-        height: 0px;
+        width: 0;
+        height: 0;
         border: 3px solid transparent;
         border-top: 3px solid #45b3e0;
         transform: rotate(45deg);
@@ -122,6 +133,7 @@ const props = defineProps({
         top: 1px;
       }
     }
+
     .long-line {
       height: 1px;
       border: none;
@@ -134,9 +146,11 @@ const props = defineProps({
       color: rgb(255, 255, 255);
       line-height: 1.85;
     }
+
     .first-p {
       margin-top: 25px;
     }
+
     .one-p {
       font-size: 1.3rem;
       font-family: "AlibabaPuHuiTi_2_45_Light";
@@ -146,6 +160,7 @@ const props = defineProps({
       width: 100%;
       height: auto;
     }
+
     .my-content-bottom {
       display: flex;
       align-items: center;
@@ -182,6 +197,7 @@ const props = defineProps({
       text-align: center;
     }
   }
+
   .button-div {
     width: 15%;
     height: auto;

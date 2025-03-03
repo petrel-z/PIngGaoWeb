@@ -10,51 +10,14 @@ const props = defineProps({
   },
   orderList: {
     type: Array,
-    default: () => [
-      {
-        name: "中国电器装备召开一届二次啊啊啊啊啊",
-        num: 4039,
-      },
-      {
-        name: "中国电器装备召开一届二次啊啊啊啊啊",
-        num: 4039,
-      },
-      {
-        name: "中国电器装备召开一届二次啊啊啊啊啊",
-        num: 4039,
-      },
-      {
-        name: "中国电器装备召开一届二次啊啊啊啊啊",
-        num: 4039,
-      },
-      {
-        name: "中国电器装备召开一届二次啊啊啊啊啊",
-        num: 4039,
-      },
-      {
-        name: "中国电器装备召开一届二次啊啊啊啊啊",
-        num: 4039,
-      },
-      {
-        name: "中国电器装备召开一届二次啊啊啊啊啊",
-        num: 4039,
-      },
-    ],
+    required: true,
   },
-});
+})
 
-function sortOrderList(orderList) {
-  orderList = orderList
-    .map((item) => {
-      return {
-        ...item,
-        num: typeof item.num === "number" ? item.num : 4039,
-      };
-    })
-    .sort(function (a, b) {
-      return b.num - a.num;
-    });
-  return orderList.slice(0, 5);
+const emit = defineEmits(["clickItem"])
+
+function clickItem (item) {
+  emit("clickItem", item)
 }
 </script>
 
@@ -65,9 +28,12 @@ function sortOrderList(orderList) {
         <span>{{ props.title }}</span>
         <i class="iconfont icon-a-MenuBar-show list-item-icon"></i>
       </li>
-      <li class="list-item" v-for="(item, index) in sortOrderList(props.orderList)" :key="index">
+      <li
+        v-for="(item, index) in props.orderList" :key="index" class="list-item"
+        @click="clickItem(item)"
+      >
         <span> {{ item.name }}</span>
-        <span>{{ `浏览量：${item.num}` }}</span>
+        <span>{{ item.num }}</span>
       </li>
     </ul>
   </div>
@@ -84,7 +50,6 @@ function sortOrderList(orderList) {
   text-align: left;
   position: relative;
   z-index: 237;
-  height: auto;
   justify-content: space-between;
   align-items: center;
   border-bottom: 0.05rem solid #fff;
@@ -116,11 +81,17 @@ function sortOrderList(orderList) {
 .order {
   position: relative;
   width: auto;
+  min-width: 500px;
   height: auto;
   background-color: #003792;
   border-radius: 0.625rem;
   padding: 0 5rem;
   animation: right-in 0.5s ease-in-out;
+}
+
+.order ul li {
+  user-select: none;
+  cursor: pointer;
 }
 
 .order ul li:last-child {
