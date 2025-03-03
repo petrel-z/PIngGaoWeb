@@ -38,7 +38,6 @@ function createObserver (refElement, isVisible) {
     },
   );
   if (refElement.value) {
-    console.log(refElement.value);
     refElement.value.forEach((el) => {
       observer.observe(el);
     });

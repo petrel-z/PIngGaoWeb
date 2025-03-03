@@ -1,9 +1,25 @@
 <script setup>
 import MyTitle from "@/components/MyTitle.vue";
 import MyButton from "@/components/MyButton.vue";
-import { ref, onMounted } from "vue";
+import { ref, nextTick, watch } from "vue";
+import httpUtils from "@/utils/httpUtils.js";
+
 const imgRef = ref(null);
 const isVisible = ref(null);
+
+const honorList = ref([]);
+
+document.title = "资质荣誉";
+
+async function getData () {
+  const res = await httpUtils.post(`/cms/honor/list`);
+  const result = await res.json();
+
+  honorList.value = result.data;
+}
+
+getData();
+
 // 创建交叉观察器
 const createObserver = (refElement, isVisible) => {
   const observer = new IntersectionObserver(
@@ -21,156 +37,43 @@ const createObserver = (refElement, isVisible) => {
       root: null, // 使用浏览器视口作为根元素
       rootMargin: "0px", // 无额外的边距
       threshold: 0, // 当元素的 50% 进入视口时触发
-    }
+    },
   );
   if (refElement.value) {
-    observer.observe(refElement.value);
+    refElement.value.forEach((el) => {
+      observer.observe(el);
+    });
   }
 };
+
 // 初始化所有的观察器
 const initializeObservers = () => {
   createObserver(imgRef, isVisible);
 };
-onMounted(initializeObservers); // 在组件挂载时调用
+
+watch(honorList, async () => {
+  await nextTick();
+  initializeObservers();
+});
 </script>
 <template>
   <div class="seniorHonor">
     <myTitle title="资质荣誉" english="QUALIFICATION AND HONOR"></myTitle>
     <div class="content">
-      <div class="info">
+      <div class="info" v-for="honor in honorList" :key="honor.id">
         <div class="img">
           <img
             src="@/assets/imgs/_1_aboutPinggaoImgs/create.png"
-            alt=""
+            :alt="honor.honorTitle"
             ref="imgRef"
             :class="{ 'scale-up': isVisible }"
           />
         </div>
-        <div class="p">创新型企业</div>
+        <div class="p">{{ honor.honorTitle }}</div>
       </div>
-      <div class="info">
-        <div class="img">
-          <img
-            src="@/assets/imgs/_1_aboutPinggaoImgs/create.png"
-            alt=""
-            ref="imgRef"
-            :class="{ 'scale-up': isVisible }"
-          />
-        </div>
-        <div class="p">创新型企业</div>
-      </div>
-      <div class="info">
-        <div class="img">
-          <img
-            src="@/assets/imgs/_1_aboutPinggaoImgs/create.png"
-            alt=""
-            ref="imgRef"
-            :class="{ 'scale-up': isVisible }"
-          />
-        </div>
-        <div class="p">创新型企业</div>
-      </div>
-      <div class="info">
-        <div class="img">
-          <img
-            src="@/assets/imgs/_1_aboutPinggaoImgs/create.png"
-            alt=""
-            ref="imgRef"
-            :class="{ 'scale-up': isVisible }"
-          />
-        </div>
-        <div class="p">创新型企业</div>
-      </div>
-      <div class="info">
-        <div class="img">
-          <img
-            src="@/assets/imgs/_1_aboutPinggaoImgs/create.png"
-            alt=""
-            ref="imgRef"
-            :class="{ 'scale-up': isVisible }"
-          />
-        </div>
-        <div class="p">创新型企业</div>
-      </div>
-      <div class="info">
-        <div class="img">
-          <img
-            src="@/assets/imgs/_1_aboutPinggaoImgs/create.png"
-            alt=""
-            ref="imgRef"
-            :class="{ 'scale-up': isVisible }"
-          />
-        </div>
-        <div class="p">创新型企业</div>
-      </div>
-      <div class="info">
-        <div class="img">
-          <img
-            src="@/assets/imgs/_1_aboutPinggaoImgs/create.png"
-            alt=""
-            ref="imgRef"
-            :class="{ 'scale-up': isVisible }"
-          />
-        </div>
-        <div class="p">创新型企业</div>
-      </div>
-      <div class="info">
-        <div class="img">
-          <img
-            src="@/assets/imgs/_1_aboutPinggaoImgs/create.png"
-            alt=""
-            ref="imgRef"
-            :class="{ 'scale-up': isVisible }"
-          />
-        </div>
-        <div class="p">创新型企业</div>
-      </div>
-      <div class="info">
-        <div class="img">
-          <img
-            src="@/assets/imgs/_1_aboutPinggaoImgs/create.png"
-            alt=""
-            ref="imgRef"
-            :class="{ 'scale-up': isVisible }"
-          />
-        </div>
-        <div class="p">创新型企业</div>
-      </div>
-      <div class="info">
-        <div class="img">
-          <img
-            src="@/assets/imgs/_1_aboutPinggaoImgs/create.png"
-            alt=""
-            ref="imgRef"
-            :class="{ 'scale-up': isVisible }"
-          />
-        </div>
-        <div class="p">创新型企业</div>
-      </div>
-      <div class="info">
-        <div class="img">
-          <img
-            src="@/assets/imgs/_1_aboutPinggaoImgs/create.png"
-            alt=""
-            ref="imgRef"
-            :class="{ 'scale-up': isVisible }"
-          />
-        </div>
-        <div class="p">创新型企业</div>
-      </div>
-      <div class="info">
-        <div class="img">
-          <img
-            src="@/assets/imgs/_1_aboutPinggaoImgs/create.png"
-            alt=""
-            ref="imgRef"
-            :class="{ 'scale-up': isVisible }"
-          />
-        </div>
-        <div class="p">创新型企业</div>
-      </div>
+
     </div>
-    <div class="footer">
+    <div class="footer" v-show="false">
       <myButton class="myButton" text="加载更多"></myButton>
     </div>
   </div>
@@ -187,17 +90,21 @@ onMounted(initializeObservers); // 在组件挂载时调用
   background-color: #fff;
   z-index: 0;
 }
+
 .content {
   margin-top: 3.125rem;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
 }
+
 .content .info {
-  width: 21%;
+  width: 25%;
   height: 90%;
   margin-bottom: 4.2rem;
   text-align: center;
+  padding: 20px;
+  box-sizing: border-box;
 }
 
 
@@ -209,23 +116,27 @@ onMounted(initializeObservers); // 在组件挂载时调用
   visibility: hidden; /* 初始隐藏 */
   transition: transform 0.5s ease, opacity 0.5s ease; /* 过渡效果 */
 }
+
 .content .info .img img.scale-up {
   transform: scale(1); /* 放大到原始大小 */
   opacity: 1; /* 可见 */
   visibility: visible; /* 可见 */
 }
+
 .content .info .p {
   font-size: 1.25rem;
   font-family: "AlibabaPuHuiTi_2_55_Regular", sans-serif;
   color: rgb(182, 141, 55);
   margin: 0.7rem 0rem;
 }
+
 .footer {
   width: 100%;
   margin-top: 0.625rem;
   text-align: center;
   cursor: pointer;
 }
+
 .footer .myButton {
   margin: auto;
 }
