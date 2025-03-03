@@ -1,10 +1,25 @@
 <script setup>
+import peopleBg from "@/assets/imgs/_1_aboutPinggaoImgs/peoplebg.png";
 import MyTitle from "@/components/MyTitle.vue";
-import { ref, onMounted } from "vue";
+import httpUtils from "@/utils/httpUtils.js";
+import { nextTick, ref, watch } from "vue";
+
 const imgRef = ref(null);
 const isVisible = ref(null);
+
+const leaders = ref([]);
+
+async function getData () {
+  const response = await httpUtils.get("/cms/leaders/list");
+  const { data } = await response.json();
+  data.forEach((i) => {
+    i.titles = i.title.split("、");
+  });
+  leaders.value = data;
+}
+
 // 创建交叉观察器
-const createObserver = (refElement, isVisible) => {
+function createObserver (refElement, isVisible) {
   const observer = new IntersectionObserver(
     (entries) => {
       entries.forEach((entry) => {
@@ -20,64 +35,45 @@ const createObserver = (refElement, isVisible) => {
       root: null, // 使用浏览器视口作为根元素
       rootMargin: "0px", // 无额外的边距
       threshold: 0, // 当元素的 50% 进入视口时触发
-    }
+    },
   );
   if (refElement.value) {
-    observer.observe(refElement.value);
+    console.log(refElement.value);
+    refElement.value.forEach((el) => {
+      observer.observe(el);
+    });
   }
-};
-// 初始化所有的观察器
-const initializeObservers = () => {
+}
+
+getData();
+
+watch(leaders, async () => {
+  await nextTick();
   createObserver(imgRef, isVisible);
-};
-onMounted(initializeObservers); // 在组件挂载时调用
+});
 </script>
+
 <template>
   <div class="lesadingMember">
-    <MyTitle title="领导成员" english="LENDING MEMBERS"></MyTitle>
+    <MyTitle title="领导成员" english="LENDING MEMBERS"/>
     <div class="content1">
-      <div class="info" ref="imgRef" :class="{ 'scale-up': isVisible }">
-        <img src="@/assets/imgs/_1_aboutPinggaoImgs/peoplebg.png" alt="" />
-        <div class="h">孙继强</div>
-        <div class="hr"></div>
-        <div class="p1">平高集团限公司党委书记</div>
-        <div class="p2">董事长</div>
-      </div>
-      <div class="info" ref="imgRef" :class="{ 'scale-up': isVisible }">
-        <img src="@/assets/imgs/_1_aboutPinggaoImgs/peoplebg.png" alt="" />
-        <div class="h">刘立成</div>
-        <div class="hr"></div>
-        <div class="p1">平高集团限公司党委副书记</div>
-        <div class="p2">董事</div>
-        <div class="p3">总经理</div>
-      </div>
-      <div class="info" ref="imgRef" :class="{ 'scale-up': isVisible }">
-        <img src="@/assets/imgs/_1_aboutPinggaoImgs/peoplebg.png" alt="" />
-        <div class="h">刘刚</div>
-        <div class="hr"></div>
-        <div class="p1">平高集团限公司党委副书记</div>
-      </div>
-    </div>
-    <div class="content2">
-      <div class="info" ref="imgRef" :class="{ 'scale-up': isVisible }">
-        <img src="@/assets/imgs/_1_aboutPinggaoImgs/peoplebg.png" alt="" />
-        <div class="h">宋晗光</div>
-        <div class="hr"></div>
-        <div class="p1">平高集团限公司党委委员</div>
-        <div class="p2">纪委书记</div>
-        <div class="p3">监事</div>
-      </div>
-
-      <div class="info" ref="imgRef" :class="{ 'scale-up': isVisible }">
-        <img src="@/assets/imgs/_1_aboutPinggaoImgs/peoplebg.png" alt="" />
-        <div class="h">张友鹏</div>
-        <div class="hr"></div>
-        <div class="p1">平高集团限公司党委委员</div>
-        <div class="p2">副总经理</div>
+      <div
+        v-for="leader in leaders" ref="imgRef"
+        :key="leader.id" class="info" :class="{ 'scale-up': isVisible }"
+      >
+        <img :src="leader.images ?? peopleBg" :alt="leader.name">
+        <div class="h">
+          {{ leader.name }}
+        </div>
+        <div class="hr"/>
+        <div v-for="(title, index) in leader.titles" :key="index" :class="`p${index + 1}`">
+          {{ title }}
+        </div>
       </div>
     </div>
   </div>
 </template>
+
 <style scoped>
 .lesadingMember {
   position: relative;
@@ -88,6 +84,7 @@ onMounted(initializeObservers); // 在组件挂载时调用
   background-color: #f7f8f8;
   z-index: -100;
 }
+
 .content1 {
   width: 100%;
   margin-top: 3.125rem;
@@ -96,6 +93,7 @@ onMounted(initializeObservers); // 在组件挂载时调用
   flex-wrap: wrap;
 
 }
+
 .content1 .info {
   position: relative;
   width: 31%;
@@ -120,6 +118,7 @@ onMounted(initializeObservers); // 在组件挂载时调用
   height: 100%;
   /* object-fit: cover; */
 }
+
 .content2 {
   width: 100%;
   margin-top: 3.125rem;
@@ -128,6 +127,7 @@ onMounted(initializeObservers); // 在组件挂载时调用
   flex-wrap: wrap;
 
 }
+
 .content2 .info {
   position: relative;
   width: 31%;
@@ -152,6 +152,7 @@ onMounted(initializeObservers); // 在组件挂载时调用
   height: 100%;
   /* object-fit: cover; */
 }
+
 .info .h {
   top: 2.625rem;
   left: 2rem;
@@ -160,6 +161,7 @@ onMounted(initializeObservers); // 在组件挂载时调用
   font-family: "AlibabaPuHuiTi_2_65_Medium", sans-serif;
   color: rgb(0, 111, 193);
 }
+
 .info .hr {
   width: 40%;
   height: 0.0625rem;
@@ -168,6 +170,7 @@ onMounted(initializeObservers); // 在组件挂载时调用
   top: 5.3125rem;
   position: absolute;
 }
+
 .info .p1 {
   top: 5.5rem;
   position: absolute;
@@ -176,6 +179,7 @@ onMounted(initializeObservers); // 在组件挂载时调用
   font-family: "AlibabaPuHuiTi_2_45_Light", sans-serif;
   color: rgb(89, 87, 87);
 }
+
 .info .p2 {
   top: 7.375rem;
   position: absolute;
@@ -184,6 +188,7 @@ onMounted(initializeObservers); // 在组件挂载时调用
   font-family: "AlibabaPuHuiTi_2_45_Light", sans-serif;
   color: rgb(89, 87, 87);
 }
+
 .info .p3 {
   top: 9.125rem;
   position: absolute;
@@ -192,6 +197,7 @@ onMounted(initializeObservers); // 在组件挂载时调用
   font-family: "AlibabaPuHuiTi_2_45_Light", sans-serif;
   color: rgb(89, 87, 87);
 }
+
 @media (min-width: 400px) and (max-width: 500px) {
   .content .info {
     position: relative;
@@ -204,11 +210,13 @@ onMounted(initializeObservers); // 在组件挂载时调用
     visibility: hidden; /* 初始隐藏 */
     transition: transform 0.5s ease, opacity 0.5s ease; /* 过渡效果 */
   }
+
   .content .info img {
     width: 100%;
     height: 100%;
     object-fit: cover;
   }
+
   .info .h {
     top: 2.625rem;
     left: 2rem;
@@ -217,6 +225,7 @@ onMounted(initializeObservers); // 在组件挂载时调用
     font-family: "AlibabaPuHuiTi_2_65_Medium", sans-serif;
     color: rgb(0, 111, 193);
   }
+
   .info .hr {
     width: 40%;
     height: 0.0625rem;
@@ -225,6 +234,7 @@ onMounted(initializeObservers); // 在组件挂载时调用
     top: 5.3125rem;
     position: absolute;
   }
+
   .info .p1 {
     top: 5.5rem;
     position: absolute;
@@ -233,6 +243,7 @@ onMounted(initializeObservers); // 在组件挂载时调用
     font-family: "AlibabaPuHuiTi_2_45_Light", sans-serif;
     color: rgb(89, 87, 87);
   }
+
   .info .p2 {
     top: 6.9rem;
     position: absolute;
@@ -241,6 +252,7 @@ onMounted(initializeObservers); // 在组件挂载时调用
     font-family: "AlibabaPuHuiTi_2_45_Light", sans-serif;
     color: rgb(89, 87, 87);
   }
+
   .info .p3 {
     top: 8.3rem;
     position: absolute;
@@ -250,6 +262,7 @@ onMounted(initializeObservers); // 在组件挂载时调用
     color: rgb(89, 87, 87);
   }
 }
+
 @media (min-width: 600px) and (max-width: 800px) {
   .content .info {
     position: relative;
@@ -262,11 +275,13 @@ onMounted(initializeObservers); // 在组件挂载时调用
     visibility: hidden; /* 初始隐藏 */
     transition: transform 0.5s ease, opacity 0.5s ease; /* 过渡效果 */
   }
+
   .content .info img {
     width: 100%;
     height: 100%;
     object-fit: cover;
   }
+
   .info .h {
     top: 3rem;
     left: 2rem;
@@ -275,6 +290,7 @@ onMounted(initializeObservers); // 在组件挂载时调用
     font-family: "AlibabaPuHuiTi_2_65_Medium", sans-serif;
     color: rgb(0, 111, 193);
   }
+
   .info .hr {
     width: 40%;
     height: 0.0625rem;
@@ -283,6 +299,7 @@ onMounted(initializeObservers); // 在组件挂载时调用
     top: 5.3125rem;
     position: absolute;
   }
+
   .info .p1 {
     top: 5.5rem;
     position: absolute;
@@ -291,6 +308,7 @@ onMounted(initializeObservers); // 在组件挂载时调用
     font-family: "AlibabaPuHuiTi_2_45_Light", sans-serif;
     color: rgb(89, 87, 87);
   }
+
   .info .p2 {
     top: 6.7rem;
     position: absolute;
@@ -299,6 +317,7 @@ onMounted(initializeObservers); // 在组件挂载时调用
     font-family: "AlibabaPuHuiTi_2_45_Light", sans-serif;
     color: rgb(89, 87, 87);
   }
+
   .info .p3 {
     top: 7.8rem;
     position: absolute;
@@ -308,6 +327,7 @@ onMounted(initializeObservers); // 在组件挂载时调用
     color: rgb(89, 87, 87);
   }
 }
+
 @media (min-width: 700px) and (max-width: 800px) {
   .content .info {
     position: relative;
@@ -320,11 +340,13 @@ onMounted(initializeObservers); // 在组件挂载时调用
     visibility: hidden; /* 初始隐藏 */
     transition: transform 0.5s ease, opacity 0.5s ease; /* 过渡效果 */
   }
+
   .content .info img {
     width: 100%;
     height: 100%;
     object-fit: cover;
   }
+
   .info .h {
     top: 2.625rem;
     left: 2rem;
@@ -333,6 +355,7 @@ onMounted(initializeObservers); // 在组件挂载时调用
     font-family: "AlibabaPuHuiTi_2_65_Medium", sans-serif;
     color: rgb(0, 111, 193);
   }
+
   .info .hr {
     width: 40%;
     height: 0.0625rem;
@@ -341,6 +364,7 @@ onMounted(initializeObservers); // 在组件挂载时调用
     top: 5.3125rem;
     position: absolute;
   }
+
   .info .p1 {
     top: 5.5rem;
     position: absolute;
@@ -349,6 +373,7 @@ onMounted(initializeObservers); // 在组件挂载时调用
     font-family: "AlibabaPuHuiTi_2_45_Light", sans-serif;
     color: rgb(89, 87, 87);
   }
+
   .info .p2 {
     top: 6.8rem;
     position: absolute;
@@ -357,6 +382,7 @@ onMounted(initializeObservers); // 在组件挂载时调用
     font-family: "AlibabaPuHuiTi_2_45_Light", sans-serif;
     color: rgb(89, 87, 87);
   }
+
   .info .p3 {
     top: 8.125rem;
     position: absolute;
@@ -366,6 +392,7 @@ onMounted(initializeObservers); // 在组件挂载时调用
     color: rgb(89, 87, 87);
   }
 }
+
 @media (min-width: 800px) and (max-width: 1000px) {
   .content .info {
     position: relative;
@@ -378,11 +405,13 @@ onMounted(initializeObservers); // 在组件挂载时调用
     visibility: hidden; /* 初始隐藏 */
     transition: transform 0.5s ease, opacity 0.5s ease; /* 过渡效果 */
   }
+
   .content .info img {
     width: 100%;
     height: 100%;
     object-fit: cover;
   }
+
   .info .h {
     top: 2.625rem;
     left: 2rem;
@@ -391,6 +420,7 @@ onMounted(initializeObservers); // 在组件挂载时调用
     font-family: "AlibabaPuHuiTi_2_65_Medium", sans-serif;
     color: rgb(0, 111, 193);
   }
+
   .info .hr {
     width: 40%;
     height: 0.0625rem;
@@ -399,6 +429,7 @@ onMounted(initializeObservers); // 在组件挂载时调用
     top: 5.3125rem;
     position: absolute;
   }
+
   .info .p1 {
     top: 5.5rem;
     position: absolute;
@@ -407,6 +438,7 @@ onMounted(initializeObservers); // 在组件挂载时调用
     font-family: "AlibabaPuHuiTi_2_45_Light", sans-serif;
     color: rgb(89, 87, 87);
   }
+
   .info .p2 {
     top: 7.2rem;
     position: absolute;
@@ -415,6 +447,7 @@ onMounted(initializeObservers); // 在组件挂载时调用
     font-family: "AlibabaPuHuiTi_2_45_Light", sans-serif;
     color: rgb(89, 87, 87);
   }
+
   .info .p3 {
     top: 8.925rem;
     position: absolute;
@@ -424,6 +457,7 @@ onMounted(initializeObservers); // 在组件挂载时调用
     color: rgb(89, 87, 87);
   }
 }
+
 @media (min-width: 1000px) and (max-width: 1200px) {
   .content .info {
     position: relative;
@@ -436,11 +470,13 @@ onMounted(initializeObservers); // 在组件挂载时调用
     visibility: hidden; /* 初始隐藏 */
     transition: transform 0.5s ease, opacity 0.5s ease; /* 过渡效果 */
   }
+
   .content .info img {
     width: 100%;
     height: 100%;
     object-fit: cover;
   }
+
   .info .h {
     top: 2.625rem;
     left: 2rem;
@@ -449,6 +485,7 @@ onMounted(initializeObservers); // 在组件挂载时调用
     font-family: "AlibabaPuHuiTi_2_65_Medium", sans-serif;
     color: rgb(0, 111, 193);
   }
+
   .info .hr {
     width: 40%;
     height: 0.0625rem;
@@ -457,6 +494,7 @@ onMounted(initializeObservers); // 在组件挂载时调用
     top: 5.3125rem;
     position: absolute;
   }
+
   .info .p1 {
     top: 5.5rem;
     position: absolute;
@@ -465,6 +503,7 @@ onMounted(initializeObservers); // 在组件挂载时调用
     font-family: "AlibabaPuHuiTi_2_45_Light", sans-serif;
     color: rgb(89, 87, 87);
   }
+
   .info .p2 {
     top: 7.3rem;
     position: absolute;
@@ -473,6 +512,7 @@ onMounted(initializeObservers); // 在组件挂载时调用
     font-family: "AlibabaPuHuiTi_2_45_Light", sans-serif;
     color: rgb(89, 87, 87);
   }
+
   .info .p3 {
     top: 9rem;
     position: absolute;
@@ -482,6 +522,7 @@ onMounted(initializeObservers); // 在组件挂载时调用
     color: rgb(89, 87, 87);
   }
 }
+
 @media (min-width: 1300px) and (max-width: 1400px) {
   .content .info {
     position: relative;
@@ -494,11 +535,13 @@ onMounted(initializeObservers); // 在组件挂载时调用
     visibility: hidden; /* 初始隐藏 */
     transition: transform 0.5s ease, opacity 0.5s ease; /* 过渡效果 */
   }
+
   .content .info img {
     width: 100%;
     height: 100%;
     object-fit: cover;
   }
+
   .info .h {
     top: 2.625rem;
     left: 2rem;
@@ -507,6 +550,7 @@ onMounted(initializeObservers); // 在组件挂载时调用
     font-family: "AlibabaPuHuiTi_2_65_Medium", sans-serif;
     color: rgb(0, 111, 193);
   }
+
   .info .hr {
     width: 40%;
     height: 0.0625rem;
@@ -515,6 +559,7 @@ onMounted(initializeObservers); // 在组件挂载时调用
     top: 5.3125rem;
     position: absolute;
   }
+
   .info .p1 {
     top: 5.5rem;
     position: absolute;
@@ -523,6 +568,7 @@ onMounted(initializeObservers); // 在组件挂载时调用
     font-family: "AlibabaPuHuiTi_2_45_Light", sans-serif;
     color: rgb(89, 87, 87);
   }
+
   .info .p2 {
     top: 6.8rem;
     position: absolute;
@@ -531,6 +577,7 @@ onMounted(initializeObservers); // 在组件挂载时调用
     font-family: "AlibabaPuHuiTi_2_45_Light", sans-serif;
     color: rgb(89, 87, 87);
   }
+
   .info .p3 {
     top: 8.125rem;
     position: absolute;
@@ -553,11 +600,13 @@ onMounted(initializeObservers); // 在组件挂载时调用
     visibility: hidden; /* 初始隐藏 */
     transition: transform 0.5s ease, opacity 0.5s ease; /* 过渡效果 */
   }
+
   .content .info img {
     width: 100%;
     height: 100%;
     object-fit: cover;
   }
+
   .info .h {
     top: 2.625rem;
     left: 2rem;
@@ -566,6 +615,7 @@ onMounted(initializeObservers); // 在组件挂载时调用
     font-family: "AlibabaPuHuiTi_2_65_Medium", sans-serif;
     color: rgb(0, 111, 193);
   }
+
   .info .hr {
     width: 40%;
     height: 0.0625rem;
@@ -574,6 +624,7 @@ onMounted(initializeObservers); // 在组件挂载时调用
     top: 5.3125rem;
     position: absolute;
   }
+
   .info .p1 {
     top: 5.5rem;
     position: absolute;
@@ -582,6 +633,7 @@ onMounted(initializeObservers); // 在组件挂载时调用
     font-family: "AlibabaPuHuiTi_2_45_Light", sans-serif;
     color: rgb(89, 87, 87);
   }
+
   .info .p2 {
     top: 6.8rem;
     position: absolute;
@@ -590,6 +642,7 @@ onMounted(initializeObservers); // 在组件挂载时调用
     font-family: "AlibabaPuHuiTi_2_45_Light", sans-serif;
     color: rgb(89, 87, 87);
   }
+
   .info .p3 {
     top: 8.125rem;
     position: absolute;
