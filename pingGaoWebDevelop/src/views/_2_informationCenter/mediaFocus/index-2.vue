@@ -1,81 +1,83 @@
 <script setup>
+import Item2 from "@/components/Item-2.vue";
+import MyPagination from "@/components/MyPagination.vue";
+import MyTitle from "@/components/MyTitle.vue";
+import OrderList from "@/components/OrderList.vue";
+import router from "@/router/index.js";
+import httpUtils from "@/utils/httpUtils.js";
 import { ref, onMounted } from "vue";
 
 defineOptions({
   name: "NewsCenterIndex3-2",
 });
-import MyTitle from "@/components/MyTitle.vue";
-import Item2 from "@/components/Item-2.vue";
-import OrderList from "@/components/OrderList.vue";
-import MyPagination from "@/components/MyPagination.vue";
-const items = [
-  {
-    time: "2025.01.14",
-    text: `平高集团1家企业荣获2024年全国质量标杆奖`,
-  },
-  {
-    time: "2025.01.16",
-    text: `平高集团亮相CIGRE 2024 绿色智能产品吸引全球电力行业目光`,
-  },
-  {
-    time: "2025.01.15",
-    text: `共青团平高集团有限公司、河南平高电气股份有限公司第二…`,
-  },
-  {
-    time: "2025.01.08",
-    text: `平高集团、平高电气获评2024年中国机械工业大型重点骨…`,
-  },
-  {
-    time: "2025.01.07",
-    text: `平高集团所属综合能源公司获节能服务公司综合能力“公共设…`,
-  },
-  {
-    time: "2024.12.29",
-    text: "平高集团亮相CIGRE 2024 绿色智能产品吸引全球电力行业目光",
-  },
-  {
-    time: "2024.12.25",
-    text: "平高集团所属综合能源公司获节能服务公司综合能力“公共设…",
-  },
-  {
-    time: "2024.12.22",
-    text: "平高集团亮相CIGRE 2024 绿色智能产品吸引全球电力行业目光",
-  },
-  {
-    time: "2024.12.14",
-    text: "共青团平高集团有限公司、河南平高电气股份有限公司第二…",
-  },
-  {
-    time: "2024.12.09",
-    text: "平高集团亮相CIGRE 2024 绿色智能产品吸引全球电力行业目光",
-  },
-];
-const orderList = [
-  {
-    name: "平高集团1家企业荣获2024年…",
-    num: "浏览量:4039",
-  },
-  {
-    name: "平高集团亮相CIGRE 2024 绿…",
-    num: "浏览量:4039",
-  },
-  {
-    name: "平高集团1家企业荣获2024年…",
-    num: "浏览量:4039",
-  },
-  {
-    name: "平高集团亮相CIGRE 2024 绿…",
-    num: "浏览量:4039",
-  },
-  {
-    name: "平高集团亮相CIGRE 2024 绿…",
-    num: "浏览量:4039",
-  },
-];
+
+document.title = "媒体聚焦";
+const categoryId = 18;
+const leftList = ref([]);
+const rightList = ref([]);
+const pageNo = ref(1);
+const pageSize = ref(10);
+const pageMax = ref(1);
+const hasMore = ref(true);
+
+// 格式化时间戳为 YYYY-MM-DD 格式
+function formatTimestamp (timestamp) {
+  const date = new Date(timestamp);
+  const year = date.getFullYear();
+  const month = (date.getMonth() + 1).toString().padStart(2, "0");
+  const day = date.getDate().toString().padStart(2, "0");
+  return `${year}.${month}.${day}`;
+}
+
+async function getData () {
+  const queryString = new URLSearchParams({
+    pageNo: pageNo.value,
+    pageSize: pageSize.value,
+  }).toString();
+
+  console.log("获取数据", queryString);
+  const response = await httpUtils.get(`/cms/category/${categoryId}/news?${queryString.toString()}`);
+  const { data } = await response.json();
+
+  console.log(data);
+
+  const top5List = [];
+  data.top5List.forEach((item) => {
+    top5List.push({
+      id: item.id,
+      name: item.title,
+      num: `浏览量：${item.viewCount}`,
+    });
+  });
+  rightList.value = [...top5List];
+
+  const page = data.page;
+  pageMax.value = Math.ceil(page.total / pageSize.value);
+  leftList.value = [...page.list];
+}
+
+function pageChange (pageNumber) {
+  pageNo.value = pageNumber;
+  getData();
+}
+
+function toDetail (item) {
+  console.log(item);
+  if (item && item.id) {
+    const target = router.resolve({
+      name: "pbDetail",
+      params: {
+        id: item.id,
+      },
+    });
+    window.open(target.href, "_blank");
+  }
+}
 
 // 监听窗口大小变化事件
 let onceChange = ref(false);
-function changeOnce() {
+
+function changeOnce () {
   // 获取当前窗口的宽度和高度
   const width = window.innerWidth;
   if (width <= 900) {
@@ -85,10 +87,13 @@ function changeOnce() {
     onceChange.value = false;
   }
 }
+
 onMounted(() => {
   changeOnce();
   window.addEventListener("resize", changeOnce);
 });
+
+getData();
 </script>
 
 <template>
@@ -96,7 +101,7 @@ onMounted(() => {
     <div class="body">
       <div>
         <div style="padding-top: 4rem">
-          <my-title title="媒体聚焦" english="MEDIA FOCUS" />
+          <MyTitle title="媒体聚焦" english="MEDIA FOCUS" />
         </div>
         <div
           style="
@@ -109,22 +114,29 @@ onMounted(() => {
         >
           <div class="item-container">
             <Item2
-              v-for="(item, index) in items"
-              :key="index"
-              :time="item.time"
-              :text="item.text"
+              v-for="item in leftList" :key="item.id"
+              :time="formatTimestamp(item.publishTime)"
+              :text="item.title"
+              :detail-id="item.id"
+              @click-item="toDetail"
             />
           </div>
           <div v-show="!onceChange" class="order-container">
-            <OrderList :orderList="orderList" bgColor="#006fc1" />
+            <OrderList :order-list="rightList" bg-color="#006fc1" @click-item="toDetail" />
           </div>
         </div>
       </div>
       <div class="pagination-container">
-        <MyPagination />
+        <MyPagination
+          v-if="hasMore" :total="pageMax" :current="pageNo" class="pagination"
+          @page-change="pageChange"
+        />
+        <p v-else style="font-size: 24px;">
+          暂无更多
+        </p>
       </div>
       <div v-show="onceChange" class="order-container">
-        <OrderList :orderList="orderList" bgColor="#006fc1" />
+        <OrderList :orderList="orderList" bgColor="#006fc1" @click-item="toDetail" />
       </div>
     </div>
   </div>
