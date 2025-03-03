@@ -2,6 +2,7 @@
 import MyTitle from "@/components/MyTitle.vue";
 import httpUtils from "@/utils/httpUtils.js";
 import { onMounted, ref, watch } from "vue";
+import router from "@/router/index.js";
 
 const boxRef = ref(null);
 const isVisibleBox = ref(false);
@@ -140,6 +141,18 @@ getCategory();
 
 let timeout = null;
 
+function toDetail (newsId) {
+  if (newsId) {
+    const target = router.resolve({
+      name: "productDetail",
+      params: {
+        id: newsId,
+      },
+    });
+    window.open(target.href, "_blank");
+  }
+}
+
 watch(activeIndex, () => {
   clearTimeout(timeout);
   timeout = setTimeout(() => {
@@ -184,6 +197,7 @@ watch(activeIndex, () => {
           class="detail_page_info"
           style="border-top: 0.0625rem solid #1078c5"
           :class="{ 'scale-up': isVisibleInfo }"
+          @click="toDetail(item.id)"
         >
           <div class="h">
             {{ index + 1 }}
@@ -224,6 +238,10 @@ watch(activeIndex, () => {
   transform: translateX(-100%); /* 初始位置在左边 */
   visibility: hidden;
   transition: transform 1s ease, opacity 0.5s ease; /* 过渡效果 */
+}
+
+.detail_page_info {
+  cursor: pointer;
 }
 
 .detail_content.move-left {

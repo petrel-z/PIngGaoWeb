@@ -14,7 +14,7 @@ defineOptions({
 const leftList = ref([]);
 const rightList = ref([]);
 document.title = "党的精神";
-const categoryId = 22;
+const categoryId = 21;
 const pageNo = ref(1);
 const pageSize = ref(10);
 const pageMax = ref(1);
@@ -61,13 +61,12 @@ function pageChange (pageNumber) {
   getData();
 }
 
-function toDetail (item) {
-  console.log(item);
-  if (item && item.id) {
+function toDetail (newsId) {
+  if (newsId) {
     const target = router.resolve({
       name: "pbDetail",
       params: {
-        id: item.id,
+        id: newsId,
       },
     });
     window.open(target.href, "_blank");
@@ -98,7 +97,7 @@ getData();
             time-color="#a51617"
             text-color="#7b6a5d"
             text-font-family="SourceHanSerifCN_Bold"
-            @click="toDetail(item)"
+            @click="toDetail(item.id)"
           />
         </div>
       </div>

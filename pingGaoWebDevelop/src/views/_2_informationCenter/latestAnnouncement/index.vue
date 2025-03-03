@@ -93,20 +93,15 @@ function pageChange (pageNumber) {
   getData();
 }
 
-function toDetail (id) {
-  console.log(id);
-
-  if (id) {
-    router.push({
+function toDetail (newsId) {
+  if (newsId) {
+    const target = router.resolve({
       name: "newsDetail",
       params: {
-        id,
+        id: newsId,
       },
     });
-
-    setTimeout(() => {
-      window.location.reload();
-    }, 10);
+    window.open(target.href, "_blank");
   }
 }
 

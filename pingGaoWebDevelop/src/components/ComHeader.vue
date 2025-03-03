@@ -263,11 +263,11 @@ const props = defineProps({
   footer: {
     type: Array,
     default: () => [
-      { name: "总部动态", path: "/informationCenter/headquartersDynamics-1" },
-      { name: "集团新闻", path: "/informationCenter/groupNews-1" },
-      { name: "媒体聚焦", path: "/informationCenter/mediaFocus-1" },
+      { name: "总部动态", path: "/informationCenter/headquartersDynamicsIndex" },
+      { name: "集团新闻", path: "/informationCenter/groupNewsIndex" },
+      { name: "媒体聚焦", path: "/informationCenter/mediaFocusIndex" },
       { name: "热点视频", path: "/informationCenter/hotVideo" },
-      { name: "最新公告", path: "/informationCenter/latestAnnouncement-1" },
+      { name: "最新公告", path: "/informationCenter/latestAnnouncementIndex" },
     ],
   },
   onlyHeaderFlag: {

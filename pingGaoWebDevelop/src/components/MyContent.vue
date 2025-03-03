@@ -43,11 +43,11 @@ const emit = defineEmits(["clickItem"])
       </div>
       <hr class="long-line"/>
       <div v-if="!props.buttonFlag">
-        <p class="first-p">{{ props.content1 }}</p>
-        <p>{{ props.content2 }}</p>
+        <p class="first-p" v-html="props.content1"></p>
+        <p v-html="props.content2"></p>
       </div>
       <div v-else>
-        <p class="one-p">{{ props.content1 }}</p>
+        <p class="one-p" v-html="props.content1"></p>
       </div>
       <div v-if="props.bottomItems.length !== 0" class="my-content-bottom">
         <div

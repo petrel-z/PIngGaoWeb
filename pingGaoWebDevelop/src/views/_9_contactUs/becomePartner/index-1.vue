@@ -1,6 +1,5 @@
 <script setup>
 import MyTitle from "@/components/MyTitle.vue";
-import HttpUtils from "@/utils/httpUtils.js";
 import { ref } from "vue";
 import { useCascaderAreaData } from "@/utils/areaUtils.js";
 import { ElMessageBox } from "element-plus";
@@ -26,7 +25,7 @@ const partnerTypeList = ref([
 ]);
 
 async function getVerifyCode () {
-  const res = await HttpUtils.get(`/cms/partner/request_join`);
+  const res = await httpUtils.get(`/cms/partner/request_join`);
   const result = await res.json();
 
   requestVerifyId.value = result.data.uuid;
@@ -165,7 +164,7 @@ async function submit () {
     joinDistributor: joinDealer.value.textContent,
 
     requestId: requestVerifyId.value,
-    code: verifyCode.value
+    code: verifyCode.value,
   });
   const { data } = await response.json();
 
@@ -213,8 +212,7 @@ function reset () {
               <div class="select">
                 <div class="custom-select">
                   <div
-                    ref="partnerType"
-                    class="selected-option selected-option1"
+                    ref="partnerType" class="selected-option selected-option1"
                     @click="toggleOptions(1)"
                   >
                     请选择
@@ -228,34 +226,42 @@ function reset () {
                 </div>
                 <!-- <input type="text" placeholder="请选择" /> -->
               </div>
-              <div ref="partnerTypeMust" class="mustWrite">该项是必填项</div>
+              <div ref="partnerTypeMust" class="mustWrite">
+                该项是必填项
+              </div>
             </div>
             <div class="common">
               <div class="common-title">
                 <span class="star">*</span><span class="text">伙伴公司名称</span>
               </div>
               <div class="select">
-                <input v-model="companyName" type="text" placeholder="请输入" />
+                <input v-model="companyName" type="text" placeholder="请输入">
               </div>
-              <div ref="companyNameMust" class="mustWrite">该项是必填项</div>
+              <div ref="companyNameMust" class="mustWrite">
+                该项是必填项
+              </div>
             </div>
             <div class="common">
               <div class="common-title">
                 <span class="star">*</span><span class="text">伙伴联系人</span>
               </div>
               <div class="select">
-                <input v-model="contactName" type="text" placeholder="请输入" />
+                <input v-model="contactName" type="text" placeholder="请输入">
               </div>
-              <div ref="contactNameMust" class="mustWrite">该项是必填项</div>
+              <div ref="contactNameMust" class="mustWrite">
+                该项是必填项
+              </div>
             </div>
             <div class="common">
               <div class="common-title">
                 <span class="star">*</span><span class="text">国家</span>
               </div>
               <div class="select">
-                <input readonly ref="country" type="text" placeholder="中国" />
+                <input ref="country" readonly type="text" placeholder="中国">
               </div>
-              <div ref="countryMust" class="mustWrite">该项是必填项</div>
+              <div ref="countryMust" class="mustWrite">
+                该项是必填项
+              </div>
             </div>
             <div class="common last">
               <div class="common-title">
@@ -264,8 +270,7 @@ function reset () {
               <div class="select">
                 <div class="custom-select">
                   <div
-                    ref="city"
-                    class="selected-option selected-option2"
+                    ref="city" class="selected-option selected-option2"
                     @click="toggleOptions(2)"
                   >
                     请选择
@@ -277,10 +282,13 @@ function reset () {
                   </ul>
                 </div>
               </div>
-              <div ref="cityMust" class="mustWrite">该项是必填项</div>
+              <div ref="cityMust" class="mustWrite">
+                该项是必填项
+              </div>
             </div>
-
-            <div class="submit" @click="submit()">提交资料</div>
+            <div class="submit" @click="submit()">
+              提交资料
+            </div>
           </div>
           <div class="right">
             <div class="common">
@@ -288,9 +296,11 @@ function reset () {
                 <span class="star">*</span><span class="text">合作意向</span>
               </div>
               <div class="select">
-                <input v-model="intention" type="text" placeholder="请输入" />
+                <input v-model="intention" type="text" placeholder="请输入">
               </div>
-              <div ref="intentionMust" class="mustWrite">该项是必填项</div>
+              <div ref="intentionMust" class="mustWrite">
+                该项是必填项
+              </div>
             </div>
             <div class="common">
               <div class="common-title">
@@ -299,8 +309,7 @@ function reset () {
               <div class="select">
                 <div class="custom-select">
                   <div
-                    ref="joinDealer"
-                    class="selected-option selected-option3"
+                    ref="joinDealer" class="selected-option selected-option3"
                     @click="toggleOptions(3)"
                   >
                     请选择
@@ -311,16 +320,20 @@ function reset () {
                   </ul>
                 </div>
               </div>
-              <div ref="joinDealerMust" class="mustWrite">该项是必填项</div>
+              <div ref="joinDealerMust" class="mustWrite">
+                该项是必填项
+              </div>
             </div>
             <div class="common">
               <div class="common-title">
                 <span class="star">*</span><span class="text">伙伴联系电话</span>
               </div>
               <div class="select">
-                <input v-model="contactPhone" type="text" placeholder="请输入" />
+                <input v-model="contactPhone" type="text" placeholder="请输入">
               </div>
-              <div ref="contactPhoneMust" class="mustWrite">该项是必填项</div>
+              <div ref="contactPhoneMust" class="mustWrite">
+                该项是必填项
+              </div>
             </div>
             <div class="common">
               <div class="common-title">
@@ -329,8 +342,7 @@ function reset () {
               <div class="select">
                 <div class="custom-select">
                   <div
-                    ref="province"
-                    class="selected-option selected-option4"
+                    ref="province" class="selected-option selected-option4"
                     @click="toggleOptions(4)"
                   >
                     请选择
@@ -342,14 +354,16 @@ function reset () {
                   </ul>
                 </div>
               </div>
-              <div ref="provinceMust" class="mustWrite">该项是必填项</div>
+              <div ref="provinceMust" class="mustWrite">
+                该项是必填项
+              </div>
             </div>
             <div class="common last verify">
               <div class="common-title">
                 <span class="star">*</span><span class="text">验证码</span>
               </div>
               <div class="select">
-                <input v-model="verifyCode" type="text" placeholder="请输入" />
+                <input v-model="verifyCode" type="text" placeholder="请输入">
               </div>
               <div
                 class="codeImg"
@@ -357,9 +371,13 @@ function reset () {
               >
                 <img :src="requestVerifyImage" alt="验证码">
               </div>
-              <div ref="verifyCodeMust" class="mustWrite">该项是必填项</div>
+              <div ref="verifyCodeMust" class="mustWrite">
+                该项是必填项
+              </div>
             </div>
-            <div class="reset" @click="reset()">重置资料</div>
+            <div class="reset" @click="reset()">
+              重置资料
+            </div>
           </div>
         </div>
       </div>
@@ -369,7 +387,7 @@ function reset () {
         :style="{ width: '100%', height: 'auto' }"
         src="../../../assets/imgs/_9_contactUsImgs/t9_p1_contentBg.png"
         alt=""
-      />
+      >
     </div>
   </div>
 </template>
@@ -446,7 +464,7 @@ function reset () {
 
         .left,
         .right {
-          width: calc(42% - 13rem);
+          width: 42%;
           height: 100%;
           position: relative;
           margin: 0 10rem;
@@ -461,14 +479,17 @@ function reset () {
 
           .codeImg {
             position: absolute;
-            right: 0px;
+            right: 0;
             bottom: 0;
             width: 12rem;
             height: 6rem;
             margin-right: 1.5rem;
             margin-bottom: 2.5rem;
-            background-image: url("../../../assets/imgs/_9_contactUsImgs/t9_p2_code.png");
-            background-size: contain;
+
+            img {
+              width: 100%;
+              height: 100%;
+            }
           }
         }
 
@@ -508,7 +529,7 @@ function reset () {
             font-size: 1.8rem;
             font-family: "AlibabaPuHuiTi_2_45_Light";
             color: rgb(89, 87, 87);
-            text-align: justify;
+            text-align: left;
             padding-left: 1.8rem;
             margin-top: 0.4rem;
 
@@ -522,7 +543,7 @@ function reset () {
               }
 
               .options {
-                box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
                 font-size: 1.8rem;
                 display: none;
                 width: 100%;
@@ -530,7 +551,12 @@ function reset () {
                 list-style: none;
 
                 height: 30rem;
-                overflow: scroll;
+                overflow-x: hidden;
+                overflow-y: auto;
+
+                &.active {
+                  display: block;
+                }
 
                 .icon-down {
                   display: none;
@@ -557,11 +583,29 @@ function reset () {
               }
             }
 
+            select {
+              width: 100%;
+              /* 去除默认的边框 */
+              border: none;
+              /* 去除默认的轮廓线 */
+              outline: none;
+              /* 去除默认的下拉箭头（不同浏览器实现方式不同） */
+              -webkit-appearance: none;
+              -moz-appearance: none;
+              appearance: none;
+              /* 自定义背景颜色 */
+              background-color: #fff;
+              /* 自定义内边距 */
+              padding: 8px 5px;
+              /* 自定义字体样式 */
+              font-size: 1.8rem;
+            }
+
             input {
               font-size: 1.8rem;
               font-family: "AlibabaPuHuiTi_2_45_Light";
               color: rgb(89, 87, 87);
-              text-align: justify;
+              text-align: left;
             }
           }
         }
@@ -607,6 +651,22 @@ function reset () {
     z-index: 1;
     width: 100%;
     height: 100%;
+  }
+}
+
+@media (max-width: 1700px) {
+  .becomePartner-content {
+    .content-top {
+      .top-information {
+        .write-info {
+
+          .left,
+          .right {
+            margin: 0 6rem;
+          }
+        }
+      }
+    }
   }
 }
 
@@ -709,7 +769,6 @@ function reset () {
 }
 
 /* 小型设备（手机，小于 600px） */
-
 @media (max-width: 600px) {
 }
 

@@ -61,19 +61,17 @@ function pageChange (pageNumber) {
   getData();
 }
 
-function toDetail (item) {
-  console.log(item);
-  if (item && item.id) {
+function toDetail (newsId) {
+  if (newsId) {
     const target = router.resolve({
-      name: "pbDetail",
+      name: "newsDetail",
       params: {
-        id: item.id,
+        id: newsId,
       },
     });
     window.open(target.href, "_blank");
   }
 }
-
 
 // 监听窗口大小变化事件
 let onceChange = ref(false);
@@ -137,7 +135,7 @@ getData();
         </p>
       </div>
       <div v-show="onceChange" class="order-container">
-        <OrderList @click-item="toDetail" />
+        <OrderList :order-list="rightList" bg-color="#006fc1" @click-item="toDetail" />
       </div>
     </div>
   </div>

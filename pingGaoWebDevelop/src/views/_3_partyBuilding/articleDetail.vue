@@ -5,7 +5,9 @@ import HttpUtils from "@/utils/httpUtils.js";
 import { ref } from "vue";
 import { useRoute, useRouter } from "vue-router";
 
-defineOptions({});
+defineOptions({
+  name: "PartyBuildingDetail",
+});
 
 const data = ref("");
 const newsId = useRoute().params.id;
@@ -56,31 +58,35 @@ const bgColor = ref("#f8f1e5");
 </script>
 
 <template>
-  <div class="building-detail">
-    <div class="footer-line" />
+  <div class="spirit-detail">
+    <div class="footer-line"></div>
     <div v-if="data" class="detail">
       <div class="detail-content">
-        <div class="title">
-          {{ data.data.title }}
-        </div>
-        <NewsBar color="#ab2526" :time="data.data.publishTime" :browse="data.data.viewCount" />
-        <div class="text" v-html="data.data.content" />
+        <div style="width: 100%; padding: 5em 5em">
+          <div class="title">
+            {{ data.data.title }}
+          </div>
+          <NewsBar color="#ab2526" :time="data.data.publishTime" :browse="data.data.viewCount" />
+          <div class="text" v-html="data.data.content" />
 
-        <div class="button">
-          <ComDoubleDiv
-            class="footer-left"
-            title="上一篇"
-            :content="data?.previous?.title ?? '暂无'"
-            :bg-color="bgColor"
-            @click="toDetail(data?.previous?.id)"
-          />
-          <ComDoubleDiv
-            class="footer-right"
-            title="下一篇"
-            :content="data?.next?.title ?? '暂无'"
-            :bg-color="bgColor"
-            @click="toDetail(data?.next?.id)"
-          />
+          <div class="button">
+            <div class="button-left">
+              <ComDoubleDiv
+                  title="上一篇" :content="data?.previous?.title ?? '暂无'"
+                  :bg-color="bgColor"
+                  :leftFontColor="'#a51617'" :rightFontColor="'#7b6a5d'"
+                  @click="toDetail(data?.previous?.id)"
+              />
+            </div>
+            <div class="button-right">
+              <ComDoubleDiv
+                  title="下一篇" :content="data?.next?.title ?? '暂无'"
+                  :bg-color="bgColor"
+                  :leftFontColor="'#a51617'" :rightFontColor="'#7b6a5d'"
+                  @click="toDetail(data?.next?.id)"
+              />
+            </div>
+          </div>
         </div>
       </div>
     </div>

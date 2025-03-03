@@ -1,51 +1,50 @@
 <script setup>
 import NewsBar from "@/components/NewsBar.vue";
-import { ref } from 'vue'
-import { useRoute, useRouter } from 'vue-router'
-import HttpUtils from '@/utils/httpUtils.js'
+import { ref } from "vue";
+import { useRoute } from "vue-router";
+import HttpUtils from "@/utils/httpUtils.js";
 
-const data = ref('')
-const newsId = useRoute().params.id
-const router = useRouter()
+const data = ref("");
+const newsId = useRoute().params.id;
 
 // 格式化时间戳为 YYYY-MM-DD 格式
-function formatTimestamp(timestamp) {
-  const date = new Date(timestamp)
-  const year = date.getFullYear()
-  const month = (date.getMonth() + 1).toString().padStart(2, '0')
-  const day = date.getDate().toString().padStart(2, '0')
-  return `${year}-${month}-${day}`
+function formatTimestamp (timestamp) {
+  const date = new Date(timestamp);
+  const year = date.getFullYear();
+  const month = (date.getMonth() + 1).toString().padStart(2, "0");
+  const day = date.getDate().toString().padStart(2, "0");
+  return `${year}-${month}-${day}`;
 }
 
-async function getData() {
-  const res = await HttpUtils.get(`/cms/news/detail?newsId=${newsId}`)
-  const result = await res.json()
+async function getData () {
+  const res = await HttpUtils.get(`/cms/news/detail?newsId=${newsId}`);
+  const result = await res.json();
   // 格式化发布时间
   if (result?.data?.data?.publishTime) {
-    result.data.data.publishTime = formatTimestamp(result.data.data.publishTime)
+    result.data.data.publishTime = formatTimestamp(result.data.data.publishTime);
   }
 
-  console.log(result.data.data.publishTime)
-  data.value = result.data
-  document.title = data.value.data.title
+  console.log(result.data.data.publishTime);
+  data.value = result.data;
+  document.title = data.value.data.title;
 
-  console.log(data.value)
+  console.log(data.value);
 }
 
-getData()
+getData();
 </script>
 
 <template>
   <div class="body-box">
     <div class="bodyBg">
-      <img src="../../../assets/imgs/_8_humanResourcesImgs/bg-1.png" alt=""/>
+      <img src="../../../assets/imgs/_8_humanResourcesImgs/bg-1.png" alt="" />
     </div>
     <div class="body-content">
       <div class="bg-white" style="padding: 4.7rem; width: 100%">
         <div class="title-box">
           <div class="content-title">{{ data.data.title }}</div>
           <div style="margin-top: 4.7rem; margin-bottom: 4.7rem">
-            <NewsBar color="#ab2526" :time="data.data.publishTime" :browse="data.data.viewCount" />
+            <NewsBar color="#1c4e9f" :time="data.data.publishTime" :browse="data.data.viewCount" />
           </div>
         </div>
         <div class="text" v-html="data.data.content" />

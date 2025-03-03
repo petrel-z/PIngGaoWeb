@@ -63,13 +63,12 @@ function pageChange (pageNumber) {
   getData();
 }
 
-function toDetail (item) {
-  console.log(item);
-  if (item && item.id) {
+function toDetail (newsId) {
+  if (newsId) {
     const target = router.resolve({
       name: "pbDetail",
       params: {
-        id: item.id,
+        id: newsId,
       },
     });
     window.open(target.href, "_blank");
@@ -83,11 +82,11 @@ getData();
   <div class="spirit-more">
     <div class="title">
       <myTitle
-        title="平高党建"
-        english="Pg Party Building"
-        title-color="#fce3cd"
-        line-color="#fce3cd"
-        eng-color="#fce3cd"
+          title="平高党建"
+          english="Pg Party Building"
+          title-color="#fce3cd"
+          line-color="#fce3cd"
+          eng-color="#fce3cd"
       />
     </div>
     <div class="footer-line"></div>
@@ -95,32 +94,32 @@ getData();
       <div class="left">
         <div v-for="item in leftList" :key="item.time" class="listItem">
           <Item2
-            :time="formatTimestamp(item.publishTime)"
-            :text="item.title"
-            time-color="#a51617"
-            text-color="#7b6a5d"
-            text-font-family="SourceHanSerifCN_Bold"
-            @click="toDetail(item)"
+              :time="formatTimestamp(item.publishTime)"
+              :text="item.title"
+              time-color="#a51617"
+              text-color="#7b6a5d"
+              text-font-family="SourceHanSerifCN_Bold"
+              @click="toDetail(item.id)"
           />
         </div>
       </div>
       <div class="right">
         <OrderList
-          :order-list="rightList"
-          bg-color="#e06e5f"
-          :font-family="{
+            :order-list="rightList"
+            bg-color="#e06e5f"
+            :font-family="{
             titleFont: 'SourceHanSerifCN_Bold',
             contentFont: 'SourceHanSerifCN_SemiBold',
           }"
-          @click-item="toDetail"
+            @click-item="toDetail"
         />
       </div>
     </div>
 
     <div class="footer-button">
       <MyPagination
-        v-if="hasMore" :total="pageMax" :current="pageNo" font-color="#a51617"
-        @page-change="pageChange"
+          v-if="hasMore" :total="pageMax" :current="pageNo" font-color="#a51617"
+          @page-change="pageChange"
       />
       <p v-else style="font-size: 24px;">
         暂无更多

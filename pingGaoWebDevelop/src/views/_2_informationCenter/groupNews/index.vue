@@ -1,84 +1,98 @@
 <script setup>
-import Item1 from '@/components/Item-1.vue'
-import MyButton from '@/components/MyButton.vue'
-import MyTitle from '@/components/MyTitle.vue'
-import router from '@/router/index.js'
-import httpUtils from '@/utils/httpUtils.js'
-import ContentPag from '@/views/_2_informationCenter/ContentPag.vue'
-import { ref } from 'vue'
+import Item1 from "@/components/Item-1.vue";
+import MyButton from "@/components/MyButton.vue";
+import MyTitle from "@/components/MyTitle.vue";
+import router from "@/router/index.js";
+import httpUtils from "@/utils/httpUtils.js";
+import ContentPag from "@/views/_2_informationCenter/ContentPag.vue";
+import { ref, onMounted } from "vue";
 
 defineOptions({
-  name: 'NewsCenterIndex2-1',
-})
+  name: "NewsCenterIndex2-1",
+});
 
-document.title = '集团新闻'
-const categoryId = 17
-const mainNews = ref([])
-const topNews = ref({})
+document.title = "集团新闻";
+const categoryId = 17;
+const mainNews = ref([]);
+const topNews = ref({});
 
 // 格式化时间戳为 YYYY-MM-DD 格式
-function formatTimestamp(timestamp) {
-  const date = new Date(timestamp)
-  const year = date.getFullYear()
-  const month = (date.getMonth() + 1).toString().padStart(2, '0')
-  const day = date.getDate().toString().padStart(2, '0')
-  return `${year}-${month}.${day}`
+function formatTimestamp (timestamp) {
+  const date = new Date(timestamp);
+  const year = date.getFullYear();
+  const month = (date.getMonth() + 1).toString().padStart(2, "0");
+  const day = date.getDate().toString().padStart(2, "0");
+  return `${year}-${month}.${day}`;
 }
 
 // 格式化时间戳为 YYYY-MM-DD 格式
-function formatTimestampObj(timestamp) {
-  const date = new Date(timestamp)
-  const year = date.getFullYear()
-  const month = (date.getMonth() + 1).toString().padStart(2, '0')
-  const day = date.getDate().toString().padStart(2, '0')
+function formatTimestampObj (timestamp) {
+  const date = new Date(timestamp);
+  const year = date.getFullYear();
+  const month = (date.getMonth() + 1).toString().padStart(2, "0");
+  const day = date.getDate().toString().padStart(2, "0");
   return {
     year: `${year}`,
     month: `${month}.${day}`,
-  }
+  };
 }
 
-async function getData() {
+async function getData () {
   const queryString = new URLSearchParams({
     pageNo: 1,
     pageSize: 6,
-  }).toString()
+  }).toString();
 
-  console.log('获取数据', queryString)
-  const response = await httpUtils.get(`/cms/category/${categoryId}/news?${queryString.toString()}`)
-  const { data } = await response.json()
-  const page = data.page
+  console.log("获取数据", queryString);
+  const response = await httpUtils.get(`/cms/category/${categoryId}/news?${queryString.toString()}`);
+  const { data } = await response.json();
+  const page = data.page;
   page.list.forEach((i) => {
-    i.publishTime = formatTimestamp(i.publishTime)
-    i.timeObj = formatTimestampObj(i.publishTime)
-  })
+    i.publishTime = formatTimestamp(i.publishTime);
+    i.timeObj = formatTimestampObj(i.publishTime);
+  });
 
-  console.log(page.list)
-  topNews.value = page.list[0]
-  topNews.value.btnColor = '#e06e5f'
-  topNews.value.bgColor = '#a51617'
-  topNews.value.lineColor = '#e06e5f'
-  topNews.value.titleFont = 'SourceHanSerifCN_Bold'
-  topNews.value.textFont = 'SourceHanSerifCN_Medium'
-  topNews.value.fontColor = '#fce3cc'
-  mainNews.value = page.list.slice(1)
+  console.log(page.list);
+  topNews.value = page.list[0];
+  mainNews.value = page.list.slice(1);
 }
 
-function toDetail(id) {
-  if (id) {
-    router.push({
-      name: 'newsDetail',
+function toDetail (newsId) {
+  if (newsId) {
+    const target = router.resolve({
+      name: "newsDetail",
       params: {
-        id,
+        id: newsId,
       },
-    })
-
-    setTimeout(() => {
-      window.location.reload()
-    }, 100)
+    });
+    window.open(target.href, "_blank");
   }
 }
 
-getData()
+const contentBox = ref(null);
+onMounted(() => {
+  if (contentBox.value) {
+    // 监听页面滚动事件
+    window.addEventListener("scroll", () => {
+      if (!contentBox.value) return;
+      // 获取元素顶部距离页面顶部的距离
+
+      const contentTop = contentBox.value.getBoundingClientRect().top;
+      // 获取窗口的高度
+      const windowHeight = window.innerHeight;
+
+      // 判断元素是否进入可视区域
+
+      if (contentTop < windowHeight) {
+        contentBox.value.classList.add("show");
+      } else {
+        contentBox.value.classList.remove("show");
+      }
+    });
+  }
+});
+
+getData();
 </script>
 
 <template>
@@ -93,26 +107,26 @@ getData()
         </div>
         <div ref="contentBox" style="margin-top: 2.5rem">
           <ContentPag
-            :title1="topNews.title"
-            title2=""
-            :text="topNews.description"
-            :img="topNews.images"
-            bg-color="#006fc1"
-            :to-state="false"
-            :detail-id="topNews.id"
+              :title1="topNews.title"
+              title2=""
+              :text="topNews.description"
+              :img="topNews.images"
+              bg-color="#006fc1"
+              :to-state="false"
+              :detail-id="topNews.id"
           />
         </div>
         <div class="item-container">
           <Item1
-            v-for="(item, index) in mainNews"
-            :key="index"
-            :detail-id="item.id"
-            :month="item.month"
-            :year="item.year"
-            :title="item.title"
-            :text="item.text"
-            hover-color="#006fc1"
-            @click-item="toDetail"
+              v-for="(item, index) in mainNews"
+              :key="index"
+              :detail-id="item.id"
+              :month="item.month"
+              :year="item.year"
+              :title="item.title"
+              :text="item.text"
+              hover-color="#006fc1"
+              @click-item="toDetail"
           />
         </div>
       </div>

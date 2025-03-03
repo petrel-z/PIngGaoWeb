@@ -1,33 +1,33 @@
-import aboutPinggao from "@/views/_1_aboutPinggao/aboutPinggao.vue"
-import approachPinggao from "@/views/_1_aboutPinggao/approachPinggao/myIndex.vue"
-import groupProfile from "@/views/_1_aboutPinggao/groupProfile/myIndex.vue"
-import lesadingMember from "@/views/_1_aboutPinggao/lesadingMember/myIndex.vue"
-import organizationalStructure from "@/views/_1_aboutPinggao/organizationalStructure/myIndex.vue"
-import seniorHonor from "@/views/_1_aboutPinggao/seniorHonor/myIndex.vue"
-import partyBuilding from "@/views/_3_partyBuilding/index.vue"
+import aboutPinggao from "@/views/_1_aboutPinggao/aboutPinggao.vue";
+import approachPinggao from "@/views/_1_aboutPinggao/approachPinggao/myIndex.vue";
+import groupProfile from "@/views/_1_aboutPinggao/groupProfile/myIndex.vue";
+import lesadingMember from "@/views/_1_aboutPinggao/lesadingMember/myIndex.vue";
+import organizationalStructure from "@/views/_1_aboutPinggao/organizationalStructure/myIndex.vue";
+import seniorHonor from "@/views/_1_aboutPinggao/seniorHonor/myIndex.vue";
+import partyBuilding from "@/views/_3_partyBuilding/index.vue";
 
-import productEngineering from "@/views/_4_productEngineering/index.vue"
-import keyProject from "@/views/_4_productEngineering/keyProject/myIndex.vue"
-import productSeries from "@/views/_4_productEngineering/productSeries/myIndex.vue"
-import productSeriesDetail from "@/views/_4_productEngineering/productSeriesDetail/myIndex.vue"
-import qualityAssurance from "@/views/_6_qualityAssurance/index.vue"
-import manufacturing from "@/views/_6_qualityAssurance/manufacturing/index-1.vue"
-import productTesting from "@/views/_6_qualityAssurance/productTesting/index-1.vue"
-import qualitySystem from "@/views/_6_qualityAssurance/qualitySystem/index-1.vue"
-import scientificResearchCenter from "@/views/_7_scientificResearchCenter/index.vue"
+import productEngineering from "@/views/_4_productEngineering/index.vue";
+import keyProject from "@/views/_4_productEngineering/keyProject/myIndex.vue";
+import productSeries from "@/views/_4_productEngineering/productSeries/myIndex.vue";
+import productSeriesDetail from "@/views/_4_productEngineering/productSeriesDetail/myIndex.vue";
+import qualityAssurance from "@/views/_6_qualityAssurance/index.vue";
+import manufacturing from "@/views/_6_qualityAssurance/manufacturing/index-1.vue";
+import productTesting from "@/views/_6_qualityAssurance/productTesting/index-1.vue";
+import qualitySystem from "@/views/_6_qualityAssurance/qualitySystem/index-1.vue";
+import scientificResearchCenter from "@/views/_7_scientificResearchCenter/index.vue";
 import scientificResearchAchievement
-  from "@/views/_7_scientificResearchCenter/scientificResearchAchievement/myIndex.vue"
+  from "@/views/_7_scientificResearchCenter/scientificResearchAchievement/myIndex.vue";
 import scientificResearchSystem
-  from "@/views/_7_scientificResearchCenter/scientificResearchSystem/myIndex.vue"
-import testSystem from "@/views/_7_scientificResearchCenter/testSystem/myIndex.vue"
-import addressTelephone from "@/views/_9_contactUs/addressTelephone/index-1.vue"
-import becomePartner from "@/views/_9_contactUs/becomePartner/index-1.vue"
-import businessConsulting from "@/views/_9_contactUs/businessConsulting/index-1.vue"
-import contactUs from "@/views/_9_contactUs/index.vue"
-import purchaseByBidding from "@/views/_9_contactUs/purchaseByBidding/index-1.vue"
-import homePage_1 from "@/views/homePage/homePage-1.vue"
+  from "@/views/_7_scientificResearchCenter/scientificResearchSystem/myIndex.vue";
+import testSystem from "@/views/_7_scientificResearchCenter/testSystem/myIndex.vue";
+import addressTelephone from "@/views/_9_contactUs/addressTelephone/index-1.vue";
+import becomePartner from "@/views/_9_contactUs/becomePartner/index-1.vue";
+import businessConsulting from "@/views/_9_contactUs/businessConsulting/index-1.vue";
+import contactUs from "@/views/_9_contactUs/index.vue";
+import purchaseByBidding from "@/views/_9_contactUs/purchaseByBidding/index-1.vue";
+import homePage_1 from "@/views/homePage/homePage-1.vue";
 
-import { createRouter, createWebHistory } from "vue-router"
+import { createRouter, createWebHistory } from "vue-router";
 
 const router = createRouter({
   history: createWebHistory(),
@@ -185,7 +185,8 @@ const router = createRouter({
       path: "talentRecruitment",
       component: () => import("@/views/_8_humanResources/talentRecruitment/index-1.vue"),
     }, {
-      path: "talentRecruitmentDetail",
+      name: "talentRecruitmentDetail",
+      path: "talentRecruitment/detail-:id",
       component: () => import("@/views/_8_humanResources/talentRecruitment/index-2.vue"),
     }, {
       path: "postdoctoralWorkstation",
@@ -205,7 +206,7 @@ const router = createRouter({
       path: "businessConsulting",
       component: businessConsulting,
       beforeEnter: () => {
-        window.location.href = "http://pg.pinggao.com:20062/EClient/?appId=PGWeb"
+        window.location.href = "http://pg.pinggao.com:20062/EClient/?appId=PGWeb";
       },
     }, {
       path: "addressTelephone",
@@ -224,21 +225,21 @@ const router = createRouter({
       "/scientificResearchCenter/scientificResearchSystem",
       "/humanResources/talentTeam",
       "/contactUs/purchaseByBidding",
-    ]
+    ];
 
     // 检查目标路由是否在需要回到顶部的路径数组中
     if (scrollToTopPaths.includes(to.path)) {
-      return { top: 0, behavior: "smooth" }
+      return { top: 0, behavior: "smooth" };
     }
 
     // 如果有 savedPosition，即浏览器返回操作，则滚动到原来的位置
     if (savedPosition) {
-      return savedPosition
+      return savedPosition;
     }
 
     // 默认情况下，不处理滚动位置
-    return {}
+    return {};
   },
-})
+});
 
-export default router
+export default router;

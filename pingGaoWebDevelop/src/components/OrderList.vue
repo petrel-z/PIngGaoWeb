@@ -12,12 +12,12 @@ const props = defineProps({
     type: Array,
     required: true,
   },
-})
+});
 
-const emit = defineEmits(["clickItem"])
+const emit = defineEmits(["clickItem"]);
 
 function clickItem (item) {
-  emit("clickItem", item)
+  emit("clickItem", item.id);
 }
 </script>
 

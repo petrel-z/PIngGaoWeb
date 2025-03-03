@@ -116,7 +116,15 @@ onMounted(() => {
           {{ index === 1 ? "高校毕业生招聘" : "社会公开招聘" }}
         </div>
         <div style="margin-top: 3.7rem">
-          <router-link to="/humanResources/talentRecruitmentDetail" v-for="item in items" :key="item.id">
+          <router-link
+            v-for="item in items"
+            :key="item.id"
+            :to="{
+              name: 'talentRecruitmentDetail',
+              params: {
+                id: item.id,
+              },
+            }">
             <Item2
               style="margin-bottom: 1.7rem"
               :time="item.publishTime"
@@ -156,10 +164,14 @@ onMounted(() => {
 }
 
 .show .left {
+  cursor: pointer;
+  user-select: none;
   left: 0;
 }
 
 .show .right {
+  cursor: pointer;
+  user-select: none;
   right: 0;
 }
 

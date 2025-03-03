@@ -61,13 +61,12 @@ function pageChange (pageNumber) {
   getData();
 }
 
-function toDetail (item) {
-  console.log(item);
-  if (item && item.id) {
+function toDetail (newsId) {
+  if (newsId) {
     const target = router.resolve({
-      name: "pbDetail",
+      name: "newsDetail",
       params: {
-        id: item.id,
+        id: newsId,
       },
     });
     window.open(target.href, "_blank");
