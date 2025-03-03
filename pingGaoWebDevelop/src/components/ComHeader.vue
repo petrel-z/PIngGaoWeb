@@ -63,11 +63,11 @@ const allContent = ref([
       imgPath: imgPath2,
     },
     footer: [
-      { name: "总部动态", path: "/informationCenter/headquartersDynamics-1" },
-      { name: "集团新闻", path: "/informationCenter/groupNews-1" },
-      { name: "媒体聚焦", path: "/informationCenter/mediaFocus-1" },
+      { name: "总部动态", path: "/informationCenter/headquartersDynamicsIndex" },
+      { name: "集团新闻", path: "/informationCenter/groupNewsIndex" },
+      { name: "媒体聚焦", path: "/informationCenter/mediaFocusIndex" },
       { name: "热点视频", path: "/informationCenter/hotVideo" },
-      { name: "最新公告", path: "/informationCenter/latestAnnouncement-1" },
+      { name: "最新公告", path: "/informationCenter/latestAnnouncementIndex" },
     ],
   },
   {
@@ -80,11 +80,11 @@ const allContent = ref([
     footer: [
       {
         name: "党的精神",
-        path: "/partyBuilding/partyspirit",
+        path: "/partyBuilding/partySpirit/index",
       },
       {
         name: "平高党建",
-        path: "/partyBuilding/pinggaoPartyBuilding",
+        path: "/partyBuilding/pinggaoPartyBuilding/index",
       },
     ],
   },
@@ -175,7 +175,7 @@ const allContent = ref([
       },
       {
         name: "人才招聘",
-        path: "/humanResources/talentRecruitment-1",
+        path: "/humanResources/talentRecruitment",
       },
       {
         name: "博士后工作站",
@@ -218,11 +218,11 @@ let hoverText = ref({
     imgPath: imgPath1,
   },
   footer: [
-    { name: "总部动态", path: "/informationCenter/headquartersDynamics-1" },
-    { name: "集团新闻", path: "/informationCenter/groupNews-1" },
-    { name: "媒体聚焦", path: "/informationCenter/mediaFocus-1" },
+    { name: "总部动态", path: "/informationCenter/headquartersDynamicsIndex" },
+    { name: "集团新闻", path: "/informationCenter/groupNewsIndex" },
+    { name: "媒体聚焦", path: "/informationCenter/mediaFocusIndex" },
     { name: "热点视频", path: "/informationCenter/hotVideo" },
-    { name: "最新公告", path: "/informationCenter/latestAnnouncement-1" },
+    { name: "最新公告", path: "/informationCenter/latestAnnouncementIndex" },
   ],
 });
 
@@ -263,11 +263,11 @@ const props = defineProps({
   footer: {
     type: Array,
     default: () => [
-      { name: "总部动态", path: "/informationCenter/headquartersDynamics-1" },
-      { name: "集团新闻", path: "/informationCenter/groupNews-1" },
-      { name: "媒体聚焦", path: "/informationCenter/mediaFocus-1" },
+      { name: "总部动态", path: "/informationCenter/headquartersDynamicsIndex" },
+      { name: "集团新闻", path: "/informationCenter/groupNewsIndex" },
+      { name: "媒体聚焦", path: "/informationCenter/mediaFocusIndex" },
       { name: "热点视频", path: "/informationCenter/hotVideo" },
-      { name: "最新公告", path: "/informationCenter/latestAnnouncement-1" },
+      { name: "最新公告", path: "/informationCenter/latestAnnouncementIndex" },
     ],
   },
   onlyHeaderFlag: {

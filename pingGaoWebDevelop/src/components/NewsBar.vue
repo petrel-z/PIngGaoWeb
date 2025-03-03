@@ -9,11 +9,11 @@ const props = defineProps({
   },
   time: {
     type: String,
-    default: "2022-01-01",
+    required: true,
   },
   browse: {
     type: Number,
-    default: 0,
+    required: true,
   },
 });
 
@@ -92,21 +92,21 @@ const openmore = () => {
     </div>
     <div class="bar-right" :style="{ color: props.color }">
       <span>分享:</span>
-      <el-button plain @click="openQQ" class="el-button"
-        ><span class="icon iconfont" :style="{ color: props.color }">&#xe62e;</span></el-button
-      >
-      <el-button plain @click="openBlog" class="el-button"
-        ><span class="icon iconfont" :style="{ color: props.color }">&#xe61a;</span></el-button
-      >
-      <el-button plain @click="openQQSpace" class="el-button"
-        ><span class="icon iconfont" :style="{ color: props.color }">&#xe674;</span></el-button
-      >
-      <el-button plain @click="openWechat" class="el-button"
-        ><span class="icon iconfont" :style="{ color: props.color }">&#xe654;</span></el-button
-      >
-      <el-button plain @click="openmore" class="el-button"
-        ><span class="icon iconfont" :style="{ color: props.color }">&#xe655;</span></el-button
-      >
+      <el-button plain @click="openQQ" class="el-button">
+        <span class="icon iconfont" :style="{ color: props.color }">&#xe62e;</span>
+      </el-button>
+      <el-button plain @click="openBlog" class="el-button">
+        <span class="icon iconfont" :style="{ color: props.color }">&#xe61a;</span>
+      </el-button>
+      <el-button plain @click="openQQSpace" class="el-button">
+        <span class="icon iconfont" :style="{ color: props.color }">&#xe674;</span>
+      </el-button>
+      <el-button plain @click="openWechat" class="el-button">
+        <span class="icon iconfont" :style="{ color: props.color }">&#xe654;</span>
+      </el-button>
+      <el-button plain @click="openmore" class="el-button">
+        <span class="icon iconfont" :style="{ color: props.color }">&#xe655;</span>
+      </el-button>
     </div>
   </div>
 </template>

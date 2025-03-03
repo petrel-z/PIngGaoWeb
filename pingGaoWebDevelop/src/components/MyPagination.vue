@@ -1,28 +1,41 @@
 <script setup>
-import { ref } from "vue";
-let currentPage = ref(1);
 const props = defineProps({
-  // total: {
-  //   type: Number,
-  //   default: 5,
-  // },
+  total: {
+    type: Number,
+    default: 5,
+  },
+  current: {
+    type: Number,
+    default: 1,
+  },
   fontColor: {
     type: String,
     default: "#45b3e0",
   },
-});
+})
+const emit = defineEmits(["pageChange"])
+
+function clickPage (pageNo) {
+  console.log("pageChange: ", pageNo)
+
+  if (pageNo > props.total) {
+    pageNo = props.total
+  }
+
+  emit("pageChange", pageNo)
+}
 </script>
 
 <template>
   <div class="my-pagination" :style="{ '--fontColor': props.fontColor }">
     <ul>
       <li
-        v-for="(i, index) in 5 + 1"
+        v-for="(i, index) in total"
         :key="index"
-        :class="{ active: i === currentPage }"
-        @click="currentPage = i"
+        :class="{ active: i === current }"
+        @click="clickPage(i)"
       >
-        {{ i <= 5 ? i : "末页" }}
+        {{ i }}
       </li>
     </ul>
   </div>
@@ -30,7 +43,8 @@ const props = defineProps({
 
 <style scoped>
 .my-pagination {
-  padding: 3rem 0 3.5rem 0;
+  width: 25%;
+  margin: 1em;
 }
 
 .my-pagination ul {
@@ -62,7 +76,9 @@ const props = defineProps({
   margin-right: 2rem;
 }
 
+/**
 .my-pagination li:last-child {
-  width: 5rem;
+  width: 5em;
 }
+*/
 </style>

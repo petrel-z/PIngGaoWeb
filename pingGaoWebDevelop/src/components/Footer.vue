@@ -27,7 +27,7 @@ defineOptions({
         </div>
         <div class="f1">
           <router-link to="/aboutPinggao">
-            <h3 to="">关于平高</h3>
+            <h3>关于平高</h3>
           </router-link>
           <router-link to="/aboutPinggao/groupProfile">
             <p class="p-first">集团简介</p>
@@ -49,19 +49,21 @@ defineOptions({
           <router-link to="/informationCenter">
             <h3>资讯中心</h3>
           </router-link>
-          <router-link to="/informationCenter/headquartersDynamics-1">
-            <p class="p-first">总部动态</p>
+          <router-link to="/informationCenter/headquartersDynamicsIndex">
+            <p class="p-first">
+              总部动态
+            </p>
           </router-link>
-          <router-link to="/informationCenter/groupNews-1">
+          <router-link to="/informationCenter/groupNewsIndex">
             <p>集团新闻</p>
           </router-link>
-          <router-link to="/informationCenter/mediaFocus-1">
+          <router-link to="/informationCenter/mediaFocusIndex">
             <p>媒体聚焦</p>
           </router-link>
           <router-link to="/informationCenter/hotVideo">
             <p>热点视频</p>
           </router-link>
-          <router-link to="/informationCenter/latestAnnouncement-1">
+          <router-link to="/informationCenter/latestAnnouncementIndex">
             <p>最新公告</p>
           </router-link>
         </div>
@@ -69,10 +71,10 @@ defineOptions({
           <router-link to="/partyBuilding">
             <h3>党的建设</h3>
           </router-link>
-          <router-link to="/partyBuilding/partyspirit">
+          <router-link to="/partyBuilding/partySpirit/index">
             <p class="p-first">党的精神</p>
           </router-link>
-          <router-link to="/partyBuilding/pinggaoPartyBuilding">
+          <router-link to="/partyBuilding/pinggaoPartyBuilding/index">
             <p>平高党建</p>
           </router-link>
         </div>
@@ -142,7 +144,7 @@ defineOptions({
           <router-link to="/humanResources/talentDevelopment">
             <p>人才开发</p>
           </router-link>
-          <router-link to="/humanResources/talentRecruitment-1">
+          <router-link to="/humanResources/talentRecruitment">
             <p>人才招聘</p>
           </router-link>
           <router-link to="/humanResources/postdoctoralWorkstation">
@@ -167,17 +169,18 @@ defineOptions({
           </router-link>
         </div>
         <div class="codeImg">
-          <img src="../assets/imgs/common/codeImg.png" alt="" />
+          <img src="../assets/imgs/common/codeImg.png" alt="">
           <p>平高集团</p>
         </div>
       </div>
     </div>
     <div class="footer-bottom">
-      <p>豫ICP备2022010930号 Copyright 2024 PINGGAO GROUP CO.,LTD, All Rights Reserved.</p>
+      <p><a href="https://beian.miit.gov.cn/">豫ICP备2022010930号</a> Copyright 2025 PINGGAO GROUP CO.,LTD, All Rights Reserved.</p>
       <p>平高集团有限公司版权所有</p>
     </div>
   </div>
 </template>
+
 <style lang="less" scoped>
 li {
   list-style: none;
@@ -205,11 +208,9 @@ a {
   // justify-content: center;
   // align-items: center;
   padding: 5% 9%;
-
-
 }
 
-.content>div {
+.content > div {
   border-right: 1px solid #727171;
   // flex: 1 1 auto;
 }
@@ -220,7 +221,6 @@ a {
   display: flex;
   justify-content: center;
   // align-content: center;
-
 
   .logo-img {
     width: 3%;
@@ -360,11 +360,11 @@ a {
   font-size: 1.15rem;
   font-family: "SourceHanSansCN";
   color: rgb(114, 113, 113);
+
   p {
     display: inline;
   }
 }
-
 
 /* 大型设备（桌面，大于 900px） */
 @media (max-width: 900px) {
@@ -373,20 +373,23 @@ a {
     height: 85%;
     width: 100%;
   }
-  
+
   .footer-bottom {
     height: 15%;
     width: 100%;
     font-size: 1.6rem;
     padding: 0 4%;
     white-space: wrap;
+
     p {
       // display: block;
     }
   }
-  .content>div {
+
+  .content > div {
     border: none;
   }
+
   .content {
     flex-direction: column;
     position: relative;
@@ -449,6 +452,7 @@ a {
       justify-content: start;
       align-items: center;
       border-bottom: 1px solid #727171;
+
       h3 {
         font-size: 1.5rem;
         margin: 0;
@@ -461,6 +465,7 @@ a {
         font-size: 1.2rem;
         margin-left: 1rem;
       }
+
       p {
         font-size: 1.5rem;
         margin-bottom: 0;
@@ -470,6 +475,7 @@ a {
 
       .p-first {}
     }
+
     .f9 {
       border: none;
     }

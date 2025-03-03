@@ -1,6 +1,12 @@
 <script setup>
 import defaultImg from "@/assets/imgs/_2_informationCenterImgs/LehYXF.png";
+
 const props = defineProps({
+  detailId: {
+    type: Number,
+    default: 1,
+    required: true,
+  },
   title1: {
     type: String,
     default: "中国电气装备召开一届二次",
@@ -51,22 +57,21 @@ const props = defineProps({
         <div style="width: 30%; height: 0.2rem; background-color: #389cd1"></div>
         <div style="width: 100%; height: 0.1rem; background-color: #389cd1"></div>
       </div>
-      <div class="content-text">
-        {{ props.text }}
-      </div>
-      <router-link v-if="props.toState" to="/informationCenter/headquartersDynamics-3">
+      <div class="content-text" v-html="props.text"/>
+      <router-link
+        :to="{
+          name: 'newsDetail',
+          params: {
+            id: props.detailId,
+          },
+        }"
+      >
         <div class="content-btn" :style="{ 'background-color': props.btnColor }">
           <span>{{ props.btnText }}</span>
           <i
             class="iconfont icon-chakanxiangqing-copy"
             style="font-size: 1.5rem; margin-left: 2em"
-          ></i>
-        </div>
-      </router-link>
-      <router-link v-else to="/informationCenter/groupNews-3">
-        <div class="content-btn" :style="{ 'background-color': props.btnColor }">
-          <span>{{ props.btnText }}</span>
-          <i class="iconfont icon-chakanxiangqing-copy"></i>
+          />
         </div>
       </router-link>
     </div>
@@ -197,6 +202,7 @@ const props = defineProps({
     height: auto;
     flex: 0 0 auto;
   }
+
   .hr div {
     width: 100%;
   }

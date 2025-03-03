@@ -67,7 +67,7 @@ const props = defineProps({
 
 .button-text {
   width: 70%;
-  font-size: 1.5rem;
+  font-size: 1.1rem;
   font-family: "AlibabaPuHuiTi_2_55_Regular";
   color: rgb(255, 255, 255);
   line-height: 1.542;

@@ -34,6 +34,7 @@ const props = defineProps({
   position: relative;
   animation: right-in 0.7s ease-in-out forwards;
 }
+
 .h {
   display: block;
   font-weight: 550;
@@ -46,6 +47,7 @@ const props = defineProps({
   z-index: 4;
   margin-top: 0.25rem;
 }
+
 .line {
   top: 0.2rem;
   position: relative;
@@ -54,6 +56,7 @@ const props = defineProps({
   height: 0.2rem;
   margin: 0.25rem 0rem;
 }
+
 .english {
   display: block;
   font-size: 2rem;
@@ -76,23 +79,13 @@ const props = defineProps({
   .h {
     font-size: 4rem;
   }
+
   .line {
     width: 7rem;
   }
+
   .english {
     font-size: 3rem;
-  }
-}
-
-@media (max-width: 600px) {
-  .h {
-    font-size: 5rem;
-  }
-  .line {
-    width: 8rem;
-  }
-  .English {
-    font-size: 4rem;
   }
 }
 </style>

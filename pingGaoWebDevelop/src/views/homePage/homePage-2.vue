@@ -1,50 +1,55 @@
 <script setup>
-import { ref, onMounted, onUnmounted, nextTick } from "vue";
 import ComHeader from "@/components/ComHeader.vue";
 import Footer from "@/components/Footer.vue";
+import router from "@/router/index.js";
+import HttpUtils from "@/utils/httpUtils.js";
+import { nextTick, onMounted, onUnmounted, ref } from "vue";
+
 const items = ref([]);
 const dots = ref([]);
 const current = ref(0);
 let timer = null;
-import img1 from "@/assets/imgs/_10_homePageImgs/carousel.png";
-import img2 from "@/assets/imgs/_10_homePageImgs/carousel.png";
-import img3 from "@/assets/imgs/_10_homePageImgs/carousel.png";
-import img4 from "@/assets/imgs/_10_homePageImgs/carousel.png";
-import img5 from "@/assets/imgs/_10_homePageImgs/carousel.png";
 
-const images = ref([img1, img2, img3, img4, img5]);
+const images = ref([]);
+
 // 轮播图切换逻辑
-const showSlide = () => {
+function showSlide () {
   items.value.forEach((item) => {
     item.style.transform = `translateX(-${current.value * 100}%)`;
   });
-};
+}
 
 // 上一张
-const prevSlide = () => {
+function prevSlide () {
   current.value = current.value > 0 ? current.value - 1 : items.value.length - 1;
   showSlide();
-};
+}
 
 // 下一张
-const nextSlide = () => {
+function nextSlide () {
   current.value = current.value < items.value.length - 1 ? current.value + 1 : 0;
   showSlide();
-};
+}
 
 // 切换到指定索引
-const jumpToSlide = (index) => {
+function jumpToSlide (index) {
   current.value = index;
   showSlide();
-};
+}
 
 // 定时器控制
-const startTimer = () => {
+function startTimer () {
   timer = setInterval(nextSlide, 3000);
-};
-const stopTimer = () => {
+}
+
+function stopTimer () {
   clearInterval(timer);
-};
+}
+
+function moreNews (url) {
+  const target = router.resolve(url);
+  window.open(target.href, "_blank");
+}
 
 // 组件挂载后执行 DOM 选择
 onMounted(() => {
@@ -57,6 +62,7 @@ onMounted(() => {
 onUnmounted(() => {
   clearInterval(timer);
 });
+
 onMounted(() => {
   const container = document.querySelector(".product_box");
   const leftIcon = document.querySelector(".left_icon");
@@ -138,6 +144,7 @@ onMounted(() => {
     clearInterval(autoSlideInterval);
   });
 });
+
 const scrollDiv = ref(null);
 const scrollBegin = ref(null);
 const scrollEnd = ref(null);
@@ -182,11 +189,58 @@ const initMarquee = () => {
   scrollDiv.value.addEventListener("mouseenter", stopScroll);
   scrollDiv.value.addEventListener("mouseleave", startScroll);
 };
+
 onMounted(() => {
   nextTick(() => {
     initMarquee();
   });
 });
+
+const topNews = ref([]);
+const homepageNews = ref([]);
+
+// 格式化时间戳为 YYYY-MM-DD 格式
+function formatTimestamp (timestamp) {
+  const date = new Date(timestamp);
+  const year = date.getFullYear();
+  const month = (date.getMonth() + 1).toString().padStart(2, "0");
+  const day = date.getDate().toString().padStart(2, "0");
+  return `${year}-${month}-${day}`;
+}
+
+async function getData () {
+  const res = await HttpUtils.get(`/cms/home/news`);
+  const result = await res.json();
+  const data = result.data;
+
+  const banner = [];
+  data.homeBanner.forEach((item) => {
+    banner.push({
+      type: item.type,
+      src: item.images,
+    });
+  });
+  images.value = [...banner];
+  topNews.value = [...data.topNews];
+  homepageNews.value = [...data.homepageNews];
+
+  console.log(JSON.parse(JSON.stringify(data)));
+}
+
+function toDetail(newsId) {
+  if (newsId) {
+    const target = router.resolve({
+      name: "newsDetail",
+      params: {
+        id: newsId,
+      },
+    });
+
+    window.open(target.href, "_blank");
+  }
+}
+
+getData();
 </script>
 
 <template>
@@ -199,19 +253,12 @@ onMounted(() => {
     <div class="my_carousel">
       <div class="carousel" id="carousel" @mouseover="stopTimer" @mouseout="startTimer">
         <div class="carousel-inner">
-          <div class="item" v-for="(image, index) in images" :key="index">
-            <img
-              :src="image"
-              :style="{
-                backgroundColor: [
-                  'pink',
-                  'bisque',
-                  'rgb(144, 255, 236)',
-                  'rgb(248, 99, 124)',
-                  'rgb(210, 161, 250)',
-                ][index],
-              }"
-            />
+          <div
+            v-for="(image, index) in images" :key="index" class="item"
+            :data-typeimage="image.src"
+          >
+            <video v-if="image.type === 'video'" muted autoplay :src="image.src"></video>
+            <img v-else :src="image.src" alt=""/>
           </div>
         </div>
         <div class="carousel-control left" @click="prevSlide">&lsaquo;</div>
@@ -270,8 +317,8 @@ onMounted(() => {
               工程、世界输送容量最大的苏通GIL综合管廊工程、国内首个百兆瓦级电网侧储能项目等国家重点工程项
               目提供了成套设备和技术服务。平高集团以世界一流智慧电气装备集团战略目标为统领，紧紧围绕“智慧
               电气、系统服务高效能源”总体布局，聚焦电力装备制造及能源系统解决方案，争当电气技术引领者、能
-              源革命推动者、绿色发展践行者，努力为全面建设社会主义现代化国家贡献智慧和力量。</span
-            >
+              源革命推动者、绿色发展践行者，努力为全面建设社会主义现代化国家贡献智慧和力量。
+            </span>
           </div>
           <div ref="scrollEnd" class="scroll-content"></div>
         </div>
@@ -427,60 +474,31 @@ onMounted(() => {
           <div class="h">高举中国特色社会主义伟大旗帜</div>
         </div>
         <div class="title_right">
-          <div class="p">总部动态</div>
-          <div class="p">集团新闻</div>
-          <div class="p">媒体聚焦</div>
+          <div class="p" @click="moreNews('/informationCenter/headquartersDynamicsIndex')">总部动态</div>
+          <div class="p" @click="moreNews('/informationCenter/groupNewsIndex')">集团新闻</div>
+          <div class="p" @click="moreNews('/informationCenter/mediaFocusIndex')">媒体聚焦</div>
         </div>
       </div>
       <div class="great_flag_content">
-        <div class="content_detail">
-          <div class="top_img"><img src="@/assets/imgs/_10_homePageImgs/pic1.png" alt="" /></div>
+        <div class="content_detail" v-for="top in topNews" :key="top.id" @click="toDetail(top.id)">
+          <div class="top_img"><img :src="top.headerImage" alt="" /></div>
           <div class="bottom_text">
-            <div class="time">2023-02-28</div>
-            <div class="hr"></div>
-            <div class="p">平高集团入选</div>
-            <div class="p">BNEF全球一级储能厂商榜</div>
-          </div>
-        </div>
-        <div class="content_detail">
-          <div class="top_img"><img src="@/assets/imgs/_10_homePageImgs/pic2.png" alt="" /></div>
-          <div class="bottom_text">
-            <div class="time">2023-02-28</div>
-            <div class="hr"></div>
-            <div class="p">平高集团入选</div>
-            <div class="p">BNEF全球一级储能厂商榜</div>
+            <div class="time">{{ formatTimestamp(top.publishTime) }}</div>
+            <div class="hr" />
+            <div class="p">{{ top.title }}</div>
+            <div class="p" v-html="top.description"/>
           </div>
         </div>
         <div class="content_detail_text">
-          <div class="text">
-            <div class="title">平高集团入选BNEF全球一级储能厂商榜</div>
-            <div class="line"></div>
-            <div class="time">2023-02-28</div>
-          </div>
-          <div class="text">
-            <div class="title">国际领先+1，平高1项新产品通过国家级鉴…</div>
-            <div class="line"></div>
-            <div class="time">2023-02-28</div>
-          </div>
-          <div class="text">
-            <div class="title">中国电气装备党委书记、董事长到平…</div>
-            <div class="line"></div>
-            <div class="time">2023-02-28</div>
-          </div>
-          <div class="text">
-            <div class="title">国际领先+1，平高1项新产品通过国家级鉴…</div>
-            <div class="line"></div>
-            <div class="time">2023-02-28</div>
-          </div>
-          <div class="text">
-            <div class="title">平高集团入选BNEF全球一级储能厂商榜</div>
-            <div class="line"></div>
-            <div class="time">2023-02-28</div>
+          <div v-for="news in homepageNews" :key="news.id" class="text" @click="toDetail(news.id)">
+            <div class="title">{{ news.title }}</div>
+            <div class="line"/>
+            <div class="time">{{ formatTimestamp(news.publishTime) }}</div>
           </div>
         </div>
       </div>
       <div class="great_flag_button">
-        <router-link :to="'/informationCenter/headquartersDynamics-1'" style="display: flex">
+        <router-link to="/informationCenter/headquartersDynamicsIndex" style="display: flex">
           <div class="button_left">了解更多</div>
           <div class="button_right"><span class="icon iconfont">&#xe6a3;</span></div>
         </router-link>
@@ -512,27 +530,33 @@ onMounted(() => {
   left: 0;
   z-index: 101;
 }
+
 .my_carousel {
   width: 100%;
   height: 61.875rem;
   position: relative;
 }
+
 .my_carousel .carousel {
   width: 100%;
   height: 61.875rem;
   overflow: hidden;
 }
+
 .my_carousel .carousel img {
   width: 100%;
   height: 61.875rem;
 }
+
 .carousel-inner {
   display: flex;
   transition: transform 0.5s ease-in-out;
 }
+
 .item {
   min-width: 100%;
 }
+
 .dots {
   position: absolute;
   display: flex;
@@ -542,6 +566,7 @@ onMounted(() => {
   width: 100%;
   align-items: center;
 }
+
 .dots li {
   width: 7.375rem;
   height: 0.1875rem;
@@ -549,15 +574,18 @@ onMounted(() => {
   margin: 0 0.3125rem;
   cursor: pointer;
 }
+
 .dots .active {
   background-color: rgb(189, 206, 255);
 }
+
 .nav {
   width: 100%;
   height: 6.4375rem;
   background-color: #45b3e0;
   padding: 1.875rem 10.25rem;
 }
+
 .nav_content {
   width: 100%;
   height: 2.5rem;
@@ -566,6 +594,7 @@ onMounted(() => {
   justify-content: space-between;
   margin: auto;
 }
+
 .nav_introduction {
   width: 100%;
   height: 2.5rem;
@@ -582,26 +611,31 @@ onMounted(() => {
   // text-align: center;
   transition: 0.3s;
 }
+
 .announcement {
   display: flex;
   height: 4.875rem;
   line-height: 4.875rem;
   margin-left: 10rem;
 }
+
 .announcement_icon {
   color: #338bcd;
   line-height: 4.875rem;
 }
+
 .announcement_icon .iconfont {
   font-size: 1.8125rem;
   font-weight: 600;
 }
+
 @media (min-width: 200px) and (max-width: 400px) {
   .announcement_icon .iconfont {
     display: block;
     margin-top: 0rem;
   }
 }
+
 .announcement_title {
   font-size: 1.375rem;
   font-family: "AlibabaPuHuiTi_2_55_Regular", sans-serif;
@@ -609,6 +643,7 @@ onMounted(() => {
   margin-left: 0.375rem;
   margin-right: 0.75rem;
 }
+
 .announcement_text {
   flex: 0.908;
   overflow: hidden;
@@ -645,6 +680,7 @@ onMounted(() => {
 .scroll-container:hover .scroll-content {
   animation-play-state: paused;
 }
+
 .product_content {
   width: 100%;
   height: 57.625rem;
@@ -665,6 +701,7 @@ onMounted(() => {
     opacity: 1;
   }
 }
+
 .product_box {
   /* overflow: hidden; */
   width: 94%;
@@ -702,12 +739,14 @@ onMounted(() => {
   z-index: 1000;
   animation: floatAnimation 3s ease-in-out infinite;
 }
+
 .product_topImg img {
   width: 100%;
   height: 100%;
   margin-left: -0.3125rem;
   margin: auto;
 }
+
 @keyframes floatAnimation {
   0%,
   100% {
@@ -717,6 +756,7 @@ onMounted(() => {
     transform: translateY(-1.5625rem);
   }
 }
+
 .product_topImg:before {
   content: "";
   position: absolute;
@@ -781,12 +821,14 @@ onMounted(() => {
   cursor: pointer;
   background-repeat: no-repeat;
 }
+
 .product_button:hover {
   transform: scale(1.1);
   /* translate(0, -0.3125rem) 使文字在Y轴方向向上移动0.3125rem，scale(1.1) 使文字放大到原来的1.1倍 */
   color: #58ffa9;
   /* 改变文字颜色 */
 }
+
 .product_button span {
   position: absolute;
   top: 0;
@@ -796,6 +838,7 @@ onMounted(() => {
   font-family: "AlibabaPuHuiTi_2_45_Light", sans-serif;
   color: rgb(0, 111, 193);
 }
+
 .left_icon .icon {
   top: 20rem;
   left: 3.75rem;
@@ -805,6 +848,7 @@ onMounted(() => {
   z-index: 100;
   cursor: pointer;
 }
+
 .right_icon .icon {
   position: absolute;
   font-size: 4.375rem;
@@ -814,6 +858,7 @@ onMounted(() => {
   z-index: 100;
   cursor: pointer;
 }
+
 .company_introduction {
   position: relative;
   height: 71.25rem;
@@ -822,6 +867,7 @@ onMounted(() => {
   background-size: cover; /* 实现图片等比例缩放 */
   background-repeat: no-repeat;
 }
+
 .company_introduction .bg_img {
   top: 0;
   left: 0;
@@ -830,6 +876,7 @@ onMounted(() => {
   height: 71.25rem;
   z-index: -100;
 }
+
 .company_introduction .bg_img img {
   width: 100%;
   height: 71.25rem;
@@ -841,6 +888,7 @@ onMounted(() => {
     width: 100%;
     padding: 3.25rem 8rem !important;
   }
+
   .company_introduction .bg_img {
     top: 0;
     left: 0;
@@ -849,45 +897,54 @@ onMounted(() => {
     height: 56.25rem !important;
     z-index: -100;
   }
+
   .company_introduction .bg_img img {
     width: 100%;
     height: 56.25rem !important;
   }
+
   .introduction_title {
     font-size: 2.25rem !important;
     margin-bottom: 3.0625rem !important;
     width: 100%;
   }
+
   .introduction_small_title {
     font-size: 1.8rem !important;
     margin-bottom: 0.625rem;
     width: 100%;
   }
+
   .introduction_content {
     width: 100%;
     height: 31.875rem;
     margin-bottom: 8.75rem;
   }
+
   .introduction_content .text_left {
     width: 50% !important;
     height: 31.875rem;
     margin-right: 3.25rem !important;
     padding-top: 0.8125rem;
   }
+
   .introduction_content .img_right {
     width: 53% !important;
     height: 80% !important;
     min-width: 25rem;
     transition: ease 0.5s;
   }
+
   .introduction_content .img_right img {
     width: 100%;
     height: 100%;
   }
+
   .introduction_content .p {
     font-size: 1.2rem !important;
     line-height: 1.7;
   }
+
   .introduction_content .p1 {
     margin-bottom: 1rem !important;
   }
@@ -902,10 +959,12 @@ onMounted(() => {
     left: 0.4rem !important;
     transform: scale(0.9);
   }
+
   .introduction_honor .honor_info {
     width: 80%;
     margin: auto;
   }
+
   .introduction_honor .honor_info .p {
     font-size: 1.425rem !important;
     margin-top: -0.625rem;
@@ -916,6 +975,7 @@ onMounted(() => {
     // vertical-align: middle;
   }
 }
+
 @media (min-width: 600px) and (max-width: 700px) {
   .company_introduction {
     position: relative;
@@ -923,6 +983,7 @@ onMounted(() => {
     width: 100%;
     padding: 3.25rem 7rem !important;
   }
+
   .company_introduction .bg_img {
     top: 0;
     left: 0;
@@ -931,45 +992,54 @@ onMounted(() => {
     height: 56.25rem !important;
     z-index: -100;
   }
+
   .company_introduction .bg_img img {
     width: 100%;
     height: 56.25rem !important;
   }
+
   .introduction_title {
     font-size: 2.25rem !important;
     margin-bottom: 3.0625rem !important;
     width: 100%;
   }
+
   .introduction_small_title {
     font-size: 1.8rem !important;
     margin-bottom: 0.625rem;
     width: 100%;
   }
+
   .introduction_content {
     width: 100%;
     height: 31.875rem;
     margin-bottom: 8.75rem;
   }
+
   .introduction_content .text_left {
     width: 50% !important;
     height: 31.875rem;
     margin-right: 3.25rem !important;
     padding-top: 0.8125rem;
   }
+
   .introduction_content .img_right {
     width: 53% !important;
     height: 60% !important;
     min-width: 25rem;
     transition: ease 0.5s;
   }
+
   .introduction_content .img_right img {
     width: 100%;
     height: 100%;
   }
+
   .introduction_content .p {
     font-size: 0.8rem !important;
     line-height: 1.7;
   }
+
   .introduction_content .p1 {
     margin-bottom: 0.875rem !important;
   }
@@ -984,14 +1054,17 @@ onMounted(() => {
     left: 0.4rem !important;
     transform: scale(0.9);
   }
+
   .introduction_honor .honor_info {
     width: 80%;
     margin: auto;
   }
+
   .introduction_honor .honor_info .p {
     font-size: 1.425rem !important;
     margin-top: -0.625rem;
   }
+
   .great_flag_content .content_detail {
     width: 32%;
     height: 23.1875rem !important;
@@ -999,6 +1072,7 @@ onMounted(() => {
     transition: 0.5s;
     cursor: pointer;
   }
+
   .great_flag {
     position: relative;
     padding: 7.5rem 5.75rem !important;
@@ -1006,6 +1080,7 @@ onMounted(() => {
     height: 74.125rem !important;
     width: 100%;
   }
+
   .great_flag_content .content_detail_text {
     width: 33%;
     height: 23.1875rem !important;
@@ -1013,6 +1088,7 @@ onMounted(() => {
     padding-top: 1rem !important;
     padding-left: 1.5rem !important;
   }
+
   .great_flag_button {
     margin: auto;
     width: 12.25rem;
@@ -1022,60 +1098,74 @@ onMounted(() => {
     left: 50%;
     transform: translateX(-50%);
   }
+
   .great_flag_title {
     display: flex;
     justify-content: space-between;
     margin-bottom: 6.25rem;
   }
+
   .great_flag_title .h {
     font-size: 2rem !important;
   }
+
   .great_flag_title .title_right .p {
     display: flex;
     line-height: 4.375rem;
     font-size: 1.1rem !important;
   }
+
   .great_flag_title .p {
     font-size: 1.2rem !important;
     margin-right: 1.25rem;
   }
+
   .great_flag_content .bottom_text {
     padding: 1rem 2rem !important;
   }
+
   .great_flag_content .bottom_text .time {
     font-size: 1rem !important;
   }
+
   .great_flag_content .bottom_text .hr {
     width: 2.6875rem;
     height: 0.1rem !important;
     margin: 0.25rem 0rem;
   }
+
   .great_flag_content .bottom_text .p {
     font-size: 0.9rem !important;
   }
+
   .great_flag_content .content_detail_text .text .title {
     font-size: 1rem !important;
   }
+
   .great_flag_content .content_detail_text .text .line {
     width: 2.6875rem;
     height: 0.1rem !important;
     margin: 0.25rem 0rem;
   }
+
   .great_flag_content .content_detail_text .time {
     font-size: 0.9rem !important;
     margin-bottom: 0.7rem !important;
   }
+
   .great_flag_footer {
     width: 100%;
     position: absolute;
     bottom: -0.4375rem;
     left: 0;
   }
+
   .great_flag_footer img {
     height: 20rem !important;
     width: 100%;
   }
 }
+
 @media (min-width: 700px) and (max-width: 800px) {
   .company_introduction {
     position: relative;
@@ -1083,6 +1173,7 @@ onMounted(() => {
     width: 100%;
     padding: 3.25rem 7rem !important;
   }
+
   .company_introduction .bg_img {
     top: 0;
     left: 0;
@@ -1091,45 +1182,54 @@ onMounted(() => {
     height: 56.25rem !important;
     z-index: -100;
   }
+
   .company_introduction .bg_img img {
     width: 100%;
     height: 56.25rem !important;
   }
+
   .introduction_title {
     font-size: 2.25rem !important;
     margin-bottom: 3.0625rem !important;
     width: 100%;
   }
+
   .introduction_small_title {
     font-size: 1.8rem !important;
     margin-bottom: 0.625rem;
     width: 100%;
   }
+
   .introduction_content {
     width: 100%;
     height: 31.875rem;
     margin-bottom: 8.75rem;
   }
+
   .introduction_content .text_left {
     width: 50% !important;
     height: 31.875rem;
     margin-right: 3.25rem !important;
     padding-top: 0.8125rem;
   }
+
   .introduction_content .img_right {
     width: 53% !important;
     height: 60% !important;
     min-width: 25rem;
     transition: ease 0.5s;
   }
+
   .introduction_content .img_right img {
     width: 100%;
     height: 100%;
   }
+
   .introduction_content .p {
     font-size: 0.8rem !important;
     line-height: 1.7;
   }
+
   .introduction_content .p1 {
     margin-bottom: 0.875rem !important;
   }
@@ -1144,14 +1244,17 @@ onMounted(() => {
     left: 0.4rem !important;
     transform: scale(0.9);
   }
+
   .introduction_honor .honor_info {
     width: 80%;
     margin: auto;
   }
+
   .introduction_honor .honor_info .p {
     font-size: 1.425rem !important;
     margin-top: -0.625rem;
   }
+
   .great_flag_content .content_detail {
     width: 32%;
     height: 24.1875rem !important;
@@ -1159,6 +1262,7 @@ onMounted(() => {
     transition: 0.5s;
     cursor: pointer;
   }
+
   .great_flag {
     position: relative;
     padding: 7.5rem 7.75rem !important;
@@ -1174,6 +1278,7 @@ onMounted(() => {
     padding-top: 1rem !important;
     padding-left: 1.5rem !important;
   }
+
   .great_flag_button {
     margin: auto;
     width: 12.25rem;
@@ -1183,65 +1288,82 @@ onMounted(() => {
     left: 50%;
     transform: translateX(-50%);
   }
+
   .great_flag_content {
     margin-bottom: 7rem !important;
   }
+
   .great_flag_title {
     display: flex;
     justify-content: space-between;
     margin-bottom: 6.25rem;
   }
+
   .great_flag_title .h {
     font-size: 2rem !important;
   }
+
   .great_flag_title .title_right .p {
     display: flex;
     line-height: 4.375rem;
     font-size: 1.1rem !important;
   }
+
   .great_flag_title .p {
     font-size: 1.2rem !important;
     margin-right: 1.25rem;
   }
+
   .great_flag_content .bottom_text {
     padding: 1rem 2rem !important;
   }
+
   .great_flag_content .bottom_text .time {
     font-size: 1rem !important;
   }
+
   .great_flag_content .bottom_text .hr {
     width: 2.6875rem;
     height: 0.1rem !important;
     margin: 0.25rem 0rem;
   }
+
   .great_flag_content .bottom_text .p {
     font-size: 1rem !important;
   }
+
   .great_flag_content .content_detail_text .text .title {
     font-size: 1rem !important;
   }
+
   .great_flag_content .content_detail_text .text .line {
     width: 2.6875rem;
     height: 0.1rem !important;
     margin: 0.25rem 0rem;
   }
+
   .great_flag_content .content_detail_text .time {
     font-size: 1rem !important;
     margin-bottom: 0.7rem !important;
   }
+
   .great_flag_footer {
     width: 100%;
     position: absolute;
     bottom: -0.4375rem;
     left: 0;
   }
+
   .great_flag_footer img {
     height: 20rem !important;
     width: 100%;
   }
 }
+
 @media (min-width: 800px) and (max-width: 1000px) {
+
 }
+
 @media (min-width: 1000px) and (max-width: 1200px) {
   .great_flag_content .content_detail {
     width: 32%;
@@ -1250,6 +1372,7 @@ onMounted(() => {
     transition: 0.5s;
     cursor: pointer;
   }
+
   .great_flag {
     position: relative;
     padding: 9.5rem 9.75rem;
@@ -1257,6 +1380,7 @@ onMounted(() => {
     height: 101.125rem !important;
     width: 100%;
   }
+
   .great_flag_content .content_detail_text {
     width: 33%;
     height: 39rem !important;
@@ -1264,35 +1388,44 @@ onMounted(() => {
     padding-top: 2rem;
     padding-left: 2.5rem;
   }
+
   .great_flag_content {
     margin-bottom: 7rem !important;
   }
+
   .great_flag_content .bottom_text .time {
     font-size: 1.4rem !important;
   }
+
   .great_flag_content .bottom_text .hr {
     width: 2.6875rem;
     height: 0.1rem !important;
     margin: 0.25rem 0rem;
   }
+
   .great_flag_content .bottom_text .p {
     font-size: 1.4rem !important;
   }
+
   .great_flag_content .content_detail_text .text .title {
     font-size: 1.4rem !important;
   }
+
   .great_flag_content .content_detail_text .text .line {
     width: 2.6875rem;
     height: 0.1rem !important;
     margin: 0.25rem 0rem;
   }
+
   .great_flag_content .content_detail_text .time {
     font-size: 1.4rem !important;
     margin-bottom: 1.4rem !important;
   }
 }
+
 @media (min-width: 1200px) and (max-width: 1400px) {
 }
+
 @media (min-width: 1400px) and (max-width: 1600px) {
   .great_flag_content .content_detail {
     width: 32%;
@@ -1301,6 +1434,7 @@ onMounted(() => {
     transition: 0.5s;
     cursor: pointer;
   }
+
   .great_flag {
     position: relative;
     padding: 9.5rem 9.75rem;
@@ -1308,6 +1442,7 @@ onMounted(() => {
     height: 101.125rem !important;
     width: 100%;
   }
+
   .great_flag_content .content_detail_text {
     width: 33%;
     height: 34rem !important;
@@ -1315,33 +1450,41 @@ onMounted(() => {
     padding-top: 2rem;
     padding-left: 2.5rem;
   }
+
   .great_flag_content {
     margin-bottom: 2rem !important;
   }
+
   .great_flag_content .bottom_text .time {
-    font-size: 1。2rem !important;
+    font-size: 1.2rem !important;
   }
+
   .great_flag_content .bottom_text .hr {
     width: 2.6875rem;
     height: 0.1rem !important;
     margin: 0.25rem 0rem;
   }
+
   .great_flag_content .bottom_text .p {
     font-size: 1.3rem !important;
   }
+
   .great_flag_content .content_detail_text .text .title {
     font-size: 1.3rem !important;
   }
+
   .great_flag_content .content_detail_text .text .line {
     width: 2.6875rem;
     height: 0.1rem !important;
     margin: 0.25rem 0rem;
   }
+
   .great_flag_content .content_detail_text .time {
     font-size: 1.2rem !important;
     margin-bottom: 1.1rem !important;
   }
 }
+
 @media (min-width: 1600px) and (max-width: 1800px) {
   .great_flag_content .content_detail {
     width: 32%;
@@ -1350,6 +1493,7 @@ onMounted(() => {
     transition: 0.5s;
     cursor: pointer;
   }
+
   .great_flag {
     position: relative;
     padding: 9.5rem 9.75rem;
@@ -1357,6 +1501,7 @@ onMounted(() => {
     height: 101.125rem !important;
     width: 100%;
   }
+
   .great_flag_content .content_detail_text {
     width: 33%;
     height: 38rem !important;
@@ -1364,33 +1509,41 @@ onMounted(() => {
     padding-top: 2rem;
     padding-left: 2.5rem;
   }
+
   .great_flag_content {
     margin-bottom: 6rem !important;
   }
+
   .great_flag_content .bottom_text .time {
-    font-size: 1。2rem !important;
+    font-size: 1.2rem !important;
   }
+
   .great_flag_content .bottom_text .hr {
     width: 2.6875rem;
     height: 0.1rem !important;
     margin: 0.25rem 0rem;
   }
+
   .great_flag_content .bottom_text .p {
     font-size: 1.3rem !important;
   }
+
   .great_flag_content .content_detail_text .text .title {
     font-size: 1.3rem !important;
   }
+
   .great_flag_content .content_detail_text .text .line {
     width: 2.6875rem;
     height: 0.1rem !important;
     margin: 0.25rem 0rem;
   }
+
   .great_flag_content .content_detail_text .time {
     font-size: 1.3rem !important;
     margin-bottom: 1 !important;
   }
 }
+
 @media (min-width: 2100px) and (max-width: 2300px) {
   .great_flag_content .content_detail {
     width: 32%;
@@ -1399,6 +1552,7 @@ onMounted(() => {
     transition: 0.5s;
     cursor: pointer;
   }
+
   .great_flag {
     position: relative;
     padding: 9.5rem 9.75rem;
@@ -1406,6 +1560,7 @@ onMounted(() => {
     height: 101.125rem !important;
     width: 100%;
   }
+
   .great_flag_content .content_detail_text {
     width: 33%;
     height: 32rem !important;
@@ -1413,33 +1568,41 @@ onMounted(() => {
     padding-top: 2rem;
     padding-left: 2.5rem;
   }
+
   .great_flag_content {
     margin-bottom: 2rem !important;
   }
+
   .great_flag_content .bottom_text .time {
-    font-size: 1。2rem !important;
+    font-size: 1.2rem !important;
   }
+
   .great_flag_content .bottom_text .hr {
     width: 2.6875rem;
     height: 0.1rem !important;
     margin: 0.25rem 0rem;
   }
+
   .great_flag_content .bottom_text .p {
     font-size: 1.1rem !important;
   }
+
   .great_flag_content .content_detail_text .text .title {
     font-size: 1.1rem !important;
   }
+
   .great_flag_content .content_detail_text .text .line {
     width: 2.6875rem;
     height: 0.1rem !important;
     margin: 0.25rem 0rem;
   }
+
   .great_flag_content .content_detail_text .time {
-    font-size: 1。2rem !important;
+    font-size: 1.2rem !important;
     margin-bottom: 0.8rem !important;
   }
 }
+
 @media (min-width: 5000px) and (max-width: 8000px) {
   .great_flag_content .content_detail {
     width: 32%;
@@ -1448,16 +1611,20 @@ onMounted(() => {
     transition: 0.5s;
     cursor: pointer;
   }
+
   .great_flag {
     position: relative;
     padding: 9.5rem 9.75rem;
     background-color: #def1fb;
     height: 101.125rem !important;
     width: 100%;
+
   }
+
   .great_flag_content {
     margin-bottom: 8rem !important;
   }
+
   .great_flag_content .content_detail_text {
     width: 33%;
     height: 40rem !important;
@@ -1465,7 +1632,9 @@ onMounted(() => {
     padding-top: 3rem;
     padding-left: 2.5rem;
   }
+
 }
+
 @media (min-width: 2300px) and (max-width: 2600px) {
   .great_flag_content .content_detail {
     width: 32%;
@@ -1474,9 +1643,11 @@ onMounted(() => {
     transition: 0.5s;
     cursor: pointer;
   }
+
   .content_detail .bottom_text {
     padding: 1rem 2rem !important;
   }
+
   .great_flag {
     position: relative;
     padding: 9.5rem 9.75rem;
@@ -1484,6 +1655,7 @@ onMounted(() => {
     height: 101.125rem !important;
     width: 100%;
   }
+
   .great_flag_content .content_detail_text {
     width: 33%;
     height: 36rem !important;
@@ -1491,10 +1663,12 @@ onMounted(() => {
     padding-top: 3rem;
     padding-left: 2.5rem;
   }
+
   .great_flag_content {
     margin-bottom: 5rem !important;
   }
 }
+
 @media (min-width: 2600px) and (max-width: 3000px) {
   .great_flag_content .content_detail {
     width: 32%;
@@ -1503,9 +1677,11 @@ onMounted(() => {
     transition: 0.5s;
     cursor: pointer;
   }
+
   .content_detail .bottom_text {
     padding: 1rem 2rem !important;
   }
+
   .great_flag {
     position: relative;
     padding: 9.5rem 9.75rem;
@@ -1513,6 +1689,7 @@ onMounted(() => {
     height: 101.125rem !important;
     width: 100%;
   }
+
   .great_flag_content .content_detail_text {
     width: 33%;
     height: 32rem !important;
@@ -1520,30 +1697,37 @@ onMounted(() => {
     padding-top: 2rem;
     padding-left: 2.5rem;
   }
+
   .great_flag_content {
     margin-bottom: 5rem !important;
   }
+
   .great_flag_content .bottom_text .time {
-    font-size: 1。2rem !important;
+    font-size: 1.2rem !important;
   }
+
   .great_flag_content .bottom_text .hr {
     width: 2.6875rem;
     height: 0.1rem !important;
     margin: 0.25rem 0rem;
   }
+
   .great_flag_content .bottom_text .p {
     font-size: 1.1rem !important;
   }
+
   .great_flag_content .content_detail_text .text .title {
     font-size: 1.1rem !important;
   }
+
   .great_flag_content .content_detail_text .text .line {
     width: 2.6875rem;
     height: 0.1rem !important;
     margin: 0.25rem 0rem;
   }
+
   .great_flag_content .content_detail_text .time {
-    font-size: 1。2rem !important;
+    font-size: 12rem !important;
     margin-bottom: 0.8rem !important;
   }
 }
@@ -1555,6 +1739,7 @@ onMounted(() => {
   margin-bottom: 4.0625rem;
   width: 100%;
 }
+
 .introduction_small_title {
   font-size: 2.25rem;
   margin-bottom: 0.625rem;
@@ -1562,6 +1747,7 @@ onMounted(() => {
   color: rgb(0, 0, 0);
   width: 100%;
 }
+
 .introduction_content {
   width: 100%;
   height: 31.875rem;
@@ -1569,6 +1755,7 @@ onMounted(() => {
   margin-bottom: 8.75rem;
   object-fit: cover;
 }
+
 .introduction_content .text_left {
   width: 45%;
   height: 31.875rem;
@@ -1576,28 +1763,33 @@ onMounted(() => {
   border-top: 0.0625rem solid #313a3d;
   padding-top: 0.8125rem;
 }
+
 .introduction_content .img_right {
   width: 55%;
   height: 100%;
   min-width: 25rem;
   transition: ease 0.5s;
 }
+
 .introduction_content .img_right:hover {
   transform: scale(1.04);
   box-shadow: 0 0.375rem 0.625rem rgba(0, 0, 0, 0.488); /* 悬浮时显示黑色阴影 */
 }
+
 .introduction_content .img_right img {
   width: 100%;
   height: 100%;
   object-fit: cover; /* 实现图片等比例缩放 */
   min-width: 25rem;
 }
+
 .introduction_content .p {
   font-size: 1.25rem;
   font-family: "AlibabaPuHuiTi_2_45_Light";
   color: rgb(89, 87, 87);
   line-height: 1.7;
 }
+
 .introduction_content .p1 {
   margin-bottom: 1.875rem;
 }
@@ -1609,18 +1801,21 @@ onMounted(() => {
   height: 3.5625rem;
   border-right: 0.0625rem solid #fff;
 }
+
 .introduction_honor .honor_info {
   width: 100%;
   border-left: 0.0625rem solid #fff;
   text-align: center;
   margin: auto;
 }
+
 .introduction_honor .honor_info .p {
   font-size: 1.625rem;
   font-family: "AlibabaPuHuiTi_2_45_Light", sans-serif;
   color: rgb(255, 255, 255);
   margin-top: -0.625rem;
 }
+
 .great_flag {
   position: relative;
   padding: 9.5rem 9.75rem;
@@ -1628,30 +1823,36 @@ onMounted(() => {
   height: 92.125rem;
   width: 100%;
 }
+
 .great_flag_title {
   display: flex;
   justify-content: space-between;
   margin-bottom: 6.25rem;
 }
+
 .great_flag_title .h {
   font-size: 2.75rem;
   font-family: "AlibabaPuHuiTi_2_65_Medium", sans-serif;
   color: rgb(35, 24, 21);
 }
+
 .great_flag_title .title_right {
   display: flex;
   line-height: 4.375rem;
 }
+
 .great_flag_title .p {
   font-size: 1.5rem;
   font-family: "AlibabaPuHuiTi_2_55_Regular", sans-serif;
   color: #595757;
   margin-right: 1.25rem;
 }
+
 .great_flag_title .p:hover {
   color: #006fc1;
   cursor: pointer;
 }
+
 .great_flag_content {
   width: 100%;
   height: 36.1875rem;
@@ -1659,6 +1860,7 @@ onMounted(() => {
   justify-content: space-between;
   margin-bottom: 4.5625rem;
 }
+
 .great_flag_content .content_detail {
   width: 32%;
   height: 36.1875rem;
@@ -1667,6 +1869,7 @@ onMounted(() => {
   cursor: pointer;
   overflow: hidden;
 }
+
 .great_flag_content .content_detail:hover {
   transform: scale(0.99);
   box-shadow: 0 0.25rem 0.625rem rgba(0, 0, 0, 0.286); /* 悬浮时显示黑色阴影 */
@@ -1681,22 +1884,26 @@ onMounted(() => {
 .great_flag_content .bottom_text {
   padding: 2.25rem 2.5rem;
 }
+
 .great_flag_content .bottom_text .time {
   font-size: 1.25rem;
   font-family: "AvenirNext";
   color: rgb(34, 56, 147);
 }
+
 .great_flag_content .bottom_text .hr {
   width: 2.6875rem;
   height: 0.125rem;
   background-color: rgb(34, 56, 147);
   margin: 0.25rem 0rem;
 }
+
 .great_flag_content .bottom_text .p {
   font-size: 1.375rem;
   font-family: "AlibabaPuHuiTi_2_55_Regular", sans-serif;
   color: rgb(89, 87, 87);
 }
+
 .great_flag_button {
   margin: auto;
   width: 12.25rem;
@@ -1705,6 +1912,7 @@ onMounted(() => {
   display: flex;
   transition: transform 0.3s ease;
 }
+
 .button_left {
   width: 9.375rem;
   height: 100%;
@@ -1716,9 +1924,11 @@ onMounted(() => {
   text-align: center;
   cursor: pointer;
 }
+
 .great_flag_button:hover {
   transform: scale(1.05);
 }
+
 .button_right {
   width: 10%;
   height: 100%;
@@ -1726,21 +1936,25 @@ onMounted(() => {
   line-height: 2.9375rem;
   text-align: center;
 }
+
 .great_flag_button .icon {
   font-size: 1.875rem;
   color: #006fc1;
   margin-left: 0.5rem;
 }
+
 .great_flag_footer {
   width: 100%;
   position: absolute;
   bottom: -0.4375rem;
   left: 0;
 }
+
 .great_flag_footer img {
   height: 26.25rem;
   width: 100%;
 }
+
 .great_flag_content .content_detail_text {
   width: 33%;
   height: 35.9375rem;
@@ -1750,29 +1964,34 @@ onMounted(() => {
   transition: 0.5s;
   cursor: pointer;
 }
+
 .great_flag_content .content_detail_text:hover {
   transform: scale(0.99);
   box-shadow: 0 0.25rem 0.625rem rgba(0, 0, 0, 0.286); /* 悬浮时显示黑色阴影 */
 }
+
 .great_flag .top_img img {
-  height: 23.25rem;
   height: 23.25rem;
   background-size: cover;
 }
+
 .great_flag_content .content_detail_text .text .title {
   font-size: 1.375rem;
   font-family: "AlibabaPuHuiTi_2_55_Regular";
   color: rgb(89, 87, 87);
 }
+
 .great_flag_content .content_detail_text .text .title:hover {
   color: rgb(34, 56, 147);
 }
+
 .great_flag_content .content_detail_text .text .line {
   width: 2.6875rem;
   height: 0.125rem;
   background-color: rgb(34, 56, 147);
   margin: 0.25rem 0rem;
 }
+
 .great_flag_content .content_detail_text .time {
   font-size: 1.25rem;
   font-family: "AvenirNext";

@@ -1,20 +1,21 @@
 <script setup>
-import { ref } from "vue";
 const props = defineProps({
+  id: {
+    type: Number,
+    default: 1,
+  },
   title1: {
     type: String,
-    default: "中国电气装备召开一届二次",
+    required: true,
   },
   title2: {
     type: String,
-    default: "职工代表大会暨2025年工作会议",
+    default: "",
   },
   text: {
     type: String,
-    default: `1月13日至14日，中国电气装备集团有限公司第一届职工代
-        表大会第二次会议暨2025年工作会议在沪召开。会议以习近
-        平新时代中国特色社会主义思想为指导，深入贯彻党的二十
-        大和二十届二中、三中全会精神，全面落实中央...`,
+    default: "",
+    required: true
   },
   img: {
     type: String,
@@ -53,7 +54,6 @@ const props = defineProps({
     default: true,
   },
 });
-const imgPath = ref(props.img);
 </script>
 
 <template>
@@ -71,30 +71,33 @@ const imgPath = ref(props.img);
     <div class="content-left">
       <div class="title">
         {{ props.title1 }}
-        <br />
+        <br/>
         {{ props.title2 }}
       </div>
       <div class="hr">
         <div class="hr-shortline"></div>
         <div class="hr-longline"></div>
       </div>
-      <div class="content-text">
-        {{ props.text }}
-      </div>
+      <div class="content-text" v-html="props.text"/>
       <!-- 查看详情按钮 -->
       <div class="content-btn">
-        <router-link v-if="props.toState" to="/partyBuilding/partyspiritDetail"
-          ><span class="btn-text">{{ props.btnText }}</span></router-link
+        <router-link
+          :to="{
+            name: 'pbDetail',
+            params: {
+              id: props.id,
+            },
+          }"
         >
-        <router-link v-else to="/partyBuilding/pinggaoPartyBuildingDetail"
-          ><span class="btn-text">{{ props.btnText }}</span></router-link
-        >
+          <span class="btn-text">{{ props.btnText }}</span>
+        </router-link>
         <!-- ********8 -->
         <span class="icon iconfont lookdetail-icon">&#xe504;</span>
       </div>
     </div>
     <div class="img">
-      <img style="width: 105%; height: 102%; object-fit: cover" :src="imgPath" alt="图片加载失败" />
+      <img style="width: 105%; height: 102%; object-fit: cover" :src="props.img"
+           alt="图片加载失败"/>
     </div>
   </div>
 </template>
@@ -194,6 +197,7 @@ const imgPath = ref(props.img);
   font-family: "AlibabaPuHuiTi_2_45_Light";
   display: flex;
   justify-content: space-between;
+
   a {
     width: 100%;
     height: 100%;
@@ -209,15 +213,18 @@ const imgPath = ref(props.img);
     margin-right: 1.5rem;
     font-size: 30px;
   }
+
 }
 
 .content-btn:hover {
   background-color: #fef2f2;
   color: var(--btnColor);
+
   a {
     color: var(--btnColor);
   }
 }
+
 @media (max-width: 1200px) {
   .content-btn {
     .lookdetail-icon {
@@ -226,6 +233,7 @@ const imgPath = ref(props.img);
     }
   }
 }
+
 /* 大型设备（桌面，大于 900px） */
 @media (max-width: 900px) {
   .content {
