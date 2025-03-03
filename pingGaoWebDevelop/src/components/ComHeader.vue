@@ -1039,7 +1039,7 @@ onMounted(() => {
   display: flex;
   justify-content: start;
   align-items: center;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
 }
 
 .header-footer ul li {
