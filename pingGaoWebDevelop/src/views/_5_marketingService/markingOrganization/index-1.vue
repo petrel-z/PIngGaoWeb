@@ -1,41 +1,50 @@
 <script setup>
-import { ref, onMounted } from "vue";
+import MyContent from '@/components/MyContent.vue'
+import MyTitle from '@/components/MyTitle.vue'
+import HttpUtils from '@/utils/httpUtils.js'
+import { onMounted, ref } from 'vue'
 
 defineOptions({
-  name: "marketing-serviceIndex2-1",
-});
+  name: 'marketing-serviceIndex2-1',
+})
 
-import MyTitle from "@/components/MyTitle.vue";
-import MyContent from "@/components/MyContent.vue";
+const data = ref('')
 
-const contentBox = ref(null);
-const itemsContent = ref(null);
+const contentBox = ref(null)
+const itemsContent = ref(null)
 onMounted(() => {
   if (contentBox.value && itemsContent.value) {
     // 监听页面滚动事件
-    window.addEventListener("scroll", () => {
-      if (!contentBox.value || !itemsContent.value) return;
+    window.addEventListener('scroll', () => {
+      if (!contentBox.value || !itemsContent.value) return
       // 获取元素顶部距离页面顶部的距离
-      const contentTop = contentBox.value.getBoundingClientRect().top;
-      const itemsTop = itemsContent.value.getBoundingClientRect().top;
+      const contentTop = contentBox.value.getBoundingClientRect().top
+      const itemsTop = itemsContent.value.getBoundingClientRect().top
       // 获取窗口的高度
-      const windowHeight = window.innerHeight;
+      const windowHeight = window.innerHeight
 
       // 判断元素是否进入可视区域
-
       if (contentTop < windowHeight) {
-        contentBox.value.classList.add("show");
+        contentBox.value.classList.add('show')
       } else {
-        contentBox.value.classList.remove("show");
+        contentBox.value.classList.remove('show')
       }
       if (itemsTop < windowHeight) {
-        itemsContent.value.classList.add("show");
+        itemsContent.value.classList.add('show')
       } else {
-        itemsContent.value.classList.remove("show");
+        itemsContent.value.classList.remove('show')
       }
-    });
+    })
   }
-});
+})
+
+async function getData() {
+  const res = await HttpUtils.get(`/cms/organization/list`)
+  const result = await res.json()
+  data.value = result.data
+}
+
+getData()
 </script>
 
 <template>
@@ -60,7 +69,7 @@ onMounted(() => {
               title="中国最先进的电力装备供应商之一"
               content1="五十年来，在电厂、冶金、化工、纺织、煤炭、电气化铁路等领域，为遍及六十多个国家和地区的客户提供创新型的产品、服务和"
               content2="解决方案，逐渐成为行业的佼佼者，并以先进的技术、完善的服务，影响和改善更多人的工作和生活。"
-            />
+              detail-id="" />
             <div class="my-content-bottom">
               <div class="my-content-bottom-item-box">
                 <div class="my-content-bottom-item">
@@ -88,17 +97,17 @@ onMounted(() => {
           <div class="items-content" ref="itemsContent">
             <div
               class="item"
-              v-for="i in 25"
+              v-for="(org, i) in data"
               :key="i"
               :class="{ left: i % 3 === 1, right: i % 3 === 0 || i % 3 === 2 }"
             >
               <hr class="item-hr1" />
               <div class="item-content">
-                <div class="item-title">河南平高电气股份有限公司</div>
+                <div class="item-title">{{ org.name }}</div>
                 <hr class="item-hr-hr" />
-                <div class="item-phone">电话：400-6700312</div>
-                <div class="item-fax">传真：0375-3506431</div>
-                <div class="item-email">邮箱：service_pg@vip.163.com</div>
+                <div class="item-phone">电话：{{ org.phone }}</div>
+                <div class="item-fax">传真：{{ org.fax }}</div>
+                <div class="item-email">邮箱：{{ org.email }}</div>
               </div>
               <hr
                 v-if="i === 25"
