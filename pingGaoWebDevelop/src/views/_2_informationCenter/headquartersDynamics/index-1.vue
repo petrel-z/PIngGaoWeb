@@ -1,54 +1,84 @@
 <script setup>
 import { onMounted, ref } from "vue";
+import ContentPag from "@/views/_2_informationCenter/ContentPag.vue";
+import MyTitle from "@/components/MyTitle.vue";
+import Item1 from "@/components/Item-1.vue";
+import MyButton from "@/components/MyButton.vue";
+import httpUtils from "@/utils/httpUtils.js";
+import router from "@/router/index.js";
+
 defineOptions({
   name: "NewsCenterIndex1-1",
 });
-import ContentPag from "@/views/_2_informationCenter/headquartersDynamics/ContentPag.vue";
-import MyTitle from "@/components/MyTitle.vue";
-import Item1 from "@/components/item-1.vue";
-import MyButton from "@/components/MyButton.vue";
 
-const items = [
-  {
-    month: "01.14",
-    year: "2025",
-    title: "中国电气装备召开一届二次职工代表大会暨2025年工作会议",
-    text: `1月13日至14日，中国电气装备集团有限公司第一届职工代表大会第二次会议暨2025年工作会议在沪召开。会议以习近平新
-时代中国特色社会主义思想为指导，深...`,
-  },
-  {
-    month: "01.16",
-    year: "2025",
-    title: "中国电气装备党委召开2024年度民主生活会会前学习暨党委理论学习中心组集体学习",
-    text: `1月16日，中国电气装备党委召开2024年度民主生活会会前学习暨党委理论学习中心组集体学习，进一步统一思想、深化认
-识，扎实打牢开好民主生活会的思想基础...`,
-  },
-  {
-    month: "01.15",
-    year: "2025",
-    title: "中国电气装备党委召开2024年度所属单位党组织书记抓基层党建工作述职评议会议",
-    text: `1月14日，中国电气装备党委召开2024年度所属单位党组织书记抓基层党建工作述职评议会议。集团公司党委书记、董事长
-李洪凤主持会议并讲话，其他领导班子成员出席会议。`,
-  },
-  {
-    month: "01.08",
-    year: "2025",
-    title: "中国电气装备党委副书记、总经理周群会见东方电气党委副书记、总经理张彦军",
-    text: `1月7日，中国电气装备党委副书记、总经理周群在集团公司总部会见了来访的东方电气党委副书记、总经理张彦军一行，双
-方就进一步深化合作进行了座谈交流。集团公司党委常委、副总经理成卫、朱安珂参加座谈。`,
-  },
-  {
-    month: "01.07",
-    year: "2025",
-    title: "中国电气装备召开2025年安全稳定工作会议",
-    text: `1月7日，中国电气装备召开2025年安全稳定工作会议，深入学习贯彻习近平总书记关于安全生产的重要指示精神，认真落实
-国务院国资委中央企业负责人会议要求，进一步完善风险防范措施，扎实细致做好信访维稳工作`,
-  },
-];
+document.title = "总部动态";
+const categoryId = 16;
+const mainNews = ref([]);
+const topNews = ref({});
 
-function handleClick(e) {
-  console.log(e);
+// 格式化时间戳为 YYYY-MM-DD 格式
+function formatTimestamp (timestamp) {
+  const date = new Date(timestamp);
+  const year = date.getFullYear();
+  const month = (date.getMonth() + 1).toString().padStart(2, "0");
+  const day = date.getDate().toString().padStart(2, "0");
+  return `${year}-${month}.${day}`;
 }
+
+// 格式化时间戳为 YYYY-MM-DD 格式
+function formatTimestampObj (timestamp) {
+  const date = new Date(timestamp);
+  const year = date.getFullYear();
+  const month = (date.getMonth() + 1).toString().padStart(2, "0");
+  const day = date.getDate().toString().padStart(2, "0");
+  return {
+    year: `${year}`,
+    month: `${month}.${day}`,
+  };
+}
+
+async function getData () {
+  const queryString = new URLSearchParams({
+    pageNo: 1,
+    pageSize: 6,
+  }).toString();
+
+  console.log("获取数据", queryString);
+  const response = await httpUtils.get(`/cms/category/${categoryId}/news?${queryString.toString()}`);
+  const { data } = await response.json();
+  const page = data.page;
+  page.list.forEach((i) => {
+    i.publishTime = formatTimestamp(i.publishTime);
+    i.timeObj = formatTimestampObj(i.publishTime);
+  });
+
+  console.log(page.list);
+  topNews.value = page.list[0];
+  topNews.value.btnColor = "#e06e5f";
+  topNews.value.bgColor = "#a51617";
+  topNews.value.lineColor = "#e06e5f";
+  topNews.value.titleFont = "SourceHanSerifCN_Bold";
+  topNews.value.textFont = "SourceHanSerifCN_Medium";
+  topNews.value.fontColor = "#fce3cc";
+  mainNews.value = page.list.slice(1);
+}
+
+function toDetail (id) {
+  if (id) {
+    router.push({
+      name: "newsDetail",
+      params: {
+        id,
+      },
+    });
+
+    setTimeout(() => {
+      window.location.reload();
+    }, 100);
+  }
+}
+
+getData();
 
 const contentBox = ref(null);
 onMounted(() => {
@@ -77,31 +107,34 @@ onMounted(() => {
 <template>
   <div style="position: relative; width: auto; overflow: hidden">
     <div class="bodyBg">
-      <div class="bodyBg1"></div>
+      <div class="bodyBg1" />
     </div>
     <div class="body">
       <div>
         <div style="padding-top: 2.5rem">
-          <my-title title="总部动态" english="HEADQUARTERS NEWS" />
+          <MyTitle title="总部动态" english="HEADQUARTERS NEWS" />
         </div>
         <div ref="contentBox" style="margin-top: 2.5rem">
-          <ContentPag class="content" :to-state="true" />
+          <ContentPag :title1="topNews.title" title2="" :text="topNews.description"
+                      :img="topNews.images" :to-state="true" :detail-id="topNews.id" />
         </div>
         <div class="item-container">
           <Item1
-            v-for="(item, index) in items"
+            v-for="(item, index) in mainNews"
             :key="index"
+            :detail-id="item.id"
             :month="item.month"
             :year="item.year"
             :title="item.title"
-            :text="item.text"
+            :text="item.description "
+            @click-item="toDetail"
           />
         </div>
       </div>
       <div class="button-container">
-        <router-link to="/informationCenter/headquartersDynamics-2"
-          ><myButton @childButton="handleClick"
-        /></router-link>
+        <router-link to="/informationCenter/headquartersDynamicsMore">
+          <MyButton />
+        </router-link>
       </div>
     </div>
   </div>
@@ -111,6 +144,7 @@ onMounted(() => {
 .body {
   margin: 0 11%;
 }
+
 .bodyBg1 {
   position: absolute;
   top: 0;

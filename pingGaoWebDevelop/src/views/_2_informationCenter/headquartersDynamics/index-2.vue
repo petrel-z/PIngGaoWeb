@@ -1,58 +1,84 @@
 <script setup>
+import Item2 from "@/components/Item-2.vue";
+import MyPagination from "@/components/MyPagination.vue";
+import MyTitle from "@/components/MyTitle.vue";
+import OrderList from "@/components/OrderList.vue";
+import router from "@/router/index.js";
+import httpUtils from "@/utils/httpUtils.js";
+import { onMounted, ref } from "vue";
+
 defineOptions({
   name: "NewsCenterIndex1-2",
 });
-import { ref, onMounted } from "vue";
-import MyTitle from "@/components/MyTitle.vue";
-import Item2 from "@/components/Item-2.vue";
-import OrderList from "@/components/OrderList.vue";
-import MyPagination from "@/components/MyPagination.vue";
-const items = [
-  {
-    time: "2025.01.14",
-    text: `中国电气装备召开一届二次职工代表大会暨2025年工作会议`,
-  },
-  {
-    time: "2025.01.16",
-    text: `中国电气装备党委召开2024年度民主生活会会前学习暨党委…`,
-  },
-  {
-    time: "2025.01.15",
-    text: `中国电气装备党委召开2024年度所属单位党组织书记抓基层…`,
-  },
-  {
-    time: "2025.01.08",
-    text: `中国电气装备党委副书记、总经理周群会见东方电气党委副书…`,
-  },
-  {
-    time: "2025.01.07",
-    text: `中国电气装备召开2025年安全稳定工作会议`,
-  },
-  {
-    time: "2024.12.29",
-    text: "中国电气装备党委副书记、总经理周群会见东方电气党委副书…",
-  },
-  {
-    time: "2024.12.25",
-    text: "中国电气装备党委召开2024年度民主生活会会前学习暨党委…",
-  },
-  {
-    time: "2024.12.22",
-    text: "中国电气装备召开2025年安全稳定工作会议",
-  },
-  {
-    time: "2024.12.14",
-    text: "中国电气装备召开2025年安全稳定工作会议",
-  },
-  {
-    time: "2024.12.09",
-    text: "中国电气装备召开一届二次职工代表大会暨2025年工作会议",
-  },
-];
+
+const leftList = ref([]);
+const rightList = ref([]);
+document.title = "总部动态";
+const categoryId = 16;
+const pageNo = ref(1);
+const pageSize = ref(10);
+const pageMax = ref(1);
+const hasMore = ref(true);
+
+// 格式化时间戳为 YYYY-MM-DD 格式
+function formatTimestamp (timestamp) {
+  const date = new Date(timestamp);
+  const year = date.getFullYear();
+  const month = (date.getMonth() + 1).toString().padStart(2, "0");
+  const day = date.getDate().toString().padStart(2, "0");
+  return `${year}.${month}.${day}`;
+}
+
+async function getData () {
+  const queryString = new URLSearchParams({
+    pageNo: pageNo.value,
+    pageSize: pageSize.value,
+  }).toString();
+
+  console.log("获取数据", queryString);
+  const response = await httpUtils.get(`/cms/category/${categoryId}/news?${queryString.toString()}`);
+  const { data } = await response.json();
+
+  console.log(data);
+
+  const top5List = [];
+  data.top5List.forEach((item) => {
+    top5List.push({
+      id: item.id,
+      name: item.title,
+      num: `浏览量：${item.viewCount}`,
+    });
+  });
+  rightList.value = [...top5List];
+
+  const page = data.page;
+  pageMax.value = Math.ceil(page.total / pageSize.value);
+  leftList.value = [...page.list];
+}
+
+function pageChange (pageNumber) {
+  pageNo.value = pageNumber;
+  getData();
+}
+
+function toDetail (item) {
+  console.log(item);
+  if (item && item.id) {
+    const target = router.resolve({
+      name: "pbDetail",
+      params: {
+        id: item.id,
+      },
+    });
+    window.open(target.href, "_blank");
+  }
+}
+
 
 // 监听窗口大小变化事件
 let onceChange = ref(false);
-function changeOnce() {
+
+function changeOnce () {
   // 获取当前窗口的宽度和高度
   const width = window.innerWidth;
   if (width <= 900) {
@@ -62,10 +88,13 @@ function changeOnce() {
     onceChange.value = false;
   }
 }
+
 onMounted(() => {
   changeOnce();
   window.addEventListener("resize", changeOnce);
 });
+
+getData();
 </script>
 
 <template>
@@ -73,7 +102,7 @@ onMounted(() => {
     <div class="body" ref="bodyBox">
       <div>
         <div style="padding-top: 4rem">
-          <my-title title="总部动态" english="HEADQUARTERS NEWS" />
+          <MyTitle title="总部动态" english="HEADQUARTERS NEWS" />
         </div>
         <div
           style="
@@ -86,22 +115,29 @@ onMounted(() => {
         >
           <div class="item-container">
             <Item2
-              v-for="(item, index) in items"
-              :key="index"
-              :time="item.time"
-              :text="item.text"
+              v-for="item in leftList" :key="item.id"
+              :time="formatTimestamp(item.publishTime)"
+              :text="item.title"
+              :detail-id="item.id"
+              @click-item="toDetail"
             />
           </div>
           <div v-show="!onceChange" class="order-container">
-            <OrderList />
+            <OrderList :order-list="rightList" bg-color="#006fc1" @click-item="toDetail" />
           </div>
         </div>
       </div>
       <div class="pagination-container">
-        <MyPagination />
+        <MyPagination
+          v-if="hasMore" :total="pageMax" :current="pageNo" class="pagination"
+          @page-change="pageChange"
+        />
+        <p v-else style="font-size: 24px;">
+          暂无更多
+        </p>
       </div>
       <div v-show="onceChange" class="order-container">
-        <OrderList />
+        <OrderList @click-item="toDetail" />
       </div>
     </div>
   </div>
