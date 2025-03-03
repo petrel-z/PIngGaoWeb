@@ -12,7 +12,7 @@ const honorList = ref([]);
 document.title = "资质荣誉";
 
 async function getData () {
-  const res = await httpUtils.post(`/cms/honor/list`);
+  const res = await httpUtils.get(`/cms/honor/list`);
   const result = await res.json();
 
   honorList.value = result.data;
@@ -63,7 +63,7 @@ watch(honorList, async () => {
       <div class="info" v-for="honor in honorList" :key="honor.id">
         <div class="img">
           <img
-            src="honor.honorImage"
+            :src="honor.honorImage"
             :alt="honor.honorTitle"
             ref="imgRef"
             :class="{ 'scale-up': isVisible }"
