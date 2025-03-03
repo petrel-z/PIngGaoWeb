@@ -1,11 +1,74 @@
 <script setup>
-import { ref, onMounted } from "vue";
+import { ref, onMounted, watch } from "vue";
 
 import MyTitle from "@/components/MyTitle.vue";
 import Item2 from "@/components/Item-2.vue";
+import httpUtils from "@/utils/httpUtils.js";
 
 const titleBox = ref(null);
 const itemBox = ref(null);
+const index = ref(1);
+const items = ref([]);
+
+// 格式化时间戳为 YYYY-MM-DD 格式
+function formatTimestamp (timestamp) {
+  const date = new Date(timestamp);
+  const year = date.getFullYear();
+  const month = (date.getMonth() + 1).toString().padStart(2, "0");
+  const day = date.getDate().toString().padStart(2, "0");
+  return `${year}.${month}.${day}`;
+}
+
+// 格式化时间戳为 YYYY-MM-DD 格式
+function formatTimestampObj (timestamp) {
+  const date = new Date(timestamp);
+  const year = date.getFullYear();
+  const month = (date.getMonth() + 1).toString().padStart(2, "0");
+  const day = date.getDate().toString().padStart(2, "0");
+  return {
+    year: `${year}`,
+    month: `${month}.${day}`,
+  };
+}
+
+async function getData (index) {
+  let categoryId;
+  if (index === 1) {
+    categoryId = 44;
+    document.title = "高校毕业生招聘";
+  } else {
+    categoryId = 45;
+    document.title = "社会公开招聘";
+  }
+
+  const queryString = new URLSearchParams({
+    pageNo: 1,
+    pageSize: 999,
+  }).toString();
+
+  console.log("获取数据", queryString);
+  const response = await httpUtils.get(`/cms/category/${categoryId}/news?${queryString.toString()}`);
+  const { data } = await response.json();
+  const page = data.page;
+  page.list.forEach((i) => {
+    i.publishTime = formatTimestamp(i.publishTime);
+    i.timeObj = formatTimestampObj(i.publishTime);
+  });
+  items.value = page.list;
+}
+
+function setIndex (newIndex) {
+  console.log(newIndex);
+  index.value = newIndex;
+}
+
+watch(index, () => {
+  console.log(index.value);
+  getData(index.value);
+});
+
+getData(1);
+
 onMounted(() => {
   if (titleBox.value && itemBox.value) {
     // 监听页面滚动事件
@@ -45,17 +108,19 @@ onMounted(() => {
         <MyTitle class="my-title" title="人才招聘" english="TALENT RECRUITMENT"></MyTitle>
       </div>
       <div ref="itemBox" style="display: flex; margin-top: 3rem">
-        <div class="left">高校毕业生招聘</div>
-        <div class="right">社会公开招聘</div>
+        <div class="left" @click="setIndex(1)">高校毕业生招聘</div>
+        <div class="right" @click="setIndex(2)">社会公开招聘</div>
       </div>
       <div style="margin-top: 4.9rem">
-        <div class="content-title">高校毕业生招聘</div>
+        <div class="content-title">
+          {{ index === 1 ? "高校毕业生招聘" : "社会公开招聘" }}
+        </div>
         <div style="margin-top: 3.7rem">
-          <router-link to="/humanResources/talentRecruitment-2" v-for="i in 3" :key="i">
+          <router-link to="/humanResources/talentRecruitmentDetail" v-for="item in items" :key="item.id">
             <Item2
               style="margin-bottom: 1.7rem"
-              time="2022.03.08"
-              text="国电气装备旗下平高集团2022年社会招聘公告"
+              :time="item.publishTime"
+              :text="item.title"
               size="big"
             />
           </router-link>
