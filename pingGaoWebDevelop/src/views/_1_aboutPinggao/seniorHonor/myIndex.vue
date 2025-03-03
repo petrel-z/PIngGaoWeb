@@ -63,7 +63,7 @@ watch(honorList, async () => {
       <div class="info" v-for="honor in honorList" :key="honor.id">
         <div class="img">
           <img
-            src="@/assets/imgs/_1_aboutPinggaoImgs/create.png"
+            src="honor.honorImage"
             :alt="honor.honorTitle"
             ref="imgRef"
             :class="{ 'scale-up': isVisible }"
