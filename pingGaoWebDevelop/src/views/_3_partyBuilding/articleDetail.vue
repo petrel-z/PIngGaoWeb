@@ -95,7 +95,7 @@ const bgColor = ref("#f8f1e5");
     width: 100%;
     padding: 0 11%;
     height: auto;
-    background-image: url("../../../assets/imgs/_3_partyBuildingImgs/t3_p1_detailBg.png");
+    background-image: url("../../assets/imgs/_3_partyBuildingImgs/t3_p1_detailBg.png");
     background-size: auto;
     display: flex;
     justify-content: center;
@@ -165,7 +165,7 @@ const bgColor = ref("#f8f1e5");
   .footer-line {
     width: 100%;
     height: 10px;
-    background-image: url("../../../assets/imgs/_3_partyBuildingImgs/t3_p1_line.png");
+    background-image: url("../../assets/imgs/_3_partyBuildingImgs/t3_p1_line.png");
     background-size: cover;
     background-repeat: repeat;
     position: absolute;

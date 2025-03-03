@@ -81,7 +81,7 @@ getData();
 
 <style scoped>
 .body-bg {
-  background-image: url("../../../assets/imgs/_2_informationCenterImgs/newsBg-1.png");
+  background-image: url("../../assets/imgs/_2_informationCenterImgs/newsBg-1.png");
   padding: 0 11%;
   background-size: cover;
 }
