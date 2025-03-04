@@ -30,38 +30,23 @@ const rightList = [
 <template>
   <div class="spirit-more">
     <div class="mytitle">
-      <myTitle
-        :title="'党的精神'"
-        :english="'The spirit of the Party'"
-        :titleColor="'#fce3cd'"
-        :lineColor="'#fce3cd'"
-        :engColor="'#fce3cd'"
-      ></myTitle>
+      <myTitle :title="'党的精神'" :english="'The spirit of the Party'" :titleColor="'#fce3cd'" :lineColor="'#fce3cd'"
+        :engColor="'#fce3cd'"></myTitle>
     </div>
     <div class="footer-line"></div>
     <div class="list">
       <div class="left">
         <div class="listItem" v-for="item in leftList" :key="item.time">
-          <Item2
-            :time="item.time"
-            :text="item.text"
-            :timeColor="'#a51617'"
-            :textColor="'#7b6a5d'"
-            :text-font-family="'SourceHanSerifCN_Bold'"
-            :hover-bg-color="'#e06e5f'"
-          >
+          <Item2 :time="item.time" :text="item.text" :timeColor="'#a51617'" :textColor="'#7b6a5d'"
+            :text-font-family="'SourceHanSerifCN_Bold'" :hover-bg-color="'#e06e5f'">
           </Item2>
         </div>
       </div>
       <div class="right">
-        <OrderList
-          :order-list="rightList"
-          :bg-color="'#e06e5f'"
-          :font-family="{
-            titleFont: 'SourceHanSerifCN_Bold',
-            contentFont: 'SourceHanSerifCN_SemiBold',
-          }"
-        >
+        <OrderList :order-list="rightList" :bg-color="'#e06e5f'" :font-family="{
+          titleFont: 'SourceHanSerifCN_Bold',
+          contentFont: 'SourceHanSerifCN_SemiBold',
+        }">
         </OrderList>
       </div>
     </div>
@@ -72,7 +57,6 @@ const rightList = [
 </template>
 
 <style lang="less" scoped>
-
 .spirit-more {
   position: relative;
   display: flex;
@@ -82,6 +66,7 @@ const rightList = [
   background-image: url("../../../assets/imgs/_3_partyBuildingImgs/t3_p1_moreBg.png");
   background-size: cover;
   height: auto;
+
   .mytitle {
     width: 100%;
     margin-top: 22px;
@@ -93,12 +78,15 @@ const rightList = [
     width: 100%;
     display: flex;
     justify-content: space-between;
+
     .left {
       margin-left: 11%;
       width: 60%;
+
       div:nth-child(1) {
         margin-top: 0;
       }
+
       .listItem {
         width: 100%;
         height: auto;
@@ -131,6 +119,65 @@ const rightList = [
     display: flex;
     justify-content: center;
     padding: 3em 0;
+  }
+}
+
+@media (max-width: 900px) {
+  .spirit-more {
+    .footer-line {
+      display: none;
+    }
+    .mytitle {
+      margin-top: 2rem;
+      margin-bottom: 2rem;
+      padding-left: 5%;
+    }
+
+    .list {
+      flex-direction: column;
+
+      .left {
+        margin: 0;
+        padding: 0 5%;
+        width: 100%;
+
+        div:nth-child(1) {
+          margin-top: 0;
+        }
+
+        .listItem {
+          width: 100%;
+          height: auto;
+          margin: 10px 0;
+        }
+      }
+
+      .right {
+        width: 40%;
+        margin-left: 2%;
+        margin-right: 11%;
+        overflow: hidden;
+      }
+    }
+
+    .footer-line {
+      width: 100%;
+      height: 10px;
+      background-image: url("../../../assets/imgs/_3_partyBuildingImgs/t3_p1_line.png");
+      background-size: cover;
+      background-repeat: repeat;
+      // transform: translateY(-3px);
+      position: absolute;
+      top: -6px;
+    }
+
+    .footer-button {
+      width: 100%;
+      height: auto;
+      display: flex;
+      justify-content: center;
+      padding: 3em 0;
+    }
   }
 }
 </style>

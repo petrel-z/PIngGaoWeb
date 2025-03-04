@@ -129,4 +129,11 @@ const rightList = [
     padding: 3em 0;
   }
 }
+@media (max-width: 900px) {
+  .spirit-more {
+    .footer-line {
+      display: none;
+    }
+  }
+}
 </style>
