@@ -4,65 +4,106 @@ import Footer from "@/components/Footer.vue";
 import router from "@/router/index.js";
 import HttpUtils from "@/utils/httpUtils.js";
 import { nextTick, onMounted, onUnmounted, ref } from "vue";
+import video1 from "@/assets/imgs/_10_homePageImgs/轮播1.mp4";
+import thumb1 from "@/assets/imgs/_10_homePageImgs/carousel.png";
 
-const items = ref([]);
-const dots = ref([]);
-const current = ref(0);
+// 视频数据
+const videos = ref([
+  {
+    src: video1,
+    type: "video/mp4",
+    thumbnail: thumb1,
+  },
+  {
+    src: video1,
+    type: "video/mp4",
+    thumbnail: thumb1,
+  },
+  {
+    src: video1,
+    type: "video/mp4",
+    thumbnail: thumb1,
+  },
+  {
+    src: video1,
+    type: "video/mp4",
+    thumbnail: thumb1,
+  },
+  {
+    src: video1,
+    type: "video/mp4",
+    thumbnail: thumb1,
+  },
+]);
+
+// 轮播控制逻辑
+const currentIndex = ref(0);
+const transitionTime = ref(500);
+const autoPlayInterval = ref(5000);
+const showPagination = true;
 let timer = null;
+const videoRefs = ref([]);
 
-const images = ref([]);
+// 视频控制方法
+const setVideoRef = (el, index) => {
+  if (el) videoRefs.value[index] = el;
+};
 
-// 轮播图切换逻辑
-function showSlide () {
-  items.value.forEach((item) => {
-    item.style.transform = `translateX(-${current.value * 100}%)`;
-  });
-}
+const playCurrent = () => {
+  const video = videoRefs.value[currentIndex.value];
+  if (video) {
+    video.play().catch((error) => {
+      console.error("视频播放失败:", error);
+    });
+  }
+};
 
-// 上一张
-function prevSlide () {
-  current.value = current.value > 0 ? current.value - 1 : items.value.length - 1;
-  showSlide();
-}
+const pauseCurrent = () => {
+  const video = videoRefs.value[currentIndex.value];
+  if (video) video.pause();
+};
 
-// 下一张
-function nextSlide () {
-  current.value = current.value < items.value.length - 1 ? current.value + 1 : 0;
-  showSlide();
-}
+const nextSlide = () => {
+  pauseCurrent();
+  currentIndex.value = currentIndex.value < videos.value.length - 1 ? currentIndex.value + 1 : 0;
+  playCurrent();
+};
 
-// 切换到指定索引
-function jumpToSlide (index) {
-  current.value = index;
-  showSlide();
-}
+const jumpToSlide = (index) => {
+  stopAutoPlay();
+  if (index < 0 || index >= videos.value.length) return;
+  pauseCurrent();
+  currentIndex.value = index;
+  playCurrent();
+  startAutoPlay();
+};
 
-// 定时器控制
-function startTimer () {
-  timer = setInterval(nextSlide, 3000);
-}
+// 自动播放控制
+const startAutoPlay = () => {
+  timer = setInterval(nextSlide, autoPlayInterval.value);
+};
 
-function stopTimer () {
+const stopAutoPlay = () => {
   clearInterval(timer);
-}
+};
 
-function moreNews (url) {
-  const target = router.resolve(url);
-  window.open(target.href, "_blank");
-}
-
-// 组件挂载后执行 DOM 选择
+// 生命周期
 onMounted(() => {
-  items.value = document.querySelectorAll(".item");
-  dots.value = document.querySelectorAll(".dots li");
-  startTimer();
+  startAutoPlay();
+  playCurrent();
 });
 
-// 组件销毁时清除定时器
 onUnmounted(() => {
-  clearInterval(timer);
+  stopAutoPlay();
+  pauseCurrent();
 });
 
+// 视频事件处理
+const handleVideoEnd = (index) => {
+  if (index === currentIndex.value) {
+    nextSlide();
+  }
+};
 onMounted(() => {
   const container = document.querySelector(".product_box");
   const leftIcon = document.querySelector(".left_icon");
@@ -195,12 +236,12 @@ onMounted(() => {
     initMarquee();
   });
 });
-
+const images = ref([]);
 const topNews = ref([]);
 const homepageNews = ref([]);
 
 // 格式化时间戳为 YYYY-MM-DD 格式
-function formatTimestamp (timestamp) {
+function formatTimestamp(timestamp) {
   const date = new Date(timestamp);
   const year = date.getFullYear();
   const month = (date.getMonth() + 1).toString().padStart(2, "0");
@@ -208,7 +249,7 @@ function formatTimestamp (timestamp) {
   return `${year}-${month}-${day}`;
 }
 
-async function getData () {
+async function getData() {
   const res = await HttpUtils.get(`/cms/home/news`);
   const result = await res.json();
   const data = result.data;
@@ -250,29 +291,61 @@ getData();
         <ComHeader :isfooter="false" :onlyHeaderFlag="true"></ComHeader>
       </div>
     </div>
-    <div class="my_carousel">
-      <div class="carousel" id="carousel" @mouseover="stopTimer" @mouseout="startTimer">
-        <div class="carousel-inner">
-          <div
-            v-for="(image, index) in images" :key="index" class="item"
-            :data-typeimage="image.src"
+    <!-- 视频轮播容器 -->
+    <div class="video-swiper-container" style="width: 100%; height: 61.87rem">
+    <!-- 轮播主体 -->
+    <div
+      class="swiper swiper-initialized swiper-horizontal swiper-pointer-events swiper-backface-hidden"
+    >
+      <!-- 轮播轨道 -->
+      <div class="swiper-wrapper" style="display: flex">
+        <!-- 视频轮播项 -->
+        <div
+          v-for="(video, index) in videos"
+          :key="index"
+          :style="`transform: translate3d(-${currentIndex * 100}%, 0, 0); transition-duration: ${transitionTime}ms;`"
+          class="swiper-slide"
+          :class="{
+            'swiper-slide-active': index === currentIndex,
+            'swiper-slide-prev': index === currentIndex - 1,
+            'swiper-slide-next': index === currentIndex + 1,
+          }"
+          role="group"
+          :aria-label="`${index + 1}/${videos.length}`"
+          style="width: 100%; height: 61.87rem"
+        >
+          <!-- 视频播放器 -->
+          <video
+            :ref="(el) => setVideoRef(el, index)"
+            autoplay
+            loop
+            muted
+            playsinline
+            webkit-playsinline
+            :poster="video.thumbnail"
+            style="object-fit: cover"
+            @ended="handleVideoEnd(index)"
           >
-            <video v-if="image.type === 'video'" muted autoplay :src="image.src"></video>
-            <img v-else :src="image.src" alt=""/>
-          </div>
+            <source :src="video.src" :type="video.type" />
+          </video>
         </div>
-        <div class="carousel-control left" @click="prevSlide">&lsaquo;</div>
-        <div class="carousel-control right" @click="nextSlide">&rsaquo;</div>
-        <ul class="dots">
-          <li
-            v-for="(_, index) in 5"
-            :key="index"
-            :class="{ active: index === current }"
-            @click="jumpToSlide(index)"
-          ></li>
-        </ul>
+      </div>
+
+      <!-- 分页器 -->
+      <div
+        class="swiper-pagination"
+        v-if="showPagination"
+        :class="paginationClass"
+      >
+        <span
+          v-for="(_, index) in videos"
+          :key="index"
+          :class="{ 'swiper-pagination-bullet-active': index === currentIndex }"
+          @click="jumpToSlide(index)"
+        ></span>
       </div>
     </div>
+  </div>
     <!-- 轮播图下面的导航栏 -->
     <div class="nav">
       <div class="nav_content">
@@ -474,7 +547,9 @@ getData();
           <div class="h">高举中国特色社会主义伟大旗帜</div>
         </div>
         <div class="title_right">
-          <div class="p" @click="moreNews('/informationCenter/headquartersDynamicsIndex')">总部动态</div>
+          <div class="p" @click="moreNews('/informationCenter/headquartersDynamicsIndex')">
+            总部动态
+          </div>
           <div class="p" @click="moreNews('/informationCenter/groupNewsIndex')">集团新闻</div>
           <div class="p" @click="moreNews('/informationCenter/mediaFocusIndex')">媒体聚焦</div>
         </div>
@@ -486,13 +561,13 @@ getData();
             <div class="time">{{ formatTimestamp(top.publishTime) }}</div>
             <div class="hr" />
             <div class="p">{{ top.title }}</div>
-            <div class="p" v-html="top.description"/>
+            <div class="p" v-html="top.description" />
           </div>
         </div>
         <div class="content_detail_text">
           <div v-for="news in homepageNews" :key="news.id" class="text" @click="toDetail(news.id)">
             <div class="title">{{ news.title }}</div>
-            <div class="line"/>
+            <div class="line" />
             <div class="time">{{ formatTimestamp(news.publishTime) }}</div>
           </div>
         </div>
@@ -530,55 +605,63 @@ getData();
   left: 0;
   z-index: 101;
 }
-
-.my_carousel {
-  width: 100%;
-  height: 61.875rem;
+// .video-swiper-container {
+//   position: relative;
+//   overflow: hidden;
+//   background: #000;
+//   width: 100%;
+//   height: 61.875rem;
+// }
+.video-swiper-container {
   position: relative;
 }
+// /* 轮播轨道 */
+// .swiper-wrapper {
+//   width: 100%;
+//   display: flex;
+//   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+//   height: 61.875rem;
+// }
+// .swiper{
+//   width: 100%;
+//   height: 61.875rem;
+// }
 
-.my_carousel .carousel {
-  width: 100%;
-  height: 61.875rem;
-  overflow: hidden;
+// .swiper-slide{
+//   width: 100%;
+//   height: 61.875rem;
+// }
+.swiper-slide video {
+  flex: 1;
+  height: 61.874rem;
 }
-
-.my_carousel .carousel img {
-  width: 100%;
-  height: 61.875rem;
-}
-
-.carousel-inner {
-  display: flex;
-  transition: transform 0.5s ease-in-out;
-}
-
-.item {
-  min-width: 100%;
-}
-
-.dots {
+/* 分页器样式 */
+.swiper-pagination {
   position: absolute;
+  transform: translateX(-50%);
   display: flex;
-  justify-content: center;
+  gap: 0.7rem;
   z-index: 100;
-  bottom: 1.875rem;
-  width: 100%;
-  align-items: center;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 2rem;
 }
 
-.dots li {
-  width: 7.375rem;
-  height: 0.1875rem;
-  background-color: rgb(255, 255, 255);
-  margin: 0 0.3125rem;
+.swiper-pagination span {
+  width: 8rem;
+  height: 0.2rem;
+  background-color: rgba(141, 141, 141, 0.5);
   cursor: pointer;
+  transition: background 0.3s;
+  z-index: 100;
 }
-
-.dots .active {
-  background-color: rgb(189, 206, 255);
+.swiper-pagination-bullet-active {
+  background-color: #1890ff !important;
 }
-
+.my_carousel .carousel video {
+  width: 100%;
+  height: 61.875rem;
+}
 .nav {
   width: 100%;
   height: 6.4375rem;
@@ -969,7 +1052,7 @@ getData();
     font-size: 1.425rem !important;
     margin-top: -0.625rem;
   }
-  .button_right span{
+  .button_right span {
     display: block;
     line-height: -1rem !important;
     // vertical-align: middle;
@@ -1361,7 +1444,6 @@ getData();
 }
 
 @media (min-width: 800px) and (max-width: 1000px) {
-
 }
 
 @media (min-width: 1000px) and (max-width: 1200px) {
@@ -1618,7 +1700,6 @@ getData();
     background-color: #def1fb;
     height: 101.125rem !important;
     width: 100%;
-
   }
 
   .great_flag_content {
@@ -1632,7 +1713,6 @@ getData();
     padding-top: 3rem;
     padding-left: 2.5rem;
   }
-
 }
 
 @media (min-width: 2300px) and (max-width: 2600px) {
