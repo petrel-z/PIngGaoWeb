@@ -12,36 +12,11 @@ const shouldApplyBorder = (index) => {
 const props = defineProps({
   title: {
     type: String,
-    default: "拥有国家级人才16人",
+    default: "",
   },
   items: {
     type: Array,
-    default: () => [
-      {
-        title: "国家科技创新\n领军人才/人",
-        num: 1,
-      },
-      {
-        title: "享受国务院\n特贴专家/人",
-        num: 4,
-      },
-      {
-        title: "全国技术\n能手/人",
-        num: 4,
-      },
-      {
-        title: "中华技能\n大奖/人",
-        num: 1,
-      },
-      {
-        title: "中央企业\n技术能手/人",
-        num: 4,
-      },
-      {
-        title: "全国青年\n岗位能手/人",
-        num: 2,
-      },
-    ],
+    default: () => [],
   },
 });
 </script>

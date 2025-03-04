@@ -57,7 +57,7 @@ const emit = defineEmits(["clickItem"])
           :class="{ 'boder-right': index < props.bottomItems.length - 1 }"
         >
           <div class="my-content-bottom-item-num">{{ item.num }}</div>
-          <div class="my-content-bottom-item-title">{{ item.title }}</div>
+          <div class="my-content-bottom-item-title">{{ item.title }}/人</div>
         </div>
       </div>
     </div>

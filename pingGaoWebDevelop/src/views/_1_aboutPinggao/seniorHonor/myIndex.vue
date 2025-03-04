@@ -95,7 +95,7 @@ watch(honorList, async () => {
   margin-top: 3.125rem;
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: flex-start;
 }
 
 .content .info {
