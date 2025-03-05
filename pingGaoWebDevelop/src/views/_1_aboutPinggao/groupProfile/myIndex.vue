@@ -113,7 +113,8 @@ onMounted(initializeObservers); // 在组件挂载时调用
         </div>
       </div>
       <div class="img_right" ref="imgRight" :class="{ 'slide-in-right': isVisibleRightImg }">
-        <img src="@/assets/imgs/_10_homePageImgs/shipin.png" alt="Image" />
+        <video style="width: 100%;height: 100%" controls
+               src="/videos/pinggao.mp4" />
       </div>
     </div>
     <div class="key">
@@ -359,12 +360,11 @@ onMounted(initializeObservers); // 在组件挂载时调用
 }
 
 .text_word .img_right {
-  margin-left: 0.625rem;
+  margin: 0.625rem 0 0  0.625rem;
   width: 44%;
   height: 22.8125rem;
   background-size: contain;
-  padding-top: 0.625rem;
-  transition: 0.5s;
+  padding-top: 0;
   transform: translateX(100%); /* 初始位置在右边 */
   opacity: 0; /* 初始时不可见 */
   transition: transform 1s ease, opacity 0.5s ease; /* 过渡效果 */
@@ -377,11 +377,7 @@ onMounted(initializeObservers); // 在组件挂载时调用
   visibility: visible; /* 可见 */
 }
 
-.text_word .img_right:hover {
-  transform: scale(1.05);
-}
-
-.text_word .img_right img {
+.text_word .img_right video {
   margin-left: 2.75rem;
   width: 100%;
   height: 22.8125rem;
@@ -528,7 +524,7 @@ onMounted(initializeObservers); // 在组件挂载时调用
     font-size: 0.8rem !important;
     margin-bottom: 1rem;
   }
-  .text_word .img_right img{
+  .text_word .img_right video{
     margin-left: 1rem;
     width: 100% !important;
     height: 15rem !important;
@@ -754,7 +750,7 @@ onMounted(initializeObservers); // 在组件挂载时调用
     width: 40% !important;
     height: 14.8125rem !important;
   }
-  .text_word .img_right img {
+  .text_word .img_right video {
     width: 100%;
     height: 14rem !important;
   }
@@ -821,7 +817,7 @@ onMounted(initializeObservers); // 在组件挂载时调用
     width: 40% !important;
     height: 14.8125rem !important;
   }
-  .text_word .img_right img {
+  .text_word .img_right video {
     width: 100%;
     height: 14rem !important;
   }
@@ -888,7 +884,7 @@ onMounted(initializeObservers); // 在组件挂载时调用
     width: 40% !important;
     height: 14.8125rem !important;
   }
-  .text_word .img_right img {
+  .text_word .img_right video {
     width: 100%;
     height: 14rem !important;
   }
@@ -960,7 +956,7 @@ onMounted(initializeObservers); // 在组件挂载时调用
     width: 40% !important;
     height: 14.8125rem !important;
   }
-  .text_word .img_right img {
+  .text_word .img_right video {
     width: 100%;
     height: 14rem !important;
   }

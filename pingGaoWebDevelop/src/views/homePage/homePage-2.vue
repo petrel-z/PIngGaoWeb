@@ -3,245 +3,54 @@ import ComHeader from "@/components/ComHeader.vue";
 import Footer from "@/components/Footer.vue";
 import router from "@/router/index.js";
 import HttpUtils from "@/utils/httpUtils.js";
-import { nextTick, onMounted, onUnmounted, ref } from "vue";
-import video1 from "@/assets/imgs/_10_homePageImgs/轮播1.mp4";
-import thumb1 from "@/assets/imgs/_10_homePageImgs/carousel.png";
+import { ref } from "vue";
 
-// 视频数据
-const videos = ref([
-  {
-    src: video1,
-    type: "video/mp4",
-    thumbnail: thumb1,
-  },
-  {
-    src: video1,
-    type: "video/mp4",
-    thumbnail: thumb1,
-  },
-  {
-    src: video1,
-    type: "video/mp4",
-    thumbnail: thumb1,
-  },
-  {
-    src: video1,
-    type: "video/mp4",
-    thumbnail: thumb1,
-  },
-  {
-    src: video1,
-    type: "video/mp4",
-    thumbnail: thumb1,
-  },
-]);
+// Import Swiper Vue.js components
+import { Swiper, SwiperSlide } from "swiper/vue";
+import { Pagination } from "swiper/modules";
 
-// 轮播控制逻辑
-const currentIndex = ref(0);
-const transitionTime = ref(500);
-const autoPlayInterval = ref(5000);
-const showPagination = true;
-let timer = null;
-const videoRefs = ref([]);
+// Import Swiper styles
+import "swiper/css";
+import "swiper/css/pagination";
 
-// 视频控制方法
-const setVideoRef = (el, index) => {
-  if (el) videoRefs.value[index] = el;
+const modules = {
+  Pagination,
 };
-
-const playCurrent = () => {
-  const video = videoRefs.value[currentIndex.value];
-  if (video) {
-    video.play().catch((error) => {
-      console.error("视频播放失败:", error);
-    });
-  }
-};
-
-const pauseCurrent = () => {
-  const video = videoRefs.value[currentIndex.value];
-  if (video) video.pause();
-};
-
-const nextSlide = () => {
-  pauseCurrent();
-  currentIndex.value = currentIndex.value < videos.value.length - 1 ? currentIndex.value + 1 : 0;
-  playCurrent();
-};
-
-const jumpToSlide = (index) => {
-  stopAutoPlay();
-  if (index < 0 || index >= videos.value.length) return;
-  pauseCurrent();
-  currentIndex.value = index;
-  playCurrent();
-  startAutoPlay();
-};
-
-// 自动播放控制
-const startAutoPlay = () => {
-  timer = setInterval(nextSlide, autoPlayInterval.value);
-};
-
-const stopAutoPlay = () => {
-  clearInterval(timer);
-};
-
-// 生命周期
-onMounted(() => {
-  startAutoPlay();
-  playCurrent();
-});
-
-onUnmounted(() => {
-  stopAutoPlay();
-  pauseCurrent();
-});
-
-// 视频事件处理
-const handleVideoEnd = (index) => {
-  if (index === currentIndex.value) {
-    nextSlide();
-  }
-};
-onMounted(() => {
-  const container = document.querySelector(".product_box");
-  const leftIcon = document.querySelector(".left_icon");
-  const rightIcon = document.querySelector(".right_icon");
-  const items1 = document.querySelectorAll(".product_detail");
-  const itemCount = items1.length;
-  let currentIndex = 0;
-  let isAnimating = false;
-  let autoSlideInterval;
-  let visibleItems = 3; // 初始值
-
-  // 初始化
-  updateCarousel();
-
-  // 监听视窗大小变化
-  window.addEventListener("resize", () => {
-    updateCarousel();
+const swiperInstance = ref(null);
+const onSwiper = (swiper) => {
+  swiperInstance.value = swiper;
+  // 监听slideChange事件确保视频播放
+  swiperInstance.value.on("slideChange", () => {
+    const activeSlide = swiperInstance.value.slides[swiperInstance.value.activeIndex];
+    const video = activeSlide.querySelector("video");
+    video.play().catch(() => { /* 处理自动播放失败 */ });
   });
-
-  function updateCarousel() {
-    if (isAnimating) return;
-    isAnimating = true;
-
-    // 计算位移百分比（每个项目占 1/visibleItems）
-    const translateX = -currentIndex * (100 / visibleItems / 1.07);
-    container.style.transform = `translateX(${translateX}%)`;
-    container.style.transition = "1s";
-
-    // 重置动画状态
-    setTimeout(() => {
-      isAnimating = false;
-    }, 500);
-  }
-
-  function nextSlide1() {
-    stopAutoSlide();
-    if (currentIndex >= itemCount - visibleItems) {
-      // 到达最后时回到第一个
-      currentIndex = 0;
-    } else {
-      currentIndex++;
-    }
-    updateCarousel();
-    startAutoSlide();
-  }
-
-  function prevSlide1() {
-    stopAutoSlide();
-    if (currentIndex <= 0) {
-      // 到达第一个时跳到最后
-      currentIndex = itemCount - visibleItems;
-    } else {
-      currentIndex--;
-    }
-    updateCarousel();
-    startAutoSlide();
-  }
-
-  function startAutoSlide() {
-    autoSlideInterval = setInterval(nextSlide1, 3000); // 每3秒切换一次
-  }
-
-  // 停止自动轮播的函数
-  function stopAutoSlide() {
-    if (autoSlideInterval) {
-      clearInterval(autoSlideInterval);
-      autoSlideInterval = null;
-      console.log("轮播已停止");
-    }
-  }
-
-  // 添加按钮事件
-  rightIcon.addEventListener("click", nextSlide1);
-  leftIcon.addEventListener("click", prevSlide1);
-
-  startAutoSlide();
-
-  onUnmounted(() => {
-    clearInterval(autoSlideInterval);
-  });
-});
-
-const scrollDiv = ref(null);
-const scrollBegin = ref(null);
-const scrollEnd = ref(null);
-
-let MyMar = null;
-const speed = 5; // 更流畅的滚动速度
-const initMarquee = () => {
-  if (
-    !scrollBegin.value ||
-    !document.contains(scrollBegin.value) ||
-    !scrollEnd.value ||
-    !document.contains(scrollEnd.value) ||
-    !scrollDiv.value ||
-    !document.contains(scrollDiv.value)
-  )
-    return;
-
-  // 复制双份内容实现无缝衔接
-  scrollEnd.value.innerHTML = scrollBegin.value.innerHTML;
-
-  const Marquee = () => {
-    if (!scrollDiv.value || !scrollBegin.value) return;
-    if (scrollDiv.value.scrollLeft >= scrollBegin.value.offsetWidth) {
-      scrollDiv.value.scrollLeft = 0;
-    } else {
-      scrollDiv.value.scrollLeft += 1;
-    }
-  };
-
-  const startScroll = () => {
-    MyMar = setInterval(Marquee, speed);
-  };
-
-  const stopScroll = () => {
-    clearInterval(MyMar);
-  };
-
-  // 确保容器有内容后再启动
-  startScroll();
-
-  // 鼠标交互
-  scrollDiv.value.addEventListener("mouseenter", stopScroll);
-  scrollDiv.value.addEventListener("mouseleave", startScroll);
+};
+const onSlideChange = () => {
+  console.log("slide change");
 };
 
-onMounted(() => {
-  nextTick(() => {
-    initMarquee();
-  });
-});
+let timeout = null;
+
+function handleVideoEnd () {
+  if (swiperInstance.value) {
+    clearTimeout(timeout);
+    timeout = setTimeout(() => {
+      swiperInstance.value.slideNext(500);  // 带过渡动画切换
+    }, 2000);
+  }
+}
+
 const images = ref([]);
 const topNews = ref([]);
 const homepageNews = ref([]);
+const videoRefs = ref([]);
+const setItemRef = (el) => {
+  videoRefs.value.push(el);
+};
 
 // 格式化时间戳为 YYYY-MM-DD 格式
-function formatTimestamp(timestamp) {
+function formatTimestamp (timestamp) {
   const date = new Date(timestamp);
   const year = date.getFullYear();
   const month = (date.getMonth() + 1).toString().padStart(2, "0");
@@ -249,7 +58,7 @@ function formatTimestamp(timestamp) {
   return `${year}-${month}-${day}`;
 }
 
-async function getData() {
+async function getData () {
   const res = await HttpUtils.get(`/cms/home/news`);
   const result = await res.json();
   const data = result.data;
@@ -268,7 +77,7 @@ async function getData() {
   console.log(JSON.parse(JSON.stringify(data)));
 }
 
-function toDetail(newsId) {
+function toDetail (newsId) {
   if (newsId) {
     const target = router.resolve({
       name: "newsDetail",
@@ -291,60 +100,33 @@ getData();
         <ComHeader :isfooter="false" :onlyHeaderFlag="true"></ComHeader>
       </div>
     </div>
-    <!-- 视频轮播容器 -->
-    <div class="video-swiper-container" style="width: 100%; height: 61.87rem">
     <!-- 轮播主体 -->
-    <div
-      class="swiper swiper-initialized swiper-horizontal swiper-pointer-events swiper-backface-hidden"
+    <swiper
+      :modules="modules"
+      :allowTouchMove="false"
+      :loop="true"
+      navigation
+      :pagination="{ clickable: true }"
+      :scrollbar="{ draggable: true }"
+      @swiper="onSwiper"
+      @slideChange="onSlideChange"
     >
-      <!-- 轮播轨道 -->
-      <div class="swiper-wrapper" style="display: flex">
-        <!-- 视频轮播项 -->
-        <div
-          v-for="(video, index) in images"
-          :key="index"
-          :style="`transform: translate3d(-${currentIndex * 100}%, 0, 0); transition-duration: ${transitionTime}ms;`"
-          class="swiper-slide"
-          :class="{
-            'swiper-slide-active': index === currentIndex,
-            'swiper-slide-prev': index === currentIndex - 1,
-            'swiper-slide-next': index === currentIndex + 1,
-          }"
-          role="group"
-          :aria-label="`${index + 1}/${videos.length}`"
-          style="width: 100%; height: 61.87rem"
+      <swiper-slide v-for="(image, index) in images"
+                    :key="index">
+        <video
+          :ref="setItemRef"
+          v-if="image.type === 'video'"
+          muted
+          playsinline
+          style="object-fit: cover"
+          @ended="handleVideoEnd(index)"
         >
-          <!-- 视频播放器 -->
-          <video
-            :ref="(el) => setVideoRef(el, index)"
-            autoplay
-            muted
-            playsinline
-            webkit-playsinline
-            :poster="video.thumbnail"
-            style="object-fit: cover"
-            @ended="handleVideoEnd(index)"
-          >
-            <source :src="video.src" type="video/mp4" />
-          </video>
-        </div>
-      </div>
-
-      <!-- 分页器 -->
-      <div
-        class="swiper-pagination"
-        v-if="showPagination"
-        :class="paginationClass"
-      >
-        <span
-          v-for="(_, index) in videos"
-          :key="index"
-          :class="{ 'swiper-pagination-bullet-active': index === currentIndex }"
-          @click="jumpToSlide(index)"
-        ></span>
-      </div>
-    </div>
-  </div>
+          <source :src="image.src" type="video/mp4" />
+        </video>
+        <img style="width: 100vw;height: 100vh" v-else-if="image.type === 'image'" :src="image.src"
+             alt="" />
+      </swiper-slide>
+    </swiper>
     <!-- 轮播图下面的导航栏 -->
     <div class="nav">
       <div class="nav_content">
@@ -510,7 +292,8 @@ getData();
           </div>
         </div>
         <div class="img_right">
-          <img src="@/assets/imgs/_10_homePageImgs/shipin.png" alt="" />
+          <video style="width: 100%;height: 100%" controls
+                 src="/videos/pinggao.mp4" />
         </div>
       </div>
       <div class="introduction_honor">
@@ -604,63 +387,17 @@ getData();
   left: 0;
   z-index: 101;
 }
-// .video-swiper-container {
-//   position: relative;
-//   overflow: hidden;
-//   background: #000;
-//   width: 100%;
-//   height: 61.875rem;
-// }
-.video-swiper-container {
-  position: relative;
-}
-// /* 轮播轨道 */
-// .swiper-wrapper {
-//   width: 100%;
-//   display: flex;
-//   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-//   height: 61.875rem;
-// }
-// .swiper{
-//   width: 100%;
-//   height: 61.875rem;
-// }
 
-// .swiper-slide{
-//   width: 100%;
-//   height: 61.875rem;
-// }
-.swiper-slide video {
-  flex: 1;
-  height: 61.874rem;
-}
-/* 分页器样式 */
-.swiper-pagination {
-  position: absolute;
-  transform: translateX(-50%);
-  display: flex;
-  gap: 0.7rem;
-  z-index: 100;
-  left: 50%;
-  transform: translateX(-50%);
-  bottom: 2rem;
+.swiper {
+  height: 100vh;
+  width: 100vw;
 }
 
-.swiper-pagination span {
-  width: 8rem;
-  height: 0.2rem;
-  background-color: rgba(141, 141, 141, 0.5);
-  cursor: pointer;
-  transition: background 0.3s;
-  z-index: 100;
-}
-.swiper-pagination-bullet-active {
-  background-color: #1890ff !important;
-}
 .my_carousel .carousel video {
   width: 100%;
   height: 61.875rem;
 }
+
 .nav {
   width: 100%;
   height: 6.4375rem;
@@ -963,6 +700,7 @@ getData();
   width: 100%;
   height: 71.25rem;
 }
+
 @media (min-width: 380px) and (max-width: 500px) {
   .company_introduction {
     position: relative;
@@ -1017,11 +755,6 @@ getData();
     transition: ease 0.5s;
   }
 
-  .introduction_content .img_right img {
-    width: 100%;
-    height: 100%;
-  }
-
   .introduction_content .p {
     font-size: 1.2rem !important;
     line-height: 1.7;
@@ -1051,6 +784,7 @@ getData();
     font-size: 1.425rem !important;
     margin-top: -0.625rem;
   }
+
   .button_right span {
     display: block;
     line-height: -1rem !important;
@@ -1110,11 +844,6 @@ getData();
     height: 60% !important;
     min-width: 25rem;
     transition: ease 0.5s;
-  }
-
-  .introduction_content .img_right img {
-    width: 100%;
-    height: 100%;
   }
 
   .introduction_content .p {
@@ -1300,11 +1029,6 @@ getData();
     height: 60% !important;
     min-width: 25rem;
     transition: ease 0.5s;
-  }
-
-  .introduction_content .img_right img {
-    width: 100%;
-    height: 100%;
   }
 
   .introduction_content .p {
@@ -1621,7 +1345,7 @@ getData();
 
   .great_flag_content .content_detail_text .time {
     font-size: 1.3rem !important;
-    margin-bottom: 1 !important;
+    margin-bottom: 1rem !important;
   }
 }
 
@@ -1843,25 +1567,6 @@ getData();
   padding-top: 0.8125rem;
 }
 
-.introduction_content .img_right {
-  width: 55%;
-  height: 100%;
-  min-width: 25rem;
-  transition: ease 0.5s;
-}
-
-.introduction_content .img_right:hover {
-  transform: scale(1.04);
-  box-shadow: 0 0.375rem 0.625rem rgba(0, 0, 0, 0.488); /* 悬浮时显示黑色阴影 */
-}
-
-.introduction_content .img_right img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover; /* 实现图片等比例缩放 */
-  min-width: 25rem;
-}
-
 .introduction_content .p {
   font-size: 1.25rem;
   font-family: "AlibabaPuHuiTi_2_45_Light";
@@ -1954,9 +1659,15 @@ getData();
   box-shadow: 0 0.25rem 0.625rem rgba(0, 0, 0, 0.286); /* 悬浮时显示黑色阴影 */
 }
 
+.great_flag_content .content_detail .top_img {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .great_flag_content .content_detail .top_img img {
-  width: 100%;
-  height: 100%;
+  width: 75%;
+  height: 75%;
   object-fit: cover;
 }
 

@@ -1,7 +1,7 @@
 <script setup>
 import MyTitle from "@/components/MyTitle.vue";
 import httpUtils from "@/utils/httpUtils.js";
-import { onMounted, ref, watch } from "vue";
+import { onMounted, ref } from "vue";
 import router from "@/router/index.js";
 
 const boxRef = ref(null);
@@ -24,14 +24,14 @@ const imgs = ref(
     new URL("@/assets/imgs/_4_productEngineeringImgs/product-7.png", import.meta.url).href,
     new URL("@/assets/imgs/_4_productEngineeringImgs/product-8.png", import.meta.url).href,
     new URL("@/assets/imgs/_4_productEngineeringImgs/product-9.png", import.meta.url).href,
-  ].map((path) => new URL(path, import.meta.url).href)
+  ].map((path) => new URL(path, import.meta.url).href),
 );
 // 使用 ref 存储图片路径，并处理路径
 const imageSrc = ref(
-  new URL("@/assets/imgs/_4_productEngineeringImgs/product-1.png", import.meta.url).href
+  new URL("@/assets/imgs/_4_productEngineeringImgs/product-1.png", import.meta.url).href,
 );
 
-const activeIndex = ref(0);
+const currentCategory = ref({});
 
 // 格式化时间戳为 YYYY-MM-DD 格式
 function formatTimestamp (timestamp) {
@@ -55,13 +55,12 @@ function formatTimestampObj (timestamp) {
 }
 
 async function getData () {
-  const categoryId = categoryList.value[activeIndex.value].id;
   const queryString = new URLSearchParams({
     pageNo: 1,
     pageSize: 999,
   }).toString();
 
-  console.log("获取数据", queryString);
+  const categoryId = currentCategory.value.id;
   const response = await httpUtils.get(`/cms/category/${categoryId}/news?${queryString.toString()}`);
   const { data } = await response.json();
   const page = data.page;
@@ -70,7 +69,6 @@ async function getData () {
     i.timeObj = formatTimestampObj(i.publishTime);
   });
   categoryItems.value = page.list;
-  console.log(page.list);
 }
 
 async function getCategory () {
@@ -78,35 +76,10 @@ async function getCategory () {
   const result = await res.json();
 
   categoryList.value = result.data;
+  currentCategory.value = result.data[0];
+  await getData();
 }
 
-const handleMouse = (event) => {
-  const boxs = document.querySelectorAll(".detail_product");
-  const clickedDiv = event.currentTarget;
-  const index = Array.from(boxs).indexOf(clickedDiv);
-
-  boxs.forEach((div) => {
-    div.classList.remove("active");
-  });
-
-  if (index >= 0 && index < imgs.value.length) {
-    imageSrc.value = imgs.value[index];
-    console.log(`你点击了第 ${index + 1} 个 div`);
-    // 更新 activeIndex 的值
-    activeIndex.value = index;
-  }
-};
-
-// 处理鼠标离开事件，恢复默认图片
-const handleMouseLeave = () => {
-  // imageSrc.value = new URL(
-  //   "@/assets/imgs/_4_productEngineeringImgs/product-1.png",
-  //   import.meta.url
-  // ).href; // 恢复默认图片
-  // console.log("鼠标离开，恢复默认图片");
-  // // 鼠标离开时，将 activeIndex 重置为 -1
-  // activeIndex.value = 0;
-};
 // 创建交叉观察器
 const createObserver = (refElement, isVisible) => {
   const observer = new IntersectionObserver(
@@ -124,7 +97,7 @@ const createObserver = (refElement, isVisible) => {
       root: null, // 使用浏览器视口作为根元素
       rootMargin: "0px", // 无额外的边距
       threshold: 0.1, // 当元素的 50% 进入视口时触发
-    }
+    },
   );
   if (refElement.value) {
     observer.observe(refElement.value);
@@ -139,8 +112,6 @@ onMounted(initializeObservers); // 在组件挂载时调用
 
 getCategory();
 
-let timeout = null;
-
 function toDetail (newsId) {
   if (newsId) {
     const target = router.resolve({
@@ -153,12 +124,11 @@ function toDetail (newsId) {
   }
 }
 
-watch(activeIndex, () => {
-  clearTimeout(timeout);
-  timeout = setTimeout(() => {
-    getData(activeIndex.value);
-  }, 500);
-});
+function setActive (category, index) {
+  currentCategory.value = category;
+  imageSrc.value = imgs.value[index % 9];
+  getData();
+}
 </script>
 
 <template>
@@ -175,19 +145,18 @@ watch(activeIndex, () => {
     />
     <div class="detail_content" ref="boxRef" :class="{ 'move-left': isVisibleBox }">
       <div
-        v-for="(category, index) in categoryList"
+        v-for="(category,index) in categoryList"
         :key="category.id"
         class="detail_product"
-        :style="{ 'background-color': index === activeIndex ? '#45b3e0' : 'transparent' }"
-        @mouseover="handleMouse"
-        @mouseleave="handleMouseLeave"
+        :style="{ 'background-color': currentCategory.id === category.id ? '#45b3e0' : 'transparent' }"
+        @click="setActive(category,index)"
       >
         <span>{{ category.name }}</span>
       </div>
     </div>
     <div v-if="categoryList.length !== 0" class="detail_page">
       <div class="detail_page_title">
-        {{ categoryList[activeIndex].name }}
+        {{ currentCategory.name }}
       </div>
       <div class="detail_page_content">
         <div
@@ -205,12 +174,12 @@ watch(activeIndex, () => {
           <div class="p1">
             {{ item.title }}
           </div>
-          <div class="p2" v-html="item.description"/>
+          <div class="p2" v-html="item.description" />
         </div>
       </div>
     </div>
     <div class="footer_img">
-      <img src="@/assets/imgs/_4_productEngineeringImgs/bg-footimg.png" alt=""/>
+      <img src="@/assets/imgs/_4_productEngineeringImgs/bg-footimg.png" alt="" />
     </div>
   </div>
 </template>
