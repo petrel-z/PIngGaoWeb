@@ -293,7 +293,7 @@ getData();
         </div>
         <div class="img_right">
           <video style="width: 100%;height: 100%" controls
-                 src="http://218.28.22.50:8108/videos/pinggao.mp4" />
+                 src="/videos/pinggao.mp4" />
         </div>
       </div>
       <div class="introduction_honor">
