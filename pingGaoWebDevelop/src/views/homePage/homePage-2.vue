@@ -301,7 +301,7 @@ getData();
       <div class="swiper-wrapper" style="display: flex">
         <!-- 视频轮播项 -->
         <div
-          v-for="(video, index) in videos"
+          v-for="(video, index) in images"
           :key="index"
           :style="`transform: translate3d(-${currentIndex * 100}%, 0, 0); transition-duration: ${transitionTime}ms;`"
           class="swiper-slide"
@@ -318,7 +318,6 @@ getData();
           <video
             :ref="(el) => setVideoRef(el, index)"
             autoplay
-            loop
             muted
             playsinline
             webkit-playsinline
@@ -326,7 +325,7 @@ getData();
             style="object-fit: cover"
             @ended="handleVideoEnd(index)"
           >
-            <source :src="video.src" :type="video.type" />
+            <source :src="video.src" type="video/mp4" />
           </video>
         </div>
       </div>
