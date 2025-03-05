@@ -114,7 +114,7 @@ onMounted(initializeObservers); // 在组件挂载时调用
       </div>
       <div class="img_right" ref="imgRight" :class="{ 'slide-in-right': isVisibleRightImg }">
         <video style="width: 100%;height: 100%" controls
-               src="/videos/pinggao.mp4" />
+               src="" />
       </div>
     </div>
     <div class="key">
