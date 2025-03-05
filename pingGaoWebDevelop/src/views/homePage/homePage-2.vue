@@ -4,7 +4,6 @@ import Footer from '@/components/Footer.vue'
 import router from '@/router/index.js'
 import HttpUtils from '@/utils/httpUtils.js'
 import { onMounted, onUnmounted, nextTick, ref } from 'vue'
-import thumb1 from '@/assets/imgs/_10_homePageImgs/carousel.png'
 
 // Import Swiper Vue.js components
 import { Swiper, SwiperSlide } from 'swiper/vue'
@@ -16,18 +15,18 @@ const modules = [
 const swiperInstance = ref(null)
 const onSwiper = (swiper) => {
   swiperInstance.value = swiper
-  // 监听slideChange事件确保视频播放
-  swiperInstance.value.on('slideChange', () => {
-    const activeSlide = swiperInstance.value.slides[swiperInstance.value.activeIndex]
-    const video = activeSlide.querySelector('video')
-    video.play().catch(() => { /* 处理自动播放失败 */ })
-  })
-}
-const onSlideChange = () => {
-  console.log('slide change')
 }
 
 let timeout = null
+
+const onSlideChange = () => {
+  if (swiperInstance.value) {
+    clearTimeout(timeout)
+    const activeSlide = swiperInstance.value.slides[swiperInstance.value.activeIndex]
+    const video = activeSlide.querySelector('video')
+    video.play().catch(() => { /* 处理自动播放失败 */ })
+  }
+}
 
 function handleVideoEnd () {
   if (swiperInstance.value) {
@@ -231,26 +230,18 @@ getData()
       :modules="modules"
       :allowTouchMove="false"
       :loop="true"
+      :slides-per-view="1"
       navigation
       :pagination="{ clickable: true }"
       :scrollbar="{ draggable: true }"
       @swiper="onSwiper"
       @slideChange="onSlideChange"
     >
-      <swiper-slide
-        style="width: 100%;height: 100%" v-for="(image, index) in images"
-        :key="index">
-        <video
-          style="display:block; width: 100%;height: 100%"
-          v-if="image.type === 'video'"
-          muted
-          disablepictureinpicture
-          @ended="handleVideoEnd(index)"
-          :poster="thumb1"
-          :src="image.src"
-        ></video>
-        <img v-else-if="image.type === 'image'" :src="image.src"
-             alt="" style="width: 100%;height: 100%"/>
+      <swiper-slide style="width: 100%;" v-for="(image, index) in images" :key="index">
+        <video style="width: 100%;" v-if="image.type === 'video'" muted disablepictureinpicture
+               @ended="handleVideoEnd(index)" poster="http://218.28.22.50:8108/videos/carousel.png"
+               :src="image.src"></video>
+        <img v-else-if="image.type === 'image'" :src="image.src" alt="" style="width: 100%;"/>
       </swiper-slide>
     </swiper>
     <!-- 轮播图下面的导航栏 -->
@@ -496,11 +487,23 @@ getData()
   </div>
 </template>
 
-<style scoped lang="less">
-// Import Swiper styles
+<style>
 @import "swiper/css";
 @import "swiper/css/pagination";
 
+.swiper {
+  width: 100vw;
+  margin: 0;
+  padding: 0;
+}
+
+.swiper-pagination .swiper-pagination-bullet {
+  width: 5vw;
+  border-radius: 5px;
+}
+</style>
+
+<style scoped lang="less">
 .home_page {
   overflow: hidden;
   width: 100%;
@@ -516,13 +519,6 @@ getData()
   top: 0;
   left: 0;
   z-index: 101;
-}
-
-.swiper {
-  height: 100vh;
-  width: 100vw;
-  margin: 0;
-  padding: 0;
 }
 
 .my_carousel .carousel video {
@@ -923,6 +919,7 @@ getData()
     // vertical-align: middle;
   }
 }
+
 @media (min-width: 500px) and (max-width: 600px) {
   .company_introduction {
     position: relative;
@@ -1576,6 +1573,7 @@ getData()
     width: 100%;
   }
 }
+
 @media (min-width: 900px) and (max-width: 1000px) {
   .company_introduction {
     position: relative;
@@ -1773,6 +1771,7 @@ getData()
     transition: 0.5s;
     cursor: pointer;
   }
+
   .introduction_content .text_left {
     width: 55% !important;
     height: 31.875rem;
@@ -1786,10 +1785,12 @@ getData()
     min-width: 25rem;
     transition: ease 0.5s;
   }
+
   .introduction_content .p {
     font-size: 1.5rem !important;
     line-height: 1.7;
   }
+
   .great_flag {
     position: relative;
     padding: 9.5rem 9.75rem;
@@ -1839,6 +1840,7 @@ getData()
     margin-bottom: 1.4rem !important;
   }
 }
+
 @media (min-width: 1200px) and (max-width: 1400px) {
   .great_flag_content .content_detail {
     width: 32%;
@@ -1847,6 +1849,7 @@ getData()
     transition: 0.5s;
     cursor: pointer;
   }
+
   .introduction_content .text_left {
     width: 55% !important;
     height: 31.875rem;
@@ -1860,10 +1863,12 @@ getData()
     min-width: 25rem;
     transition: ease 0.5s;
   }
+
   .introduction_content .p {
     font-size: 1.3rem !important;
     line-height: 1.7;
   }
+
   .great_flag {
     position: relative;
     padding: 9.5rem 9.75rem;
@@ -1922,6 +1927,7 @@ getData()
     transition: 0.5s;
     cursor: pointer;
   }
+
   .introduction_content .text_left {
     width: 55% !important;
     height: 31.875rem;
@@ -1935,10 +1941,12 @@ getData()
     min-width: 25rem;
     transition: ease 0.5s;
   }
+
   .introduction_content .p {
     font-size: 1.4rem !important;
     line-height: 1.7;
   }
+
   .great_flag {
     position: relative;
     padding: 9.5rem 9.75rem;
