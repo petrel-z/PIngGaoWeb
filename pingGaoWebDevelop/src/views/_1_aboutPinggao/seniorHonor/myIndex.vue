@@ -103,7 +103,7 @@ watch(honorList, async () => {
   height: 90%;
   margin-bottom: 4.2rem;
   text-align: center;
-  padding: 20px;
+  padding: 2rem;
   box-sizing: border-box;
 }
 

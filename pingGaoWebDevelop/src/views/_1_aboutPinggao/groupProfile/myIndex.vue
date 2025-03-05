@@ -523,7 +523,69 @@ onMounted(initializeObservers); // 在组件挂载时调用
   font-family: "AlibabaPuHuiTi_2_45_Light", sans-serif;
   color: rgb(89, 87, 87);
 }
-@media (min-width: 300px) and (max-width: 400px) {
+@media (min-width: 10px) and (max-width: 200px) {
+  .text_word .text-section p {
+    font-size: 0.8rem !important;
+    margin-bottom: 1rem;
+  }
+  .text_word .img_right img{
+    margin-left: 1rem;
+    width: 100% !important;
+    height: 15rem !important;
+  }
+  .mind_map {
+    background-color: #def1fb;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 46.25rem !important;
+  }
+  .mind_map img {
+    width: 100%;
+    position: absolute;
+    height: 43.25rem !important;
+  }
+  .groupProfile {
+    width: 100%;
+    height: 180.5rem !important;
+  }
+  .key_content_h {
+    left: 6.6rem;
+    top: 0.7rem;
+    font-size: 1rem;
+  }
+  .key_content_text {
+    left: 6.6rem;
+    top: 2.7rem;
+    font-size: 0.85rem;
+  }
+  .key .key_info {
+    height: 6rem;
+  }
+  .basic_culture_info .basic_culture_h {
+    font-size: 1.1rem !important;
+  }
+  .basic_culture_info .basic_culture_p {
+    font-size: 0.9rem !important;
+  }
+  .basic_culture_line {
+    width: 2rem !important;
+    height: 0.0625rem;
+  }
+  .basic_culture_info .basic_culture_num {
+    white-space: pre;
+    font-size: 1.4242rem !important;
+  }
+  .basic_culture_info {
+    border-left: 0.0625rem solid #c4c4c4;
+    width: 25%;
+    height: 6rem !important;
+  }
+  .introduce_content span {
+    font-size: 1.2rem;
+  }
+}
+@media (min-width: 200px) and (max-width: 300px) {
   .mind_map {
     background-color: #def1fb;
     bottom: 0;
@@ -531,11 +593,76 @@ onMounted(initializeObservers); // 在组件挂载时调用
     width: 100%;
     height: 72.25rem !important;
   }
-
+  .text_word .text-section p {
+    font-size: 1.4rem !important;
+  }
+  .mind_map {
+    background-color: #def1fb;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 76.25rem !important;
+  }
   .mind_map img {
     width: 100%;
     position: absolute;
+    height: 73.25rem !important;
+  }
+  .groupProfile {
+    width: 100%;
+    height: 250.5rem !important;
+  }
+}
+@media (min-width: 300px) and (max-width: 350px) {
+  .key_content_h {
+    left: 10.6rem;
+    top: 2.1rem;
+    font-size: 1.175rem;
+  }
+  .key_content_text {
+    left: 10.6rem;
+    top: 4rem;
+    font-size: 1.1rem;
+  }
+  .mind_map {
+    background-color: #def1fb;
+    bottom: 0;
+    left: 0;
+    width: 100%;
     height: 72.25rem !important;
+  }
+  .text_word .text-section p {
+    font-size: 1.05rem !important;
+  }
+  .mind_map {
+    background-color: #def1fb;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 67.25rem !important;
+  }
+  .mind_map img {
+    width: 100%;
+    position: absolute;
+    height: 62.25rem !important;
+  }
+  .groupProfile {
+    width: 100%;
+    height: 226.5rem !important;
+  }
+}
+@media (min-width: 350px) and (max-width: 400px) {
+  .mind_map {
+    background-color: #def1fb;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 67.25rem !important;
+  }
+  .mind_map img {
+    width: 100%;
+    position: absolute;
+    height: 67.25rem !important;
   }
   .groupProfile {
     width: 100%;
@@ -550,7 +677,23 @@ onMounted(initializeObservers); // 在组件挂载时调用
     font-size: 1rem;
   }
 }
-@media (min-width: 400px) and (max-width: 500px) {
+@media (min-width: 400px) and (max-width: 450px) {
+  .key_content_h {
+    left: 10.2rem;
+    top: 1.9rem !important;
+    font-size: 1.175rem;
+  }
+  .key_content_text {
+    left: 10.2rem;
+    top: 4rem;
+    font-size: 1.1rem;
+  }
+  .groupProfile {
+    width: 100%;
+    height: 218.5rem !important;
+  }
+}
+@media (min-width: 450px) and (max-width: 500px) {
   .key_content_h {
     left: 11.4rem;
     top: 2.4rem;
@@ -563,17 +706,84 @@ onMounted(initializeObservers); // 在组件挂载时调用
   }
   .groupProfile {
     width: 100%;
-    height: 200.5rem !important;
+    height: 213.5rem !important;
   }
 }
-@media (min-width: 600px) and (max-width: 700px) {
+@media (min-width: 500px) and (max-width: 600px) {
   .key_content_h {
-    left: 7.7rem;
+    left: 7.5rem ;
     top: 1.3rem;
     font-size: 1rem;
   }
   .key_content_text {
-    left: 7.7rem;
+    left: 7.5rem;
+    top: 2.9rem;
+    font-size: 0.85rem;
+  }
+  .key .key_info {
+    height: 6.5rem;
+  }
+  .basic_culture_info .basic_culture_h {
+    font-size: 1rem !important;
+  }
+  .basic_culture_info .basic_culture_p {
+    font-size: 0.9rem !important;
+  }
+  .basic_culture_line {
+    width: 2rem !important;
+    height: 0.0625rem;
+  }
+  .basic_culture_info .basic_culture_num {
+    white-space: pre;
+    font-size: 1.3242rem !important;
+  }
+  .basic_culture_info {
+    border-left: 0.0625rem solid #c4c4c4;
+    width: 25%;
+    height: 6rem !important;
+  }
+  .text_word .word_left {
+    display: flex;
+    width: 57%;
+  }
+  .text_word .word_left p {
+    font-size: 0.75rem !important;
+  }
+  .text_word .img_right {
+    margin-left: -0.325rem;
+    width: 40% !important;
+    height: 14.8125rem !important;
+  }
+  .text_word .img_right img {
+    width: 100%;
+    height: 14rem !important;
+  }
+  .mind_map {
+    background-color: #def1fb;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 46.25rem !important;
+  }
+
+  .mind_map img {
+    width: 100%;
+    position: absolute;
+    height: 45.25rem !important;
+  }
+  .groupProfile {
+    width: 100%;
+    height: 175.5rem !important;
+  }
+}
+@media (min-width: 600px) and (max-width: 700px) {
+  .key_content_h {
+    left: 7.3rem;
+    top: 1.2rem;
+    font-size: 1rem;
+  }
+  .key_content_text {
+    left: 7.3rem;
     top: 2.9rem;
     font-size: 0.85rem;
   }
@@ -700,15 +910,87 @@ onMounted(initializeObservers); // 在组件挂载时调用
     height: 184.5rem !important;
   }
 }
-@media (min-width: 800px) and (max-width: 1000px) {
+@media (min-width: 800px) and (max-width: 900px) {
+  .introduce_content span{
+    font-size: 1.2rem !important;
+  }
   .key_content_h {
-    left: 10rem;
-    top: 1.8rem;
+    left: 5.8rem;
+    top: 0.7rem;
+    font-size: 0.87rem;
+  }
+  .key_content_text {
+    left: 5.8rem;
+    top: 2.2rem;
+    font-size: 0.75rem;
+  }
+  .key .key_info {
+    width: 33%;
+    height: 5rem;
+  }
+  .basic_culture_info .basic_culture_h {
+    font-size: 1rem !important;
+  }
+  .basic_culture_info .basic_culture_p {
+    font-size: 0.9rem !important;
+  }
+  .basic_culture_line {
+    width: 2rem !important;
+    height: 0.0625rem;
+  }
+  .basic_culture_info .basic_culture_num {
+    white-space: pre;
+    font-size: 1.3242rem !important;
+  }
+  .basic_culture_info {
+    border-left: 0.0625rem solid #c4c4c4;
+    width: 25%;
+    height: 6rem !important;
+  }
+  .text_word .word_left {
+    display: flex;
+    width: 57%;
+  }
+  .text_word .word_left p {
+    font-size: 0.82rem !important;
+    margin-bottom: 1rem;
+  }
+  .text_word .img_right {
+    margin-left: -0.325rem;
+    width: 40% !important;
+    height: 14.8125rem !important;
+  }
+  .text_word .img_right img {
+    width: 100%;
+    height: 14rem !important;
+  }
+  .mind_map {
+    background-color: #def1fb;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 50.25rem !important;
+  }
+
+  .mind_map img {
+    width: 100%;
+    position: absolute;
+    height: 45.25rem !important;
+  }
+  .groupProfile {
+    width: 100%;
+    height: 180.5rem !important;
+  }
+}
+@media (min-width: 900px) and (max-width: 1000px) {
+  .key_content_h {
+    left: 9.8rem;
+    top: 1.5rem;
     font-size: 1.2rem;
   }
   .key_content_text {
-    left: 10rem;
-    top: 3.9rem;
+    left: 9.8rem;
+    top: 3.6rem;
     font-size: 1.1rem;
   }
   .key .key_info {
@@ -729,10 +1011,13 @@ onMounted(initializeObservers); // 在组件挂载时调用
   }
   .groupProfile {
     width: 100%;
-    height: 222.5rem !important;
+    height: 226.5rem !important;
   }
 }
 @media (min-width: 1000px) and (max-width: 1200px) {
+  .introduce_content span{
+    font-size: 1.8rem !important;
+  }
   .key_content_h {
     left: 11.6rem;
     top: 2.2rem;
