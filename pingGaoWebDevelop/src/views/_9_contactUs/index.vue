@@ -61,4 +61,11 @@ const footer = ref([
  right: 0;
  z-index: 1001;
 }
+/* 大型设备（桌面，大于 900px） */
+@media (max-width: 900px) {
+  .header {
+    height: 53vw;
+  }
+
+}
 </style>

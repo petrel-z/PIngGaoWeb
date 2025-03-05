@@ -52,4 +52,9 @@ import Footer from "@/components/Footer.vue";
 .footer{
   z-index:100;
 }
+@media (max-width: 900px) {
+  .header {
+    height: 53vw;
+  }
+}
 </style>
