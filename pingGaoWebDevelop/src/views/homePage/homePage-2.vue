@@ -1,96 +1,222 @@
 <script setup>
-import ComHeader from "@/components/ComHeader.vue";
-import Footer from "@/components/Footer.vue";
-import router from "@/router/index.js";
-import HttpUtils from "@/utils/httpUtils.js";
-import { ref } from "vue";
+import ComHeader from '@/components/ComHeader.vue'
+import Footer from '@/components/Footer.vue'
+import router from '@/router/index.js'
+import HttpUtils from '@/utils/httpUtils.js'
+import { onMounted, onUnmounted, nextTick, ref } from 'vue'
+import thumb1 from '@/assets/imgs/_10_homePageImgs/carousel.png'
 
 // Import Swiper Vue.js components
-import { Swiper, SwiperSlide } from "swiper/vue";
-import { Pagination } from "swiper/modules";
+import { Swiper, SwiperSlide } from 'swiper/vue'
+import { Pagination } from 'swiper/modules'
 
-// Import Swiper styles
-import "swiper/css";
-import "swiper/css/pagination";
-
-const modules = {
-  Pagination,
-};
-const swiperInstance = ref(null);
+const modules = [
+  Pagination
+]
+const swiperInstance = ref(null)
 const onSwiper = (swiper) => {
-  swiperInstance.value = swiper;
+  swiperInstance.value = swiper
   // 监听slideChange事件确保视频播放
-  swiperInstance.value.on("slideChange", () => {
-    const activeSlide = swiperInstance.value.slides[swiperInstance.value.activeIndex];
-    const video = activeSlide.querySelector("video");
-    video.play().catch(() => { /* 处理自动播放失败 */ });
-  });
-};
+  swiperInstance.value.on('slideChange', () => {
+    const activeSlide = swiperInstance.value.slides[swiperInstance.value.activeIndex]
+    const video = activeSlide.querySelector('video')
+    video.play().catch(() => { /* 处理自动播放失败 */ })
+  })
+}
 const onSlideChange = () => {
-  console.log("slide change");
-};
+  console.log('slide change')
+}
 
-let timeout = null;
+let timeout = null
 
 function handleVideoEnd () {
   if (swiperInstance.value) {
-    clearTimeout(timeout);
+    clearTimeout(timeout)
     timeout = setTimeout(() => {
-      swiperInstance.value.slideNext(500);  // 带过渡动画切换
-    }, 2000);
+      swiperInstance.value.slideNext(500)  // 带过渡动画切换
+    }, 2000)
   }
 }
 
-const images = ref([]);
-const topNews = ref([]);
-const homepageNews = ref([]);
-const videoRefs = ref([]);
-const setItemRef = (el) => {
-  videoRefs.value.push(el);
-};
+onMounted(() => {
+  const container = document.querySelector('.product_box')
+  const leftIcon = document.querySelector('.left_icon')
+  const rightIcon = document.querySelector('.right_icon')
+  const items1 = document.querySelectorAll('.product_detail')
+  const itemCount = items1.length
+  let currentIndex = 0
+  let isAnimating = false
+  let autoSlideInterval
+  let visibleItems = 3 // 初始值
+
+  // 初始化
+  updateCarousel()
+
+  // 监听视窗大小变化
+  window.addEventListener('resize', () => {
+    updateCarousel()
+  })
+
+  function updateCarousel () {
+    if (isAnimating) return
+    isAnimating = true
+
+    // 计算位移百分比（每个项目占 1/visibleItems）
+    const translateX = -currentIndex * (100 / visibleItems / 1.07)
+    container.style.transform = `translateX(${translateX}%)`
+    container.style.transition = '1s'
+
+    // 重置动画状态
+    setTimeout(() => {
+      isAnimating = false
+    }, 500)
+  }
+
+  function nextSlide1 () {
+    stopAutoSlide()
+    if (currentIndex >= itemCount - visibleItems) {
+      // 到达最后时回到第一个
+      currentIndex = 0
+    } else {
+      currentIndex++
+    }
+    updateCarousel()
+    startAutoSlide()
+  }
+
+  function prevSlide1 () {
+    stopAutoSlide()
+    if (currentIndex <= 0) {
+      // 到达第一个时跳到最后
+      currentIndex = itemCount - visibleItems
+    } else {
+      currentIndex--
+    }
+    updateCarousel()
+    startAutoSlide()
+  }
+
+  function startAutoSlide () {
+    autoSlideInterval = setInterval(nextSlide1, 3000) // 每3秒切换一次
+  }
+
+  // 停止自动轮播的函数
+  function stopAutoSlide () {
+    if (autoSlideInterval) {
+      clearInterval(autoSlideInterval)
+      autoSlideInterval = null
+      console.log('轮播已停止')
+    }
+  }
+
+  // 添加按钮事件
+  rightIcon.addEventListener('click', nextSlide1)
+  leftIcon.addEventListener('click', prevSlide1)
+
+  startAutoSlide()
+
+  onUnmounted(() => {
+    clearInterval(autoSlideInterval)
+  })
+})
+
+const images = ref([])
+const topNews = ref([])
+const homepageNews = ref([])
+
+const scrollDiv = ref(null)
+const scrollBegin = ref(null)
+const scrollEnd = ref(null)
+
+let MyMar = null
+const speed = 5 // 更流畅的滚动速度
+const initMarquee = () => {
+  if (
+    !scrollBegin.value ||
+    !document.contains(scrollBegin.value) ||
+    !scrollEnd.value ||
+    !document.contains(scrollEnd.value) ||
+    !scrollDiv.value ||
+    !document.contains(scrollDiv.value)
+  )
+    return
+
+  // 复制双份内容实现无缝衔接
+  scrollEnd.value.innerHTML = scrollBegin.value.innerHTML
+
+  const Marquee = () => {
+    if (!scrollDiv.value || !scrollBegin.value) return
+    if (scrollDiv.value.scrollLeft >= scrollBegin.value.offsetWidth) {
+      scrollDiv.value.scrollLeft = 0
+    } else {
+      scrollDiv.value.scrollLeft += 1
+    }
+  }
+
+  const startScroll = () => {
+    MyMar = setInterval(Marquee, speed)
+  }
+
+  const stopScroll = () => {
+    clearInterval(MyMar)
+  }
+
+  // 确保容器有内容后再启动
+  startScroll()
+
+  // 鼠标交互
+  scrollDiv.value.addEventListener('mouseenter', stopScroll)
+  scrollDiv.value.addEventListener('mouseleave', startScroll)
+}
+
+onMounted(() => {
+  nextTick(() => {
+    initMarquee()
+  })
+})
 
 // 格式化时间戳为 YYYY-MM-DD 格式
 function formatTimestamp (timestamp) {
-  const date = new Date(timestamp);
-  const year = date.getFullYear();
-  const month = (date.getMonth() + 1).toString().padStart(2, "0");
-  const day = date.getDate().toString().padStart(2, "0");
-  return `${year}-${month}-${day}`;
+  const date = new Date(timestamp)
+  const year = date.getFullYear()
+  const month = (date.getMonth() + 1).toString().padStart(2, '0')
+  const day = date.getDate().toString().padStart(2, '0')
+  return `${year}-${month}-${day}`
 }
 
 async function getData () {
-  const res = await HttpUtils.get(`/cms/home/news`);
-  const result = await res.json();
-  const data = result.data;
+  const res = await HttpUtils.get(`/cms/home/news`)
+  const result = await res.json()
+  const data = result.data
 
-  const banner = [];
+  const banner = []
   data.homeBanner.forEach((item) => {
     banner.push({
       type: item.type,
       src: item.images,
-    });
-  });
-  images.value = [...banner];
-  topNews.value = [...data.topNews];
-  homepageNews.value = [...data.homepageNews];
+    })
+  })
+  images.value = [...banner]
+  topNews.value = [...data.topNews]
+  homepageNews.value = [...data.homepageNews]
 
-  console.log(JSON.parse(JSON.stringify(data)));
+  console.log(JSON.parse(JSON.stringify(data)))
 }
 
 function toDetail (newsId) {
   if (newsId) {
     const target = router.resolve({
-      name: "newsDetail",
+      name: 'newsDetail',
       params: {
         id: newsId,
       },
-    });
+    })
 
-    window.open(target.href, "_blank");
+    window.open(target.href, '_blank')
   }
 }
 
-getData();
+getData()
 </script>
 
 <template>
@@ -111,20 +237,20 @@ getData();
       @swiper="onSwiper"
       @slideChange="onSlideChange"
     >
-      <swiper-slide v-for="(image, index) in images"
-                    :key="index">
+      <swiper-slide
+        style="width: 100%;height: 100%" v-for="(image, index) in images"
+        :key="index">
         <video
-          :ref="setItemRef"
+          style="display:block; width: 100%;height: 100%"
           v-if="image.type === 'video'"
           muted
-          playsinline
-          style="object-fit: cover"
+          disablepictureinpicture
           @ended="handleVideoEnd(index)"
-        >
-          <source :src="image.src" type="video/mp4" />
-        </video>
-        <img style="width: 100vw;height: 100vh" v-else-if="image.type === 'image'" :src="image.src"
-             alt="" />
+          :poster="thumb1"
+          :src="image.src"
+        ></video>
+        <img v-else-if="image.type === 'image'" :src="image.src"
+             alt="" style="width: 100%;height: 100%"/>
       </swiper-slide>
     </swiper>
     <!-- 轮播图下面的导航栏 -->
@@ -178,13 +304,13 @@ getData();
         </div>
       </div>
     </div>
-    <hr style="border: 0.0625rem solid #80b7e0" />
+    <hr style="border: 0.0625rem solid #80b7e0"/>
     <div class="product_content">
       <div class="product_box">
         <div class="product_content_box">
           <div class="product_detail product_detail_1">
             <div class="product_topImg">
-              <img src="@/assets/imgs/_10_homePageImgs/product1.png" alt="" />
+              <img src="@/assets/imgs/_10_homePageImgs/product1.png" alt=""/>
             </div>
             <div class="product_h">高压电器产业</div>
             <div class="product_hr"></div>
@@ -193,7 +319,7 @@ getData();
           </div>
           <div class="product_detail">
             <div class="product_topImg">
-              <img src="@/assets/imgs/_10_homePageImgs/product2.png" alt="" />
+              <img src="@/assets/imgs/_10_homePageImgs/product2.png" alt=""/>
             </div>
             <div class="product_h">运维检修业务</div>
             <div class="product_hr"></div>
@@ -202,7 +328,7 @@ getData();
           </div>
           <div class="product_detail">
             <div class="product_topImg">
-              <img src="@/assets/imgs/_10_homePageImgs/product3.png" alt="" />
+              <img src="@/assets/imgs/_10_homePageImgs/product3.png" alt=""/>
             </div>
             <div class="product_h">零部件制造产业</div>
             <div class="product_hr"></div>
@@ -213,7 +339,7 @@ getData();
           </div>
           <div class="product_detail">
             <div class="product_topImg">
-              <img src="@/assets/imgs/_10_homePageImgs/product4.png" alt="" />
+              <img src="@/assets/imgs/_10_homePageImgs/product4.png" alt=""/>
             </div>
             <div class="product_h">电锅炉及热储能业务</div>
             <div class="product_hr"></div>
@@ -222,7 +348,7 @@ getData();
           </div>
           <div class="product_detail">
             <div class="product_topImg">
-              <img src="@/assets/imgs/_10_homePageImgs/product5.png" alt="" />
+              <img src="@/assets/imgs/_10_homePageImgs/product5.png" alt=""/>
             </div>
             <div class="product_h">电力储能业务</div>
             <div class="product_hr"></div>
@@ -231,7 +357,7 @@ getData();
           </div>
           <div class="product_detail">
             <div class="product_topImg">
-              <img src="@/assets/imgs/_10_homePageImgs/product6.png" alt="" />
+              <img src="@/assets/imgs/_10_homePageImgs/product6.png" alt=""/>
             </div>
             <div class="product_h">配电网产业</div>
             <div class="product_hr"></div>
@@ -242,7 +368,7 @@ getData();
           </div>
           <div class="product_detail">
             <div class="product_topImg">
-              <img src="@/assets/imgs/_10_homePageImgs/product7.png" alt="" />
+              <img src="@/assets/imgs/_10_homePageImgs/product7.png" alt=""/>
             </div>
             <div class="product_h">系统集成业务</div>
             <div class="product_hr"></div>
@@ -251,7 +377,7 @@ getData();
           </div>
           <div class="product_detail">
             <div class="product_topImg">
-              <img src="@/assets/imgs/_10_homePageImgs/product8.png" alt="" />
+              <img src="@/assets/imgs/_10_homePageImgs/product8.png" alt=""/>
             </div>
             <div class="product_h">智慧配用电业务</div>
             <div class="product_hr"></div>
@@ -260,7 +386,7 @@ getData();
           </div>
           <div class="product_detail">
             <div class="product_topImg">
-              <img src="@/assets/imgs/_10_homePageImgs/product9.png" alt="" />
+              <img src="@/assets/imgs/_10_homePageImgs/product9.png" alt=""/>
             </div>
             <div class="product_h">综合能源服务业务</div>
             <div class="product_hr"></div>
@@ -276,7 +402,7 @@ getData();
     </div>
     <div class="company_introduction">
       <div class="bg_img">
-        <img src="@/assets/imgs/_10_homePageImgs/company-introduction.png" alt="" />
+        <img src="@/assets/imgs/_10_homePageImgs/company-introduction.png" alt=""/>
       </div>
       <div class="introduction_title">赋能智慧电气 创引绿色能源</div>
       <div class="introduction_small_title">公司介绍</div>
@@ -292,8 +418,7 @@ getData();
           </div>
         </div>
         <div class="img_right">
-          <video style="width: 100%;height: 100%" controls
-                 src="/videos/pinggao.mp4" />
+          <video style="width: 40vw;" controls src="http://218.28.22.50:8108/videos/pinggao.mp4"/>
         </div>
       </div>
       <div class="introduction_honor">
@@ -338,18 +463,18 @@ getData();
       </div>
       <div class="great_flag_content">
         <div class="content_detail" v-for="top in topNews" :key="top.id" @click="toDetail(top.id)">
-          <div class="top_img"><img :src="top.headerImage" alt="" /></div>
+          <div class="top_img"><img :src="top.headerImage" alt=""/></div>
           <div class="bottom_text">
             <div class="time">{{ formatTimestamp(top.publishTime) }}</div>
-            <div class="hr" />
+            <div class="hr"/>
             <div class="p">{{ top.title }}</div>
-            <div class="p" v-html="top.description" />
+            <div class="p" v-html="top.description"/>
           </div>
         </div>
         <div class="content_detail_text">
           <div v-for="news in homepageNews" :key="news.id" class="text" @click="toDetail(news.id)">
             <div class="title">{{ news.title }}</div>
-            <div class="line" />
+            <div class="line"/>
             <div class="time">{{ formatTimestamp(news.publishTime) }}</div>
           </div>
         </div>
@@ -361,16 +486,20 @@ getData();
         </router-link>
       </div>
       <div class="great_flag_footer">
-        <img src="@/assets/imgs/_10_homePageImgs/footer.png" alt="" />
+        <img src="@/assets/imgs/_10_homePageImgs/footer.png" alt=""/>
       </div>
     </div>
   </div>
   <div>
-    <Footer />
+    <Footer/>
   </div>
 </template>
 
 <style scoped lang="less">
+// Import Swiper styles
+@import "swiper/css";
+@import "swiper/css/pagination";
+
 .home_page {
   overflow: hidden;
   width: 100%;
@@ -391,6 +520,8 @@ getData();
 .swiper {
   height: 100vh;
   width: 100vw;
+  margin: 0;
+  padding: 0;
 }
 
 .my_carousel .carousel video {

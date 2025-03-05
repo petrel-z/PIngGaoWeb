@@ -1,83 +1,79 @@
 <script setup>
-import MyTitle from "@/components/MyTitle.vue";
-import httpUtils from "@/utils/httpUtils.js";
-import { onMounted, ref } from "vue";
-import router from "@/router/index.js";
+import MyTitle from '@/components/MyTitle.vue'
+import httpUtils from '@/utils/httpUtils.js'
+import { onMounted, ref } from 'vue'
+import router from '@/router/index.js'
+import MyButton from '@/components/MyButton.vue'
 
-const boxRef = ref(null);
-const isVisibleBox = ref(false);
-const infoRef = ref(null);
-const isVisibleInfo = ref(true);
+const boxRef = ref(null)
+const isVisibleBox = ref(false)
+const infoRef = ref(null)
+const isVisibleInfo = ref(true)
 
-const categoryList = ref([]);
-const categoryItems = ref([]);
+const categoryList = ref([])
+const categoryItems = ref([])
 
 // 处理 imgs 数组中的路径
 const imgs = ref(
   [
-    new URL("@/assets/imgs/_4_productEngineeringImgs/product-1.png", import.meta.url).href,
-    new URL("@/assets/imgs/_4_productEngineeringImgs/product-2.png", import.meta.url).href,
-    new URL("@/assets/imgs/_4_productEngineeringImgs/product-3.png", import.meta.url).href,
-    new URL("@/assets/imgs/_4_productEngineeringImgs/product-4.png", import.meta.url).href,
-    new URL("@/assets/imgs/_4_productEngineeringImgs/product-5.png", import.meta.url).href,
-    new URL("@/assets/imgs/_4_productEngineeringImgs/product-6.png", import.meta.url).href,
-    new URL("@/assets/imgs/_4_productEngineeringImgs/product-7.png", import.meta.url).href,
-    new URL("@/assets/imgs/_4_productEngineeringImgs/product-8.png", import.meta.url).href,
-    new URL("@/assets/imgs/_4_productEngineeringImgs/product-9.png", import.meta.url).href,
+    new URL('@/assets/imgs/_4_productEngineeringImgs/product-1.png', import.meta.url).href,
+    new URL('@/assets/imgs/_4_productEngineeringImgs/product-2.png', import.meta.url).href,
+    new URL('@/assets/imgs/_4_productEngineeringImgs/product-3.png', import.meta.url).href,
+    new URL('@/assets/imgs/_4_productEngineeringImgs/product-4.png', import.meta.url).href,
+    new URL('@/assets/imgs/_4_productEngineeringImgs/product-5.png', import.meta.url).href,
+    new URL('@/assets/imgs/_4_productEngineeringImgs/product-6.png', import.meta.url).href,
+    new URL('@/assets/imgs/_4_productEngineeringImgs/product-7.png', import.meta.url).href,
+    new URL('@/assets/imgs/_4_productEngineeringImgs/product-8.png', import.meta.url).href,
+    new URL('@/assets/imgs/_4_productEngineeringImgs/product-9.png', import.meta.url).href,
   ].map((path) => new URL(path, import.meta.url).href),
-);
+)
 // 使用 ref 存储图片路径，并处理路径
 const imageSrc = ref(
-  new URL("@/assets/imgs/_4_productEngineeringImgs/product-1.png", import.meta.url).href,
-);
+  new URL('@/assets/imgs/_4_productEngineeringImgs/product-1.png', import.meta.url).href,
+)
 
-const currentCategory = ref({});
-
-// 格式化时间戳为 YYYY-MM-DD 格式
-function formatTimestamp (timestamp) {
-  const date = new Date(timestamp);
-  const year = date.getFullYear();
-  const month = (date.getMonth() + 1).toString().padStart(2, "0");
-  const day = date.getDate().toString().padStart(2, "0");
-  return `${year}-${month}.${day}`;
-}
-
-// 格式化时间戳为 YYYY-MM-DD 格式
-function formatTimestampObj (timestamp) {
-  const date = new Date(timestamp);
-  const year = date.getFullYear();
-  const month = (date.getMonth() + 1).toString().padStart(2, "0");
-  const day = date.getDate().toString().padStart(2, "0");
-  return {
-    year: `${year}`,
-    month: `${month}.${day}`,
-  };
-}
+const currentCategory = ref({})
+const pageNo = ref(1)
+const pageSize = ref(9)
+const hasMore = ref(true)
 
 async function getData () {
   const queryString = new URLSearchParams({
-    pageNo: 1,
-    pageSize: 999,
-  }).toString();
+    pageNo: pageNo.value,
+    pageSize: pageSize.value,
+  }).toString()
 
-  const categoryId = currentCategory.value.id;
-  const response = await httpUtils.get(`/cms/category/${categoryId}/news?${queryString.toString()}`);
-  const { data } = await response.json();
-  const page = data.page;
-  page.list.forEach((i) => {
-    i.publishTime = formatTimestamp(i.publishTime);
-    i.timeObj = formatTimestampObj(i.publishTime);
-  });
-  categoryItems.value = page.list;
+  const categoryId = currentCategory.value.id
+  const response = await httpUtils.get(`/cms/category/${categoryId}/news?${queryString.toString()}`)
+  const result = await response.json()
+  const data = result.data.page
+
+  if (pageNo.value === 1) {
+    categoryItems.value = [...data.list]
+  } else {
+    categoryItems.value = [...categoryItems.value, ...data.list]
+  }
+
+  if (data.list.length < pageSize.value) {
+    hasMore.value = false
+  } else {
+    pageNo.value = pageNo.value + 1
+  }
+}
+
+function handleClick () {
+  if (hasMore.value) {
+    getData()
+  }
 }
 
 async function getCategory () {
-  const res = await httpUtils.get(`/cms/category/23/list`);
-  const result = await res.json();
+  const res = await httpUtils.get(`/cms/category/23/list`)
+  const result = await res.json()
 
-  categoryList.value = result.data;
-  currentCategory.value = result.data[0];
-  await getData();
+  categoryList.value = result.data
+  currentCategory.value = result.data[0]
+  await getData()
 }
 
 // 创建交叉观察器
@@ -85,49 +81,50 @@ const createObserver = (refElement, isVisible) => {
   const observer = new IntersectionObserver(
     (entries) => {
       entries.forEach((entry) => {
-        const { intersectionRatio } = entry;
+        const { intersectionRatio } = entry
         // 设置触发条件：元素进入视口 50% 以上时触发
         if (intersectionRatio >= 0) {
-          isVisible.value = true;
-          observer.disconnect(); // 元素可见后停止观察
+          isVisible.value = true
+          observer.disconnect() // 元素可见后停止观察
         }
-      });
+      })
     },
     {
       root: null, // 使用浏览器视口作为根元素
-      rootMargin: "0px", // 无额外的边距
+      rootMargin: '0px', // 无额外的边距
       threshold: 0.1, // 当元素的 50% 进入视口时触发
     },
-  );
+  )
   if (refElement.value) {
-    observer.observe(refElement.value);
+    observer.observe(refElement.value)
   }
-};
+}
 // 初始化所有的观察器
 const initializeObservers = () => {
-  createObserver(boxRef, isVisibleBox);
-  createObserver(infoRef, isVisibleInfo);
-};
-onMounted(initializeObservers); // 在组件挂载时调用
+  createObserver(boxRef, isVisibleBox)
+  createObserver(infoRef, isVisibleInfo)
+}
+onMounted(initializeObservers) // 在组件挂载时调用
 
-getCategory();
+getCategory()
 
 function toDetail (newsId) {
   if (newsId) {
     const target = router.resolve({
-      name: "productDetail",
+      name: 'productDetail',
       params: {
         id: newsId,
       },
-    });
-    window.open(target.href, "_blank");
+    })
+    window.open(target.href, '_blank')
   }
 }
 
 function setActive (category, index) {
-  currentCategory.value = category;
-  imageSrc.value = imgs.value[index % 9];
-  getData();
+  currentCategory.value = category
+  imageSrc.value = imgs.value[index % 9]
+  pageNo.value = 1
+  getData()
 }
 </script>
 
@@ -174,12 +171,20 @@ function setActive (category, index) {
           <div class="p1">
             {{ item.title }}
           </div>
-          <div class="p2" v-html="item.description" />
+          <div class="p2">
+            {{ currentCategory.name }}
+          </div>
         </div>
+      </div>
+      <div class="button-container">
+        <MyButton v-if="hasMore" @child-button="handleClick"/>
+        <p v-else style="font-size: 24px;">
+          没有更多了
+        </p>
       </div>
     </div>
     <div class="footer_img">
-      <img src="@/assets/imgs/_4_productEngineeringImgs/bg-footimg.png" alt="" />
+      <img src="@/assets/imgs/_4_productEngineeringImgs/bg-footimg.png" alt=""/>
     </div>
   </div>
 </template>
@@ -193,7 +198,16 @@ function setActive (category, index) {
   border-radius: 1.25rem;
   background-color: #fff;
   z-index: 100;
-  padding: 4rem 13.125rem;
+  padding: 4rem 13.125rem 780px 13.125rem;
+}
+
+.button-container {
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  padding: 20px;
+  position: relative;
+  z-index: 101;
 }
 
 .detail_content {
@@ -428,7 +442,7 @@ function setActive (category, index) {
 
 .detail_page {
   margin-top: 9.375rem;
-  height: 108.375rem;
+  //height: 108.375rem;
 }
 
 .detail_page_title {
