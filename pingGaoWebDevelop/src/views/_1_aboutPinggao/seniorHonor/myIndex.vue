@@ -89,6 +89,11 @@ watch(honorList, async () => {
   background-color: #fff;
   z-index: 0;
 }
+@media (min-width: 300px) and (max-width:600px) {
+  .content .info {
+    margin-bottom: 0.2rem !important;
+  }
+}
 @media (min-width: 600px) and (max-width: 900px) {
   .content .info {
     margin-bottom: 0.2rem !important;
