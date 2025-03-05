@@ -442,7 +442,6 @@ function setActive (category, index) {
 
 .detail_page {
   margin-top: 9.375rem;
-  //height: 108.375rem;
 }
 
 .detail_page_title {
