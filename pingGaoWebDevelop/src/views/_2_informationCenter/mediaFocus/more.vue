@@ -113,6 +113,7 @@ getData();
         >
           <div class="item-container">
             <Item2
+              style="--hoverBgColor: #003792"
               v-for="item in leftList" :key="item.id"
               :time="formatTimestamp(item.publishTime)"
               :text="item.title"

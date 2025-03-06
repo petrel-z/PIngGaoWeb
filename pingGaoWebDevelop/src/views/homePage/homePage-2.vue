@@ -37,6 +37,11 @@ function handleVideoEnd () {
   }
 }
 
+function moreNews (url) {
+  const target = router.resolve(url);
+  window.open(target.href, "_blank");
+}
+
 onMounted(() => {
   const container = document.querySelector('.product_box')
   const leftIcon = document.querySelector('.left_icon')
@@ -215,6 +220,19 @@ function toDetail (newsId) {
   }
 }
 
+function toProduct(item) {
+  if (item) {
+    const target = router.resolve({
+      name: 'productSeries',
+      query: {
+        type: item,
+      },
+    })
+
+    window.open(target.href, '_blank')
+  }
+}
+
 getData()
 </script>
 
@@ -237,11 +255,11 @@ getData()
       @swiper="onSwiper"
       @slideChange="onSlideChange"
     >
-      <swiper-slide style="width: 100%;" v-for="(image, index) in images" :key="index">
-        <video style="width: 100%;" v-if="image.type === 'video'" muted disablepictureinpicture
+      <swiper-slide v-for="(image, index) in images" :key="index">
+        <video v-if="image.type === 'video'" muted disablepictureinpicture
                @ended="handleVideoEnd(index)" poster="http://218.28.22.50:8108/videos/carousel.png"
                :src="image.src"></video>
-        <img v-else-if="image.type === 'image'" :src="image.src" alt="" style="width: 100%;"/>
+        <img v-else-if="image.type === 'image'" :src="image.src" alt="" />
       </swiper-slide>
     </swiper>
     <!-- 轮播图下面的导航栏 -->
@@ -306,7 +324,7 @@ getData()
             <div class="product_h">高压电器产业</div>
             <div class="product_hr"></div>
             <div class="product_p">复合式组合电器、罐式六氟化硫断路器、高压六氟化硫断路器…</div>
-            <div class="product_button"><span>查看详情</span></div>
+            <div class="product_button" @click="toProduct('高压电器产业')"><span>查看详情</span></div>
           </div>
           <div class="product_detail">
             <div class="product_topImg">
@@ -315,7 +333,7 @@ getData()
             <div class="product_h">运维检修业务</div>
             <div class="product_hr"></div>
             <div class="product_p">罩式馈线自动化终端、箱式馈线自动化终端、配电自动化站所终端…</div>
-            <div class="product_button"><span>查看详情</span></div>
+            <div class="product_button" @click="toProduct('运维检修业务')"><span>查看详情</span></div>
           </div>
           <div class="product_detail">
             <div class="product_topImg">
@@ -326,7 +344,7 @@ getData()
             <div class="product_p">
               气体回收净化业务、集中供气站、混气比检测仪、密度继电器校验仪…
             </div>
-            <div class="product_button"><span>查看详情</span></div>
+            <div class="product_button" @click="toProduct('零部件制造产业')"><span>查看详情</span></div>
           </div>
           <div class="product_detail">
             <div class="product_topImg">
@@ -335,7 +353,7 @@ getData()
             <div class="product_h">电锅炉及热储能业务</div>
             <div class="product_hr"></div>
             <div class="product_p">复合式组合电器、罐式六氟化硫断路器、高压六氟化硫断路器…</div>
-            <div class="product_button"><span>查看详情</span></div>
+            <div class="product_button" @click="toProduct('电锅炉及热储能业务')"><span>查看详情</span></div>
           </div>
           <div class="product_detail">
             <div class="product_topImg">
@@ -344,7 +362,7 @@ getData()
             <div class="product_h">电力储能业务</div>
             <div class="product_hr"></div>
             <div class="product_p">罩式馈线自动化终端、箱式馈线自动化终端、配电自动化站所终端…</div>
-            <div class="product_button"><span>查看详情</span></div>
+            <div class="product_button" @click="toProduct('电力储能业务')"><span>查看详情</span></div>
           </div>
           <div class="product_detail">
             <div class="product_topImg">
@@ -355,7 +373,7 @@ getData()
             <div class="product_p">
               气体回收净化业务、集中供气站、混气比检测仪、密度继电器校验仪…
             </div>
-            <div class="product_button"><span>查看详情</span></div>
+            <div class="product_button" @click="toProduct('配电网产业')"><span>查看详情</span></div>
           </div>
           <div class="product_detail">
             <div class="product_topImg">
@@ -364,7 +382,7 @@ getData()
             <div class="product_h">系统集成业务</div>
             <div class="product_hr"></div>
             <div class="product_p">复合式组合电器、罐式六氟化硫断路器、高压六氟化硫断路器…</div>
-            <div class="product_button"><span>查看详情</span></div>
+            <div class="product_button" @click="toProduct('系统集成业务')"><span>查看详情</span></div>
           </div>
           <div class="product_detail">
             <div class="product_topImg">
@@ -373,7 +391,7 @@ getData()
             <div class="product_h">智慧配用电业务</div>
             <div class="product_hr"></div>
             <div class="product_p">罩式馈线自动化终端、箱式馈线自动化终端、配电自动化站所终端…</div>
-            <div class="product_button"><span>查看详情</span></div>
+            <div class="product_button" @click="toProduct('智慧配用电业务')"><span>查看详情</span></div>
           </div>
           <div class="product_detail">
             <div class="product_topImg">
@@ -384,7 +402,7 @@ getData()
             <div class="product_p">
               气体回收净化业务、集中供气站、混气比检测仪、密度继电器校验仪…
             </div>
-            <div class="product_button"><span>查看详情</span></div>
+            <div class="product_button" @click="toProduct('综合能源服务业务')"><span>查看详情</span></div>
           </div>
         </div>
       </div>
@@ -409,8 +427,7 @@ getData()
           </div>
         </div>
         <div class="img_right">
-          <video style="width: 40vw;" controls src="http://218.28.22.50:8108/videos/pinggao.mp4"/>
-
+          <video style="width: 36vw;height: 20.25vw;object-fit: cover" controls poster="http://218.28.22.50:8108/videos/video_poster.png" src="http://218.28.22.50:8108/videos/pinggao.mp4"/>
         </div>
       </div>
       <div class="introduction_honor">
@@ -460,7 +477,7 @@ getData()
             <div class="time">{{ formatTimestamp(top.publishTime) }}</div>
             <div class="hr"/>
             <div class="p">{{ top.title }}</div>
-            <div class="p" v-html="top.description"/>
+            <div class="p" v-html="top.description"></div>
           </div>
         </div>
         <div class="content_detail_text">
@@ -497,9 +514,21 @@ getData()
   padding: 0;
 }
 
+.swiper .swiper-slide {
+  height: 56.25vw;
+}
+
 .swiper-pagination .swiper-pagination-bullet {
   width: 5vw;
+  height: 5px;
   border-radius: 5px;
+}
+
+.swiper .swiper-slide video,
+.swiper .swiper-slideimg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 </style>
 
@@ -1097,7 +1126,6 @@ getData()
 
   .great_flag_content .content_detail {
     width: 32%;
-    height: 23.1875rem !important;
     background-color: #ffffff;
     transition: 0.5s;
     cursor: pointer;
@@ -1105,7 +1133,7 @@ getData()
 
   .great_flag {
     position: relative;
-    padding: 7.5rem 5.75rem !important;
+    padding: 7.5rem 5.75rem 26.25rem 7.5rem !important;
     background-color: #def1fb;
     height: 74.125rem !important;
     width: 100%;
@@ -1113,10 +1141,8 @@ getData()
 
   .great_flag_content .content_detail_text {
     width: 33%;
-    height: 23.1875rem !important;
     background-color: #fff;
-    padding-top: 1rem !important;
-    padding-left: 1.5rem !important;
+    padding: 1rem 1.5rem !important;
   }
 
   .great_flag_button {
@@ -1282,7 +1308,6 @@ getData()
 
   .great_flag_content .content_detail {
     width: 32%;
-    height: 24.1875rem !important;
     background-color: #ffffff;
     transition: 0.5s;
     cursor: pointer;
@@ -1298,10 +1323,8 @@ getData()
 
   .great_flag_content .content_detail_text {
     width: 33%;
-    height: 24.1875rem !important;
     background-color: #fff;
-    padding-top: 1rem !important;
-    padding-left: 1.5rem !important;
+    padding: 1rem 1.5rem !important;
   }
 
   .great_flag_button {
@@ -1471,7 +1494,6 @@ getData()
 
   .great_flag_content .content_detail {
     width: 32%;
-    height: 24.1875rem !important;
     background-color: #ffffff;
     transition: 0.5s;
     cursor: pointer;
@@ -1487,10 +1509,8 @@ getData()
 
   .great_flag_content .content_detail_text {
     width: 33%;
-    height: 24.1875rem !important;
     background-color: #fff;
-    padding-top: 1rem !important;
-    padding-left: 1.5rem !important;
+    padding: 1rem 1.5rem !important;
   }
 
   .great_flag_button {
@@ -1660,7 +1680,6 @@ getData()
 
   .great_flag_content .content_detail {
     width: 32%;
-    height: 24.1875rem !important;
     background-color: #ffffff;
     transition: 0.5s;
     cursor: pointer;
@@ -1676,10 +1695,8 @@ getData()
 
   .great_flag_content .content_detail_text {
     width: 33%;
-    height: 24.1875rem !important;
     background-color: #fff;
-    padding-top: 1rem !important;
-    padding-left: 1.5rem !important;
+    padding: 1rem 1.5rem !important;
   }
 
   .great_flag_button {
@@ -1766,7 +1783,6 @@ getData()
 @media (min-width: 1000px) and (max-width: 1200px) {
   .great_flag_content .content_detail {
     width: 32%;
-    height: 39rem !important;
     background-color: #ffffff;
     transition: 0.5s;
     cursor: pointer;
@@ -1801,10 +1817,8 @@ getData()
 
   .great_flag_content .content_detail_text {
     width: 33%;
-    height: 39rem !important;
     background-color: #fff;
-    padding-top: 2rem;
-    padding-left: 2.5rem;
+    padding: 2rem 2.5rem
   }
 
   .great_flag_content {
@@ -1844,7 +1858,6 @@ getData()
 @media (min-width: 1200px) and (max-width: 1400px) {
   .great_flag_content .content_detail {
     width: 32%;
-    height: 39rem !important;
     background-color: #ffffff;
     transition: 0.5s;
     cursor: pointer;
@@ -1879,10 +1892,8 @@ getData()
 
   .great_flag_content .content_detail_text {
     width: 33%;
-    height: 39rem !important;
     background-color: #fff;
-    padding-top: 2rem;
-    padding-left: 2.5rem;
+    padding: 2rem 2.5rem;
   }
 
   .great_flag_content {
@@ -1922,7 +1933,6 @@ getData()
 @media (min-width: 1400px) and (max-width: 1900px) {
   .great_flag_content .content_detail {
     width: 32%;
-    height: 39rem !important;
     background-color: #ffffff;
     transition: 0.5s;
     cursor: pointer;
@@ -1957,10 +1967,8 @@ getData()
 
   .great_flag_content .content_detail_text {
     width: 33%;
-    height: 39rem !important;
     background-color: #fff;
-    padding-top: 2rem;
-    padding-left: 2.5rem;
+    padding: 2rem 2.5rem;
   }
 
   .great_flag_content {
@@ -2000,7 +2008,6 @@ getData()
 @media (min-width: 2100px) and (max-width: 2300px) {
   .great_flag_content .content_detail {
     width: 32%;
-    height: 32rem !important;
     background-color: #ffffff;
     transition: 0.5s;
     cursor: pointer;
@@ -2016,10 +2023,8 @@ getData()
 
   .great_flag_content .content_detail_text {
     width: 33%;
-    height: 32rem !important;
     background-color: #fff;
-    padding-top: 2rem;
-    padding-left: 2.5rem;
+    padding: 2rem 2.5rem;
   }
 
   .great_flag_content {
@@ -2059,7 +2064,6 @@ getData()
 @media (min-width: 5000px) and (max-width: 8000px) {
   .great_flag_content .content_detail {
     width: 32%;
-    height: 40rem !important;
     background-color: #ffffff;
     transition: 0.5s;
     cursor: pointer;
@@ -2079,17 +2083,14 @@ getData()
 
   .great_flag_content .content_detail_text {
     width: 33%;
-    height: 40rem !important;
     background-color: #fff;
-    padding-top: 3rem;
-    padding-left: 2.5rem;
+    padding: 3rem 2.5rem;
   }
 }
 
 @media (min-width: 2300px) and (max-width: 2600px) {
   .great_flag_content .content_detail {
     width: 32%;
-    height: 36rem !important;
     background-color: #ffffff;
     transition: 0.5s;
     cursor: pointer;
@@ -2101,7 +2102,7 @@ getData()
 
   .great_flag {
     position: relative;
-    padding: 9.5rem 9.75rem;
+    padding: 9.5rem 9.75rem 26.25rem 9.5rem;
     background-color: #def1fb;
     height: 101.125rem !important;
     width: 100%;
@@ -2109,10 +2110,8 @@ getData()
 
   .great_flag_content .content_detail_text {
     width: 33%;
-    height: 36rem !important;
     background-color: #fff;
-    padding-top: 3rem;
-    padding-left: 2.5rem;
+    padding: 3rem 2.5rem;
   }
 
   .great_flag_content {
@@ -2123,7 +2122,6 @@ getData()
 @media (min-width: 2600px) and (max-width: 3000px) {
   .great_flag_content .content_detail {
     width: 32%;
-    height: 32rem !important;
     background-color: #ffffff;
     transition: 0.5s;
     cursor: pointer;
@@ -2135,7 +2133,7 @@ getData()
 
   .great_flag {
     position: relative;
-    padding: 9.5rem 9.75rem;
+    padding: 9.5rem 9.75rem 26.25rem 9.5rem;
     background-color: #def1fb;
     height: 101.125rem !important;
     width: 100%;
@@ -2143,10 +2141,8 @@ getData()
 
   .great_flag_content .content_detail_text {
     width: 33%;
-    height: 32rem !important;
     background-color: #fff;
-    padding-top: 2rem;
-    padding-left: 2.5rem;
+    padding: 2rem 2.5rem;
   }
 
   .great_flag_content {
@@ -2250,7 +2246,7 @@ getData()
 
 .great_flag {
   position: relative;
-  padding: 9.5rem 9.75rem;
+  padding: 7.5rem 5.75rem 26.25rem 7.5rem;
   background-color: #def1fb;
   height: 92.125rem;
   width: 100%;
@@ -2287,7 +2283,6 @@ getData()
 
 .great_flag_content {
   width: 100%;
-  height: 36.1875rem;
   display: flex;
   justify-content: space-between;
   margin-bottom: 4.5625rem;
@@ -2295,7 +2290,6 @@ getData()
 
 .great_flag_content .content_detail {
   width: 32%;
-  height: 36.1875rem;
   background-color: #ffffff;
   transition: 0.5s;
   cursor: pointer;
@@ -2314,8 +2308,8 @@ getData()
 }
 
 .great_flag_content .content_detail .top_img img {
-  width: 75%;
-  height: 75%;
+  width: 100%;
+  height: 100%;
   object-fit: cover;
 }
 
@@ -2395,10 +2389,8 @@ getData()
 
 .great_flag_content .content_detail_text {
   width: 33%;
-  height: 35.9375rem;
   background-color: #fff;
-  padding-top: 3rem;
-  padding-left: 2.5rem;
+  padding: 3rem 2.5rem;
   transition: 0.5s;
   cursor: pointer;
 }

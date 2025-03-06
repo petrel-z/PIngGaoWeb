@@ -140,7 +140,7 @@ getData();
                   }
                 }"
               >
-                <Item2 :time="item.publishTime" :text="item.title" bg-color="#def1fb" size="big" />
+                <Item2 style="--hoverBgColor: #003792" :time="item.publishTime" :text="item.title" bg-color="#def1fb" size="big" />
               </router-link>
             </li>
           </ul>
