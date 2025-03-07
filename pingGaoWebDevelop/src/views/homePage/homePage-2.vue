@@ -38,8 +38,8 @@ function handleVideoEnd () {
 }
 
 function moreNews (url) {
-  const target = router.resolve(url);
-  window.open(target.href, "_blank");
+  const target = router.resolve(url)
+  window.open(target.href, '_blank')
 }
 
 onMounted(() => {
@@ -109,7 +109,6 @@ onMounted(() => {
     if (autoSlideInterval) {
       clearInterval(autoSlideInterval)
       autoSlideInterval = null
-      console.log('轮播已停止')
     }
   }
 
@@ -203,8 +202,6 @@ async function getData () {
   images.value = [...banner]
   topNews.value = [...data.topNews]
   homepageNews.value = [...data.homepageNews]
-
-  console.log(JSON.parse(JSON.stringify(data)))
 }
 
 function toDetail (newsId) {
@@ -220,7 +217,7 @@ function toDetail (newsId) {
   }
 }
 
-function toProduct(item) {
+function toProduct (item) {
   if (item) {
     const target = router.resolve({
       name: 'productSeries',
@@ -245,6 +242,7 @@ getData()
     </div>
     <!-- 轮播主体 -->
     <swiper
+      v-if="images.length > 1"
       :modules="modules"
       :allowTouchMove="false"
       :loop="true"
@@ -259,7 +257,7 @@ getData()
         <video v-if="image.type === 'video'" muted disablepictureinpicture
                @ended="handleVideoEnd(index)" poster="http://218.28.22.50:8108/videos/carousel.png"
                :src="image.src"></video>
-        <img v-else-if="image.type === 'image'" :src="image.src" alt="" />
+        <img v-else-if="image.type === 'image'" :src="image.src" alt=""/>
       </swiper-slide>
     </swiper>
     <!-- 轮播图下面的导航栏 -->
@@ -324,7 +322,8 @@ getData()
             <div class="product_h">高压电器产业</div>
             <div class="product_hr"></div>
             <div class="product_p">复合式组合电器、罐式六氟化硫断路器、高压六氟化硫断路器…</div>
-            <div class="product_button" @click="toProduct('高压电器产业')"><span>查看详情</span></div>
+            <div class="product_button" @click="toProduct('高压电器产业')"><span>查看详情</span>
+            </div>
           </div>
           <div class="product_detail">
             <div class="product_topImg">
@@ -333,7 +332,8 @@ getData()
             <div class="product_h">运维检修业务</div>
             <div class="product_hr"></div>
             <div class="product_p">罩式馈线自动化终端、箱式馈线自动化终端、配电自动化站所终端…</div>
-            <div class="product_button" @click="toProduct('运维检修业务')"><span>查看详情</span></div>
+            <div class="product_button" @click="toProduct('运维检修业务')"><span>查看详情</span>
+            </div>
           </div>
           <div class="product_detail">
             <div class="product_topImg">
@@ -344,7 +344,8 @@ getData()
             <div class="product_p">
               气体回收净化业务、集中供气站、混气比检测仪、密度继电器校验仪…
             </div>
-            <div class="product_button" @click="toProduct('零部件制造产业')"><span>查看详情</span></div>
+            <div class="product_button" @click="toProduct('零部件制造产业')"><span>查看详情</span>
+            </div>
           </div>
           <div class="product_detail">
             <div class="product_topImg">
@@ -353,7 +354,8 @@ getData()
             <div class="product_h">电锅炉及热储能业务</div>
             <div class="product_hr"></div>
             <div class="product_p">复合式组合电器、罐式六氟化硫断路器、高压六氟化硫断路器…</div>
-            <div class="product_button" @click="toProduct('电锅炉及热储能业务')"><span>查看详情</span></div>
+            <div class="product_button" @click="toProduct('电锅炉及热储能业务')">
+              <span>查看详情</span></div>
           </div>
           <div class="product_detail">
             <div class="product_topImg">
@@ -362,7 +364,8 @@ getData()
             <div class="product_h">电力储能业务</div>
             <div class="product_hr"></div>
             <div class="product_p">罩式馈线自动化终端、箱式馈线自动化终端、配电自动化站所终端…</div>
-            <div class="product_button" @click="toProduct('电力储能业务')"><span>查看详情</span></div>
+            <div class="product_button" @click="toProduct('电力储能业务')"><span>查看详情</span>
+            </div>
           </div>
           <div class="product_detail">
             <div class="product_topImg">
@@ -382,7 +385,8 @@ getData()
             <div class="product_h">系统集成业务</div>
             <div class="product_hr"></div>
             <div class="product_p">复合式组合电器、罐式六氟化硫断路器、高压六氟化硫断路器…</div>
-            <div class="product_button" @click="toProduct('系统集成业务')"><span>查看详情</span></div>
+            <div class="product_button" @click="toProduct('系统集成业务')"><span>查看详情</span>
+            </div>
           </div>
           <div class="product_detail">
             <div class="product_topImg">
@@ -391,7 +395,8 @@ getData()
             <div class="product_h">智慧配用电业务</div>
             <div class="product_hr"></div>
             <div class="product_p">罩式馈线自动化终端、箱式馈线自动化终端、配电自动化站所终端…</div>
-            <div class="product_button" @click="toProduct('智慧配用电业务')"><span>查看详情</span></div>
+            <div class="product_button" @click="toProduct('智慧配用电业务')"><span>查看详情</span>
+            </div>
           </div>
           <div class="product_detail">
             <div class="product_topImg">
@@ -402,7 +407,8 @@ getData()
             <div class="product_p">
               气体回收净化业务、集中供气站、混气比检测仪、密度继电器校验仪…
             </div>
-            <div class="product_button" @click="toProduct('综合能源服务业务')"><span>查看详情</span></div>
+            <div class="product_button" @click="toProduct('综合能源服务业务')"><span>查看详情</span>
+            </div>
           </div>
         </div>
       </div>
@@ -427,7 +433,9 @@ getData()
           </div>
         </div>
         <div class="img_right">
-          <video style="width: 36vw;height: 20.25vw;object-fit: cover" controls poster="http://218.28.22.50:8108/videos/video_poster.png" src="http://218.28.22.50:8108/videos/pinggao.mp4"/>
+          <video style="width: 36vw;height: 20.25vw;object-fit: cover" controls
+                 poster="http://218.28.22.50:8108/videos/video_poster.png"
+                 src="http://218.28.22.50:8108/videos/pinggao.mp4"/>
         </div>
       </div>
       <div class="introduction_honor">
@@ -471,18 +479,22 @@ getData()
         </div>
       </div>
       <div class="great_flag_content">
-        <div class="content_detail" v-for="top in topNews" :key="top.id" @click="toDetail(top.id)">
-          <div class="top_img"><img :src="top.headerImage" alt=""/></div>
+        <div class="content_detail" v-for="top in topNews" :key="top.id" :title="top.title"
+             @click="toDetail(top.id)">
+          <div class="top_img"><img :src="top.headerImage" :alt="top.title"/></div>
           <div class="bottom_text">
             <div class="time">{{ formatTimestamp(top.publishTime) }}</div>
             <div class="hr"/>
-            <div class="p">{{ top.title }}</div>
+            <div class="p text-ellipsis" style="color: #223893;font-size: 1.75rem;">{{
+                top.title
+              }}
+            </div>
             <div class="p" v-html="top.description"></div>
           </div>
         </div>
         <div class="content_detail_text">
           <div v-for="news in homepageNews" :key="news.id" class="text" @click="toDetail(news.id)">
-            <div class="title">{{ news.title }}</div>
+            <div class="title text-ellipsis">{{ news.title }}</div>
             <div class="line"/>
             <div class="time">{{ formatTimestamp(news.publishTime) }}</div>
           </div>
@@ -614,7 +626,7 @@ getData()
 
 .announcement_title {
   font-size: 1.375rem;
-  font-family: "AlibabaPuHuiTi_2_55_Regular", sans-serif;
+  font-family: "AlibabaPuHuiTi_2_55_Regular";
   color: rgb(0, 111, 193);
   margin-left: 0.375rem;
   margin-right: 0.75rem;
@@ -630,7 +642,7 @@ getData()
   white-space: nowrap;
   display: flex;
   font-size: 1.375rem;
-  font-family: "AlibabaPuHuiTi_2_45_Light", sans-serif;
+  font-family: "AlibabaPuHuiTi_2_45_Light";
   color: rgb(89, 87, 87);
 }
 
@@ -758,7 +770,7 @@ getData()
 
 .product_h {
   font-size: 2.5rem;
-  font-family: "AlibabaPuHuiTi_2_55_Regular", sans-serif;
+  font-family: "AlibabaPuHuiTi_2_55_Regular";
   color: rgb(0, 111, 193);
   text-align: center;
 }
@@ -778,7 +790,7 @@ getData()
   width: 21.625rem;
   height: 4.5rem;
   font-size: 1.25rem;
-  font-family: "AlibabaPuHuiTi_2_45_Light", sans-serif;
+  font-family: "AlibabaPuHuiTi_2_45_Light";
   color: rgb(89, 87, 87);
   text-align: center;
   margin: auto;
@@ -811,7 +823,7 @@ getData()
   left: 2.1rem;
   font-size: 1.125rem;
   line-height: 2rem;
-  font-family: "AlibabaPuHuiTi_2_45_Light", sans-serif;
+  font-family: "AlibabaPuHuiTi_2_45_Light";
   color: rgb(0, 111, 193);
 }
 
@@ -1153,6 +1165,7 @@ getData()
     top: 44rem;
     left: 50%;
     transform: translateX(-50%);
+    z-index: 999;
   }
 
   .great_flag_title {
@@ -2239,7 +2252,7 @@ getData()
 
 .introduction_honor .honor_info .p {
   font-size: 1.625rem;
-  font-family: "AlibabaPuHuiTi_2_45_Light", sans-serif;
+  font-family: "AlibabaPuHuiTi_2_45_Light";
   color: rgb(255, 255, 255);
   margin-top: -0.625rem;
 }
@@ -2248,7 +2261,6 @@ getData()
   position: relative;
   padding: 7.5rem 5.75rem 26.25rem 7.5rem;
   background-color: #def1fb;
-  height: 92.125rem;
   width: 100%;
 }
 

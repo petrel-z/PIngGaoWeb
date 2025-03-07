@@ -267,7 +267,7 @@ function setActive (category, index) {
 .detail_product span {
   display: block;
   font-size: 1.875rem;
-  font-family: "AlibabaPuHuiTi_2_35_Thin", sans-serif;
+  font-family: "AlibabaPuHuiTi_2_35_Thin";
   color: #ffffff;
   z-index: -100;
 }
@@ -446,7 +446,7 @@ function setActive (category, index) {
 
 .detail_page_title {
   font-size: 2rem;
-  font-family: "AlibabaPuHuiTi_2_65_Medium", sans-serif;
+  font-family: "AlibabaPuHuiTi_2_65_Medium";
   color: rgb(0, 111, 193);
   text-align: center;
   margin-bottom: 3.9375rem;
@@ -477,20 +477,20 @@ function setActive (category, index) {
 
 .detail_page_info .h {
   font-size: 2.25rem;
-  font-family: "AlibabaPuHuiTi_2_85_Bold", sans-serif;
+  font-family: "AlibabaPuHuiTi_2_85_Bold";
   color: rgb(0, 111, 193);
   margin-top: 1.875rem;
 }
 
 .detail_page_info .p1 {
   font-size: 1.625rem;
-  font-family: "AlibabaPuHuiTi_2_55_Regular", sans-serif;
+  font-family: "AlibabaPuHuiTi_2_55_Regular";
   color: rgb(89, 87, 87);
 }
 
 .detail_page_info .p2 {
   font-size: 1.625rem;
-  font-family: "AlibabaPuHuiTi_2_55_Regular", sans-serif;
+  font-family: "AlibabaPuHuiTi_2_55_Regular";
   color: rgb(89, 87, 87);
 }
 

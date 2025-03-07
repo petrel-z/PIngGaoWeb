@@ -149,7 +149,7 @@ onMounted(initializeObservers); // 在组件挂载时调用
 }
 .text {
   font-size: 1.25rem;
-  font-family: "AlibabaPuHuiTi_2_55_Regular", sans-serif;
+  font-family: "AlibabaPuHuiTi_2_55_Regular";
   color: rgb(89, 87, 87);
   line-height: 1.66;
   margin-bottom: 1.5rem;
@@ -198,7 +198,7 @@ onMounted(initializeObservers); // 在组件挂载时调用
 .achievement_top .achievement_detail .num {
   position: absolute;
   font-size: 2.75rem;
-  font-family: "AlibabaPuHuiTi_2_95_ExtraBold", sans-serif;
+  font-family: "AlibabaPuHuiTi_2_95_ExtraBold";
   color: rgb(0, 111, 193);
   left: 50%;
   transform: translateX(-50%);
@@ -207,7 +207,7 @@ onMounted(initializeObservers); // 在组件挂载时调用
 .achievement_top .achievement_detail .p {
   position: absolute;
   font-size: 1.5rem;
-  font-family: "AlibabaPuHuiTi_2_65_Medium", sans-serif;
+  font-family: "AlibabaPuHuiTi_2_65_Medium";
   color: rgb(0, 111, 193);
   text-align: center;
   top: 2.5rem;
@@ -224,7 +224,7 @@ onMounted(initializeObservers); // 在组件挂载时调用
 .achievement_bottom .achievement_detail .num {
   position: absolute;
   font-size: 2.75rem;
-  font-family: "AlibabaPuHuiTi_2_95_ExtraBold", sans-serif;
+  font-family: "AlibabaPuHuiTi_2_95_ExtraBold";
   color: rgb(0, 111, 193);
   left: 50%;
   transform: translateX(-50%);
@@ -233,7 +233,7 @@ onMounted(initializeObservers); // 在组件挂载时调用
 .achievement_bottom .achievement_detail .p1 {
   position: absolute;
   font-size: 1.5rem;
-  font-family: "AlibabaPuHuiTi_2_65_Medium", sans-serif;
+  font-family: "AlibabaPuHuiTi_2_65_Medium";
   color: rgb(0, 111, 193);
   text-align: center;
   top: 2.5rem;
@@ -244,7 +244,7 @@ onMounted(initializeObservers); // 在组件挂载时调用
 .achievement_bottom .achievement_detail .p2 {
   position: absolute;
   font-size: 1.5rem;
-  font-family: "AlibabaPuHuiTi_2_65_Medium", sans-serif;
+  font-family: "AlibabaPuHuiTi_2_65_Medium";
   color: rgb(0, 111, 193);
   text-align: center;
   top: 4.5rem;

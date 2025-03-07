@@ -30,11 +30,8 @@ async function getData () {
     result.data.data.publishTime = formatTimestamp(result.data.data.publishTime);
   }
 
-  console.log(result.data.data.publishTime);
   data.value = result.data;
   document.title = data.value.data.title;
-
-  console.log(data.value);
 }
 
 function toDetail (id) {

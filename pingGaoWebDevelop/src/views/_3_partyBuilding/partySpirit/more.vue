@@ -35,11 +35,8 @@ async function getData () {
     pageSize: pageSize.value,
   }).toString();
 
-  console.log("获取数据", queryString);
   const response = await httpUtils.get(`/cms/category/${categoryId}/news?${queryString.toString()}`);
   const { data } = await response.json();
-
-  console.log(data);
 
   const top5List = [];
   data.top5List.forEach((item) => {
@@ -92,6 +89,7 @@ getData();
       <div class="left">
         <div v-for="item in leftList" :key="item.id" class="listItem">
           <Item2
+            style="--hoverBgColor: #e06e5f"
             :time="formatTimestamp(item.publishTime)"
             :text="item.title"
             time-color="#a51617"
@@ -135,6 +133,7 @@ getData();
   background-image: url("../../../assets/imgs/_3_partyBuildingImgs/t3_p1_moreBg.png");
   background-size: cover;
   height: auto;
+
   .mytitle {
     width: 100%;
     margin-top: 22px;
@@ -143,27 +142,38 @@ getData();
   }
 
   .list {
-    width: 100%;
+    width: 78%;
     display: flex;
     justify-content: space-between;
+    gap: 2%;
+    margin: 0 auto;
+
     .left {
-      margin-left: 11%;
       width: 60%;
+      margin: 0;
+      min-height: 500px;
+
       div:nth-child(1) {
         margin-top: 0;
       }
+
       .listItem {
-        width: 100%;
-        height: auto;
+        // width: 945px;
         margin: 10px 0;
       }
     }
 
     .right {
       width: 40%;
-      margin-left: 2%;
-      margin-right: 11%;
-      overflow: hidden;
+      margin: 0;
+
+      .order {
+        padding: 0 2.5rem;
+
+        .last-item {
+          padding: 1.5rem 0;
+        }
+      }
     }
   }
 

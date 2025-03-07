@@ -83,7 +83,6 @@ const props = defineProps({
 });
 
 function toDetail (id) {
-  console.log(id);
   if (id) {
     const target = router.resolve({
       name: "pbDetail",

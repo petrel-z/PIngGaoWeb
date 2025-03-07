@@ -53,7 +53,7 @@ const props = defineProps({
 
 .left .h {
   font-size: 2rem;
-  font-family: "AlibabaPuHuiTi_2_65_Medium", sans-serif;
+  font-family: "AlibabaPuHuiTi_2_65_Medium";
   color: rgb(0, 111, 193);
 }
 
@@ -65,7 +65,7 @@ const props = defineProps({
 @media (min-width: 600px) and (max-width: 800px) {
   .left .h {
     font-size: 1.6rem;
-    font-family: "AlibabaPuHuiTi_2_65_Medium", sans-serif;
+    font-family: "AlibabaPuHuiTi_2_65_Medium";
     color: rgb(0, 111, 193);
   }
 
@@ -77,7 +77,7 @@ const props = defineProps({
 @media (min-width:2100px) and (max-width: 2300px) {
   .left .h {
     font-size: 1.54rem;
-    font-family: "AlibabaPuHuiTi_2_65_Medium", sans-serif;
+    font-family: "AlibabaPuHuiTi_2_65_Medium";
     color: rgb(0, 111, 193);
   }
 
@@ -89,7 +89,7 @@ const props = defineProps({
 @media (min-width:1100px) and (max-width: 1800px) {
   .left .h {
     font-size: 1.54rem !important;
-    font-family: "AlibabaPuHuiTi_2_65_Medium", sans-serif;
+    font-family: "AlibabaPuHuiTi_2_65_Medium";
     color: rgb(0, 111, 193);
   }
 

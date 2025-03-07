@@ -132,7 +132,7 @@ watch(honorList, async () => {
 
 .content .info .p {
   font-size: 1.25rem;
-  font-family: "AlibabaPuHuiTi_2_55_Regular", sans-serif;
+  font-family: "AlibabaPuHuiTi_2_55_Regular";
   color: rgb(182, 141, 55);
   margin: 0.7rem 0rem;
 }

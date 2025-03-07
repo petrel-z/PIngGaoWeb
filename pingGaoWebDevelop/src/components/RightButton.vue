@@ -71,7 +71,7 @@ const goHome = () => {
 
 .box .p {
   font-size: 1.125rem;
-  font-family: 'AlibabaPuHuiTi_2_55_Regular', sans-serif;
+  font-family: 'AlibabaPuHuiTi_2_55_Regular';
   color: rgb(137, 137, 137);
   margin-top: -1rem;
   transition: inherit;

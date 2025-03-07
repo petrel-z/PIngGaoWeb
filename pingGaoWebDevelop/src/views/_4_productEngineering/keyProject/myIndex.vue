@@ -75,7 +75,6 @@ async function getData (index) {
     pageSize: 999,
   }).toString();
 
-  console.log("获取数据", queryString);
   const response = await httpUtils.get(`/cms/category/${categoryId}/news?${queryString.toString()}`);
   const { data } = await response.json();
   const page = data.page;
@@ -186,7 +185,7 @@ onMounted(initializeObservers); // 在组件挂载时调用
 
 .top_button .p {
   font-size: 2rem;
-  font-family: "AlibabaPuHuiTi_2_65_Medium", sans-serif;
+  font-family: "AlibabaPuHuiTi_2_65_Medium";
   color: #006fc1;
   text-align: center;
   line-height: 6.25rem;
@@ -195,7 +194,7 @@ onMounted(initializeObservers); // 在组件挂载时调用
 
 .bottom_button .p {
   font-size: 2rem;
-  font-family: "AlibabaPuHuiTi_2_65_Medium", sans-serif;
+  font-family: "AlibabaPuHuiTi_2_65_Medium";
   color: #006fc1;
   text-align: center;
   line-height: 6.25rem;
@@ -324,7 +323,7 @@ onMounted(initializeObservers); // 在组件挂载时调用
 
 .pic_content .bg_black .p {
   font-size: 1.625rem;
-  font-family: "AlibabaPuHuiTi_2_45_Light", sans-serif;
+  font-family: "AlibabaPuHuiTi_2_45_Light";
   color: rgb(255, 255, 255);
 }
 

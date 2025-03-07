@@ -24,7 +24,6 @@ async function getData () {
     pageSize: pageSize.value,
   }).toString();
 
-  console.log("获取数据", queryString);
   const response = await httpUtils.get(`/cms/video/list?${queryString.toString()}`);
   const { data } = await response.json();
 

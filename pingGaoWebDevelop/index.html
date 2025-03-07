@@ -9,6 +9,15 @@
         #app {
             width: 100%;
         }
+
+        .text-ellipsis {
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+            -webkit-line-clamp: 2; /* 限制显示2行 */
+            overflow: hidden;
+            text-overflow: ellipsis;
+            word-break: break-word;
+        }
     </style>
 </head>
 <body>

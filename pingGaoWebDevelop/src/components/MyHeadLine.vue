@@ -11,7 +11,7 @@ import imgPath from "@/assets/imgs/_1_aboutPinggaoImgs/line.png";
 <style scoped>
 .title {
   font-size: 1.625rem;
-  font-family: "AlibabaPuHuiTi_2_65_Medium", sans-serif;
+  font-family: "AlibabaPuHuiTi_2_65_Medium";
   color: rgb(0, 111, 193);
   font-weight: 500;
   z-index: 139;

@@ -24,7 +24,6 @@ const formatTitle = (text) => {
 async function getList () {
   const response = await httpUtils.get(`/cms/talent/list`);
   const { data } = await response.json();
-  console.log(data);
 
   data.talentType.forEach(type => {
     const mainTalent = data.listTalent.find(talent => talent.talentTitle === type.label);
@@ -49,8 +48,6 @@ async function getList () {
       }
     }
   });
-
-  console.log(formatedData.value);
 }
 
 getList();

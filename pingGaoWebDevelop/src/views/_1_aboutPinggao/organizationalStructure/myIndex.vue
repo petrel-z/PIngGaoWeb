@@ -322,7 +322,7 @@ onMounted(initializeObservers); // 在组件挂载时调用
   margin: auto;
   position: absolute;
   top: 3.75rem;
-  font-family: "AlibabaPuHuiTi_2_65_Medium", sans-serif;
+  font-family: "AlibabaPuHuiTi_2_65_Medium";
   color: rgb(255, 255, 255);
   font-size: 2rem;
   left: 50%;
@@ -360,7 +360,7 @@ onMounted(initializeObservers); // 在组件挂载时调用
   top: -0.0625rem;
   position: absolute;
   font-size: 3.75rem;
-  font-family: "Avenir-black-4", sans-serif;
+  font-family: "Avenir-black-4";
   color: rgb(255, 255, 255);
   z-index: 129;
   top: 1.875rem;
@@ -372,7 +372,7 @@ onMounted(initializeObservers); // 在组件挂载时调用
   white-space: nowrap;
   display: flex;
   font-size: 1.625rem;
-  font-family: "AlibabaPuHuiTi_2_65_Medium", sans-serif;
+  font-family: "AlibabaPuHuiTi_2_65_Medium";
   color: rgb(255, 255, 255);
   top: 5.625rem;
   left: 50%;
@@ -562,7 +562,7 @@ onMounted(initializeObservers); // 在组件挂载时调用
   margin: auto;
   position: absolute;
   top: 3.75rem;
-  font-family: "AlibabaPuHuiTi_2_65_Medium", sans-serif;
+  font-family: "AlibabaPuHuiTi_2_65_Medium";
   color: rgb(255, 255, 255);
   font-size: 2rem;
   left: 50%;
@@ -598,7 +598,7 @@ onMounted(initializeObservers); // 在组件挂载时调用
   top: -0.0625rem;
   position: absolute;
   font-size: 3.75rem;
-  font-family: "Avenir-black-4", sans-serif;
+  font-family: "Avenir-black-4";
   color: rgb(255, 255, 255);
   z-index: 129;
   top: 1.875rem;
@@ -610,7 +610,7 @@ onMounted(initializeObservers); // 在组件挂载时调用
   white-space: nowrap;
   display: flex;
   font-size: 1.625rem;
-  font-family: "AlibabaPuHuiTi_2_65_Medium", sans-serif;
+  font-family: "AlibabaPuHuiTi_2_65_Medium";
   color: rgb(255, 255, 255);
   top: 5.625rem;
   left: 50%;
@@ -630,7 +630,7 @@ onMounted(initializeObservers); // 在组件挂载时调用
 .organization_2 .text {
   position: absolute;
   font-size: 1.75rem;
-  font-family: "AlibabaPuHuiTi_2_55_Regular", sans-serif;
+  font-family: "AlibabaPuHuiTi_2_55_Regular";
   color: rgb(255, 255, 255);
   left: 50%;
   transform: translateX(-50%);
@@ -701,7 +701,7 @@ onMounted(initializeObservers); // 在组件挂载时调用
 }
 .parts li {
   font-size: 1.125rem;
-  font-family: "AlibabaPuHuiTi_2_55_Regular", sans-serif;
+  font-family: "AlibabaPuHuiTi_2_55_Regular";
   color: rgb(89, 87, 87);
   text-decoration: none;
   list-style: none;

@@ -310,7 +310,7 @@ onMounted(initializeObservers); // 在组件挂载时调用
   left: 50%;
   transform: translateX(-50%);
   font-size: 1.625rem;
-  font-family: "AlibabaPuHuiTi_2_65_Medium", sans-serif;
+  font-family: "AlibabaPuHuiTi_2_65_Medium";
   color: rgb(0, 111, 193);
   line-height: 1.423;
 }
@@ -335,7 +335,7 @@ onMounted(initializeObservers); // 在组件挂载时调用
   display: flex;
   width: 55%;
   font-size: 1.25rem;
-  font-family: "AlibabaPuHuiTi_2_55_Regular", sans-serif;
+  font-family: "AlibabaPuHuiTi_2_55_Regular";
   color: rgb(89, 87, 87);
   line-height: 1.85;
   opacity: 0;
@@ -392,7 +392,7 @@ onMounted(initializeObservers); // 在组件挂载时调用
 
 .key .key_title {
   font-size: 2rem;
-  font-family: "AlibabaPuHuiTi_2_65_Medium", sans-serif;
+  font-family: "AlibabaPuHuiTi_2_65_Medium";
   color: rgb(0, 111, 193);
   text-align: center;
   margin-bottom: 2.1875rem;
@@ -507,7 +507,7 @@ onMounted(initializeObservers); // 在组件挂载时调用
   top: 2rem;
   position: absolute;
   font-size: 1.375rem;
-  font-family: "AlibabaPuHuiTi_2_65_Medium", sans-serif;
+  font-family: "AlibabaPuHuiTi_2_65_Medium";
   color: rgb(35, 24, 21);
 }
 
@@ -516,7 +516,7 @@ onMounted(initializeObservers); // 在组件挂载时调用
   top: 4.4375rem;
   position: absolute;
   font-size: 1.25rem;
-  font-family: "AlibabaPuHuiTi_2_45_Light", sans-serif;
+  font-family: "AlibabaPuHuiTi_2_45_Light";
   color: rgb(89, 87, 87);
 }
 @media (min-width: 10px) and (max-width: 200px) {
@@ -1205,7 +1205,7 @@ onMounted(initializeObservers); // 在组件挂载时调用
 
 .basic_culture_title {
   font-size: 2rem;
-  font-family: "AlibabaPuHuiTi_2_65_Medium", sans-serif;
+  font-family: "AlibabaPuHuiTi_2_65_Medium";
   color: rgb(0, 111, 193);
   text-align: center;
   margin-bottom: 4.375rem;
@@ -1244,12 +1244,12 @@ onMounted(initializeObservers); // 在组件挂载时调用
 }
 .basic_culture_info .basic_culture_h {
   font-size: 1.375rem;
-  font-family: "AlibabaPuHuiTi_2_65_Medium", sans-serif;
+  font-family: "AlibabaPuHuiTi_2_65_Medium";
   color: rgb(0, 111, 193);
 }
 .basic_culture_info .basic_culture_p {
   font-size: 1.25rem;
-  font-family: "AlibabaPuHuiTi_2_45_Light", sans-serif;
+  font-family: "AlibabaPuHuiTi_2_45_Light";
   color: rgb(89, 87, 87);
 }
 .basic_culture_line {
@@ -1262,7 +1262,7 @@ onMounted(initializeObservers); // 在组件挂载时调用
 .basic_culture_info .basic_culture_num {
   white-space: pre;
   font-size: 1.7242rem;
-  font-family: "AlibabaPuHuiTi_2_85_Bold", sans-serif;
+  font-family: "AlibabaPuHuiTi_2_85_Bold";
   color: rgb(0, 111, 193);
 }
 .basic_culture_info_last {
