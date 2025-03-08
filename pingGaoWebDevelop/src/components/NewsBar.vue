@@ -18,10 +18,9 @@ const props = defineProps({
 });
 
 import { ElMessageBox } from "element-plus";
-
+const shareUrl = window.location.href; // 你要分享的链接
+const title = document.title; // 分享的标题
 const openQQ = () => {
-  const shareUrl = encodeURIComponent('http://localhost:5173/partyBuilding/partyspiritDetail'); // 你要分享的链接
-  const title = encodeURIComponent('分享标题'); // 分享的标题
   const pics = encodeURIComponent('/src/assets/imgs/common/qrcode.png'); // 分享的图片
   const summary = encodeURIComponent('fsaf'); // 分享的描述
 
@@ -31,19 +30,13 @@ const openQQ = () => {
   window.open(qqShareUrl, '_blank');
 };
 const openBlog = () => {
-  const shareUrl = encodeURIComponent('http://localhost:5173/partyBuilding/partyspiritDetail'); // 你要分享的链接
-  const title = encodeURIComponent('分享标题'); // 分享的标题
   const pic = encodeURIComponent('/src/assets/imgs/common/qrcode.png'); // 分享的图片
-
   const weiboShareUrl = `https://service.weibo.com/share/share.php?url=${shareUrl}&title=${title}&pic=${pic}`;
   window.open(weiboShareUrl, '_blank');
 
 };
 const openQQSpace = () => {
-  const shareUrl = encodeURIComponent('http://localhost:5173/partyBuilding/partyspiritDetail'); // 你要分享的链接
-  const title = encodeURIComponent('总部动态-新闻列表'); // 分享的标题
   const pics = encodeURIComponent('/src/assets/imgs/common/qrcode.png'); // 分享的图片
-  const summary = encodeURIComponent('这是分享的描述'); // 分享的描述
 
   const qqSpaceShareUrl = `https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=${shareUrl}&title=${title}&pics=${pics}&summary=${summary}`;
   window.open(qqSpaceShareUrl, '_blank'); // 在新标签页中打开QQ空间分享页面
@@ -94,8 +87,8 @@ const openmore = () => {
           :style="{ color: props.color }">&#xe674;</span></el-button>
       <el-button plain @click="openWechat" class="el-button"><span class="icon iconfont"
           :style="{ color: props.color }">&#xe654;</span></el-button>
-      <el-button plain @click="openmore" class="el-button"><span class="icon iconfont"
-          :style="{ color: props.color }">&#xe655;</span></el-button>
+<!--      <el-button plain @click="openmore" class="el-button"><span class="icon iconfont"-->
+<!--          :style="{ color: props.color }">&#xe655;</span></el-button>-->
     </div>
   </div>
 </template>

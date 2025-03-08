@@ -5,6 +5,8 @@ import router from '@/router/index.js'
 import HttpUtils from '@/utils/httpUtils.js'
 import { onMounted, onUnmounted, nextTick, ref } from 'vue'
 
+document.title = '平高集团有限公司'
+
 // Import Swiper Vue.js components
 import { Swiper, SwiperSlide } from 'swiper/vue'
 import { Pagination } from 'swiper/modules'

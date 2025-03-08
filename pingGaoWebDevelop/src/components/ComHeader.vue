@@ -642,7 +642,7 @@ onMounted(() => {
 #header-nav-top {
   position: absolute;
   right: 0;
-  bottom: -10%;
+  bottom: -20%;
   text-align: right;
   height: auto;
 
@@ -673,8 +673,8 @@ onMounted(() => {
 }
 
 .log-img img {
-  height: auto;
-  width: 100%;
+  height: 84px;
+  width: auto;
 }
 
 .log-title {

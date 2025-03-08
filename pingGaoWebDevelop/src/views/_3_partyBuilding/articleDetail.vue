@@ -1,57 +1,61 @@
 <script setup>
-import ComDoubleDiv from "@/components/ComDoubleDiv.vue";
-import NewsBar from "@/components/NewsBar.vue";
-import HttpUtils from "@/utils/httpUtils.js";
-import { ref } from "vue";
-import { useRoute, useRouter } from "vue-router";
+import ComDoubleDiv from '@/components/ComDoubleDiv.vue'
+import NewsBar from '@/components/NewsBar.vue'
+import HttpUtils from '@/utils/httpUtils.js'
+import { ref } from 'vue'
+import { useRoute, useRouter } from 'vue-router'
 
 defineOptions({
-  name: "PartyBuildingDetail",
-});
+  name: 'PartyBuildingDetail',
+})
 
-const data = ref("");
-const newsId = useRoute().params.id;
-const router = useRouter();
+const data = ref('')
+const newsId = useRoute().params.id
+const router = useRouter()
 
 // 格式化时间戳为 YYYY-MM-DD 格式
 function formatTimestamp (timestamp) {
-  const date = new Date(timestamp);
-  const year = date.getFullYear();
-  const month = (date.getMonth() + 1).toString().padStart(2, "0");
-  const day = date.getDate().toString().padStart(2, "0");
-  return `${year}-${month}-${day}`;
+  const date = new Date(timestamp)
+  const year = date.getFullYear()
+  const month = (date.getMonth() + 1).toString().padStart(2, '0')
+  const day = date.getDate().toString().padStart(2, '0')
+  return `${year}-${month}-${day}`
 }
 
 async function getData () {
-  const res = await HttpUtils.get(`/cms/news/detail?newsId=${newsId}`);
-  const result = await res.json();
+  const res = await HttpUtils.get(`/cms/news/detail?newsId=${newsId}`)
+  const result = await res.json()
   // 格式化发布时间
   if (result?.data?.data?.publishTime) {
-    result.data.data.publishTime = formatTimestamp(result.data.data.publishTime);
+    result.data.data.publishTime = formatTimestamp(result.data.data.publishTime)
   }
 
-  data.value = result.data;
-  document.title = data.value.data.title;
+  data.value = result.data
+  document.title = data.value.data.title
+
+  if (data.value.data.isLink) {
+    window.location.href = data.value.data.linkAddr
+  }
 }
 
 function toDetail (id) {
   if (id) {
     router.push({
-      name: "pbDetail",
+      name: 'pbDetail',
       params: {
         id,
       },
-    });
+    })
 
     setTimeout(() => {
-      window.location.reload();
-    }, 100);
+      window.location.reload()
+    }, 100)
   }
 }
 
-getData();
+getData()
 
-const bgColor = ref("#f8f1e5");
+const bgColor = ref('#f8f1e5')
 </script>
 
 <template>
@@ -63,24 +67,24 @@ const bgColor = ref("#f8f1e5");
           <div class="title">
             {{ data.data.title }}
           </div>
-          <NewsBar color="#ab2526" :time="data.data.publishTime" :browse="data.data.viewCount" />
-          <div class="text" v-html="data.data.content" />
+          <NewsBar color="#ab2526" :time="data.data.publishTime" :browse="data.data.viewCount"/>
+          <div class="text" v-html="data.data.content"/>
 
           <div class="button">
             <div class="button-left">
               <ComDoubleDiv
-                  title="上一篇" :content="data?.previous?.title ?? '暂无'"
-                  :bg-color="bgColor"
-                  :leftFontColor="'#a51617'" :rightFontColor="'#7b6a5d'"
-                  @click="toDetail(data?.previous?.id)"
+                title="上一篇" :content="data?.previous?.title ?? '暂无'"
+                :bg-color="bgColor"
+                :leftFontColor="'#a51617'" :rightFontColor="'#7b6a5d'"
+                @click="toDetail(data?.previous?.id)"
               />
             </div>
             <div class="button-right">
               <ComDoubleDiv
-                  title="下一篇" :content="data?.next?.title ?? '暂无'"
-                  :bg-color="bgColor"
-                  :leftFontColor="'#a51617'" :rightFontColor="'#7b6a5d'"
-                  @click="toDetail(data?.next?.id)"
+                title="下一篇" :content="data?.next?.title ?? '暂无'"
+                :bg-color="bgColor"
+                :leftFontColor="'#a51617'" :rightFontColor="'#7b6a5d'"
+                @click="toDetail(data?.next?.id)"
               />
             </div>
           </div>
@@ -110,7 +114,6 @@ const bgColor = ref("#f8f1e5");
 
       .title {
         width: 100%;
-        height: 8rem;
         line-height: 8rem;
         text-align: center;
         font-size: 2.3rem;
