@@ -116,18 +116,18 @@ getData()
         </div>
         <div class="long_line"></div>
       </div>
-      <div class="product_img">
-        <img
-          ref="imgRef"
-          :class="{ 'scale-up': isVisibleImg }"
-          :src="data.data.headerImage"
-          alt=""
-        />
-      </div>
+<!--      <div class="product_img">-->
+<!--        <img-->
+<!--          ref="imgRef"-->
+<!--          :class="{ 'scale-up': isVisibleImg }"-->
+<!--          :src="data.data.headerImage"-->
+<!--          alt=""-->
+<!--        />-->
+<!--      </div>-->
       <div class="special">
-        <div class="special_header">
-          <div class="h">技术特点</div>
-        </div>
+<!--        <div class="special_header">-->
+<!--          <div class="h">技术特点</div>-->
+<!--        </div>-->
         <div
           ref="wordTopRef" class="special_word" :class="{ 'move-top': isVisibleWordTop }"
           v-html="data.data.content"
