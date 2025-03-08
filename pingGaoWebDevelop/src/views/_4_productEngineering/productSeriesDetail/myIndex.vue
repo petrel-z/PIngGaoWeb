@@ -2,6 +2,7 @@
 import HttpUtils from '@/utils/httpUtils.js'
 import { nextTick, ref } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
+import httpUtils from '@/utils/httpUtils.js'
 
 const isVisibleWordLeft = ref(false)
 const isVisibleWordRight = ref(false)
@@ -70,10 +71,19 @@ async function getData () {
 
   data.value = result.data
   document.title = data.value.data.title
+  await getCategory()
 
   await nextTick()
 
   initializeObservers()
+}
+
+async function getCategory () {
+  const res = await httpUtils.get(`/cms/category/list`)
+  const result = await res.json()
+  const categoryData = result.data
+  const categoryInfo = categoryData.find(i => i.id === data.value.data.categoryId)
+  data.value.data.categoryName = categoryInfo.name
 }
 
 getData()
@@ -88,7 +98,7 @@ getData()
             <img src="@/assets/imgs/_4_productEngineeringImgs/dot.png" alt="">
           </div>
           <div class="title">
-            {{ data.data.description }}
+            {{ data.data.categoryName }}
           </div>
         </div>
         <div class="detail_text">

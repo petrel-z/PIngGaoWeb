@@ -4,6 +4,7 @@ import httpUtils from '@/utils/httpUtils.js'
 import { onMounted, ref } from 'vue'
 import router from '@/router/index.js'
 import MyButton from '@/components/MyButton.vue'
+import { useRoute } from 'vue-router'
 
 const boxRef = ref(null)
 const isVisibleBox = ref(false)
@@ -12,6 +13,8 @@ const isVisibleInfo = ref(true)
 
 const categoryList = ref([])
 const categoryItems = ref([])
+
+const type = useRoute().query.type
 
 // 处理 imgs 数组中的路径
 const imgs = ref(
@@ -72,7 +75,14 @@ async function getCategory () {
   const result = await res.json()
 
   categoryList.value = result.data
-  currentCategory.value = result.data[0]
+
+  const queryCategory = result.data.find(i=>i.name === type);
+  if (queryCategory) {
+    currentCategory.value = queryCategory
+  } else {
+    currentCategory.value = result.data[0]
+  }
+
   await getData()
 }
 
@@ -455,7 +465,8 @@ function setActive (category, index) {
 .detail_page_content {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: flex-start;
+  gap: 2%;
 }
 
 .detail_page_info {
