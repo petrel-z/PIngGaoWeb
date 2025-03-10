@@ -175,7 +175,8 @@ defineOptions({
       </div>
     </div>
     <div class="footer-bottom">
-      <p><a href="https://beian.miit.gov.cn/">豫ICP备2022010930号</a> Copyright 2025 PINGGAO GROUP CO.,LTD, All Rights Reserved.</p>
+      <p><a href="https://beian.miit.gov.cn/">豫ICP备2022010930号</a> Copyright 2025 PINGGAO GROUP CO.,LTD, All Rights
+        Reserved.</p>
       <p>平高集团有限公司版权所有</p>
     </div>
   </div>
@@ -210,7 +211,7 @@ a {
   padding: 5% 9%;
 }
 
-.content > div {
+.content>div {
   border-right: 1px solid #727171;
   // flex: 1 1 auto;
 }
@@ -223,7 +224,7 @@ a {
   // align-content: center;
 
   .logo-img {
-    width: 3%;
+    width: 4%;
     // height: 5%;
     height: 100%;
     border: none;
@@ -366,6 +367,19 @@ a {
   }
 }
 
+@media (max-width: 1000px) {
+  .footer-item {
+    .footer-top {
+      .content {
+        .logo-img {
+          width: 5%;
+        }
+      }
+    }
+  }
+
+}
+
 /* 大型设备（桌面，大于 900px） */
 @media (max-width: 900px) {
   .footer-top {
@@ -386,7 +400,7 @@ a {
     }
   }
 
-  .content > div {
+  .content>div {
     border: none;
   }
 
@@ -395,6 +409,7 @@ a {
     position: relative;
 
     .logo-img {
+
       display: none;
     }
 

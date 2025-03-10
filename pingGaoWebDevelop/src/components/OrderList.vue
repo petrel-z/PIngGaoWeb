@@ -81,7 +81,7 @@ function clickItem (item) {
 .order {
   position: relative;
   width: auto;
-  min-width: 500px;
+  /* min-width: 500px; */
   height: auto;
   background-color: #003792;
   border-radius: 0.625rem;

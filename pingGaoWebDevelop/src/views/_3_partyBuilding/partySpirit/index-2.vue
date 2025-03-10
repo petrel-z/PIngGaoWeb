@@ -1,5 +1,5 @@
 <script setup>
-import newsBar from "@/components/newsBar.vue";
+import newsBar from "@/components/NewsBar.vue";
 import ComDoubleDiv from "@/components/ComDoubleDiv.vue";
 import imgPath from "@/assets/imgs/_3_partyBuildingImgs/t3_p2_person.png";
 defineOptions({
