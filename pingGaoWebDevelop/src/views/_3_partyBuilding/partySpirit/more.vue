@@ -35,11 +35,8 @@ async function getData() {
     pageSize: pageSize.value,
   }).toString();
 
-  console.log("获取数据", queryString);
   const response = await httpUtils.get(`/cms/category/${categoryId}/news?${queryString.toString()}`);
   const { data } = await response.json();
-
-  console.log(data);
 
   const top5List = [];
   data.top5List.forEach((item) => {
@@ -96,6 +93,7 @@ getData();
     <div class="list">
       <div class="left" ref="left">
         <div v-for="item in leftList" :key="item.id" class="listItem">
+<<<<<<< HEAD
           <Item2 :time="formatTimestamp(item.publishTime)" :text="item.title" time-color="#a51617" text-color="#7b6a5d"
             text-font-family="SourceHanSerifCN_Bold" :hover-bg-color="'#e06e5f'" @click="toDetail(item.id)" />
         </div>
@@ -105,6 +103,17 @@ getData();
           <p v-else style="font-size: 24px;">
             暂无更多
           </p>
+=======
+          <Item2
+            style="--hoverBgColor: #e06e5f"
+            :time="formatTimestamp(item.publishTime)"
+            :text="item.title"
+            time-color="#a51617"
+            text-color="#7b6a5d"
+            text-font-family="SourceHanSerifCN_Bold"
+            @click="toDetail(item.id)"
+          />
+>>>>>>> 64308a7e4753cdc6906e83e163f45734db83597f
         </div>
       </div>
       <div class="right" ref="right">
@@ -142,21 +151,29 @@ getData();
   }
 
   .list {
-    width: 100%;
+    width: 78%;
     display: flex;
     justify-content: space-between;
+<<<<<<< HEAD
+=======
+    gap: 2%;
+    margin: 0 auto;
+>>>>>>> 64308a7e4753cdc6906e83e163f45734db83597f
 
     .left {
-      margin-left: 11%;
       width: 60%;
+<<<<<<< HEAD
+=======
+      margin: 0;
+      min-height: 500px;
+>>>>>>> 64308a7e4753cdc6906e83e163f45734db83597f
 
       div:nth-child(1) {
         margin-top: 0;
       }
 
       .listItem {
-        width: 100%;
-        height: auto;
+        // width: 945px;
         margin: 10px 0;
       }
 
@@ -167,9 +184,15 @@ getData();
 
     .right {
       width: 40%;
-      margin-left: 2%;
-      margin-right: 11%;
-      overflow: hidden;
+      margin: 0;
+
+      .order {
+        padding: 0 2.5rem;
+
+        .last-item {
+          padding: 1.5rem 0;
+        }
+      }
     }
   }
 

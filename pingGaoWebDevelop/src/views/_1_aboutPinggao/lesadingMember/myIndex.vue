@@ -9,7 +9,7 @@ const isVisible = ref(null);
 
 const leaders = ref([]);
 
-async function getData () {
+async function getData() {
   const response = await httpUtils.get("/cms/leaders/list");
   const { data } = await response.json();
   data.forEach((i) => {
@@ -19,7 +19,7 @@ async function getData () {
 }
 
 // 创建交叉观察器
-function createObserver (refElement, isVisible) {
+function createObserver(refElement, isVisible) {
   const observer = new IntersectionObserver(
     (entries) => {
       entries.forEach((entry) => {
@@ -35,7 +35,7 @@ function createObserver (refElement, isVisible) {
       root: null, // 使用浏览器视口作为根元素
       rootMargin: "0px", // 无额外的边距
       threshold: 0, // 当元素的 50% 进入视口时触发
-    },
+    }
   );
   if (refElement.value) {
     refElement.value.forEach((el) => {
@@ -54,17 +54,20 @@ watch(leaders, async () => {
 
 <template>
   <div class="lesadingMember">
-    <MyTitle title="领导成员" english="LENDING MEMBERS"/>
+    <MyTitle title="领导成员" english="LENDING MEMBERS" />
     <div class="content1">
       <div
-        v-for="leader in leaders" ref="imgRef"
-        :key="leader.id" class="info" :class="{ 'scale-up': isVisible }"
+        v-for="leader in leaders"
+        ref="imgRef"
+        :key="leader.id"
+        class="info"
+        :class="{ 'scale-up': isVisible }"
       >
-        <img :src="leader.images ?? peopleBg" :alt="leader.name">
+        <img :src="leader.images ?? peopleBg" :alt="leader.name" />
         <div class="h">
           {{ leader.name }}
         </div>
-        <div class="hr"/>
+        <div class="hr" />
         <div v-for="(title, index) in leader.titles" :key="index" :class="`p${index + 1}`">
           {{ title }}
         </div>
@@ -87,23 +90,19 @@ watch(leaders, async () => {
 .content1 {
   width: 100%;
   margin-top: 3.125rem;
-  display: flex;
-  /* justify-content: space-between; */
-  flex-wrap: wrap;
-
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 1rem;
 }
 
 .content1 .info {
   position: relative;
-  width: 31%;
-  height: 100%;
   background-size: cover;
   margin-bottom: 0.625rem;
-  transform: scale(0.5); /* 初始缩小 */
-  opacity: 0; /* 初始不可见 */
-  visibility: hidden; /* 初始隐藏 */
-  transition: transform 0.5s ease, opacity 0.5s ease; /* 过渡效果 */
-  margin-right: 2rem;
+  transform: scale(0.5);
+  opacity: 0;
+  visibility: hidden;
+  transition: transform 0.5s ease, opacity 0.5s ease;
 }
 
 .content1 .info.scale-up {
@@ -124,7 +123,6 @@ watch(leaders, async () => {
   display: flex;
   /* justify-content: space-between; */
   flex-wrap: wrap;
-
 }
 
 .content2 .info {
@@ -157,7 +155,7 @@ watch(leaders, async () => {
   left: 2rem;
   position: absolute;
   font-size: 1.6125rem;
-  font-family: "AlibabaPuHuiTi_2_65_Medium", sans-serif;
+  font-family: "AlibabaPuHuiTi_2_65_Medium";
   color: rgb(0, 111, 193);
 }
 
@@ -175,7 +173,7 @@ watch(leaders, async () => {
   position: absolute;
   left: 2rem;
   font-size: 1.05rem;
-  font-family: "AlibabaPuHuiTi_2_45_Light", sans-serif;
+  font-family: "AlibabaPuHuiTi_2_45_Light";
   color: rgb(89, 87, 87);
 }
 
@@ -184,7 +182,7 @@ watch(leaders, async () => {
   position: absolute;
   left: 2rem;
   font-size: 1.05rem;
-  font-family: "AlibabaPuHuiTi_2_45_Light", sans-serif;
+  font-family: "AlibabaPuHuiTi_2_45_Light";
   color: rgb(89, 87, 87);
 }
 
@@ -193,41 +191,37 @@ watch(leaders, async () => {
   position: absolute;
   left: 2rem;
   font-size: 1.05rem;
-  font-family: "AlibabaPuHuiTi_2_45_Light", sans-serif;
+  font-family: "AlibabaPuHuiTi_2_45_Light";
   color: rgb(89, 87, 87);
 }
 
-@media (min-width: 400px) and (max-width: 500px) {
-  .content .info {
+@media (min-width: 200px) and (max-width: 300px) {
+  .content1 .info {
     position: relative;
-    width: 33%;
-    height: 18.8125rem;
     background-size: cover;
     margin-bottom: 0.625rem;
-    transform: scale(0.5); /* 初始缩小 */
-    opacity: 0; /* 初始不可见 */
-    visibility: hidden; /* 初始隐藏 */
-    transition: transform 0.5s ease, opacity 0.5s ease; /* 过渡效果 */
+    transform: scale(0.5);
+    opacity: 0;
+    visibility: hidden;
+    transition: transform 0.5s ease, opacity 0.5s ease;
   }
-
-  .content .info img {
+  .content1 .info img {
     width: 100%;
     height: 100%;
     object-fit: cover;
   }
-
   .info .h {
     top: 2.625rem;
     left: 2rem;
     position: absolute;
     font-size: 1.6125rem;
-    font-family: "AlibabaPuHuiTi_2_65_Medium", sans-serif;
+    font-family: "AlibabaPuHuiTi_2_65_Medium";
     color: rgb(0, 111, 193);
   }
 
   .info .hr {
     width: 40%;
-    height: 0.0625rem;
+    height: 0.027rem !important;
     left: 2rem;
     background-color: #4093d1;
     top: 5.3125rem;
@@ -238,8 +232,8 @@ watch(leaders, async () => {
     top: 5.5rem;
     position: absolute;
     left: 2rem;
-    font-size: 1rem;
-    font-family: "AlibabaPuHuiTi_2_45_Light", sans-serif;
+    font-size: 0.9rem;
+    font-family: "AlibabaPuHuiTi_2_45_Light";
     color: rgb(89, 87, 87);
   }
 
@@ -247,8 +241,8 @@ watch(leaders, async () => {
     top: 6.9rem;
     position: absolute;
     left: 2rem;
-    font-size: 1rem;
-    font-family: "AlibabaPuHuiTi_2_45_Light", sans-serif;
+    font-size: 0.9rem;
+    font-family: "AlibabaPuHuiTi_2_45_Light";
     color: rgb(89, 87, 87);
   }
 
@@ -256,43 +250,38 @@ watch(leaders, async () => {
     top: 8.3rem;
     position: absolute;
     left: 2rem;
-    font-size: 1rem;
-    font-family: "AlibabaPuHuiTi_2_45_Light", sans-serif;
+    font-size: 0.9rem;
+    font-family: "AlibabaPuHuiTi_2_45_Light";
     color: rgb(89, 87, 87);
   }
 }
-
-@media (min-width: 600px) and (max-width: 800px) {
-  .content .info {
+@media (min-width: 300px) and (max-width: 400px) {
+  .content1 .info {
     position: relative;
-    width: 33%;
-    height: 100%;
     background-size: cover;
     margin-bottom: 0.625rem;
-    transform: scale(0.5); /* 初始缩小 */
-    opacity: 0; /* 初始不可见 */
-    visibility: hidden; /* 初始隐藏 */
-    transition: transform 0.5s ease, opacity 0.5s ease; /* 过渡效果 */
+    transform: scale(0.5);
+    opacity: 0;
+    visibility: hidden;
+    transition: transform 0.5s ease, opacity 0.5s ease;
   }
-
-  .content .info img {
+  .content1 .info img {
     width: 100%;
     height: 100%;
     object-fit: cover;
   }
-
   .info .h {
-    top: 3rem;
+    top: 2.625rem;
     left: 2rem;
     position: absolute;
-    font-size: 1.2125rem !important;
-    font-family: "AlibabaPuHuiTi_2_65_Medium", sans-serif;
+    font-size: 1.6125rem;
+    font-family: "AlibabaPuHuiTi_2_65_Medium";
     color: rgb(0, 111, 193);
   }
 
   .info .hr {
     width: 40%;
-    height: 0.0625rem;
+    height: 0.027rem !important;
     left: 2rem;
     background-color: #4093d1;
     top: 5.3125rem;
@@ -303,8 +292,8 @@ watch(leaders, async () => {
     top: 5.5rem;
     position: absolute;
     left: 2rem;
-    font-size: 0.72rem;
-    font-family: "AlibabaPuHuiTi_2_45_Light", sans-serif;
+    font-size: 0.8rem;
+    font-family: "AlibabaPuHuiTi_2_45_Light";
     color: rgb(89, 87, 87);
   }
 
@@ -312,22 +301,264 @@ watch(leaders, async () => {
     top: 6.7rem;
     position: absolute;
     left: 2rem;
-    font-size: 0.72rem;
-    font-family: "AlibabaPuHuiTi_2_45_Light", sans-serif;
+    font-size: 0.8rem;
+    font-family: "AlibabaPuHuiTi_2_45_Light";
     color: rgb(89, 87, 87);
   }
 
   .info .p3 {
-    top: 7.8rem;
+    top: 8.1rem;
     position: absolute;
     left: 2rem;
-    font-size: 0.72rem;
-    font-family: "AlibabaPuHuiTi_2_45_Light", sans-serif;
+    font-size: 0.8rem;
+    font-family: "AlibabaPuHuiTi_2_45_Light";
+    color: rgb(89, 87, 87);
+  }
+}
+@media (min-width: 400px) and (max-width: 500px) {
+  .content1 .info {
+    position: relative;
+    background-size: cover;
+    margin-bottom: 0.625rem;
+    transform: scale(0.5);
+    opacity: 0;
+    visibility: hidden;
+    transition: transform 0.5s ease, opacity 0.5s ease;
+  }
+  .content1 .info img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .info .h {
+    top: 2.625rem;
+    left: 2rem;
+    position: absolute;
+    font-size: 1.6125rem;
+    font-family: "AlibabaPuHuiTi_2_65_Medium";
+    color: rgb(0, 111, 193);
+  }
+
+  .info .hr {
+    width: 40%;
+    height: 0.0625rem;
+    left: 2rem;
+    background-color: #4093d1;
+    top: 5.3125rem;
+    position: absolute;
+  }
+
+  .info .p1 {
+    top: 5.5rem;
+    position: absolute;
+    left: 2rem;
+    font-size: 0.85rem;
+    font-family: "AlibabaPuHuiTi_2_45_Light";
+    color: rgb(89, 87, 87);
+  }
+
+  .info .p2 {
+    top: 6.9rem;
+    position: absolute;
+    left: 2rem;
+    font-size: 0.85rem;
+    font-family: "AlibabaPuHuiTi_2_45_Light";
+    color: rgb(89, 87, 87);
+  }
+
+  .info .p3 {
+    top: 8.3rem;
+    position: absolute;
+    left: 2rem;
+    font-size: 0.85rem;
+    font-family: "AlibabaPuHuiTi_2_45_Light";
+    color: rgb(89, 87, 87);
+  }
+}
+@media (min-width: 500px) and (max-width: 600px) {
+  .content1 .info {
+    position: relative;
+    background-size: cover;
+    margin-bottom: 0.625rem;
+    transform: scale(0.5);
+    opacity: 0;
+    visibility: hidden;
+    transition: transform 0.5s ease, opacity 0.5s ease;
+  }
+  .content1 .info img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .info .h {
+    top: 2.225rem;
+    left: 1.5rem;
+    position: absolute;
+    font-size: 1.4125rem;
+    font-family: "AlibabaPuHuiTi_2_65_Medium";
+    color: rgb(0, 111, 193);
+  }
+
+  .info .hr {
+    width: 40%;
+    height: 0.0625rem;
+    left: 1.5rem;
+    background-color: #4093d1;
+    top: 4.6125rem;
+    position: absolute;
+  }
+
+  .info .p1 {
+    top: 4.9rem;
+    position: absolute;
+    left: 1.5rem;
+    font-size: 0.7rem;
+    font-family: "AlibabaPuHuiTi_2_45_Light";
+    color: rgb(89, 87, 87);
+  }
+
+  .info .p2 {
+    top: 6rem;
+    position: absolute;
+    left: 1.5rem;
+    font-size: 0.7rem;
+    font-family: "AlibabaPuHuiTi_2_45_Light";
+    color: rgb(89, 87, 87);
+  }
+
+  .info .p3 {
+    top: 7rem;
+    position: absolute;
+    left: 1.5rem;
+    font-size: 0.7rem;
+    font-family: "AlibabaPuHuiTi_2_45_Light";
+    color: rgb(89, 87, 87);
+  }
+}
+
+@media (min-width: 600px) and (max-width: 700px) {
+  .content1 .info {
+    position: relative;
+    background-size: cover;
+    margin-bottom: 0.625rem;
+    transform: scale(0.5);
+    opacity: 0;
+    visibility: hidden;
+    transition: transform 0.5s ease, opacity 0.5s ease;
+  }
+  .content1 .info img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .info .h {
+    top: 2.225rem;
+    left: 1.5rem;
+    position: absolute;
+    font-size: 1.3125rem;
+    font-family: "AlibabaPuHuiTi_2_65_Medium";
+    color: rgb(0, 111, 193);
+  }
+
+  .info .hr {
+    width: 40%;
+    height: 0.0625rem;
+    left: 1.5rem;
+    background-color: #4093d1;
+    top: 4.3125rem;
+    position: absolute;
+  }
+
+  .info .p1 {
+    top: 4.5rem;
+    position: absolute;
+    left: 1.5rem;
+    font-size: 0.63rem;
+    font-family: "AlibabaPuHuiTi_2_45_Light";
+    color: rgb(89, 87, 87);
+  }
+
+  .info .p2 {
+    top: 5.5rem;
+    position: absolute;
+    left: 1.5rem;
+    font-size: 0.63rem;
+    font-family: "AlibabaPuHuiTi_2_45_Light";
+    color: rgb(89, 87, 87);
+  }
+
+  .info .p3 {
+    top: 6.5rem;
+    position: absolute;
+    left: 1.5rem;
+    font-size: 0.63rem;
+    font-family: "AlibabaPuHuiTi_2_45_Light";
     color: rgb(89, 87, 87);
   }
 }
 
 @media (min-width: 700px) and (max-width: 800px) {
+  .content1 .info {
+    position: relative;
+    background-size: cover;
+    margin-bottom: 0.625rem;
+    transform: scale(0.5);
+    opacity: 0;
+    visibility: hidden;
+    transition: transform 0.5s ease, opacity 0.5s ease;
+  }
+  .content1 .info img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .info .h {
+    top: 2.825rem;
+    left: 2rem;
+    position: absolute;
+    font-size: 1.6125rem;
+    font-family: "AlibabaPuHuiTi_2_65_Medium";
+    color: rgb(0, 111, 193);
+  }
+
+  .info .hr {
+    width: 40%;
+    height: 0.0625rem;
+    left: 2rem;
+    background-color: #4093d1;
+    top: 5.3125rem;
+    position: absolute;
+  }
+
+  .info .p1 {
+    top: 5.5rem;
+    position: absolute;
+    left: 2rem;
+    font-size: 0.64rem;
+    font-family: "AlibabaPuHuiTi_2_45_Light";
+    color: rgb(89, 87, 87);
+  }
+
+  .info .p2 {
+    top: 6.4rem;
+    position: absolute;
+    left: 2rem;
+    font-size: 0.65rem;
+    font-family: "AlibabaPuHuiTi_2_45_Light";
+    color: rgb(89, 87, 87);
+  }
+
+  .info .p3 {
+    top: 7.425rem;
+    position: absolute;
+    left: 2rem;
+    font-size: 0.64rem;
+    font-family: "AlibabaPuHuiTi_2_45_Light";
+    color: rgb(89, 87, 87);
+  }
+}
+
+@media (min-width: 800px) and (max-width: 900px) {
   .content .info {
     position: relative;
     width: 33%;
@@ -347,11 +578,71 @@ watch(leaders, async () => {
   }
 
   .info .h {
+    top: 1.8rem !important;
+    left: 1.5rem;
+    position: absolute;
+    font-size: 1rem !important;
+    font-family: "AlibabaPuHuiTi_2_65_Medium";
+    color: rgb(0, 111, 193);
+  }
+
+  .info .hr {
+    width: 40%;
+    height: 0.0625rem;
+    left: 1.5rem;
+    background-color: #4093d1;
+    top: 3.4rem;
+    position: absolute;
+  }
+
+  .info .p1 {
+    top: 3.5rem;
+    position: absolute;
+    left: 1.5rem;
+    font-size: 0.55rem;
+    font-family: "AlibabaPuHuiTi_2_45_Light";
+    color: rgb(89, 87, 87);
+  }
+
+  .info .p2 {
+    top: 4.4rem;
+    position: absolute;
+    left: 1.5rem;
+    font-size: 0.55rem;
+    font-family: "AlibabaPuHuiTi_2_45_Light";
+    color: rgb(89, 87, 87);
+  }
+
+  .info .p3 {
+    top: 5.325rem;
+    position: absolute;
+    left: 1.5rem;
+    font-size: 0.55rem;
+    font-family: "AlibabaPuHuiTi_2_45_Light";
+    color: rgb(89, 87, 87);
+  }
+}
+@media (min-width: 900px) and (max-width: 1000px) {
+  .content1 .info {
+    position: relative;
+    background-size: cover;
+    margin-bottom: 0.625rem;
+    transform: scale(0.5);
+    opacity: 0;
+    visibility: hidden;
+    transition: transform 0.5s ease, opacity 0.5s ease;
+  }
+  .content1 .info img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .info .h {
     top: 2.625rem;
     left: 2rem;
     position: absolute;
-    font-size: 1.4125rem !important;
-    font-family: "AlibabaPuHuiTi_2_65_Medium", sans-serif;
+    font-size: 1.6125rem;
+    font-family: "AlibabaPuHuiTi_2_65_Medium";
     color: rgb(0, 111, 193);
   }
 
@@ -368,8 +659,8 @@ watch(leaders, async () => {
     top: 5.5rem;
     position: absolute;
     left: 2rem;
-    font-size: 0.74rem;
-    font-family: "AlibabaPuHuiTi_2_45_Light", sans-serif;
+    font-size: 1rem;
+    font-family: "AlibabaPuHuiTi_2_45_Light";
     color: rgb(89, 87, 87);
   }
 
@@ -377,46 +668,42 @@ watch(leaders, async () => {
     top: 6.8rem;
     position: absolute;
     left: 2rem;
-    font-size: 0.74rem;
-    font-family: "AlibabaPuHuiTi_2_45_Light", sans-serif;
+    font-size: 1rem;
+    font-family: "AlibabaPuHuiTi_2_45_Light";
     color: rgb(89, 87, 87);
   }
 
   .info .p3 {
-    top: 8.125rem;
+    top: 8rem;
     position: absolute;
     left: 2rem;
-    font-size: 0.74rem;
-    font-family: "AlibabaPuHuiTi_2_45_Light", sans-serif;
+    font-size: 1rem;
+    font-family: "AlibabaPuHuiTi_2_45_Light";
     color: rgb(89, 87, 87);
   }
 }
 
-@media (min-width: 800px) and (max-width: 1000px) {
-  .content .info {
+@media (min-width: 1000px) and (max-width: 1200px) {
+  .content1 .info {
     position: relative;
-    width: 33%;
-    height: 100%;
     background-size: cover;
     margin-bottom: 0.625rem;
-    transform: scale(0.5); /* 初始缩小 */
-    opacity: 0; /* 初始不可见 */
-    visibility: hidden; /* 初始隐藏 */
-    transition: transform 0.5s ease, opacity 0.5s ease; /* 过渡效果 */
+    transform: scale(0.5);
+    opacity: 0;
+    visibility: hidden;
+    transition: transform 0.5s ease, opacity 0.5s ease;
   }
-
-  .content .info img {
+  .content1 .info img {
     width: 100%;
     height: 100%;
     object-fit: cover;
   }
-
   .info .h {
     top: 2.625rem;
     left: 2rem;
     position: absolute;
-    font-size: 1.6125rem !important;
-    font-family: "AlibabaPuHuiTi_2_65_Medium", sans-serif;
+    font-size: 1.6125rem;
+    font-family: "AlibabaPuHuiTi_2_65_Medium";
     color: rgb(0, 111, 193);
   }
 
@@ -434,30 +721,30 @@ watch(leaders, async () => {
     position: absolute;
     left: 2rem;
     font-size: 1.1rem;
-    font-family: "AlibabaPuHuiTi_2_45_Light", sans-serif;
+    font-family: "AlibabaPuHuiTi_2_45_Light";
     color: rgb(89, 87, 87);
   }
 
   .info .p2 {
-    top: 7.2rem;
+    top: 7.3rem;
     position: absolute;
     left: 2rem;
     font-size: 1.1rem;
-    font-family: "AlibabaPuHuiTi_2_45_Light", sans-serif;
+    font-family: "AlibabaPuHuiTi_2_45_Light";
     color: rgb(89, 87, 87);
   }
 
   .info .p3 {
-    top: 8.925rem;
+    top: 9rem;
     position: absolute;
     left: 2rem;
     font-size: 1.1rem;
-    font-family: "AlibabaPuHuiTi_2_45_Light", sans-serif;
+    font-family: "AlibabaPuHuiTi_2_45_Light";
     color: rgb(89, 87, 87);
   }
 }
 
-@media (min-width: 1000px) and (max-width: 1200px) {
+@media (min-width: 1200px) and (max-width: 1400px) {
   .content .info {
     position: relative;
     width: 33%;
@@ -481,13 +768,13 @@ watch(leaders, async () => {
     left: 2rem;
     position: absolute;
     font-size: 1.7125rem !important;
-    font-family: "AlibabaPuHuiTi_2_65_Medium", sans-serif;
+    font-family: "AlibabaPuHuiTi_2_65_Medium";
     color: rgb(0, 111, 193);
   }
 
   .info .hr {
     width: 40%;
-    height: 0.0625rem;
+    height: 0.06rem;
     left: 2rem;
     background-color: #4093d1;
     top: 5.3125rem;
@@ -498,31 +785,30 @@ watch(leaders, async () => {
     top: 5.5rem;
     position: absolute;
     left: 2rem;
-    font-size: 1.2rem;
-    font-family: "AlibabaPuHuiTi_2_45_Light", sans-serif;
+    font-size: 0.9rem;
+    font-family: "AlibabaPuHuiTi_2_45_Light";
     color: rgb(89, 87, 87);
   }
 
   .info .p2 {
-    top: 7.3rem;
+    top: 6.8rem;
     position: absolute;
     left: 2rem;
-    font-size: 1.2rem;
-    font-family: "AlibabaPuHuiTi_2_45_Light", sans-serif;
+    font-size: 0.9rem;
+    font-family: "AlibabaPuHuiTi_2_45_Light";
     color: rgb(89, 87, 87);
   }
 
   .info .p3 {
-    top: 9rem;
+    top: 8.125rem;
     position: absolute;
     left: 2rem;
-    font-size: 1.2rem;
-    font-family: "AlibabaPuHuiTi_2_45_Light", sans-serif;
+    font-size: 0.9rem;
+    font-family: "AlibabaPuHuiTi_2_45_Light";
     color: rgb(89, 87, 87);
   }
 }
-
-@media (min-width: 1300px) and (max-width: 1400px) {
+@media (min-width: 1400px) and (max-width: 1500px) {
   .content .info {
     position: relative;
     width: 33%;
@@ -545,14 +831,14 @@ watch(leaders, async () => {
     top: 2.625rem;
     left: 2rem;
     position: absolute;
-    font-size: 1.8125rem !important;
-    font-family: "AlibabaPuHuiTi_2_65_Medium", sans-serif;
+    font-size: 1.7125rem !important;
+    font-family: "AlibabaPuHuiTi_2_65_Medium";
     color: rgb(0, 111, 193);
   }
 
   .info .hr {
     width: 40%;
-    height: 0.0625rem;
+    height: 0.06rem;
     left: 2rem;
     background-color: #4093d1;
     top: 5.3125rem;
@@ -563,8 +849,8 @@ watch(leaders, async () => {
     top: 5.5rem;
     position: absolute;
     left: 2rem;
-    font-size: 0.8rem;
-    font-family: "AlibabaPuHuiTi_2_45_Light", sans-serif;
+    font-size: 0.9rem;
+    font-family: "AlibabaPuHuiTi_2_45_Light";
     color: rgb(89, 87, 87);
   }
 
@@ -572,8 +858,8 @@ watch(leaders, async () => {
     top: 6.8rem;
     position: absolute;
     left: 2rem;
-    font-size: 0.8rem;
-    font-family: "AlibabaPuHuiTi_2_45_Light", sans-serif;
+    font-size: 0.9rem;
+    font-family: "AlibabaPuHuiTi_2_45_Light";
     color: rgb(89, 87, 87);
   }
 
@@ -581,12 +867,11 @@ watch(leaders, async () => {
     top: 8.125rem;
     position: absolute;
     left: 2rem;
-    font-size: 0.8rem;
+    font-size: 0.9rem;
     font-family: "AlibabaPuHuiTi_2_45_Light", sans-serif;
     color: rgb(89, 87, 87);
   }
 }
-
 @media (min-width: 2100px) and (max-width: 2300px) {
   .content .info {
     position: relative;

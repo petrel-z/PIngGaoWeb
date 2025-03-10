@@ -16,7 +16,6 @@ async function getList () {
     pageSize: 10,
   }).toString();
 
-  console.log("获取数据", queryString);
   const response = await httpUtils.get(`/cms/category/${categoryId}/news?${queryString.toString()}`);
   const { data } = await response.json();
   const page = data.page;
@@ -136,7 +135,7 @@ onMounted(() => {
   cursor: pointer;
 
   font-size: 2rem;
-  font-family: "AlibabaPuHuiTi_2_65_Medium", sans-serif;
+  font-family: "AlibabaPuHuiTi_2_65_Medium";
   background-color: #fff;
   color: rgb(0, 111, 193);
   line-height: 1.156;

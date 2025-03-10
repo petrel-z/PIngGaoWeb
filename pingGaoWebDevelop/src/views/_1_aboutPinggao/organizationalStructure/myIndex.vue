@@ -322,7 +322,7 @@ onMounted(initializeObservers); // 在组件挂载时调用
   margin: auto;
   position: absolute;
   top: 3.75rem;
-  font-family: "AlibabaPuHuiTi_2_65_Medium", sans-serif;
+  font-family: "AlibabaPuHuiTi_2_65_Medium";
   color: rgb(255, 255, 255);
   font-size: 2rem;
   left: 50%;
@@ -360,7 +360,7 @@ onMounted(initializeObservers); // 在组件挂载时调用
   top: -0.0625rem;
   position: absolute;
   font-size: 3.75rem;
-  font-family: "Avenir-black-4", sans-serif;
+  font-family: "Avenir-black-4";
   color: rgb(255, 255, 255);
   z-index: 129;
   top: 1.875rem;
@@ -372,11 +372,19 @@ onMounted(initializeObservers); // 在组件挂载时调用
   white-space: nowrap;
   display: flex;
   font-size: 1.625rem;
-  font-family: "AlibabaPuHuiTi_2_65_Medium", sans-serif;
+  font-family: "AlibabaPuHuiTi_2_65_Medium";
   color: rgb(255, 255, 255);
   top: 5.625rem;
   left: 50%;
   transform: translate(-50%, -50%);
+}
+@media (min-width: 300px) and (max-width: 400px) {
+  .component li {
+    font-size: 1.2rem !important;
+  }
+  .component_2 li {
+    font-size: 1.2rem !important;
+  }
 }
 @media (min-width: 600px) and (max-width: 700px) {
   .organization .info .info_top {
@@ -401,9 +409,12 @@ onMounted(initializeObservers); // 在组件挂载时调用
     font-size: 1.3rem !important;
     margin: 0.0625rem;
   }
-  // .component .content_top .content_middle .bottom_2 {
-  //   margin-top: 2.9rem !important;
-  // }
+  .component li {
+    font-size: 0.9rem !important;
+  }
+  .component_2 li {
+    font-size: 0.9rem !important;
+  }
 }
 @media (min-width: 701px) and (max-width: 800px) {
   .organization .info .info_top {
@@ -417,7 +428,7 @@ onMounted(initializeObservers); // 在组件挂载时调用
     margin: 0.0325rem;
   }
   .organization_2 .info .info_top {
-    font-size:3.25rem !important;
+    font-size: 3.25rem !important;
   }
   .organization_2 .info .info_bottom {
     font-size: 1.55rem !important;
@@ -426,11 +437,43 @@ onMounted(initializeObservers); // 在组件挂载时调用
     font-size: 1.5rem !important;
     margin: 0.0325rem;
   }
-  .component li{
+  .component li {
     font-size: 0.9rem !important;
   }
-  .component_2 li{
+  .component_2 li {
     font-size: 0.9rem !important;
+  }
+}
+@media (min-width: 800px) and (max-width: 900px) {
+  .component li {
+    font-size: 0.84rem !important;
+  }
+  .component_2 li {
+    font-size: 0.84rem !important;
+  }
+}
+@media (min-width: 900px) and (max-width: 1000px) {
+  .component li {
+    font-size:1.2rem !important;
+  }
+  .component_2 li {
+    font-size: 1.2rem !important;
+  }
+}
+@media (min-width: 1100px) and (max-width: 1200px) {
+  .component li {
+    font-size:1.3rem !important;
+  }
+  .component_2 li {
+    font-size: 1.3rem !important;
+  }
+}
+@media (min-width: 1300px) and (max-width: 1400px) {
+  .component li {
+    font-size:1.4rem !important;
+  }
+  .component_2 li {
+    font-size: 1.4rem !important;
   }
 }
 .organization .info .info_bottom span {
@@ -441,16 +484,9 @@ onMounted(initializeObservers); // 在组件挂载时调用
 .component {
   margin-top: 2.75rem;
 }
-@media (min-width: 600px) and (max-width: 700px) {
-  .component li {
-    font-size: 0.9rem !important;
-  }
-  .component_2 li {
-    font-size: 0.9rem !important;
-  }
 
-}
-.component .content_top1,.component .content_bottom1{
+.component .content_top1,
+.component .content_bottom1 {
   display: flex;
   justify-content: space-between;
   transform: translateX(-100%); /* 初始位置在左边 */
@@ -458,7 +494,7 @@ onMounted(initializeObservers); // 在组件挂载时调用
   transition: transform 1s ease, opacity 0.5s ease; /* 过渡效果 */
   margin-bottom: 4rem;
 }
-.component .content_middle1{
+.component .content_middle1 {
   display: flex;
   justify-content: space-between;
   transform: translateX(100%); /* 初始位置在左边 */
@@ -476,41 +512,40 @@ onMounted(initializeObservers); // 在组件挂载时调用
   transform: translateX(0);
   visibility: visible;
 }
-.component  .content_middle1.move-right{
+.component .content_middle1.move-right {
   opacity: 1;
   transform: translateX(0);
   visibility: visible;
 }
-.component .content_top1 .left .middle .right{
+.component .content_top1 .left .middle .right {
   width: 32%;
 }
 
-.component .content_top1 .left{
+.component .content_top1 .left {
   width: 33%;
   margin-right: 2rem;
 }
-.component .content_top1 .middle{
+.component .content_top1 .middle {
   width: 33%;
   margin-right: 2rem;
 }
-.component .content_top1 .right{
+.component .content_top1 .right {
   width: 33%;
 }
 
-
-.component .content_middle1 .left{
+.component .content_middle1 .left {
   margin-right: 2rem;
   width: 33%;
 }
-.component .content_middle1 .middle{
+.component .content_middle1 .middle {
   margin-right: 2rem;
   width: 33%;
 }
-.component .content_middle1 .right{
+.component .content_middle1 .right {
   width: 33%;
 }
 
-.component .content_bottom1 .left{
+.component .content_bottom1 .left {
   width: 32.2%;
 }
 
@@ -527,7 +562,7 @@ onMounted(initializeObservers); // 在组件挂载时调用
   margin: auto;
   position: absolute;
   top: 3.75rem;
-  font-family: "AlibabaPuHuiTi_2_65_Medium", sans-serif;
+  font-family: "AlibabaPuHuiTi_2_65_Medium";
   color: rgb(255, 255, 255);
   font-size: 2rem;
   left: 50%;
@@ -563,7 +598,7 @@ onMounted(initializeObservers); // 在组件挂载时调用
   top: -0.0625rem;
   position: absolute;
   font-size: 3.75rem;
-  font-family: "Avenir-black-4", sans-serif;
+  font-family: "Avenir-black-4";
   color: rgb(255, 255, 255);
   z-index: 129;
   top: 1.875rem;
@@ -575,7 +610,7 @@ onMounted(initializeObservers); // 在组件挂载时调用
   white-space: nowrap;
   display: flex;
   font-size: 1.625rem;
-  font-family: "AlibabaPuHuiTi_2_65_Medium", sans-serif;
+  font-family: "AlibabaPuHuiTi_2_65_Medium";
   color: rgb(255, 255, 255);
   top: 5.625rem;
   left: 50%;
@@ -595,7 +630,7 @@ onMounted(initializeObservers); // 在组件挂载时调用
 .organization_2 .text {
   position: absolute;
   font-size: 1.75rem;
-  font-family: "AlibabaPuHuiTi_2_55_Regular", sans-serif;
+  font-family: "AlibabaPuHuiTi_2_55_Regular";
   color: rgb(255, 255, 255);
   left: 50%;
   transform: translateX(-50%);
@@ -666,7 +701,7 @@ onMounted(initializeObservers); // 在组件挂载时调用
 }
 .parts li {
   font-size: 1.125rem;
-  font-family: "AlibabaPuHuiTi_2_55_Regular", sans-serif;
+  font-family: "AlibabaPuHuiTi_2_55_Regular";
   color: rgb(89, 87, 87);
   text-decoration: none;
   list-style: none;

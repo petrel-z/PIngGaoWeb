@@ -1,197 +1,140 @@
 <script setup>
-import ComHeader from "@/components/ComHeader.vue";
-import Footer from "@/components/Footer.vue";
-import router from "@/router/index.js";
-import HttpUtils from "@/utils/httpUtils.js";
-import { nextTick, onMounted, onUnmounted, ref } from "vue";
-import video1 from "@/assets/imgs/_10_homePageImgs/轮播1.mp4";
-import thumb1 from "@/assets/imgs/_10_homePageImgs/carousel.png";
+import ComHeader from '@/components/ComHeader.vue'
+import Footer from '@/components/Footer.vue'
+import router from '@/router/index.js'
+import HttpUtils from '@/utils/httpUtils.js'
+import { onMounted, onUnmounted, nextTick, ref } from 'vue'
 
-// 视频数据
-const videos = ref([
-  {
-    src: video1,
-    type: "video/mp4",
-    thumbnail: thumb1,
-  },
-  {
-    src: video1,
-    type: "video/mp4",
-    thumbnail: thumb1,
-  },
-  {
-    src: video1,
-    type: "video/mp4",
-    thumbnail: thumb1,
-  },
-  {
-    src: video1,
-    type: "video/mp4",
-    thumbnail: thumb1,
-  },
-  {
-    src: video1,
-    type: "video/mp4",
-    thumbnail: thumb1,
-  },
-]);
+document.title = '平高集团有限公司'
 
-// 轮播控制逻辑
-const currentIndex = ref(0);
-const transitionTime = ref(500);
-const autoPlayInterval = ref(5000);
-const showPagination = true;
-let timer = null;
-const videoRefs = ref([]);
+// Import Swiper Vue.js components
+import { Swiper, SwiperSlide } from 'swiper/vue'
+import { Pagination } from 'swiper/modules'
 
-// 视频控制方法
-const setVideoRef = (el, index) => {
-  if (el) videoRefs.value[index] = el;
-};
+const modules = [
+  Pagination
+]
+const swiperInstance = ref(null)
+const onSwiper = (swiper) => {
+  swiperInstance.value = swiper
+}
 
-const playCurrent = () => {
-  const video = videoRefs.value[currentIndex.value];
-  if (video) {
-    video.play().catch((error) => {
-      console.error("视频播放失败:", error);
-    });
+let timeout = null
+
+const onSlideChange = () => {
+  if (swiperInstance.value) {
+    clearTimeout(timeout)
+    const activeSlide = swiperInstance.value.slides[swiperInstance.value.activeIndex]
+    const video = activeSlide.querySelector('video')
+    video.play().catch(() => { /* 处理自动播放失败 */ })
   }
-};
+}
 
-const pauseCurrent = () => {
-  const video = videoRefs.value[currentIndex.value];
-  if (video) video.pause();
-};
-
-const nextSlide = () => {
-  pauseCurrent();
-  currentIndex.value = currentIndex.value < videos.value.length - 1 ? currentIndex.value + 1 : 0;
-  playCurrent();
-};
-
-const jumpToSlide = (index) => {
-  stopAutoPlay();
-  if (index < 0 || index >= videos.value.length) return;
-  pauseCurrent();
-  currentIndex.value = index;
-  playCurrent();
-  startAutoPlay();
-};
-
-// 自动播放控制
-const startAutoPlay = () => {
-  timer = setInterval(nextSlide, autoPlayInterval.value);
-};
-
-const stopAutoPlay = () => {
-  clearInterval(timer);
-};
-
-// 生命周期
-onMounted(() => {
-  startAutoPlay();
-  playCurrent();
-});
-
-onUnmounted(() => {
-  stopAutoPlay();
-  pauseCurrent();
-});
-
-// 视频事件处理
-const handleVideoEnd = (index) => {
-  if (index === currentIndex.value) {
-    nextSlide();
+function handleVideoEnd () {
+  if (swiperInstance.value) {
+    clearTimeout(timeout)
+    timeout = setTimeout(() => {
+      swiperInstance.value.slideNext(500)  // 带过渡动画切换
+    }, 2000)
   }
-};
+}
+
+function moreNews (url) {
+  const target = router.resolve(url)
+  window.open(target.href, '_blank')
+}
+
 onMounted(() => {
-  const container = document.querySelector(".product_box");
-  const leftIcon = document.querySelector(".left_icon");
-  const rightIcon = document.querySelector(".right_icon");
-  const items1 = document.querySelectorAll(".product_detail");
-  const itemCount = items1.length;
-  let currentIndex = 0;
-  let isAnimating = false;
-  let autoSlideInterval;
-  let visibleItems = 3; // 初始值
+  const container = document.querySelector('.product_box')
+  const leftIcon = document.querySelector('.left_icon')
+  const rightIcon = document.querySelector('.right_icon')
+  const items1 = document.querySelectorAll('.product_detail')
+  const itemCount = items1.length
+  let currentIndex = 0
+  let isAnimating = false
+  let autoSlideInterval
+  let visibleItems = 3 // 初始值
 
   // 初始化
-  updateCarousel();
+  updateCarousel()
 
   // 监听视窗大小变化
-  window.addEventListener("resize", () => {
-    updateCarousel();
-  });
+  window.addEventListener('resize', () => {
+    updateCarousel()
+  })
 
-  function updateCarousel() {
-    if (isAnimating) return;
-    isAnimating = true;
+  function updateCarousel () {
+    if (isAnimating) return
+    isAnimating = true
 
     // 计算位移百分比（每个项目占 1/visibleItems）
-    const translateX = -currentIndex * (100 / visibleItems / 1.07);
-    container.style.transform = `translateX(${translateX}%)`;
-    container.style.transition = "1s";
+    const translateX = -currentIndex * (100 / visibleItems / 1.07)
+    container.style.transform = `translateX(${translateX}%)`
+    container.style.transition = '1s'
 
     // 重置动画状态
     setTimeout(() => {
-      isAnimating = false;
-    }, 500);
+      isAnimating = false
+    }, 500)
   }
 
-  function nextSlide1() {
-    stopAutoSlide();
+  function nextSlide1 () {
+    stopAutoSlide()
     if (currentIndex >= itemCount - visibleItems) {
       // 到达最后时回到第一个
-      currentIndex = 0;
+      currentIndex = 0
     } else {
-      currentIndex++;
+      currentIndex++
     }
-    updateCarousel();
-    startAutoSlide();
+    updateCarousel()
+    startAutoSlide()
   }
 
-  function prevSlide1() {
-    stopAutoSlide();
+  function prevSlide1 () {
+    stopAutoSlide()
     if (currentIndex <= 0) {
       // 到达第一个时跳到最后
-      currentIndex = itemCount - visibleItems;
+      currentIndex = itemCount - visibleItems
     } else {
-      currentIndex--;
+      currentIndex--
     }
-    updateCarousel();
-    startAutoSlide();
+    updateCarousel()
+    startAutoSlide()
   }
 
-  function startAutoSlide() {
-    autoSlideInterval = setInterval(nextSlide1, 3000); // 每3秒切换一次
+  function startAutoSlide () {
+    autoSlideInterval = setInterval(nextSlide1, 3000) // 每3秒切换一次
   }
 
   // 停止自动轮播的函数
-  function stopAutoSlide() {
+  function stopAutoSlide () {
     if (autoSlideInterval) {
-      clearInterval(autoSlideInterval);
-      autoSlideInterval = null;
-      console.log("轮播已停止");
+      clearInterval(autoSlideInterval)
+      autoSlideInterval = null
     }
   }
 
   // 添加按钮事件
-  rightIcon.addEventListener("click", nextSlide1);
-  leftIcon.addEventListener("click", prevSlide1);
+  rightIcon.addEventListener('click', nextSlide1)
+  leftIcon.addEventListener('click', prevSlide1)
 
-  startAutoSlide();
+  startAutoSlide()
 
   onUnmounted(() => {
-    clearInterval(autoSlideInterval);
-  });
-});
+    clearInterval(autoSlideInterval)
+  })
+})
 
-const scrollDiv = ref(null);
-const scrollBegin = ref(null);
-const scrollEnd = ref(null);
+const images = ref([])
+const topNews = ref([])
+const homepageNews = ref([])
 
-let MyMar = null;
-const speed = 5; // 更流畅的滚动速度
+const scrollDiv = ref(null)
+const scrollBegin = ref(null)
+const scrollEnd = ref(null)
+
+let MyMar = null
+const speed = 5 // 更流畅的滚动速度
 const initMarquee = () => {
   if (
     !scrollBegin.value ||
@@ -201,87 +144,95 @@ const initMarquee = () => {
     !scrollDiv.value ||
     !document.contains(scrollDiv.value)
   )
-    return;
+    return
 
   // 复制双份内容实现无缝衔接
-  scrollEnd.value.innerHTML = scrollBegin.value.innerHTML;
+  scrollEnd.value.innerHTML = scrollBegin.value.innerHTML
 
   const Marquee = () => {
-    if (!scrollDiv.value || !scrollBegin.value) return;
+    if (!scrollDiv.value || !scrollBegin.value) return
     if (scrollDiv.value.scrollLeft >= scrollBegin.value.offsetWidth) {
-      scrollDiv.value.scrollLeft = 0;
+      scrollDiv.value.scrollLeft = 0
     } else {
-      scrollDiv.value.scrollLeft += 1;
+      scrollDiv.value.scrollLeft += 1
     }
-  };
+  }
 
   const startScroll = () => {
-    MyMar = setInterval(Marquee, speed);
-  };
+    MyMar = setInterval(Marquee, speed)
+  }
 
   const stopScroll = () => {
-    clearInterval(MyMar);
-  };
+    clearInterval(MyMar)
+  }
 
   // 确保容器有内容后再启动
-  startScroll();
+  startScroll()
 
   // 鼠标交互
-  scrollDiv.value.addEventListener("mouseenter", stopScroll);
-  scrollDiv.value.addEventListener("mouseleave", startScroll);
-};
+  scrollDiv.value.addEventListener('mouseenter', stopScroll)
+  scrollDiv.value.addEventListener('mouseleave', startScroll)
+}
 
 onMounted(() => {
   nextTick(() => {
-    initMarquee();
-  });
-});
-const images = ref([]);
-const topNews = ref([]);
-const homepageNews = ref([]);
+    initMarquee()
+  })
+})
 
 // 格式化时间戳为 YYYY-MM-DD 格式
-function formatTimestamp(timestamp) {
-  const date = new Date(timestamp);
-  const year = date.getFullYear();
-  const month = (date.getMonth() + 1).toString().padStart(2, "0");
-  const day = date.getDate().toString().padStart(2, "0");
-  return `${year}-${month}-${day}`;
+function formatTimestamp (timestamp) {
+  const date = new Date(timestamp)
+  const year = date.getFullYear()
+  const month = (date.getMonth() + 1).toString().padStart(2, '0')
+  const day = date.getDate().toString().padStart(2, '0')
+  return `${year}-${month}-${day}`
 }
 
-async function getData() {
-  const res = await HttpUtils.get(`/cms/home/news`);
-  const result = await res.json();
-  const data = result.data;
+async function getData () {
+  const res = await HttpUtils.get(`/cms/home/news`)
+  const result = await res.json()
+  const data = result.data
 
-  const banner = [];
+  const banner = []
   data.homeBanner.forEach((item) => {
     banner.push({
       type: item.type,
       src: item.images,
-    });
-  });
-  images.value = [...banner];
-  topNews.value = [...data.topNews];
-  homepageNews.value = [...data.homepageNews];
-
-  console.log(JSON.parse(JSON.stringify(data)));
+    })
+  })
+  images.value = [...banner]
+  topNews.value = [...data.topNews]
+  homepageNews.value = [...data.homepageNews]
 }
 
-function toDetail(newsId) {
+function toDetail (newsId) {
   if (newsId) {
     const target = router.resolve({
-      name: "newsDetail",
+      name: 'newsDetail',
       params: {
         id: newsId,
       },
-    });
+    })
 
-    window.open(target.href, "_blank");
+    window.open(target.href, '_blank')
   }
 }
 
-getData();
+function toProduct (item) {
+  if (item) {
+    const target = router.resolve({
+      name: 'productSeries',
+      query: {
+        type: item,
+      },
+    })
+
+    window.open(target.href, '_blank')
+  }
+}
+
+getData()
 </script>
 
 <template>
@@ -291,60 +242,26 @@ getData();
         <ComHeader :isfooter="false" :onlyHeaderFlag="true"></ComHeader>
       </div>
     </div>
-    <!-- 视频轮播容器 -->
-    <div class="video-swiper-container" style="width: 100%; height: 61.87rem">
     <!-- 轮播主体 -->
-    <div
-      class="swiper swiper-initialized swiper-horizontal swiper-pointer-events swiper-backface-hidden"
+    <swiper
+      v-if="images.length > 1"
+      :modules="modules"
+      :allowTouchMove="false"
+      :loop="true"
+      :slides-per-view="1"
+      navigation
+      :pagination="{ clickable: true }"
+      :scrollbar="{ draggable: true }"
+      @swiper="onSwiper"
+      @slideChange="onSlideChange"
     >
-      <!-- 轮播轨道 -->
-      <div class="swiper-wrapper" style="display: flex">
-        <!-- 视频轮播项 -->
-        <div
-          v-for="(video, index) in images"
-          :key="index"
-          :style="`transform: translate3d(-${currentIndex * 100}%, 0, 0); transition-duration: ${transitionTime}ms;`"
-          class="swiper-slide"
-          :class="{
-            'swiper-slide-active': index === currentIndex,
-            'swiper-slide-prev': index === currentIndex - 1,
-            'swiper-slide-next': index === currentIndex + 1,
-          }"
-          role="group"
-          :aria-label="`${index + 1}/${videos.length}`"
-          style="width: 100%; height: 61.87rem"
-        >
-          <!-- 视频播放器 -->
-          <video
-            :ref="(el) => setVideoRef(el, index)"
-            autoplay
-            muted
-            playsinline
-            webkit-playsinline
-            :poster="video.thumbnail"
-            style="object-fit: cover"
-            @ended="handleVideoEnd(index)"
-          >
-            <source :src="video.src" type="video/mp4" />
-          </video>
-        </div>
-      </div>
-
-      <!-- 分页器 -->
-      <div
-        class="swiper-pagination"
-        v-if="showPagination"
-        :class="paginationClass"
-      >
-        <span
-          v-for="(_, index) in videos"
-          :key="index"
-          :class="{ 'swiper-pagination-bullet-active': index === currentIndex }"
-          @click="jumpToSlide(index)"
-        ></span>
-      </div>
-    </div>
-  </div>
+      <swiper-slide v-for="(image, index) in images" :key="index">
+        <video v-if="image.type === 'video'" muted disablepictureinpicture
+               @ended="handleVideoEnd(index)" poster="http://218.28.22.50:8108/videos/carousel.png"
+               :src="image.src"></video>
+        <img v-else-if="image.type === 'image'" :src="image.src" alt=""/>
+      </swiper-slide>
+    </swiper>
     <!-- 轮播图下面的导航栏 -->
     <div class="nav">
       <div class="nav_content">
@@ -396,96 +313,104 @@ getData();
         </div>
       </div>
     </div>
-    <hr style="border: 0.0625rem solid #80b7e0" />
+    <hr style="border: 0.0625rem solid #80b7e0"/>
     <div class="product_content">
       <div class="product_box">
         <div class="product_content_box">
           <div class="product_detail product_detail_1">
             <div class="product_topImg">
-              <img src="@/assets/imgs/_10_homePageImgs/product1.png" alt="" />
+              <img src="@/assets/imgs/_10_homePageImgs/product1.png" alt=""/>
             </div>
             <div class="product_h">高压电器产业</div>
             <div class="product_hr"></div>
             <div class="product_p">复合式组合电器、罐式六氟化硫断路器、高压六氟化硫断路器…</div>
-            <div class="product_button"><span>查看详情</span></div>
+            <div class="product_button" @click="toProduct('高压电器产业')"><span>查看详情</span>
+            </div>
           </div>
           <div class="product_detail">
             <div class="product_topImg">
-              <img src="@/assets/imgs/_10_homePageImgs/product2.png" alt="" />
+              <img src="@/assets/imgs/_10_homePageImgs/product2.png" alt=""/>
             </div>
             <div class="product_h">运维检修业务</div>
             <div class="product_hr"></div>
             <div class="product_p">罩式馈线自动化终端、箱式馈线自动化终端、配电自动化站所终端…</div>
-            <div class="product_button"><span>查看详情</span></div>
+            <div class="product_button" @click="toProduct('运维检修业务')"><span>查看详情</span>
+            </div>
           </div>
           <div class="product_detail">
             <div class="product_topImg">
-              <img src="@/assets/imgs/_10_homePageImgs/product3.png" alt="" />
+              <img src="@/assets/imgs/_10_homePageImgs/product3.png" alt=""/>
             </div>
             <div class="product_h">零部件制造产业</div>
             <div class="product_hr"></div>
             <div class="product_p">
               气体回收净化业务、集中供气站、混气比检测仪、密度继电器校验仪…
             </div>
-            <div class="product_button"><span>查看详情</span></div>
+            <div class="product_button" @click="toProduct('零部件制造产业')"><span>查看详情</span>
+            </div>
           </div>
           <div class="product_detail">
             <div class="product_topImg">
-              <img src="@/assets/imgs/_10_homePageImgs/product4.png" alt="" />
+              <img src="@/assets/imgs/_10_homePageImgs/product4.png" alt=""/>
             </div>
             <div class="product_h">电锅炉及热储能业务</div>
             <div class="product_hr"></div>
             <div class="product_p">复合式组合电器、罐式六氟化硫断路器、高压六氟化硫断路器…</div>
-            <div class="product_button"><span>查看详情</span></div>
+            <div class="product_button" @click="toProduct('电锅炉及热储能业务')">
+              <span>查看详情</span></div>
           </div>
           <div class="product_detail">
             <div class="product_topImg">
-              <img src="@/assets/imgs/_10_homePageImgs/product5.png" alt="" />
+              <img src="@/assets/imgs/_10_homePageImgs/product5.png" alt=""/>
             </div>
             <div class="product_h">电力储能业务</div>
             <div class="product_hr"></div>
             <div class="product_p">罩式馈线自动化终端、箱式馈线自动化终端、配电自动化站所终端…</div>
-            <div class="product_button"><span>查看详情</span></div>
+            <div class="product_button" @click="toProduct('电力储能业务')"><span>查看详情</span>
+            </div>
           </div>
           <div class="product_detail">
             <div class="product_topImg">
-              <img src="@/assets/imgs/_10_homePageImgs/product6.png" alt="" />
+              <img src="@/assets/imgs/_10_homePageImgs/product6.png" alt=""/>
             </div>
             <div class="product_h">配电网产业</div>
             <div class="product_hr"></div>
             <div class="product_p">
               气体回收净化业务、集中供气站、混气比检测仪、密度继电器校验仪…
             </div>
-            <div class="product_button"><span>查看详情</span></div>
+            <div class="product_button" @click="toProduct('配电网产业')"><span>查看详情</span></div>
           </div>
           <div class="product_detail">
             <div class="product_topImg">
-              <img src="@/assets/imgs/_10_homePageImgs/product7.png" alt="" />
+              <img src="@/assets/imgs/_10_homePageImgs/product7.png" alt=""/>
             </div>
             <div class="product_h">系统集成业务</div>
             <div class="product_hr"></div>
             <div class="product_p">复合式组合电器、罐式六氟化硫断路器、高压六氟化硫断路器…</div>
-            <div class="product_button"><span>查看详情</span></div>
+            <div class="product_button" @click="toProduct('系统集成业务')"><span>查看详情</span>
+            </div>
           </div>
           <div class="product_detail">
             <div class="product_topImg">
-              <img src="@/assets/imgs/_10_homePageImgs/product8.png" alt="" />
+              <img src="@/assets/imgs/_10_homePageImgs/product8.png" alt=""/>
             </div>
             <div class="product_h">智慧配用电业务</div>
             <div class="product_hr"></div>
             <div class="product_p">罩式馈线自动化终端、箱式馈线自动化终端、配电自动化站所终端…</div>
-            <div class="product_button"><span>查看详情</span></div>
+            <div class="product_button" @click="toProduct('智慧配用电业务')"><span>查看详情</span>
+            </div>
           </div>
           <div class="product_detail">
             <div class="product_topImg">
-              <img src="@/assets/imgs/_10_homePageImgs/product9.png" alt="" />
+              <img src="@/assets/imgs/_10_homePageImgs/product9.png" alt=""/>
             </div>
             <div class="product_h">综合能源服务业务</div>
             <div class="product_hr"></div>
             <div class="product_p">
               气体回收净化业务、集中供气站、混气比检测仪、密度继电器校验仪…
             </div>
-            <div class="product_button"><span>查看详情</span></div>
+            <div class="product_button" @click="toProduct('综合能源服务业务')"><span>查看详情</span>
+            </div>
           </div>
         </div>
       </div>
@@ -494,7 +419,7 @@ getData();
     </div>
     <div class="company_introduction">
       <div class="bg_img">
-        <img src="@/assets/imgs/_10_homePageImgs/company-introduction.png" alt="" />
+        <img src="@/assets/imgs/_10_homePageImgs/company-introduction.png" alt=""/>
       </div>
       <div class="introduction_title">赋能智慧电气 创引绿色能源</div>
       <div class="introduction_small_title">公司介绍</div>
@@ -510,7 +435,9 @@ getData();
           </div>
         </div>
         <div class="img_right">
-          <img src="@/assets/imgs/_10_homePageImgs/shipin.png" alt="" />
+          <video style="width: 36vw;height: 20.25vw;object-fit: cover" controls
+                 poster="http://218.28.22.50:8108/videos/video_poster.png"
+                 src="http://218.28.22.50:8108/videos/pinggao.mp4"/>
         </div>
       </div>
       <div class="introduction_honor">
@@ -554,19 +481,23 @@ getData();
         </div>
       </div>
       <div class="great_flag_content">
-        <div class="content_detail" v-for="top in topNews" :key="top.id" @click="toDetail(top.id)">
-          <div class="top_img"><img :src="top.headerImage" alt="" /></div>
+        <div class="content_detail" v-for="top in topNews" :key="top.id" :title="top.title"
+             @click="toDetail(top.id)">
+          <div class="top_img"><img :src="top.headerImage" :alt="top.title"/></div>
           <div class="bottom_text">
             <div class="time">{{ formatTimestamp(top.publishTime) }}</div>
-            <div class="hr" />
-            <div class="p">{{ top.title }}</div>
-            <div class="p" v-html="top.description" />
+            <div class="hr"/>
+            <div class="p text-ellipsis" style="color: #223893;font-size: 1.75rem;">{{
+                top.title
+              }}
+            </div>
+            <div class="p" v-html="top.description"></div>
           </div>
         </div>
         <div class="content_detail_text">
           <div v-for="news in homepageNews" :key="news.id" class="text" @click="toDetail(news.id)">
-            <div class="title">{{ news.title }}</div>
-            <div class="line" />
+            <div class="title text-ellipsis">{{ news.title }}</div>
+            <div class="line"/>
             <div class="time">{{ formatTimestamp(news.publishTime) }}</div>
           </div>
         </div>
@@ -578,14 +509,42 @@ getData();
         </router-link>
       </div>
       <div class="great_flag_footer">
-        <img src="@/assets/imgs/_10_homePageImgs/footer.png" alt="" />
+        <img src="@/assets/imgs/_10_homePageImgs/footer.png" alt=""/>
       </div>
     </div>
   </div>
   <div>
-    <Footer />
+    <Footer/>
   </div>
 </template>
+
+<style>
+@import "swiper/css";
+@import "swiper/css/pagination";
+
+.swiper {
+  width: 100vw;
+  margin: 0;
+  padding: 0;
+}
+
+.swiper .swiper-slide {
+  height: 56.25vw;
+}
+
+.swiper-pagination .swiper-pagination-bullet {
+  width: 5vw;
+  height: 5px;
+  border-radius: 5px;
+}
+
+.swiper .swiper-slide video,
+.swiper .swiper-slideimg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+</style>
 
 <style scoped lang="less">
 .home_page {
@@ -604,63 +563,12 @@ getData();
   left: 0;
   z-index: 101;
 }
-// .video-swiper-container {
-//   position: relative;
-//   overflow: hidden;
-//   background: #000;
-//   width: 100%;
-//   height: 61.875rem;
-// }
-.video-swiper-container {
-  position: relative;
-}
-// /* 轮播轨道 */
-// .swiper-wrapper {
-//   width: 100%;
-//   display: flex;
-//   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-//   height: 61.875rem;
-// }
-// .swiper{
-//   width: 100%;
-//   height: 61.875rem;
-// }
 
-// .swiper-slide{
-//   width: 100%;
-//   height: 61.875rem;
-// }
-.swiper-slide video {
-  flex: 1;
-  height: 61.874rem;
-}
-/* 分页器样式 */
-.swiper-pagination {
-  position: absolute;
-  transform: translateX(-50%);
-  display: flex;
-  gap: 0.7rem;
-  z-index: 100;
-  left: 50%;
-  transform: translateX(-50%);
-  bottom: 2rem;
-}
-
-.swiper-pagination span {
-  width: 8rem;
-  height: 0.2rem;
-  background-color: rgba(141, 141, 141, 0.5);
-  cursor: pointer;
-  transition: background 0.3s;
-  z-index: 100;
-}
-.swiper-pagination-bullet-active {
-  background-color: #1890ff !important;
-}
 .my_carousel .carousel video {
   width: 100%;
   height: 61.875rem;
 }
+
 .nav {
   width: 100%;
   height: 6.4375rem;
@@ -720,7 +628,7 @@ getData();
 
 .announcement_title {
   font-size: 1.375rem;
-  font-family: "AlibabaPuHuiTi_2_55_Regular", sans-serif;
+  font-family: "AlibabaPuHuiTi_2_55_Regular";
   color: rgb(0, 111, 193);
   margin-left: 0.375rem;
   margin-right: 0.75rem;
@@ -736,7 +644,7 @@ getData();
   white-space: nowrap;
   display: flex;
   font-size: 1.375rem;
-  font-family: "AlibabaPuHuiTi_2_45_Light", sans-serif;
+  font-family: "AlibabaPuHuiTi_2_45_Light";
   color: rgb(89, 87, 87);
 }
 
@@ -864,7 +772,7 @@ getData();
 
 .product_h {
   font-size: 2.5rem;
-  font-family: "AlibabaPuHuiTi_2_55_Regular", sans-serif;
+  font-family: "AlibabaPuHuiTi_2_55_Regular";
   color: rgb(0, 111, 193);
   text-align: center;
 }
@@ -884,7 +792,7 @@ getData();
   width: 21.625rem;
   height: 4.5rem;
   font-size: 1.25rem;
-  font-family: "AlibabaPuHuiTi_2_45_Light", sans-serif;
+  font-family: "AlibabaPuHuiTi_2_45_Light";
   color: rgb(89, 87, 87);
   text-align: center;
   margin: auto;
@@ -917,7 +825,7 @@ getData();
   left: 2.1rem;
   font-size: 1.125rem;
   line-height: 2rem;
-  font-family: "AlibabaPuHuiTi_2_45_Light", sans-serif;
+  font-family: "AlibabaPuHuiTi_2_45_Light";
   color: rgb(0, 111, 193);
 }
 
@@ -963,6 +871,7 @@ getData();
   width: 100%;
   height: 71.25rem;
 }
+
 @media (min-width: 380px) and (max-width: 500px) {
   .company_introduction {
     position: relative;
@@ -1017,13 +926,8 @@ getData();
     transition: ease 0.5s;
   }
 
-  .introduction_content .img_right img {
-    width: 100%;
-    height: 100%;
-  }
-
   .introduction_content .p {
-    font-size: 1.2rem !important;
+    font-size: 1.1rem !important;
     line-height: 1.7;
   }
 
@@ -1051,6 +955,98 @@ getData();
     font-size: 1.425rem !important;
     margin-top: -0.625rem;
   }
+
+  .button_right span {
+    display: block;
+    line-height: -1rem !important;
+    // vertical-align: middle;
+  }
+}
+
+@media (min-width: 500px) and (max-width: 600px) {
+  .company_introduction {
+    position: relative;
+    height: 56.25rem;
+    width: 100%;
+    padding: 3.25rem 8rem !important;
+  }
+
+  .company_introduction .bg_img {
+    top: 0;
+    left: 0;
+    position: absolute;
+    width: 100%;
+    height: 56.25rem !important;
+    z-index: -100;
+  }
+
+  .company_introduction .bg_img img {
+    width: 100%;
+    height: 56.25rem !important;
+  }
+
+  .introduction_title {
+    font-size: 2.25rem !important;
+    margin-bottom: 3.0625rem !important;
+    width: 100%;
+  }
+
+  .introduction_small_title {
+    font-size: 1.8rem !important;
+    margin-bottom: 0.625rem;
+    width: 100%;
+  }
+
+  .introduction_content {
+    width: 100%;
+    height: 31.875rem;
+    margin-bottom: 8.75rem;
+  }
+
+  .introduction_content .text_left {
+    width: 53% !important;
+    height: 31.875rem;
+    margin-right: 3.25rem !important;
+    padding-top: 0.8125rem;
+  }
+
+  .introduction_content .img_right {
+    width: 53% !important;
+    height: 70% !important;
+    min-width: 25rem;
+    transition: ease 0.5s;
+  }
+
+  .introduction_content .p {
+    font-size: 1.03rem !important;
+    line-height: 1.7;
+  }
+
+  .introduction_content .p1 {
+    margin-bottom: 1rem !important;
+  }
+
+  .introduction_honor {
+    display: flex;
+    width: 100%;
+    height: 3.5625rem;
+    border-right: 0.0625rem solid #fff;
+    position: absolute;
+    bottom: -1rem;
+    left: 0.4rem !important;
+    transform: scale(0.9);
+  }
+
+  .introduction_honor .honor_info {
+    width: 80%;
+    margin: auto;
+  }
+
+  .introduction_honor .honor_info .p {
+    font-size: 1.425rem !important;
+    margin-top: -0.625rem;
+  }
+
   .button_right span {
     display: block;
     line-height: -1rem !important;
@@ -1112,13 +1108,8 @@ getData();
     transition: ease 0.5s;
   }
 
-  .introduction_content .img_right img {
-    width: 100%;
-    height: 100%;
-  }
-
   .introduction_content .p {
-    font-size: 0.8rem !important;
+    font-size: 0.96rem !important;
     line-height: 1.7;
   }
 
@@ -1149,7 +1140,6 @@ getData();
 
   .great_flag_content .content_detail {
     width: 32%;
-    height: 23.1875rem !important;
     background-color: #ffffff;
     transition: 0.5s;
     cursor: pointer;
@@ -1157,7 +1147,7 @@ getData();
 
   .great_flag {
     position: relative;
-    padding: 7.5rem 5.75rem !important;
+    padding: 7.5rem 5.75rem 26.25rem 7.5rem !important;
     background-color: #def1fb;
     height: 74.125rem !important;
     width: 100%;
@@ -1165,10 +1155,8 @@ getData();
 
   .great_flag_content .content_detail_text {
     width: 33%;
-    height: 23.1875rem !important;
     background-color: #fff;
-    padding-top: 1rem !important;
-    padding-left: 1.5rem !important;
+    padding: 1rem 1.5rem !important;
   }
 
   .great_flag_button {
@@ -1179,6 +1167,7 @@ getData();
     top: 44rem;
     left: 50%;
     transform: translateX(-50%);
+    z-index: 999;
   }
 
   .great_flag_title {
@@ -1251,7 +1240,7 @@ getData();
 @media (min-width: 700px) and (max-width: 800px) {
   .company_introduction {
     position: relative;
-    height: 52rem;
+    height: 50rem;
     width: 100%;
     padding: 3.25rem 7rem !important;
   }
@@ -1261,7 +1250,7 @@ getData();
     left: 0;
     position: absolute;
     width: 100%;
-    height: 56.25rem !important;
+    height: 50.25rem !important;
     z-index: -100;
   }
 
@@ -1302,13 +1291,8 @@ getData();
     transition: ease 0.5s;
   }
 
-  .introduction_content .img_right img {
-    width: 100%;
-    height: 100%;
-  }
-
   .introduction_content .p {
-    font-size: 0.8rem !important;
+    font-size: 0.9rem !important;
     line-height: 1.7;
   }
 
@@ -1339,7 +1323,6 @@ getData();
 
   .great_flag_content .content_detail {
     width: 32%;
-    height: 24.1875rem !important;
     background-color: #ffffff;
     transition: 0.5s;
     cursor: pointer;
@@ -1355,10 +1338,8 @@ getData();
 
   .great_flag_content .content_detail_text {
     width: 33%;
-    height: 24.1875rem !important;
     background-color: #fff;
-    padding-top: 1rem !important;
-    padding-left: 1.5rem !important;
+    padding: 1rem 1.5rem !important;
   }
 
   .great_flag_button {
@@ -1442,16 +1423,403 @@ getData();
   }
 }
 
-@media (min-width: 800px) and (max-width: 1000px) {
+@media (min-width: 800px) and (max-width: 900px) {
+  .company_introduction {
+    position: relative;
+    height: 52rem;
+    width: 100%;
+    padding: 3.25rem 5rem !important;
+  }
+
+  .company_introduction .bg_img {
+    top: 0;
+    left: 0;
+    position: absolute;
+    width: 100%;
+    height: 47.25rem !important;
+    z-index: -100;
+  }
+
+  .company_introduction .bg_img img {
+    width: 100%;
+    height: 52.25rem !important;
+  }
+
+  .introduction_title {
+    font-size: 2.25rem !important;
+    margin-bottom: 3.0625rem !important;
+    width: 100%;
+  }
+
+  .introduction_small_title {
+    font-size: 1.8rem !important;
+    margin-bottom: 0.625rem;
+    width: 100%;
+  }
+
+  .introduction_content {
+    width: 100%;
+    height: 31.875rem;
+    margin-bottom: 8.75rem;
+  }
+
+  .introduction_content .text_left {
+    width: 53% !important;
+    height: 31.875rem;
+    margin-right: 3.25rem !important;
+    padding-top: 0.8125rem;
+  }
+
+  .introduction_content .img_right {
+    width: 53% !important;
+    height: 60% !important;
+    min-width: 25rem;
+    transition: ease 0.5s;
+  }
+
+  .introduction_content .p {
+    font-size: 0.8rem !important;
+    line-height: 1.7;
+  }
+
+  .introduction_content .p1 {
+    margin-bottom: 0.875rem !important;
+  }
+
+  .introduction_honor {
+    display: flex;
+    width: 100%;
+    height: 3.5625rem;
+    border-right: 0.0625rem solid #fff;
+    position: absolute;
+    bottom: -4rem;
+    left: 0.4rem !important;
+    transform: scale(0.9);
+  }
+
+  .introduction_honor .honor_info {
+    width: 80%;
+    margin: auto;
+  }
+
+  .introduction_honor .honor_info .p {
+    font-size: 1.425rem !important;
+    margin-top: -0.625rem;
+  }
+
+  .great_flag_content .content_detail {
+    width: 32%;
+    background-color: #ffffff;
+    transition: 0.5s;
+    cursor: pointer;
+  }
+
+  .great_flag {
+    position: relative;
+    padding: 7.5rem 7.75rem !important;
+    background-color: #def1fb;
+    height: 74.125rem !important;
+    width: 100%;
+  }
+
+  .great_flag_content .content_detail_text {
+    width: 33%;
+    background-color: #fff;
+    padding: 1rem 1.5rem !important;
+  }
+
+  .great_flag_button {
+    margin: auto;
+    width: 12.25rem;
+    height: 2.9375rem;
+    position: absolute;
+    top: 44rem;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .great_flag_content {
+    margin-bottom: 7rem !important;
+  }
+
+  .great_flag_title {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 6.25rem;
+  }
+
+  .great_flag_title .h {
+    font-size: 2rem !important;
+  }
+
+  .great_flag_title .title_right .p {
+    display: flex;
+    line-height: 4.375rem;
+    font-size: 1.1rem !important;
+  }
+
+  .great_flag_title .p {
+    font-size: 1.2rem !important;
+    margin-right: 1.25rem;
+  }
+
+  .great_flag_content .bottom_text {
+    padding: 1rem 2rem !important;
+  }
+
+  .great_flag_content .bottom_text .time {
+    font-size: 1rem !important;
+  }
+
+  .great_flag_content .bottom_text .hr {
+    width: 2.6875rem;
+    height: 0.1rem !important;
+    margin: 0.25rem 0rem;
+  }
+
+  .great_flag_content .bottom_text .p {
+    font-size: 1rem !important;
+  }
+
+  .great_flag_content .content_detail_text .text .title {
+    font-size: 1rem !important;
+  }
+
+  .great_flag_content .content_detail_text .text .line {
+    width: 2.6875rem;
+    height: 0.1rem !important;
+    margin: 0.25rem 0rem;
+  }
+
+  .great_flag_content .content_detail_text .time {
+    font-size: 1rem !important;
+    margin-bottom: 0.7rem !important;
+  }
+
+  .great_flag_footer {
+    width: 100%;
+    position: absolute;
+    bottom: -0.4375rem;
+    left: 0;
+  }
+
+  .great_flag_footer img {
+    height: 20rem !important;
+    width: 100%;
+  }
+}
+
+@media (min-width: 900px) and (max-width: 1000px) {
+  .company_introduction {
+    position: relative;
+    height: 56rem;
+    width: 100%;
+    padding: 3.25rem 7rem !important;
+  }
+
+  .company_introduction .bg_img {
+    top: 0;
+    left: 0;
+    position: absolute;
+    width: 100%;
+    height: 50.25rem !important;
+    z-index: -100;
+  }
+
+  .company_introduction .bg_img img {
+    width: 100%;
+    height: 56.25rem !important;
+  }
+
+  .introduction_title {
+    font-size: 2.25rem !important;
+    margin-bottom: 3.0625rem !important;
+    width: 100%;
+  }
+
+  .introduction_small_title {
+    font-size: 1.8rem !important;
+    margin-bottom: 0.625rem;
+    width: 100%;
+  }
+
+  .introduction_content {
+    width: 100%;
+    height: 31.875rem;
+    margin-bottom: 8.75rem;
+  }
+
+  .introduction_content .text_left {
+    width: 55% !important;
+    height: 31.875rem;
+    margin-right: 3.25rem !important;
+    padding-top: 0.8125rem;
+  }
+
+  .introduction_content .img_right {
+    width: 53% !important;
+    height: 80% !important;
+    min-width: 25rem;
+    transition: ease 0.5s;
+  }
+
+  .introduction_content .p {
+    font-size: 1.33rem !important;
+    line-height: 1.7;
+  }
+
+  .introduction_content .p1 {
+    margin-bottom: 0.875rem !important;
+  }
+
+  .introduction_honor {
+    display: flex;
+    width: 100%;
+    height: 3.5625rem;
+    border-right: 0.0625rem solid #fff;
+    position: absolute;
+    bottom: -4rem;
+    left: 0.4rem !important;
+    transform: scale(0.9);
+  }
+
+  .introduction_honor .honor_info {
+    width: 80%;
+    margin: auto;
+  }
+
+  .introduction_honor .honor_info .p {
+    font-size: 1.425rem !important;
+    margin-top: -0.625rem;
+  }
+
+  .great_flag_content .content_detail {
+    width: 32%;
+    background-color: #ffffff;
+    transition: 0.5s;
+    cursor: pointer;
+  }
+
+  .great_flag {
+    position: relative;
+    padding: 7.5rem 7.75rem !important;
+    background-color: #def1fb;
+    height: 74.125rem !important;
+    width: 100%;
+  }
+
+  .great_flag_content .content_detail_text {
+    width: 33%;
+    background-color: #fff;
+    padding: 1rem 1.5rem !important;
+  }
+
+  .great_flag_button {
+    margin: auto;
+    width: 12.25rem;
+    height: 2.9375rem;
+    position: absolute;
+    top: 44rem;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .great_flag_content {
+    margin-bottom: 7rem !important;
+  }
+
+  .great_flag_title {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 6.25rem;
+  }
+
+  .great_flag_title .h {
+    font-size: 2rem !important;
+  }
+
+  .great_flag_title .title_right .p {
+    display: flex;
+    line-height: 4.375rem;
+    font-size: 1.1rem !important;
+  }
+
+  .great_flag_title .p {
+    font-size: 1.2rem !important;
+    margin-right: 1.25rem;
+  }
+
+  .great_flag_content .bottom_text {
+    padding: 1rem 2rem !important;
+  }
+
+  .great_flag_content .bottom_text .time {
+    font-size: 1rem !important;
+  }
+
+  .great_flag_content .bottom_text .hr {
+    width: 2.6875rem;
+    height: 0.1rem !important;
+    margin: 0.25rem 0rem;
+  }
+
+  .great_flag_content .bottom_text .p {
+    font-size: 1rem !important;
+  }
+
+  .great_flag_content .content_detail_text .text .title {
+    font-size: 1rem !important;
+  }
+
+  .great_flag_content .content_detail_text .text .line {
+    width: 2.6875rem;
+    height: 0.1rem !important;
+    margin: 0.25rem 0rem;
+  }
+
+  .great_flag_content .content_detail_text .time {
+    font-size: 1rem !important;
+    margin-bottom: 0.7rem !important;
+  }
+
+  .great_flag_footer {
+    width: 100%;
+    position: absolute;
+    bottom: -0.4375rem;
+    left: 0;
+  }
+
+  .great_flag_footer img {
+    height: 20rem !important;
+    width: 100%;
+  }
 }
 
 @media (min-width: 1000px) and (max-width: 1200px) {
   .great_flag_content .content_detail {
     width: 32%;
-    height: 39rem !important;
     background-color: #ffffff;
     transition: 0.5s;
     cursor: pointer;
+  }
+
+  .introduction_content .text_left {
+    width: 55% !important;
+    height: 31.875rem;
+    margin-right: 3.25rem !important;
+    padding-top: 0.8125rem;
+  }
+
+  .introduction_content .img_right {
+    width: 53% !important;
+    height: 90% !important;
+    min-width: 25rem;
+    transition: ease 0.5s;
+  }
+
+  .introduction_content .p {
+    font-size: 1.5rem !important;
+    line-height: 1.7;
   }
 
   .great_flag {
@@ -1464,10 +1832,8 @@ getData();
 
   .great_flag_content .content_detail_text {
     width: 33%;
-    height: 39rem !important;
     background-color: #fff;
-    padding-top: 2rem;
-    padding-left: 2.5rem;
+    padding: 2rem 2.5rem
   }
 
   .great_flag_content {
@@ -1505,15 +1871,30 @@ getData();
 }
 
 @media (min-width: 1200px) and (max-width: 1400px) {
-}
-
-@media (min-width: 1400px) and (max-width: 1600px) {
   .great_flag_content .content_detail {
     width: 32%;
-    height: 34rem !important;
     background-color: #ffffff;
     transition: 0.5s;
     cursor: pointer;
+  }
+
+  .introduction_content .text_left {
+    width: 55% !important;
+    height: 31.875rem;
+    margin-right: 3.25rem !important;
+    padding-top: 0.8125rem;
+  }
+
+  .introduction_content .img_right {
+    width: 53% !important;
+    height: 90% !important;
+    min-width: 25rem;
+    transition: ease 0.5s;
+  }
+
+  .introduction_content .p {
+    font-size: 1.3rem !important;
+    line-height: 1.7;
   }
 
   .great_flag {
@@ -1526,18 +1907,16 @@ getData();
 
   .great_flag_content .content_detail_text {
     width: 33%;
-    height: 34rem !important;
     background-color: #fff;
-    padding-top: 2rem;
-    padding-left: 2.5rem;
+    padding: 2rem 2.5rem;
   }
 
   .great_flag_content {
-    margin-bottom: 2rem !important;
+    margin-bottom: 7rem !important;
   }
 
   .great_flag_content .bottom_text .time {
-    font-size: 1.2rem !important;
+    font-size: 1.4rem !important;
   }
 
   .great_flag_content .bottom_text .hr {
@@ -1547,11 +1926,11 @@ getData();
   }
 
   .great_flag_content .bottom_text .p {
-    font-size: 1.3rem !important;
+    font-size: 1.4rem !important;
   }
 
   .great_flag_content .content_detail_text .text .title {
-    font-size: 1.3rem !important;
+    font-size: 1.4rem !important;
   }
 
   .great_flag_content .content_detail_text .text .line {
@@ -1561,18 +1940,36 @@ getData();
   }
 
   .great_flag_content .content_detail_text .time {
-    font-size: 1.2rem !important;
-    margin-bottom: 1.1rem !important;
+    font-size: 1.4rem !important;
+    margin-bottom: 1.4rem !important;
   }
 }
 
-@media (min-width: 1600px) and (max-width: 1800px) {
+@media (min-width: 1400px) and (max-width: 1900px) {
   .great_flag_content .content_detail {
     width: 32%;
-    height: 38rem !important;
     background-color: #ffffff;
     transition: 0.5s;
     cursor: pointer;
+  }
+
+  .introduction_content .text_left {
+    width: 55% !important;
+    height: 31.875rem;
+    margin-right: 3.25rem !important;
+    padding-top: 0.8125rem;
+  }
+
+  .introduction_content .img_right {
+    width: 53% !important;
+    height: 90% !important;
+    min-width: 25rem;
+    transition: ease 0.5s;
+  }
+
+  .introduction_content .p {
+    font-size: 1.4rem !important;
+    line-height: 1.7;
   }
 
   .great_flag {
@@ -1585,18 +1982,16 @@ getData();
 
   .great_flag_content .content_detail_text {
     width: 33%;
-    height: 38rem !important;
     background-color: #fff;
-    padding-top: 2rem;
-    padding-left: 2.5rem;
+    padding: 2rem 2.5rem;
   }
 
   .great_flag_content {
-    margin-bottom: 6rem !important;
+    margin-bottom: 7rem !important;
   }
 
   .great_flag_content .bottom_text .time {
-    font-size: 1.2rem !important;
+    font-size: 1.4rem !important;
   }
 
   .great_flag_content .bottom_text .hr {
@@ -1606,11 +2001,11 @@ getData();
   }
 
   .great_flag_content .bottom_text .p {
-    font-size: 1.3rem !important;
+    font-size: 1.4rem !important;
   }
 
   .great_flag_content .content_detail_text .text .title {
-    font-size: 1.3rem !important;
+    font-size: 1.4rem !important;
   }
 
   .great_flag_content .content_detail_text .text .line {
@@ -1620,15 +2015,14 @@ getData();
   }
 
   .great_flag_content .content_detail_text .time {
-    font-size: 1.3rem !important;
-    margin-bottom: 1 !important;
+    font-size: 1.4rem !important;
+    margin-bottom: 1.4rem !important;
   }
 }
 
 @media (min-width: 2100px) and (max-width: 2300px) {
   .great_flag_content .content_detail {
     width: 32%;
-    height: 32rem !important;
     background-color: #ffffff;
     transition: 0.5s;
     cursor: pointer;
@@ -1644,10 +2038,8 @@ getData();
 
   .great_flag_content .content_detail_text {
     width: 33%;
-    height: 32rem !important;
     background-color: #fff;
-    padding-top: 2rem;
-    padding-left: 2.5rem;
+    padding: 2rem 2.5rem;
   }
 
   .great_flag_content {
@@ -1687,7 +2079,6 @@ getData();
 @media (min-width: 5000px) and (max-width: 8000px) {
   .great_flag_content .content_detail {
     width: 32%;
-    height: 40rem !important;
     background-color: #ffffff;
     transition: 0.5s;
     cursor: pointer;
@@ -1707,17 +2098,14 @@ getData();
 
   .great_flag_content .content_detail_text {
     width: 33%;
-    height: 40rem !important;
     background-color: #fff;
-    padding-top: 3rem;
-    padding-left: 2.5rem;
+    padding: 3rem 2.5rem;
   }
 }
 
 @media (min-width: 2300px) and (max-width: 2600px) {
   .great_flag_content .content_detail {
     width: 32%;
-    height: 36rem !important;
     background-color: #ffffff;
     transition: 0.5s;
     cursor: pointer;
@@ -1729,7 +2117,7 @@ getData();
 
   .great_flag {
     position: relative;
-    padding: 9.5rem 9.75rem;
+    padding: 9.5rem 9.75rem 26.25rem 9.5rem;
     background-color: #def1fb;
     height: 101.125rem !important;
     width: 100%;
@@ -1737,10 +2125,8 @@ getData();
 
   .great_flag_content .content_detail_text {
     width: 33%;
-    height: 36rem !important;
     background-color: #fff;
-    padding-top: 3rem;
-    padding-left: 2.5rem;
+    padding: 3rem 2.5rem;
   }
 
   .great_flag_content {
@@ -1751,7 +2137,6 @@ getData();
 @media (min-width: 2600px) and (max-width: 3000px) {
   .great_flag_content .content_detail {
     width: 32%;
-    height: 32rem !important;
     background-color: #ffffff;
     transition: 0.5s;
     cursor: pointer;
@@ -1763,7 +2148,7 @@ getData();
 
   .great_flag {
     position: relative;
-    padding: 9.5rem 9.75rem;
+    padding: 9.5rem 9.75rem 26.25rem 9.5rem;
     background-color: #def1fb;
     height: 101.125rem !important;
     width: 100%;
@@ -1771,10 +2156,8 @@ getData();
 
   .great_flag_content .content_detail_text {
     width: 33%;
-    height: 32rem !important;
     background-color: #fff;
-    padding-top: 2rem;
-    padding-left: 2.5rem;
+    padding: 2rem 2.5rem;
   }
 
   .great_flag_content {
@@ -1843,25 +2226,6 @@ getData();
   padding-top: 0.8125rem;
 }
 
-.introduction_content .img_right {
-  width: 55%;
-  height: 100%;
-  min-width: 25rem;
-  transition: ease 0.5s;
-}
-
-.introduction_content .img_right:hover {
-  transform: scale(1.04);
-  box-shadow: 0 0.375rem 0.625rem rgba(0, 0, 0, 0.488); /* 悬浮时显示黑色阴影 */
-}
-
-.introduction_content .img_right img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover; /* 实现图片等比例缩放 */
-  min-width: 25rem;
-}
-
 .introduction_content .p {
   font-size: 1.25rem;
   font-family: "AlibabaPuHuiTi_2_45_Light";
@@ -1890,16 +2254,15 @@ getData();
 
 .introduction_honor .honor_info .p {
   font-size: 1.625rem;
-  font-family: "AlibabaPuHuiTi_2_45_Light", sans-serif;
+  font-family: "AlibabaPuHuiTi_2_45_Light";
   color: rgb(255, 255, 255);
   margin-top: -0.625rem;
 }
 
 .great_flag {
   position: relative;
-  padding: 9.5rem 9.75rem;
+  padding: 7.5rem 5.75rem 26.25rem 7.5rem;
   background-color: #def1fb;
-  height: 92.125rem;
   width: 100%;
 }
 
@@ -1934,7 +2297,6 @@ getData();
 
 .great_flag_content {
   width: 100%;
-  height: 36.1875rem;
   display: flex;
   justify-content: space-between;
   margin-bottom: 4.5625rem;
@@ -1942,7 +2304,6 @@ getData();
 
 .great_flag_content .content_detail {
   width: 32%;
-  height: 36.1875rem;
   background-color: #ffffff;
   transition: 0.5s;
   cursor: pointer;
@@ -1952,6 +2313,12 @@ getData();
 .great_flag_content .content_detail:hover {
   transform: scale(0.99);
   box-shadow: 0 0.25rem 0.625rem rgba(0, 0, 0, 0.286); /* 悬浮时显示黑色阴影 */
+}
+
+.great_flag_content .content_detail .top_img {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .great_flag_content .content_detail .top_img img {
@@ -2036,10 +2403,8 @@ getData();
 
 .great_flag_content .content_detail_text {
   width: 33%;
-  height: 35.9375rem;
   background-color: #fff;
-  padding-top: 3rem;
-  padding-left: 2.5rem;
+  padding: 3rem 2.5rem;
   transition: 0.5s;
   cursor: pointer;
 }

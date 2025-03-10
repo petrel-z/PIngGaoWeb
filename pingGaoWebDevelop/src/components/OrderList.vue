@@ -24,7 +24,7 @@ function clickItem (item) {
 <template>
   <div class="order" :style="{ backgroundColor: props.bgColor }">
     <ul>
-      <li class="list-item">
+      <li class="list-item title">
         <span>{{ props.title }}</span>
         <i class="iconfont icon-a-MenuBar-show list-item-icon"></i>
       </li>
@@ -54,6 +54,10 @@ function clickItem (item) {
   align-items: center;
   border-bottom: 0.05rem solid #fff;
   cursor: pointer;
+}
+
+.list-item.title {
+  padding: 1.5rem 0;
 }
 
 .list-item span:nth-child(1) {

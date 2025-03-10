@@ -11,7 +11,7 @@ const honorList = ref([]);
 
 document.title = "资质荣誉";
 
-async function getData () {
+async function getData() {
   const res = await httpUtils.get(`/cms/honor/list`);
   const result = await res.json();
 
@@ -37,7 +37,7 @@ const createObserver = (refElement, isVisible) => {
       root: null, // 使用浏览器视口作为根元素
       rootMargin: "0px", // 无额外的边距
       threshold: 0, // 当元素的 50% 进入视口时触发
-    },
+    }
   );
   if (refElement.value) {
     refElement.value.forEach((el) => {
@@ -71,7 +71,6 @@ watch(honorList, async () => {
         </div>
         <div class="p">{{ honor.honorTitle }}</div>
       </div>
-
     </div>
     <div class="footer" v-show="false">
       <myButton class="myButton" text="加载更多"></myButton>
@@ -90,7 +89,16 @@ watch(honorList, async () => {
   background-color: #fff;
   z-index: 0;
 }
-
+@media (min-width: 300px) and (max-width:600px) {
+  .content .info {
+    margin-bottom: 0.2rem !important;
+  }
+}
+@media (min-width: 600px) and (max-width: 900px) {
+  .content .info {
+    margin-bottom: 0.2rem !important;
+  }
+}
 .content {
   margin-top: 3.125rem;
   display: flex;
@@ -103,10 +111,9 @@ watch(honorList, async () => {
   height: 90%;
   margin-bottom: 4.2rem;
   text-align: center;
-  padding: 20px;
+  padding: 2rem;
   box-sizing: border-box;
 }
-
 
 .content .info .img img {
   width: 100%;
@@ -125,7 +132,7 @@ watch(honorList, async () => {
 
 .content .info .p {
   font-size: 1.25rem;
-  font-family: "AlibabaPuHuiTi_2_55_Regular", sans-serif;
+  font-family: "AlibabaPuHuiTi_2_55_Regular";
   color: rgb(182, 141, 55);
   margin: 0.7rem 0rem;
 }
@@ -140,5 +147,4 @@ watch(honorList, async () => {
 .footer .myButton {
   margin: auto;
 }
-
 </style>

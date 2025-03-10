@@ -113,7 +113,8 @@ onMounted(initializeObservers); // 在组件挂载时调用
         </div>
       </div>
       <div class="img_right" ref="imgRight" :class="{ 'slide-in-right': isVisibleRightImg }">
-        <img src="@/assets/imgs/_10_homePageImgs/shipin.png" alt="Image" />
+        <video style="width: 100%;height: 100%" controls
+               src="http://218.28.22.50:8108/videos/pinggao.mp4" />
       </div>
     </div>
     <div class="key">
@@ -309,7 +310,7 @@ onMounted(initializeObservers); // 在组件挂载时调用
   left: 50%;
   transform: translateX(-50%);
   font-size: 1.625rem;
-  font-family: "AlibabaPuHuiTi_2_65_Medium", sans-serif;
+  font-family: "AlibabaPuHuiTi_2_65_Medium";
   color: rgb(0, 111, 193);
   line-height: 1.423;
 }
@@ -334,7 +335,7 @@ onMounted(initializeObservers); // 在组件挂载时调用
   display: flex;
   width: 55%;
   font-size: 1.25rem;
-  font-family: "AlibabaPuHuiTi_2_55_Regular", sans-serif;
+  font-family: "AlibabaPuHuiTi_2_55_Regular";
   color: rgb(89, 87, 87);
   line-height: 1.85;
   opacity: 0;
@@ -359,12 +360,11 @@ onMounted(initializeObservers); // 在组件挂载时调用
 }
 
 .text_word .img_right {
-  margin-left: 0.625rem;
+  margin: 0.625rem 0 0  0.625rem;
   width: 44%;
   height: 22.8125rem;
   background-size: contain;
-  padding-top: 0.625rem;
-  transition: 0.5s;
+  padding-top: 0;
   transform: translateX(100%); /* 初始位置在右边 */
   opacity: 0; /* 初始时不可见 */
   transition: transform 1s ease, opacity 0.5s ease; /* 过渡效果 */
@@ -377,11 +377,7 @@ onMounted(initializeObservers); // 在组件挂载时调用
   visibility: visible; /* 可见 */
 }
 
-.text_word .img_right:hover {
-  transform: scale(1.05);
-}
-
-.text_word .img_right img {
+.text_word .img_right video {
   margin-left: 2.75rem;
   width: 100%;
   height: 22.8125rem;
@@ -396,7 +392,7 @@ onMounted(initializeObservers); // 在组件挂载时调用
 
 .key .key_title {
   font-size: 2rem;
-  font-family: "AlibabaPuHuiTi_2_65_Medium", sans-serif;
+  font-family: "AlibabaPuHuiTi_2_65_Medium";
   color: rgb(0, 111, 193);
   text-align: center;
   margin-bottom: 2.1875rem;
@@ -511,7 +507,7 @@ onMounted(initializeObservers); // 在组件挂载时调用
   top: 2rem;
   position: absolute;
   font-size: 1.375rem;
-  font-family: "AlibabaPuHuiTi_2_65_Medium", sans-serif;
+  font-family: "AlibabaPuHuiTi_2_65_Medium";
   color: rgb(35, 24, 21);
 }
 
@@ -520,10 +516,72 @@ onMounted(initializeObservers); // 在组件挂载时调用
   top: 4.4375rem;
   position: absolute;
   font-size: 1.25rem;
-  font-family: "AlibabaPuHuiTi_2_45_Light", sans-serif;
+  font-family: "AlibabaPuHuiTi_2_45_Light";
   color: rgb(89, 87, 87);
 }
-@media (min-width: 300px) and (max-width: 400px) {
+@media (min-width: 10px) and (max-width: 200px) {
+  .text_word .text-section p {
+    font-size: 0.8rem !important;
+    margin-bottom: 1rem;
+  }
+  .text_word .img_right video{
+    margin-left: 1rem;
+    width: 100% !important;
+    height: 15rem !important;
+  }
+  .mind_map {
+    background-color: #def1fb;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 46.25rem !important;
+  }
+  .mind_map img {
+    width: 100%;
+    position: absolute;
+    height: 43.25rem !important;
+  }
+  .groupProfile {
+    width: 100%;
+    height: 180.5rem !important;
+  }
+  .key_content_h {
+    left: 6.6rem;
+    top: 0.7rem;
+    font-size: 1rem;
+  }
+  .key_content_text {
+    left: 6.6rem;
+    top: 2.7rem;
+    font-size: 0.85rem;
+  }
+  .key .key_info {
+    height: 6rem;
+  }
+  .basic_culture_info .basic_culture_h {
+    font-size: 1.1rem !important;
+  }
+  .basic_culture_info .basic_culture_p {
+    font-size: 0.9rem !important;
+  }
+  .basic_culture_line {
+    width: 2rem !important;
+    height: 0.0625rem;
+  }
+  .basic_culture_info .basic_culture_num {
+    white-space: pre;
+    font-size: 1.4242rem !important;
+  }
+  .basic_culture_info {
+    border-left: 0.0625rem solid #c4c4c4;
+    width: 25%;
+    height: 6rem !important;
+  }
+  .introduce_content span {
+    font-size: 1.2rem;
+  }
+}
+@media (min-width: 200px) and (max-width: 300px) {
   .mind_map {
     background-color: #def1fb;
     bottom: 0;
@@ -531,11 +589,76 @@ onMounted(initializeObservers); // 在组件挂载时调用
     width: 100%;
     height: 72.25rem !important;
   }
-
+  .text_word .text-section p {
+    font-size: 1.4rem !important;
+  }
+  .mind_map {
+    background-color: #def1fb;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 76.25rem !important;
+  }
   .mind_map img {
     width: 100%;
     position: absolute;
+    height: 73.25rem !important;
+  }
+  .groupProfile {
+    width: 100%;
+    height: 250.5rem !important;
+  }
+}
+@media (min-width: 300px) and (max-width: 350px) {
+  .key_content_h {
+    left: 10.6rem;
+    top: 2.1rem;
+    font-size: 1.175rem;
+  }
+  .key_content_text {
+    left: 10.6rem;
+    top: 4rem;
+    font-size: 1.1rem;
+  }
+  .mind_map {
+    background-color: #def1fb;
+    bottom: 0;
+    left: 0;
+    width: 100%;
     height: 72.25rem !important;
+  }
+  .text_word .text-section p {
+    font-size: 1.05rem !important;
+  }
+  .mind_map {
+    background-color: #def1fb;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 67.25rem !important;
+  }
+  .mind_map img {
+    width: 100%;
+    position: absolute;
+    height: 62.25rem !important;
+  }
+  .groupProfile {
+    width: 100%;
+    height: 226.5rem !important;
+  }
+}
+@media (min-width: 350px) and (max-width: 400px) {
+  .mind_map {
+    background-color: #def1fb;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 67.25rem !important;
+  }
+  .mind_map img {
+    width: 100%;
+    position: absolute;
+    height: 67.25rem !important;
   }
   .groupProfile {
     width: 100%;
@@ -550,7 +673,23 @@ onMounted(initializeObservers); // 在组件挂载时调用
     font-size: 1rem;
   }
 }
-@media (min-width: 400px) and (max-width: 500px) {
+@media (min-width: 400px) and (max-width: 450px) {
+  .key_content_h {
+    left: 10.2rem;
+    top: 1.9rem !important;
+    font-size: 1.175rem;
+  }
+  .key_content_text {
+    left: 10.2rem;
+    top: 4rem;
+    font-size: 1.1rem;
+  }
+  .groupProfile {
+    width: 100%;
+    height: 218.5rem !important;
+  }
+}
+@media (min-width: 450px) and (max-width: 500px) {
   .key_content_h {
     left: 11.4rem;
     top: 2.4rem;
@@ -563,17 +702,17 @@ onMounted(initializeObservers); // 在组件挂载时调用
   }
   .groupProfile {
     width: 100%;
-    height: 200.5rem !important;
+    height: 213.5rem !important;
   }
 }
-@media (min-width: 600px) and (max-width: 700px) {
+@media (min-width: 500px) and (max-width: 600px) {
   .key_content_h {
-    left: 7.7rem;
+    left: 7.5rem ;
     top: 1.3rem;
     font-size: 1rem;
   }
   .key_content_text {
-    left: 7.7rem;
+    left: 7.5rem;
     top: 2.9rem;
     font-size: 0.85rem;
   }
@@ -611,7 +750,74 @@ onMounted(initializeObservers); // 在组件挂载时调用
     width: 40% !important;
     height: 14.8125rem !important;
   }
-  .text_word .img_right img {
+  .text_word .img_right video {
+    width: 100%;
+    height: 14rem !important;
+  }
+  .mind_map {
+    background-color: #def1fb;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 46.25rem !important;
+  }
+
+  .mind_map img {
+    width: 100%;
+    position: absolute;
+    height: 45.25rem !important;
+  }
+  .groupProfile {
+    width: 100%;
+    height: 175.5rem !important;
+  }
+}
+@media (min-width: 600px) and (max-width: 700px) {
+  .key_content_h {
+    left: 7.3rem;
+    top: 1.2rem;
+    font-size: 1rem;
+  }
+  .key_content_text {
+    left: 7.3rem;
+    top: 2.9rem;
+    font-size: 0.85rem;
+  }
+  .key .key_info {
+    height: 6.5rem;
+  }
+  .basic_culture_info .basic_culture_h {
+    font-size: 1rem !important;
+  }
+  .basic_culture_info .basic_culture_p {
+    font-size: 0.9rem !important;
+  }
+  .basic_culture_line {
+    width: 2rem !important;
+    height: 0.0625rem;
+  }
+  .basic_culture_info .basic_culture_num {
+    white-space: pre;
+    font-size: 1.3242rem !important;
+  }
+  .basic_culture_info {
+    border-left: 0.0625rem solid #c4c4c4;
+    width: 25%;
+    height: 6rem !important;
+  }
+  .text_word .word_left {
+    display: flex;
+    width: 57%;
+  }
+  .text_word .word_left p {
+    font-size: 0.75rem !important;
+  }
+  .text_word .img_right {
+    margin-left: -0.325rem;
+    width: 40% !important;
+    height: 14.8125rem !important;
+  }
+  .text_word .img_right video {
     width: 100%;
     height: 14rem !important;
   }
@@ -678,7 +884,7 @@ onMounted(initializeObservers); // 在组件挂载时调用
     width: 40% !important;
     height: 14.8125rem !important;
   }
-  .text_word .img_right img {
+  .text_word .img_right video {
     width: 100%;
     height: 14rem !important;
   }
@@ -700,15 +906,87 @@ onMounted(initializeObservers); // 在组件挂载时调用
     height: 184.5rem !important;
   }
 }
-@media (min-width: 800px) and (max-width: 1000px) {
+@media (min-width: 800px) and (max-width: 900px) {
+  .introduce_content span{
+    font-size: 1.2rem !important;
+  }
   .key_content_h {
-    left: 10rem;
-    top: 1.8rem;
+    left: 5.8rem;
+    top: 0.7rem;
+    font-size: 0.87rem;
+  }
+  .key_content_text {
+    left: 5.8rem;
+    top: 2.2rem;
+    font-size: 0.75rem;
+  }
+  .key .key_info {
+    width: 33%;
+    height: 5rem;
+  }
+  .basic_culture_info .basic_culture_h {
+    font-size: 1rem !important;
+  }
+  .basic_culture_info .basic_culture_p {
+    font-size: 0.9rem !important;
+  }
+  .basic_culture_line {
+    width: 2rem !important;
+    height: 0.0625rem;
+  }
+  .basic_culture_info .basic_culture_num {
+    white-space: pre;
+    font-size: 1.3242rem !important;
+  }
+  .basic_culture_info {
+    border-left: 0.0625rem solid #c4c4c4;
+    width: 25%;
+    height: 6rem !important;
+  }
+  .text_word .word_left {
+    display: flex;
+    width: 57%;
+  }
+  .text_word .word_left p {
+    font-size: 0.82rem !important;
+    margin-bottom: 1rem;
+  }
+  .text_word .img_right {
+    margin-left: -0.325rem;
+    width: 40% !important;
+    height: 14.8125rem !important;
+  }
+  .text_word .img_right video {
+    width: 100%;
+    height: 14rem !important;
+  }
+  .mind_map {
+    background-color: #def1fb;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 50.25rem !important;
+  }
+
+  .mind_map img {
+    width: 100%;
+    position: absolute;
+    height: 45.25rem !important;
+  }
+  .groupProfile {
+    width: 100%;
+    height: 180.5rem !important;
+  }
+}
+@media (min-width: 900px) and (max-width: 1000px) {
+  .key_content_h {
+    left: 9.8rem;
+    top: 1.5rem;
     font-size: 1.2rem;
   }
   .key_content_text {
-    left: 10rem;
-    top: 3.9rem;
+    left: 9.8rem;
+    top: 3.6rem;
     font-size: 1.1rem;
   }
   .key .key_info {
@@ -729,10 +1007,13 @@ onMounted(initializeObservers); // 在组件挂载时调用
   }
   .groupProfile {
     width: 100%;
-    height: 222.5rem !important;
+    height: 226.5rem !important;
   }
 }
 @media (min-width: 1000px) and (max-width: 1200px) {
+  .introduce_content span{
+    font-size: 1.8rem !important;
+  }
   .key_content_h {
     left: 11.6rem;
     top: 2.2rem;
@@ -924,7 +1205,7 @@ onMounted(initializeObservers); // 在组件挂载时调用
 
 .basic_culture_title {
   font-size: 2rem;
-  font-family: "AlibabaPuHuiTi_2_65_Medium", sans-serif;
+  font-family: "AlibabaPuHuiTi_2_65_Medium";
   color: rgb(0, 111, 193);
   text-align: center;
   margin-bottom: 4.375rem;
@@ -963,12 +1244,12 @@ onMounted(initializeObservers); // 在组件挂载时调用
 }
 .basic_culture_info .basic_culture_h {
   font-size: 1.375rem;
-  font-family: "AlibabaPuHuiTi_2_65_Medium", sans-serif;
+  font-family: "AlibabaPuHuiTi_2_65_Medium";
   color: rgb(0, 111, 193);
 }
 .basic_culture_info .basic_culture_p {
   font-size: 1.25rem;
-  font-family: "AlibabaPuHuiTi_2_45_Light", sans-serif;
+  font-family: "AlibabaPuHuiTi_2_45_Light";
   color: rgb(89, 87, 87);
 }
 .basic_culture_line {
@@ -981,7 +1262,7 @@ onMounted(initializeObservers); // 在组件挂载时调用
 .basic_culture_info .basic_culture_num {
   white-space: pre;
   font-size: 1.7242rem;
-  font-family: "AlibabaPuHuiTi_2_85_Bold", sans-serif;
+  font-family: "AlibabaPuHuiTi_2_85_Bold";
   color: rgb(0, 111, 193);
 }
 .basic_culture_info_last {
