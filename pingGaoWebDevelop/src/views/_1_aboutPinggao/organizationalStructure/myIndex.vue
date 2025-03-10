@@ -49,7 +49,7 @@ const initializeObservers = () => {
 onMounted(initializeObservers); // 在组件挂载时调用
 </script>
 <template>
-  <!-- 组织结构 -->
+  <!-- 组织机构 -->
   <div class="organizationalStructure">
     <MyTitle class="mytitle" title="组织机构" english="organization structure"></MyTitle>
     <div class="organization">

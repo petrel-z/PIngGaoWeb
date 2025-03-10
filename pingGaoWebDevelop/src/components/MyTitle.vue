@@ -2,7 +2,7 @@
 const props = defineProps({
   title: {
     type: String,
-    default: "组织结构",
+    default: "组织机构",
   },
   english: {
     type: String,

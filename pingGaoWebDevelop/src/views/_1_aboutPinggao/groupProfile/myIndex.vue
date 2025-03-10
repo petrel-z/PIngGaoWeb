@@ -121,12 +121,13 @@ onMounted(initializeObservers); // 在组件挂载时调用
       <div class="key_title"><span>核心集团六大核心概念</span></div>
       <div class="key_content1" ref="keyContent1" :class="{ key_content1_left: isVisibleContent1 }">
         <div class="key_info key_content_one">
-          <div class="key_content_h">企业革命</div>
+          <div class="key_content_h">企业使命</div>
           <div class="key_content_text">赋能智慧电气·创引绿色能源</div>
         </div>
         <div class="key_content_two key_info">
-          <div class="key_content_h">战略定位</div>
-          <div class="key_content_text">电气技术引领者·能源革命推动者 绿色发展践行者</div>
+          <div class="key_content_h">总体布局</div>
+          <div class="key_content_text">装备制造·集成增值服务·智慧能源服务</div>
+
         </div>
         <div class="key_content_three key_info">
           <div class="key_content_h">战略目标</div>
@@ -139,8 +140,8 @@ onMounted(initializeObservers); // 在组件挂载时调用
         :class="{ key_content2_right: isVisibleContent2 }"
       >
         <div class="key_content_four key_info">
-          <div class="key_content_h">总体布局</div>
-          <div class="key_content_text">装备制造·集成增值服务 智慧能源服务</div>
+          <div class="key_content_h">战略定位</div>
+          <div class="key_content_text">电气技术引领者·能源革命推动者·绿色发展践行者</div>
         </div>
         <div class="key_content_five key_info">
           <div class="key_content_h">企业精神</div>
@@ -165,7 +166,7 @@ onMounted(initializeObservers); // 在组件挂载时调用
           <div class="basic_word">
             <div class="basic_culture_h">管理理念</div>
             <div class="basic_culture_line"></div>
-            <div class="basic_culture_p">守正创新坚持坚守坚韧</div>
+            <div class="basic_culture_p">守正创新 坚持 坚守 坚韧</div>
             <div class="basic_culture_num">01</div>
           </div>
         </div>
@@ -177,7 +178,7 @@ onMounted(initializeObservers); // 在组件挂载时调用
           <div class="basic_word">
             <div class="basic_culture_h">经营理念</div>
             <div class="basic_culture_line"></div>
-            <div class="basic_culture_p">以客为中心推进高质量发展</div>
+            <div class="basic_culture_p">以客户为中心 推进高质量发展</div>
             <div class="basic_culture_num">02</div>
           </div>
         </div>
@@ -189,7 +190,7 @@ onMounted(initializeObservers); // 在组件挂载时调用
           <div class="basic_word">
             <div class="basic_culture_h">服务理念</div>
             <div class="basic_culture_line"></div>
-            <div class="basic_culture_p">始手客户需求为客户创造价值</div>
+            <div class="basic_culture_p">始于客户需求 为客户创造价值</div>
             <div class="basic_culture_num">03</div>
           </div>
         </div>
@@ -201,7 +202,7 @@ onMounted(initializeObservers); // 在组件挂载时调用
           <div class="basic_word">
             <div class="basic_culture_h">科技理念</div>
             <div class="basic_culture_line"></div>
-            <div class="basic_culture_p">开放协同创新成就未来</div>
+            <div class="basic_culture_p">开放协同 创新成就未来</div>
             <div class="basic_culture_num">04</div>
           </div>
         </div>
@@ -213,7 +214,7 @@ onMounted(initializeObservers); // 在组件挂载时调用
           <div class="basic_word">
             <div class="basic_culture_h">质量理念</div>
             <div class="basic_culture_line"></div>
-            <div class="basic_culture_p">以零缺陷铸就卓越呙质</div>
+            <div class="basic_culture_p">以零缺陷 铸就卓越品质</div>
             <div class="basic_culture_num">05</div>
           </div>
         </div>
@@ -225,7 +226,7 @@ onMounted(initializeObservers); // 在组件挂载时调用
           <div class="basic_word">
             <div class="basic_culture_h">安全理念</div>
             <div class="basic_culture_line"></div>
-            <div class="basic_culture_p">生命至上安全第一</div>
+            <div class="basic_culture_p">生命至上 安全第一</div>
             <div class="basic_culture_num">06</div>
           </div>
         </div>
@@ -237,7 +238,7 @@ onMounted(initializeObservers); // 在组件挂载时调用
           <div class="basic_word">
             <div class="basic_culture_h">人才理念</div>
             <div class="basic_culture_line"></div>
-            <div class="basic_culture_p">集聚一流人才共创一流佳绩</div>
+            <div class="basic_culture_p">集聚一流人才 共创一流佳绩</div>
             <div class="basic_culture_num">07</div>
           </div>
         </div>
@@ -249,7 +250,7 @@ onMounted(initializeObservers); // 在组件挂载时调用
           <div class="basic_word">
             <div class="basic_culture_h">廉洁理念</div>
             <div class="basic_culture_line"></div>
-            <div class="basic_culture_p">守正创新坚持坚守坚韧</div>
+            <div class="basic_culture_p">廉洁从业 诚信守法 行为规范 道德高尚</div>
             <div class="basic_culture_num">08</div>
           </div>
         </div>
@@ -531,7 +532,6 @@ onMounted(initializeObservers); // 在组件挂载时调用
   }
   .mind_map {
     background-color: #def1fb;
-    bottom: 0;
     left: 0;
     width: 100%;
     height: 46.25rem !important;
@@ -584,7 +584,6 @@ onMounted(initializeObservers); // 在组件挂载时调用
 @media (min-width: 200px) and (max-width: 300px) {
   .mind_map {
     background-color: #def1fb;
-    bottom: 0;
     left: 0;
     width: 100%;
     height: 72.25rem !important;
@@ -594,7 +593,6 @@ onMounted(initializeObservers); // 在组件挂载时调用
   }
   .mind_map {
     background-color: #def1fb;
-    bottom: 0;
     left: 0;
     width: 100%;
     height: 76.25rem !important;
@@ -622,7 +620,6 @@ onMounted(initializeObservers); // 在组件挂载时调用
   }
   .mind_map {
     background-color: #def1fb;
-    bottom: 0;
     left: 0;
     width: 100%;
     height: 72.25rem !important;
@@ -632,7 +629,6 @@ onMounted(initializeObservers); // 在组件挂载时调用
   }
   .mind_map {
     background-color: #def1fb;
-    bottom: 0;
     left: 0;
     width: 100%;
     height: 67.25rem !important;
@@ -650,7 +646,6 @@ onMounted(initializeObservers); // 在组件挂载时调用
 @media (min-width: 350px) and (max-width: 400px) {
   .mind_map {
     background-color: #def1fb;
-    bottom: 0;
     left: 0;
     width: 100%;
     height: 67.25rem !important;
@@ -756,7 +751,6 @@ onMounted(initializeObservers); // 在组件挂载时调用
   }
   .mind_map {
     background-color: #def1fb;
-    bottom: 0;
     left: 0;
     width: 100%;
     height: 46.25rem !important;
@@ -823,7 +817,6 @@ onMounted(initializeObservers); // 在组件挂载时调用
   }
   .mind_map {
     background-color: #def1fb;
-    bottom: 0;
     left: 0;
     width: 100%;
     height: 46.25rem !important;
@@ -890,7 +883,6 @@ onMounted(initializeObservers); // 在组件挂载时调用
   }
   .mind_map {
     background-color: #def1fb;
-    bottom: 0;
     left: 0;
     width: 100%;
     height: 50.25rem !important;
@@ -962,7 +954,6 @@ onMounted(initializeObservers); // 在组件挂载时调用
   }
   .mind_map {
     background-color: #def1fb;
-    bottom: 0;
     left: 0;
     width: 100%;
     height: 50.25rem !important;
@@ -994,7 +985,6 @@ onMounted(initializeObservers); // 在组件挂载时调用
   }
   .mind_map {
     background-color: #def1fb;
-    bottom: 0;
     left: 0;
     width: 100%;
     height: 65.25rem !important;
@@ -1026,7 +1016,6 @@ onMounted(initializeObservers); // 在组件挂载时调用
   }
   .mind_map {
     background-color: #def1fb;
-    bottom: 0;
     left: 0;
     width: 100%;
     height: 70.25rem !important;
@@ -1055,7 +1044,6 @@ onMounted(initializeObservers); // 在组件挂载时调用
   }
   .mind_map {
     background-color: #def1fb;
-    bottom: 0;
     left: 0;
     width: 100%;
     height: 62.25rem !important;
@@ -1100,7 +1088,6 @@ onMounted(initializeObservers); // 在组件挂载时调用
   }
   .mind_map {
     background-color: #def1fb;
-    bottom: 0;
     left: 0;
     width: 100%;
     height: 70.25rem !important;
@@ -1129,7 +1116,6 @@ onMounted(initializeObservers); // 在组件挂载时调用
   }
   .mind_map {
     background-color: #def1fb;
-    bottom: 0;
     left: 0;
     width: 100%;
     height: 70.25rem !important;
@@ -1148,7 +1134,6 @@ onMounted(initializeObservers); // 在组件挂载时调用
 @media (min-width: 2400px) and (max-width: 2600px) {
   .mind_map {
     background-color: #def1fb;
-    bottom: 0;
     left: 0;
     width: 100%;
     height: 74.25rem !important;
@@ -1167,7 +1152,6 @@ onMounted(initializeObservers); // 在组件挂载时调用
 @media (min-width: 3000px) and (max-width: 5000px) {
   .mind_map {
     background-color: #def1fb;
-    bottom: 0;
     left: 0;
     width: 100%;
     height: 71.25rem !important;
@@ -1186,7 +1170,6 @@ onMounted(initializeObservers); // 在组件挂载时调用
 @media (min-width: 5000px) and (max-width: 8000px) {
   .mind_map {
     background-color: #def1fb;
-    bottom: 0;
     left: 0;
     width: 100%;
     height: 78.25rem !important;
@@ -1212,7 +1195,7 @@ onMounted(initializeObservers); // 在组件挂载时调用
 }
 .basic_culture_content {
   width: 100%;
-  height: 19.375rem;
+  //height: 19.375rem;
   display: flex;
   flex-wrap: wrap;
 }
@@ -1270,7 +1253,6 @@ onMounted(initializeObservers); // 在组件挂载时调用
 }
 .mind_map {
   background-color: #def1fb;
-  bottom: 0rem;
   left: 0;
   width: 100%;
   height: 64.25rem;
