@@ -118,7 +118,7 @@ onMounted(initializeObservers); // 在组件挂载时调用
       </div>
     </div>
     <div class="key">
-      <div class="key_title"><span>核心集团六大核心概念</span></div>
+      <div class="key_title"><span>平高集团企业文化六大核心理念</span></div>
       <div class="key_content1" ref="keyContent1" :class="{ key_content1_left: isVisibleContent1 }">
         <div class="key_info key_content_one">
           <div class="key_content_h">企业使命</div>

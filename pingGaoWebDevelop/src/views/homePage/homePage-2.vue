@@ -271,7 +271,7 @@ getData()
         <div class="nav_introduction">
           <router-link class="p" to="/informationCenter">集团新闻</router-link>
         </div>
-        <div class="nav_introduction">
+        <div class="nav_introduction" v-if="false">
           <router-link class="p" to="/partyBuilding">党的精神</router-link>
         </div>
         <div class="nav_introduction">
