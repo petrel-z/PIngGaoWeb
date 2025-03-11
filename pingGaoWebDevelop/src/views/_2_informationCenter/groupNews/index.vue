@@ -108,7 +108,7 @@ getData();
               :title1="topNews.title"
               title2=""
               :text="topNews.description"
-              :img="topNews.images"
+              :img="topNews.headerImage"
               bg-color="#006fc1"
               :to-state="false"
               :detail-id="topNews.id"

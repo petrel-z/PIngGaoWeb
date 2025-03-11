@@ -114,7 +114,7 @@ onMounted(() => {
         </div>
         <div ref="contentBox" style="margin-top: 2.5rem">
           <ContentPag :title1="topNews.title" title2="" :text="topNews.description"
-                      :img="topNews.images" :to-state="true" :detail-id="topNews.id" />
+                      :img="topNews.headerImage" :to-state="true" :detail-id="topNews.id" />
         </div>
         <div class="item-container">
           <Item1
