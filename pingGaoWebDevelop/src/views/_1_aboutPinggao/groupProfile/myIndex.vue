@@ -1195,7 +1195,7 @@ onMounted(initializeObservers); // 在组件挂载时调用
 }
 .basic_culture_content {
   width: 100%;
-  //height: 19.375rem;
+  /*height: 19.375rem;*/
   display: flex;
   flex-wrap: wrap;
 }
