@@ -225,8 +225,9 @@ function setActive (category, index) {
   height: 16.9375rem;
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
-  margin-top: 4.125rem;
+  justify-content: flex-start;
+  gap: 16px;
+  margin-top: 3rem;
   position: relative;
   transform: translateX(-100%); /* 初始位置在左边 */
   visibility: hidden;

@@ -100,13 +100,13 @@ onMounted(initializeObservers); // 在组件挂载时调用
           <ul class="parts">
             <li>办公室(党委办公室、董事会办公室)</li>
             <li>发展策划部</li>
-            <li>财务资产部(资本管理部)</li>
-            <li>党委组织部(人力资源部、全面深化改革办公室)</li>
+            <li>财务资产部（资本管理部）</li>
+            <li>党委组织部（人力资源部、全面深化改革办公室）</li>
             <li>科信部</li>
             <li>纪委（党委巡察办）</li>
             <li>合规管理部（审计部）</li>
-            <li>党委工作部(党委宣传部、工会、团委)</li>
-            <li>市场运营部</li>
+            <li>党委工作部（党委宣传部、工会、团委）</li>
+            <li>市场运营部（国际部）</li>
             <li>安全质量部</li>
             <li>生产物资部</li>
           </ul>
@@ -116,7 +116,7 @@ onMounted(initializeObservers); // 在组件挂载时调用
           <ul class="parts">
             <li>北京平高清大科技发展有限公司</li>
             <li>河南平高祥和电气有限公司</li>
-            <li>平高集团(河南)电力器材科技有限公司</li>
+            <li>平高集团（河南）电力器材科技有限公司</li>
             <li>平高集团物链科技有限公司</li>
             <li>平高集团电力检修工程有限公司</li>
             <li>西安平高智慧能源有限公司</li>
@@ -125,6 +125,7 @@ onMounted(initializeObservers); // 在组件挂载时调用
             <li>平高集团智能电气有限公司</li>
             <li>南京平高信息通信技术有限公司</li>
             <li>河南平高电力设备有限公司</li>
+            <li>平高集团能源发展有限公司</li>
           </ul>
         </div>
         <div class="right">
@@ -154,7 +155,7 @@ onMounted(initializeObservers); // 在组件挂载时调用
           </ul>
         </div>
         <div class="right">
-          <headLine title="营销平台"></headLine>
+          <headLine title="合营公司"></headLine>
           <ul class="parts">
             <li>平高东芝(河南)开关零部件制造有限公司</li>
           </ul>
@@ -168,9 +169,17 @@ onMounted(initializeObservers); // 在组件挂载时调用
             <li>平高集团电力储能事业部</li>
           </ul>
         </div>
+        <div class="middle">
+          <headLine title="科研平台"></headLine>
+          <ul class="parts">
+            <li>平高大连交大轨道电气技术研究院</li>
+            <li>清华大学（电机系）平高集团有限公司电气技术联合研究中心</li>
+            <li>平高集团智慧能源技术研究</li>
+          </ul>
+        </div>
       </div>
     </div>
-    <div class="organization_2">
+    <div class="organization_2" v-if="false">
       <div class="organization_title">平高集团控股子公司</div>
       <div class="detail">
         <div class="introduce">
@@ -211,7 +220,7 @@ onMounted(initializeObservers); // 在组件挂载时调用
         </div>
       </div>
     </div>
-    <div class="component_2">
+    <div class="component_2" v-if="false">
       <div class="content_top_2" ref="wordLeftRef1" :class="{ 'move-left': isVisibleWordLeft1 }">
         <div class="content_left_2">
           <headLine title="本部部门"></headLine>
@@ -488,7 +497,7 @@ onMounted(initializeObservers); // 在组件挂载时调用
 .component .content_top1,
 .component .content_bottom1 {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
   transform: translateX(-100%); /* 初始位置在左边 */
   visibility: hidden;
   transition: transform 1s ease, opacity 0.5s ease; /* 过渡效果 */
@@ -546,7 +555,8 @@ onMounted(initializeObservers); // 在组件挂载时调用
 }
 
 .component .content_bottom1 .left {
-  width: 32.2%;
+  margin-right: 2rem;
+  width: 33%;
 }
 
 .organization_2 {
