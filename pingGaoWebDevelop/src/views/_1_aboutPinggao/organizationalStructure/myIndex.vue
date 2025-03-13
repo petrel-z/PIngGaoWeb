@@ -1,52 +1,53 @@
 <script setup>
-import MyTitle from "@/components/MyTitle.vue";
-import headLine from "@/components/MyHeadLine.vue";
-import { ref, onMounted } from "vue";
-const infoRef = ref(null);
-const isVisibleInfo = ref(false);
-const infoRef1 = ref(null);
-const isVisibleInfo1 = ref(false);
-const wordLeftRef = ref(null);
-const isVisibleWordLeft = ref(false);
-const wordRightRef = ref(null);
-const isVisibleWordRight = ref(false);
-const wordLeftRef1 = ref(null);
-const isVisibleWordLeft1 = ref(false);
-const wordRightRef1 = ref(null);
-const isVisibleWordRight1 = ref(false);
+import MyTitle from '@/components/MyTitle.vue'
+import headLine from '@/components/MyHeadLine.vue'
+import { ref, onMounted } from 'vue'
+
+const infoRef = ref(null)
+const isVisibleInfo = ref(false)
+const infoRef1 = ref(null)
+const isVisibleInfo1 = ref(false)
+const wordLeftRef = ref(null)
+const isVisibleWordLeft = ref(false)
+const wordRightRef = ref(null)
+const isVisibleWordRight = ref(false)
+const wordLeftRef1 = ref(null)
+const isVisibleWordLeft1 = ref(false)
+const wordRightRef1 = ref(null)
+const isVisibleWordRight1 = ref(false)
 // 创建交叉观察器
 const createObserver = (refElement, isVisible) => {
   const observer = new IntersectionObserver(
     (entries) => {
       entries.forEach((entry) => {
-        const { intersectionRatio } = entry;
+        const { intersectionRatio } = entry
         // 设置触发条件：元素进入视口 50% 以上时触发
         if (intersectionRatio >= 0) {
-          isVisible.value = true;
-          observer.disconnect(); // 元素可见后停止观察
+          isVisible.value = true
+          observer.disconnect() // 元素可见后停止观察
         }
-      });
+      })
     },
     {
       root: null, // 使用浏览器视口作为根元素
-      rootMargin: "0px", // 无额外的边距
+      rootMargin: '0px', // 无额外的边距
       threshold: 0, // 当元素的 50% 进入视口时触发
     }
-  );
+  )
   if (refElement.value) {
-    observer.observe(refElement.value);
+    observer.observe(refElement.value)
   }
-};
+}
 // 初始化所有的观察器
 const initializeObservers = () => {
-  createObserver(infoRef, isVisibleInfo);
-  createObserver(infoRef1, isVisibleInfo1);
-  createObserver(wordLeftRef, isVisibleWordLeft);
-  createObserver(wordLeftRef1, isVisibleWordLeft1);
-  createObserver(wordRightRef, isVisibleWordRight);
-  createObserver(wordRightRef1, isVisibleWordRight1);
-};
-onMounted(initializeObservers); // 在组件挂载时调用
+  createObserver(infoRef, isVisibleInfo)
+  createObserver(infoRef1, isVisibleInfo1)
+  createObserver(wordLeftRef, isVisibleWordLeft)
+  createObserver(wordLeftRef1, isVisibleWordLeft1)
+  createObserver(wordRightRef, isVisibleWordRight)
+  createObserver(wordRightRef1, isVisibleWordRight1)
+}
+onMounted(initializeObservers) // 在组件挂载时调用
 </script>
 <template>
   <!-- 组织机构 -->
@@ -157,7 +158,7 @@ onMounted(initializeObservers); // 在组件挂载时调用
         <div class="right">
           <headLine title="合营公司"></headLine>
           <ul class="parts">
-            <li>平高东芝(河南)开关零部件制造有限公司</li>
+            <li>平高东芝（河南）开关零部件制造有限公司</li>
           </ul>
         </div>
       </div>
@@ -165,7 +166,7 @@ onMounted(initializeObservers); // 在组件挂载时调用
         <div class="left">
           <headLine title="分公司"></headLine>
           <ul class="parts">
-            <li>平高集团有限公司综合能源服务分公司</li>
+            <li>平高集团有限公司综合服务分公司</li>
             <li>平高集团电力储能事业部</li>
           </ul>
         </div>
@@ -225,12 +226,12 @@ onMounted(initializeObservers); // 在组件挂载时调用
         <div class="content_left_2">
           <headLine title="本部部门"></headLine>
           <ul class="parts">
-            <li>综合管理部(党建工作部、纪委办公室)</li>
+            <li>综合管理部（党建工作部、纪委办公室）</li>
             <li>人劳部</li>
             <li>财务部</li>
             <li>证券部</li>
             <li>审计部</li>
-            <li>科技管理部(发展策划部)</li>
+            <li>科技管理部（发展策划部）</li>
             <li>生产物资部</li>
             <li>安全质量部</li>
             <li>平高集团客户服务中心</li>
@@ -253,12 +254,12 @@ onMounted(initializeObservers); // 在组件挂载时调用
           <ul class="parts">
             <li>河南平芝高压开关有限公司</li>
             <li>上海平高天灵开关有限公司</li>
-            <li>一希捷爱斯(上海)电气有限公司</li>
+            <li>希捷爱斯（上海）电气有限公司</li>
             <li>上海雷泽灵电气有限公司</li>
             <li>广州平高电力技术有限公司</li>
-            <li>平高帕拉特(河南)能源科技有限公司</li>
+            <li>平高帕拉特（河南）能源科技有限公司</li>
             <li>平高集团印度电力有限公司</li>
-            <li>平高新松电力智能装备(河南)有限公司</li>
+            <li>平高新松电力智能装备（河南)有限公司</li>
           </ul>
         </div>
       </div>
@@ -270,13 +271,13 @@ onMounted(initializeObservers); // 在组件挂载时调用
         <div class="content_left_2">
           <headLine title="合营公司"></headLine>
           <ul class="parts">
-            <li>平高东芝(廊坊)避雷器有限公司</li>
+            <li>平高东芝（廊坊）避雷器有限公司</li>
           </ul>
         </div>
         <div class="content_middle_2">
           <headLine title="支撑平台"></headLine>
           <ul class="parts">
-            <li>工程技术中心(计量中心)</li>
+            <li>工程技术中心（计量中心）</li>
             <li>市场营销中心</li>
             <li>综合运行中心</li>
             <li>特高压管理中心</li>
@@ -318,6 +319,7 @@ onMounted(initializeObservers); // 在组件挂载时调用
   background-color: #fff;
   z-index: -100;
 }
+
 .organization {
   position: relative;
   margin-top: 3.75rem;
@@ -337,12 +339,14 @@ onMounted(initializeObservers); // 在组件挂载时调用
   left: 50%;
   transform: translate(-50%, -50%);
 }
+
 .organization .detail {
   position: absolute;
   display: flex;
   bottom: 4.6875rem;
   width: 100%;
 }
+
 .organization .introduce {
   width: 16.7%;
   height: 7rem;
@@ -376,6 +380,7 @@ onMounted(initializeObservers); // 在组件挂载时调用
   left: 50%;
   transform: translate(-50%, -50%);
 }
+
 .organization .info .info_bottom {
   position: absolute;
   white-space: nowrap;
@@ -387,109 +392,137 @@ onMounted(initializeObservers); // 在组件挂载时调用
   left: 50%;
   transform: translate(-50%, -50%);
 }
+
 @media (min-width: 300px) and (max-width: 400px) {
   .component li {
     font-size: 1.2rem !important;
   }
+
   .component_2 li {
     font-size: 1.2rem !important;
   }
 }
+
 @media (min-width: 600px) and (max-width: 700px) {
   .organization .info .info_top {
     font-size: 3.25rem !important;
   }
+
   .organization .info .info_bottom {
     font-size: 1.2rem !important;
   }
+
   .organization .info .info_bottom span {
     font-size: 1.3rem !important;
     display: block;
     margin: 0.0325rem;
   }
+
   .organization_2 .info .info_top {
     font-size: 3.25rem !important;
   }
+
   .organization_2 .info .info_bottom {
     font-size: 1.2rem !important;
     transform: translate(-50%, -50%);
   }
+
   .organization_2 .info .info_bottom span {
     font-size: 1.3rem !important;
     margin: 0.0625rem;
   }
+
   .component li {
     font-size: 0.9rem !important;
   }
+
   .component_2 li {
     font-size: 0.9rem !important;
   }
 }
+
 @media (min-width: 701px) and (max-width: 800px) {
   .organization .info .info_top {
     font-size: 3.25rem;
   }
+
   .organization .info .info_bottom {
     font-size: 1.55rem;
   }
+
   .organization .info .info_bottom span {
     font-size: 1.5rem !important;
     margin: 0.0325rem;
   }
+
   .organization_2 .info .info_top {
     font-size: 3.25rem !important;
   }
+
   .organization_2 .info .info_bottom {
     font-size: 1.55rem !important;
   }
+
   .organization_2 .info .info_bottom span {
     font-size: 1.5rem !important;
     margin: 0.0325rem;
   }
+
   .component li {
     font-size: 0.9rem !important;
   }
+
   .component_2 li {
     font-size: 0.9rem !important;
   }
 }
+
 @media (min-width: 800px) and (max-width: 900px) {
   .component li {
     font-size: 0.84rem !important;
   }
+
   .component_2 li {
     font-size: 0.84rem !important;
   }
 }
+
 @media (min-width: 900px) and (max-width: 1000px) {
   .component li {
-    font-size:1.2rem !important;
+    font-size: 1.2rem !important;
   }
+
   .component_2 li {
     font-size: 1.2rem !important;
   }
 }
+
 @media (min-width: 1100px) and (max-width: 1200px) {
   .component li {
-    font-size:1.3rem !important;
+    font-size: 1.3rem !important;
   }
+
   .component_2 li {
     font-size: 1.3rem !important;
   }
 }
+
 @media (min-width: 1300px) and (max-width: 1400px) {
   .component li {
-    font-size:1.4rem !important;
+    font-size: 1.4rem !important;
   }
+
   .component_2 li {
     font-size: 1.4rem !important;
   }
 }
+
 .organization .info .info_bottom span {
   font-size: 1.6rem;
   display: block;
   margin: 0.0625rem;
 }
+
 .component {
   margin-top: 2.75rem;
 }
@@ -503,6 +536,7 @@ onMounted(initializeObservers); // 在组件挂载时调用
   transition: transform 1s ease, opacity 0.5s ease; /* 过渡效果 */
   margin-bottom: 4rem;
 }
+
 .component .content_middle1 {
   display: flex;
   justify-content: space-between;
@@ -511,21 +545,25 @@ onMounted(initializeObservers); // 在组件挂载时调用
   transition: transform 1s ease, opacity 0.5s ease; /* 过渡效果 */
   margin-bottom: 4rem;
 }
+
 .component .content_top1.move-left {
   opacity: 1;
   transform: translateX(0);
   visibility: visible;
 }
+
 .component .content_bottom1.move-left {
   opacity: 1;
   transform: translateX(0);
   visibility: visible;
 }
+
 .component .content_middle1.move-right {
   opacity: 1;
   transform: translateX(0);
   visibility: visible;
 }
+
 .component .content_top1 .left .middle .right {
   width: 32%;
 }
@@ -534,10 +572,12 @@ onMounted(initializeObservers); // 在组件挂载时调用
   width: 33%;
   margin-right: 2rem;
 }
+
 .component .content_top1 .middle {
   width: 33%;
   margin-right: 2rem;
 }
+
 .component .content_top1 .right {
   width: 33%;
 }
@@ -546,10 +586,12 @@ onMounted(initializeObservers); // 在组件挂载时调用
   margin-right: 2rem;
   width: 33%;
 }
+
 .component .content_middle1 .middle {
   margin-right: 2rem;
   width: 33%;
 }
+
 .component .content_middle1 .right {
   width: 33%;
 }
@@ -578,12 +620,14 @@ onMounted(initializeObservers); // 在组件挂载时调用
   left: 50%;
   transform: translate(-50%, -50%);
 }
+
 .organization_2 .detail {
   position: absolute;
   display: flex;
   bottom: 4.6875rem;
   width: 100%;
 }
+
 .organization_2 .introduce {
   width: 16.7%;
   height: 7rem;
@@ -591,6 +635,7 @@ onMounted(initializeObservers); // 在组件挂载时调用
   color: #fff;
   padding-bottom: 0.3125rem;
 }
+
 .organization_2 .info {
   position: relative;
   transform: scale(0.3); /* 初始缩小 */
@@ -604,6 +649,7 @@ onMounted(initializeObservers); // 在组件挂载时调用
   opacity: 1; /* 可见 */
   visibility: visible; /* 可见 */
 }
+
 .organization_2 .info .info_top {
   top: -0.0625rem;
   position: absolute;
@@ -615,6 +661,7 @@ onMounted(initializeObservers); // 在组件挂载时调用
   left: 50%;
   transform: translate(-50%, -50%);
 }
+
 .organization_2 .info .info_bottom {
   position: absolute;
   white-space: nowrap;
@@ -626,17 +673,20 @@ onMounted(initializeObservers); // 在组件挂载时调用
   left: 50%;
   transform: translate(-50%, -50%);
 }
+
 .organization_2 .info .info_bottom span {
   font-size: 1.5rem;
   display: block;
   margin: 0.0625rem;
 }
+
 .organization_2 .pic {
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
   top: 5.9375rem;
 }
+
 .organization_2 .text {
   position: absolute;
   font-size: 1.75rem;
@@ -646,9 +696,11 @@ onMounted(initializeObservers); // 在组件挂载时调用
   transform: translateX(-50%);
   top: 7.5rem;
 }
+
 .component_2 {
   margin-top: 3.75rem;
 }
+
 .component_2 .content_top_2 {
   display: flex;
   justify-content: space-between;
@@ -656,11 +708,13 @@ onMounted(initializeObservers); // 在组件挂载时调用
   visibility: hidden;
   transition: transform 1s ease, opacity 0.5s ease; /* 过渡效果 */
 }
+
 .component_2 .content_top_2.move-left {
   opacity: 1;
   transform: translateX(0);
   visibility: visible;
 }
+
 .component_2 .content_bottom_2 {
   justify-content: space-between;
   display: flex;
@@ -669,46 +723,56 @@ onMounted(initializeObservers); // 在组件挂载时调用
   visibility: hidden;
   transition: transform 1s ease, opacity 0.5s ease; /* 过渡效果 */
 }
+
 .component_2 .content_bottom_2.move-right {
   opacity: 1;
   transform: translateX(0);
   visibility: visible;
 }
+
 .component_2 .content_top_2 .content_left_2 {
   width: 33%;
   height: 33.125rem;
 }
+
 .component_2 .content_top_2 .content_middle_2 {
   margin-left: 0.75rem;
   width: 33%;
   height: 33.125rem;
 }
+
 .component_2 .content_top_2 .content_right_2 {
   margin-left: 0.8125rem;
   width: 33%;
   height: 33.125rem;
 }
+
 .component_2 .content_bottom_2 .content_left_2 {
   width: 33%;
   height: 33.125rem;
 }
+
 .component_2 .content_bottom_2 .content_middle_2 {
   margin-left: 0.75rem;
   width: 33%;
   height: 33.125rem;
 }
+
 .component_2 .content_bottom_2 .content_right_2 {
   margin-left: 0.8125rem;
   width: 33%;
   height: 33.125rem;
 }
+
 .component_2 .content_bottom_2 .content_right_2 .two_parts {
   display: flex;
 }
+
 .parts {
   width: 31.25rem;
   margin-top: -0.25rem;
 }
+
 .parts li {
   font-size: 1.125rem;
   font-family: "AlibabaPuHuiTi_2_55_Regular";
