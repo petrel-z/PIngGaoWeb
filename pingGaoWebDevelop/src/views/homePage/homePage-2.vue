@@ -9,9 +9,10 @@ document.title = '平高集团有限公司'
 
 // Import Swiper Vue.js components
 import { Swiper, SwiperSlide } from 'swiper/vue'
-import { Pagination } from 'swiper/modules'
+import { Navigation, Pagination } from 'swiper/modules'
 
 const modules = [
+  Navigation,
   Pagination
 ]
 const swiperInstance = ref(null)
@@ -244,6 +245,7 @@ getData()
     </div>
     <!-- 轮播主体 -->
     <swiper
+      style="--swiper-navigation-sides-offset: 30px"
       v-if="images.length > 1"
       :modules="modules"
       :allowTouchMove="false"
@@ -256,10 +258,10 @@ getData()
       @slideChange="onSlideChange"
     >
       <swiper-slide v-for="(image, index) in images" :key="index">
-        <video v-if="image.type === 'video'" muted disablepictureinpicture
+        <video v-if="image.type === 'video'" muted autoplay disablepictureinpicture
                @ended="handleVideoEnd(index)" poster="http://218.28.22.50:8108/videos/carousel.png"
                :src="image.src"></video>
-        <img v-else-if="image.type === 'image'" :src="image.src" alt=""/>
+        <img v-else-if="image.type === 'image'" :src="image.src" alt="" />
       </swiper-slide>
     </swiper>
     <!-- 轮播图下面的导航栏 -->
@@ -297,13 +299,13 @@ getData()
         </div>
       </div>
     </div>
-    <hr style="border: 0.0625rem solid #80b7e0"/>
+    <hr style="border: 0.0625rem solid #80b7e0" />
     <div class="product_content">
       <div class="product_box">
         <div class="product_content_box">
           <div class="product_detail product_detail_1">
             <div class="product_topImg">
-              <img src="@/assets/imgs/_10_homePageImgs/product1.png" alt=""/>
+              <img src="@/assets/imgs/_10_homePageImgs/product1.png" alt="" />
             </div>
             <div class="product_h">高压电器产业</div>
             <div class="product_hr"></div>
@@ -313,7 +315,7 @@ getData()
           </div>
           <div class="product_detail">
             <div class="product_topImg">
-              <img src="@/assets/imgs/_10_homePageImgs/product2.png" alt=""/>
+              <img src="@/assets/imgs/_10_homePageImgs/product2.png" alt="" />
             </div>
             <div class="product_h">运维检修业务</div>
             <div class="product_hr"></div>
@@ -323,7 +325,7 @@ getData()
           </div>
           <div class="product_detail">
             <div class="product_topImg">
-              <img src="@/assets/imgs/_10_homePageImgs/product3.png" alt=""/>
+              <img src="@/assets/imgs/_10_homePageImgs/product3.png" alt="" />
             </div>
             <div class="product_h">零部件制造产业</div>
             <div class="product_hr"></div>
@@ -335,7 +337,7 @@ getData()
           </div>
           <div class="product_detail">
             <div class="product_topImg">
-              <img src="@/assets/imgs/_10_homePageImgs/product5.png" alt=""/>
+              <img src="@/assets/imgs/_10_homePageImgs/product5.png" alt="" />
             </div>
             <div class="product_h">电力储能业务</div>
             <div class="product_hr"></div>
@@ -345,7 +347,7 @@ getData()
           </div>
           <div class="product_detail">
             <div class="product_topImg">
-              <img src="@/assets/imgs/_10_homePageImgs/product6.png" alt=""/>
+              <img src="@/assets/imgs/_10_homePageImgs/product6.png" alt="" />
             </div>
             <div class="product_h">配电网产业</div>
             <div class="product_hr"></div>
@@ -356,7 +358,7 @@ getData()
           </div>
           <div class="product_detail">
             <div class="product_topImg">
-              <img src="@/assets/imgs/_10_homePageImgs/product7.png" alt=""/>
+              <img src="@/assets/imgs/_10_homePageImgs/product7.png" alt="" />
             </div>
             <div class="product_h">系统集成业务</div>
             <div class="product_hr"></div>
@@ -366,7 +368,7 @@ getData()
           </div>
           <div class="product_detail">
             <div class="product_topImg">
-              <img src="@/assets/imgs/_10_homePageImgs/product8.png" alt=""/>
+              <img src="@/assets/imgs/_10_homePageImgs/product8.png" alt="" />
             </div>
             <div class="product_h">智慧配用电业务</div>
             <div class="product_hr"></div>
@@ -376,7 +378,7 @@ getData()
           </div>
           <div class="product_detail">
             <div class="product_topImg">
-              <img src="@/assets/imgs/_10_homePageImgs/product9.png" alt=""/>
+              <img src="@/assets/imgs/_10_homePageImgs/product9.png" alt="" />
             </div>
             <div class="product_h">综合能源服务业务</div>
             <div class="product_hr"></div>
@@ -393,7 +395,7 @@ getData()
     </div>
     <div class="company_introduction">
       <div class="bg_img">
-        <img src="@/assets/imgs/_10_homePageImgs/company-introduction.png" alt=""/>
+        <img src="@/assets/imgs/_10_homePageImgs/company-introduction.png" alt="" />
       </div>
       <div class="introduction_title">赋能智慧电气 创引绿色能源</div>
       <div class="introduction_small_title">公司介绍</div>
@@ -411,7 +413,7 @@ getData()
         <div class="img_right">
           <video style="width: 36vw;height: 20.25vw;object-fit: cover" controls
                  poster="http://218.28.22.50:8108/videos/video_poster.png"
-                 src="http://218.28.22.50:8108/videos/pinggao.mp4"/>
+                 src="http://218.28.22.50:8108/videos/pinggao.mp4" />
         </div>
       </div>
       <div class="introduction_honor">
@@ -457,10 +459,10 @@ getData()
       <div class="great_flag_content">
         <div class="content_detail" v-for="top in topNews" :key="top.id" :title="top.title"
              @click="toDetail(top.id)">
-          <div class="top_img"><img :src="top.headerImage" :alt="top.title"/></div>
+          <div class="top_img"><img :src="top.headerImage" :alt="top.title" /></div>
           <div class="bottom_text">
             <div class="time">{{ formatTimestamp(top.publishTime) }}</div>
-            <div class="hr"/>
+            <div class="hr" />
             <div class="p text-ellipsis" style="color: #223893;font-size: 1.75rem;">{{
                 top.title
               }}
@@ -471,7 +473,7 @@ getData()
         <div class="content_detail_text">
           <div v-for="news in homepageNews" :key="news.id" class="text" @click="toDetail(news.id)">
             <div class="title text-ellipsis">{{ news.title }}</div>
-            <div class="line"/>
+            <div class="line" />
             <div class="time">{{ formatTimestamp(news.publishTime) }}</div>
           </div>
         </div>
@@ -483,18 +485,19 @@ getData()
         </router-link>
       </div>
       <div class="great_flag_footer">
-        <img src="@/assets/imgs/_10_homePageImgs/footer.png" alt=""/>
+        <img src="@/assets/imgs/_10_homePageImgs/footer.png" alt="" />
       </div>
     </div>
   </div>
   <div>
-    <Footer/>
+    <Footer />
   </div>
 </template>
 
 <style>
 @import "swiper/css";
 @import "swiper/css/pagination";
+@import "swiper/css/navigation";
 
 .swiper {
   width: 100vw;
