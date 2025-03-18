@@ -308,7 +308,7 @@ const props = defineProps({
 }
 
 /* 中型设备（平板，600px 到 900px） */
-@media (max-width: 700px) {}
+// @media (max-width: 700px) {}
 
 /* 小型设备（手机，小于 600px） */
 
@@ -330,7 +330,7 @@ const props = defineProps({
   }
 }
 
-@media (max-width: 500px) {}
+// @media (max-width: 500px) {}
 
 @media (max-width: 400px) {
   .partyContentBar {

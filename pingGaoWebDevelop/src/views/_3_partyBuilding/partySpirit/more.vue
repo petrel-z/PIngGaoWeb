@@ -93,9 +93,10 @@ getData();
     <div class="list">
       <div class="left" ref="left">
         <div v-for="item in leftList" :key="item.id" class="listItem">
-<<<<<<< HEAD
-          <Item2 :time="formatTimestamp(item.publishTime)" :text="item.title" time-color="#a51617" text-color="#7b6a5d"
-            text-font-family="SourceHanSerifCN_Bold" :hover-bg-color="'#e06e5f'" @click="toDetail(item.id)" />
+          <Item2 :time="formatTimestamp(item.publishTime)"
+          :text="item.title" time-color="#a51617" text-color="#7b6a5d"
+            text-font-family="SourceHanSerifCN_Bold"
+            :hover-bg-color="'#e06e5f'" @click="toDetail(item.id)" />
         </div>
         <div class="footer-button-MT">
           <MyPagination v-if="hasMore" :total="pageMax" :current="pageNo" font-color="#a51617"
@@ -103,17 +104,6 @@ getData();
           <p v-else style="font-size: 24px;">
             暂无更多
           </p>
-=======
-          <Item2
-            style="--hoverBgColor: #e06e5f"
-            :time="formatTimestamp(item.publishTime)"
-            :text="item.title"
-            time-color="#a51617"
-            text-color="#7b6a5d"
-            text-font-family="SourceHanSerifCN_Bold"
-            @click="toDetail(item.id)"
-          />
->>>>>>> 64308a7e4753cdc6906e83e163f45734db83597f
         </div>
       </div>
       <div class="right" ref="right">
@@ -154,19 +144,13 @@ getData();
     width: 78%;
     display: flex;
     justify-content: space-between;
-<<<<<<< HEAD
-=======
     gap: 2%;
     margin: 0 auto;
->>>>>>> 64308a7e4753cdc6906e83e163f45734db83597f
 
     .left {
       width: 60%;
-<<<<<<< HEAD
-=======
       margin: 0;
       min-height: 500px;
->>>>>>> 64308a7e4753cdc6906e83e163f45734db83597f
 
       div:nth-child(1) {
         margin-top: 0;
