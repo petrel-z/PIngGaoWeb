@@ -114,15 +114,15 @@ onMounted(() => {
         </div>
         <div ref="contentBox" style="margin-top: 2.5rem">
           <ContentPag :title1="topNews.title" title2="" :text="topNews.description"
-                      :img="topNews.images" :to-state="true" :detail-id="topNews.id" />
+                      :img="topNews.headerImage" :to-state="true" :detail-id="topNews.id" />
         </div>
         <div class="item-container">
           <Item1
             v-for="(item, index) in mainNews"
             :key="index"
             :detail-id="item.id"
-            :month="item.month"
-            :year="item.year"
+            :month="item.timeObj.month"
+            :year="item.timeObj.year"
             :title="item.title"
             :text="item.description "
             @click-item="toDetail"

@@ -9,9 +9,10 @@ document.title = '平高集团有限公司'
 
 // Import Swiper Vue.js components
 import { Swiper, SwiperSlide } from 'swiper/vue'
-import { Pagination } from 'swiper/modules'
+import { Navigation, Pagination } from 'swiper/modules'
 
 const modules = [
+  Navigation,
   Pagination
 ]
 const swiperInstance = ref(null)
@@ -244,6 +245,7 @@ getData()
     </div>
     <!-- 轮播主体 -->
     <swiper
+      style="--swiper-navigation-sides-offset: 30px"
       v-if="images.length > 1"
       :modules="modules"
       :allowTouchMove="false"
@@ -256,10 +258,10 @@ getData()
       @slideChange="onSlideChange"
     >
       <swiper-slide v-for="(image, index) in images" :key="index">
-        <video v-if="image.type === 'video'" muted disablepictureinpicture
+        <video v-if="image.type === 'video'" muted autoplay disablepictureinpicture
                @ended="handleVideoEnd(index)" poster="http://218.28.22.50:8108/videos/carousel.png"
                :src="image.src"></video>
-        <img v-else-if="image.type === 'image'" :src="image.src" alt=""/>
+        <img v-else-if="image.type === 'image'" :src="image.src" alt="" />
       </swiper-slide>
     </swiper>
     <!-- 轮播图下面的导航栏 -->
@@ -271,7 +273,7 @@ getData()
         <div class="nav_introduction">
           <router-link class="p" to="/informationCenter">集团新闻</router-link>
         </div>
-        <div class="nav_introduction">
+        <div class="nav_introduction" v-if="false">
           <router-link class="p" to="/partyBuilding">党的精神</router-link>
         </div>
         <div class="nav_introduction">
@@ -290,36 +292,20 @@ getData()
         <div ref="scrollDiv" class="scroll-container">
           <div ref="scrollBegin" class="scroll-content">
             <span class="pad_right">
-              平高集团隶属于中国电气装备集团有限公司，始建于1970年，是我国电工行业重大技术装备支柱企业，
-              具备世界领先的规模化高端电力装备研发制造实力及行业领先的能源系统集成解决方案提供能力。是国
-              家级高新技术企业、国家级创新型企业，先后荣获全国五一劳动奖状、中国机械工业100强企业、装备
-              中国功勋企业、全国文明单位、国家技能人才培育突出贡献单位、中国储能产业最具影响力企业等荣誉
-              称号。经过50余年的发展，平高集团已形成了涵盖输配电设备研发、设计、制造、销售、检测、运维等
-              服务及相关设备成套、电力工程总承包、全过程工程咨询、综合能源服务、电力储能、电锅炉及热储能、
-              海上风电并网装备、智慧电网装备、充换电设施的业务格局。构建了以中原腹地为中心，触角遍布京津
-              冀、长三角、环渤海等经济区的产业布局。积极拓展“一带一路”市场，产品覆盖东欧、东南亚、中东、
-              非洲、南美洲、大洋洲等70多个国家和地区。平高集团坚持自主创新，掌握了交直流、全系列、全电压
-              等级开关产品研发制造技术，搭建了“五院三中心一基地”新型研发体系，研制了一系列引领我国开关发展
-              、打破国外垄断、提升民族装备水平的首台套产品，特别是在特高压交直流开关、直流穿墙套管、环保型
-              开关电力储能等产品领域达到世界领先水平。产品广泛应用于我国重点电力工程，先后为我国第-条500千
-              伏高压交流输电工程、第一条750千伏超高压交流输电工程、世界首条投入商业运行的1000千伏交流示范
-              工程、世界输送容量最大的苏通GIL综合管廊工程、国内首个百兆瓦级电网侧储能项目等国家重点工程项
-              目提供了成套设备和技术服务。平高集团以世界一流智慧电气装备集团战略目标为统领，紧紧围绕“智慧
-              电气、系统服务高效能源”总体布局，聚焦电力装备制造及能源系统解决方案，争当电气技术引领者、能
-              源革命推动者、绿色发展践行者，努力为全面建设社会主义现代化国家贡献智慧和力量。
+              平高集团隶属于中国电气装备集团有限公司，始建于1970年，是我国电工行业重大技术装备支柱企业，具备世界领先的规模化高端电力装备研发制造实力及行业领先的能源系统集成解决方案提供能力。是国家级高新技术企业、国家级创新型企业，先后荣获全国五一劳动奖状、中国机械工业100强企业、装备中国功勋企业、全国文明单位、国家技能人才培育突出贡献单位、中国储能产业最具影响力企业等荣誉称号。经过50余年的发展，平高集团已形成了涵盖输配电设备研发、设计、制造、销售、检测、运维等服务及相关设备成套、电力工程总承包、全过程工程咨询、综合能源服务、电力储能、智慧电网装备、充换电设施的业务格局。构建了以中原腹地为中心，触角遍布京津冀、长三角、环渤海等经济区的产业布局。积极拓展“一带一路”市场，产品覆盖东欧、东南亚、中东、非洲、南美洲、大洋洲等70多个国家和地区。平高集团坚持自主创新，掌握了交直流、全系列、全电压等级开关产品研发制造技术，搭建了“五院三中心一基地”新型研发体系，研制了一系列引领我国开关发展、打破国外垄断、提升民族装备水平的首台套产品，特别是在特高压交直流开关、直流穿墙套管、环保型开关电力储能等产品领域达到世界领先水平。产品广泛应用于我国重点电力工程，先后为我国第-条500千伏高压交流输电工程、第一条750千伏超高压交流输电工程、世界首条投入商业运行的1000千伏交流示范工程、世界输送容量最大的苏通GIL综合管廊工程、国内首个百兆瓦级电网侧储能项目等国家重点工程项目提供了成套设备和技术服务。平高集团以世界一流智慧电气装备集团战略目标为统领，紧紧围绕“智慧电气、系统服务高效能源”总体布局，聚焦电力装备制造及能源系统解决方案，争当电气技术引领者、能源革命推动者、绿色发展践行者，努力为全面建设社会主义现代化国家贡献智慧和力量。
             </span>
           </div>
           <div ref="scrollEnd" class="scroll-content"></div>
         </div>
       </div>
     </div>
-    <hr style="border: 0.0625rem solid #80b7e0"/>
+    <hr style="border: 0.0625rem solid #80b7e0" />
     <div class="product_content">
       <div class="product_box">
         <div class="product_content_box">
           <div class="product_detail product_detail_1">
             <div class="product_topImg">
-              <img src="@/assets/imgs/_10_homePageImgs/product1.png" alt=""/>
+              <img src="@/assets/imgs/_10_homePageImgs/product1.png" alt="" />
             </div>
             <div class="product_h">高压电器产业</div>
             <div class="product_hr"></div>
@@ -329,7 +315,7 @@ getData()
           </div>
           <div class="product_detail">
             <div class="product_topImg">
-              <img src="@/assets/imgs/_10_homePageImgs/product2.png" alt=""/>
+              <img src="@/assets/imgs/_10_homePageImgs/product2.png" alt="" />
             </div>
             <div class="product_h">运维检修业务</div>
             <div class="product_hr"></div>
@@ -339,7 +325,7 @@ getData()
           </div>
           <div class="product_detail">
             <div class="product_topImg">
-              <img src="@/assets/imgs/_10_homePageImgs/product3.png" alt=""/>
+              <img src="@/assets/imgs/_10_homePageImgs/product3.png" alt="" />
             </div>
             <div class="product_h">零部件制造产业</div>
             <div class="product_hr"></div>
@@ -351,17 +337,7 @@ getData()
           </div>
           <div class="product_detail">
             <div class="product_topImg">
-              <img src="@/assets/imgs/_10_homePageImgs/product4.png" alt=""/>
-            </div>
-            <div class="product_h">电锅炉及热储能业务</div>
-            <div class="product_hr"></div>
-            <div class="product_p">复合式组合电器、罐式六氟化硫断路器、高压六氟化硫断路器…</div>
-            <div class="product_button" @click="toProduct('电锅炉及热储能业务')">
-              <span>查看详情</span></div>
-          </div>
-          <div class="product_detail">
-            <div class="product_topImg">
-              <img src="@/assets/imgs/_10_homePageImgs/product5.png" alt=""/>
+              <img src="@/assets/imgs/_10_homePageImgs/product5.png" alt="" />
             </div>
             <div class="product_h">电力储能业务</div>
             <div class="product_hr"></div>
@@ -371,7 +347,7 @@ getData()
           </div>
           <div class="product_detail">
             <div class="product_topImg">
-              <img src="@/assets/imgs/_10_homePageImgs/product6.png" alt=""/>
+              <img src="@/assets/imgs/_10_homePageImgs/product6.png" alt="" />
             </div>
             <div class="product_h">配电网产业</div>
             <div class="product_hr"></div>
@@ -382,7 +358,7 @@ getData()
           </div>
           <div class="product_detail">
             <div class="product_topImg">
-              <img src="@/assets/imgs/_10_homePageImgs/product7.png" alt=""/>
+              <img src="@/assets/imgs/_10_homePageImgs/product7.png" alt="" />
             </div>
             <div class="product_h">系统集成业务</div>
             <div class="product_hr"></div>
@@ -392,7 +368,7 @@ getData()
           </div>
           <div class="product_detail">
             <div class="product_topImg">
-              <img src="@/assets/imgs/_10_homePageImgs/product8.png" alt=""/>
+              <img src="@/assets/imgs/_10_homePageImgs/product8.png" alt="" />
             </div>
             <div class="product_h">智慧配用电业务</div>
             <div class="product_hr"></div>
@@ -402,7 +378,7 @@ getData()
           </div>
           <div class="product_detail">
             <div class="product_topImg">
-              <img src="@/assets/imgs/_10_homePageImgs/product9.png" alt=""/>
+              <img src="@/assets/imgs/_10_homePageImgs/product9.png" alt="" />
             </div>
             <div class="product_h">综合能源服务业务</div>
             <div class="product_hr"></div>
@@ -419,7 +395,7 @@ getData()
     </div>
     <div class="company_introduction">
       <div class="bg_img">
-        <img src="@/assets/imgs/_10_homePageImgs/company-introduction.png" alt=""/>
+        <img src="@/assets/imgs/_10_homePageImgs/company-introduction.png" alt="" />
       </div>
       <div class="introduction_title">赋能智慧电气 创引绿色能源</div>
       <div class="introduction_small_title">公司介绍</div>
@@ -430,14 +406,14 @@ getData()
             装备中国功勋企业、全国文明单位、国家技能人才培育突出贡献单位、中国储能产业最具影响力企业等荣誉称号。
           </div>
           <div class="p">
-            经过50余年的发展，平高集团已形成了涵盖输配电设备研发、设计、制造、销售、检测、运维等服务及相关设备成套、电力工程总承包、全过程工程咨询、综合能源服务、电力储能、电锅炉及热储能、海上风电并网装备、智慧电网装备充换电设施的业务格局。构建了以中原腹地为中心，触角遍布京津冀、长三角环渤海等经济区的产业布局。
+            经过50余年的发展，平高集团已形成了涵盖输配电设备研发、设计、制造、销售、检测、运维等服务及相关设备成套、电力工程总承包、全过程工程咨询、综合能源服务、电力储能、智慧电网装备充换电设施的业务格局。构建了以中原腹地为中心，触角遍布京津冀、长三角环渤海等经济区的产业布局。
             积极拓展“一带一路”市场，产品覆盖东欧、东南亚、中东、非洲、南美洲、大洋洲等70多个国家和地区。
           </div>
         </div>
         <div class="img_right">
           <video style="width: 36vw;height: 20.25vw;object-fit: cover" controls
                  poster="http://218.28.22.50:8108/videos/video_poster.png"
-                 src="http://218.28.22.50:8108/videos/pinggao.mp4"/>
+                 src="http://218.28.22.50:8108/videos/pinggao.mp4" />
         </div>
       </div>
       <div class="introduction_honor">
@@ -483,10 +459,10 @@ getData()
       <div class="great_flag_content">
         <div class="content_detail" v-for="top in topNews" :key="top.id" :title="top.title"
              @click="toDetail(top.id)">
-          <div class="top_img"><img :src="top.headerImage" :alt="top.title"/></div>
+          <div class="top_img"><img :src="top.headerImage" :alt="top.title" /></div>
           <div class="bottom_text">
             <div class="time">{{ formatTimestamp(top.publishTime) }}</div>
-            <div class="hr"/>
+            <div class="hr" />
             <div class="p text-ellipsis" style="color: #223893;font-size: 1.75rem;">{{
                 top.title
               }}
@@ -497,7 +473,7 @@ getData()
         <div class="content_detail_text">
           <div v-for="news in homepageNews" :key="news.id" class="text" @click="toDetail(news.id)">
             <div class="title text-ellipsis">{{ news.title }}</div>
-            <div class="line"/>
+            <div class="line" />
             <div class="time">{{ formatTimestamp(news.publishTime) }}</div>
           </div>
         </div>
@@ -509,18 +485,19 @@ getData()
         </router-link>
       </div>
       <div class="great_flag_footer">
-        <img src="@/assets/imgs/_10_homePageImgs/footer.png" alt=""/>
+        <img src="@/assets/imgs/_10_homePageImgs/footer.png" alt="" />
       </div>
     </div>
   </div>
   <div>
-    <Footer/>
+    <Footer />
   </div>
 </template>
 
 <style>
 @import "swiper/css";
 @import "swiper/css/pagination";
+@import "swiper/css/navigation";
 
 .swiper {
   width: 100vw;

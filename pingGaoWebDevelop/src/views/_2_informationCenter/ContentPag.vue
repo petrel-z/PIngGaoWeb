@@ -1,4 +1,5 @@
 <script setup>
+import { watch, ref } from "vue";
 import defaultImg from "@/assets/imgs/_2_informationCenterImgs/LehYXF.png";
 
 const props = defineProps({
@@ -23,8 +24,7 @@ const props = defineProps({
         大和二十届二中、三中全会精神，全面落实中央...`,
   },
   img: {
-    type: String,
-    default: defaultImg,
+    type: String
   },
   btnText: {
     type: String,
@@ -43,6 +43,16 @@ const props = defineProps({
     default: true,
   },
 });
+
+let defaultImage = ref(defaultImg);
+
+watch(props, () => {
+  if (props.img) {
+    defaultImage.value = props.img;
+  }
+});
+
+console.log(props);
 </script>
 
 <template>
@@ -57,7 +67,7 @@ const props = defineProps({
         <div style="width: 30%; height: 0.2rem; background-color: #389cd1"></div>
         <div style="width: 100%; height: 0.1rem; background-color: #389cd1"></div>
       </div>
-      <div class="content-text" v-html="props.text"/>
+      <div class="content-text" v-html="props.text" />
       <router-link
         :to="{
           name: 'newsDetail',
@@ -76,7 +86,7 @@ const props = defineProps({
       </router-link>
     </div>
     <div class="content-right">
-      <img style="width: 100%; height: auto" :src="props.img" alt="图片加载失败" />
+      <img style="width: 100%; height: auto" :src="defaultImage" alt="图片加载失败" />
     </div>
   </div>
 </template>

@@ -21,7 +21,7 @@ const pageMax = ref(1);
 const hasMore = ref(true);
 
 // 格式化时间戳为 YYYY-MM-DD 格式
-function formatTimestamp(timestamp) {
+function formatTimestamp (timestamp) {
   const date = new Date(timestamp);
   const year = date.getFullYear();
   const month = (date.getMonth() + 1).toString().padStart(2, "0");
@@ -29,7 +29,7 @@ function formatTimestamp(timestamp) {
   return `${year}.${month}.${day}`;
 }
 
-async function getData() {
+async function getData () {
   const queryString = new URLSearchParams({
     pageNo: pageNo.value,
     pageSize: pageSize.value,
@@ -53,12 +53,12 @@ async function getData() {
   leftList.value = [...page.list];
 }
 
-function pageChange(pageNumber) {
+function pageChange (pageNumber) {
   pageNo.value = pageNumber;
   getData();
 }
 
-function toDetail(newsId) {
+function toDetail (newsId) {
   if (newsId) {
     const target = router.resolve({
       name: "pbDetail",
@@ -86,21 +86,22 @@ getData();
 <template>
   <div class="spirit-more">
     <div class="mytitle">
-      <myTitle title="党的精神" english="The spirit of the Party" title-color="#fce3cd" line-color="#fce3cd"
-        eng-color="#fce3cd" />
+      <myTitle title="党的精神" english="The spirit of the Party" title-color="#fce3cd"
+               line-color="#fce3cd"
+               eng-color="#fce3cd" />
     </div>
     <div class="footer-line"></div>
     <div class="list">
       <div class="left" ref="left">
         <div v-for="item in leftList" :key="item.id" class="listItem">
-          <Item2 :time="formatTimestamp(item.publishTime)"
-          :text="item.title" time-color="#a51617" text-color="#7b6a5d"
-            text-font-family="SourceHanSerifCN_Bold"
-            :hover-bg-color="'#e06e5f'" @click="toDetail(item.id)" />
+          <Item2 :time="formatTimestamp(item.publishTime)" :text="item.title" time-color="#a51617"
+                 text-color="#7b6a5d"
+                 text-font-family="SourceHanSerifCN_Bold" :hover-bg-color="'#e06e5f'"
+                 @click="toDetail(item.id)" />
         </div>
         <div class="footer-button-MT">
           <MyPagination v-if="hasMore" :total="pageMax" :current="pageNo" font-color="#a51617"
-            @page-change="pageChange" />
+                        @page-change="pageChange" />
           <p v-else style="font-size: 24px;">
             暂无更多
           </p>
@@ -109,12 +110,13 @@ getData();
       <div class="right" ref="right">
         <OrderList class="orderList" :order-list="rightList" bg-color="#e06e5f" :font-family="{
           titleFont: 'SourceHanSerifCN_Bold',
-          contentFont: 'SourceHanSerifCN_SemiBold',
+          contentFont: 'SourceHanSerifCN_SemiBold'
         }" @click-item="toDetail" />
       </div>
     </div>
     <div class="footer-button">
-      <MyPagination v-if="hasMore" :total="pageMax" :current="pageNo" font-color="#a51617" @page-change="pageChange" />
+      <MyPagination v-if="hasMore" :total="pageMax" :current="pageNo" font-color="#a51617"
+                    @page-change="pageChange" />
       <p v-else style="font-size: 24px;">
         暂无更多
       </p>
@@ -141,13 +143,14 @@ getData();
   }
 
   .list {
-    width: 78%;
+    width: 100%;
     display: flex;
     justify-content: space-between;
     gap: 2%;
     margin: 0 auto;
 
     .left {
+      margin-left: 11%;
       width: 60%;
       margin: 0;
       min-height: 500px;
@@ -157,7 +160,8 @@ getData();
       }
 
       .listItem {
-        // width: 945px;
+        width: 100%;
+        height: auto;
         margin: 10px 0;
       }
 
@@ -168,15 +172,9 @@ getData();
 
     .right {
       width: 40%;
-      margin: 0;
-
-      .order {
-        padding: 0 2.5rem;
-
-        .last-item {
-          padding: 1.5rem 0;
-        }
-      }
+      margin-left: 2%;
+      margin-right: 11%;
+      overflow: hidden;
     }
   }
 
