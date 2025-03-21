@@ -29,7 +29,7 @@ const info = ref({
 
 const footer = ref([
   { name: "产品系列", path: "/productEngineering/productSeries" },
-  { name: "重点工程", path: "/productEngineering/keyProject" },
+  { name: "重点工程", path: "/productEngineering/keyProject" }
 ]);
 </script>
 <style lang="less" scoped>

@@ -1,3 +1,4 @@
+
 <script setup>
 import MyTitle from "@/components/MyTitle.vue";
 import headLine from "@/components/MyHeadLine.vue";

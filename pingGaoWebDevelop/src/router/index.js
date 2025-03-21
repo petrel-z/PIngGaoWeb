@@ -36,7 +36,7 @@ import scientificResearchAchievement
 import scientificResearchSystem
   from "@/views/_7_scientificResearchCenter/scientificResearchSystem/myIndex.vue";
 import testSystem from "@/views/_7_scientificResearchCenter/testSystem/myIndex.vue";
-import aboutPinggao from "@/views/_1_aboutPinggao/aboutPinggao.vue";
+import aboutPinggao from "@/views/_1_aboutPinggao/myIndex.vue";
 import productEngineering from "@/views/_4_productEngineering/index.vue";
 import scientificResearchCenter from "@/views/_7_scientificResearchCenter/index.vue";
 import homePage_1 from "@/views/homePage/homePage-1.vue";

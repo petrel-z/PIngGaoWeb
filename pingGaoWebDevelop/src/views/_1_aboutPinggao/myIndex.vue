@@ -6,7 +6,6 @@
   <div style="width: auto">
     <Footer class="footer" />
   </div>
-  <!-- <div class="lsiefi">3r addEventListener</div> -->
   <div class="right_button">
     <RightButton></RightButton>
   </div>
