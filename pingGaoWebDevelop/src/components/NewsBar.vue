@@ -20,9 +20,9 @@ const props = defineProps({
 import { ElMessageBox } from "element-plus";
 const shareUrl = window.location.href; // 你要分享的链接
 const title = document.title; // 分享的标题
+const pics = encodeURIComponent('/src/assets/imgs/common/qrcode.png'); // 分享的图片
+const summary = encodeURIComponent('fsaf'); // 分享的描述
 const openQQ = () => {
-  const pics = encodeURIComponent("/src/assets/imgs/common/qrcode.png"); // 分享的图片
-  const summary = encodeURIComponent("fsaf"); // 分享的描述
 
   const qqShareUrl = `https://connect.qq.com/widget/shareqq/index.html?url=${shareUrl}&title=${title}&pics=${pics}&summary=${summary}`;
   // window.location.href = qqShareUrl;
@@ -30,14 +30,12 @@ const openQQ = () => {
   window.open(qqShareUrl, "_blank");
 };
 const openBlog = () => {
-  const pic = encodeURIComponent("/src/assets/imgs/common/qrcode.png"); // 分享的图片
   const weiboShareUrl = `https://service.weibo.com/share/share.php?url=${shareUrl}&title=${title}&pic=${pic}`;
   window.open(weiboShareUrl, "_blank");
 };
 const openQQSpace = () => {
-  // const pics = encodeURIComponent("/src/assets/imgs/common/qrcode.png"); // 分享的图片
-  // const qqSpaceShareUrl = `https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=${shareUrl}&title=${title}&pics=${pics}&summary=${summary}`;
-  // window.open(qqSpaceShareUrl, "_blank"); // 在新标签页中打开QQ空间分享页面
+  const qqSpaceShareUrl = `https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=${shareUrl}&title=${title}&pics=${pics}&summary=${summary}`;
+  window.open(qqSpaceShareUrl, '_blank'); // 在新标签页中打开QQ空间分享页面
 };
 const openWechat = () => {
   ElMessageBox.alert(
