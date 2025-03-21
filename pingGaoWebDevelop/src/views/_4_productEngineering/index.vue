@@ -21,7 +21,9 @@ import footerBg from "@/assets/imgs/_6_qualityAssuranceImgs/t6_topbar.png";
 import RightButton from "@/components/RightButton.vue";
 const info = ref({
   title: "产品工程",
+  titleEn: "CORE PRODUCTS",
   content: "建设世界一流智慧电气装备集团",
+  contentEn: "Building a world-class smart electrical equipment group",
   footer: "PG GROUP",
   imgPath: imgPath,
   footerBg: footerBg,
@@ -29,7 +31,7 @@ const info = ref({
 
 const footer = ref([
   { name: "产品系列", path: "/productEngineering/productSeries" },
-  { name: "重点工程", path: "/productEngineering/keyProject" }
+  { name: "重点工程", path: "/productEngineering/keyProject" },
 ]);
 </script>
 <style lang="less" scoped>

@@ -3,7 +3,7 @@
     <ComHeader :content="info" :footer="footer"></ComHeader>
   </div>
   <router-view></router-view>
-   <!-- <EngContent></EngContent> -->
+  <!-- <EngContent></EngContent> -->
   <div style="width: auto">
     <Footer class="footer" />
   </div>
@@ -19,7 +19,9 @@ import RightButton from "@/components/RightButton.vue";
 // import EngContent from "./english/index.vue"
 const info = ref({
   title: "关于平高",
+  titleEn: "ABOUT US",
   content: "赋能智慧电气·创引绿色能源",
+  contentEn: "Empowering Smart Electrical and Creating Green Energy",
   footer: "PG GROUP",
   imgPath: imgPath,
   footerBg: comHeaderFoot,
@@ -50,8 +52,8 @@ import Footer from "@/components/Footer.vue";
   right: 0;
   z-index: 1001;
 }
-.footer{
-  z-index:100;
+.footer {
+  z-index: 100;
 }
 @media (max-width: 900px) {
   .header {
