@@ -75,7 +75,6 @@ async function getData (index) {
     pageSize: 999,
   }).toString();
 
-  console.log("获取数据", queryString);
   const response = await httpUtils.get(`/cms/category/${categoryId}/news?${queryString.toString()}`);
   const { data } = await response.json();
   const page = data.page;
@@ -127,9 +126,6 @@ onMounted(initializeObservers); // 在组件挂载时调用
         </div>
       </div>
     </div>
-    <div class="footer_img">
-      <img src="@/assets/imgs/_4_productEngineeringImgs/project-footer.png" alt="">
-    </div>
   </div>
 </template>
 
@@ -138,18 +134,21 @@ onMounted(initializeObservers); // 在组件挂载时调用
   position: relative;
   margin: auto;
   width: 100%;
-  height: 148.75rem;
-  padding: 4rem 13.125rem;
+  padding: 4rem 13.125rem 880px;
   border-radius: 1.25rem;
-  background-color: #fff;
   z-index: 0;
+
+  background-color: #e4f0fa;
+  background-image: url(@/assets/imgs/_4_productEngineeringImgs/project-footer.png);
+  background-position: bottom;
+  background-repeat: no-repeat;
+  background-size: 100% auto;
 }
 
 .project_content {
   display: flex;
   justify-content: space-between;
   width: 100%;
-  height: 98.75rem;
   margin-top: 3.75rem;
 }
 
@@ -186,7 +185,7 @@ onMounted(initializeObservers); // 在组件挂载时调用
 
 .top_button .p {
   font-size: 2rem;
-  font-family: "AlibabaPuHuiTi_2_65_Medium", sans-serif;
+  font-family: "AlibabaPuHuiTi_2_65_Medium";
   color: #006fc1;
   text-align: center;
   line-height: 6.25rem;
@@ -195,7 +194,7 @@ onMounted(initializeObservers); // 在组件挂载时调用
 
 .bottom_button .p {
   font-size: 2rem;
-  font-family: "AlibabaPuHuiTi_2_65_Medium", sans-serif;
+  font-family: "AlibabaPuHuiTi_2_65_Medium";
   color: #006fc1;
   text-align: center;
   line-height: 6.25rem;
@@ -211,7 +210,6 @@ onMounted(initializeObservers); // 在组件挂载时调用
 
 .content_right {
   width: 79%;
-  height: 97.5rem;
   transform: translateX(100%); /* 初始位置在左边 */
   visibility: hidden;
   transition: transform 1s ease, opacity 0.5s ease; /* 过渡效果 */
@@ -325,17 +323,8 @@ onMounted(initializeObservers); // 在组件挂载时调用
 
 .pic_content .bg_black .p {
   font-size: 1.625rem;
-  font-family: "AlibabaPuHuiTi_2_45_Light", sans-serif;
+  font-family: "AlibabaPuHuiTi_2_45_Light";
   color: rgb(255, 255, 255);
-}
-
-.footer_img {
-  position: absolute;
-  bottom: -0.025rem;
-  left: 0;
-  z-index: -10;
-  width: 100%;
-  height: 100%;
 }
 
 .footer_img img {

@@ -117,7 +117,7 @@ onMounted(initializeObservers); // 在组件挂载时调用
 }
 .text {
   font-size: 1.25rem;
-  font-family: "AlibabaPuHuiTi_2_55_Regular", sans-serif;
+  font-family: "AlibabaPuHuiTi_2_55_Regular";
   color: rgb(89, 87, 87);
   line-height: 1.56;
   margin-bottom: 1.5rem;

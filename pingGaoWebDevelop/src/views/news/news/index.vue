@@ -4,14 +4,16 @@
     <div class="container-body">
       <ul>
         <li v-for="item in news" :key="item.id" class="container-body-item">
-          <Item1
-            :detail-id="item.id"
-            :month="item.month"
-            :year="item.year"
-            :title="item.title"
-            :text="item.text"
-            language="en-US"
-          ></Item1>
+          <a href="/news/newsDetail">
+            <Item1
+              :detail-id="item.id"
+              :month="item.month"
+              :year="item.year"
+              :title="item.title"
+              :text="item.text"
+              language="en-US"
+            ></Item1>
+          </a>
         </li>
       </ul>
       <div class="container-body-foot">

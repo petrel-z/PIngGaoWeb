@@ -32,7 +32,7 @@ const props = defineProps({
   },
   hoverBgColor: {
     type: String,
-    default: "#003792",
+    default: "#006fc1",
   },
 });
 

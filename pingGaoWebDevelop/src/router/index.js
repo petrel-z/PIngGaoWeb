@@ -1,20 +1,15 @@
+import aboutPinggao from "@/views/_1_aboutPinggao/myIndex.vue";
+import approachPinggao from "@/views/_1_aboutPinggao/approachPinggao/myIndex.vue";
 import groupProfile from "@/views/_1_aboutPinggao/groupProfile/myIndex.vue";
 import lesadingMember from "@/views/_1_aboutPinggao/lesadingMember/myIndex.vue";
 import organizationalStructure from "@/views/_1_aboutPinggao/organizationalStructure/myIndex.vue";
 import seniorHonor from "@/views/_1_aboutPinggao/seniorHonor/myIndex.vue";
-import approachPinggao from "@/views/_1_aboutPinggao/approachPinggao/myIndex.vue";
-// import productSeriesDetail from "@/views/_4_productEngineering/productSeriesDetail/myIndex.vue";
-import productSeriesDetailEng from "@/views/_4_productEngineering/productSeriesDetailEng/myIndex.vue";
-import productSeriesEng from "@/views/_4_productEngineering/productSeriesEng/myIndex.vue";
-// import productSeries from "@/views/_4_productEngineering/productSeries/myIndex.vue";
-
-import aboutPinggao from "@/views/_1_aboutPinggao/myIndex.vue";
 import partyBuilding from "@/views/_3_partyBuilding/index.vue";
 
 import productEngineering from "@/views/_4_productEngineering/index.vue";
 import keyProject from "@/views/_4_productEngineering/keyProject/myIndex.vue";
-// import productSeries from "@/views/_4_productEngineering/productSeries/myIndex.vue";
-// import productSeriesDetail from "@/views/_4_productEngineering/productSeriesDetail/myIndex.vue";
+import productSeries from "@/views/_4_productEngineering/productSeries/myIndex.vue";
+import productSeriesDetail from "@/views/_4_productEngineering/productSeriesDetail/myIndex.vue";
 import qualityAssurance from "@/views/_6_qualityAssurance/index.vue";
 import manufacturing from "@/views/_6_qualityAssurance/manufacturing/index-1.vue";
 import productTesting from "@/views/_6_qualityAssurance/productTesting/index-1.vue";
@@ -151,9 +146,20 @@ const router = createRouter({
       redirect: "/productEngineering/productSeries", // 这里的重定向路径是相对于父路径的
       component: productEngineering,
       children: [
-        { path: "keyProject", component: keyProject },
-        { path: "productSeriesDetail", component: productSeriesDetailEng },
-        { path: "productSeries", component: productSeriesEng },
+        {
+          path: "keyProject",
+          component: keyProject,
+        },
+        {
+          name: "productDetail",
+          path: "productSeries/detail-:id",
+          component: productSeriesDetail,
+        },
+        {
+          name: "productSeries",
+          path: "productSeries",
+          component: productSeries,
+        },
       ],
     },
     {
@@ -270,15 +276,14 @@ const router = createRouter({
     {
       path: "/news",
       component: () => import("@/views/news/index.vue"),
-      redirect: "/news/news",
       children: [
-        {
-          path: "newsDetail",
-          component: () => import("@/views/news/newsDetail/index.vue"),
-        },
         {
           path: "news",
           component: () => import("@/views/news/news/index.vue"),
+        },
+        {
+          path: "newsDetail",
+          component: () => import("@/views/news/newsDetail/index.vue"),
         },
       ],
     },

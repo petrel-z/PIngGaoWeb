@@ -31,7 +31,7 @@ let moveFlag = ref(false);
 const header = ref([
   { name: "关于平高", path: "/aboutPingGao" },
   { name: "资讯中心", path: "/informationCenter" },
-  { name: "党的建设", path: "/partyBuilding" },
+  // { name: "党的建设", path: "/partyBuilding" },
   { name: "产品工程", path: "/productEngineering" },
   { name: "营销服务", path: "/marketingService" },
   { name: "品质保障", path: "/qualityAssurance" },
@@ -59,7 +59,7 @@ const allContent = ref([
     footer: [
       { name: "集团简介", path: "/aboutPinggao/groupProfile" },
       { name: "领导成员", path: "/aboutPinggao/lesadingMember" },
-      { name: "组织结构", path: "/aboutPinggao/organizationalStructure" },
+      { name: "组织机构", path: "/aboutPinggao/organizationalStructure" },
       { name: "资质荣誉", path: "/aboutPinggao/seniorHonor" },
       { name: "走进平高", path: "/aboutPinggao/approachPinggao" },
     ],
@@ -79,24 +79,24 @@ const allContent = ref([
       { name: "最新公告", path: "/informationCenter/latestAnnouncementIndex" },
     ],
   },
-  {
-    content: {
-      title: "党的建设",
-      content: "高举中国特色社会主义伟大旗帜",
-      footer: "PG GROUP",
-      imgPath: imgPath3,
-    },
-    footer: [
-      {
-        name: "党的精神",
-        path: "/partyBuilding/partySpirit/index",
-      },
-      {
-        name: "平高党建",
-        path: "/partyBuilding/pinggaoPartyBuilding/index",
-      },
-    ],
-  },
+  // {
+  //   content: {
+  //     title: "党的建设",
+  //     content: "高举中国特色社会主义伟大旗帜",
+  //     footer: "PG GROUP",
+  //     imgPath: imgPath3,
+  //   },
+  //   footer: [
+  //     {
+  //       name: "党的精神",
+  //       path: "/partyBuilding/partySpirit/index",
+  //     },
+  //     {
+  //       name: "平高党建",
+  //       path: "/partyBuilding/pinggaoPartyBuilding/index",
+  //     },
+  //   ],
+  // },
   {
     content: {
       title: "产品工程",
@@ -736,7 +736,7 @@ onMounted(() => {
 #header-nav-top {
   position: absolute;
   right: 0;
-  bottom: -10%;
+  bottom: -20%;
   text-align: right;
   height: auto;
 
@@ -767,8 +767,8 @@ onMounted(() => {
 }
 
 .log-img img {
-  height: auto;
-  width: 100%;
+  height: 84px;
+  width: auto;
 }
 
 .log-title {

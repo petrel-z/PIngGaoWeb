@@ -2,62 +2,56 @@
 import { ref, onMounted } from "vue";
 import MyContent from "@/components/MyContent.vue";
 import MyTitle from "@/components/MyTitle.vue";
-const items = ref([
-  {
-    title: "国家级人才/人",
-    num: 16,
-  },
-  {
-    title: "省部行业级人才/人",
-    num: 126,
-  },
-  {
-    title: "地市级人才(相关数据正在整理)",
-    num: 127,
-  },
-]);
-const HumanContentItems = ref([
-  {
-    title: "河南省政府\n特贴专家/人",
-    num: 4,
-  },
-  {
-    title: "河南省杰出\n专业技术人才/人",
-    num: 1,
-  },
-  {
-    title: "中原技能\n大奖/人",
-    num: 3,
-  },
-  {
-    title: "中原\n大工匠/人",
-    num: 2,
-  },
-  {
-    title: "中原\n技能大师/人",
-    num: 1,
-  },
-  {
-    title: "河南省\n技术能手/人",
-    num: 66,
-  },
-  {
-    title: "河南省\n技术标兵/人",
-    num: 7,
-  },
-  {
-    title: "河南省学术\n技术带头人/人",
-    num: 1,
-  },
-  {
-    title: "河南省五一劳动\n奖章/人",
-    num: 15,
-  },
-]);
 import HumanContent from "@/components/HumanContent.vue";
+import httpUtils from "@/utils/httpUtils.js";
+
+const formatedData = ref([]);
 
 const contentBox = ref(null);
 const humanContentBox = ref(null);
+
+const formatTitle = (text) => {
+  return text.split("")
+    .reduce((acc, char, index) => {
+      acc += char;
+      if ((index + 1) % 5 === 0 && index !== text.length - 1) {
+        acc += "\n";
+      }
+      return acc;
+    }, "");
+};
+
+async function getList () {
+  const response = await httpUtils.get(`/cms/talent/list`);
+  const { data } = await response.json();
+
+  data.talentType.forEach(type => {
+    const mainTalent = data.listTalent.find(talent => talent.talentTitle === type.label);
+    if (mainTalent) {
+      formatedData.value.push({
+        title: `${mainTalent.talentTitle}`,
+        num: parseInt(mainTalent.talentCount),
+        children: [],
+      });
+    }
+  });
+
+  data.listTalent.forEach(talent => {
+    const type = data.talentType.find(type => type.value === talent.talentType);
+    if (type && talent.talentTitle !== type.label) {
+      const parent = formatedData.value.find(item => item.title === `${type.label}`);
+      if (parent) {
+        parent.children.push({
+          title: `${formatTitle(talent.talentTitle)}/人`,
+          num: parseInt(talent.talentCount),
+        });
+      }
+    }
+  });
+}
+
+getList();
+
 onMounted(() => {
   if (contentBox.value && humanContentBox.value) {
     // 监听页面滚动事件
@@ -100,12 +94,12 @@ onMounted(() => {
           title="平高集团"
           content1="平高集团始终坚持以人为本，关注员工成长成才，优化人才成长环境，将人才强企战略纳入集团发展战略之一，引进和培育"
           content2="了一支高素质的优秀人才队伍。"
-          :bottom-items="items"
-        />
+          :bottom-items="formatedData"
+          detail-id="" />
       </div>
       <div ref="humanContentBox" style="margin-top: 5.875rem">
-        <HumanContent class="left" style="margin-bottom: -0.125rem" />
-        <HumanContent class="right" title="拥有省部行业级人才126人" :items="HumanContentItems" />
+        <HumanContent class="left" v-for="data in formatedData" :key="data.title"
+                      :title="`拥有${data.title}${data.num}人`" :items="data.children" />
       </div>
     </div>
   </div>

@@ -3,6 +3,7 @@
     <ComHeader :content="info" :footer="footer"></ComHeader>
   </div>
   <router-view></router-view>
+   <!-- <EngContent></EngContent> -->
   <div style="width: auto">
     <Footer class="footer" />
   </div>
@@ -15,6 +16,7 @@
 import { ref } from "vue";
 import comHeaderFoot from "@/assets/imgs/_1_aboutPinggaoImgs/t6_topBar.png";
 import RightButton from "@/components/RightButton.vue";
+// import EngContent from "./english/index.vue"
 const info = ref({
   title: "关于平高",
   content: "赋能智慧电气·创引绿色能源",

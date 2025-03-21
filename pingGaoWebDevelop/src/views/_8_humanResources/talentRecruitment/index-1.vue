@@ -46,7 +46,6 @@ async function getData (index) {
     pageSize: 999,
   }).toString();
 
-  console.log("获取数据", queryString);
   const response = await httpUtils.get(`/cms/category/${categoryId}/news?${queryString.toString()}`);
   const { data } = await response.json();
   const page = data.page;
@@ -58,12 +57,10 @@ async function getData (index) {
 }
 
 function setIndex (newIndex) {
-  console.log(newIndex);
   index.value = newIndex;
 }
 
 watch(index, () => {
-  console.log(index.value);
   getData(index.value);
 });
 

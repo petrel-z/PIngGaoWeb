@@ -8,16 +8,11 @@ defineOptions({
   <div class="footer-item">
     <div class="footer-top">
       <div class="content">
-        <div class="logo-img"><img src="../assets/imgs/common/logo-img.png" alt="" /></div>
-        <div class="logo-text">
+        <div class="logo-text" style="">
           <div class="logo-text-top">
-            <img src="../assets/imgs/common/logo-text.png" alt="" />
+            <img style="width: 100%;height: auto" src="../assets/imgs/common/footerLogo.png" alt="" />
           </div>
           <!-- <hr class="logo-text-hr" /> -->
-          <div class="logo-text-bottom">
-            <p class="bottom-p1">平高集团有限公司</p>
-            <p class="bottom-p2">pinggao group co.,ltd.</p>
-          </div>
           <div class="text-bottom">
             <p>地址:河南省郑州市郑东新区龙源西三街39号3B栋</p>
             <p>邮箱:sales@pinggao.com</p>
@@ -36,7 +31,7 @@ defineOptions({
             <p>领导成员</p>
           </router-link>
           <router-link to="/aboutPinggao/organizationalStructure">
-            <p>组织结构</p>
+            <p>组织机构</p>
           </router-link>
           <router-link to="/aboutPinggao/seniorHonor">
             <p>资质荣誉</p>
@@ -67,7 +62,7 @@ defineOptions({
             <p>最新公告</p>
           </router-link>
         </div>
-        <div class="f3">
+        <div class="f3" v-if="false">
           <router-link to="/partyBuilding">
             <h3>党的建设</h3>
           </router-link>
@@ -175,7 +170,8 @@ defineOptions({
       </div>
     </div>
     <div class="footer-bottom">
-      <p><a href="https://beian.miit.gov.cn/">豫ICP备2022010930号</a> Copyright 2025 PINGGAO GROUP CO.,LTD, All Rights Reserved.</p>
+      <p><a href="https://beian.miit.gov.cn/">豫ICP备2022010930号</a> Copyright 2025 PINGGAO GROUP CO.,LTD, All Rights
+        Reserved.</p>
       <p>平高集团有限公司版权所有</p>
     </div>
   </div>
@@ -193,8 +189,6 @@ a {
 
 .footer-item {
   width: auto;
-  // height: 35vh;
-  // padding: 3% ;
   white-space: nowrap;
 }
 
@@ -203,16 +197,11 @@ a {
   height: 90%;
   background-color: #333;
   color: #727171;
-
-  // display: flex;
-  // justify-content: center;
-  // align-items: center;
   padding: 5% 9%;
 }
 
-.content > div {
+.content>div {
   border-right: 1px solid #727171;
-  // flex: 1 1 auto;
 }
 
 .content {
@@ -220,11 +209,9 @@ a {
   height: 100%;
   display: flex;
   justify-content: center;
-  // align-content: center;
 
   .logo-img {
-    width: 3%;
-    // height: 5%;
+    width: 4%;
     height: 100%;
     border: none;
     margin-right: 1%;
@@ -238,14 +225,8 @@ a {
     padding-right: 3%;
 
     .logo-text-top {
-      width: 60%;
-      // width: 112px;
+      width: 75%;
     }
-
-    // .logo-text-hr {
-    //   border: none;
-    //   border-top: 1px solid #727171;
-    // }
 
     .logo-text-bottom {
       .bottom-p1 {
@@ -278,6 +259,7 @@ a {
       color: #727171;
       line-height: 1.2;
       margin-top: 1%;
+      margin-left: 20%;
       white-space: wrap; //地址太长需要换行
 
       p {
@@ -366,6 +348,19 @@ a {
   }
 }
 
+@media (max-width: 1000px) {
+  .footer-item {
+    .footer-top {
+      .content {
+        .logo-img {
+          width: 5%;
+        }
+      }
+    }
+  }
+
+}
+
 /* 大型设备（桌面，大于 900px） */
 @media (max-width: 900px) {
   .footer-top {
@@ -386,7 +381,7 @@ a {
     }
   }
 
-  .content > div {
+  .content>div {
     border: none;
   }
 
@@ -395,6 +390,7 @@ a {
     position: relative;
 
     .logo-img {
+
       display: none;
     }
 
@@ -495,14 +491,4 @@ a {
   }
 }
 
-@media (max-width: 800px) {}
-
-/* 中型设备（平板，600px 到 900px） */
-@media (max-width: 700px) {}
-
-/* 小型设备（手机，小于 600px） */
-
-@media (max-width: 600px) {}
-
-@media (max-width: 500px) {}
 </style>
