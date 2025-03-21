@@ -2,11 +2,12 @@ import { defineStore } from "pinia";
 import { ref } from "vue";
 
 export const useLanguageStore = defineStore("language", () => {
-  const currentLang = ref("en-US"); // 默认英文
+  const currentLang = ref(localStorage.getItem("language") || "zh-CN"); // 默认中文
 
   // 切换语言方法
-  const toggleLanguage = () => {
-    currentLang.value = currentLang.value === "en-US" ? "zh-CN" : "en-US";
+  const toggleLanguage = (language) => {
+    currentLang.value = language;
+    localStorage.setItem("language", language);
   };
 
   return {

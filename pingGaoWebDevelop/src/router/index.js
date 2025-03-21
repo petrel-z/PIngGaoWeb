@@ -45,10 +45,6 @@ const router = createRouter({
       component: () => import("@/views/homePage/homePage-2.vue"),
     },
     {
-      path: "/homePage-2-En",
-      component: () => import("@/views/homePage/homePage-2-En.vue"),
-    },
-    {
       path: "/aboutPinggao",
       redirect: "/aboutPinggao/groupProfile", // 这里重定向到 /aboutPinggao 下的 groupProfile
       component: aboutPinggao,
@@ -300,6 +296,18 @@ const router = createRouter({
           component: () => import("@/views/news/newsDetail/index.vue"),
         },
       ],
+    },
+    {
+      path: "/aboutUs",
+      component: () => import("@/views/aboutUs/index.vue"),
+    },
+    {
+      path: "/contactUs",
+      component: () => import("@/views/contactUs/index.vue"),
+    },
+    {
+      path: "/home",
+      component: () => import("@/views/Home/index.vue"),
     },
   ],
   scrollBehavior(to, from, savedPosition) {
