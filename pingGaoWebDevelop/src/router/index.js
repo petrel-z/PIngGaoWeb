@@ -27,8 +27,10 @@ import organizationalStructure from "@/views/_1_aboutPinggao/organizationalStruc
 import seniorHonor from "@/views/_1_aboutPinggao/seniorHonor/myIndex.vue";
 import approachPinggao from "@/views/_1_aboutPinggao/approachPinggao/myIndex.vue";
 import keyProject from "@/views/_4_productEngineering/keyProject/myIndex.vue";
-import productSeriesDetail from "@/views/_4_productEngineering/productSeriesDetail/myIndex.vue";
-import productSeries from "@/views/_4_productEngineering/productSeries/myIndex.vue";
+// import productSeriesDetail from "@/views/_4_productEngineering/productSeriesDetail/myIndex.vue";
+import productSeriesDetailEng from "@/views/_4_productEngineering/productSeriesDetailEng/myIndex.vue";
+import productSeriesEng from "@/views/_4_productEngineering/productSeriesEng/myIndex.vue";
+// import productSeries from "@/views/_4_productEngineering/productSeries/myIndex.vue";
 import scientificResearchAchievement
   from "@/views/_7_scientificResearchCenter/scientificResearchAchievement/myIndex.vue";
 import scientificResearchSystem
@@ -153,8 +155,8 @@ const router = createRouter({
       component: productEngineering,
       children: [
         {path: "keyProject", component: keyProject},
-        {path: "productSeriesDetail", component: productSeriesDetail},
-        {path: "productSeries", component: productSeries},
+        {path: "productSeriesDetail", component: productSeriesDetailEng},
+        {path: "productSeries", component: productSeriesEng},
       ],
     },
     {
