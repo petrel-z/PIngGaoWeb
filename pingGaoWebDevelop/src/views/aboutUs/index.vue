@@ -3,9 +3,15 @@ defineOptions({
   name: "aboutPinggao",
 });
 import MyTitle_En from '@/components/MyTitle_En.vue';
+import Footer_En from '@/components/Footer_En.vue';
 </script>
 <template>
   <div class="about_pinggao_eng">
+    <div class="header">
+      <div>
+        <ComHeader :isfooter="false" :onlyHeaderFlag="true" :language="'en-Us'"></ComHeader>
+      </div>
+    </div>
     <div class="bg"></div>
     <MyTitle_En></MyTitle_En>
     <div class="text_word">
@@ -59,13 +65,27 @@ import MyTitle_En from '@/components/MyTitle_En.vue';
           poster="../../../assets/imgs/_1_aboutPinggaoImgs/eng/videoBg.png" />
       </div>
     </div>
+    <div>
+      <Footer_En />
+    </div>
   </div>
 </template>
 <style scoped lang="less">
 .about_pinggao_eng {
   height: 170rem;
   position: relative;
-  z-index:1;
+  z-index: 1;
+
+  .header {
+    height: 68vh;
+    // min-width: 120rem;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 101;
+  }
+
 }
 
 .bg {

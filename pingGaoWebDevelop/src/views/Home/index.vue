@@ -1,6 +1,6 @@
 <script setup>
 import ComHeader from '@/components/ComHeader.vue'
-import Footer from '@/components/Footer.vue'
+import Footer_En from '@/components/Footer_En.vue'
 import router from '@/router/index.js'
 import HttpUtils from '@/utils/httpUtils.js'
 import { onMounted, onUnmounted, nextTick, ref } from 'vue'
@@ -215,7 +215,7 @@ getData()
   <div class="home_page">
     <div class="header">
       <div>
-        <ComHeader :isfooter="false" :onlyHeaderFlag="true"></ComHeader>
+        <ComHeader :isfooter="false" :onlyHeaderFlag="true" :language="'en-Us'"></ComHeader>
       </div>
     </div>
     <!-- 轮播主体 -->
@@ -428,7 +428,7 @@ getData()
 
   </div>
   <div>
-    <Footer />
+    <Footer_En />
   </div>
 </template>
 
@@ -650,6 +650,7 @@ getData()
 
 .news {
   background-color: #f7f8f8;
+
   .content {
     width: 100%;
     height: 80%;
@@ -676,6 +677,7 @@ getData()
       img {
         width: 100%;
       }
+
       p {
         margin: 2.3rem 0;
         font-size: 2.6rem;
@@ -798,13 +800,12 @@ getData()
   }
 
   .introduction_content .text_left {
-    width: 55%;
     height: 31.875rem;
     margin-right: 3.25rem;
   }
 
   .introduction_content .img_right {
-    min-width: 25rem;
+    // min-width: 25rem;
     transition: ease 0.5s;
   }
 
@@ -828,13 +829,12 @@ getData()
   }
 
   .introduction_content .text_left {
-    width: 55%;
     height: 31.875rem;
     margin-right: 3.25rem;
   }
 
   .introduction_content .img_right {
-    min-width: 25rem;
+    // min-width: 25rem;
     transition: ease 0.5s;
   }
 
@@ -854,13 +854,12 @@ getData()
   }
 
   .introduction_content .text_left {
-    width: 55%;
     height: 31.875rem;
     margin-right: 3.25rem;
   }
 
   .introduction_content .img_right {
-    min-width: 25rem;
+    // min-width: 25rem;
     transition: ease 0.5s;
   }
 
@@ -873,14 +872,13 @@ getData()
 @media (min-width: 1400px) and (max-width: 1900px) {
 
   .introduction_content .text_left {
-    width: 55%;
     height: 31.875rem;
     margin-right: 3.25rem;
   }
 
   .introduction_content .img_right {
-    width: 55%;
-    min-width: 25rem;
+    // width: 45%;
+    // min-width: 25rem;
     transition: ease 0.5s;
   }
 
@@ -910,6 +908,10 @@ getData()
   width: 45%;
   height: 31.875rem;
   margin-right: 6.25rem;
+}
+.introduction_content .img_right {
+  flex: 1;
+  height: 100%;
 }
 
 .introduction_content .p {

@@ -23,7 +23,7 @@
       <div class="center-right">
         <div class="content">
           <div class="image"></div>
-          <router-link to="/homePage-2-En" class="button">ENTER</router-link>
+          <router-link to="/home" class="button">ENTER</router-link>
         </div>
       </div>
     </div>

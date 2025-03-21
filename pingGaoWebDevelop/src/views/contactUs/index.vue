@@ -3,9 +3,15 @@ defineOptions({
   name: 'ContactUs'
 })
 import MyTitle_En from '@/components/MyTitle_En.vue';
+import Footer_En from '@/components/Footer_En.vue';
 </script>
 <template>
   <div class="contact_us_en">
+    <div class="header">
+      <div>
+        <ComHeader :isfooter="false" :onlyHeaderFlag="true" :language="'en-Us'"></ComHeader>
+      </div>
+    </div>
     <MyTitle_En :title="'contact us'"></MyTitle_En>
     <div class="bg"></div>
     <div class="content">
@@ -45,12 +51,27 @@ import MyTitle_En from '@/components/MyTitle_En.vue';
         </div>
       </div>
     </div>
+
+    <div>
+    <Footer_En />
+  </div>
   </div>
 </template>
 <style lang="less" scoped>
 .contact_us_en {
   height: 63rem;
   position: relative;
+
+  .header {
+    height: 68vh;
+    // min-width: 120rem;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 101;
+  }
+
   .bg {
     background-image: url('/src/assets/imgs/_9_contactUsImgs/t9_p1_contentBg.png');
     position: absolute;
@@ -59,10 +80,12 @@ import MyTitle_En from '@/components/MyTitle_En.vue';
     height: 40rem;
     background-size: cover;
   }
+
   .content {
     padding: 3% 11%;
     display: flex;
     justify-content: space-between;
+
     .left {
       position: relative;
       animation: toright 1s ease-in-out forwards;
@@ -79,6 +102,7 @@ import MyTitle_En from '@/components/MyTitle_En.vue';
           border: 1px solid #000;
           margin: 0 0 8px 0;
         }
+
         .text {
           font-size: 2.4rem;
           font-family: "Avenir";
@@ -92,10 +116,12 @@ import MyTitle_En from '@/components/MyTitle_En.vue';
         }
       }
     }
+
     .right {
       position: relative;
       animation: toleft 1s ease-in-out forwards;
-      flex:1;
+      flex: 1;
+
       .item {
         width: 100%;
 
@@ -103,6 +129,7 @@ import MyTitle_En from '@/components/MyTitle_En.vue';
           border: 1px solid #000;
           margin: 0 0 8px 0;
         }
+
         .text {
           font-size: 2.4rem;
           font-family: "Avenir";
@@ -110,7 +137,7 @@ import MyTitle_En from '@/components/MyTitle_En.vue';
         }
 
         .number {
-          font-size:  1.8rem;
+          font-size: 1.8rem;
           font-family: "Avenir";
           color: rgb(35, 24, 21);
 
@@ -122,14 +149,17 @@ import MyTitle_En from '@/components/MyTitle_En.vue';
       from {
         left: -100%;
       }
+
       to {
         left: 0;
       }
     }
+
     @keyframes toleft {
       from {
         left: 100%;
       }
+
       to {
         left: 0;
       }

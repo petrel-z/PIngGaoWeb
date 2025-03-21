@@ -87,6 +87,7 @@
       font-family: "Avenir";
       color: rgb(114, 113, 113);
       margin-bottom: 1rem;
+
       .content_left,
       .content_right {
         .item {
@@ -96,6 +97,14 @@
 
             li {
               margin: 2.2rem 0;
+
+              a {
+                color: #727171;
+
+              }
+              a:hover {
+                color: #171616;
+              }
             }
           }
         }
