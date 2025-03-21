@@ -12,8 +12,10 @@ defineOptions({
     <div class="footer-line"></div>
     <div class="detail">
       <div class="detail-content">
-        <div style="width: 100%; padding: 5em 5em">
-          <div class="title">中国电气装备召开一届二次职工代表大会暨2025年工作会议</div>
+        <div style="width: 100%; padding: 5% 5%">
+          <div class="title">中国电气装备召开一届二次职工
+            <br>代表大会暨2025年工作会议
+          </div>
           <newsBar :time="'2025-01-14'" :browse="488"></newsBar>
           <div class="text">
             <p>
@@ -31,15 +33,13 @@ defineOptions({
 
           <div class="button">
             <div class="button-left">
-              <ComDoubleDiv :title="'上一篇'" :content="'中国共产党第二十届中央委员会第三次全体会议公报'" 
-              :bgColor="'#f8f1e5'"
-              :leftFontColor="'#a51617'" :rightFontColor="'#7b6a5d'">
+              <ComDoubleDiv :title="'上一篇'" :content="'中国共产党第二十届中央委员会第三次全体会议公报'" :bgColor="'#f8f1e5'"
+                :leftFontColor="'#a51617'" :rightFontColor="'#7b6a5d'">
               </ComDoubleDiv>
             </div>
             <div class="button-right">
-              <ComDoubleDiv :title="'下一篇'" :content="'中国共产党第二十届中央委员会第三次全体会议公报'" 
-              :bgColor="'#f8f1e5'"
-              :leftFontColor="'#a51617'" :rightFontColor="'#7b6a5d'">
+              <ComDoubleDiv :title="'下一篇'" :content="'中国共产党第二十届中央委员会第三次全体会议公报'" :bgColor="'#f8f1e5'"
+                :leftFontColor="'#a51617'" :rightFontColor="'#7b6a5d'">
               </ComDoubleDiv>
             </div>
           </div>
@@ -75,18 +75,22 @@ defineOptions({
         font-size: 2.3rem;
         font-family: "SourceHanSerifCN";
         color: #a51617;
+
+        br {
+          display: none;
+        }
       }
 
       .text {
         width: 100%;
         text-align: center;
-        font-size: 20px;
+        font-size: 2rem;
         font-family: "SourceHanSerifCN_Regular";
         color: #7b6a5d;
         line-height: 1.498;
         text-align: justify;
 
-        padding-top: 55px;
+        padding-top: 5rem;
         display: flex;
         flex-wrap: wrap;
         justify-content: center;
@@ -139,12 +143,92 @@ defineOptions({
 
 @media (max-width: 900px) {
   .spirit-detail {
+    .footer-line {
+      display: none;
+    }
+
+    .detail {
+      padding: 0 5%;
+
+      .detail-content {
+        .text {
+          .image {
+            width: 80%;
+            margin: 3rem 0 3rem 0;
+          }
+        }
+
+        .title {
+          height: auto;
+          line-height: 1.2;
+          font-size: 2.5rem;
+          margin-bottom: 1rem;
+
+          br {
+            display: block;
+          }
+        }
+
+        .button {
+          flex-direction: column;
+          height: 16rem;
+          margin-top: 10%;
+
+          .button-left,
+          .button-right {
+            width: 100%;
+            height: 8rem;
+            margin-bottom: 1rem;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 800px) {
+  .spirit-detail {
     .detail {
       .detail-content {
         .title {
-          height: 6rem;
-          line-height: 6rem;
-          font-size: 1.6rem;
+          font-size: 3rem;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 600px) {
+  .spirit-detail {
+    .detail {
+      .detail-content {
+        .title {
+          font-size: 3.6rem;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 500px) {
+  .spirit-detail {
+    .detail {
+      .detail-content {
+        .title {
+          font-size: 5rem;
+          margin-bottom: 3rem;
+        }
+
+        .text {
+          margin: 1rem 0 3rem 0;
+        }
+
+        .button {
+
+          .button-left,
+          .button-right {
+            margin-bottom: 2rem;
+          }
         }
       }
     }

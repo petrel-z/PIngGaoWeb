@@ -45,4 +45,9 @@ const footer = ref([
   right: 0;
   z-index: 1001;
 }
+@media (max-width: 900px) {
+  .header {
+    height: 53vw;
+  }
+}
 </style>
