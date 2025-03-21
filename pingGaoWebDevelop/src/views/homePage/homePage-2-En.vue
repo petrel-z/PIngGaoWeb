@@ -39,8 +39,6 @@ function handleVideoEnd() {
     }, 2000)
   }
 }
-
-
 onMounted(() => {
   const container = document.querySelector('.product_box')
   const leftIcon = document.querySelector('.left_icon')
@@ -210,6 +208,7 @@ function toProduct(item) {
 }
 
 getData()
+
 </script>
 
 <template>
@@ -343,7 +342,7 @@ getData()
     </div>
 
     <!-- News -->
-    <div class="news">
+    <div ref="news" class="news">
       <div class="introduction_title">news
         <span class="span">MORE
           <span></span>
@@ -650,6 +649,7 @@ getData()
 }
 
 .news {
+  background-color: #f7f8f8;
   .content {
     width: 100%;
     height: 80%;
