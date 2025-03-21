@@ -39,7 +39,12 @@ const headerCss = {
   <div style="width: auto">
     <div class="header">
       <div style="height: 100%; width: auto">
-        <ComHeader :content="content" :footer="footer" :css="headerCss" :footer-bg-color="'#deb893'"/>
+        <ComHeader
+          :content="content"
+          :footer="footer"
+          :css="headerCss"
+          :footer-bg-color="'#deb893'"
+        />
       </div>
     </div>
 

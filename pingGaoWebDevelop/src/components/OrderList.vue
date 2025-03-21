@@ -16,7 +16,7 @@ const props = defineProps({
 
 const emit = defineEmits(["clickItem"]);
 
-function clickItem (item) {
+function clickItem(item) {
   emit("clickItem", item.id);
 }
 </script>
@@ -29,7 +29,9 @@ function clickItem (item) {
         <i class="iconfont icon-a-MenuBar-show list-item-icon"></i>
       </li>
       <li
-        v-for="(item, index) in props.orderList" :key="index" class="list-item"
+        v-for="(item, index) in props.orderList"
+        :key="index"
+        class="list-item"
         @click="clickItem(item)"
       >
         <span> {{ item.name }}</span>
