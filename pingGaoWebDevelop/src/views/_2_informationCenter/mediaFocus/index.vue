@@ -14,7 +14,7 @@ const categoryId = 18;
 const mainNews = ref([]);
 
 // 格式化时间戳为 YYYY-MM-DD 格式
-function formatTimestamp (timestamp) {
+function formatTimestamp(timestamp) {
   const date = new Date(timestamp);
   const year = date.getFullYear();
   const month = (date.getMonth() + 1).toString().padStart(2, "0");
@@ -23,7 +23,7 @@ function formatTimestamp (timestamp) {
 }
 
 // 格式化时间戳为 YYYY-MM-DD 格式
-function formatTimestampObj (timestamp) {
+function formatTimestampObj(timestamp) {
   const date = new Date(timestamp);
   const year = date.getFullYear();
   const month = (date.getMonth() + 1).toString().padStart(2, "0");
@@ -34,12 +34,14 @@ function formatTimestampObj (timestamp) {
   };
 }
 
-async function getData () {
+async function getData() {
   const queryString = new URLSearchParams({
     pageNo: 1,
     pageSize: 5,
   }).toString();
-  const response = await httpUtils.get(`/cms/category/${categoryId}/news?${queryString.toString()}`);
+  const response = await httpUtils.get(
+    `/cms/category/${categoryId}/news?${queryString.toString()}`
+  );
   const { data } = await response.json();
   const page = data.page;
   page.list.forEach((i) => {
@@ -98,7 +100,7 @@ getData();
 .item-container {
   width: 100%;
   height: auto;
-  margin-top: 72px;
+  margin-top: 4.5rem;
   display: flex;
   justify-content: space-between;
   align-items: center;

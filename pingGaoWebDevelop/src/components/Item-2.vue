@@ -30,6 +30,10 @@ const props = defineProps({
     type: String,
     default: "AlibabaPuHuiTi_2_55_Regular",
   },
+  hoverBgColor: {
+    type: String,
+    default: "#003792",
+  },
 });
 
 const emit = defineEmits(["clickItem"]);
@@ -66,6 +70,7 @@ onMounted(() => {
       '--timeColor': props.timeColor,
       '--textColor': props.textColor,
       '--textFontFamily': props.textFontFamily,
+      '--hoverBgColor': props.hoverBgColor,
     }"
     @click="emit('clickItem', props.detailId)"
   >

@@ -1,5 +1,5 @@
 <script setup>
-import MyButton from "@/components/MyButton.vue"
+import MyButton from "@/components/MyButton.vue";
 
 const props = defineProps({
   detailId: {
@@ -27,9 +27,9 @@ const props = defineProps({
     type: Array,
     default: () => [],
   },
-})
+});
 
-const emit = defineEmits(["clickItem"])
+const emit = defineEmits(["clickItem"]);
 </script>
 
 <template>
@@ -41,7 +41,7 @@ const emit = defineEmits(["clickItem"])
         <div class="line-center"></div>
         <div class="triangle-right"></div>
       </div>
-      <hr class="long-line"/>
+      <hr class="long-line" />
       <div v-if="!props.buttonFlag">
         <p class="first-p" v-html="props.content1"></p>
         <p v-html="props.content2"></p>
@@ -62,7 +62,7 @@ const emit = defineEmits(["clickItem"])
       </div>
     </div>
     <div v-if="props.buttonFlag" class="button-div">
-      <MyButton text="查看详情" type="detail"/>
+      <MyButton text="查看详情" type="detail" />
     </div>
   </div>
 </template>
@@ -73,7 +73,7 @@ const emit = defineEmits(["clickItem"])
   height: auto;
   text-align: center;
   background-color: #006fc1;
-  border-radius: 10px;
+  border-radius: 0.625rem;
 
   .content {
     display: flex;
@@ -103,52 +103,52 @@ const emit = defineEmits(["clickItem"])
     .short-line {
       display: flex;
       justify-content: center;
-      transform: translateY(3px);
+      transform: translateY(0.19rem);
 
       .triangle-left {
         width: 0;
         height: 0;
-        border: 3px solid transparent;
-        border-top: 3px solid #45b3e0;
+        border: 0.19rem solid transparent;
+        border-top: 0.19rem solid #45b3e0;
         transform: rotate(-45deg);
         position: relative;
-        left: 3px;
-        top: 1px;
+        left: 0.19rem;
+        top: 0.07rem;
       }
 
       .line-center {
-        width: 140px;
+        width: 8.8rem;
         height: 0;
-        border: 2px solid #45b3e0;
+        border: 0.125rem solid #45b3e0;
       }
 
       .triangle-right {
         width: 0;
         height: 0;
-        border: 3px solid transparent;
-        border-top: 3px solid #45b3e0;
+        border: 0.19rem solid transparent;
+        border-top: 0.19rem solid #45b3e0;
         transform: rotate(45deg);
         position: relative;
-        left: -3px;
-        top: 1px;
+        left: -0.19rem;
+        top: 0.07rem;
       }
     }
 
     .long-line {
-      height: 1px;
+      height: 0.07rem;
       border: none;
       background-color: #45b3e0;
     }
 
     p {
-      font-size: 20px;
+      font-size: 1.25rem;
       font-family: "AlibabaPuHuiTi_2_45_Light";
       color: rgb(255, 255, 255);
       line-height: 1.85;
     }
 
     .first-p {
-      margin-top: 25px;
+      margin-top: 1.6rem;
     }
 
     .one-p {
@@ -165,15 +165,15 @@ const emit = defineEmits(["clickItem"])
       display: flex;
       align-items: center;
       width: 100%;
-      height: 76px;
-      border-left: 1px solid #1a88cd;
-      border-right: 1px solid #1a88cd;
-      margin-top: 33px;
-      margin-bottom: 67px;
+      height: 4.75rem;
+      border-left: 0.07rem solid #1a88cd;
+      border-right: 0.07rem solid #1a88cd;
+      margin-top: 2.1rem;
+      margin-bottom: 4.19rem;
     }
 
     .boder-right {
-      border-right: 1px solid #1a88cd;
+      border-right: 0.07rem solid #1a88cd;
     }
 
     .my-content-bottom-item {
@@ -182,7 +182,7 @@ const emit = defineEmits(["clickItem"])
     }
 
     .my-content-bottom-item-num {
-      font-size: 44px;
+      font-size: 2.8rem;
       font-family: "Avenir";
       color: rgb(255, 255, 255);
       line-height: 1.063;
@@ -190,8 +190,8 @@ const emit = defineEmits(["clickItem"])
     }
 
     .my-content-bottom-item-title {
-      font-size: 24px;
-      font-family: "Alibaba PuHuiTi 2.0";
+      font-size: 1.5rem;
+      font-family: "AlibabaPuHuiTi_2_45_Light";
       color: rgb(255, 255, 255);
       line-height: 1.423;
       text-align: center;

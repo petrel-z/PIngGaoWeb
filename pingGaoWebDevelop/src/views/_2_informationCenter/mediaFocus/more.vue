@@ -21,7 +21,7 @@ const pageMax = ref(1);
 const hasMore = ref(true);
 
 // 格式化时间戳为 YYYY-MM-DD 格式
-function formatTimestamp (timestamp) {
+function formatTimestamp(timestamp) {
   const date = new Date(timestamp);
   const year = date.getFullYear();
   const month = (date.getMonth() + 1).toString().padStart(2, "0");
@@ -29,14 +29,16 @@ function formatTimestamp (timestamp) {
   return `${year}.${month}.${day}`;
 }
 
-async function getData () {
+async function getData() {
   const queryString = new URLSearchParams({
     pageNo: pageNo.value,
     pageSize: pageSize.value,
   }).toString();
 
   console.log("获取数据", queryString);
-  const response = await httpUtils.get(`/cms/category/${categoryId}/news?${queryString.toString()}`);
+  const response = await httpUtils.get(
+    `/cms/category/${categoryId}/news?${queryString.toString()}`
+  );
   const { data } = await response.json();
 
   console.log(data);
@@ -56,12 +58,12 @@ async function getData () {
   leftList.value = [...page.list];
 }
 
-function pageChange (pageNumber) {
+function pageChange(pageNumber) {
   pageNo.value = pageNumber;
   getData();
 }
 
-function toDetail (newsId) {
+function toDetail(newsId) {
   if (newsId) {
     const target = router.resolve({
       name: "newsDetail",
@@ -76,7 +78,7 @@ function toDetail (newsId) {
 // 监听窗口大小变化事件
 let onceChange = ref(false);
 
-function changeOnce () {
+function changeOnce() {
   // 获取当前窗口的宽度和高度
   const width = window.innerWidth;
   if (width <= 900) {
@@ -113,7 +115,8 @@ getData();
         >
           <div class="item-container">
             <Item2
-              v-for="item in leftList" :key="item.id"
+              v-for="item in leftList"
+              :key="item.id"
               :time="formatTimestamp(item.publishTime)"
               :text="item.title"
               :detail-id="item.id"
@@ -127,15 +130,16 @@ getData();
       </div>
       <div class="pagination-container">
         <MyPagination
-          v-if="hasMore" :total="pageMax" :current="pageNo" class="pagination"
+          v-if="hasMore"
+          :total="pageMax"
+          :current="pageNo"
+          class="pagination"
           @page-change="pageChange"
         />
-        <p v-else style="font-size: 24px;">
-          暂无更多
-        </p>
+        <p v-else style="font-size: 24px">暂无更多</p>
       </div>
       <div v-show="onceChange" class="order-container">
-        <OrderList :orderList="orderList" bgColor="#006fc1" @click-item="toDetail" />
+        <OrderList :orderList="rightList" bgColor="#006fc1" @click-item="toDetail" />
       </div>
     </div>
   </div>

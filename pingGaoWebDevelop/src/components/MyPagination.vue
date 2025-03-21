@@ -12,17 +12,17 @@ const props = defineProps({
     type: String,
     default: "#45b3e0",
   },
-})
-const emit = defineEmits(["pageChange"])
+});
+const emit = defineEmits(["pageChange"]);
 
-function clickPage (pageNo) {
-  console.log("pageChange: ", pageNo)
+function clickPage(pageNo) {
+  console.log("pageChange: ", pageNo);
 
   if (pageNo > props.total) {
-    pageNo = props.total
+    pageNo = props.total;
   }
 
-  emit("pageChange", pageNo)
+  emit("pageChange", pageNo);
 }
 </script>
 
@@ -41,39 +41,39 @@ function clickPage (pageNo) {
   </div>
 </template>
 
-<style scoped>
+<style lang="less" scoped>
 .my-pagination {
-  width: 25%;
+  width: auto;
   margin: 1em;
-}
 
-.my-pagination ul {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  list-style: none;
-  width: 100%;
-  margin: 0;
-  padding: 0;
-}
+  ul {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    list-style: none;
+    width: 100%;
+    margin: 0;
+    padding: 0;
 
-.my-pagination ul .active {
-  background-color: var(--fontColor);
-  color: #ffffff;
-}
+    .active {
+      background-color: var(--fontColor);
+      color: #ffffff;
+    }
+  }
 
-.my-pagination li {
-  font-size: 2rem;
-  font-family: "AlibabaPuHuiTi_2_55_Regular";
-  color: var(--fontColor);
-  line-height: 5rem;
-  width: 5rem;
-  height: 5rem;
-  border: 0.05rem solid var(--fontColor);
-  border-radius: 5rem;
-  text-align: center;
-  cursor: pointer;
-  margin-right: 2rem;
+  li {
+    font-size: 2rem;
+    font-family: "AlibabaPuHuiTi_2_55_Regular";
+    color: var(--fontColor);
+    line-height: 5rem;
+    width: 5rem;
+    height: 5rem;
+    border: 0.05rem solid var(--fontColor);
+    border-radius: 5rem;
+    text-align: center;
+    cursor: pointer;
+    margin-right: 2rem;
+  }
 }
 
 /**
