@@ -189,8 +189,6 @@ a {
 
 .footer-item {
   width: auto;
-  // height: 35vh;
-  // padding: 3% ;
   white-space: nowrap;
 }
 
@@ -199,16 +197,11 @@ a {
   height: 90%;
   background-color: #333;
   color: #727171;
-
-  // display: flex;
-  // justify-content: center;
-  // align-items: center;
   padding: 5% 9%;
 }
 
 .content>div {
   border-right: 1px solid #727171;
-  // flex: 1 1 auto;
 }
 
 .content {
@@ -216,11 +209,9 @@ a {
   height: 100%;
   display: flex;
   justify-content: center;
-  // align-content: center;
 
   .logo-img {
     width: 4%;
-    // height: 5%;
     height: 100%;
     border: none;
     margin-right: 1%;
@@ -500,13 +491,4 @@ a {
   }
 }
 
-@media (max-width: 800px) {}
-
-/* 中型设备（平板，600px 到 900px） */
-@media (max-width: 700px) {}
-
-/* 小型设备（手机，小于 600px） */
-@media (max-width: 600px) {}
-
-@media (max-width: 500px) {}
 </style>

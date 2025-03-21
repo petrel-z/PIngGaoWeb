@@ -35,6 +35,8 @@ const footer = ref([
     path: "/contactUs/addressTelephone",
   },
 ]);
+
+// import ContactUsEn from '../_9_contactUs/english/index.vue'
 </script>
 
 <template>
@@ -42,6 +44,7 @@ const footer = ref([
     <ComHeader :content="content" :footer="footer" />
   </div>
   <router-view />
+  <!-- <ContactUsEn></ContactUsEn> -->
   <div class="right_button"> <RightButton></RightButton> </div>
   <div>
     <Footer />

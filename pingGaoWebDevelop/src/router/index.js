@@ -39,7 +39,7 @@ const router = createRouter({
     component: homePage_1,
   }, {
     path: '/homePage-2',
-    component: () => import('@/views/homePage/homePage-2.vue'),
+    component: () => import('@/views/homePage/homePage-2-En.vue'),
   }, {
     path: '/aboutPinggao',
     redirect: '/aboutPinggao/groupProfile', // 这里重定向到 /aboutPinggao 下的 groupProfile
