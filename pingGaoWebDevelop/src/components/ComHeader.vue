@@ -368,6 +368,7 @@ onMounted(() => {
       '--footerColor': props.css.footerColor,
     }"
   >
+
     <div class="header-nav-box">
       <div
         id="header-nav"
@@ -504,6 +505,7 @@ onMounted(() => {
           </div>
         </div>
       </div>
+
       <div class="header-nav-hover-box">
         <div
           @mouseleave="hidden = true"

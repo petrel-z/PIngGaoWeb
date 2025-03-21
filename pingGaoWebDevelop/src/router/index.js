@@ -290,7 +290,7 @@ const router = createRouter({
       path: "/aboutUs",
       component: () => import("@/views/aboutUs/index.vue"),
     },{
-      path: "/contactUs",
+      path: "/contactUsEn",
       component: () => import("@/views/contactUs/index.vue"),
     },{
       path: '/home',
