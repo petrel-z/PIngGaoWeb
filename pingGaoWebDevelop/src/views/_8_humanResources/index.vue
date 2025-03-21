@@ -1,14 +1,14 @@
 <script setup>
-defineOptions({
-  name: "marketing-serviceIndex",
-});
-
-import { ref } from "vue";
+import footerBg from "@/assets/imgs/_6_qualityAssuranceImgs/t6_topBar.png";
+import imgPath from "@/assets/imgs/_8_humanResourcesImgs/头部轮播-08.png";
 import ComHeader from "@/components/ComHeader.vue";
 import Footer from "@/components/Footer.vue";
-import imgPath from "@/assets/imgs/_8_humanResourcesImgs/头部轮播-08.png";
-import footerBg from "@/assets/imgs/_6_qualityAssuranceImgs/t6_topBar.png";
 import RightButton from "@/components/RightButton.vue";
+import { ref } from "vue";
+
+defineOptions({
+  name: "MarketingServiceIndex",
+});
 
 const content = ref({
   title: "人力资源",
@@ -28,7 +28,7 @@ const footer = ref([
   },
   {
     name: "人才招聘",
-    path: "/humanResources/talentRecruitment-1",
+    path: "/humanResources/talentRecruitment",
   },
   {
     name: "博士后工作站",
@@ -42,7 +42,9 @@ const footer = ref([
     <ComHeader :content="content" :footer="footer" />
   </div>
   <router-view />
-  <div class="right_button"><RightButton></RightButton></div>
+  <div class="right_button">
+    <RightButton />
+  </div>
   <div>
     <Footer />
   </div>
@@ -70,6 +72,7 @@ const footer = ref([
     background-image: url("@/assets/imgs/_8_humanResourcesImgs/moveHeaderBg.png");
     background-size: cover;
   }
+
   .right_button {
     display: none;
   }

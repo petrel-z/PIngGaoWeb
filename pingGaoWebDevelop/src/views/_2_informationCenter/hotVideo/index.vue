@@ -1,35 +1,59 @@
 <script setup>
+import hotVideoImg from "@/assets/imgs/_2_informationCenterImgs/hotVideoImg.png";
+import MyButton from "@/components/MyButton.vue";
+import MyTitle from "@/components/MyTitle.vue";
+import httpUtils from "@/utils/httpUtils.js";
+import { onMounted, ref } from "vue";
+
 defineOptions({
   name: "NewsCenterIndex4-1",
 });
-import { ref, onMounted } from "vue";
-import MyTitle from "@/components/MyTitle.vue";
-import MyButton from "@/components/MyButton.vue";
-import hotVideoImg from "@/assets/imgs/_2_informationCenterImgs/hotVideoImg.png";
 const flag = ref(false);
+const items = ref(null);
 
-const videos = ref([
-  { videoUrl: hotVideoImg, videoName: "视频名称" },
-  { videoUrl: hotVideoImg, videoName: "视频名称" },
-  { videoUrl: hotVideoImg, videoName: "视频名称" },
-  { videoUrl: hotVideoImg, videoName: "视频名称" },
-  { videoUrl: hotVideoImg, videoName: "视频名称" },
-  { videoUrl: hotVideoImg, videoName: "视频名称" },
-]);
-let text = ref("加载更多");
-function addVideos() {
-  if (videos.value.length >= 18) {
-    return;
+document.title = "热点视频";
+const pageNo = ref(1);
+const pageSize = ref(6);
+const videoList = ref([]);
+const videoSrc = ref("");
+const hasMore = ref(true);
+
+async function getData () {
+  const queryString = new URLSearchParams({
+    pageNo: pageNo.value,
+    pageSize: pageSize.value,
+  }).toString();
+
+  console.log("获取数据", queryString);
+  const response = await httpUtils.get(`/cms/video/list?${queryString.toString()}`);
+  const { data } = await response.json();
+
+  if (pageNo.value === 1) {
+    videoList.value = [...data.list];
+  } else {
+    videoList.value = [...videoList.value, ...data.list];
   }
-  for (let i = 0; i < 6; i++) {
-    videos.value.push({ videoUrl: hotVideoImg, videoName: "视频名称" });
-  }
-  if (videos.value.length >= 18) {
-    text.value = "没有更多了";
+
+  if (data.list.length < pageSize.value) {
+    hasMore.value = false;
+  } else {
+    pageNo.value = pageNo.value + 1;
   }
 }
 
-const items = ref(null);
+getData();
+
+function handleClick () {
+  if (hasMore.value) {
+    getData();
+  }
+}
+
+function playVideo (item) {
+  videoSrc.value = item.videoSrc;
+  flag.value = true;
+}
+
 onMounted(() => {
   // 获取目标元素容器
   const targetContainer = items.value;
@@ -60,32 +84,33 @@ onMounted(() => {
       <div class="body">
         <div>
           <div style="padding-top: 4rem">
-            <my-title title="热点视频" english="HOT VIDEOS" />
+            <MyTitle title="热点视频" english="HOT VIDEOS" />
           </div>
         </div>
 
         <div class="content" ref="items">
           <div
-            class="video-box"
-            v-for="(i, index) in videos"
-            :class="(index + 1) % 2 == 0 ? 'right' : 'left'"
-            :key="i"
+              v-for="(item, index) in videoList" :key="item.id"
+              class="video-box" :class="index % 2 === 0 ? 'right' : 'left'"
           >
-            <div class="video-item" @click="flag = true">
-              <img class="video-img" :src="i.videoUrl" alt="video图片" />
+            <div class="video-item" @click="playVideo(item)">
+              <img class="video-img" :src="hotVideoImg" :alt="item.videoName" />
             </div>
             <div class="video-name">
-              <span>{{ i.videoName }}</span>
+              <span>{{ item.videoName }}</span>
             </div>
           </div>
         </div>
         <div class="button-container">
-          <myButton :text="text" @click="addVideos" />
+          <MyButton v-if="hasMore" @child-button="handleClick" />
+          <p v-else style="font-size: 24px;">
+            没有更多了
+          </p>
         </div>
       </div>
     </div>
     <div v-if="flag" class="video" @click="flag = false">
-      <video @click.stop src="" style="width: 80vw; height: 80vh; background-color: #fff"></video>
+      <video controls :src="videoSrc" style="width: 80vw; height: 80vh; background-color: #fff" @click.stop />
     </div>
   </div>
 </template>

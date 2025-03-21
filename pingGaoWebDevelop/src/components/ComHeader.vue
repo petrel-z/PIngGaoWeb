@@ -39,6 +39,15 @@ const header = ref([
   { name: "人力资源", path: "/humanResources" },
   { name: "联系我们", path: "/contactUs" },
 ]);
+
+const headerEnglish = ref([
+  { name: "HOME", path: "/" },
+  { name: "CORE PRODUCTS", path: "/" },
+  { name: "ABOUT US", path: "/" },
+  { name: "NEWS", path: "/news/news" },
+  { name: "CONTACT US", path: "/" },
+]);
+
 const allContent = ref([
   {
     content: {
@@ -63,11 +72,11 @@ const allContent = ref([
       imgPath: imgPath2,
     },
     footer: [
-      { name: "总部动态", path: "/informationCenter/headquartersDynamics-1" },
-      { name: "集团新闻", path: "/informationCenter/groupNews-1" },
-      { name: "媒体聚焦", path: "/informationCenter/mediaFocus-1" },
+      { name: "总部动态", path: "/informationCenter/headquartersDynamicsIndex" },
+      { name: "集团新闻", path: "/informationCenter/groupNewsIndex" },
+      { name: "媒体聚焦", path: "/informationCenter/mediaFocusIndex" },
       { name: "热点视频", path: "/informationCenter/hotVideo" },
-      { name: "最新公告", path: "/informationCenter/latestAnnouncement-1" },
+      { name: "最新公告", path: "/informationCenter/latestAnnouncementIndex" },
     ],
   },
   {
@@ -80,11 +89,11 @@ const allContent = ref([
     footer: [
       {
         name: "党的精神",
-        path: "/partyBuilding/partyspirit",
+        path: "/partyBuilding/partySpirit/index",
       },
       {
         name: "平高党建",
-        path: "/partyBuilding/pinggaoPartyBuilding",
+        path: "/partyBuilding/pinggaoPartyBuilding/index",
       },
     ],
   },
@@ -175,7 +184,7 @@ const allContent = ref([
       },
       {
         name: "人才招聘",
-        path: "/humanResources/talentRecruitment-1",
+        path: "/humanResources/talentRecruitment",
       },
       {
         name: "博士后工作站",
@@ -218,14 +227,14 @@ let hoverText = ref({
     imgPath: imgPath1,
   },
   footer: [
-    { name: "总部动态", path: "/informationCenter/headquartersDynamics-1" },
-    { name: "集团新闻", path: "/informationCenter/groupNews-1" },
-    { name: "媒体聚焦", path: "/informationCenter/mediaFocus-1" },
+    { name: "总部动态", path: "/informationCenter/headquartersDynamicsIndex" },
+    { name: "集团新闻", path: "/informationCenter/groupNewsIndex" },
+    { name: "媒体聚焦", path: "/informationCenter/mediaFocusIndex" },
     { name: "热点视频", path: "/informationCenter/hotVideo" },
-    { name: "最新公告", path: "/informationCenter/latestAnnouncement-1" },
+    { name: "最新公告", path: "/informationCenter/latestAnnouncementIndex" },
   ],
 });
-
+// 悬浮下框内容显示
 function hoverContent(name) {
   hidden.value = false;
   allContent.value.forEach((item) => {
@@ -263,11 +272,11 @@ const props = defineProps({
   footer: {
     type: Array,
     default: () => [
-      { name: "总部动态", path: "/informationCenter/headquartersDynamics-1" },
-      { name: "集团新闻", path: "/informationCenter/groupNews-1" },
-      { name: "媒体聚焦", path: "/informationCenter/mediaFocus-1" },
+      { name: "总部动态", path: "/informationCenter/headquartersDynamicsIndex" },
+      { name: "集团新闻", path: "/informationCenter/groupNewsIndex" },
+      { name: "媒体聚焦", path: "/informationCenter/mediaFocusIndex" },
       { name: "热点视频", path: "/informationCenter/hotVideo" },
-      { name: "最新公告", path: "/informationCenter/latestAnnouncement-1" },
+      { name: "最新公告", path: "/informationCenter/latestAnnouncementIndex" },
     ],
   },
   onlyHeaderFlag: {
@@ -289,7 +298,14 @@ const props = defineProps({
     type: String,
     default: "#1dc2ff",
   },
+  language: {
+    type: String,
+    default: "zh-CN",
+  },
 });
+
+// 语言切换
+let language = ref(props.language);
 
 const headerNavBottomRightBox = ref(null);
 const moveNav = ref(null);
@@ -382,7 +398,7 @@ onMounted(() => {
                 v-show="!moveFlag"
               ></i>
               <ul class="header-nav-top-bar-ul">
-                <li v-for="item in header" :key="item.name">
+                <li v-for="item in language === 'zh-CN' ? header : headerEnglish" :key="item.name">
                   <router-link
                     active-class="active-color"
                     @mouseenter="hoverContent(item.name)"
@@ -399,7 +415,11 @@ onMounted(() => {
             <div class="log-bottom-text">平 高 集 团 有 限 公 司</div>
             <div class="log-bottom-english">PINGGAO GROUP CO.,LTD.</div>
           </div> -->
-            <div ref="headerNavBottomRightBox" id="header-nav-bottom-right">
+            <div
+              v-if="language === 'zh-CN'"
+              ref="headerNavBottomRightBox"
+              id="header-nav-bottom-right"
+            >
               <div
                 @mouseleave="inputFlag = false"
                 v-show="inputFlag"
@@ -433,8 +453,51 @@ onMounted(() => {
                 </div>
               </router-link>
 
-              <div class="header-nav-bottom-item">
+              <div class="header-nav-bottom-item" @click="language = 'en-US'">
                 CN
+                <i class="iconfont icon-repeat" style="font-size: 1.125rem"></i>
+              </div>
+            </div>
+            <div
+              v-else-if="language === 'en-US'"
+              ref="headerNavBottomRightBox"
+              id="header-nav-bottom-right"
+            >
+              <div
+                @mouseleave="inputFlag = false"
+                v-show="inputFlag"
+                class="header-nav-bottom-item"
+              >
+                <i class="iconfont icon-sousuo"></i>
+                <input
+                  class="header-nav-bottom-input"
+                  type="text"
+                  @keydown.enter="searchFlag = true"
+                  placeholder="Enter keywords"
+                />
+              </div>
+              <div
+                v-show="!inputFlag"
+                @mouseenter="
+                  () => {
+                    inputFlag = true;
+                    // hidden = true;
+                  }
+                "
+                class="header-nav-bottom-item"
+              >
+                Search
+                <i class="iconfont icon-sousuo" style="font-size: 1.125rem" />
+              </div>
+              <router-link active-class="active-border" to="/contactUs/addressTelephone">
+                <div class="header-nav-bottom-item">
+                  Email
+                  <i class="iconfont icon-youxiang" style="font-size: 1.125rem" />
+                </div>
+              </router-link>
+
+              <div class="header-nav-bottom-item" @click="language = 'zh-CN'">
+                EN
                 <i class="iconfont icon-repeat" style="font-size: 1.125rem"></i>
               </div>
             </div>
@@ -491,30 +554,60 @@ onMounted(() => {
             :style="{ 'background-image': `url(${imgPath})` }"
           >
             <div class="header-nav-search-content-left">
-              <div class="header-nav-search-content-title">搜索结果</div>
+              <div class="header-nav-search-content-title">
+                {{ language === "zh-CN" ? "搜索结果" : "SEARCH RESULT" }}
+              </div>
               <hr style="display: inline-block; width: 5%; border: 0.1rem solid rgb(35, 24, 21)" />
               <div class="header-nav-search-content-text">
-                {{ hoverText.content.content }}
+                {{
+                  language === "zh-CN"
+                    ? hoverText.content.content
+                    : "Empowering Smart Electrical and"
+                }}
               </div>
               <div class="header-nav-search-content-english">
-                {{ hoverText.content.footer }}
+                {{ language === "zh-CN" ? hoverText.content.footer : "Creating Green Energy" }}
               </div>
             </div>
             <div class="header-nav-search-content-right">
               <div class="header-nav-search-content-right-title">
                 <ul>
-                  <li>全部</li>
-                  <li>新闻</li>
-                  <li>产品</li>
-                  <li>招聘</li>
+                  <li>{{ language === "zh-CN" ? "全部" : "ALL" }}</li>
+                  <li>{{ language === "zh-CN" ? "新闻" : "NEWS" }}</li>
+                  <li>{{ language === "zh-CN" ? "产品" : "PRODUCT" }}</li>
+                  <li v-show="language === 'zh-CN'">招聘</li>
                 </ul>
               </div>
               <div class="header-nav-search-content-right-content">
                 <ul>
-                  <li>平高集团1家企业荣获2024年全国质量标杆奖</li>
-                  <li>平高集团亮相CIGRE 2024 绿色智能产品吸引全球电力行业目光</li>
-                  <li>共青团平高集团有限公司、河南平高电气股份有限公司第二...</li>
-                  <li>平高集团亮相CIGRE 2024 绿色智能产品吸引全球电力行业目光</li>
+                  <li>
+                    {{
+                      language === "zh-CN"
+                        ? "平高集团1家企业荣获2024年全国质量标杆奖"
+                        : "One enterprise of Pinggao Group won the 2024 National Quality Benchmark Award"
+                    }}
+                  </li>
+                  <li>
+                    {{
+                      language === "zh-CN"
+                        ? "平高集团1家企业荣获2024年全国质量标杆奖"
+                        : "One enterprise of Pinggao Group won the 2024 National Quality Benchmark Award"
+                    }}
+                  </li>
+                  <li>
+                    {{
+                      language === "zh-CN"
+                        ? "平高集团1家企业荣获2024年全国质量标杆奖"
+                        : "One enterprise of Pinggao Group won the 2024 National Quality Benchmark Award"
+                    }}
+                  </li>
+                  <li>
+                    {{
+                      language === "zh-CN"
+                        ? "平高集团1家企业荣获2024年全国质量标杆奖"
+                        : "One enterprise of Pinggao Group won the 2024 National Quality Benchmark Award"
+                    }}
+                  </li>
                 </ul>
               </div>
             </div>
@@ -535,6 +628,7 @@ onMounted(() => {
 
       <div
         class="header-footer"
+        v-show="language === 'zh-CN'"
         :style="{
           '--backgroundImg': `url(${props.content.footerBg})`,
           '--footerBgColor': props.footerBgColor,
@@ -1039,7 +1133,7 @@ onMounted(() => {
   display: flex;
   justify-content: start;
   align-items: center;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
 }
 
 .header-footer ul li {

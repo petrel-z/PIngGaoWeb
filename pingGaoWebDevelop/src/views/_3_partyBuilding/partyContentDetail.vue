@@ -1,9 +1,10 @@
 <script setup>
-import MyTitle from "@/components/MyTitle.vue";
+import img1 from "@/assets/imgs/_3_partyBuildingImgs/t3_p2_person.png";
 import ContenPage from "@/components/ContenPage.vue";
 import Item1 from "@/components/Item-1.vue";
 import MyButton from "@/components/MyButton.vue";
-import img1 from "@/assets/imgs/_3_partyBuildingImgs/t3_p2_person.png";
+import MyTitle from "@/components/MyTitle.vue";
+import router from "@/router/index.js";
 
 const props = defineProps({
   contentTop: {
@@ -78,8 +79,21 @@ const props = defineProps({
   toState: {
     type: Boolean,
     default: true,
-  }
+  },
 });
+
+function toDetail (id) {
+  console.log(id);
+  if (id) {
+    const target = router.resolve({
+      name: "pbDetail",
+      params: {
+        id,
+      },
+    });
+    window.open(target.href, "_blank");
+  }
+}
 </script>
 
 <template>
@@ -95,26 +109,46 @@ const props = defineProps({
       ></MyTitle>
     </div>
     <div class="spirit-span">
-      <ContenPage :title1="props.contentPage.title1" :title2="props.contentPage.title2" :text="props.contentPage.text"
-        :img="props.contentPage.img" :btn-color="props.contentPage.btnColor" :bg-color="props.contentPage.bgColor"
-        :line-color="props.contentPage.lineColor" :title-font="props.contentPage.titleFont"
-        :text-font="props.contentPage.textFont" :font-color="props.contentPage.fontColor"
+      <ContenPage
+        :title1="props.contentPage.title"
+        title2=""
+        :text="props.contentPage.description"
+        :img="props.contentPage.headerImage"
+        :btn-color="props.contentPage.btnColor"
+        :bg-color="props.contentPage.bgColor"
+        :line-color="props.contentPage.lineColor"
+        :title-font="props.contentPage.titleFont"
+        :text-font="props.contentPage.textFont"
+        :font-color="props.contentPage.fontColor"
         :to-state="props.toState"
-        ></ContenPage>
+      />
     </div>
     <div class="spirit-list">
-      <div class="list-item" v-for="item in props.itemContent" :key="item.month">
-        <Item1 :month="item.month" :title="item.title" :text="item.text" :title-font="props.itemCss.titleFont"
-          :text-font="props.itemCss.textFont" :title-font-color="props.itemCss.titleFontColor"
-          :text-font-color="props.itemCss.textFontColor" :bg-color1="props.itemCss.bgColor1"
-          :bg-color2="props.itemCss.bgColor2" :left-font-color="props.itemCss.leftFontColor"
+      <div v-for="item in props.itemContent" :key="item.id" class="list-item">
+        <Item1
+          @click-item="toDetail(item.id)"
+          :year="item.timeObj.year"
+          :month="item.timeObj.month"
+          :title="item.title"
+          :text="item.description"
+          :title-font="props.itemCss.titleFont"
+          :text-font="props.itemCss.textFont"
+          :title-font-color="props.itemCss.titleFontColor"
+          :text-font-color="props.itemCss.textFontColor"
+          :bg-color1="props.itemCss.bgColor1"
+          :bg-color2="props.itemCss.bgColor2"
+          :left-font-color="props.itemCss.leftFontColor"
           :left-font-color-hover="props.itemCss.leftFontColorHover"
-          :right-font-color-hover="props.itemCss.rightFontColorHover"></Item1>
+          :right-font-color-hover="props.itemCss.rightFontColorHover" />
       </div>
     </div>
     <div class="lookMore">
-     <router-link v-if="props.toState" to="/partyBuilding/partyspiritMore"> <MyButton :bgColor="'#e06e5f'"></MyButton></router-link>
-     <router-link v-else to="/partyBuilding/PinggaoPartyBuildingMore"> <MyButton :bgColor="'#e06e5f'"></MyButton></router-link>
+      <router-link v-if="props.toState" to="/partyBuilding/partySpirit/more">
+        <MyButton bg-color="#e06e5f" />
+      </router-link>
+      <router-link v-else to="/partyBuilding/PinggaoPartyBuilding/more">
+        <MyButton bg-color="#e06e5f" />
+      </router-link>
     </div>
   </div>
 </template>
@@ -153,6 +187,7 @@ const props = defineProps({
     padding: 2em 0;
   }
 }
+
 @media (max-width: 1400px) {
   .partyContentDetail {
 
@@ -200,14 +235,18 @@ const props = defineProps({
 
 }
 
-@media (max-width: 800px) {}
+@media (max-width: 800px) {
+}
 
 /* 中型设备（平板，600px 到 900px） */
-@media (max-width: 700px) {}
+@media (max-width: 700px) {
+}
 
 /* 小型设备（手机，小于 600px） */
 
-@media (max-width: 600px) {}
+@media (max-width: 600px) {
+}
 
-@media (max-width: 500px) {}
+@media (max-width: 500px) {
+}
 </style>

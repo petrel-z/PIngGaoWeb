@@ -19,11 +19,11 @@ const content = ref({
 const footer = ref([
   {
     name: "党的精神",
-    path: "/partyBuilding/partyspirit",
+    path: "/partyBuilding/partySpirit/index",
   },
   {
     name: "平高党建",
-    path: "/partyBuilding/pinggaoPartyBuilding",
+    path: "/partyBuilding/pinggaoPartyBuilding/index",
   },
 ]);
 const headerCss = {
@@ -39,7 +39,12 @@ const headerCss = {
   <div style="width: auto">
     <div class="header">
       <div style="height: 100%; width: auto">
-        <ComHeader :content="content" :footer="footer" :css="headerCss" :footer-bg-color="'#deb893'"/>
+        <ComHeader
+          :content="content"
+          :footer="footer"
+          :css="headerCss"
+          :footer-bg-color="'#deb893'"
+        />
       </div>
     </div>
 
@@ -68,7 +73,6 @@ const headerCss = {
   .header {
     height: 53vw;
   }
-
 }
 
 @media (max-width: 800px) {
@@ -76,12 +80,12 @@ const headerCss = {
 
 /* 中型设备（平板，600px 到 900px） */
 @media (max-width: 700px) {
-} /* 小型设备（手机，小于 600px） */
+}
 
+/* 小型设备（手机，小于 600px） */
 @media (max-width: 600px) {
 }
 
 @media (max-width: 500px) {
-
 }
 </style>

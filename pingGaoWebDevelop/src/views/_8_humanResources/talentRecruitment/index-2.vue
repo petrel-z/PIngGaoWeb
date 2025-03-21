@@ -1,5 +1,37 @@
 <script setup>
-import newsBar from "@/components/newsBar.vue";
+import NewsBar from "@/components/NewsBar.vue";
+import { ref } from "vue";
+import { useRoute } from "vue-router";
+import HttpUtils from "@/utils/httpUtils.js";
+
+const data = ref("");
+const newsId = useRoute().params.id;
+
+// 格式化时间戳为 YYYY-MM-DD 格式
+function formatTimestamp (timestamp) {
+  const date = new Date(timestamp);
+  const year = date.getFullYear();
+  const month = (date.getMonth() + 1).toString().padStart(2, "0");
+  const day = date.getDate().toString().padStart(2, "0");
+  return `${year}-${month}-${day}`;
+}
+
+async function getData () {
+  const res = await HttpUtils.get(`/cms/news/detail?newsId=${newsId}`);
+  const result = await res.json();
+  // 格式化发布时间
+  if (result?.data?.data?.publishTime) {
+    result.data.data.publishTime = formatTimestamp(result.data.data.publishTime);
+  }
+
+  console.log(result.data.data.publishTime);
+  data.value = result.data;
+  document.title = data.value.data.title;
+
+  console.log(data.value);
+}
+
+getData();
 </script>
 
 <template>
@@ -10,50 +42,12 @@ import newsBar from "@/components/newsBar.vue";
     <div class="body-content">
       <div class="bg-white" style="padding: 4.7rem; width: 100%">
         <div class="title-box">
-          <div class="content-title">国电气装备旗下平高集团2022年社会招聘公告</div>
+          <div class="content-title">{{ data.data.title }}</div>
           <div style="margin-top: 4.7rem; margin-bottom: 4.7rem">
-            <newsBar time="2025-01-14" :browse="488" color="#1c4e9f" />
+            <NewsBar color="#1c4e9f" :time="data.data.publishTime" :browse="data.data.viewCount" />
           </div>
         </div>
-
-        <div class="text">
-          <p>
-            一、单位简介<br />
-            平高集团有限公司隶属于中国电气装备集团有限公司，是我国电工行业重大技术装备支柱企业。始建于1970年，总部位于河南平顶山，现有员工近万
-            人，资产总额超过300亿元，现已形成了以电力装备制造商和能源系统集成商为基本定位，以开关类为核心的电力装备研发制造和能源系统综合解决方
-            案的主营业务布局。业务范围涵盖输配电设备研发、设计、制造、销售、检测、运维等服务及相关设备成套、电力工程总承包、全过程工程咨询、综
-            合能源服务、电力储能、电锅炉及热储能、海上风电并网装备、智慧电网装备、充换电设施等业务。<br />
-            平高集团是河南省首批创新龙头企业，先后荣获全国五一劳动奖状、全国文明单位、中国机械工业100强企业、国家级创新型企业、装备中国功勋企
-            业、国家技能人才培育突出贡献单位等荣誉称号。<br />
-            二、应聘条件及招聘岗位<br />
-            （一）应聘基本条件<br />
-            1.思想政治素质好，拥护党的路线方针政策，具有强烈事业心和责任感；<br />
-            2.遵纪守法，具有良好的品行和职业素养，认同企业文化和核心价值理念；<br />
-            3.具备岗位要求的知识背景、从业资格、工作技能和经验；<br />
-            4.与原单位不存在相关竞业限制及其他纠纷，社会信用良好，无犯罪等不良记录；<br />
-            5.身体健康，具备良好的身体条件和心理素质。<br />
-            （二）招聘岗位及任职资格条件<br />
-            本次面向社会公开招聘98个岗位，共计106人。具体招聘岗位及任职资格条件见附件。<br />
-            （三）工作地点<br />
-            平顶山、北京、上海、天津、雄安、郑州、长春、长沙<br />
-            三、招聘安排<br />
-            （一）简历投递。请应聘人员在线投递简历（网址：http://campus.51job.com/pgjt2022/），每人限报两个志愿。<br />
-            （二）资料发送。<br />
-            打包发送以下材料：<br />
-            1.应聘人员信息表（可通过附件下载）；<br />
-            2.身份证扫描件；<br />
-            3.学历及学位证书扫描件（硕士也需发送本科学历、学位证书扫描件）；<br />
-            4.学历及学籍验证报告（硕士也需发送本科学历及学籍验证报告）；<br />
-            5.职业资格证书、业绩成果证明和获奖证书等。<br />
-            打包发送至pinggaoshezhao@163.com邮箱，邮件标题为“姓名+身份证号”。<br />
-            （二）简历筛选。平高集团按照招聘条件，对应聘人员进行初步筛选和资格审查，通过核查应聘人员的学历、专业和任职资格条件，择优确定进入甄
-            选环节的人选。<br />
-            （三）综合测评。通过简历筛选的应聘人员将参加由平高集团统一组织的综合测评。受疫情影响，具体测评形式及时间地点另行通知。综合测评通过
-            后，应聘人员须提供近半年内三甲医院开具的体检报告（具体要求届时将短信通知）。<br />
-            （四）公示录用。根据综合测评结果、体检报告及背景调查情况，择优确定拟录用人选，履行内部决策程序后，通过平高集团官网等方式进行公示，
-            公示无异议后，进行录用签约。
-          </p>
-        </div>
+        <div class="text" v-html="data.data.content" />
       </div>
     </div>
   </div>
@@ -86,9 +80,11 @@ import newsBar from "@/components/newsBar.vue";
   height: auto;
   width: 100%;
 }
+
 .bg-white {
   background-color: #ffffff;
 }
+
 .content-title {
   font-size: 2.5rem;
   font-family: "AlibabaPuHuiTi_2_65_Medium";
