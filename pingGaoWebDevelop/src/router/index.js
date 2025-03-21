@@ -1,4 +1,4 @@
-import aboutPinggao from '@/views/_1_aboutPinggao/aboutPinggao.vue'
+import aboutPinggao from '@/views/_1_aboutPinggao/myIndex.vue'
 import approachPinggao from '@/views/_1_aboutPinggao/approachPinggao/myIndex.vue'
 import groupProfile from '@/views/_1_aboutPinggao/groupProfile/myIndex.vue'
 import lesadingMember from '@/views/_1_aboutPinggao/lesadingMember/myIndex.vue'
