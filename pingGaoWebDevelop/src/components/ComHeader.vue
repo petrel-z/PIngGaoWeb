@@ -47,7 +47,7 @@ const headerEnglish = ref([
   { name: "CORE PRODUCTS", path: "/productEngineering/productSeriesEng" },
   { name: "ABOUT US", path: "/aboutUs" },
   { name: "NEWS", path: "/news/news" },
-  { name: "CONTACT US", path: "/contactUs" },
+  { name: "CONTACT US", path: "/contactUsEn" },
 ]);
 
 const allContent = ref([
@@ -370,6 +370,7 @@ onMounted(() => {
       '--footerColor': props.css.footerColor,
     }"
   >
+
     <div class="header-nav-box">
       <div
         id="header-nav"
@@ -501,6 +502,7 @@ onMounted(() => {
           </div>
         </div>
       </div>
+
       <div class="header-nav-hover-box">
         <div
           @mouseleave="hidden = true"
