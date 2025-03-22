@@ -16,6 +16,9 @@
 import { ref } from "vue";
 import comHeaderFoot from "@/assets/imgs/_1_aboutPinggaoImgs/t6_topBar.png";
 import RightButton from "@/components/RightButton.vue";
+import ComHeader from "@/components/ComHeader.vue";
+import imgPath from "@/assets/imgs/_1_aboutPinggaoImgs/头部轮播-01.png";
+import Footer from "@/components/Footer.vue";
 // import EngContent from "./english/index.vue"
 const info = ref({
   title: "关于平高",
@@ -34,10 +37,6 @@ const footer = ref([
   { name: "资质荣誉", path: "/aboutPinggao/seniorHonor" },
   { name: "走进平高", path: "/aboutPinggao/approachPinggao" },
 ]);
-
-import ComHeader from "@/components/ComHeader.vue";
-import imgPath from "@/assets/imgs/_1_aboutPinggaoImgs/头部轮播-01.png";
-import Footer from "@/components/Footer.vue";
 </script>
 <style lang="less" scoped>
 .header {

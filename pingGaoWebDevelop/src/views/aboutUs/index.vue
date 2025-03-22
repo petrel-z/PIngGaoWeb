@@ -5,12 +5,25 @@ defineOptions({
 import MyTitle_En from "@/components/MyTitle_En.vue";
 import Footer_En from "@/components/Footer_En.vue";
 import ComHeader from "@/components/ComHeader.vue";
+import imgPath from "@/assets/imgs/_1_aboutPinggaoImgs/头部轮播-01.png";
+import comHeaderFoot from "@/assets/imgs/_1_aboutPinggaoImgs/t6_topBar.png";
+import { ref } from "vue";
+
+const info = ref({
+  title: "关于平高",
+  titleEn: "ABOUT US",
+  content: "赋能智慧电气·创引绿色能源",
+  contentEn: "Empowering Smart Electrical and Creating Green Energy",
+  footer: "PG GROUP",
+  imgPath: imgPath,
+  footerBg: comHeaderFoot,
+});
 </script>
 <template>
   <div class="about_pinggao_eng">
     <div class="header">
       <div>
-        <ComHeader :isfooter="false" :onlyHeaderFlag="true"></ComHeader>
+        <ComHeader :content="info"></ComHeader>
       </div>
     </div>
     <div class="bg"></div>
@@ -74,7 +87,7 @@ import ComHeader from "@/components/ComHeader.vue";
           style="width: 100%; height: 100%"
           controls
           src="http://218.28.22.50:8108/videos/pinggao.mp4"
-          poster="../../../assets/imgs/_1_aboutPinggaoImgs/eng/videoBg.png"
+          poster="@/assets/imgs/_1_aboutPinggaoImgs/eng/videoBg.png"
         />
       </div>
     </div>
@@ -90,13 +103,10 @@ import ComHeader from "@/components/ComHeader.vue";
   z-index: 1;
 
   .header {
-    height: 68vh;
-    // min-width: 120rem;
-    width: 100%;
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: 101;
+    background-image: url("@/assets/imgs/_1_aboutPinggaoImgs/头部轮播-01.png");
+    width: auto;
+    height: 32vw;
+    background-size: cover;
   }
 }
 

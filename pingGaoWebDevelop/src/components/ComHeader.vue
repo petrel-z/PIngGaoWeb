@@ -4,7 +4,7 @@ import { onMounted, ref } from "vue";
 import imgPath from "@/assets/imgs/common/headerHoverBg-1.png";
 import imgPath1 from "@/assets/imgs/_1_aboutPinggaoImgs/头部轮播-01.png";
 import imgPath2 from "@/assets/imgs/_2_informationCenterImgs/头部轮播-02.png";
-import imgPath3 from "@/assets/imgs/_3_partyBuildingImgs/头部轮播-03.png";
+// import imgPath3 from "@/assets/imgs/_3_partyBuildingImgs/头部轮播-03.png";
 import imgPath4 from "@/assets/imgs/_4_productEngineeringImgs/头部轮播-04.png";
 import imgPath5 from "@/assets/imgs/_5_marketingServiceImgs/头部轮播-05.png";
 import imgPath6 from "@/assets/imgs/_6_qualityAssuranceImgs/头部轮播-06.png";
@@ -338,7 +338,7 @@ onMounted(() => {
   // 获取导航栏元素
   const navbar = document.getElementById("header-nav");
   // 定义滚动距离阈值
-  const scrollThreshold = 1;
+  const scrollThreshold = 5;
   // 监听窗口滚动事件
   window.addEventListener("scroll", function () {
     // 获取当前滚动距离
