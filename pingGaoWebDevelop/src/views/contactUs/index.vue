@@ -5,13 +5,26 @@ defineOptions({
 import MyTitle_En from '@/components/MyTitle_En.vue';
 import Footer_En from '@/components/Footer_En.vue';
 import ComHeader from '@/components/ComHeader.vue';
+import { ref } from "vue";
+
+
+const info = ref({
+  title: "关于平高",
+  titleEn: "CONTACT US",
+  content: "赋能智慧电气·创引绿色能源",
+  contentEn: "Reform, Innovation, Unity, Struggle, and Practical Action",
+  footer: "PG GROUP",
+  imgPath: '',
+  footerBg: '',
+});
+
 </script>
 <template>
   <div class="contact_us_en">
 
     <div class="header">
       <div>
-        <ComHeader :titleEn="'Contact Us'" :isfooter="false" :onlyHeaderFlag="true" :language="'en-Us'"></ComHeader>
+        <ComHeader :content="info"></ComHeader>
       </div>
     </div>
 

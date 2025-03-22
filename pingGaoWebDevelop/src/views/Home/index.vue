@@ -209,6 +209,7 @@ function toProduct(item) {
 
 getData()
 
+
 </script>
 
 <template>
@@ -659,7 +660,8 @@ getData()
 
     .item {
       width: 30%;
-
+      overflow: hidden;
+      transition: all 0.3s ease;
       .date {
         width: 100%;
         border-bottom: 1px solid #006fc1;
@@ -676,8 +678,11 @@ getData()
 
       img {
         width: 100%;
+        transition: all 0.5s ease;
       }
-
+      img:hover {
+        scale: 1.1;
+      }
       p {
         margin: 2.3rem 0;
         font-size: 2.6rem;
@@ -698,7 +703,16 @@ getData()
         text-align: center;
         border: 1px solid #006fc1;
         border-radius: 2rem;
+        transition: all 0.5s ease;
       }
+      .button-more:hover {
+        cursor: pointer;
+        border: 1px solid rgb(148, 201, 238);
+        color: rgb(148, 201, 238);
+      }
+    }
+    .item:hover {
+      box-shadow: 0 5px 8px rgba(0, 0, 0, 0.2); /* 外阴影 */
     }
 
     div:nth-child(3) {
@@ -752,7 +766,7 @@ getData()
     line-height: 3.278;
     text-align: center;
     cursor: pointer;
-
+    transition: all 0.3s ease;
     span {
       background-image: url(/src/assets/imgs/_1_aboutPinggaoImgs/eng/moreSpan.png);
       background-size: cover;
@@ -761,6 +775,11 @@ getData()
       width: 9px;
       height: 11px;
     }
+  }
+
+  .span:hover {
+    cursor: pointer;
+    font-size: 1.1rem;
   }
 }
 

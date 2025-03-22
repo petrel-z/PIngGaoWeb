@@ -29,7 +29,7 @@ const info = ref({
     <div class="bg"></div>
     <MyTitle_En></MyTitle_En>
     <div class="text_word">
-      <div class="word_left" ref="wordLeft" :class="{ 'slide-in-left': isVisibleLeftWord }">
+      <div class="word_left" ref="wordLeft" >
         <div class="text-section">
           <p class="word_left_firstp">
             Pinggao Group is a subsidiary of China Electric Equipment Group Co., Ltd.., founded
@@ -82,7 +82,7 @@ const info = ref({
           </p>
         </div>
       </div>
-      <div class="img_right" ref="imgRight" :class="{ 'slide-in-right': isVisibleRightImg }">
+      <div class="img_right" ref="imgRight">
         <video
           style="width: 100%; height: 100%"
           controls
@@ -127,7 +127,6 @@ const info = ref({
   z-index: 1;
   padding: 3rem 11%;
   display: flex;
-  // background-color: pink;
 }
 
 .text_word .word_left {
@@ -137,24 +136,35 @@ const info = ref({
   font-family: "AlibabaPuHuiTi_2_55_Regular";
   color: rgb(89, 87, 87);
   line-height: 1.85;
-  // opacity: 0;
-  // transform: translateX(-100%);
-  /* 初始位置在左边 */
-  // visibility: hidden;
-  // transition: transform 1s ease, opacity 0.5s ease;
-  /* 过渡效果 */
+  position: relative;
+  animation: toright 1s ease-in-out;
 }
 
+@keyframes toright  {
+  from {
+    opacity: 0;
+    left: -100%;
+  }
+  to {
+    opacity: 1;
+    left: 0;
+  }
+}
+@keyframes toleft  {
+  from {
+    opacity: 0;
+    left: 100%;
+  }
+  to {
+    opacity: 1;
+    left: 0;
+  }
+}
 .text_word .word_left p {
   display: block;
   margin-bottom: 2.5rem;
 }
 
-.word_left.slide-in-left {
-  opacity: 1;
-  transform: translateX(0);
-  visibility: visible;
-}
 
 .text_word .text-section {
   flex: 2;
@@ -166,24 +176,10 @@ const info = ref({
   height: 22.8125rem;
   background-size: contain;
   padding-top: 0;
-  // transform: translateX(100%);
-  /* 初始位置在右边 */
-  // opacity: 0;
-  /* 初始时不可见 */
-  // transition: transform 1s ease, opacity 0.5s ease;
-  /* 过渡效果 */
-  // visibility: hidden;
-  /* 初始时隐藏 */
+  position: relative;
+  animation: toleft 1s ease-in-out;
 }
 
-.img_right.slide-in-right {
-  // transform: translateX(0);
-  /* 滑动到最左边 */
-  // opacity: 1;
-  /* 可见 */
-  visibility: visible;
-  /* 可见 */
-}
 
 .text_word .img_right video {
   margin-left: 2.75rem;
