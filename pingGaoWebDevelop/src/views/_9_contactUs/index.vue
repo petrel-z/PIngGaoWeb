@@ -12,7 +12,9 @@ import RightButton from "@/components/RightButton.vue";
 
 const content = ref({
   title: "联系我们",
+  titleEn: "CONTACT US",
   content: "改革·创新·团结·奋斗·实干",
+  contentEn: "Reform, Innovation, Unity, Struggle, and Practical Action",
   footer: "PG GROUP",
   imgPath: imgPath,
   footerBg: footerBg,
@@ -45,7 +47,7 @@ const footer = ref([
   </div>
   <router-view />
   <!-- <ContactUsEn></ContactUsEn> -->
-  <div class="right_button"> <RightButton></RightButton> </div>
+  <div class="right_button"><RightButton></RightButton></div>
   <div>
     <Footer />
   </div>
@@ -59,16 +61,15 @@ const footer = ref([
   background-size: cover;
 }
 .right_button {
- position: absolute;
- top: 1400px;
- right: 0;
- z-index: 1001;
+  position: absolute;
+  top: 1400px;
+  right: 0;
+  z-index: 1001;
 }
 /* 大型设备（桌面，大于 900px） */
 @media (max-width: 900px) {
   .header {
     height: 53vw;
   }
-
 }
 </style>

@@ -1,9 +1,15 @@
-<script setup></script>
+<script setup>
+import { useLanguageStore } from "@/stores/languageStores";
+const use = useLanguageStore();
+const toggleLanguage = (language) => {
+  use.toggleLanguage(language);
+};
+</script>
 
 <template>
   <div class="homePage">
     <div class="top-MT">
-      <img src="../../assets/imgs/_11_welcomeImgs/welcome-MT.png" alt="">
+      <img src="../../assets/imgs/_11_welcomeImgs/welcome-MT.png" alt="" />
     </div>
     <div class="top">
       <div class="top-left">
@@ -17,13 +23,17 @@
       <div class="center-left">
         <div class="content">
           <div class="image"></div>
-          <router-link to="/homePage-2" class="button">点击进入</router-link>
+          <router-link to="/homePage-2" class="button" @click="toggleLanguage('zh-CN')"
+            >点击进入</router-link
+          >
         </div>
       </div>
       <div class="center-right">
         <div class="content">
           <div class="image"></div>
-          <router-link to="/home" class="button">ENTER</router-link>
+          <router-link to="/home" class="button" @click="toggleLanguage('en-US')"
+            >ENTER</router-link
+          >
         </div>
       </div>
     </div>
@@ -33,7 +43,7 @@
       </div>
 
       <div class="image">
-        <img src="../../assets/imgs/_11_welcomeImgs/footer-MT.png" alt="">
+        <img src="../../assets/imgs/_11_welcomeImgs/footer-MT.png" alt="" />
       </div>
     </div>
   </div>
@@ -195,7 +205,6 @@
       margin-top: 0;
 
       margin-bottom: 10%;
-
     }
 
     .center {
@@ -220,7 +229,6 @@
             margin-top: 0;
           }
         }
-
       }
 
       .center-left {
@@ -250,7 +258,6 @@
 
         img {
           width: 100%;
-
         }
       }
     }
@@ -291,7 +298,6 @@
             font-size: 3rem;
           }
         }
-
       }
 
       .center-left {
@@ -315,7 +321,6 @@
 
         img {
           width: 100%;
-
         }
       }
     }
@@ -346,7 +351,6 @@
 
 @media (max-width: 400px) {
   .homePage {
-
     .top-MT {
       margin-top: 8%;
     }
@@ -360,9 +364,7 @@
             margin-right: 10%;
           }
         }
-
       }
-
     }
   }
 }

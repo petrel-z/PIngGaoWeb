@@ -16,6 +16,8 @@ import logoBig1 from "@/assets/imgs/common/logoImgAll.png";
 import logoBig2 from "@/assets/imgs/common/logoImgAllBlack.png";
 import logoSmall1 from "@/assets/imgs/common/logoImg.png";
 import logoSmall2 from "@/assets/imgs/common/logoImgBlack.png";
+import { useLanguageStore } from "@/stores/languageStores";
+import { storeToRefs } from "pinia";
 
 let hidden = ref(true);
 let inputFlag = ref(false);
@@ -41,11 +43,11 @@ const header = ref([
 ]);
 
 const headerEnglish = ref([
-  { name: "HOME", path: "/" },
-  { name: "CORE PRODUCTS", path: "/" },
-  { name: "ABOUT US", path: "/" },
+  { name: "HOME", path: "/home" },
+  { name: "CORE PRODUCTS", path: "/productEngineering/productSeriesEng" },
+  { name: "ABOUT US", path: "/aboutUs" },
   { name: "NEWS", path: "/news/news" },
-  { name: "CONTACT US", path: "/" },
+  { name: "CONTACT US", path: "/contactUs" },
 ]);
 
 const allContent = ref([
@@ -263,7 +265,10 @@ const props = defineProps({
     type: Object,
     default: () => ({
       title: "资讯中心",
+      titleEn: "NEWS",
       content: "电气技术引领者·能源革命推动者·绿色发展践行者",
+      contentEn:
+        "Electrical technology leader, energy revolution promoter, and green development practitioner",
       footer: "PG GROUP",
       imgPath: imgPath2,
       footerBg: footerBg,
@@ -298,14 +303,11 @@ const props = defineProps({
     type: String,
     default: "#1dc2ff",
   },
-  language: {
-    type: String,
-    default: "zh-CN",
-  },
 });
 
 // 语言切换
-let language = ref(props.language);
+const langStore = useLanguageStore();
+const { currentLang: language } = storeToRefs(langStore);
 
 const headerNavBottomRightBox = ref(null);
 const moveNav = ref(null);
@@ -454,7 +456,7 @@ onMounted(() => {
                 </div>
               </router-link>
 
-              <div class="header-nav-bottom-item" @click="language = 'en-US'">
+              <div class="header-nav-bottom-item">
                 CN
                 <i class="iconfont icon-repeat" style="font-size: 1.125rem"></i>
               </div>
@@ -497,7 +499,7 @@ onMounted(() => {
                 </div>
               </router-link>
 
-              <div class="header-nav-bottom-item" @click="language = 'zh-CN'">
+              <div class="header-nav-bottom-item">
                 EN
                 <i class="iconfont icon-repeat" style="font-size: 1.125rem"></i>
               </div>
@@ -510,7 +512,7 @@ onMounted(() => {
         <div
           @mouseleave="hidden = true"
           class="header-nav-hover-content"
-          :class="{ hidden: hidden }"
+          :class="{ hidden: language === 'en-US' || hidden }"
         >
           <div
             style="width: 100%; height: 100%; background-size: cover; display: flex"
@@ -621,10 +623,16 @@ onMounted(() => {
     <div v-if="!props.onlyHeaderFlag" class="header-body-box">
       <transition name="fade-float">
         <div v-if="showText" class="header-body">
-          <div class="header-body-title">{{ props.content.title }}</div>
+          <div class="header-body-title">
+            {{ language === "zh-CN" ? props.content.title : props.content.titleEn }}
+          </div>
           <hr class="header-body-hr" style="width: 5%" />
-          <div class="header-body-content">{{ props.content.content }}</div>
-          <div class="header-body-footer">{{ props.content.footer }}</div>
+          <div class="header-body-content">
+            {{ language === "zh-CN" ? props.content.content : props.content.contentEn }}
+          </div>
+          <div v-show="language === 'zh-CN'" class="header-body-footer">
+            {{ props.content.footer }}
+          </div>
         </div>
       </transition>
 
@@ -1089,6 +1097,8 @@ onMounted(() => {
   font-family: "AlibabaPuHuiTi_2_45_Light";
   color: var(--fontColor);
   line-height: 1.2;
+  width: 30%;
+  text-align: left;
 }
 
 .header-body-footer {

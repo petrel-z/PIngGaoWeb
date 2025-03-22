@@ -6,6 +6,8 @@ import organizationalStructure from "@/views/_1_aboutPinggao/organizationalStruc
 import seniorHonor from "@/views/_1_aboutPinggao/seniorHonor/myIndex.vue";
 import partyBuilding from "@/views/_3_partyBuilding/index.vue";
 
+import productSeriseEng from "@/views/_4_productEngineering/productSeriesDetailEng/myIndex.vue";
+import productSeriesDetailEng from "@/views/_4_productEngineering/productSeriesDetailEng/myIndex.vue";
 import productEngineering from "@/views/_4_productEngineering/index.vue";
 import keyProject from "@/views/_4_productEngineering/keyProject/myIndex.vue";
 import productSeries from "@/views/_4_productEngineering/productSeries/myIndex.vue";
@@ -160,6 +162,14 @@ const router = createRouter({
           path: "productSeries",
           component: productSeries,
         },
+        {
+          path: "productSeriesEng",
+          component: productSeriseEng,
+        },
+        {
+          path: "productSeriesDetailEng",
+          component: productSeriesDetailEng,
+        },
       ],
     },
     {
@@ -286,15 +296,17 @@ const router = createRouter({
           component: () => import("@/views/news/newsDetail/index.vue"),
         },
       ],
-    },{
+    },
+    {
       path: "/aboutUs",
       component: () => import("@/views/aboutUs/index.vue"),
     },{
       path: "/contactUsEn",
       component: () => import("@/views/contactUs/index.vue"),
-    },{
-      path: '/home',
-      component: () => import('@/views/Home/index.vue'),
+    },
+    {
+      path: "/home",
+      component: () => import("@/views/Home/index.vue"),
     },
   ],
   scrollBehavior(to, from, savedPosition) {
