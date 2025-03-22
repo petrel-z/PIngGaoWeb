@@ -311,6 +311,7 @@ const { currentLang: language } = storeToRefs(langStore);
 
 const headerNavBottomRightBox = ref(null);
 const moveNav = ref(null);
+
 onMounted(() => {
   function handleResize() {
     if (window.innerWidth < 900) {
@@ -339,6 +340,7 @@ onMounted(() => {
   const navbar = document.getElementById("header-nav");
   // 定义滚动距离阈值
   const scrollThreshold = 5;
+
   // 监听窗口滚动事件
   window.addEventListener("scroll", function () {
     // 获取当前滚动距离
@@ -353,6 +355,7 @@ onMounted(() => {
       if (hidden.value && !headerBottomFlag.value) navbar.classList.remove("background-white");
       imgFixed.value = false;
     }
+    console.log(imgFixed.value);
   });
 
   //监听窗口大小变化事件
@@ -370,7 +373,6 @@ onMounted(() => {
       '--footerColor': props.css.footerColor,
     }"
   >
-
     <div class="header-nav-box">
       <div
         id="header-nav"
