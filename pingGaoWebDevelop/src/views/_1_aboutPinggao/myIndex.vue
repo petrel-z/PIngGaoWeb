@@ -19,6 +19,7 @@ import RightButton from "@/components/RightButton.vue";
 import ComHeader from "@/components/ComHeader.vue";
 import imgPath from "@/assets/imgs/_1_aboutPinggaoImgs/头部轮播-01.png";
 import Footer from "@/components/Footer.vue";
+
 // import EngContent from "./english/index.vue"
 const info = ref({
   title: "关于平高",

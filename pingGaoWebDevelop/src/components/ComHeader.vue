@@ -375,17 +375,12 @@ onMounted(() => {
         id="header-nav"
         @mouseenter="headerBottomFlag = true"
         @mouseleave="headerBottomFlag = false"
-        :class="{ 'background-white': imgFixed || !hidden || headerBottomFlag }"
+        :class="{ 'background-white': imgFixed || headerBottomFlag }"
       >
         <div class="log-img">
           <router-link class="logo-link" to="/homePage-2">
-            <img
-              ref="logo1"
-              v-show="!imgFixed"
-              :src="!headerBottomFlag && hidden ? logoImg1 : logoImg2"
-              alt=""
-            />
-            <img ref="logo2" v-show="imgFixed" :src="logoImg2" alt="" />
+            <img ref="logo1" v-show="!headerBottomFlag && !imgFixed" :src="logoImg1" alt="" />
+            <img ref="logo2" v-show="imgFixed || headerBottomFlag" :src="logoImg2" alt="" />
           </router-link>
 
           <div id="header-nav-top">

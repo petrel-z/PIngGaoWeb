@@ -5,7 +5,8 @@
   <router-view></router-view>
   <div class="right_button"><RightButton></RightButton></div>
   <div style="width: auto">
-    <Footer />
+    <Footer v-if="currentLang === 'zh-CN'" class="footer" />
+    <Footer_En v-else class="footer" />
   </div>
 </template>
 
@@ -19,6 +20,13 @@ import Footer from "@/components/Footer.vue";
 import imgPath from "@/assets/imgs/_4_productEngineeringImgs/头部轮播-04.png";
 import footerBg from "@/assets/imgs/_6_qualityAssuranceImgs/t6_topbar.png";
 import RightButton from "@/components/RightButton.vue";
+import Footer_En from "@/components/Footer_En.vue";
+import { useLanguageStore } from "@/stores/languageStores";
+import { storeToRefs } from "pinia";
+
+const use = useLanguageStore();
+const { currentLang } = storeToRefs(use);
+
 const info = ref({
   title: "产品工程",
   titleEn: "CORE PRODUCTS",
