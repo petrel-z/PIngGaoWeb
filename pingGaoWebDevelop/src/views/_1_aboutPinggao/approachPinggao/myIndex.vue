@@ -21,7 +21,7 @@ const createObserver = (refElement, isVisible) => {
     {
       root: null, // 使用浏览器视口作为根元素
       rootMargin: "0px", // 无额外的边距
-      threshold: 0, // 当元素的 50% 进入视口时触发
+      threshold: 0,
     },
   );
 
@@ -42,11 +42,8 @@ async function getData () {
   const response = await httpUtils.get("/cms/banner/about/list");
   const { data } = await response.json();
   console.log(data);
-
   imageList.value = data;
-
   await nextTick();
-
   initializeObservers();
 }
 
@@ -61,9 +58,6 @@ getData();
            class="grid_item" ref="imgRef"
            :class="{ 'scale-up': isVisible, ['grid-item'+(index+1)]:true}" />
     </div>
-    <!--    <div class="footer">-->
-    <!--      <MyButton class="myButton" text="加载更多"></MyButton>-->
-    <!--    </div>-->
   </div>
 </template>
 
@@ -94,15 +88,15 @@ getData();
 
 .grid_item {
   transform: scale(0.5); /* 初始缩小 */
-  opacity: 0; /* 初始不可见 */
-  visibility: hidden; /* 初始隐藏 */
-  transition: transform 0.5s ease, opacity 0.5s ease; /* 过渡效果 */
+  opacity: 0;
+  visibility: hidden;
+  transition: transform 0.5s ease, opacity 0.5s ease;
 }
 
 .grid_item.scale-up {
-  transform: scale(1); /* 放大到原始大小 */
-  opacity: 1; /* 可见 */
-  visibility: visible; /* 可见 */
+  transform: scale(1);
+  opacity: 1;
+  visibility: visible;
 }
 
 /* 正确绑定 grid-area */

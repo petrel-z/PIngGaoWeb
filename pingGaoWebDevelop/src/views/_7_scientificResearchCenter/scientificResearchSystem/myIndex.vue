@@ -83,7 +83,7 @@ onMounted(initializeObservers); // 在组件挂载时调用
   position: relative;
   margin: auto;
   width: 100%;
-  height: 122.5rem;
+  height: 205.5rem;
   padding: 4rem 11%;
   border-radius: 1.25rem;
   background-color: #fff;
@@ -116,7 +116,7 @@ onMounted(initializeObservers); // 在组件挂载时调用
   visibility: visible;
 }
 .text {
-  font-size: 1.25rem;
+  font-size: 2.3rem;
   font-family: "AlibabaPuHuiTi_2_55_Regular";
   color: rgb(89, 87, 87);
   line-height: 1.56;
@@ -134,14 +134,6 @@ onMounted(initializeObservers); // 在组件挂载时调用
   width: 100%;
   height: 100%;
 }
-@media (min-width: 500px) and (max-width: 800px) {
-  .text {
-  font-size: 0.8rem !important;
-}
-}
-@media (min-width:1500px) and (max-width: 1800px) {
-  .text {
-  font-size: 1rem !important;
-}
-}
+
+
 </style>

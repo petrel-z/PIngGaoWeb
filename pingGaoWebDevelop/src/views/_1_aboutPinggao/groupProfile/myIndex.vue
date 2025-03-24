@@ -57,45 +57,57 @@ onMounted(initializeObservers); // 在组件挂载时调用
   <!-- 集团简介 -->
   <div class="groupProfile">
     <MyTitle title="平高集团" english="PINGGAO GROUP"></MyTitle>
-    <div class="introduce">
-      <div class="introduce_content introduce_content_first">
-        <div class="introduce_text">
-          <span class="introduce_content_top">国家级</span>
-          <span class="introduce_content_bottom">高新技术企业</span>
+    <div class="project">
+      <div class="introduce">
+        <div class="introduce_content introduce_content_first">
+          <div class="introduce_text">
+            <span class="introduce_content_top">国家级</span>
+            <span class="introduce_content_bottom">高新技术企业</span>
+          </div>
+        </div>
+        <div class="introduce_content">
+          <div class="introduce_text">
+            <span class="introduce_content_top">国家级</span>
+            <span class="introduce_content_bottom">创新型企业</span>
+          </div>
+        </div>
+        <div class="introduce_content introduce_content_last">
+          <div class="introduce_text">
+            <span class="introduce_content_top">全国</span>
+            <span class="introduce_content_bottom">五一劳动奖状</span>
+          </div>
         </div>
       </div>
-      <div class="introduce_content">
-        <div class="introduce_text">
-          <span class="introduce_content_top">国家级</span>
-          <span class="introduce_content_bottom">创新型企业</span>
+      <div class="introduce">
+        <div class="introduce_content">
+          <div class="introduce_text">
+            <span class="introduce_content_top">中国</span>
+            <span class="introduce_content_bottom">机械工程100强</span>
+          </div>
         </div>
-      </div>
-      <div class="introduce_content">
-        <div class="introduce_text">
-          <span class="introduce_content_top">全国</span>
-          <span class="introduce_content_bottom">五一劳动奖状</span>
+        <div class="introduce_content">
+          <div class="introduce_text">
+            <span class="introduce_content_top">装备</span>
+            <span class="introduce_content_bottom">中国功勋企业</span>
+          </div>
         </div>
-      </div>
-      <div class="introduce_content">
-        <div class="introduce_text">
-          <span class="introduce_content_top">中国</span>
-          <span class="introduce_content_bottom">机械工程100强</span>
-        </div>
-      </div>
-      <div class="introduce_content">
-        <div class="introduce_text">
-          <span class="introduce_content_top">装备</span>
-          <span class="introduce_content_bottom">中国功勋企业</span>
-        </div>
-      </div>
-      <div class="introduce_content introduce_content_last">
-        <div class="introduce_text">
-          <span class="introduce_content_top">全国</span>
-          <span class="introduce_content_bottom">文明单位</span>
+        <div class="introduce_content introduce_content_last">
+          <div class="introduce_text">
+            <span class="introduce_content_top">全国</span>
+            <span class="introduce_content_bottom">文明单位</span>
+          </div>
         </div>
       </div>
     </div>
+
     <div class="text_word">
+      <div class="img_right" ref="imgRight" :class="{ 'slide-in-right': isVisibleRightImg }">
+        <video
+          style="width: 100%; height: 100%"
+          controls
+          src="http://218.28.22.50:8108/videos/pinggao.mp4"
+        />
+      </div>
       <div class="word_left" ref="wordLeft" :class="{ 'slide-in-left': isVisibleLeftWord }">
         <div class="text-section">
           <p class="word_left_firstp">
@@ -112,14 +124,10 @@ onMounted(initializeObservers); // 在组件挂载时调用
           </p>
         </div>
       </div>
-      <div class="img_right" ref="imgRight" :class="{ 'slide-in-right': isVisibleRightImg }">
-        <video style="width: 100%;height: 100%" controls
-               src="http://218.28.22.50:8108/videos/pinggao.mp4" />
-      </div>
     </div>
     <div class="key">
       <div class="key_title"><span>平高集团企业文化六大核心理念</span></div>
-      <div class="key_content1" ref="keyContent1" :class="{ key_content1_left: isVisibleContent1 }">
+      <div class="key_content1">
         <div class="key_info key_content_one">
           <div class="key_content_h">企业使命</div>
           <div class="key_content_text">赋能智慧电气·创引绿色能源</div>
@@ -127,18 +135,11 @@ onMounted(initializeObservers); // 在组件挂载时调用
         <div class="key_content_two key_info">
           <div class="key_content_h">总体布局</div>
           <div class="key_content_text">装备制造·集成增值服务·智慧能源服务</div>
-
         </div>
         <div class="key_content_three key_info">
           <div class="key_content_h">战略目标</div>
           <div class="key_content_text">世界一流智慧电气装备集团</div>
         </div>
-      </div>
-      <div
-        class="key_content2"
-        ref="keyContent2"
-        :class="{ key_content2_right: isVisibleContent2 }"
-      >
         <div class="key_content_four key_info">
           <div class="key_content_h">战略定位</div>
           <div class="key_content_text">电气技术引领者·能源革命推动者·绿色发展践行者</div>
@@ -171,7 +172,7 @@ onMounted(initializeObservers); // 在组件挂载时调用
           </div>
         </div>
         <div
-          class="basic_culture_info"
+          class="basic_culture_info basic_culture_info_last"
           ref="basicCultureInfo"
           :class="{ 'scale-up': isVisibleBaseInfo }"
         >
@@ -219,7 +220,7 @@ onMounted(initializeObservers); // 在组件挂载时调用
           </div>
         </div>
         <div
-          class="basic_culture_info"
+          class="basic_culture_info basic_culture_info_last"
           ref="basicCultureInfo"
           :class="{ 'scale-up': isVisibleBaseInfo }"
         >
@@ -271,35 +272,45 @@ onMounted(initializeObservers); // 在组件挂载时调用
   position: relative;
   margin: auto;
   width: 100%;
-  height: 222.5rem;
+  height: 422.5rem;
   padding: 4rem 11%;
   border-radius: 1.25rem;
   background-color: #fff;
   z-index: 0;
   overflow: hidden;
 }
+.project {
+  position: absolute;
+  background-color: #f4f4f4;
+  height: 23rem;
+  margin-top: 3.4375rem;
+  padding-top: 0.3rem;
+  padding-left: 14rem;
+  padding-right: 12rem;
+  width: 100%;
+  left: 0;
+}
 
 .introduce {
   overflow: hidden;
   display: flex;
-  margin-top: 3.4375rem;
-  position: absolute;
   width: 100%;
-  height: 14.5rem;
-  left: 0;
-  background-color: #f4f4f4;
-  padding: 5.3125rem 11%;
+  height: 7rem;
+  margin-top: 3rem;
+  padding-top: 2rem;
 }
 
 .introduce_content {
-  width: 16.7%;
-  border-left: 0.125rem solid #8abade;
+  width: 33%;
+  border-left: 0.2rem solid #8abade;
   text-align: center;
+  height: 100% !important;
 }
 .introduce_text {
   position: relative;
   width: 100%;
   transition: 0.5s;
+  height: 100%;
 }
 .introduce_text:hover {
   transform: scale(1.03);
@@ -310,14 +321,14 @@ onMounted(initializeObservers); // 在组件挂载时调用
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
-  font-size: 1.625rem;
+  font-size: 2.225rem;
   font-family: "AlibabaPuHuiTi_2_65_Medium";
   color: rgb(0, 111, 193);
   line-height: 1.423;
 }
 
 .introduce_content_top {
-  top: -0.4375rem;
+  top: -1.2375rem;
 }
 
 .introduce_content_bottom {
@@ -325,17 +336,16 @@ onMounted(initializeObservers); // 在组件挂载时调用
   top: 1.6875rem;
 }
 .introduce_content_last {
-  border-right: 0.125rem solid #8abade;
+  border-right: 0.2rem solid #8abade;
 }
 .text_word {
-  display: flex;
-  margin-top: 20.9375rem;
+  margin-top: 33rem;
 }
 
 .text_word .word_left {
   display: flex;
-  width: 55%;
-  font-size: 1.25rem;
+  width: 100%;
+  font-size: 2.5rem;
   font-family: "AlibabaPuHuiTi_2_55_Regular";
   color: rgb(89, 87, 87);
   line-height: 1.85;
@@ -343,6 +353,7 @@ onMounted(initializeObservers); // 在组件挂载时调用
   transform: translateX(-100%); /* 初始位置在左边 */
   visibility: hidden;
   transition: transform 1s ease, opacity 0.5s ease; /* 过渡效果 */
+  margin-top: 2.5rem;
 }
 
 .text_word .word_left p {
@@ -361,9 +372,9 @@ onMounted(initializeObservers); // 在组件挂载时调用
 }
 
 .text_word .img_right {
-  margin: 0.625rem 0 0  0.625rem;
-  width: 44%;
-  height: 22.8125rem;
+  margin: 0.625rem 0 0 0.625rem;
+  width: 100%;
+  height: 40.8125rem;
   background-size: contain;
   padding-top: 0;
   transform: translateX(100%); /* 初始位置在右边 */
@@ -386,9 +397,16 @@ onMounted(initializeObservers); // 在组件挂载时调用
 
 .key {
   width: 100%;
+  height: 120rem;
   margin-bottom: 7.5rem;
   margin-top: 2.5rem;
   z-index: 10;
+}
+
+.key_content1 {
+  height: 130rem;
+  display: grid;
+  grid-template-rows: repeat(6, 1fr); /* 将容器分为3等份 */
 }
 
 .key .key_title {
@@ -396,39 +414,11 @@ onMounted(initializeObservers); // 在组件挂载时调用
   font-family: "AlibabaPuHuiTi_2_65_Medium";
   color: rgb(0, 111, 193);
   text-align: center;
-  margin-bottom: 2.1875rem;
+  margin-bottom: 6.1875rem;
 }
 
-.key .key_content1 {
-  display: flex;
-  flex-direction: row;
-  /* justify-content: space-between; */
-  transform: translateX(-100%); /* 初始位置在左边 */
-  visibility: hidden;
-  transition: transform 1s ease, opacity 0.5s ease; /* 过渡效果 */
-}
-.key .key_content1.key_content1_left {
-  opacity: 1;
-  transform: translateX(0);
-  visibility: visible;
-}
-
-.key .key_content2 {
-  display: flex;
-  flex-direction: row;
-  /* justify-content: space-between; */
-  transform: translateX(100%); /* 初始位置在左边 */
-  visibility: hidden;
-  transition: transform 1s ease, opacity 0.5s ease; /* 过渡效果 */
-  opacity: 0;
-}
-.key .key_content2.key_content2_right {
-  transform: translateX(0%); /* 从右到左滑动 */
-  opacity: 1;
-  visibility: visible;
-}
 .key_content_one {
-  width: 33.3%;
+  width: 45.3%;
   margin-bottom: 0.4375rem;
   position: relative;
   height: 10.0625rem;
@@ -437,12 +427,13 @@ onMounted(initializeObservers); // 在组件挂载时调用
   background-size: contain;
   background-color: #def1fb;
   cursor: pointer;
+  transform: scale(2);
+  margin: auto;
 }
 
 .key_content_two {
-  margin-left: 0.875rem;
-  width: 33.3%;
-  margin-bottom: 0.625rem;
+  width: 45.3%;
+  margin-bottom: 0.4375rem;
   position: relative;
   height: 10.0625rem;
   background-image: url("@/assets/imgs/_1_aboutPinggaoImgs/content-2.png");
@@ -450,59 +441,65 @@ onMounted(initializeObservers); // 在组件挂载时调用
   background-size: contain;
   cursor: pointer;
   background-color: #def1fb;
+  transform: scale(2);
+  margin: auto;
 }
 
 .key_content_three {
-  width: 33.3%;
-  margin-left: 0.875rem;
-  margin-bottom: 0.625rem;
+  width: 45.3%;
+  margin-bottom: 0.4375rem;
   position: relative;
   height: 10.0625rem;
   background-image: url("@/assets/imgs/_1_aboutPinggaoImgs/content-3.png");
   background-repeat: no-repeat;
   background-size: contain;
   background-color: #def1fb;
+  transform: scale(2);
+  margin: auto;
 }
 
 .key_content_four {
-  width: 33.3%;
+  width: 45.3%;
   position: relative;
   height: 10.0625rem;
   background-image: url("@/assets/imgs/_1_aboutPinggaoImgs/content-4.png");
   background-repeat: no-repeat;
   background-size: contain;
   background-color: #def1fb;
+  margin-bottom: 0.4375rem;
+  transform: scale(2);
+  margin: auto;
 }
 
 .key_content_five {
-  width: 33.3%;
-  margin-left: 0.875rem;
+  width: 45.3%;
   position: relative;
   height: 10.0625rem;
   background-image: url("@/assets/imgs/_1_aboutPinggaoImgs/content-5.png");
   background-repeat: no-repeat;
   background-size: contain;
   background-color: #def1fb;
+  margin-bottom: 0.4375rem;
+  transform: scale(2);
+  margin: auto;
 }
 
 .key_content_six {
-  margin-left: 0.875rem;
   position: relative;
-  width: 33.3%;
+  width: 45.3%;
   height: 10.0625rem;
   background-image: url("@/assets/imgs/_1_aboutPinggaoImgs/content-6.png");
   background-repeat: no-repeat;
   background-size: contain;
   background-color: #def1fb;
+  transform: scale(2);
+  margin: auto;
 }
 .key .key_info {
   cursor: pointer;
   transition: 0.3s;
 }
-.key .key_info:hover {
-  transform: scale(1.01);
-  box-shadow: 0 0.1875rem 0.3125rem rgba(0, 0, 0, 0.488);
-}
+
 .key_content_h {
   left: 11.75rem;
   top: 2rem;
@@ -520,12 +517,107 @@ onMounted(initializeObservers); // 在组件挂载时调用
   font-family: "AlibabaPuHuiTi_2_45_Light";
   color: rgb(89, 87, 87);
 }
+
+.basic_culture_title {
+  font-size: 3.5rem;
+  font-family: "AlibabaPuHuiTi_2_65_Medium";
+  color: rgb(0, 111, 193);
+  text-align: center;
+  margin-bottom: 5.375rem;
+  margin-top: 25rem;
+}
+.basic_culture_content {
+  width: 100%;
+  /*height: 19.375rem;*/
+  display: flex;
+  flex-wrap: wrap;
+}
+.basic_word {
+  transition: 0.3s;
+}
+.basic_word:hover {
+  transform: scale(1.05);
+}
+.basic_culture_info {
+  border-left: 0.2rem solid #c4c4c4;
+  width: 50%;
+  height: 12rem;
+  text-align: center;
+  margin-bottom: 8.375rem;
+  min-width: 6.25rem;
+  transform: scale(0.5); /* 初始缩小 */
+  opacity: 0; /* 初始不可见 */
+  visibility: hidden; /* 初始隐藏 */
+  transition: transform 0.5s ease, opacity 0.5s ease; /* 过渡效果 */
+}
+.basic_culture_info.scale-up {
+  transform: scale(1); /* 放大到原始大小 */
+  opacity: 1; /* 可见 */
+  visibility: visible; /* 可见 */
+}
+.basic_culture_info div {
+  margin-bottom: 0.125rem;
+}
+.basic_culture_info .basic_culture_h {
+  font-size: 2.5rem;
+  font-family: "AlibabaPuHuiTi_2_65_Medium";
+  color: rgb(0, 111, 193);
+}
+.basic_culture_info .basic_culture_p {
+  font-size: 2.2rem;
+  font-family: "AlibabaPuHuiTi_2_45_Light";
+  color: rgb(89, 87, 87);
+}
+.basic_culture_line {
+  width: 3rem;
+  height: 0.1rem;
+  background-color: #4093d1;
+  margin-left: 10.3125rem;
+  margin: auto;
+}
+.basic_culture_info .basic_culture_num {
+  white-space: pre;
+  font-size: 2.5rem;
+  font-family: "AlibabaPuHuiTi_2_85_Bold";
+  color: rgb(0, 111, 193);
+}
+.basic_culture_info_last {
+  border-right: 0.2rem solid #c4c4c4;
+}
+.mind_map {
+  background-color: #def1fb;
+  left: 0;
+  width: 100%;
+  height: 64.25rem;
+  position: absolute;
+  z-index: -1;
+  overflow: hidden;
+  bottom: 0;
+}
+
+.mind_map img {
+  width: 100%;
+  position: absolute;
+  height: 64.25rem;
+  left: 0;
+  bottom: 0; /* 初始位置在容器底部 */
+  transform: translateY(50%); /* 图片初始隐藏在容器下方 */
+  visibility: hidden; /* 初始时不可见 */
+  transition: transform 1s ease, opacity 0.5s ease; /* 过渡效果 */
+  will-change: transform; /* 告诉浏览器动画即将发生，提升性能 */
+  z-index: -1;
+}
+
+.mind_map img.slide-in {
+  visibility: visible;
+  transform: translateY(0); /* 从下方滑动到原位置 */
+}
 @media (min-width: 10px) and (max-width: 200px) {
   .text_word .text-section p {
     font-size: 0.8rem !important;
     margin-bottom: 1rem;
   }
-  .text_word .img_right video{
+  .text_word .img_right video {
     margin-left: 1rem;
     width: 100% !important;
     height: 15rem !important;
@@ -543,7 +635,7 @@ onMounted(initializeObservers); // 在组件挂载时调用
   }
   .groupProfile {
     width: 100%;
-    height: 180.5rem !important;
+    height: 580.5rem !important;
   }
   .key_content_h {
     left: 6.6rem;
@@ -604,7 +696,7 @@ onMounted(initializeObservers); // 在组件挂载时调用
   }
   .groupProfile {
     width: 100%;
-    height: 250.5rem !important;
+    height: 460.5rem !important;
   }
 }
 @media (min-width: 300px) and (max-width: 350px) {
@@ -640,7 +732,7 @@ onMounted(initializeObservers); // 在组件挂载时调用
   }
   .groupProfile {
     width: 100%;
-    height: 226.5rem !important;
+    height: 440.5rem !important;
   }
 }
 @media (min-width: 350px) and (max-width: 400px) {
@@ -657,15 +749,7 @@ onMounted(initializeObservers); // 在组件挂载时调用
   }
   .groupProfile {
     width: 100%;
-    height: 238.5rem !important;
-  }
-}
-@media (min-width: 400px) and (max-width: 900px) {
-  .introduce_content span {
-    font-size: 1.4rem;
-  }
-  .text_word .word_left p {
-    font-size: 1rem;
+    height: 520.5rem !important;
   }
 }
 @media (min-width: 400px) and (max-width: 450px) {
@@ -681,7 +765,7 @@ onMounted(initializeObservers); // 在组件挂载时调用
   }
   .groupProfile {
     width: 100%;
-    height: 218.5rem !important;
+    height: 533.5rem !important;
   }
 }
 @media (min-width: 450px) and (max-width: 500px) {
@@ -697,260 +781,157 @@ onMounted(initializeObservers); // 在组件挂载时调用
   }
   .groupProfile {
     width: 100%;
-    height: 213.5rem !important;
+    height: 518.5rem !important;
   }
 }
 @media (min-width: 500px) and (max-width: 600px) {
-  .key_content_h {
-    left: 7.5rem ;
-    top: 1.3rem;
-    font-size: 1rem;
-  }
-  .key_content_text {
-    left: 7.5rem;
-    top: 2.9rem;
-    font-size: 0.85rem;
-  }
-  .key .key_info {
-    height: 6.5rem;
-  }
-  .basic_culture_info .basic_culture_h {
-    font-size: 1rem !important;
-  }
-  .basic_culture_info .basic_culture_p {
-    font-size: 0.9rem !important;
-  }
-  .basic_culture_line {
-    width: 2rem !important;
-    height: 0.0625rem;
-  }
-  .basic_culture_info .basic_culture_num {
-    white-space: pre;
-    font-size: 1.3242rem !important;
-  }
-  .basic_culture_info {
-    border-left: 0.0625rem solid #c4c4c4;
-    width: 25%;
-    height: 6rem !important;
-  }
-  .text_word .word_left {
-    display: flex;
-    width: 57%;
-  }
-  .text_word .word_left p {
-    font-size: 0.75rem !important;
-  }
-  .text_word .img_right {
-    margin-left: -0.325rem;
-    width: 40% !important;
-    height: 14.8125rem !important;
-  }
-  .text_word .img_right video {
-    width: 100%;
-    height: 14rem !important;
-  }
-  .mind_map {
-    background-color: #def1fb;
-    left: 0;
-    width: 100%;
-    height: 46.25rem !important;
-  }
-
-  .mind_map img {
-    width: 100%;
-    position: absolute;
-    height: 45.25rem !important;
-  }
-  .groupProfile {
-    width: 100%;
-    height: 175.5rem !important;
-  }
-}
-@media (min-width: 600px) and (max-width: 700px) {
-  .key_content_h {
-    left: 7.3rem;
-    top: 1.2rem;
-    font-size: 1rem;
-  }
-  .key_content_text {
-    left: 7.3rem;
-    top: 2.9rem;
-    font-size: 0.85rem;
-  }
-  .key .key_info {
-    height: 6.5rem;
-  }
-  .basic_culture_info .basic_culture_h {
-    font-size: 1rem !important;
-  }
-  .basic_culture_info .basic_culture_p {
-    font-size: 0.9rem !important;
-  }
-  .basic_culture_line {
-    width: 2rem !important;
-    height: 0.0625rem;
-  }
-  .basic_culture_info .basic_culture_num {
-    white-space: pre;
-    font-size: 1.3242rem !important;
-  }
-  .basic_culture_info {
-    border-left: 0.0625rem solid #c4c4c4;
-    width: 25%;
-    height: 6rem !important;
-  }
-  .text_word .word_left {
-    display: flex;
-    width: 57%;
-  }
-  .text_word .word_left p {
-    font-size: 0.75rem !important;
-  }
-  .text_word .img_right {
-    margin-left: -0.325rem;
-    width: 40% !important;
-    height: 14.8125rem !important;
-  }
-  .text_word .img_right video {
-    width: 100%;
-    height: 14rem !important;
-  }
-  .mind_map {
-    background-color: #def1fb;
-    left: 0;
-    width: 100%;
-    height: 46.25rem !important;
-  }
-
-  .mind_map img {
-    width: 100%;
-    position: absolute;
-    height: 45.25rem !important;
-  }
-  .groupProfile {
-    width: 100%;
-    height: 175.5rem !important;
-  }
-}
-@media (min-width: 700px) and (max-width: 800px) {
-  .key_content_h {
-    left: 7.6rem;
-    top: 1.2rem;
-    font-size: 0.9rem;
-  }
-  .key_content_text {
-    left: 7.6rem;
-    top: 3rem;
-    font-size: 0.8rem;
-  }
-  .key .key_info {
-    height: 6.5rem;
-  }
-  .basic_culture_info .basic_culture_h {
-    font-size: 1rem !important;
-  }
-  .basic_culture_info .basic_culture_p {
-    font-size: 0.9rem !important;
-  }
-  .basic_culture_line {
-    width: 2rem !important;
-    height: 0.0625rem;
-  }
-  .basic_culture_info .basic_culture_num {
-    white-space: pre;
-    font-size: 1.3242rem !important;
-  }
-  .basic_culture_info {
-    border-left: 0.0625rem solid #c4c4c4;
-    width: 25%;
-    height: 6rem !important;
-  }
-  .text_word .word_left {
-    display: flex;
-    width: 57%;
-  }
-  .text_word .word_left p {
-    font-size: 0.8rem !important;
-  }
-  .text_word .img_right {
-    margin-left: -0.325rem;
-    width: 40% !important;
-    height: 14.8125rem !important;
-  }
-  .text_word .img_right video {
-    width: 100%;
-    height: 14rem !important;
-  }
-  .mind_map {
-    background-color: #def1fb;
-    left: 0;
-    width: 100%;
-    height: 50.25rem !important;
-  }
-
-  .mind_map img {
-    width: 100%;
-    position: absolute;
-    height: 50.25rem !important;
-  }
-  .groupProfile {
-    width: 100%;
-    height: 184.5rem !important;
-  }
-}
-@media (min-width: 800px) and (max-width: 900px) {
-  .introduce_content span{
-    font-size: 1.2rem !important;
+  .introduce_content span {
+    font-size: 2rem !important;
   }
   .key_content_h {
     left: 5.8rem;
     top: 0.7rem;
     font-size: 0.87rem;
   }
+  .key_title {
+    font-size: 3rem !important;
+  }
+  .key_content1 {
+    margin-top: -4rem;
+    height: 110rem;
+  }
   .key_content_text {
     left: 5.8rem;
     top: 2.2rem;
-    font-size: 0.75rem;
+    font-size: 0.7rem;
   }
   .key .key_info {
-    width: 33%;
+    width: 30%;
     height: 5rem;
+    transform: scale(3) !important;
   }
-  .basic_culture_info .basic_culture_h {
-    font-size: 1rem !important;
-  }
-  .basic_culture_info .basic_culture_p {
-    font-size: 0.9rem !important;
-  }
-  .basic_culture_line {
-    width: 2rem !important;
-    height: 0.0625rem;
-  }
-  .basic_culture_info .basic_culture_num {
-    white-space: pre;
-    font-size: 1.3242rem !important;
+  .basic_culture {
+    margin-top: -20rem;
+    height: 80rem !important;
   }
   .basic_culture_info {
     border-left: 0.0625rem solid #c4c4c4;
-    width: 25%;
-    height: 6rem !important;
+    height: 12rem;
+    width: 50%;
   }
+
+  .basic_culture_info .basic_culture_h {
+    font-size: 2rem !important;
+  }
+  .basic_culture_info .basic_culture_p {
+    font-size: 1.7rem !important;
+  }
+  .basic_culture_line {
+    width: 4rem !important;
+    height: 0.2rem;
+  }
+  .basic_culture_info .basic_culture_num {
+    white-space: pre;
+    font-size: 2.3242rem !important;
+  }
+
   .text_word .word_left {
     display: flex;
-    width: 57%;
   }
   .text_word .word_left p {
-    font-size: 0.82rem !important;
+    font-size: 2rem !important;
     margin-bottom: 1rem;
   }
   .text_word .img_right {
     margin-left: -0.325rem;
-    width: 40% !important;
-    height: 14.8125rem !important;
+    height: 24.8125rem !important;
   }
   .text_word .img_right video {
     width: 100%;
-    height: 14rem !important;
+    height: 24rem !important;
+  }
+  .mind_map {
+    background-color: #def1fb;
+    left: 0;
+    width: 100%;
+    height: 55.25rem !important;
+  }
+
+  .mind_map img {
+    width: 100%;
+    position: absolute;
+    height: 50.25rem !important;
+  }
+  .groupProfile {
+    width: 100%;
+    height: 451.5rem !important;
+  }
+}
+@media (min-width: 600px) and (max-width: 660px) {
+  .introduce_content span {
+    font-size: 2rem !important;
+  }
+  .key_content_h {
+    left: 5.8rem;
+    top: 0.7rem;
+    font-size: 0.87rem;
+  }
+  .key_title {
+    font-size: 3rem !important;
+  }
+  .key_content1 {
+    margin-top: -4rem;
+    height: 110rem;
+  }
+  .key_content_text {
+    left: 5.8rem;
+    top: 2.2rem;
+    font-size: 0.7rem;
+  }
+  .key .key_info {
+    width: 30%;
+    height: 5rem;
+    transform: scale(3) !important;
+  }
+  .basic_culture {
+    margin-top: -20rem;
+    height: 80rem !important;
+  }
+  .basic_culture_info {
+    border-left: 0.0625rem solid #c4c4c4;
+    height: 12rem;
+    width: 50%;
+  }
+
+  .basic_culture_info .basic_culture_h {
+    font-size: 2rem !important;
+  }
+  .basic_culture_info .basic_culture_p {
+    font-size: 1.7rem !important;
+  }
+  .basic_culture_line {
+    width: 4rem !important;
+    height: 0.2rem;
+  }
+  .basic_culture_info .basic_culture_num {
+    white-space: pre;
+    font-size: 2.3242rem !important;
+  }
+
+  .text_word .word_left {
+    display: flex;
+  }
+  .text_word .word_left p {
+    font-size: 2rem !important;
+    margin-bottom: 1rem;
+  }
+  .text_word .img_right {
+    margin-left: -0.325rem;
+    height: 24.8125rem !important;
+  }
+  .text_word .img_right video {
+    width: 100%;
+    height: 24rem !important;
   }
   .mind_map {
     background-color: #def1fb;
@@ -966,7 +947,173 @@ onMounted(initializeObservers); // 在组件挂载时调用
   }
   .groupProfile {
     width: 100%;
-    height: 180.5rem !important;
+    height: 455.5rem !important;
+  }
+}
+@media (min-width: 660px) and (max-width: 780px) {
+  .introduce_content span {
+    font-size: 1.7rem !important;
+  }
+  .key_content_h {
+    left: 5.8rem;
+    top: 0.7rem;
+    font-size: 0.87rem;
+  }
+  .key_title {
+    font-size: 3rem !important;
+  }
+  .key_content1 {
+    margin-top: -4rem;
+    height: 110rem;
+  }
+  .key_content_text {
+    left: 5.8rem;
+    top: 2.2rem;
+    font-size: 0.7rem;
+  }
+  .key .key_info {
+    width: 30%;
+    height: 5rem;
+    transform: scale(3) !important;
+  }
+  .basic_culture {
+    margin-top: -20rem;
+    height: 80rem !important;
+  }
+  .basic_culture_info {
+    border-left: 0.0625rem solid #c4c4c4;
+    height: 12rem;
+    width: 50%;
+  }
+
+  .basic_culture_info .basic_culture_h {
+    font-size: 2rem !important;
+  }
+  .basic_culture_info .basic_culture_p {
+    font-size: 1.7rem !important;
+  }
+  .basic_culture_line {
+    width: 4rem !important;
+    height: 0.2rem;
+  }
+  .basic_culture_info .basic_culture_num {
+    white-space: pre;
+    font-size: 2.3242rem !important;
+  }
+
+  .text_word .word_left {
+    display: flex;
+  }
+  .text_word .word_left p {
+    font-size: 2rem !important;
+    margin-bottom: 1rem;
+  }
+  .text_word .img_right {
+    margin-left: -0.325rem;
+    height: 24.8125rem !important;
+  }
+  .text_word .img_right video {
+    width: 100%;
+    height: 24rem !important;
+  }
+  .mind_map {
+    background-color: #def1fb;
+    left: 0;
+    width: 100%;
+    height: 50.25rem !important;
+  }
+
+  .mind_map img {
+    width: 100%;
+    position: absolute;
+    height: 45.25rem !important;
+  }
+  .groupProfile {
+    width: 100%;
+    height: 450.5rem !important;
+  }
+}
+@media (min-width: 780px) and (max-width: 900px) {
+  .introduce_content span {
+    font-size: 1.8rem !important;
+  }
+  .key_content_h {
+    left: 5.8rem;
+    top: 0.7rem;
+    font-size: 0.87rem;
+  }
+  .key_title {
+    font-size: 3rem !important;
+  }
+  .key_content1 {
+    margin-top: -4rem;
+    height: 110rem;
+  }
+  .key_content_text {
+    left: 5.8rem;
+    top: 2.2rem;
+    font-size: 0.7rem;
+  }
+  .key .key_info {
+    width: 30%;
+    height: 5rem;
+    transform: scale(3) !important;
+  }
+  .basic_culture {
+    margin-top: -20rem;
+    height: 80rem !important;
+  }
+  .basic_culture_info {
+    border-left: 0.0625rem solid #c4c4c4;
+    height: 12rem;
+    width: 50%;
+  }
+
+  .basic_culture_info .basic_culture_h {
+    font-size: 2rem !important;
+  }
+  .basic_culture_info .basic_culture_p {
+    font-size: 1.7rem !important;
+  }
+  .basic_culture_line {
+    width: 4rem !important;
+    height: 0.2rem;
+  }
+  .basic_culture_info .basic_culture_num {
+    white-space: pre;
+    font-size: 2.3242rem !important;
+  }
+
+  .text_word .word_left {
+    display: flex;
+  }
+  .text_word .word_left p {
+    font-size: 2rem !important;
+    margin-bottom: 1rem;
+  }
+  .text_word .img_right {
+    margin-left: -0.325rem;
+    height: 24.8125rem !important;
+  }
+  .text_word .img_right video {
+    width: 100%;
+    height: 24rem !important;
+  }
+  .mind_map {
+    background-color: #def1fb;
+    left: 0;
+    width: 100%;
+    height: 45.25rem !important;
+  }
+
+  .mind_map img {
+    width: 100%;
+    position: absolute;
+    height: 40.25rem !important;
+  }
+  .groupProfile {
+    width: 100%;
+    height: 460.5rem !important;
   }
 }
 @media (min-width: 900px) and (max-width: 1000px) {
@@ -997,11 +1144,11 @@ onMounted(initializeObservers); // 在组件挂载时调用
   }
   .groupProfile {
     width: 100%;
-    height: 226.5rem !important;
+    height: 510.5rem !important;
   }
 }
 @media (min-width: 1000px) and (max-width: 1200px) {
-  .introduce_content span{
+  .introduce_content span {
     font-size: 1.8rem !important;
   }
   .key_content_h {
@@ -1028,10 +1175,10 @@ onMounted(initializeObservers); // 在组件挂载时调用
   }
   .groupProfile {
     width: 100%;
-    height: 227.5rem !important;
+    height: 510.5rem !important;
   }
 }
-@media (min-width: 1200px) and (max-width: 1400px) {
+@media (min-width: 1200px) and (max-width: 1500px) {
   .key_content_h {
     left: 11.3rem;
     top: 2rem;
@@ -1056,10 +1203,10 @@ onMounted(initializeObservers); // 在组件挂载时调用
   }
   .groupProfile {
     width: 100%;
-    height: 220.5rem !important;
+    height: 515.5rem !important;
   }
 }
-@media (min-width: 1400px) and (max-width: 1600px) {
+@media (min-width: 1500px) and (max-width: 1800px) {
   .key_content_h {
     left: 11.5rem;
     top: 2.2rem;
@@ -1070,12 +1217,23 @@ onMounted(initializeObservers); // 在组件挂载时调用
     top: 4.3rem;
     font-size: 1.1rem;
   }
+  .mind_map {
+    background-color: #def1fb;
+    left: 0;
+    width: 100%;
+    height: 75rem !important;
+  }
+  .mind_map img {
+    width: 100%;
+    position: absolute;
+    height: 70rem !important;
+  }
   .groupProfile {
     width: 100%;
-    height: 217.5rem !important;
+    height: 510rem !important;
   }
 }
-@media (min-width: 1600px) and (max-width: 1800px) {
+@media (min-width: 1800px) and (max-width: 2100px) {
   .key_content_h {
     left: 11.7rem;
     top: 2.2rem;
@@ -1090,20 +1248,19 @@ onMounted(initializeObservers); // 在组件挂载时调用
     background-color: #def1fb;
     left: 0;
     width: 100%;
-    height: 70.25rem !important;
+    height: 65rem !important;
   }
-
   .mind_map img {
     width: 100%;
     position: absolute;
-    height: 70.25rem !important;
+    height: 65rem !important;
   }
   .groupProfile {
     width: 100%;
-    height: 220.5rem !important;
+    height: 515rem !important;
   }
 }
-@media (min-width: 2100px) and (max-width: 2400px) {
+@media (min-width: 2100px) and (max-width: 3000px) {
   .key_content_h {
     left: 11.5rem;
     top: 2.1rem;
@@ -1118,35 +1275,17 @@ onMounted(initializeObservers); // 在组件挂载时调用
     background-color: #def1fb;
     left: 0;
     width: 100%;
-    height: 70.25rem !important;
+    height: 78rem !important;
   }
 
   .mind_map img {
     width: 100%;
     position: absolute;
-    height: 70.25rem !important;
+    height: 78rem !important;
   }
   .groupProfile {
     width: 100%;
-    height: 223.5rem !important;
-  }
-}
-@media (min-width: 2400px) and (max-width: 2600px) {
-  .mind_map {
-    background-color: #def1fb;
-    left: 0;
-    width: 100%;
-    height: 74.25rem !important;
-  }
-
-  .mind_map img {
-    width: 100%;
-    position: absolute;
-    height: 74.25rem !important;
-  }
-  .groupProfile {
-    width: 100%;
-    height: 229.5rem !important;
+    height: 515rem !important;
   }
 }
 @media (min-width: 3000px) and (max-width: 5000px) {
@@ -1154,17 +1293,17 @@ onMounted(initializeObservers); // 在组件挂载时调用
     background-color: #def1fb;
     left: 0;
     width: 100%;
-    height: 71.25rem !important;
+    height: 78rem !important;
   }
 
   .mind_map img {
     width: 100%;
     position: absolute;
-    height: 71.25rem !important;
+    height: 78rem !important;
   }
   .groupProfile {
     width: 100%;
-    height: 229.5rem !important;
+    height: 516rem !important;
   }
 }
 @media (min-width: 5000px) and (max-width: 8000px) {
@@ -1172,112 +1311,20 @@ onMounted(initializeObservers); // 在组件挂载时调用
     background-color: #def1fb;
     left: 0;
     width: 100%;
-    height: 78.25rem !important;
+    height: 78rem !important;
   }
 
   .mind_map img {
     width: 100%;
     position: absolute;
-    height: 78.25rem !important;
+    height: 76rem !important;
   }
   .groupProfile {
     width: 100%;
-    height: 234.5rem !important;
+    height: 510rem !important;
   }
 }
 
-.basic_culture_title {
-  font-size: 2rem;
-  font-family: "AlibabaPuHuiTi_2_65_Medium";
-  color: rgb(0, 111, 193);
-  text-align: center;
-  margin-bottom: 4.375rem;
-}
-.basic_culture_content {
-  width: 100%;
-  /*height: 19.375rem;*/
-  display: flex;
-  flex-wrap: wrap;
-}
-.basic_word {
-  transition: 0.3s;
-}
-.basic_word:hover {
-  transform: scale(1.05);
-}
-.basic_culture_info {
-  border-left: 0.0625rem solid #c4c4c4;
-  width: 25%;
-  height: 7rem;
-  text-align: center;
-  margin-bottom: 4.375rem;
-  min-width: 6.25rem;
-  transform: scale(0.5); /* 初始缩小 */
-  opacity: 0; /* 初始不可见 */
-  visibility: hidden; /* 初始隐藏 */
-  transition: transform 0.5s ease, opacity 0.5s ease; /* 过渡效果 */
-}
-.basic_culture_info.scale-up {
-  transform: scale(1); /* 放大到原始大小 */
-  opacity: 1; /* 可见 */
-  visibility: visible; /* 可见 */
-}
-.basic_culture_info div {
-  margin-bottom: 0.125rem;
-}
-.basic_culture_info .basic_culture_h {
-  font-size: 1.375rem;
-  font-family: "AlibabaPuHuiTi_2_65_Medium";
-  color: rgb(0, 111, 193);
-}
-.basic_culture_info .basic_culture_p {
-  font-size: 1.25rem;
-  font-family: "AlibabaPuHuiTi_2_45_Light";
-  color: rgb(89, 87, 87);
-}
-.basic_culture_line {
-  width: 2.5rem;
-  height: 0.0625rem;
-  background-color: #4093d1;
-  margin-left: 10.3125rem;
-  margin: auto;
-}
-.basic_culture_info .basic_culture_num {
-  white-space: pre;
-  font-size: 1.7242rem;
-  font-family: "AlibabaPuHuiTi_2_85_Bold";
-  color: rgb(0, 111, 193);
-}
-.basic_culture_info_last {
-  border-right: 0.0625rem solid #c4c4c4;
-}
-.mind_map {
-  background-color: #def1fb;
-  left: 0;
-  width: 100%;
-  height: 64.25rem;
-  position: absolute;
-  z-index: -1;
-  overflow: hidden;
-}
-
-.mind_map img {
-  width: 100%;
-  position: absolute;
-  height: 64.25rem;
-  left: 0;
-  bottom: 0; /* 初始位置在容器底部 */
-  transform: translateY(50%); /* 图片初始隐藏在容器下方 */
-  visibility: hidden; /* 初始时不可见 */
-  transition: transform 1s ease, opacity 0.5s ease; /* 过渡效果 */
-  will-change: transform; /* 告诉浏览器动画即将发生，提升性能 */
-  z-index: -1;
-}
-
-.mind_map img.slide-in {
-  visibility: visible;
-  transform: translateY(0); /* 从下方滑动到原位置 */
-}
 @media (min-width: 1500px) and (max-width: 1800px) {
   .mind_map {
     height: 61.25rem !important;

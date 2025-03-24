@@ -1,53 +1,7 @@
 <script setup>
 import MyTitle from '@/components/MyTitle.vue'
 import headLine from '@/components/MyHeadLine.vue'
-import { ref, onMounted } from 'vue'
 
-const infoRef = ref(null)
-const isVisibleInfo = ref(false)
-const infoRef1 = ref(null)
-const isVisibleInfo1 = ref(false)
-const wordLeftRef = ref(null)
-const isVisibleWordLeft = ref(false)
-const wordRightRef = ref(null)
-const isVisibleWordRight = ref(false)
-const wordLeftRef1 = ref(null)
-const isVisibleWordLeft1 = ref(false)
-const wordRightRef1 = ref(null)
-const isVisibleWordRight1 = ref(false)
-// 创建交叉观察器
-const createObserver = (refElement, isVisible) => {
-  const observer = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        const { intersectionRatio } = entry
-        // 设置触发条件：元素进入视口 50% 以上时触发
-        if (intersectionRatio >= 0) {
-          isVisible.value = true
-          observer.disconnect() // 元素可见后停止观察
-        }
-      })
-    },
-    {
-      root: null, // 使用浏览器视口作为根元素
-      rootMargin: '0px', // 无额外的边距
-      threshold: 0, // 当元素的 50% 进入视口时触发
-    }
-  )
-  if (refElement.value) {
-    observer.observe(refElement.value)
-  }
-}
-// 初始化所有的观察器
-const initializeObservers = () => {
-  createObserver(infoRef, isVisibleInfo)
-  createObserver(infoRef1, isVisibleInfo1)
-  createObserver(wordLeftRef, isVisibleWordLeft)
-  createObserver(wordLeftRef1, isVisibleWordLeft1)
-  createObserver(wordRightRef, isVisibleWordRight)
-  createObserver(wordRightRef1, isVisibleWordRight1)
-}
-onMounted(initializeObservers) // 在组件挂载时调用
 </script>
 <template>
   <!-- 组织机构 -->
@@ -57,37 +11,37 @@ onMounted(initializeObservers) // 在组件挂载时调用
       <div class="organization_title">平高集团有限公司</div>
       <div class="detail">
         <div class="introduce">
-          <div class="info" ref="infoRef" :class="{ 'scale-up': isVisibleInfo }">
+          <div class="info">
             <div class="info_top">12</div>
             <div class="info_bottom">全资子公司<span>/</span>家</div>
           </div>
         </div>
         <div class="introduce">
-          <div class="info" ref="infoRef" :class="{ 'scale-up': isVisibleInfo }">
+          <div class="info">
             <div class="info_top">6</div>
             <div class="info_bottom">投股子公司<span>/</span>家</div>
           </div>
         </div>
         <div class="introduce">
-          <div class="info" ref="infoRef" :class="{ 'scale-up': isVisibleInfo }">
+          <div class="info">
             <div class="info_top">1</div>
             <div class="info_bottom">合营公司<span>/</span>家</div>
           </div>
         </div>
         <div class="introduce">
-          <div class="info" ref="infoRef" :class="{ 'scale-up': isVisibleInfo }">
+          <div class="info">
             <div class="info_top">11</div>
             <div class="info_bottom">本部部门<span>/</span>家</div>
           </div>
         </div>
         <div class="introduce">
-          <div class="info" ref="infoRef" :class="{ 'scale-up': isVisibleInfo }">
+          <div class="info">
             <div class="info_top">2</div>
             <div class="info_bottom">分公司<span>/</span>家</div>
           </div>
         </div>
         <div class="introduce">
-          <div class="info" ref="infoRef" :class="{ 'scale-up': isVisibleInfo }">
+          <div class="info">
             <div class="info_top">1</div>
             <div class="info_bottom">支撑平台<span>/</span>家</div>
           </div>
@@ -95,8 +49,8 @@ onMounted(initializeObservers) // 在组件挂载时调用
       </div>
     </div>
     <div class="component">
-      <div class="content_top1" ref="wordLeftRef" :class="{ 'move-left': isVisibleWordLeft }">
-        <div class="left">
+      <div class="content_top1">
+        <div class="info">
           <headLine title="本部部门"></headLine>
           <ul class="parts">
             <li>办公室(党委办公室、董事会办公室)</li>
@@ -112,7 +66,7 @@ onMounted(initializeObservers) // 在组件挂载时调用
             <li>生产物资部</li>
           </ul>
         </div>
-        <div class="middle">
+        <div class="info">
           <headLine title="全资子公司"></headLine>
           <ul class="parts">
             <li>北京平高清大科技发展有限公司</li>
@@ -129,7 +83,7 @@ onMounted(initializeObservers) // 在组件挂载时调用
             <li>平高集团能源发展有限公司</li>
           </ul>
         </div>
-        <div class="right">
+        <div class="info">
           <headLine title="控股子公司"></headLine>
           <ul class="parts">
             <li>天津平高易电科技有限公司</li>
@@ -142,35 +96,35 @@ onMounted(initializeObservers) // 在组件挂载时调用
         </div>
       </div>
 
-      <div class="content_middle1" ref="wordRightRef" :class="{ 'move-right': isVisibleWordRight }">
-        <div class="left">
+      <div class="content_middle1">
+        <div class="info">
           <headLine title="支撑平台"></headLine>
           <ul class="parts">
             <li>平高集团工程项目管理中心</li>
           </ul>
         </div>
-        <div class="middle">
+        <div class="info">
           <headLine title="营销平台"></headLine>
           <ul class="parts">
             <li>平高集团营销服务中心</li>
           </ul>
         </div>
-        <div class="right">
+        <div class="info">
           <headLine title="合营公司"></headLine>
           <ul class="parts">
             <li>平高东芝（河南）开关零部件制造有限公司</li>
           </ul>
         </div>
       </div>
-      <div class="content_bottom1" ref="wordLeftRef" :class="{ 'move-left': isVisibleWordLeft }">
-        <div class="left">
+      <div class="content_bottom1">
+        <div class="info">
           <headLine title="分公司"></headLine>
           <ul class="parts">
             <li>平高集团有限公司综合服务分公司</li>
             <li>平高集团电力储能事业部</li>
           </ul>
         </div>
-        <div class="middle">
+        <div class="info">
           <headLine title="科研平台"></headLine>
           <ul class="parts">
             <li>平高大连交大轨道电气技术研究院</li>
@@ -184,37 +138,37 @@ onMounted(initializeObservers) // 在组件挂载时调用
       <div class="organization_title">平高集团控股子公司</div>
       <div class="detail">
         <div class="introduce">
-          <div class="info" ref="infoRef1" :class="{ 'scale-up': isVisibleInfo1 }">
+          <div class="info">
             <div class="info_top">6</div>
             <div class="info_bottom">全资子公司<span>/</span>家</div>
           </div>
         </div>
         <div class="introduce">
-          <div class="info" ref="infoRef1" :class="{ 'scale-up': isVisibleInfo1 }">
+          <div class="info">
             <div class="info_top">6</div>
             <div class="info_bottom">投股子公司<span>/</span>家</div>
           </div>
         </div>
         <div class="introduce">
-          <div class="info" ref="infoRef1" :class="{ 'scale-up': isVisibleInfo1 }">
+          <div class="info" >
             <div class="info_top">1</div>
             <div class="info_bottom">合营公司<span>/</span>家</div>
           </div>
         </div>
         <div class="introduce">
-          <div class="info" ref="infoRef1" :class="{ 'scale-up': isVisibleInfo1 }">
+          <div class="info" >
             <div class="info_top">9</div>
             <div class="info_bottom">本部部门<span>/</span>家</div>
           </div>
         </div>
         <div class="introduce">
-          <div class="info" ref="infoRef1" :class="{ 'scale-up': isVisibleInfo1 }">
+          <div class="info" >
             <div class="info_top">12</div>
             <div class="info_bottom">直属分公司<span>/</span>家</div>
           </div>
         </div>
         <div class="introduce">
-          <div class="info" ref="infoRef1" :class="{ 'scale-up': isVisibleInfo1 }">
+          <div class="info" >
             <div class="info_top">4</div>
             <div class="info_bottom">支撑平台<span>/</span>家</div>
           </div>
@@ -222,7 +176,7 @@ onMounted(initializeObservers) // 在组件挂载时调用
       </div>
     </div>
     <div class="component_2" v-if="false">
-      <div class="content_top_2" ref="wordLeftRef1" :class="{ 'move-left': isVisibleWordLeft1 }">
+      <div class="content_top_2">
         <div class="content_left_2">
           <headLine title="本部部门"></headLine>
           <ul class="parts">
@@ -265,8 +219,6 @@ onMounted(initializeObservers) // 在组件挂载时调用
       </div>
       <div
         class="content_bottom_2"
-        ref="wordRightRef1"
-        :class="{ 'move-right': isVisibleWordRight1 }"
       >
         <div class="content_left_2">
           <headLine title="合营公司"></headLine>
@@ -324,9 +276,10 @@ onMounted(initializeObservers) // 在组件挂载时调用
   position: relative;
   margin-top: 3.75rem;
   width: 100%;
-  height: 20.25rem;
+  height: 34rem;
   background-color: #006fc1;
   border-radius: 0.9375rem;
+  margin-bottom: 5rem;
 }
 
 .organization .organization_title {
@@ -342,37 +295,30 @@ onMounted(initializeObservers) // 在组件挂载时调用
 
 .organization .detail {
   position: absolute;
-  display: flex;
-  bottom: 4.6875rem;
+  top: 6rem;
   width: 100%;
+  display: flex;
+  flex-wrap: wrap;
 }
 
 .organization .introduce {
-  width: 16.7%;
+  width: 33.333%;
   height: 7rem;
-  border-right: 0.0625rem solid #2291d0;
+  border-right: 0.2rem solid #2291d0;
   color: #fff;
   padding-bottom: 0.3125rem;
+  box-sizing: border-box;
+  margin-top: 4rem;
 }
 
 .organization .info {
   position: relative;
-  transform: scale(0.3); /* 初始缩小 */
-  opacity: 0; /* 初始不可见 */
-  visibility: hidden; /* 初始隐藏 */
-  transition: transform 0.5s ease, opacity 0.5s ease; /* 过渡效果 */
-}
-
-.organization .info.scale-up {
-  transform: scale(1); /* 放大到原始大小 */
-  opacity: 1; /* 可见 */
-  visibility: visible; /* 可见 */
 }
 
 .organization .info .info_top {
   top: -0.0625rem;
   position: absolute;
-  font-size: 3.75rem;
+  font-size: 4.5rem;
   font-family: "Avenir-black-4";
   color: rgb(255, 255, 255);
   z-index: 129;
@@ -385,136 +331,15 @@ onMounted(initializeObservers) // 在组件挂载时调用
   position: absolute;
   white-space: nowrap;
   display: flex;
-  font-size: 1.625rem;
+  font-size: 2.625rem;
   font-family: "AlibabaPuHuiTi_2_65_Medium";
   color: rgb(255, 255, 255);
   top: 5.625rem;
   left: 50%;
   transform: translate(-50%, -50%);
 }
-
-@media (min-width: 300px) and (max-width: 400px) {
-  .component li {
-    font-size: 1.2rem !important;
-  }
-
-  .component_2 li {
-    font-size: 1.2rem !important;
-  }
-}
-
-@media (min-width: 600px) and (max-width: 700px) {
-  .organization .info .info_top {
-    font-size: 3.25rem !important;
-  }
-
-  .organization .info .info_bottom {
-    font-size: 1.2rem !important;
-  }
-
-  .organization .info .info_bottom span {
-    font-size: 1.3rem !important;
-    display: block;
-    margin: 0.0325rem;
-  }
-
-  .organization_2 .info .info_top {
-    font-size: 3.25rem !important;
-  }
-
-  .organization_2 .info .info_bottom {
-    font-size: 1.2rem !important;
-    transform: translate(-50%, -50%);
-  }
-
-  .organization_2 .info .info_bottom span {
-    font-size: 1.3rem !important;
-    margin: 0.0625rem;
-  }
-
-  .component li {
-    font-size: 0.9rem !important;
-  }
-
-  .component_2 li {
-    font-size: 0.9rem !important;
-  }
-}
-
-@media (min-width: 701px) and (max-width: 800px) {
-  .organization .info .info_top {
-    font-size: 3.25rem;
-  }
-
-  .organization .info .info_bottom {
-    font-size: 1.55rem;
-  }
-
-  .organization .info .info_bottom span {
-    font-size: 1.5rem !important;
-    margin: 0.0325rem;
-  }
-
-  .organization_2 .info .info_top {
-    font-size: 3.25rem !important;
-  }
-
-  .organization_2 .info .info_bottom {
-    font-size: 1.55rem !important;
-  }
-
-  .organization_2 .info .info_bottom span {
-    font-size: 1.5rem !important;
-    margin: 0.0325rem;
-  }
-
-  .component li {
-    font-size: 0.9rem !important;
-  }
-
-  .component_2 li {
-    font-size: 0.9rem !important;
-  }
-}
-
-@media (min-width: 800px) and (max-width: 900px) {
-  .component li {
-    font-size: 0.84rem !important;
-  }
-
-  .component_2 li {
-    font-size: 0.84rem !important;
-  }
-}
-
-@media (min-width: 900px) and (max-width: 1000px) {
-  .component li {
-    font-size: 1.2rem !important;
-  }
-
-  .component_2 li {
-    font-size: 1.2rem !important;
-  }
-}
-
-@media (min-width: 1100px) and (max-width: 1200px) {
-  .component li {
-    font-size: 1.3rem !important;
-  }
-
-  .component_2 li {
-    font-size: 1.3rem !important;
-  }
-}
-
-@media (min-width: 1300px) and (max-width: 1400px) {
-  .component li {
-    font-size: 1.4rem !important;
-  }
-
-  .component_2 li {
-    font-size: 1.4rem !important;
-  }
+.organization .info_bottom span{
+  font-size: 2.6rem !important;
 }
 
 .organization .info .info_bottom span {
@@ -529,76 +354,14 @@ onMounted(initializeObservers) // 在组件挂载时调用
 
 .component .content_top1,
 .component .content_bottom1 {
-  display: flex;
   justify-content: flex-start;
-  transform: translateX(-100%); /* 初始位置在左边 */
-  visibility: hidden;
   transition: transform 1s ease, opacity 0.5s ease; /* 过渡效果 */
   margin-bottom: 4rem;
 }
 
 .component .content_middle1 {
-  display: flex;
   justify-content: space-between;
-  transform: translateX(100%); /* 初始位置在左边 */
-  visibility: hidden;
-  transition: transform 1s ease, opacity 0.5s ease; /* 过渡效果 */
   margin-bottom: 4rem;
-}
-
-.component .content_top1.move-left {
-  opacity: 1;
-  transform: translateX(0);
-  visibility: visible;
-}
-
-.component .content_bottom1.move-left {
-  opacity: 1;
-  transform: translateX(0);
-  visibility: visible;
-}
-
-.component .content_middle1.move-right {
-  opacity: 1;
-  transform: translateX(0);
-  visibility: visible;
-}
-
-.component .content_top1 .left .middle .right {
-  width: 32%;
-}
-
-.component .content_top1 .left {
-  width: 33%;
-  margin-right: 2rem;
-}
-
-.component .content_top1 .middle {
-  width: 33%;
-  margin-right: 2rem;
-}
-
-.component .content_top1 .right {
-  width: 33%;
-}
-
-.component .content_middle1 .left {
-  margin-right: 2rem;
-  width: 33%;
-}
-
-.component .content_middle1 .middle {
-  margin-right: 2rem;
-  width: 33%;
-}
-
-.component .content_middle1 .right {
-  width: 33%;
-}
-
-.component .content_bottom1 .left {
-  margin-right: 2rem;
-  width: 33%;
 }
 
 .organization_2 {
@@ -639,14 +402,11 @@ onMounted(initializeObservers) // 在组件挂载时调用
 .organization_2 .info {
   position: relative;
   transform: scale(0.3); /* 初始缩小 */
-  opacity: 0; /* 初始不可见 */
-  visibility: hidden; /* 初始隐藏 */
   transition: transform 0.5s ease, opacity 0.5s ease; /* 过渡效果 */
 }
 
 .organization_2 .info.scale-up {
   transform: scale(1); /* 放大到原始大小 */
-  opacity: 1; /* 可见 */
   visibility: visible; /* 可见 */
 }
 
@@ -704,30 +464,14 @@ onMounted(initializeObservers) // 在组件挂载时调用
 .component_2 .content_top_2 {
   display: flex;
   justify-content: space-between;
-  transform: translateX(-100%); /* 初始位置在左边 */
-  visibility: hidden;
   transition: transform 1s ease, opacity 0.5s ease; /* 过渡效果 */
 }
-
-.component_2 .content_top_2.move-left {
-  opacity: 1;
-  transform: translateX(0);
-  visibility: visible;
-}
-
 .component_2 .content_bottom_2 {
   justify-content: space-between;
   display: flex;
   margin-top: -4.375rem;
   transform: translateX(100%); /* 初始位置在左边 */
-  visibility: hidden;
   transition: transform 1s ease, opacity 0.5s ease; /* 过渡效果 */
-}
-
-.component_2 .content_bottom_2.move-right {
-  opacity: 1;
-  transform: translateX(0);
-  visibility: visible;
 }
 
 .component_2 .content_top_2 .content_left_2 {
@@ -769,12 +513,13 @@ onMounted(initializeObservers) // 在组件挂载时调用
 }
 
 .parts {
-  width: 31.25rem;
+  width: 100%;
   margin-top: -0.25rem;
+  margin-bottom: 6rem;
 }
 
 .parts li {
-  font-size: 1.125rem;
+  font-size: 2.5rem;
   font-family: "AlibabaPuHuiTi_2_55_Regular";
   color: rgb(89, 87, 87);
   text-decoration: none;
