@@ -188,4 +188,46 @@ const info = ref({
     }
   }
 }
+
+@media (max-width: 900px) {
+  .contact_us_en {
+    .contain {
+      height: 70rem;
+      .bg {
+        background-position: center;
+      }
+    }
+  }
+}
+
+@media (max-width: 600px) {
+  .contact_us_en {
+    .contain {
+      height: 100rem;
+
+      .content {
+        flex-direction: column;
+
+        .left {
+          width: 100%;
+        }
+
+        .left,
+        .right {
+          .item {
+            .text {
+              font-size: 4rem;
+            }
+
+            .number {
+              font-size: 3.3rem;
+            }
+          }
+        }
+      }
+    }
+  }
+
+}
+
 </style>

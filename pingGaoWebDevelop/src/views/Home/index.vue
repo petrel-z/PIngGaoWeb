@@ -39,6 +39,7 @@ function handleVideoEnd() {
     }, 2000)
   }
 }
+
 onMounted(() => {
   const container = document.querySelector('.product_box')
   const leftIcon = document.querySelector('.left_icon')
@@ -360,7 +361,9 @@ getData()
             One enterprise of Pinggao
             Group won the 2024…
           </p>
-          <img src="/src/assets/imgs/_10_homePageImgs/eng/news1.png" alt="">
+          <div class="img">
+            <img src="/src/assets/imgs/_10_homePageImgs/eng/news1.png" alt="">
+          </div>
           <div class="button-more">More</div>
         </div>
 
@@ -373,7 +376,9 @@ getData()
             One enterprise of Pinggao
             Group won the 2024…
           </p>
-          <img src="/src/assets/imgs/_10_homePageImgs/eng/news2.png" alt="">
+          <div class="img">
+            <img src="/src/assets/imgs/_10_homePageImgs/eng/news2.png" alt="">
+          </div>
           <div class="button-more">More</div>
         </div>
 
@@ -386,7 +391,9 @@ getData()
             One enterprise of Pinggao
             Group won the 2024…
           </p>
-          <img src="/src/assets/imgs/_10_homePageImgs/eng/news3.png" alt="">
+          <div class="img">
+            <img src="/src/assets/imgs/_10_homePageImgs/eng/news3.png" alt="">
+          </div>
           <div class="button-more">More</div>
         </div>
 
@@ -508,13 +515,13 @@ getData()
   width: 94%;
   min-width: 120rem;
   margin: auto;
-  padding-left: 1.875rem;
-  padding-right: 4.375rem;
+  // padding-left: 1.875rem;
+  // padding-right: 4.375rem;
 }
 
 .product_content_box {
   display: flex;
-  width: 95%;
+  width: 93%;
   margin: auto;
 }
 
@@ -662,6 +669,7 @@ getData()
       width: 30%;
       overflow: hidden;
       transition: all 0.3s ease;
+
       .date {
         width: 100%;
         border-bottom: 1px solid #006fc1;
@@ -676,13 +684,20 @@ getData()
         }
       }
 
-      img {
-        width: 100%;
-        transition: all 0.5s ease;
+      .img {
+        height: 40%;
+        overflow: hidden;
+
+        img {
+          width: 100%;
+          transition: all 0.5s ease;
+        }
+
+        img:hover {
+          scale: 1.1;
+        }
       }
-      img:hover {
-        scale: 1.1;
-      }
+
       p {
         margin: 2.3rem 0;
         font-size: 2.6rem;
@@ -693,7 +708,7 @@ getData()
       }
 
       .button-more {
-        margin-top: 2.5rem;
+        // margin-top: 2.5rem;
         padding: 0.3rem 0;
         width: 20%;
         font-size: 1.3rem;
@@ -705,14 +720,17 @@ getData()
         border-radius: 2rem;
         transition: all 0.5s ease;
       }
+
       .button-more:hover {
         cursor: pointer;
         border: 1px solid rgb(148, 201, 238);
         color: rgb(148, 201, 238);
       }
     }
+
     .item:hover {
-      box-shadow: 0 5px 8px rgba(0, 0, 0, 0.2); /* 外阴影 */
+      box-shadow: 0 5px 8px rgba(0, 0, 0, 0.2);
+      /* 外阴影 */
     }
 
     div:nth-child(3) {
@@ -767,6 +785,7 @@ getData()
     text-align: center;
     cursor: pointer;
     transition: all 0.3s ease;
+
     span {
       background-image: url(/src/assets/imgs/_1_aboutPinggaoImgs/eng/moreSpan.png);
       background-size: cover;
@@ -896,8 +915,6 @@ getData()
   }
 
   .introduction_content .img_right {
-    // width: 45%;
-    // min-width: 25rem;
     transition: ease 0.5s;
   }
 
@@ -905,6 +922,29 @@ getData()
     font-size: 1.4rem;
     line-height: 1.7;
   }
+
+  .product_detail {
+    // flex-shrink: 0;
+    width: calc(33.3%);
+    // /* 每个图标占据三分之一的视口宽度 */
+    // height: 43.75rem;
+    margin: 0rem;
+    // color: white;
+    // align-items: center;
+    // justify-content: center;
+    // transition: transform 0.3s ease;
+    // animation: scaleIn 1s ease-in-out;
+  }
+
+  .product_box {
+    /* overflow: hidden; */
+    width: 94%;
+    min-width: 111rem;
+    margin: auto;
+    // padding-left: 1.875rem;
+    // padding-right: 4.375rem;
+  }
+
 }
 
 .introduction_title {
@@ -928,6 +968,7 @@ getData()
   height: 31.875rem;
   margin-right: 6.25rem;
 }
+
 .introduction_content .img_right {
   flex: 1;
   height: 100%;
@@ -948,5 +989,228 @@ getData()
   color: rgb(89, 87, 87);
   line-height: 1.545;
   text-align: left;
+}
+
+
+@media (max-width: 900px) {
+
+  .news {
+    padding: 5% 5%;
+    height: 180rem;
+
+    .content {
+      height: 90%;
+      flex-direction: column;
+
+      .item {
+        width: 100%;
+        height: auto;
+        overflow: hidden;
+
+        .date {
+          width: 100%;
+          height: 15%;
+          border-bottom: 1px solid #006fc1;
+        }
+
+        .img {
+          height:45%;//
+          img {
+            max-width: 100%;
+            height: auto;
+            transition: all 0.5s ease;
+            scale: 1.1;
+          }
+
+          img:hover {
+            scale: 1.1;
+          }
+        }
+
+        p {
+          height: 15%;
+        }
+
+        .button-more {
+          position: relative;
+          left: 50%;
+          transform: translateX(-50%);
+          margin-top: 2.5rem;
+          padding: 0.3rem 0;
+          width: 30%;
+          height: 8%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+
+      }
+
+      .item:hover {
+        box-shadow: 0 0px 0px rgba(0, 0, 0, 0.2);
+        /* 外阴影 */
+      }
+    }
+  }
+
+  .company_introduction {
+    height: 90rem;
+    padding: 5% 5%;
+    .bg_img {
+      height: 100%;
+
+      img {
+        width: 100%;
+        height: 100%;
+      }
+    }
+
+    .introduction_content {
+      height: 60rem;
+      flex-direction: column;
+
+      .text_left {
+        width: 100%;
+        height: 50%;
+
+        .p {
+          font-size: 1.6rem;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 700px) {
+
+  .product_box {
+    width: 100%;
+    min-width: 30rem;
+  }
+
+  .product_detail {
+    width: calc(50%);
+  }
+  .news {
+    height: 200rem;
+    .introduction_title {
+      height: 4%;
+      font-size: 4rem;
+      span {
+        font-size: 2rem;
+      }
+    }
+    .content {
+      height: 95%;
+
+      .item {
+        p {
+          height: 10%;
+        }
+
+        .img {
+          height: 50%;
+        }
+        .button-more {
+          height: 10%;
+          font-size: 2rem;
+        }
+
+      }
+    }
+  }
+
+  .company_introduction {
+    height: 140rem;
+
+    .bg_img {
+      height: 100%;
+
+      img {
+        width: 100%;
+        height: 100%;
+      }
+    }
+
+    .introduction_title  {
+      font-size: 4rem;
+      span {
+        font-size: 2rem;
+      }
+    }
+    .introduction_content {
+      height: 115rem;
+      flex-direction: column;
+
+      .text_left {
+        width: 100%;
+        height: auto;
+
+        .p {
+          font-size: 2.9rem;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 500px) {
+  .news {
+    height: 280rem;
+    .introduction_title {
+      height: 4%;
+      font-size: 6rem;
+      span {
+        font-size: 3rem;
+      }
+    }
+    .content {
+      height: 90%;
+      .item {
+        width: 100%;
+        .date {
+          height: 15%;
+          font-size: 6rem;
+        }
+
+        .img {
+          height: 55%;
+        }
+
+        p {
+          height: 10%;//
+          font-size: 4rem;//
+        }
+
+        .button-more {
+          font-size: 4rem;//
+        }
+
+      }
+    }
+  }
+
+  .company_introduction {
+    height: 180rem; //
+
+    .introduction_title  {
+      font-size: 5rem;
+    }
+    .introduction_title  {
+      font-size: 6rem;
+      span {
+        font-size: 3rem;
+      }
+    }
+    .introduction_content {
+      height: 100rem; //
+
+      .text_left {
+        .p {
+          font-size: 4rem; //
+        }
+      }
+    }
+  }
 }
 </style>

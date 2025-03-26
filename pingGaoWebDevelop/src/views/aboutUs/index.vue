@@ -29,7 +29,7 @@ const info = ref({
     <div class="bg"></div>
     <MyTitle_En></MyTitle_En>
     <div class="text_word">
-      <div class="word_left" ref="wordLeft" >
+      <div class="word_left" ref="wordLeft">
         <div class="text-section">
           <p class="word_left_firstp">
             Pinggao Group is a subsidiary of China Electric Equipment Group Co., Ltd.., founded
@@ -83,12 +83,8 @@ const info = ref({
         </div>
       </div>
       <div class="img_right" ref="imgRight">
-        <video
-          style="width: 100%; height: 100%"
-          controls
-          src="http://218.28.22.50:8108/videos/pinggao.mp4"
-          poster="@/assets/imgs/_1_aboutPinggaoImgs/eng/videoBg.png"
-        />
+        <video style="width: 100%; height: 100%" controls src="http://218.28.22.50:8108/videos/pinggao.mp4"
+          poster="@/assets/imgs/_1_aboutPinggaoImgs/eng/videoBg.png" />
       </div>
     </div>
     <div>
@@ -140,26 +136,30 @@ const info = ref({
   animation: toright 1s ease-in-out;
 }
 
-@keyframes toright  {
+@keyframes toright {
   from {
     opacity: 0;
     left: -100%;
   }
+
   to {
     opacity: 1;
     left: 0;
   }
 }
-@keyframes toleft  {
+
+@keyframes toleft {
   from {
     opacity: 0;
     left: 100%;
   }
+
   to {
     opacity: 1;
     left: 0;
   }
 }
+
 .text_word .word_left p {
   display: block;
   margin-bottom: 2.5rem;
@@ -185,5 +185,50 @@ const info = ref({
   margin-left: 2.75rem;
   width: 100%;
   height: 22.8125rem;
+}
+
+@media (max-width: 900px) {
+  .text_word {
+    padding: 3% 7%;
+    display: flex;
+  }
+}
+@media (max-width: 700px) {
+  .text_word {
+    padding: 3% 7%;
+    display: flex;
+    flex-direction: column-reverse;
+    .word_left {
+      width: 100%;
+      font-size: 2.5rem;
+    }
+    .img_right {
+      width: 100%;
+      height: auto;
+      margin: 0 ;
+      video {
+        margin: 0;
+      }
+    }
+  }
+}
+@media (max-width: 500px) {
+  .title {
+    font-size: 4.5rem;
+  }
+  .text_word {
+    .word_left {
+      width: 100%;
+      font-size: 4rem;
+    }
+    .img_right {
+      width: 100%;
+      height: auto;
+      margin: 0 ;
+      video {
+        margin: 0;
+      }
+    }
+  }
 }
 </style>
