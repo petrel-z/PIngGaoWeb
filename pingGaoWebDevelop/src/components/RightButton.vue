@@ -1,22 +1,27 @@
 <script setup>
-import { useRouter } from 'vue-router'
+import { useRouter } from "vue-router";
+import { useLanguageStore } from "@/stores/languageStores";
+import { storeToRefs } from "pinia";
 
-const router = useRouter()
+const languageStore = useLanguageStore();
+const { currentLang } = storeToRefs(languageStore);
+
+const router = useRouter();
 
 const scrollToTop = () => {
   window.scrollTo({
     top: 0,
-    behavior: 'smooth', // 添加平滑滚动效果
-  })
-}
+    behavior: "smooth", // 添加平滑滚动效果
+  });
+};
 
 const goBack = () => {
-  router.go(-1) // 返回上一页
-}
+  router.go(-1); // 返回上一页
+};
 
 const goHome = () => {
-  router.push('/homePage-2') // 跳转首页
-}
+  router.push(`${currentLang.value === "zh-CN" ? "/homePage-2" : "/home"}`); // 跳转首页
+};
 </script>
 
 <template>
@@ -71,7 +76,7 @@ const goHome = () => {
 
 .box .p {
   font-size: 1.125rem;
-  font-family: 'AlibabaPuHuiTi_2_55_Regular';
+  font-family: "AlibabaPuHuiTi_2_55_Regular";
   color: rgb(137, 137, 137);
   margin-top: -1rem;
   transition: inherit;

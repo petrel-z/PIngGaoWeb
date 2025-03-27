@@ -309,6 +309,13 @@ const props = defineProps({
 const langStore = useLanguageStore();
 const { currentLang: language } = storeToRefs(langStore);
 
+// 切换语言跳转相应首页
+const goHome = () => {
+  langStore.toggleLanguage(language.value === "zh-CN" ? "en-US" : "zh-CN");
+  const homePath = language.value === "zh-CN" ? "/homePage-2" : "/home";
+  window.location.href = homePath; // 这会完全刷新页面
+};
+
 const headerNavBottomRightBox = ref(null);
 const moveNav = ref(null);
 
@@ -378,12 +385,22 @@ onMounted(() => {
         id="header-nav"
         @mouseenter="headerBottomFlag = true"
         @mouseleave="headerBottomFlag = false"
-        :class="{ 'background-white': imgFixed || headerBottomFlag }"
+        :class="{ 'background-white': imgFixed || headerBottomFlag || !hidden }"
       >
         <div class="log-img">
           <router-link class="logo-link" to="/homePage-2">
-            <img ref="logo1" v-show="!headerBottomFlag && !imgFixed" :src="logoImg1" alt="" />
-            <img ref="logo2" v-show="imgFixed || headerBottomFlag" :src="logoImg2" alt="" />
+            <img
+              ref="logo1"
+              v-show="!headerBottomFlag && !imgFixed && hidden"
+              :src="logoImg1"
+              alt=""
+            />
+            <img
+              ref="logo2"
+              v-show="imgFixed || headerBottomFlag || !hidden"
+              :src="logoImg2"
+              alt=""
+            />
           </router-link>
 
           <div id="header-nav-top">
@@ -453,7 +470,7 @@ onMounted(() => {
                 </div>
               </router-link>
 
-              <div class="header-nav-bottom-item">
+              <div class="header-nav-bottom-item" @click="goHome">
                 CN
                 <i class="iconfont icon-repeat" style="font-size: 1.125rem"></i>
               </div>
@@ -496,7 +513,7 @@ onMounted(() => {
                 </div>
               </router-link>
 
-              <div class="header-nav-bottom-item">
+              <div class="header-nav-bottom-item" @click="goHome">
                 EN
                 <i class="iconfont icon-repeat" style="font-size: 1.125rem"></i>
               </div>
@@ -767,12 +784,14 @@ onMounted(() => {
 .logo-link {
   position: relative;
   display: block;
-  width: 100%;
+  width: 80%;
   border: none;
 }
 
 .logo-link img {
   border: none;
+  width: 100%;
+  height: auto;
 }
 
 .log-img {
