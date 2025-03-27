@@ -1,136 +1,138 @@
 <script setup>
-import ComHeader from '@/components/ComHeader.vue'
-import Footer_En from '@/components/Footer_En.vue'
-import router from '@/router/index.js'
-import HttpUtils from '@/utils/httpUtils.js'
-import { onMounted, onUnmounted, nextTick, ref } from 'vue'
+defineOptions({
+  name: "HomeIndex",
+});
+import ComHeader from "@/components/ComHeader.vue";
+import Footer_En from "@/components/Footer_En.vue";
+import router from "@/router/index.js";
+import HttpUtils from "@/utils/httpUtils.js";
+import { onMounted, onUnmounted, nextTick, ref } from "vue";
 
-document.title = '平高集团有限公司'
+document.title = "平高集团有限公司";
 
 // Import Swiper Vue.js components
-import { Swiper, SwiperSlide } from 'swiper/vue'
-import { Navigation, Pagination } from 'swiper/modules'
+import { Swiper, SwiperSlide } from "swiper/vue";
+import { Navigation, Pagination } from "swiper/modules";
 
-const modules = [
-  Navigation,
-  Pagination
-]
-const swiperInstance = ref(null)
+const modules = [Navigation, Pagination];
+const swiperInstance = ref(null);
 const onSwiper = (swiper) => {
-  swiperInstance.value = swiper
-}
+  swiperInstance.value = swiper;
+};
 
-let timeout = null
+let timeout = null;
 
 const onSlideChange = () => {
   if (swiperInstance.value) {
-    clearTimeout(timeout)
-    const activeSlide = swiperInstance.value.slides[swiperInstance.value.activeIndex]
-    const video = activeSlide.querySelector('video')
-    video.play().catch(() => { /* 处理自动播放失败 */ })
+    clearTimeout(timeout);
+    const activeSlide = swiperInstance.value.slides[swiperInstance.value.activeIndex];
+    const video = activeSlide.querySelector("video");
+    video.play().catch(() => {
+      /* 处理自动播放失败 */
+    });
   }
-}
+};
 
 function handleVideoEnd() {
   if (swiperInstance.value) {
-    clearTimeout(timeout)
+    clearTimeout(timeout);
     timeout = setTimeout(() => {
-      swiperInstance.value.slideNext(500)  // 带过渡动画切换
-    }, 2000)
+      swiperInstance.value.slideNext(500); // 带过渡动画切换
+    }, 2000);
   }
 }
 
 onMounted(() => {
-  const container = document.querySelector('.product_box')
-  const leftIcon = document.querySelector('.left_icon')
-  const rightIcon = document.querySelector('.right_icon')
-  const items1 = document.querySelectorAll('.product_detail')
-  const itemCount = items1.length
-  let currentIndex = 0
-  let isAnimating = false
-  let autoSlideInterval
-  let visibleItems = 3 // 初始值
+  const container = document.querySelector(".product_box");
+  const leftIcon = document.querySelector(".left_icon");
+  const rightIcon = document.querySelector(".right_icon");
+  const items1 = document.querySelectorAll(".product_detail");
+  const itemCount = items1.length;
+  let currentIndex = 0;
+  let isAnimating = false;
+  let autoSlideInterval;
+  let visibleItems = 3; // 初始值
 
   // 初始化
-  updateCarousel()
+  updateCarousel();
 
   // 监听视窗大小变化
-  window.addEventListener('resize', () => {
-    updateCarousel()
-  })
+  window.addEventListener("resize", () => {
+    updateCarousel();
+  });
 
   function updateCarousel() {
-    if (isAnimating) return
-    isAnimating = true
+    if (isAnimating) return;
+    isAnimating = true;
 
     // 计算位移百分比（每个项目占 1/visibleItems）
-    const translateX = -currentIndex * (100 / visibleItems / 1.07)
-    container.style.transform = `translateX(${translateX}%)`
-    container.style.transition = '1s'
+    const translateX = -currentIndex * (100 / visibleItems / 1.07);
+    container.style.transform = `translateX(${translateX}%)`;
+    container.style.transition = "1s";
 
     // 重置动画状态
     setTimeout(() => {
-      isAnimating = false
-    }, 500)
+      isAnimating = false;
+    }, 500);
   }
 
   function nextSlide1() {
-    stopAutoSlide()
+    stopAutoSlide();
     if (currentIndex >= itemCount - visibleItems) {
       // 到达最后时回到第一个
-      currentIndex = 0
+      currentIndex = 0;
     } else {
-      currentIndex++
+      currentIndex++;
     }
-    updateCarousel()
-    startAutoSlide()
+    updateCarousel();
+    startAutoSlide();
   }
 
   function prevSlide1() {
-    stopAutoSlide()
+    stopAutoSlide();
     if (currentIndex <= 0) {
       // 到达第一个时跳到最后
-      currentIndex = itemCount - visibleItems
+      currentIndex = itemCount - visibleItems;
     } else {
-      currentIndex--
+      currentIndex--;
     }
-    updateCarousel()
-    startAutoSlide()
+    updateCarousel();
+    startAutoSlide();
   }
 
   function startAutoSlide() {
-    autoSlideInterval = setInterval(nextSlide1, 3000) // 每3秒切换一次
+    autoSlideInterval = setInterval(nextSlide1, 3000); // 每3秒切换一次
   }
 
   // 停止自动轮播的函数
   function stopAutoSlide() {
     if (autoSlideInterval) {
-      clearInterval(autoSlideInterval)
-      autoSlideInterval = null
+      clearInterval(autoSlideInterval);
+      autoSlideInterval = null;
     }
   }
 
   // 添加按钮事件
-  rightIcon.addEventListener('click', nextSlide1)
-  leftIcon.addEventListener('click', prevSlide1)
+  rightIcon.addEventListener("click", nextSlide1);
+  leftIcon.addEventListener("click", prevSlide1);
 
-  startAutoSlide()
+  startAutoSlide();
 
   onUnmounted(() => {
-    clearInterval(autoSlideInterval)
-  })
-})
+    clearInterval(autoSlideInterval);
+  });
+});
 
-const images = ref([])
-const topNews = ref([])
-const homepageNews = ref([])
+const images = ref([]);
+const topNews = ref([]);
+const homepageNews = ref([]);
 
-const scrollDiv = ref(null)
-const scrollBegin = ref(null)
-const scrollEnd = ref(null)
+const scrollDiv = ref(null);
+const scrollBegin = ref(null);
+const scrollEnd = ref(null);
 
-let MyMar = null
-const speed = 5 // 更流畅的滚动速度
+let MyMar = null;
+const speed = 5; // 更流畅的滚动速度
 const initMarquee = () => {
   if (
     !scrollBegin.value ||
@@ -140,77 +142,73 @@ const initMarquee = () => {
     !scrollDiv.value ||
     !document.contains(scrollDiv.value)
   )
-    return
+    return;
 
   // 复制双份内容实现无缝衔接
-  scrollEnd.value.innerHTML = scrollBegin.value.innerHTML
+  scrollEnd.value.innerHTML = scrollBegin.value.innerHTML;
 
   const Marquee = () => {
-    if (!scrollDiv.value || !scrollBegin.value) return
+    if (!scrollDiv.value || !scrollBegin.value) return;
     if (scrollDiv.value.scrollLeft >= scrollBegin.value.offsetWidth) {
-      scrollDiv.value.scrollLeft = 0
+      scrollDiv.value.scrollLeft = 0;
     } else {
-      scrollDiv.value.scrollLeft += 1
+      scrollDiv.value.scrollLeft += 1;
     }
-  }
+  };
 
   const startScroll = () => {
-    MyMar = setInterval(Marquee, speed)
-  }
+    MyMar = setInterval(Marquee, speed);
+  };
 
   const stopScroll = () => {
-    clearInterval(MyMar)
-  }
+    clearInterval(MyMar);
+  };
 
   // 确保容器有内容后再启动
-  startScroll()
+  startScroll();
 
   // 鼠标交互
-  scrollDiv.value.addEventListener('mouseenter', stopScroll)
-  scrollDiv.value.addEventListener('mouseleave', startScroll)
-}
+  scrollDiv.value.addEventListener("mouseenter", stopScroll);
+  scrollDiv.value.addEventListener("mouseleave", startScroll);
+};
 
 onMounted(() => {
   nextTick(() => {
-    initMarquee()
-  })
-})
-
+    initMarquee();
+  });
+});
 
 async function getData() {
-  const res = await HttpUtils.get(`/cms/home/news`)
-  const result = await res.json()
-  const data = result.data
+  const res = await HttpUtils.get(`/cms/home/news`);
+  const result = await res.json();
+  const data = result.data;
 
-  const banner = []
+  const banner = [];
   data.homeBanner.forEach((item) => {
     banner.push({
       type: item.type,
       src: item.images,
-    })
-  })
-  images.value = [...banner]
-  topNews.value = [...data.topNews]
-  homepageNews.value = [...data.homepageNews]
+    });
+  });
+  images.value = [...banner];
+  topNews.value = [...data.topNews];
+  homepageNews.value = [...data.homepageNews];
 }
-
 
 function toProduct(item) {
   if (item) {
     const target = router.resolve({
-      name: 'productSeries',
+      name: "productSeries",
       query: {
         type: item,
       },
-    })
+    });
 
-    window.open(target.href, '_blank')
+    window.open(target.href, "_blank");
   }
 }
 
-getData()
-
-
+getData();
 </script>
 
 <template>
@@ -221,12 +219,29 @@ getData()
       </div>
     </div>
     <!-- 轮播主体 -->
-    <swiper style="--swiper-navigation-sides-offset: 30px" v-if="images.length > 1" :modules="modules"
-      :allowTouchMove="false" :loop="true" :slides-per-view="1" navigation :pagination="{ clickable: true }"
-      :scrollbar="{ draggable: true }" @swiper="onSwiper" @slideChange="onSlideChange">
+    <swiper
+      style="--swiper-navigation-sides-offset: 30px"
+      v-if="images.length > 1"
+      :modules="modules"
+      :allowTouchMove="false"
+      :loop="true"
+      :slides-per-view="1"
+      navigation
+      :pagination="{ clickable: true }"
+      :scrollbar="{ draggable: true }"
+      @swiper="onSwiper"
+      @slideChange="onSlideChange"
+    >
       <swiper-slide v-for="(image, index) in images" :key="index">
-        <video v-if="image.type === 'video'" muted autoplay disablepictureinpicture @ended="handleVideoEnd(index)"
-          poster="http://218.28.22.50:8108/videos/carousel.png" :src="image.src"></video>
+        <video
+          v-if="image.type === 'video'"
+          muted
+          autoplay
+          disablepictureinpicture
+          @ended="handleVideoEnd(index)"
+          poster="http://218.28.22.50:8108/videos/carousel.png"
+          :src="image.src"
+        ></video>
         <img v-else-if="image.type === 'image'" :src="image.src" alt="" />
       </swiper-slide>
     </swiper>
@@ -240,10 +255,11 @@ getData()
               <img src="@/assets/imgs/_10_homePageImgs/product1.png" alt="" />
             </div>
             <div class="product_h">
-              High voltage electri-<br>
-              cal industry</div>
+              High voltage electri-<br />
+              cal industry
+            </div>
             <div class="product_button" @click="toProduct('高压电器产业')">
-              <img src="@/assets/imgs/_10_homePageImgs/button.png" alt="">
+              <img src="@/assets/imgs/_10_homePageImgs/button.png" alt="" />
               <span>View details</span>
             </div>
           </div>
@@ -252,11 +268,11 @@ getData()
               <img src="@/assets/imgs/_10_homePageImgs/product2.png" alt="" />
             </div>
             <div class="product_h">
-              Operation and main<br>
+              Operation and main<br />
               tenance service
             </div>
             <div class="product_button" @click="toProduct('运维检修业务')">
-              <img src="@/assets/imgs/_10_homePageImgs/button.png" alt="">
+              <img src="@/assets/imgs/_10_homePageImgs/button.png" alt="" />
               <span>View details</span>
             </div>
           </div>
@@ -265,10 +281,11 @@ getData()
               <img src="@/assets/imgs/_10_homePageImgs/product3.png" alt="" />
             </div>
             <div class="product_h">
-              Component manu-<br>
-              facturing industry</div>
+              Component manu-<br />
+              facturing industry
+            </div>
             <div class="product_button" @click="toProduct('零部件制造产业')">
-              <img src="@/assets/imgs/_10_homePageImgs/button.png" alt="">
+              <img src="@/assets/imgs/_10_homePageImgs/button.png" alt="" />
               <span>View details</span>
             </div>
           </div>
@@ -277,11 +294,11 @@ getData()
               <img src="@/assets/imgs/_10_homePageImgs/product5.png" alt="" />
             </div>
             <div class="product_h">
-              Power storage<br>
+              Power storage<br />
               business
             </div>
             <div class="product_button" @click="toProduct('电力储能业务')">
-              <img src="@/assets/imgs/_10_homePageImgs/button.png" alt="">
+              <img src="@/assets/imgs/_10_homePageImgs/button.png" alt="" />
               <span>View details</span>
             </div>
           </div>
@@ -290,11 +307,11 @@ getData()
               <img src="@/assets/imgs/_10_homePageImgs/product6.png" alt="" />
             </div>
             <div class="product_h">
-              Distribution network<br>
+              Distribution network<br />
               industry
             </div>
             <div class="product_button" @click="toProduct('配电网产业')">
-              <img src="@/assets/imgs/_10_homePageImgs/button.png" alt="">
+              <img src="@/assets/imgs/_10_homePageImgs/button.png" alt="" />
               <span>View details</span>
             </div>
           </div>
@@ -303,11 +320,11 @@ getData()
               <img src="@/assets/imgs/_10_homePageImgs/product7.png" alt="" />
             </div>
             <div class="product_h">
-              System integration<br>
+              System integration<br />
               service
             </div>
             <div class="product_button" @click="toProduct('系统集成业务')">
-              <img src="@/assets/imgs/_10_homePageImgs/button.png" alt="">
+              <img src="@/assets/imgs/_10_homePageImgs/button.png" alt="" />
               <span>View details</span>
             </div>
           </div>
@@ -316,11 +333,11 @@ getData()
               <img src="@/assets/imgs/_10_homePageImgs/product8.png" alt="" />
             </div>
             <div class="product_h">
-              Smart power distri-<br>
+              Smart power distri-<br />
               bution business
             </div>
             <div class="product_button" @click="toProduct('智慧配用电业务')">
-              <img src="@/assets/imgs/_10_homePageImgs/button.png" alt="">
+              <img src="@/assets/imgs/_10_homePageImgs/button.png" alt="" />
               <span>View details</span>
             </div>
           </div>
@@ -329,11 +346,11 @@ getData()
               <img src="@/assets/imgs/_10_homePageImgs/product9.png" alt="" />
             </div>
             <div class="product_h">
-              Integrated energy<br>
+              Integrated energy<br />
               services business
             </div>
             <div class="product_button" @click="toProduct('综合能源服务业务')">
-              <img src="@/assets/imgs/_10_homePageImgs/button.png" alt="">
+              <img src="@/assets/imgs/_10_homePageImgs/button.png" alt="" />
               <span>View details</span>
             </div>
           </div>
@@ -345,24 +362,22 @@ getData()
 
     <!-- News -->
     <div ref="news" class="news">
-      <div class="introduction_title">news
-        <span class="span">MORE
+      <div class="introduction_title">
+        news
+        <span class="span"
+          >MORE
           <span></span>
         </span>
       </div>
       <div class="content">
-
         <div class="item">
           <div class="date">
             01.14
             <span>2015</span>
           </div>
-          <p>
-            One enterprise of Pinggao
-            Group won the 2024…
-          </p>
+          <p>One enterprise of Pinggao Group won the 2024…</p>
           <div class="img">
-            <img src="/src/assets/imgs/_10_homePageImgs/eng/news1.png" alt="">
+            <img src="/src/assets/imgs/_10_homePageImgs/eng/news1.png" alt="" />
           </div>
           <div class="button-more">More</div>
         </div>
@@ -372,12 +387,9 @@ getData()
             01.14
             <span>2015</span>
           </div>
-          <p>
-            One enterprise of Pinggao
-            Group won the 2024…
-          </p>
+          <p>One enterprise of Pinggao Group won the 2024…</p>
           <div class="img">
-            <img src="/src/assets/imgs/_10_homePageImgs/eng/news2.png" alt="">
+            <img src="/src/assets/imgs/_10_homePageImgs/eng/news2.png" alt="" />
           </div>
           <div class="button-more">More</div>
         </div>
@@ -387,28 +399,24 @@ getData()
             01.14
             <span>2015</span>
           </div>
-          <p>
-            One enterprise of Pinggao
-            Group won the 2024…
-          </p>
+          <p>One enterprise of Pinggao Group won the 2024…</p>
           <div class="img">
-            <img src="/src/assets/imgs/_10_homePageImgs/eng/news3.png" alt="">
+            <img src="/src/assets/imgs/_10_homePageImgs/eng/news3.png" alt="" />
           </div>
           <div class="button-more">More</div>
         </div>
-
-
       </div>
     </div>
-
 
     <!-- 公司介绍 -->
     <div class="company_introduction">
       <div class="bg_img">
         <img src="@/assets/imgs/_10_homePageImgs/company-introduction.png" alt="" />
       </div>
-      <div class="introduction_title">about us
-        <span class="span">MORE
+      <div class="introduction_title">
+        about us
+        <span class="span"
+          >MORE
           <!-- <img src="/src//assets/imgs/_1_aboutPinggaoImgs/eng/moreSpan.png" alt=""> -->
           <span></span>
         </span>
@@ -416,24 +424,27 @@ getData()
       <div class="introduction_content">
         <div class="text_left">
           <div class="p p1">
-            Pinggao Group is a subsidiary of China Electric Equipment Group Co., Ltd., founded in 1970. It is a major
-            technical equipment pillar enterprise in China's electrical industry, with world leading research and
-            development capabilities for large-scale high-end power equipment and industry-leading energy system
-            integration solutions. It is a national high-tech enterprise and a national innovative enterprise. It has
-            successively won honors such as the National May Day Labor Award, China's Top 100 Machinery Industry
-            Enterprises, Equipment China Meritorious Enterprise, National Civilized Unit, Outstanding Contribution Unit
-            for National Skill Talent Cultivation, and the Most Influential Enterprise in China's Energy Storage
-            Industry.
+            Pinggao Group is a subsidiary of China Electric Equipment Group Co., Ltd., founded in
+            1970. It is a major technical equipment pillar enterprise in China's electrical
+            industry, with world leading research and development capabilities for large-scale
+            high-end power equipment and industry-leading energy system integration solutions. It is
+            a national high-tech enterprise and a national innovative enterprise. It has
+            successively won honors such as the National May Day Labor Award, China's Top 100
+            Machinery Industry Enterprises, Equipment China Meritorious Enterprise, National
+            Civilized Unit, Outstanding Contribution Unit for National Skill Talent Cultivation, and
+            the Most Influential Enterprise in China's Energy Storage Industry.
           </div>
         </div>
         <div class="img_right">
-          <video style="width: 100%;height: 100%;object-fit: cover" controls
+          <video
+            style="width: 100%; height: 100%; object-fit: cover"
+            controls
             poster="http://218.28.22.50:8108/videos/video_poster.png"
-            src="http://218.28.22.50:8108/videos/pinggao.mp4" />
+            src="http://218.28.22.50:8108/videos/pinggao.mp4"
+          />
         </div>
       </div>
     </div>
-
   </div>
   <div>
     <Footer_En />
@@ -486,7 +497,6 @@ getData()
   left: 0;
   z-index: 101;
 }
-
 
 .product_content {
   width: 100%;
@@ -556,7 +566,6 @@ getData()
 }
 
 @keyframes floatAnimation {
-
   0%,
   100% {
     transform: translateY(0);
@@ -597,7 +606,6 @@ getData()
   text-align: center;
   text-transform: uppercase;
 }
-
 
 .product_button {
   position: relative;
@@ -802,7 +810,6 @@ getData()
   }
 }
 
-
 @media (min-width: 900px) and (max-width: 1000px) {
   .company_introduction {
     position: relative;
@@ -855,7 +862,6 @@ getData()
   .introduction_content .p1 {
     margin-bottom: 0.875rem;
   }
-
 }
 
 @media (min-width: 1000px) and (max-width: 1200px) {
@@ -880,7 +886,6 @@ getData()
     font-size: 1.5rem;
     line-height: 1.7;
   }
-
 }
 
 @media (min-width: 1200px) and (max-width: 1400px) {
@@ -908,7 +913,6 @@ getData()
 }
 
 @media (min-width: 1400px) and (max-width: 1900px) {
-
   .introduction_content .text_left {
     height: 31.875rem;
     margin-right: 3.25rem;
@@ -944,7 +948,6 @@ getData()
     // padding-left: 1.875rem;
     // padding-right: 4.375rem;
   }
-
 }
 
 .introduction_title {
@@ -991,9 +994,7 @@ getData()
   text-align: left;
 }
 
-
 @media (max-width: 900px) {
-
   .news {
     padding: 5% 5%;
     height: 180rem;
@@ -1014,7 +1015,7 @@ getData()
         }
 
         .img {
-          height:45%;//
+          height: 45%; //
           img {
             max-width: 100%;
             height: auto;
@@ -1043,7 +1044,6 @@ getData()
           align-items: center;
           justify-content: center;
         }
-
       }
 
       .item:hover {
@@ -1082,7 +1082,6 @@ getData()
 }
 
 @media (max-width: 700px) {
-
   .product_box {
     width: 100%;
     min-width: 30rem;
@@ -1115,7 +1114,6 @@ getData()
           height: 10%;
           font-size: 2rem;
         }
-
       }
     }
   }
@@ -1132,7 +1130,7 @@ getData()
       }
     }
 
-    .introduction_title  {
+    .introduction_title {
       font-size: 4rem;
       span {
         font-size: 2rem;
@@ -1178,14 +1176,13 @@ getData()
         }
 
         p {
-          height: 10%;//
-          font-size: 4rem;//
+          height: 10%; //
+          font-size: 4rem; //
         }
 
         .button-more {
-          font-size: 4rem;//
+          font-size: 4rem; //
         }
-
       }
     }
   }
@@ -1193,10 +1190,10 @@ getData()
   .company_introduction {
     height: 180rem; //
 
-    .introduction_title  {
+    .introduction_title {
       font-size: 5rem;
     }
-    .introduction_title  {
+    .introduction_title {
       font-size: 6rem;
       span {
         font-size: 3rem;

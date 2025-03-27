@@ -188,6 +188,7 @@ onMounted(() => {
   margin-bottom: 1%;
   width: 100%;
   height: 100%;
+  overflow: hidden;
 }
 
 /* 元素进入可视区域时的样式 */
@@ -310,6 +311,7 @@ onMounted(() => {
     margin-bottom: 1%;
     width: 100%;
     height: 100%;
+    overflow: hidden;
   }
 
   &-left {
@@ -393,15 +395,18 @@ onMounted(() => {
 }
 
 @media screen and (max-width: 1500px) {
-  .left {
+  .left,
+  .en-left {
     text-align: center;
   }
 
-  .month {
+  .month,
+  .en-month {
     text-align: center;
   }
 
-  .year {
+  .year,
+  .en-year {
     text-align: center;
   }
 }
@@ -421,29 +426,35 @@ onMounted(() => {
     margin: 0;
   }
 
-  .title {
+  .title,
+  .en-title {
     font-size: 3.1rem;
   }
 
-  .text {
+  .text,
+  .en-text {
     font-size: 2.5rem;
   }
 
-  .month {
-    font-size: 3.2rem;
+  .month,
+  .en-month {
+    font-size: 2rem;
   }
 
-  .year {
+  .year,
+  .en-year {
     font-size: 1.8rem;
   }
 }
 
 @media (max-width: 500px) {
-  .month {
-    font-size: 4rem;
+  .month,
+  .en-month {
+    font-size: 3.5rem;
   }
 
-  .year {
+  .year,
+  .en-year {
     font-size: 2rem;
   }
 }

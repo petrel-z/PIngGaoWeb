@@ -42,9 +42,9 @@ const footer = ref([
 <style lang="less" scoped>
 .header {
   background-image: url("@/assets/imgs/_1_aboutPinggaoImgs/头部轮播-01.png");
-  width: auto;
-  height: 32vw;
-  background-size: cover;
+  width: 100%;
+  aspect-ratio: 192/61;
+  background-size: contain;
 }
 .right_button {
   position: absolute;
@@ -55,9 +55,16 @@ const footer = ref([
 .footer {
   z-index: 100;
 }
+
 @media (max-width: 900px) {
   .header {
-    height: 53vw;
+    width: 100%;
+    aspect-ratio: 748/401;
+    background-image: url("@/assets/imgs/_1_aboutPinggaoImgs/moveHeaderBg.png");
+    background-size: cover;
+  }
+  .right_button {
+    display: none;
   }
 }
 </style>

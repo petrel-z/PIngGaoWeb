@@ -46,7 +46,7 @@ const footer = ref([
     <ComHeader :content="content" :footer="footer" />
   </div>
   <router-view />
-  <!-- <ContactUsEn></ContactUsEn> -->
+  <!-- <ContactUsEn>-->
   <div class="right_button"><RightButton></RightButton></div>
   <div>
     <Footer />
@@ -55,8 +55,8 @@ const footer = ref([
 
 <style scoped>
 .header {
-  height: 32vw;
   width: 100%;
+  aspect-ratio: 1916/611;
   background-image: url("@/assets/imgs/_9_contactUsImgs/头部轮播-09.png");
   background-size: cover;
 }
@@ -69,7 +69,12 @@ const footer = ref([
 /* 大型设备（桌面，大于 900px） */
 @media (max-width: 900px) {
   .header {
-    height: 53vw;
+    width: 100%;
+    aspect-ratio: 748/401;
+    background-size: cover;
+  }
+  .right_button {
+    display: none;
   }
 }
 </style>

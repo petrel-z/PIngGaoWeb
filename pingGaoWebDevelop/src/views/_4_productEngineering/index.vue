@@ -5,8 +5,8 @@
   <router-view></router-view>
   <div class="right_button"><RightButton></RightButton></div>
   <div style="width: auto">
-    <Footer v-if="currentLang === 'zh-CN'" class="footer" />
-    <Footer_En v-else class="footer" />
+    <Footer v-if="currentLang === 'zh-CN'"></Footer>
+    <Footer_En v-else></Footer_En>
   </div>
 </template>
 
@@ -17,16 +17,15 @@ defineOptions({
 import { ref } from "vue";
 import ComHeader from "@/components/ComHeader.vue";
 import Footer from "@/components/Footer.vue";
+import Footer_En from "@/components/Footer_En.vue";
 import imgPath from "@/assets/imgs/_4_productEngineeringImgs/头部轮播-04.png";
 import footerBg from "@/assets/imgs/_6_qualityAssuranceImgs/t6_topbar.png";
 import RightButton from "@/components/RightButton.vue";
-import Footer_En from "@/components/Footer_En.vue";
 import { useLanguageStore } from "@/stores/languageStores";
 import { storeToRefs } from "pinia";
 
 const use = useLanguageStore();
 const { currentLang } = storeToRefs(use);
-
 const info = ref({
   title: "产品工程",
   titleEn: "CORE PRODUCTS",
@@ -45,8 +44,8 @@ const footer = ref([
 <style lang="less" scoped>
 .header {
   background-image: url("../../assets/imgs/_4_productEngineeringImgs/头部轮播-04.png");
-  width: auto;
-  height: 32vw;
+  width: 100%;
+  aspect-ratio: 1916/611;
   background-size: cover;
 }
 .right_button {
@@ -57,7 +56,13 @@ const footer = ref([
 }
 @media (max-width: 900px) {
   .header {
-    height: 53vw;
+    width: 100%;
+    aspect-ratio: 748/401;
+    background-image: url("@/assets/imgs/_4_productEngineeringImgs/moveHeaderBg.png");
+    background-size: cover;
+  }
+  .right_button {
+    display: none;
   }
 }
 </style>

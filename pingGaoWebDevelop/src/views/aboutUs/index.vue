@@ -83,8 +83,12 @@ const info = ref({
         </div>
       </div>
       <div class="img_right" ref="imgRight">
-        <video style="width: 100%; height: 100%" controls src="http://218.28.22.50:8108/videos/pinggao.mp4"
-          poster="@/assets/imgs/_1_aboutPinggaoImgs/eng/videoBg.png" />
+        <video
+          style="width: 100%; height: 100%"
+          controls
+          src="http://218.28.22.50:8108/videos/pinggao.mp4"
+          poster="@/assets/imgs/_1_aboutPinggaoImgs/eng/videoBg.png"
+        />
       </div>
     </div>
     <div>
@@ -100,9 +104,9 @@ const info = ref({
 
   .header {
     background-image: url("@/assets/imgs/_1_aboutPinggaoImgs/头部轮播-01.png");
-    width: auto;
-    height: 32vw;
-    background-size: cover;
+    width: 100%;
+    aspect-ratio: 192/61;
+    background-size: contain;
   }
 }
 
@@ -165,7 +169,6 @@ const info = ref({
   margin-bottom: 2.5rem;
 }
 
-
 .text_word .text-section {
   flex: 2;
 }
@@ -180,7 +183,6 @@ const info = ref({
   animation: toleft 1s ease-in-out;
 }
 
-
 .text_word .img_right video {
   margin-left: 2.75rem;
   width: 100%;
@@ -191,6 +193,14 @@ const info = ref({
   .text_word {
     padding: 3% 7%;
     display: flex;
+  }
+  .about_pinggao_eng {
+    .header {
+      width: 100%;
+      aspect-ratio: 748/355;
+      background-image: url("@/assets/imgs/_1_aboutPinggaoImgs/moveHeaderBg.png");
+      background-size: cover;
+    }
   }
 }
 @media (max-width: 700px) {
@@ -205,7 +215,7 @@ const info = ref({
     .img_right {
       width: 100%;
       height: auto;
-      margin: 0 ;
+      margin: 0;
       video {
         margin: 0;
       }
@@ -224,7 +234,7 @@ const info = ref({
     .img_right {
       width: 100%;
       height: auto;
-      margin: 0 ;
+      margin: 0;
       video {
         margin: 0;
       }

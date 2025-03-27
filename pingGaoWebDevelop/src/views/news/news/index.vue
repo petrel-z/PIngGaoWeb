@@ -135,4 +135,12 @@ const news = ref([
     }
   }
 }
+
+@media (max-width: 900px) {
+  .container {
+    &-title {
+      font-size: 4rem;
+    }
+  }
+}
 </style>

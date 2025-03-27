@@ -53,11 +53,11 @@ defineComponent({
     padding-bottom: 5%;
   }
   &-title {
-    font-size: 40px;
+    font-size: 2.5rem;
     text-align: center;
     font-weight: bold;
     color: #333;
-    margin-bottom: 20px;
+    margin-bottom: 1.25rem;
   }
   &-body {
     border-top: 0.05rem solid black;
@@ -70,17 +70,33 @@ defineComponent({
       img {
         width: 100%;
         height: auto;
-        margin-bottom: 20px;
+        margin-bottom: 1.25rem;
       }
     }
 
     p {
-      font-size: 18px;
+      font-size: 1.125rem;
       line-height: 1.5;
       text-align: justify;
       color: #333;
       margin-bottom: 3%;
     }
   }
+}
+
+@media (max-width: 900px) {
+  .container {
+    &-title {
+      font-size: 5rem;
+    }
+    &-body {
+      p {
+        font-size: 4rem;
+      }
+    }
+  }
+}
+
+@media (max-width: 600px) {
 }
 </style>

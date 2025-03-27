@@ -390,7 +390,7 @@ onMounted(() => {
             <!-- <div class="log-title">
             <div class="log-title-text">中国电气装备</div>
             <div class="log-title-english">China Electrical Equipment</div>
-          </div> -->
+            </div> -->
             <div class="header-nav-top-bar">
               <i
                 class="iconfont icon-liebiao2 bar-icon"
@@ -654,17 +654,22 @@ onMounted(() => {
         <div class="moveNav-header">
           <div class="moveNav-header-back-btn" @click="moveFlag = false">
             <i class="iconfont icon-xiangzuo"></i>
-            返回
+            {{ language === "zh-CN" ? "返回" : "BACK" }}
           </div>
         </div>
         <ul class="moveNav-body">
-          <li class="moveNav-body-item">
+          <li v-if="language === 'zh-CN'" class="moveNav-body-item">
             <router-link to="/homePage-2">首页</router-link>
           </li>
-          <li class="moveNav-body-item" v-for="(item1, index) in header" :key="item1.name">
+          <li
+            class="moveNav-body-item"
+            v-for="(item1, index) in language == 'zh-CN' ? header : headerEnglish"
+            :key="item1.name"
+          >
             <div class="moveNav-body-item-ul-top">
               <router-link :to="item1.path">{{ item1.name }}</router-link>
               <i
+                v-if="language == 'zh-CN'"
                 class="iconfont icon-lineleft moveNav-body-item-ul-icon"
                 @click="changeMoveShowUl(index)"
                 :class="{ 'icon-rotate': moveShowUl[index] }"
@@ -686,8 +691,9 @@ onMounted(() => {
 .bar-icon {
   display: none;
   font-size: 1.5rem;
-  position: absolute;
+  position: relative;
   bottom: 0;
+  /* transform: translateY(-50%); */
   right: 0;
 }
 
@@ -743,7 +749,7 @@ onMounted(() => {
 #header-nav-top {
   position: absolute;
   right: 0;
-  bottom: -20%;
+  top: 0;
   text-align: right;
   height: auto;
 
@@ -753,12 +759,13 @@ onMounted(() => {
   padding-bottom: 0.3%;
   flex: 1 1 auto;
   align-items: center;
-  transform: translateY(-200%);
+  /* transform: translateY(100%); */
   border: none;
   z-index: 9999999;
 }
 
 .logo-link {
+  position: relative;
   display: block;
   width: 100%;
   border: none;
@@ -774,8 +781,8 @@ onMounted(() => {
 }
 
 .log-img img {
-  height: 84px;
-  width: auto;
+  height: auto;
+  width: 25%;
 }
 
 .log-title {
@@ -784,7 +791,7 @@ onMounted(() => {
 
 .log-title-text {
   color: #fff;
-  font-family: "AalibabaPuHuiTi_2_65_Medium";
+  font-family: "AlibabaPuHuiTi_2_65_Medium";
   font-size: 1.91rem;
   line-height: 1.2;
   text-align: start;
@@ -844,7 +851,7 @@ onMounted(() => {
   bottom: 0;
   height: 45%;
   display: flex;
-  align-items: center;
+  align-items: start;
   transition: all 0.3s ease;
   overflow: hidden;
 }
@@ -874,9 +881,7 @@ onMounted(() => {
   display: flex;
   justify-content: flex-end;
   align-items: center;
-  position: relative;
   z-index: 1000;
-  margin-bottom: 2%;
 }
 
 .header-nav-bottom-item {
@@ -1094,7 +1099,7 @@ onMounted(() => {
   font-family: "AlibabaPuHuiTi_2_45_Light";
   color: var(--fontColor);
   line-height: 1.2;
-  width: 30%;
+  max-width: 40%;
   text-align: left;
 }
 
@@ -1197,10 +1202,10 @@ onMounted(() => {
   }
   .bar-icon {
     display: inline-block;
-    width: auto;
+    /* width: auto;
     height: auto;
     padding: 0;
-    margin: 0;
+    margin: 0; */
     font-size: 5rem;
     color: #fff;
   }
@@ -1269,7 +1274,7 @@ onMounted(() => {
     position: absolute;
     top: 0;
     right: 0;
-    width: 30vw;
+    width: 45vw;
     height: 100vh;
     background-color: rgb(51, 51, 51);
     padding: 0 1.5%;
@@ -1292,7 +1297,7 @@ onMounted(() => {
     align-items: center;
     flex: 0 0 auto;
     color: #727171;
-    font-size: 1.3rem;
+    font-size: 2rem;
     font-family: "AalibabaPuHuiTi_2_55_Regular";
     border: 0.05rem solid #727171;
     border-radius: 2rem;
@@ -1301,13 +1306,13 @@ onMounted(() => {
   }
 
   .moveNav-header-back-btn i {
-    font-size: 1.3rem;
+    font-size: 2rem;
   }
 
   .moveNav-body-item {
     padding: 4% 0;
     border-bottom: 0.05rem solid #727171;
-    font-size: 1.3rem;
+    font-size: 2rem;
     position: relative;
   }
 

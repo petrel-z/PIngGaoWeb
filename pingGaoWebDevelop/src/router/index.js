@@ -300,7 +300,8 @@ const router = createRouter({
     {
       path: "/aboutUs",
       component: () => import("@/views/aboutUs/index.vue"),
-    },{
+    },
+    {
       path: "/contactUsEn",
       component: () => import("@/views/contactUs/index.vue"),
     },
