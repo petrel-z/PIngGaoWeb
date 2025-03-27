@@ -9,14 +9,16 @@ document.title = "人才开发";
 const articleList = ref([]);
 const artcileDetail = ref({});
 
-async function getList () {
+async function getList() {
   const categoryId = 35;
   const queryString = new URLSearchParams({
     pageNo: 1,
     pageSize: 10,
   }).toString();
 
-  const response = await httpUtils.get(`/cms/category/${categoryId}/news?${queryString.toString()}`);
+  const response = await httpUtils.get(
+    `/cms/category/${categoryId}/news?${queryString.toString()}`
+  );
   const { data } = await response.json();
   const page = data.page;
   articleList.value = [...page.list];
@@ -25,7 +27,7 @@ async function getList () {
 }
 
 // 格式化时间戳为 YYYY-MM-DD 格式
-function formatTimestamp (timestamp) {
+function formatTimestamp(timestamp) {
   const date = new Date(timestamp);
   const year = date.getFullYear();
   const month = (date.getMonth() + 1).toString().padStart(2, "0");
@@ -33,7 +35,7 @@ function formatTimestamp (timestamp) {
   return `${year}-${month}-${day}`;
 }
 
-function setDetail (article) {
+function setDetail(article) {
   article.publishTime = formatTimestamp(article.publishTime);
   artcileDetail.value = article;
 }
@@ -74,10 +76,16 @@ onMounted(() => {
       </div>
       <div class="body-content-box">
         <div class="body-content-left">
-          <div v-for="article in articleList" :key="article.id" @click="setDetail(article)"
-               class="div-title" :class="{
-                  'active': article.id === artcileDetail.id
-               }">{{ article.title }}
+          <div
+            v-for="article in articleList"
+            :key="article.id"
+            @click="setDetail(article)"
+            class="div-title"
+            :class="{
+              active: article.id === artcileDetail.id,
+            }"
+          >
+            {{ article.title }}
           </div>
         </div>
         <div class="body-content-right">
@@ -193,7 +201,7 @@ onMounted(() => {
   right: 0;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 900px) {
   .body-content {
     margin: 0 7%;
   }
@@ -217,6 +225,11 @@ onMounted(() => {
 
   .div-title {
     padding: 2.5rem 0;
+    font-size: 4rem;
+  }
+
+  .content-title {
+    font-size: 4rem;
   }
 }
 </style>

@@ -110,7 +110,7 @@ const props = defineProps({
   color: rgb(0, 111, 193);
 }
 
-@media (max-width: 768px) {
+@media (max-width: 900px) {
   .human-content-right {
     grid-template-columns: repeat(2, 1fr);
   }

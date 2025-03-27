@@ -310,8 +310,10 @@ const langStore = useLanguageStore();
 const { currentLang: language } = storeToRefs(langStore);
 
 // 切换语言跳转相应首页
-const goHome = () => {
-  langStore.toggleLanguage(language.value === "zh-CN" ? "en-US" : "zh-CN");
+const goHome = (type = 0) => {
+  if (type === 0) {
+    langStore.toggleLanguage(language.value === "zh-CN" ? "en-US" : "zh-CN");
+  }
   const homePath = language.value === "zh-CN" ? "/homePage-2" : "/home";
   window.location.href = homePath; // 这会完全刷新页面
 };
@@ -388,7 +390,7 @@ onMounted(() => {
         :class="{ 'background-white': imgFixed || headerBottomFlag || !hidden }"
       >
         <div class="log-img">
-          <router-link class="logo-link" to="/homePage-2">
+          <div class="logo-link" @click="goHome(1)">
             <img
               ref="logo1"
               v-show="!headerBottomFlag && !imgFixed && hidden"
@@ -401,7 +403,7 @@ onMounted(() => {
               :src="logoImg2"
               alt=""
             />
-          </router-link>
+          </div>
 
           <div id="header-nav-top">
             <!-- <div class="log-title">
@@ -470,7 +472,7 @@ onMounted(() => {
                 </div>
               </router-link>
 
-              <div class="header-nav-bottom-item" @click="goHome">
+              <div class="header-nav-bottom-item" @click="goHome(0)">
                 CN
                 <i class="iconfont icon-repeat" style="font-size: 1.125rem"></i>
               </div>
@@ -513,7 +515,7 @@ onMounted(() => {
                 </div>
               </router-link>
 
-              <div class="header-nav-bottom-item" @click="goHome">
+              <div class="header-nav-bottom-item" @click="goHome(0)">
                 EN
                 <i class="iconfont icon-repeat" style="font-size: 1.125rem"></i>
               </div>
@@ -768,7 +770,7 @@ onMounted(() => {
   right: 0;
   top: 0;
   text-align: right;
-  height: auto;
+  height: 45%;
 
   /* transform: translateY(150%); */
   display: flex;
@@ -786,6 +788,7 @@ onMounted(() => {
   display: block;
   width: 80%;
   border: none;
+  cursor: pointer;
 }
 
 .logo-link img {
@@ -857,7 +860,7 @@ onMounted(() => {
   color: #fff;
   /* text-decoration: none; */
   transition: all 0.3s ease;
-  font-size: 1.1rem;
+  font-size: 1.3rem;
 }
 
 #header-nav .header-nav-top-bar a:hover {
@@ -916,7 +919,7 @@ onMounted(() => {
   border: 0.05rem solid #fff;
   border-radius: 1.2rem;
   font-family: "AlibabaPuHuiTi_2_45_Light";
-  font-size: 0.8rem;
+  font-size: 1.3rem;
   transition: all 0.3s ease;
   flex: 0 0 auto;
   height: 1.5rem;
@@ -1259,6 +1262,10 @@ onMounted(() => {
     width: 35%;
   }
 
+  #header-nav-top {
+    height: auto;
+  }
+
   .header-nav-top-bar-ul {
     display: none;
   }
@@ -1365,9 +1372,17 @@ onMounted(() => {
   .moveNav-body-item-ul-top .icon-rotate {
     transform: rotate(270deg);
   }
+
+  .logo-link {
+    width: 90%;
+  }
 }
 
 @media (max-width: 700px) {
+  .logo-link {
+    width: 100%;
+  }
+
   .moveNav {
     width: 50vw;
   }

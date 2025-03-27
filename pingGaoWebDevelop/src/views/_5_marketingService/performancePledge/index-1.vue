@@ -8,10 +8,11 @@ import MyTitle from "@/components/MyTitle.vue";
 import MyContent from "@/components/MyContent.vue";
 
 const contentBox = ref(null);
+
 onMounted(() => {
   if (contentBox.value) {
-    // 监听页面滚动事件
-    window.addEventListener("scroll", () => {
+    // 回调方法
+    const callback = () => {
       if (!contentBox.value) return;
       // 获取元素顶部距离页面顶部的距离
       const contentTop = contentBox.value.getBoundingClientRect().top;
@@ -24,7 +25,10 @@ onMounted(() => {
       } else {
         contentBox.value.classList.remove("show");
       }
-    });
+    };
+    callback();
+    // 监听页面滚动事件
+    window.addEventListener("scroll", callback);
   }
 });
 </script>
@@ -36,7 +40,7 @@ onMounted(() => {
         <MyTitle title="服务承诺" english="SERVICE COMMITMENT" />
       </div>
       <div ref="contentBox" style="margin-top: 3.4rem">
-        <MyContent class="content" />
+        <MyContent class="content" :detailId="1" />
       </div>
     </div>
     <div class="bodyBg">
