@@ -387,19 +387,21 @@ onMounted(() => {
         id="header-nav"
         @mouseenter="headerBottomFlag = true"
         @mouseleave="headerBottomFlag = false"
-        :class="{ 'background-white': imgFixed || headerBottomFlag || !hidden }"
+        :class="{
+          'background-white': imgFixed || headerBottomFlag || (language !== 'en-US' && !hidden),
+        }"
       >
         <div class="log-img">
           <div class="logo-link" @click="goHome(1)">
             <img
               ref="logo1"
-              v-show="!headerBottomFlag && !imgFixed && hidden"
+              v-show="!headerBottomFlag && !imgFixed && (language === 'en-US' || hidden)"
               :src="logoImg1"
               alt=""
             />
             <img
               ref="logo2"
-              v-show="imgFixed || headerBottomFlag || !hidden"
+              v-show="imgFixed || headerBottomFlag || (language !== 'en-US' && !hidden)"
               :src="logoImg2"
               alt=""
             />
