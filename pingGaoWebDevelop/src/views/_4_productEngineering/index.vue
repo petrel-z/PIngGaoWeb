@@ -35,8 +35,8 @@ const footer = ref([
 <style lang="less" scoped>
 .header {
   background-image: url("../../assets/imgs/_4_productEngineeringImgs/头部轮播-04.png");
-  width: auto;
-  height: 32vw;
+  width: 100%;
+  aspect-ratio: 1916/611;
   background-size: cover;
 }
 .right_button {
@@ -44,5 +44,18 @@ const footer = ref([
   top: 1400px;
   right: 0;
   z-index: 1001;
+}
+@media (max-width: 900px) {
+  @media (max-width: 900px) {
+    .header {
+      width: 100%;
+      aspect-ratio: 748/401;
+      background-image: url("@/assets/imgs/_4_productEngineeringImgs/moveHeaderBg.png");
+      background-size: cover;
+    }
+    .right_button {
+      display: none;
+    }
+  }
 }
 </style>

@@ -43,7 +43,6 @@ async function getData () {
     pageSize: 6,
   }).toString();
 
-  console.log("获取数据", queryString);
   const response = await httpUtils.get(`/cms/category/${categoryId}/news?${queryString.toString()}`);
   const { data } = await response.json();
   const page = data.page;
@@ -52,7 +51,6 @@ async function getData () {
     i.timeObj = formatTimestampObj(i.publishTime);
   });
 
-  console.log(page.list);
   topNews.value = page.list[0];
   mainNews.value = page.list.slice(1);
 }
@@ -110,7 +108,7 @@ getData();
               :title1="topNews.title"
               title2=""
               :text="topNews.description"
-              :img="topNews.images"
+              :img="topNews.headerImage"
               bg-color="#006fc1"
               :to-state="false"
               :detail-id="topNews.id"
@@ -121,8 +119,8 @@ getData();
               v-for="(item, index) in mainNews"
               :key="index"
               :detail-id="item.id"
-              :month="item.month"
-              :year="item.year"
+              :month="item.timeObj.month"
+              :year="item.timeObj.year"
               :title="item.title"
               :text="item.text"
               hover-color="#006fc1"

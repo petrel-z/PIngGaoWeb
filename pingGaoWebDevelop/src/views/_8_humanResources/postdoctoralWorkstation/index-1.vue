@@ -129,7 +129,7 @@ onMounted(() => {
   transition: left 0.8s ease-in-out;
 }
 
-.text > p {
+.text>p {
   font-size: 1.25rem;
   font-family: "AlibabaPuHuiTi_2_45_Light";
   color: rgb(89, 87, 87);
@@ -177,6 +177,15 @@ onMounted(() => {
   height: auto;
 }
 
+@media (max-width: 1600px) {
+
+  .center-center,
+  .center-left,
+  .center-right {
+    font-size: 1.5rem;
+  }
+}
+
 @media (max-width: 768px) {
   .content-title {
     padding: 4.5rem 7% 0 7%;
@@ -214,7 +223,7 @@ onMounted(() => {
     margin: 0;
   }
 
-  .text > p {
+  .text>p {
     font-size: 3rem;
   }
 
@@ -225,6 +234,7 @@ onMounted(() => {
 }
 
 @media (max-width: 480px) {
+
   .center-center,
   .center-left,
   .center-right {
@@ -240,7 +250,7 @@ onMounted(() => {
     border-bottom: 0.18rem solid rgb(0, 111, 193);
   }
 
-  .text > p {
+  .text>p {
     font-size: 4rem;
   }
 }

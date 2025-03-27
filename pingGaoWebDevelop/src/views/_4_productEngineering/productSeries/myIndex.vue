@@ -1,164 +1,141 @@
 <script setup>
-import MyTitle from "@/components/MyTitle.vue";
-import httpUtils from "@/utils/httpUtils.js";
-import { onMounted, ref, watch } from "vue";
-import router from "@/router/index.js";
+import MyTitle from '@/components/MyTitle.vue'
+import httpUtils from '@/utils/httpUtils.js'
+import { onMounted, ref } from 'vue'
+import router from '@/router/index.js'
+import MyButton from '@/components/MyButton.vue'
+import { useRoute } from 'vue-router'
 
-const boxRef = ref(null);
-const isVisibleBox = ref(false);
-const infoRef = ref(null);
-const isVisibleInfo = ref(true);
+const boxRef = ref(null)
+const isVisibleBox = ref(false)
+const infoRef = ref(null)
+const isVisibleInfo = ref(true)
 
-const categoryList = ref([]);
-const categoryItems = ref([]);
+const categoryList = ref([])
+const categoryItems = ref([])
+
+const type = useRoute().query.type
 
 // 处理 imgs 数组中的路径
 const imgs = ref(
   [
-    new URL("@/assets/imgs/_4_productEngineeringImgs/product-1.png", import.meta.url).href,
-    new URL("@/assets/imgs/_4_productEngineeringImgs/product-2.png", import.meta.url).href,
-    new URL("@/assets/imgs/_4_productEngineeringImgs/product-3.png", import.meta.url).href,
-    new URL("@/assets/imgs/_4_productEngineeringImgs/product-4.png", import.meta.url).href,
-    new URL("@/assets/imgs/_4_productEngineeringImgs/product-5.png", import.meta.url).href,
-    new URL("@/assets/imgs/_4_productEngineeringImgs/product-6.png", import.meta.url).href,
-    new URL("@/assets/imgs/_4_productEngineeringImgs/product-7.png", import.meta.url).href,
-    new URL("@/assets/imgs/_4_productEngineeringImgs/product-8.png", import.meta.url).href,
-    new URL("@/assets/imgs/_4_productEngineeringImgs/product-9.png", import.meta.url).href,
-  ].map((path) => new URL(path, import.meta.url).href)
-);
+    new URL('@/assets/imgs/_4_productEngineeringImgs/product-1.png', import.meta.url).href,
+    new URL('@/assets/imgs/_4_productEngineeringImgs/product-2.png', import.meta.url).href,
+    new URL('@/assets/imgs/_4_productEngineeringImgs/product-3.png', import.meta.url).href,
+    new URL('@/assets/imgs/_4_productEngineeringImgs/product-4.png', import.meta.url).href,
+    new URL('@/assets/imgs/_4_productEngineeringImgs/product-5.png', import.meta.url).href,
+    new URL('@/assets/imgs/_4_productEngineeringImgs/product-6.png', import.meta.url).href,
+    new URL('@/assets/imgs/_4_productEngineeringImgs/product-7.png', import.meta.url).href,
+    new URL('@/assets/imgs/_4_productEngineeringImgs/product-8.png', import.meta.url).href,
+    new URL('@/assets/imgs/_4_productEngineeringImgs/product-9.png', import.meta.url).href,
+  ].map((path) => new URL(path, import.meta.url).href),
+)
 // 使用 ref 存储图片路径，并处理路径
 const imageSrc = ref(
-  new URL("@/assets/imgs/_4_productEngineeringImgs/product-1.png", import.meta.url).href
-);
+  new URL('@/assets/imgs/_4_productEngineeringImgs/product-1.png', import.meta.url).href,
+)
 
-const activeIndex = ref(0);
-
-// 格式化时间戳为 YYYY-MM-DD 格式
-function formatTimestamp (timestamp) {
-  const date = new Date(timestamp);
-  const year = date.getFullYear();
-  const month = (date.getMonth() + 1).toString().padStart(2, "0");
-  const day = date.getDate().toString().padStart(2, "0");
-  return `${year}-${month}.${day}`;
-}
-
-// 格式化时间戳为 YYYY-MM-DD 格式
-function formatTimestampObj (timestamp) {
-  const date = new Date(timestamp);
-  const year = date.getFullYear();
-  const month = (date.getMonth() + 1).toString().padStart(2, "0");
-  const day = date.getDate().toString().padStart(2, "0");
-  return {
-    year: `${year}`,
-    month: `${month}.${day}`,
-  };
-}
+const currentCategory = ref({})
+const pageNo = ref(1)
+const pageSize = ref(9)
+const hasMore = ref(true)
 
 async function getData () {
-  const categoryId = categoryList.value[activeIndex.value].id;
   const queryString = new URLSearchParams({
-    pageNo: 1,
-    pageSize: 999,
-  }).toString();
+    pageNo: pageNo.value,
+    pageSize: pageSize.value,
+  }).toString()
 
-  console.log("获取数据", queryString);
-  const response = await httpUtils.get(`/cms/category/${categoryId}/news?${queryString.toString()}`);
-  const { data } = await response.json();
-  const page = data.page;
-  page.list.forEach((i) => {
-    i.publishTime = formatTimestamp(i.publishTime);
-    i.timeObj = formatTimestampObj(i.publishTime);
-  });
-  categoryItems.value = page.list;
-  console.log(page.list);
+  const categoryId = currentCategory.value.id
+  const response = await httpUtils.get(`/cms/category/${categoryId}/news?${queryString.toString()}`)
+  const result = await response.json()
+  const data = result.data.page
+
+  if (pageNo.value === 1) {
+    categoryItems.value = [...data.list]
+  } else {
+    categoryItems.value = [...categoryItems.value, ...data.list]
+  }
+
+  if (data.list.length < pageSize.value) {
+    hasMore.value = false
+  } else {
+    pageNo.value = pageNo.value + 1
+  }
+}
+
+function handleClick () {
+  if (hasMore.value) {
+    getData()
+  }
 }
 
 async function getCategory () {
-  const res = await httpUtils.get(`/cms/category/23/list`);
-  const result = await res.json();
+  const res = await httpUtils.get(`/cms/category/23/list`)
+  const result = await res.json()
 
-  categoryList.value = result.data;
+  categoryList.value = result.data
+
+  const queryCategory = result.data.find(i=>i.name === type);
+  if (queryCategory) {
+    currentCategory.value = queryCategory
+  } else {
+    currentCategory.value = result.data[0]
+  }
+
+  await getData()
 }
 
-const handleMouse = (event) => {
-  const boxs = document.querySelectorAll(".detail_product");
-  const clickedDiv = event.currentTarget;
-  const index = Array.from(boxs).indexOf(clickedDiv);
-
-  boxs.forEach((div) => {
-    div.classList.remove("active");
-  });
-
-  if (index >= 0 && index < imgs.value.length) {
-    imageSrc.value = imgs.value[index];
-    console.log(`你点击了第 ${index + 1} 个 div`);
-    // 更新 activeIndex 的值
-    activeIndex.value = index;
-  }
-};
-
-// 处理鼠标离开事件，恢复默认图片
-const handleMouseLeave = () => {
-  // imageSrc.value = new URL(
-  //   "@/assets/imgs/_4_productEngineeringImgs/product-1.png",
-  //   import.meta.url
-  // ).href; // 恢复默认图片
-  // console.log("鼠标离开，恢复默认图片");
-  // // 鼠标离开时，将 activeIndex 重置为 -1
-  // activeIndex.value = 0;
-};
 // 创建交叉观察器
 const createObserver = (refElement, isVisible) => {
   const observer = new IntersectionObserver(
     (entries) => {
       entries.forEach((entry) => {
-        const { intersectionRatio } = entry;
+        const { intersectionRatio } = entry
         // 设置触发条件：元素进入视口 50% 以上时触发
         if (intersectionRatio >= 0) {
-          isVisible.value = true;
-          observer.disconnect(); // 元素可见后停止观察
+          isVisible.value = true
+          observer.disconnect() // 元素可见后停止观察
         }
-      });
+      })
     },
     {
       root: null, // 使用浏览器视口作为根元素
-      rootMargin: "0px", // 无额外的边距
+      rootMargin: '0px', // 无额外的边距
       threshold: 0.1, // 当元素的 50% 进入视口时触发
-    }
-  );
+    },
+  )
   if (refElement.value) {
-    observer.observe(refElement.value);
+    observer.observe(refElement.value)
   }
-};
+}
 // 初始化所有的观察器
 const initializeObservers = () => {
-  createObserver(boxRef, isVisibleBox);
-  createObserver(infoRef, isVisibleInfo);
-};
-onMounted(initializeObservers); // 在组件挂载时调用
+  createObserver(boxRef, isVisibleBox)
+  createObserver(infoRef, isVisibleInfo)
+}
+onMounted(initializeObservers) // 在组件挂载时调用
 
-getCategory();
-
-let timeout = null;
+getCategory()
 
 function toDetail (newsId) {
   if (newsId) {
     const target = router.resolve({
-      name: "productDetail",
+      name: 'productDetail',
       params: {
         id: newsId,
       },
-    });
-    window.open(target.href, "_blank");
+    })
+    window.open(target.href, '_blank')
   }
 }
 
-watch(activeIndex, () => {
-  clearTimeout(timeout);
-  timeout = setTimeout(() => {
-    getData(activeIndex.value);
-  }, 500);
-});
+function setActive (category, index) {
+  currentCategory.value = category
+  imageSrc.value = imgs.value[index % 9]
+  pageNo.value = 1
+  getData()
+}
 </script>
 
 <template>
@@ -175,19 +152,18 @@ watch(activeIndex, () => {
     />
     <div class="detail_content" ref="boxRef" :class="{ 'move-left': isVisibleBox }">
       <div
-        v-for="(category, index) in categoryList"
+        v-for="(category,index) in categoryList"
         :key="category.id"
         class="detail_product"
-        :style="{ 'background-color': index === activeIndex ? '#45b3e0' : 'transparent' }"
-        @mouseover="handleMouse"
-        @mouseleave="handleMouseLeave"
+        :style="{ 'background-color': currentCategory.id === category.id ? '#45b3e0' : 'transparent' }"
+        @click="setActive(category,index)"
       >
         <span>{{ category.name }}</span>
       </div>
     </div>
     <div v-if="categoryList.length !== 0" class="detail_page">
       <div class="detail_page_title">
-        {{ categoryList[activeIndex].name }}
+        {{ currentCategory.name }}
       </div>
       <div class="detail_page_content">
         <div
@@ -205,8 +181,16 @@ watch(activeIndex, () => {
           <div class="p1">
             {{ item.title }}
           </div>
-          <div class="p2" v-html="item.description"/>
+          <div class="p2">
+            {{ currentCategory.name }}
+          </div>
         </div>
+      </div>
+      <div class="button-container">
+        <MyButton v-if="hasMore" @child-button="handleClick"/>
+        <p v-else style="font-size: 24px;">
+          没有更多了
+        </p>
       </div>
     </div>
     <div class="footer_img">
@@ -224,7 +208,16 @@ watch(activeIndex, () => {
   border-radius: 1.25rem;
   background-color: #fff;
   z-index: 100;
-  padding: 4rem 13.125rem;
+  padding: 4rem 13.125rem 780px 13.125rem;
+}
+
+.button-container {
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  padding: 20px;
+  position: relative;
+  z-index: 101;
 }
 
 .detail_content {
@@ -232,8 +225,9 @@ watch(activeIndex, () => {
   height: 16.9375rem;
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
-  margin-top: 4.125rem;
+  justify-content: flex-start;
+  gap: 16px;
+  margin-top: 3rem;
   position: relative;
   transform: translateX(-100%); /* 初始位置在左边 */
   visibility: hidden;
@@ -284,7 +278,7 @@ watch(activeIndex, () => {
 .detail_product span {
   display: block;
   font-size: 1.875rem;
-  font-family: "AlibabaPuHuiTi_2_35_Thin", sans-serif;
+  font-family: "AlibabaPuHuiTi_2_35_Thin";
   color: #ffffff;
   z-index: -100;
 }
@@ -459,12 +453,11 @@ watch(activeIndex, () => {
 
 .detail_page {
   margin-top: 9.375rem;
-  height: 108.375rem;
 }
 
 .detail_page_title {
   font-size: 2rem;
-  font-family: "AlibabaPuHuiTi_2_65_Medium", sans-serif;
+  font-family: "AlibabaPuHuiTi_2_65_Medium";
   color: rgb(0, 111, 193);
   text-align: center;
   margin-bottom: 3.9375rem;
@@ -473,7 +466,8 @@ watch(activeIndex, () => {
 .detail_page_content {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: flex-start;
+  gap: 2%;
 }
 
 .detail_page_info {
@@ -495,20 +489,20 @@ watch(activeIndex, () => {
 
 .detail_page_info .h {
   font-size: 2.25rem;
-  font-family: "AlibabaPuHuiTi_2_85_Bold", sans-serif;
+  font-family: "AlibabaPuHuiTi_2_85_Bold";
   color: rgb(0, 111, 193);
   margin-top: 1.875rem;
 }
 
 .detail_page_info .p1 {
   font-size: 1.625rem;
-  font-family: "AlibabaPuHuiTi_2_55_Regular", sans-serif;
+  font-family: "AlibabaPuHuiTi_2_55_Regular";
   color: rgb(89, 87, 87);
 }
 
 .detail_page_info .p2 {
   font-size: 1.625rem;
-  font-family: "AlibabaPuHuiTi_2_55_Regular", sans-serif;
+  font-family: "AlibabaPuHuiTi_2_55_Regular";
   color: rgb(89, 87, 87);
 }
 

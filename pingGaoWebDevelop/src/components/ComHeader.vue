@@ -4,7 +4,7 @@ import { onMounted, ref } from "vue";
 import imgPath from "@/assets/imgs/common/headerHoverBg-1.png";
 import imgPath1 from "@/assets/imgs/_1_aboutPinggaoImgs/头部轮播-01.png";
 import imgPath2 from "@/assets/imgs/_2_informationCenterImgs/头部轮播-02.png";
-import imgPath3 from "@/assets/imgs/_3_partyBuildingImgs/头部轮播-03.png";
+// import imgPath3 from "@/assets/imgs/_3_partyBuildingImgs/头部轮播-03.png";
 import imgPath4 from "@/assets/imgs/_4_productEngineeringImgs/头部轮播-04.png";
 import imgPath5 from "@/assets/imgs/_5_marketingServiceImgs/头部轮播-05.png";
 import imgPath6 from "@/assets/imgs/_6_qualityAssuranceImgs/头部轮播-06.png";
@@ -31,7 +31,7 @@ let moveFlag = ref(false);
 const header = ref([
   { name: "关于平高", path: "/aboutPingGao" },
   { name: "资讯中心", path: "/informationCenter" },
-  { name: "党的建设", path: "/partyBuilding" },
+  // { name: "党的建设", path: "/partyBuilding" },
   { name: "产品工程", path: "/productEngineering" },
   { name: "营销服务", path: "/marketingService" },
   { name: "品质保障", path: "/qualityAssurance" },
@@ -59,7 +59,7 @@ const allContent = ref([
     footer: [
       { name: "集团简介", path: "/aboutPinggao/groupProfile" },
       { name: "领导成员", path: "/aboutPinggao/lesadingMember" },
-      { name: "组织结构", path: "/aboutPinggao/organizationalStructure" },
+      { name: "组织机构", path: "/aboutPinggao/organizationalStructure" },
       { name: "资质荣誉", path: "/aboutPinggao/seniorHonor" },
       { name: "走进平高", path: "/aboutPinggao/approachPinggao" },
     ],
@@ -79,24 +79,24 @@ const allContent = ref([
       { name: "最新公告", path: "/informationCenter/latestAnnouncementIndex" },
     ],
   },
-  {
-    content: {
-      title: "党的建设",
-      content: "高举中国特色社会主义伟大旗帜",
-      footer: "PG GROUP",
-      imgPath: imgPath3,
-    },
-    footer: [
-      {
-        name: "党的精神",
-        path: "/partyBuilding/partySpirit/index",
-      },
-      {
-        name: "平高党建",
-        path: "/partyBuilding/pinggaoPartyBuilding/index",
-      },
-    ],
-  },
+  // {
+  //   content: {
+  //     title: "党的建设",
+  //     content: "高举中国特色社会主义伟大旗帜",
+  //     footer: "PG GROUP",
+  //     imgPath: imgPath3,
+  //   },
+  //   footer: [
+  //     {
+  //       name: "党的精神",
+  //       path: "/partyBuilding/partySpirit/index",
+  //     },
+  //     {
+  //       name: "平高党建",
+  //       path: "/partyBuilding/pinggaoPartyBuilding/index",
+  //     },
+  //   ],
+  // },
   {
     content: {
       title: "产品工程",
@@ -390,7 +390,7 @@ onMounted(() => {
             <!-- <div class="log-title">
             <div class="log-title-text">中国电气装备</div>
             <div class="log-title-english">China Electrical Equipment</div>
-          </div> -->
+            </div> -->
             <div class="header-nav-top-bar">
               <i
                 class="iconfont icon-liebiao2 bar-icon"
@@ -679,8 +679,9 @@ onMounted(() => {
 .bar-icon {
   display: none;
   font-size: 1.5rem;
-  position: absolute;
+  position: relative;
   bottom: 0;
+  transform: translateY(-50%);
   right: 0;
 }
 
@@ -736,7 +737,7 @@ onMounted(() => {
 #header-nav-top {
   position: absolute;
   right: 0;
-  bottom: -10%;
+  top: 0;
   text-align: right;
   height: auto;
 
@@ -746,7 +747,7 @@ onMounted(() => {
   padding-bottom: 0.3%;
   flex: 1 1 auto;
   align-items: center;
-  transform: translateY(-200%);
+  transform: translateY(100%);
   border: none;
   z-index: 9999999;
 }
@@ -768,7 +769,7 @@ onMounted(() => {
 
 .log-img img {
   height: auto;
-  width: 100%;
+  width: 25%;
 }
 
 .log-title {
@@ -867,9 +868,7 @@ onMounted(() => {
   display: flex;
   justify-content: flex-end;
   align-items: center;
-  position: relative;
   z-index: 1000;
-  margin-bottom: 2%;
 }
 
 .header-nav-bottom-item {
@@ -1188,10 +1187,10 @@ onMounted(() => {
   }
   .bar-icon {
     display: inline-block;
-    width: auto;
+    /* width: auto;
     height: auto;
     padding: 0;
-    margin: 0;
+    margin: 0; */
     font-size: 5rem;
     color: #fff;
   }

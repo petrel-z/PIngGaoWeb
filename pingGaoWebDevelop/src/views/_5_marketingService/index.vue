@@ -46,9 +46,8 @@ const footer = ref([
 
 <style scoped>
 .header {
-  /* height: 735px; */
-  height: 32vw;
   width: 100%;
+  aspect-ratio: 1916/611;
   background-image: url("@/assets//imgs/_5_marketingServiceImgs/头部轮播-05.png");
   background-size: cover;
 }
@@ -61,8 +60,8 @@ const footer = ref([
 
 @media (max-width: 900px) {
   .header {
-    height: 53vw;
     width: 100%;
+    aspect-ratio: 748/401;
     background-image: url("@/assets/imgs/_5_marketingServiceImgs/moveHeaderBg.png");
     background-size: cover;
   }

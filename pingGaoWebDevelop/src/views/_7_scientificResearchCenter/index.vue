@@ -3,7 +3,7 @@
     <ComHeader :content="info" :footer="footer"></ComHeader>
   </div>
   <router-view></router-view>
-  <div class="right_button"> <RightButton></RightButton> </div>
+  <div class="right_button"><RightButton></RightButton></div>
   <div style="width: auto">
     <Footer />
   </div>
@@ -36,14 +36,25 @@ const footer = ref([
 <style lang="less" scoped>
 .header {
   background-image: url("../../assets/imgs/_7_scientificResearchCenterImgs/头部轮播-07.png");
-  width: auto;
-  height: 32vw;
+  width: 100%;
+  aspect-ratio: 1916/611;
   background-size: cover;
 }
 .right_button {
- position: absolute;
- top: 1400px;
- right: 0;
- z-index: 1001;
+  position: absolute;
+  top: 1400px;
+  right: 0;
+  z-index: 1001;
+}
+@media (max-width: 900px) {
+  .header {
+    width: 100%;
+    aspect-ratio: 748/401;
+    background-image: url("@/assets/imgs/_7_scientificResearchCenterImgs/moveHeaderBg.png");
+    background-size: cover;
+  }
+  .right_button {
+    display: none;
+  }
 }
 </style>

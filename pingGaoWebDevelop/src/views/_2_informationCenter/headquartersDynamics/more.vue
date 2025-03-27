@@ -35,11 +35,8 @@ async function getData () {
     pageSize: pageSize.value,
   }).toString();
 
-  console.log("获取数据", queryString);
   const response = await httpUtils.get(`/cms/category/${categoryId}/news?${queryString.toString()}`);
   const { data } = await response.json();
-
-  console.log(data);
 
   const top5List = [];
   data.top5List.forEach((item) => {
@@ -113,6 +110,7 @@ getData();
         >
           <div class="item-container">
             <Item2
+              style="--hoverBgColor: #003792"
               v-for="item in leftList" :key="item.id"
               :time="formatTimestamp(item.publishTime)"
               :text="item.title"

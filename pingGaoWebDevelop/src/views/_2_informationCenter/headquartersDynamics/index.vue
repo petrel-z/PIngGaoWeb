@@ -43,7 +43,6 @@ async function getData () {
     pageSize: 6,
   }).toString();
 
-  console.log("获取数据", queryString);
   const response = await httpUtils.get(`/cms/category/${categoryId}/news?${queryString.toString()}`);
   const { data } = await response.json();
   const page = data.page;
@@ -52,7 +51,6 @@ async function getData () {
     i.timeObj = formatTimestampObj(i.publishTime);
   });
 
-  console.log(page.list);
   topNews.value = page.list[0];
   topNews.value.btnColor = "#e06e5f";
   topNews.value.bgColor = "#a51617";
@@ -116,15 +114,15 @@ onMounted(() => {
         </div>
         <div ref="contentBox" style="margin-top: 2.5rem">
           <ContentPag :title1="topNews.title" title2="" :text="topNews.description"
-                      :img="topNews.images" :to-state="true" :detail-id="topNews.id" />
+                      :img="topNews.headerImage" :to-state="true" :detail-id="topNews.id" />
         </div>
         <div class="item-container">
           <Item1
             v-for="(item, index) in mainNews"
             :key="index"
             :detail-id="item.id"
-            :month="item.month"
-            :year="item.year"
+            :month="item.timeObj.month"
+            :year="item.timeObj.year"
             :title="item.title"
             :text="item.description "
             @click-item="toDetail"

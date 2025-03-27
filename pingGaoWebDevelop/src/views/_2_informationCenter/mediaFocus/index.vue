@@ -74,8 +74,8 @@ getData();
           >
             <Item1
               :detail-id="item.id"
-              :month="item.month"
-              :year="item.year"
+              :month="item.timeObj.month"
+              :year="item.timeObj.year"
               :title="item.title"
               :text="item.text"
               hover-color="#006fc1"

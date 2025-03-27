@@ -156,6 +156,7 @@ const router = createRouter({
           component: productSeriesDetail,
         },
         {
+          name: "productSeries",
           path: "productSeries",
           component: productSeries,
         },
@@ -269,21 +270,6 @@ const router = createRouter({
         {
           path: "addressTelephone",
           component: addressTelephone,
-        },
-      ],
-    },
-    {
-      path: "/news",
-      component: () => import("@/views/news/index.vue"),
-      redirect: "/news/news",
-      children: [
-        {
-          path: "newsDetail",
-          component: () => import("@/views/news/newsDetail/index.vue"),
-        },
-        {
-          path: "news",
-          component: () => import("@/views/news/news/index.vue"),
         },
       ],
     },

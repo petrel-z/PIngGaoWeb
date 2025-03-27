@@ -35,11 +35,8 @@ async function getData () {
     pageSize: pageSize.value,
   }).toString();
 
-  console.log("获取数据", queryString);
   const response = await httpUtils.get(`/cms/category/${categoryId}/news?${queryString.toString()}`);
   const { data } = await response.json();
-
-  console.log(data);
 
   const top5List = [];
   data.top5List.forEach((item) => {
@@ -74,50 +71,52 @@ function toDetail (newsId) {
 }
 
 getData();
+
+// const left = ref(null);
+// const right = ref(null);
+// const footerButton = ref(null);
+// onUpdated(() => {
+//   if (window.matchMedia("(max-width: 900px)").matches) {
+//     left.value.style.marginBottom = `${footerButton.value.clientHeight}px`;
+//     footerButton.value.style.top = `${left.value.clientHeight + footerButton.value.clientHeight}px`;
+//   }
+// });
 </script>
 
 <template>
   <div class="spirit-more">
     <div class="mytitle">
-      <myTitle
-        title="党的精神"
-        english="The spirit of the Party"
-        title-color="#fce3cd"
-        line-color="#fce3cd"
-        eng-color="#fce3cd"
-      />
+      <myTitle title="党的精神" english="The spirit of the Party" title-color="#fce3cd"
+               line-color="#fce3cd"
+               eng-color="#fce3cd" />
     </div>
     <div class="footer-line"></div>
     <div class="list">
-      <div class="left">
+      <div class="left" ref="left">
         <div v-for="item in leftList" :key="item.id" class="listItem">
-          <Item2
-            :time="formatTimestamp(item.publishTime)"
-            :text="item.title"
-            time-color="#a51617"
-            text-color="#7b6a5d"
-            text-font-family="SourceHanSerifCN_Bold"
-            @click="toDetail(item.id)"
-          />
+          <Item2 :time="formatTimestamp(item.publishTime)" :text="item.title" time-color="#a51617"
+                 text-color="#7b6a5d"
+                 text-font-family="SourceHanSerifCN_Bold" :hover-bg-color="'#e06e5f'"
+                 @click="toDetail(item.id)" />
+        </div>
+        <div class="footer-button-MT">
+          <MyPagination v-if="hasMore" :total="pageMax" :current="pageNo" font-color="#a51617"
+                        @page-change="pageChange" />
+          <p v-else style="font-size: 24px;">
+            暂无更多
+          </p>
         </div>
       </div>
-      <div class="right">
-        <OrderList
-          :order-list="rightList"
-          bg-color="#e06e5f"
-          :font-family="{
-            titleFont: 'SourceHanSerifCN_Bold',
-            contentFont: 'SourceHanSerifCN_SemiBold',
-          }"
-          @click-item="toDetail"
-        />
+      <div class="right" ref="right">
+        <OrderList class="orderList" :order-list="rightList" bg-color="#e06e5f" :font-family="{
+          titleFont: 'SourceHanSerifCN_Bold',
+          contentFont: 'SourceHanSerifCN_SemiBold'
+        }" @click-item="toDetail" />
       </div>
     </div>
     <div class="footer-button">
-      <MyPagination
-        v-if="hasMore" :total="pageMax" :current="pageNo" font-color="#a51617"
-        @page-change="pageChange"
-      />
+      <MyPagination v-if="hasMore" :total="pageMax" :current="pageNo" font-color="#a51617"
+                    @page-change="pageChange" />
       <p v-else style="font-size: 24px;">
         暂无更多
       </p>
@@ -135,6 +134,7 @@ getData();
   background-image: url("../../../assets/imgs/_3_partyBuildingImgs/t3_p1_moreBg.png");
   background-size: cover;
   height: auto;
+
   .mytitle {
     width: 100%;
     margin-top: 22px;
@@ -146,16 +146,23 @@ getData();
     width: 100%;
     display: flex;
     justify-content: space-between;
+
     .left {
       margin-left: 11%;
       width: 60%;
+
       div:nth-child(1) {
         margin-top: 0;
       }
+
       .listItem {
         width: 100%;
         height: auto;
         margin: 10px 0;
+      }
+
+      .footer-button-MT {
+        display: none;
       }
     }
 
@@ -184,6 +191,51 @@ getData();
     display: flex;
     justify-content: center;
     padding: 3em 0;
+  }
+}
+
+@media (max-width: 900px) {
+  .spirit-more {
+    .footer-line {
+      display: none;
+    }
+
+    .mytitle {
+      margin-top: 2rem;
+      margin-bottom: 2rem;
+      padding-left: 5%;
+    }
+
+    .list {
+      flex-direction: column;
+
+      .left {
+        margin: 0;
+        padding: 0 5%;
+        width: 100%;
+
+
+        .footer-button-MT {
+          width: 100%;
+          height: auto;
+          display: flex;
+          justify-content: center;
+          padding: 2em 0 3em 0;
+        }
+      }
+
+      .right {
+        width: 100%;
+        margin: 0;
+        padding: 0 5%;
+        margin-bottom: 5rem;
+      }
+    }
+
+
+    .footer-button {
+      display: none;
+    }
   }
 }
 </style>

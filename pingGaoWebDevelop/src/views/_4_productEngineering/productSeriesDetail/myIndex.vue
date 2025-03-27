@@ -1,85 +1,92 @@
 <script setup>
-import HttpUtils from "@/utils/httpUtils.js";
-import { nextTick, ref } from "vue";
-import { useRoute, useRouter } from "vue-router";
+import HttpUtils from '@/utils/httpUtils.js'
+import { nextTick, ref } from 'vue'
+import { useRoute, useRouter } from 'vue-router'
+import httpUtils from '@/utils/httpUtils.js'
 
-const isVisibleWordLeft = ref(false);
-const isVisibleWordRight = ref(false);
-const wordLeftRef = ref(null);
-const wordRightRef = ref(null);
-const imgRef = ref(null);
-const isVisibleImg = ref(false);
-const wordTopRef = ref(null);
-const isVisibleWordTop = ref(false);
-const parameterRef = ref(null);
-const isVisibleParameter = ref(false);
+const isVisibleWordLeft = ref(false)
+const isVisibleWordRight = ref(false)
+const wordLeftRef = ref(null)
+const wordRightRef = ref(null)
+const imgRef = ref(null)
+const isVisibleImg = ref(false)
+const wordTopRef = ref(null)
+const isVisibleWordTop = ref(false)
+const parameterRef = ref(null)
+const isVisibleParameter = ref(false)
 
-const router = useRouter();
+const router = useRouter()
 
 // 创建交叉观察器
 function createObserver (refElement, isVisible) {
   const observer = new IntersectionObserver(
     (entries) => {
       entries.forEach((entry) => {
-        const { intersectionRatio } = entry;
+        const { intersectionRatio } = entry
         if (intersectionRatio >= 0.0001) {
-          isVisible.value = true;
-          observer.disconnect();
+          isVisible.value = true
+          observer.disconnect()
         }
-      });
+      })
     },
     {
       root: null,
-      rootMargin: "0px",
+      rootMargin: '0px',
       threshold: 0,
     }
-  );
+  )
   if (refElement.value) {
-    observer.observe(refElement.value);
+    observer.observe(refElement.value)
   }
 }
 
 // 初始化所有的观察器
 function initializeObservers () {
-  createObserver(wordLeftRef, isVisibleWordLeft);
-  createObserver(wordRightRef, isVisibleWordRight);
-  createObserver(imgRef, isVisibleImg);
-  createObserver(wordTopRef, isVisibleWordTop);
-  createObserver(parameterRef, isVisibleParameter);
+  createObserver(wordLeftRef, isVisibleWordLeft)
+  createObserver(wordRightRef, isVisibleWordRight)
+  createObserver(imgRef, isVisibleImg)
+  createObserver(wordTopRef, isVisibleWordTop)
+  createObserver(parameterRef, isVisibleParameter)
 }
 
-const data = ref("");
-const newsId = useRoute().params.id;
+const data = ref('')
+const newsId = useRoute().params.id
 
 // 格式化时间戳为 YYYY-MM-DD 格式
 function formatTimestamp (timestamp) {
-  const date = new Date(timestamp);
-  const year = date.getFullYear();
-  const month = (date.getMonth() + 1).toString().padStart(2, "0");
-  const day = date.getDate().toString().padStart(2, "0");
-  return `${year}-${month}-${day}`;
+  const date = new Date(timestamp)
+  const year = date.getFullYear()
+  const month = (date.getMonth() + 1).toString().padStart(2, '0')
+  const day = date.getDate().toString().padStart(2, '0')
+  return `${year}-${month}-${day}`
 }
 
 async function getData () {
-  const res = await HttpUtils.get(`/cms/news/detail?newsId=${newsId}`);
-  const result = await res.json();
+  const res = await HttpUtils.get(`/cms/news/detail?newsId=${newsId}`)
+  const result = await res.json()
   // 格式化发布时间
   if (result?.data?.data?.publishTime) {
-    result.data.data.publishTime = formatTimestamp(result.data.data.publishTime);
+    result.data.data.publishTime = formatTimestamp(result.data.data.publishTime)
   }
 
-  console.log(result.data.data.publishTime);
-  data.value = result.data;
-  document.title = data.value.data.title;
+  data.value = result.data
+  document.title = data.value.data.title
+  await getCategory()
 
-  console.log(data.value);
+  await nextTick()
 
-  await nextTick();
-
-  initializeObservers();
+  initializeObservers()
 }
 
-getData();
+async function getCategory () {
+  const res = await httpUtils.get(`/cms/category/list`)
+  const result = await res.json()
+  const categoryData = result.data
+  const categoryInfo = categoryData.find(i => i.id === data.value.data.categoryId)
+  data.value.data.categoryName = categoryInfo.name
+}
+
+getData()
 </script>
 
 <template>
@@ -91,7 +98,7 @@ getData();
             <img src="@/assets/imgs/_4_productEngineeringImgs/dot.png" alt="">
           </div>
           <div class="title">
-            {{ data.data.description }}
+            {{ data.data.categoryName }}
           </div>
         </div>
         <div class="detail_text">
@@ -102,25 +109,25 @@ getData();
             <div
               class="p"
               @click="router.push('/productEngineering/productSeries')"
-              @mousedown="console.log(111)">
+            >
               返回上一级
             </div>
           </div>
         </div>
         <div class="long_line"></div>
       </div>
-      <div class="product_img">
-        <img
-          ref="imgRef"
-          :class="{ 'scale-up': isVisibleImg }"
-          :src="data.data.headerImage"
-          alt=""
-        />
-      </div>
+<!--      <div class="product_img">-->
+<!--        <img-->
+<!--          ref="imgRef"-->
+<!--          :class="{ 'scale-up': isVisibleImg }"-->
+<!--          :src="data.data.headerImage"-->
+<!--          alt=""-->
+<!--        />-->
+<!--      </div>-->
       <div class="special">
-        <div class="special_header">
-          <div class="h">技术特点</div>
-        </div>
+<!--        <div class="special_header">-->
+<!--          <div class="h">技术特点</div>-->
+<!--        </div>-->
         <div
           ref="wordTopRef" class="special_word" :class="{ 'move-top': isVisibleWordTop }"
           v-html="data.data.content"
@@ -131,13 +138,13 @@ getData();
           <div class="h">主要技术参数</div>
         </div>
         <div class="parameter_img">
-          <img src="@/assets/imgs/_4_productEngineeringImgs/parameter.png" alt=""  ref="parameterRef"
-          :class="{ 'scale-up': isVisibleParameter}"/>
+          <img src="@/assets/imgs/_4_productEngineeringImgs/parameter.png" alt="" ref="parameterRef"
+               :class="{ 'scale-up': isVisibleParameter}"/>
         </div>
       </div>
     </div>
     <div class="footer_img">
-      <img src="@/assets/imgs/_4_productEngineeringImgs/product-footer.png" alt="" />
+      <img src="@/assets/imgs/_4_productEngineeringImgs/product-footer.png" alt=""/>
     </div>
   </div>
 </template>
@@ -147,16 +154,13 @@ getData();
   position: relative;
   margin: auto;
   width: 100%;
-  padding: 0rem 13.125rem;
-  border-radius: 1.25rem;
+  padding: 0 13.125rem;
   background-color: #fff;
 }
 
 .detail_page {
-  padding: 0rem 6.25rem;
   width: 100%;
-  height: 125.625rem;
-  padding-top: 5rem;
+  padding: 5rem 6.25rem 0;
   background-color: #fff;
   z-index: 100;
 }
@@ -175,7 +179,7 @@ getData();
 
 .detail_title .title {
   font-size: 2.1875rem;
-  font-family: "AlibabaPuHuiTi_2_65_Medium", sans-serif;
+  font-family: "AlibabaPuHuiTi_2_65_Medium";
   color: rgb(35, 24, 21);
   line-height: 1.875rem;
   margin-left: 0.3125rem;
@@ -197,7 +201,7 @@ getData();
 
 .detail_text .text {
   font-size: 2.1875rem;
-  font-family: "AlibabaPuHuiTi_2_65_Medium", sans-serif;
+  font-family: "AlibabaPuHuiTi_2_65_Medium";
   color: rgb(0, 55, 146);
   transform: translateX(-100%); /* 初始位置在左边 */
   visibility: hidden;
@@ -229,7 +233,7 @@ getData();
 
 .detail_text .button .p {
   font-size: 1.3262rem;
-  font-family: "AlibabaPuHuiTi_2_55_Regular", sans-serif;
+  font-family: "AlibabaPuHuiTi_2_55_Regular";
   color: rgb(255, 255, 255);
   text-align: center;
   line-height: 3.375rem;
@@ -267,8 +271,7 @@ getData();
 
 .special {
   width: 100%;
-  height: 23.75rem;
-  margin-bottom: 3.375rem;
+  padding-bottom: 3.375rem;
 }
 
 .special_header {
@@ -282,7 +285,7 @@ getData();
 
 .special_header .h {
   font-size: 1.5rem;
-  font-family: "AlibabaPuHuiTi_2_65_Medium", sans-serif;
+  font-family: "AlibabaPuHuiTi_2_65_Medium";
   color: rgb(255, 255, 255);
   line-height: 3.75rem;
 }
@@ -306,7 +309,7 @@ getData();
 
 .special_word .introduction {
   font-size: 1.25rem;
-  font-family: "AlibabaPuHuiTi_2_55_Regular", sans-serif;
+  font-family: "AlibabaPuHuiTi_2_55_Regular";
   color: rgb(89, 87, 87);
   line-height: 1.498;
   transform: translateY(100%); /* 初始位置在下方 */

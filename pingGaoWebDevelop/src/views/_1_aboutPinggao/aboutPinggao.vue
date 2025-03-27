@@ -39,9 +39,9 @@ import Footer from "@/components/Footer.vue";
 <style lang="less" scoped>
 .header {
   background-image: url("@/assets/imgs/_1_aboutPinggaoImgs/头部轮播-01.png");
-  width: auto;
-  height: 32vw;
-  background-size: cover;
+  width: 100%;
+  aspect-ratio: 192/61;
+  background-size: contain;
 }
 .right_button {
   position: absolute;
@@ -49,7 +49,19 @@ import Footer from "@/components/Footer.vue";
   right: 0;
   z-index: 1001;
 }
-.footer{
-  z-index:100;
+.footer {
+  z-index: 100;
+}
+
+@media (max-width: 900px) {
+  .header {
+    width: 100%;
+    aspect-ratio: 748/401;
+    background-image: url("@/assets/imgs/_1_aboutPinggaoImgs/moveHeaderBg.png");
+    background-size: cover;
+  }
+  .right_button {
+    display: none;
+  }
 }
 </style>

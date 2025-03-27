@@ -68,7 +68,6 @@ async function getData () {
     pageSize: pageSize.value,
   }).toString();
 
-  console.log("获取数据", queryString);
   const response = await httpUtils.get(`/cms/category/${categoryId}/news?${queryString.toString()}`);
   const { data } = await response.json();
   const page = data.page;
@@ -77,7 +76,6 @@ async function getData () {
     i.timeObj = formatTimestampObj(i.publishTime);
   });
 
-  console.log(page.list);
   if (page.value === 1) {
     topNews.value = page.list[0];
     mainNews.value = page.list.slice(1);
@@ -140,7 +138,7 @@ getData();
                   }
                 }"
               >
-                <Item2 :time="item.publishTime" :text="item.title" bg-color="#def1fb" size="big" />
+                <Item2 style="--hoverBgColor: #003792" :time="item.publishTime" :text="item.title" bg-color="#def1fb" size="big" />
               </router-link>
             </li>
           </ul>
