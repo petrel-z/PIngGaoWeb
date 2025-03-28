@@ -31,7 +31,7 @@ onMounted(() => {
             </p>
           </div>
         </MyContent>
-        <MyContent :title="'国家高压电器产品'" :title1="'质量监督检验中心（河南）'">
+        <MyContent :title="'国家高压电器产品-质量监督检验中心（河南）'">
           <div class="right-text">
             <p>
               位于平顶山高新产业集聚区，占地229亩，总投资10亿元。是国内一流且具有第三方公共检测地位的高压电器产品试验检测中心，拥有中国计量认证（CMA）、中国考核合格检验实验室（CAL）和中国合格评定国家认可委员会认可实验室（CNAS）认证认可证书。其试验设施完善、仪器设备配置及检验检测技术先进，具备高压开关类550kV/63KA及以下大容量试验、1200kV及以下交、直流绝缘试验、温升试验、机械试验、环境试验、电磁兼容试验等试验检测能力，同时具备35kV及以下电力变压器类产品全部型式试验能力，综合试验能力外干国际先进水平
@@ -78,7 +78,7 @@ onMounted(() => {
         left: -100%;
         transition: all 0.5s;
       .right-text {
-        font-size: 20px;
+        font-size: 2rem;
         font-family: "AlibabaPuHuiTi_2_45_Light";
         color: #595757;
         line-height: 1.85;

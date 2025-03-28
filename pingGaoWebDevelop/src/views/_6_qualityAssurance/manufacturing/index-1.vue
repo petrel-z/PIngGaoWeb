@@ -110,7 +110,7 @@ onMounted(() => {
 
       .right-text {
         // width: 1010px;
-        font-size: 20px;
+        font-size: 2rem;
         font-family: "AlibabaPuHuiTi_2_45_Light";
         color: #595757;
         line-height: 1.85;

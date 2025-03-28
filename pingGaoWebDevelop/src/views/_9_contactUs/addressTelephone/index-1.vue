@@ -331,6 +331,7 @@ import MyTitle from "@/components/MyTitle.vue";
 /* 大型设备（桌面，大于 900px） */
 @media (max-width: 900px) {
   .addressTelephone-content {
+
     background-image: none;
 
     .content-top {

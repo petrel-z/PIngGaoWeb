@@ -77,7 +77,7 @@ const props = defineProps({
 
 @media (max-width: 900px) {
   .h {
-    font-size: 4rem;
+    font-size: 3.4rem;
   }
 
   .line {

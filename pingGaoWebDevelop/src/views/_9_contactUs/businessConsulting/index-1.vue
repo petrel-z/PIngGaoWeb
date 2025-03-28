@@ -136,7 +136,7 @@ import MyTitle from "@/components/MyTitle.vue";
 @media (max-width: 900px) {
   .businessConsulting-content {
     .content-top {
-      margin: 0 5%;
+      margin: 0 7%;
 
       .top-title {
         margin: 3rem 0;

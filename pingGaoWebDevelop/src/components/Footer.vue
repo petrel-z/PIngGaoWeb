@@ -486,11 +486,11 @@ a {
 
     .codeImg {
       position: absolute;
-      top: 9%;
+      top: 3%;
       right: 0;
       margin: 0;
       margin-right: 8%;
-      width: 11%;
+      width: 10%;
 
       p {
         display: none;
