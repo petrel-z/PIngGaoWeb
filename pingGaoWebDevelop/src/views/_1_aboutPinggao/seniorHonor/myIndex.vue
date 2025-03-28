@@ -89,25 +89,16 @@ watch(honorList, async () => {
   background-color: #fff;
   z-index: 0;
 }
-@media (min-width: 300px) and (max-width:600px) {
-  .content .info {
-    margin-bottom: 0.2rem !important;
-  }
-}
-@media (min-width: 600px) and (max-width: 900px) {
-  .content .info {
-    margin-bottom: 0.2rem !important;
-  }
-}
 .content {
   margin-top: 3.125rem;
   display: flex;
   flex-wrap: wrap;
   justify-content: flex-start;
+  gap: 1rem; /* 推荐：均匀间距 */
 }
 
 .content .info {
-  width: 25%;
+  width: calc(50% - 0.5rem); /* 兼容 gap 的宽度调整 */
   height: 90%;
   margin-bottom: 4.2rem;
   text-align: center;

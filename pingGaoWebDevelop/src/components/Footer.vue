@@ -1,4 +1,6 @@
 <script setup>
+import dayjs from "dayjs";
+
 defineOptions({
   name: "FooterItem",
 });
@@ -10,7 +12,8 @@ defineOptions({
       <div class="content">
         <div class="logo-text" style="">
           <div class="logo-text-top">
-            <img style="width: 100%;height: auto" src="../assets/imgs/common/footerLogo.png" alt="" />
+            <img style="width: 100%;height: auto" src="../assets/imgs/common/footerLogo.png"
+                 alt=""/>
           </div>
           <!-- <hr class="logo-text-hr" /> -->
           <div class="text-bottom">
@@ -170,8 +173,10 @@ defineOptions({
       </div>
     </div>
     <div class="footer-bottom">
-      <p><a href="https://beian.miit.gov.cn/">豫ICP备2022010930号</a> Copyright 2025 PINGGAO GROUP CO.,LTD, All Rights
-        Reserved.</p>
+      <p>
+        <a href="https://beian.miit.gov.cn/">豫ICP备2022010930号</a>
+        Copyright {{ dayjs().format("YYYY") }} PINGGAO GROUP CO.,LTD, All Rights Reserved.
+      </p>
       <p>平高集团有限公司版权所有</p>
     </div>
   </div>
@@ -200,7 +205,7 @@ a {
   padding: 5% 9%;
 }
 
-.content>div {
+.content > div {
   border-right: 1px solid #727171;
 }
 
@@ -217,7 +222,8 @@ a {
     margin-right: 1%;
     transform: translateY(-3px);
 
-    img {}
+    img {
+    }
   }
 
   .logo-text {
@@ -309,7 +315,8 @@ a {
 
     }
 
-    .p-first {}
+    .p-first {
+    }
   }
 
   .codeImg {
@@ -381,7 +388,7 @@ a {
     }
   }
 
-  .content>div {
+  .content > div {
     border: none;
   }
 
@@ -469,7 +476,8 @@ a {
       }
 
 
-      .p-first {}
+      .p-first {
+      }
     }
 
     .f9 {

@@ -1,5 +1,8 @@
 <script setup>
-import { ref, onMounted } from "vue";
+import { ref, nextTick } from "vue";
+import { useRoute } from "vue-router";
+import HttpUtils from "@/utils/httpUtils.js";
+import httpUtils from "@/utils/httpUtils.js";
 const isVisibleWordLeft = ref(false);
 const isVisibleWordRight = ref(false);
 const wordLeftRef = ref(null);
@@ -32,6 +35,7 @@ const createObserver = (refElement, isVisible) => {
     observer.observe(refElement.value);
   }
 };
+
 // 初始化所有的观察器
 const initializeObservers = () => {
   createObserver(wordLeftRef, isVisibleWordLeft);
@@ -40,22 +44,60 @@ const initializeObservers = () => {
   createObserver(wordTopRef, isVisibleWordTop);
   createObserver(parameterRef, isVisibleParameter);
 };
-onMounted(initializeObservers); // 在组件挂载时调用
+
+const data = ref('')
+const newsId = useRoute().params.id
+
+// 格式化时间戳为 YYYY-MM-DD 格式
+function formatTimestamp (timestamp) {
+  const date = new Date(timestamp)
+  const year = date.getFullYear()
+  const month = (date.getMonth() + 1).toString().padStart(2, '0')
+  const day = date.getDate().toString().padStart(2, '0')
+  return `${year}-${month}-${day}`
+}
+
+async function getData () {
+  const res = await HttpUtils.get(`/cms/news/detail?newsId=${newsId}`)
+  const result = await res.json()
+  // 格式化发布时间
+  if (result?.data?.data?.publishTime) {
+    result.data.data.publishTime = formatTimestamp(result.data.data.publishTime)
+  }
+
+  data.value = result.data
+  document.title = data.value.data.title
+  await getCategory()
+
+  await nextTick()
+
+  initializeObservers()
+}
+
+async function getCategory () {
+  const res = await httpUtils.get(`/cms/category/list`)
+  const result = await res.json()
+  const categoryData = result.data
+  const categoryInfo = categoryData.find(i => i.id === data.value.data.categoryId)
+  data.value.data.categoryName = categoryInfo.name
+}
+
+getData()
 </script>
 <template>
   <div class="productSeriesDetail">
     <div class="detail_page">
       <div class="header">
         <div class="detail_title">
-          <div class="title">ZHW1-252 (L)/T4000-50 type</div>
+          <div class="title">{{ data.data.title }}</div>
         </div>
         <div class="detail_text">
           <div class="text" ref="wordLeftRef" :class="{ 'move-left': isVisibleWordLeft }">
-            Composite composite electrical appliance
+            {{ data.data.categoryName }}
           </div>
           <div class="button" ref="wordRightRef" :class="{ 'move-right': isVisibleWordRight }">
             <div class="p" @click="this.$router.go(-1)" @mousedown="console.log(111)">
-              返回上一级
+              BACK
             </div>
           </div>
         </div>
@@ -65,44 +107,12 @@ onMounted(initializeObservers); // 在组件挂载时调用
         <img
           ref="imgRef"
           :class="{ 'scale-up': isVisibleImg }"
-          src="@/assets/imgs/_4_productEngineeringImgs/product-img.png"
+          :src="data.data.headerImage"
           alt=""
         />
       </div>
       <div class="special">
-        <div class="special_header">
-          <div class="h">FEATURES</div>
-        </div>
-        <div class="special_word">
-          <div class="special_word_move">
-            <ul class="introduction" ref="wordTopRef" :class="{ 'move-top': isVisibleWordTop }">
-              <li>
-                1. One device independent modular design, it can meet yarous main wiing reguirements
-                in typical desian schemes, suitable for new construction.expansion or renovation
-                proiects of power plants and substations, as well as rallway electifcation
-                constuction. it is particulary suitable for uparadinaand renovating old substations,
-                reducing construction difficulty and investment scale.
-              </li>
-              <li>
-                2. Compact, miniaturized, and ightweight design alows for complete transportation
-                and saves space, occupying only about 45% of the conventionaopen switch substation.
-              </li>
-              <li>3. Hiah reliability, minimal maintenance, and flexible on-site layout.</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-      <div class="main_parameter">
-        <div class="special_header">
-          <div class="h">TECHNICAL PARAMETER</div>
-        </div>
-        <div class="parameter_img">
-          <img
-            src="@/assets/imgs/_4_productEngineeringImgs/parameter.png"
-            alt=""
-            ref="parameterRef"
-            :class="{ 'scale-up': isVisibleParameter }"
-          />
+        <div class="special_word" v-html="data.data.content">
         </div>
       </div>
     </div>
@@ -243,6 +253,7 @@ onMounted(initializeObservers); // 在组件挂载时调用
 .special .special_word {
   overflow: hidden;
   height: 100%;
+  font-size: 16px;
 }
 .special_word_move {
   width: 100%;

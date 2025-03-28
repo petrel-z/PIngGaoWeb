@@ -3,21 +3,22 @@
     <div class="container-title">NEWS</div>
     <div class="container-body">
       <ul>
-        <li v-for="item in news" :key="item.id" class="container-body-item">
-          <a href="/news/newsDetail">
+        <li v-for="item in leftList" :key="item.id" class="container-body-item">
+          <router-link :to="{ name: 'engNewsDetail', params: { id: item.id } }">
             <Item1
               :detail-id="item.id"
-              :month="item.month"
-              :year="item.year"
+              :month="formatTimestampObj(item.publishTime).month"
+              :year="formatTimestampObj(item.publishTime).year"
               :title="item.title"
-              :text="item.text"
+              :text="item.description"
               language="en-US"
             ></Item1>
-          </a>
+          </router-link>
         </li>
       </ul>
       <div class="container-body-foot">
-        <MyPagination :total="news.length" :current-page="1" :page-size="10"></MyPagination>
+        <MyPagination :total="pageMax" :current-page="pageNo" :page-size="pageSize"
+                      @page-change="pageChange" />
       </div>
     </div>
     <div class="container-foot">
@@ -27,63 +28,75 @@
 </template>
 
 <script setup>
-import { defineComponent, ref } from "vue";
+import { defineComponent, onMounted, ref } from "vue";
 import Item1 from "@/components/Item-1.vue";
 import MyPagination from "@/components/MyPagination.vue";
+import httpUtils from "@/utils/httpUtils.js";
+
 defineComponent({
-  name: "NewsIndex",
+  name: "EngNewsIndex",
 });
 
-const news = ref([
-  {
-    id: 1,
-    month: "01.14",
-    year: "2025",
-    title:
-      "China Electrical Equipment held the second session of the first employee representative conference ",
-    text: "After more than 50 years of development, Pinggao Group has formed a business pattern covering resea",
-  },
-  {
-    id: 1,
-    month: "01.14",
-    year: "2025",
-    title:
-      "China Electrical Equipment held the second session of the first employee representative conference ",
-    text: "After more than 50 years of development, Pinggao Group has formed a business pattern covering resea",
-  },
-  {
-    id: 1,
-    month: "01.14",
-    year: "2025",
-    title:
-      "China Electrical Equipment held the second session of the first employee representative conference ",
-    text: "After more than 50 years of development, Pinggao Group has formed a business pattern covering resea",
-  },
-  {
-    id: 1,
-    month: "01.14",
-    year: "2025",
-    title:
-      "China Electrical Equipment held the second session of the first employee representative conference ",
-    text: "After more than 50 years of development, Pinggao Group has formed a business pattern covering resea",
-  },
-  {
-    id: 1,
-    month: "01.14",
-    year: "2025",
-    title:
-      "China Electrical Equipment held the second session of the first employee representative conference ",
-    text: "After more than 50 years of development, Pinggao Group has formed a business pattern covering resea",
-  },
-  {
-    id: 1,
-    month: "01.14",
-    year: "2025",
-    title:
-      "China Electrical Equipment held the second session of the first employee representative conference ",
-    text: "After more than 50 years of development, Pinggao Group has formed a business pattern covering resea",
-  },
-]);
+document.title = "NEWS";
+const categoryId = 56;
+const leftList = ref([]);
+const pageNo = ref(1);
+const pageSize = ref(10);
+const pageMax = ref(1);
+
+// 格式化时间戳为 YYYY-MM-DD 格式
+function formatTimestampObj (timestamp) {
+  const date = new Date(timestamp);
+  const year = date.getFullYear();
+  const month = (date.getMonth() + 1).toString().padStart(2, "0");
+  const day = date.getDate().toString().padStart(2, "0");
+  return {
+    year: `${year}`,
+    month: `${month}.${day}`,
+  };
+}
+
+async function getData () {
+  const queryString = new URLSearchParams({
+    pageNo: pageNo.value,
+    pageSize: pageSize.value,
+  }).toString();
+
+  console.log("获取数据", queryString);
+  const response = await httpUtils.get(
+    `/cms/category/${categoryId}/news?${queryString.toString()}`,
+  );
+  const { data } = await response.json();
+  const page = data.page;
+  pageMax.value = Math.ceil(page.total / pageSize.value);
+  leftList.value = [...page.list];
+}
+
+function pageChange (pageNumber) {
+  pageNo.value = pageNumber;
+  getData();
+}
+
+getData();
+
+// 监听窗口大小变化事件
+let onceChange = ref(false);
+
+function changeOnce () {
+  // 获取当前窗口的宽度和高度
+  const width = window.innerWidth;
+  if (width <= 900) {
+    // 根据窗口大小改变dom元素
+    onceChange.value = true;
+  } else {
+    onceChange.value = false;
+  }
+}
+
+onMounted(() => {
+  changeOnce();
+  window.addEventListener("resize", changeOnce);
+});
 </script>
 
 <style lang="less" scoped>
@@ -102,6 +115,7 @@ const news = ref([
     color: black;
     padding: 1% 0;
   }
+
   &-body {
     border-top: 0.05rem solid #b9b2af;
     padding: 3% 11%;
@@ -120,6 +134,7 @@ const news = ref([
       margin-top: 3%;
     }
   }
+
   &-foot {
     width: 100%;
     height: auto;

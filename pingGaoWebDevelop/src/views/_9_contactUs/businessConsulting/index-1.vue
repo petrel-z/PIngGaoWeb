@@ -9,22 +9,8 @@ import MyTitle from "@/components/MyTitle.vue";
         <MyTitle :title="'在线咨询'" :english="'Online consultation'"></MyTitle>
       </div>
       <div class="online-consultation">
-        <h1>平高集团在线客服</h1>
-        <div class="center-consultation"></div>
-        <div class="bottom-question">
-          <div class="text">
-            <textarea name="" id="" placeholder="请输入您要咨询的问题"></textarea>
-          </div>
-          <div class="sent">发送</div>
-        </div>
+        <a href="http://pg.pinggao.com:20062/EClient/?appId=PGWeb">点此进入在线咨询</a>
       </div>
-    </div>
-    <div class="content-bgimg">
-      <img
-        :style="{ width: '100%', height: 'auto' }"
-        src="../../../assets/imgs/_9_contactUsImgs/t9_p1_contentBg.png"
-        alt=""
-      />
     </div>
   </div>
 </template>
@@ -52,6 +38,7 @@ import MyTitle from "@/components/MyTitle.vue";
       position: relative;
       animation: toptitle 0.7s ease-out forwards;
     }
+
     @keyframes toptitle {
       from {
         left: 100%;
@@ -70,6 +57,7 @@ import MyTitle from "@/components/MyTitle.vue";
         top: 0;
       }
     }
+
     .online-consultation {
       position: relative;
       animation: online-consultation 1s ease forwards;

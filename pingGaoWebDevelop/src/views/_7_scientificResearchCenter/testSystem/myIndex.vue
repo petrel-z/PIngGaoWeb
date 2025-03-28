@@ -79,7 +79,7 @@ onMounted(initializeObservers); // 在组件挂载时调用
   position: relative;
   margin: auto;
   width: 100%;
-  height: 105rem;
+  height: 150rem;
   /* border: 0.0625rem solid rgb(206, 206, 206); */
   padding: 4rem 11%;
   border-radius: 1.25rem;
@@ -114,19 +114,20 @@ onMounted(initializeObservers); // 在组件挂载时调用
 }
 .content .my_content {
   position: relative;
+  margin-bottom: 12rem;
 }
 .content .right {
   position: absolute;
-  left: 68%;
+  left: 150%;
   top: 0rem;
 }
 .content .my_content .p {
-  font-size: 1.25rem;
+  font-size: 2.2rem;
   font-family: "AlibabaPuHuiTi_2_55_Regular";
   color: rgb(89, 87, 87);
 }
 .text {
-  font-size: 1.25rem;
+  font-size: 2.2rem;
   font-family: "AlibabaPuHuiTi_2_55_Regular";
   color: rgb(89, 87, 87);
   line-height: 1.56;
@@ -150,16 +151,5 @@ onMounted(initializeObservers); // 在组件挂载时调用
 .content .right {
   width: 26.25rem;
 }
-@media (min-width: 400px) and (max-width: 800px) {
-  .text,
-  .p {
-    font-size: 0.9rem !important;
-  }
-}
-@media (min-width: 1500px) and (max-width: 1800px) {
-  .text,
-  .p {
-    font-size: 1rem !important;
-  }
-}
+
 </style>

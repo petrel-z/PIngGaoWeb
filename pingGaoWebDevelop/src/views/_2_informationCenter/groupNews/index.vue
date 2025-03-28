@@ -80,7 +80,6 @@ onMounted(() => {
       const windowHeight = window.innerHeight;
 
       // 判断元素是否进入可视区域
-
       if (contentTop < windowHeight) {
         contentBox.value.classList.add("show");
       } else {
@@ -122,7 +121,7 @@ getData();
               :month="item.timeObj.month"
               :year="item.timeObj.year"
               :title="item.title"
-              :text="item.text"
+              :text="item.description"
               hover-color="#006fc1"
               @click-item="toDetail"
           />

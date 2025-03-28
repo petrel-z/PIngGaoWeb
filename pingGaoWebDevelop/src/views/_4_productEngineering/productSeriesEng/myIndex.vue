@@ -1,4 +1,82 @@
-<script setup></script>
+<script setup>
+import { defineComponent, ref } from "vue";
+import httpUtils from "@/utils/httpUtils.js";
+import { useRoute } from "vue-router";
+import router from "@/router/index.js";
+
+defineComponent({
+  name: "EngProductSeries",
+});
+
+const categoryList = ref([]);
+const categoryItems = ref([]);
+const currentCategory = ref({});
+const type = useRoute().query.type;
+
+const pageNo = ref(1);
+const pageSize = ref(9);
+const hasMore = ref(true);
+
+async function getData () {
+  const queryString = new URLSearchParams({
+    pageNo: pageNo.value,
+    pageSize: pageSize.value,
+  }).toString();
+
+  const categoryId = currentCategory.value.id;
+  const response = await httpUtils.get(`/cms/category/${categoryId}/news?${queryString.toString()}`);
+  const result = await response.json();
+  const data = result.data.page;
+
+  if (pageNo.value === 1) {
+    categoryItems.value = [...data.list];
+  } else {
+    categoryItems.value = [...categoryItems.value, ...data.list];
+  }
+
+  if (data.list.length < pageSize.value) {
+    hasMore.value = false;
+  } else {
+    pageNo.value = pageNo.value + 1;
+  }
+}
+
+async function getCategory () {
+  const res = await httpUtils.get(`/cms/category/57/list`);
+  const result = await res.json();
+
+  categoryList.value = result.data;
+
+  const queryCategory = result.data.find(i => Number(i.id) === Number(type));
+  if (queryCategory) {
+    currentCategory.value = queryCategory;
+  } else {
+    currentCategory.value = result.data[0];
+  }
+
+  await getData();
+}
+
+function setActive (category) {
+  currentCategory.value = category;
+  pageNo.value = 1;
+  getData();
+}
+
+function toDetail (newsId) {
+  if (newsId) {
+    const target = router.resolve({
+      name: "engProductDetail",
+      params: {
+        id: newsId,
+      },
+    });
+    window.open(target.href, "_blank");
+  }
+}
+
+getCategory();
+</script>
 <template>
   <div class="productSeriesEng">
     <div class="text">
@@ -7,86 +85,22 @@
     <div class="content">
       <div class="left-column">
         <ul class="vertical-center">
-          <div class="text active"><span>HIGH VOLTAGE ELECTRICAL INDUSTRY</span></div>
-          <div class="text"><span>SYSTEM INTEGRATION BUSINESS</span></div>
-          <div class="text"><span>ELECTRIC ENERGY STORAGE BUSINESS</span></div>
-          <div class="text"><span>DISTRIBUTION NETWORK INDUSTRY</span></div>
-          <div class="text"><span>OPERATION AND MAINTENANCE SERVICES</span></div>
-          <div class="text"><span>ELECTRIC BOILER AND THERMAL ENERGY STORAGE BUSINESS</span></div>
-          <div class="text"><span>COMPONENT MANUFACTURING INDUSTRY</span></div>
-          <div class="text"><span>INTEGRATED ENERGY SERVICES BUSINESS</span></div>
-          <div class="text"><span>SMART POWER DISTRIBUTION BUSINESS</span></div>
+          <li
+            v-for="category in categoryList"
+            :key="category.id"
+            class="text"
+            :class="{
+            active: currentCategory.id === category.id
+          }" @click="setActive(category)"><span>{{ category.name }}</span></li>
         </ul>
       </div>
       <div class="right-column">
-        <div class="product-item">
-          <div class="product-number">01</div>
+        <div class="product-item" v-for="(item, index) in categoryItems"
+             :key="item.id" @click="toDetail(item.id)">
+          <div class="product-number">{{ index + 1 }}</div>
           <div class="product-text">
-            <div class="top">ZHW1-252 (L)/T4000-50 type</div>
-            <div class="bottom">Composite composite electrical appliance</div>
-          </div>
-        </div>
-        <div class="product-item">
-          <div class="product-number">02</div>
-          <div class="product-text">
-            <div class="top">ZHW1-252 (L)/T4000-50 type</div>
-            <div class="bottom">Composite composite electrical appliance</div>
-          </div>
-        </div>
-        <div class="product-item">
-          <div class="product-number">03</div>
-          <div class="product-text">
-            <div class="top">ZHW1-252 (L)/T4000-50 type</div>
-            <div class="bottom">Composite composite electrical appliance</div>
-          </div>
-        </div>
-        <div class="product-item">
-          <div class="product-number">04</div>
-          <div class="product-text">
-            <div class="top">ZHW1-252 (L)/T4000-50 type</div>
-            <div class="bottom">Composite composite electrical appliance</div>
-          </div>
-        </div>
-        <div class="product-item">
-          <div class="product-number">05</div>
-          <div class="product-text">
-            <div class="top">ZHW1-252 (L)/T4000-50 type</div>
-            <div class="bottom">Composite composite electrical appliance</div>
-          </div>
-        </div>
-        <div class="product-item">
-          <div class="product-number">06</div>
-          <div class="product-text">
-            <div class="top">ZHW1-252 (L)/T4000-50 type</div>
-            <div class="bottom">Composite composite electrical appliance</div>
-          </div>
-        </div>
-        <div class="product-item">
-          <div class="product-number">07</div>
-          <div class="product-text">
-            <div class="top">ZHW1-252 (L)/T4000-50 type</div>
-            <div class="bottom">Composite composite electrical appliance</div>
-          </div>
-        </div>
-        <div class="product-item">
-          <div class="product-number">08</div>
-          <div class="product-text">
-            <div class="top">ZHW1-252 (L)/T4000-50 type</div>
-            <div class="bottom">Composite composite electrical appliance</div>
-          </div>
-        </div>
-        <div class="product-item">
-          <div class="product-number">09</div>
-          <div class="product-text">
-            <div class="top">ZHW1-252 (L)/T4000-50 type</div>
-            <div class="bottom">Composite composite electrical appliance</div>
-          </div>
-        </div>
-        <div class="product-item">
-          <div class="product-number">10</div>
-          <div class="product-text">
-            <div class="top">ZHW1-252 (L)/T4000-50 type</div>
-            <div class="bottom">Composite composite electrical appliance</div>
+            <div class="top">{{ item.title }}</div>
+            <div class="bottom">{{ currentCategory.name }}</div>
           </div>
         </div>
       </div>
@@ -98,6 +112,7 @@ body {
   font-family: Arial, sans-serif;
   margin: 1.25rem;
 }
+
 .productSeriesEng {
   position: relative;
   margin: auto;
@@ -106,16 +121,19 @@ body {
   background-color: #fff;
   height: 120rem;
 }
+
 .text {
   padding-top: 3.125rem;
   height: 9.5625rem;
   margin: auto;
   border-bottom: 0.0625rem solid rgb(64, 64, 64);
 }
+
 .text .h {
   font-size: 2.8125rem;
   text-align: center;
 }
+
 .content {
   display: flex;
 }
@@ -147,11 +165,13 @@ body {
   position: relative;
   cursor: pointer;
 }
+
 .left-column .text span {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
 }
+
 .left-column .active::after {
   /* 移除文字符号，改用纯 CSS 三角形 */
   content: "";
@@ -167,9 +187,11 @@ body {
   border-left: 1.75rem solid #006ec0; /* 主箭头颜色 */
   transition: transform 0.3s ease;
 }
+
 .left-column .active {
   color: #006ec0;
 }
+
 .right-column {
   flex: 1;
   margin-left: 7.6875rem;
@@ -183,7 +205,9 @@ body {
   height: 8.6875rem;
   margin-bottom: 0.625rem;
   background-color: #f7f8f8;
+  cursor: pointer;
 }
+
 .product-item .product-number {
   margin-left: 1.875rem;
   font-size: 2.25rem;
@@ -198,6 +222,7 @@ body {
   font-family: "Avenir";
   color: rgb(89, 87, 87);
 }
+
 .product-number {
   color: #006ec0;
 }
@@ -209,6 +234,7 @@ body {
     font-size: 1.1rem;
     padding: 1rem 0rem;
   }
+
   .left-column .active::after {
     /* 移除文字符号，改用纯 CSS 三角形 */
     content: "";
@@ -234,6 +260,7 @@ body {
     border-left-color: #2f54eb; /* 激活状态颜色 */
     transform: translateY(-50%) rotate(90deg);
   }
+
   .right-column {
     flex: 1;
     margin-left: 6rem;
@@ -244,10 +271,12 @@ body {
     height: 6.0875rem;
     margin-bottom: 0.625rem;
   }
+
   .left-column {
     padding-top: 4.125rem;
     margin-left: 6.125rem !important;
   }
+
   .product-item .product-number {
     margin-left: 1.875rem;
     font-size: 1.7rem;
@@ -260,6 +289,7 @@ body {
     font-size: 1.125rem;
   }
 }
+
 @media (min-width: 600px) and (max-width: 800px) {
   .left-column .text {
     width: 17.9375rem;
@@ -267,11 +297,13 @@ body {
     font-size: 0.9rem;
     padding: 1rem 0rem;
   }
+
   .right-column {
     flex: 1;
     margin-left: 6rem;
     padding-top: 4.125rem;
   }
+
   .left-column .active::after {
     /* 移除文字符号，改用纯 CSS 三角形 */
     content: "";
@@ -287,14 +319,17 @@ body {
     border-left: 1rem solid #006ec0; /* 主箭头颜色 */
     transition: transform 0.3s ease;
   }
+
   .product-item {
     height: 6.0875rem;
     margin-bottom: 0.625rem;
   }
+
   .left-column {
     padding-top: 4.125rem;
     margin-left: 6.125rem !important;
   }
+
   .product-item .product-number {
     margin-left: 1.875rem;
     font-size: 1.7rem;
@@ -307,6 +342,7 @@ body {
     font-size: 1.125rem;
   }
 }
+
 @media (min-width: 800px) and (max-width: 900px) {
   .left-column .text {
     width: 17.9375rem !important;
@@ -314,6 +350,7 @@ body {
     font-size: 0.9rem;
     padding: 1rem 0rem;
   }
+
   .left-column .active::after {
     /* 移除文字符号，改用纯 CSS 三角形 */
     content: "";
@@ -329,24 +366,29 @@ body {
     border-left: 1rem solid #006ec0; /* 主箭头颜色 */
     transition: transform 0.3s ease;
   }
+
   .right-column {
     flex: 1;
     margin-left: 6rem;
     padding-top: 4.125rem;
   }
+
   .product-item {
     height: 6.0875rem;
     margin-bottom: 0.625rem;
   }
+
   .left-column {
     padding-top: 4.125rem;
     margin-left: 6.125rem !important;
   }
+
   .product-item .product-number {
     margin-left: 1.875rem;
     font-size: 1.7rem;
     line-height: 6.6875rem;
   }
+
   .product-item .product-text {
     margin-top: 1.4rem;
     margin-left: 2rem;

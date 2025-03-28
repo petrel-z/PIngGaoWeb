@@ -10,7 +10,7 @@ import imgPath from "@/assets/imgs/_1_aboutPinggaoImgs/line.png";
 </template>
 <style scoped>
 .title {
-  font-size: 1.625rem;
+  font-size: 3.5rem;
   font-family: "AlibabaPuHuiTi_2_65_Medium";
   color: rgb(0, 111, 193);
   font-weight: 500;

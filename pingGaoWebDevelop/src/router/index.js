@@ -6,8 +6,9 @@ import organizationalStructure from "@/views/_1_aboutPinggao/organizationalStruc
 import seniorHonor from "@/views/_1_aboutPinggao/seniorHonor/myIndex.vue";
 import partyBuilding from "@/views/_3_partyBuilding/index.vue";
 
-import productSeriseEng from "@/views/_4_productEngineering/productSeriesDetailEng/myIndex.vue";
-import productSeriesDetailEng from "@/views/_4_productEngineering/productSeriesDetailEng/myIndex.vue";
+import productSeriseEng from "@/views/_4_productEngineering/productSeriesEng/myIndex.vue";
+import productSeriesDetailEng
+  from "@/views/_4_productEngineering/productSeriesDetailEng/myIndex.vue";
 import productEngineering from "@/views/_4_productEngineering/index.vue";
 import keyProject from "@/views/_4_productEngineering/keyProject/myIndex.vue";
 import productSeries from "@/views/_4_productEngineering/productSeries/myIndex.vue";
@@ -17,8 +18,10 @@ import manufacturing from "@/views/_6_qualityAssurance/manufacturing/index-1.vue
 import productTesting from "@/views/_6_qualityAssurance/productTesting/index-1.vue";
 import qualitySystem from "@/views/_6_qualityAssurance/qualitySystem/index-1.vue";
 import scientificResearchCenter from "@/views/_7_scientificResearchCenter/index.vue";
-import scientificResearchAchievement from "@/views/_7_scientificResearchCenter/scientificResearchAchievement/myIndex.vue";
-import scientificResearchSystem from "@/views/_7_scientificResearchCenter/scientificResearchSystem/myIndex.vue";
+import scientificResearchAchievement
+  from "@/views/_7_scientificResearchCenter/scientificResearchAchievement/myIndex.vue";
+import scientificResearchSystem
+  from "@/views/_7_scientificResearchCenter/scientificResearchSystem/myIndex.vue";
 import testSystem from "@/views/_7_scientificResearchCenter/testSystem/myIndex.vue";
 import addressTelephone from "@/views/_9_contactUs/addressTelephone/index-1.vue";
 import becomePartner from "@/views/_9_contactUs/becomePartner/index-1.vue";
@@ -27,7 +30,7 @@ import contactUs from "@/views/_9_contactUs/index.vue";
 import purchaseByBidding from "@/views/_9_contactUs/purchaseByBidding/index-1.vue";
 import homePage_1 from "@/views/homePage/homePage-1.vue";
 
-import { createRouter, createWebHistory } from "vue-router";
+import {createRouter, createWebHistory} from "vue-router";
 
 const router = createRouter({
   history: createWebHistory(),
@@ -164,10 +167,12 @@ const router = createRouter({
         },
         {
           path: "productSeriesEng",
+          name: "engProductSeries",
           component: productSeriseEng,
         },
         {
-          path: "productSeriesDetailEng",
+          path: "productSeriesDetailEng-:id",
+          name: "engProductDetail",
           component: productSeriesDetailEng,
         },
       ],
@@ -289,10 +294,12 @@ const router = createRouter({
       children: [
         {
           path: "news",
+          name: "engNews",
           component: () => import("@/views/news/news/index.vue"),
         },
         {
-          path: "newsDetail",
+          path: "newsDetail-:id",
+          name: "engNewsDetail",
           component: () => import("@/views/news/newsDetail/index.vue"),
         },
       ],
@@ -326,7 +333,7 @@ const router = createRouter({
 
     // 检查目标路由是否在需要回到顶部的路径数组中
     if (scrollToTopPaths.includes(to.path)) {
-      return { top: 0, behavior: "smooth" };
+      return {top: 0, behavior: "smooth"};
     }
 
     // 如果有 savedPosition，即浏览器返回操作，则滚动到原来的位置

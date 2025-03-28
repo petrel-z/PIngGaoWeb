@@ -1,5 +1,5 @@
 <script setup>
-import { onMounted, ref } from "vue";
+import {onMounted, ref} from "vue";
 
 import imgPath from "@/assets/imgs/common/headerHoverBg-1.png";
 import imgPath1 from "@/assets/imgs/_1_aboutPinggaoImgs/头部轮播-01.png";
@@ -16,8 +16,8 @@ import logoBig1 from "@/assets/imgs/common/logoImgAll.png";
 import logoBig2 from "@/assets/imgs/common/logoImgAllBlack.png";
 import logoSmall1 from "@/assets/imgs/common/logoImg.png";
 import logoSmall2 from "@/assets/imgs/common/logoImgBlack.png";
-import { useLanguageStore } from "@/stores/languageStores";
-import { storeToRefs } from "pinia";
+import {useLanguageStore} from "@/stores/languageStores";
+import {storeToRefs} from "pinia";
 
 let hidden = ref(true);
 let inputFlag = ref(false);
@@ -31,23 +31,23 @@ let logoImg2 = ref(logoBig2);
 let moveFlag = ref(false);
 
 const header = ref([
-  { name: "关于平高", path: "/aboutPingGao" },
-  { name: "资讯中心", path: "/informationCenter" },
+  {name: "关于平高", path: "/aboutPingGao"},
+  {name: "资讯中心", path: "/informationCenter"},
   // { name: "党的建设", path: "/partyBuilding" },
-  { name: "产品工程", path: "/productEngineering" },
-  { name: "营销服务", path: "/marketingService" },
-  { name: "品质保障", path: "/qualityAssurance" },
-  { name: "科研中心", path: "/scientificResearchCenter" },
-  { name: "人力资源", path: "/humanResources" },
-  { name: "联系我们", path: "/contactUs" },
+  {name: "产品工程", path: "/productEngineering"},
+  {name: "营销服务", path: "/marketingService"},
+  {name: "品质保障", path: "/qualityAssurance"},
+  {name: "科研中心", path: "/scientificResearchCenter"},
+  {name: "人力资源", path: "/humanResources"},
+  {name: "联系我们", path: "/contactUs"},
 ]);
 
 const headerEnglish = ref([
-  { name: "HOME", path: "/home" },
-  { name: "CORE PRODUCTS", path: "/productEngineering/productSeriesEng" },
-  { name: "ABOUT US", path: "/aboutUs" },
-  { name: "NEWS", path: "/news/news" },
-  { name: "CONTACT US", path: "/contactUsEn" },
+  {name: "HOME", path: "/home"},
+  {name: "CORE PRODUCTS", path: "/productEngineering/productSeriesEng"},
+  {name: "ABOUT US", path: "/aboutUs"},
+  {name: "NEWS", path: "/news/news"},
+  {name: "CONTACT US", path: "/contactUsEn"},
 ]);
 
 const allContent = ref([
@@ -59,11 +59,11 @@ const allContent = ref([
       imgPath: imgPath1,
     },
     footer: [
-      { name: "集团简介", path: "/aboutPinggao/groupProfile" },
-      { name: "领导成员", path: "/aboutPinggao/lesadingMember" },
-      { name: "组织机构", path: "/aboutPinggao/organizationalStructure" },
-      { name: "资质荣誉", path: "/aboutPinggao/seniorHonor" },
-      { name: "走进平高", path: "/aboutPinggao/approachPinggao" },
+      {name: "集团简介", path: "/aboutPinggao/groupProfile"},
+      {name: "领导成员", path: "/aboutPinggao/lesadingMember"},
+      {name: "组织机构", path: "/aboutPinggao/organizationalStructure"},
+      {name: "资质荣誉", path: "/aboutPinggao/seniorHonor"},
+      {name: "走进平高", path: "/aboutPinggao/approachPinggao"},
     ],
   },
   {
@@ -74,11 +74,11 @@ const allContent = ref([
       imgPath: imgPath2,
     },
     footer: [
-      { name: "总部动态", path: "/informationCenter/headquartersDynamicsIndex" },
-      { name: "集团新闻", path: "/informationCenter/groupNewsIndex" },
-      { name: "媒体聚焦", path: "/informationCenter/mediaFocusIndex" },
-      { name: "热点视频", path: "/informationCenter/hotVideo" },
-      { name: "最新公告", path: "/informationCenter/latestAnnouncementIndex" },
+      {name: "总部动态", path: "/informationCenter/headquartersDynamicsIndex"},
+      {name: "集团新闻", path: "/informationCenter/groupNewsIndex"},
+      {name: "媒体聚焦", path: "/informationCenter/mediaFocusIndex"},
+      {name: "热点视频", path: "/informationCenter/hotVideo"},
+      {name: "最新公告", path: "/informationCenter/latestAnnouncementIndex"},
     ],
   },
   // {
@@ -107,8 +107,8 @@ const allContent = ref([
       imgPath: imgPath4,
     },
     footer: [
-      { name: "产品系列", path: "/productEngineering/productSeries" },
-      { name: "重点工程", path: "/productEngineering/keyProject" },
+      {name: "产品系列", path: "/productEngineering/productSeries"},
+      {name: "重点工程", path: "/productEngineering/keyProject"},
     ],
   },
   {
@@ -163,9 +163,9 @@ const allContent = ref([
       imgPath: imgPath7,
     },
     footer: [
-      { name: "科研体系", path: "/scientificResearchCenter/scientificResearchSystem" },
-      { name: "科研成果", path: "/scientificResearchCenter/scientificResearchAchievement" },
-      { name: "试验体系", path: "/scientificResearchCenter/testSystem" },
+      {name: "科研体系", path: "/scientificResearchCenter/scientificResearchSystem"},
+      {name: "科研成果", path: "/scientificResearchCenter/scientificResearchAchievement"},
+      {name: "试验体系", path: "/scientificResearchCenter/testSystem"},
     ],
   },
   {
@@ -229,13 +229,14 @@ let hoverText = ref({
     imgPath: imgPath1,
   },
   footer: [
-    { name: "总部动态", path: "/informationCenter/headquartersDynamicsIndex" },
-    { name: "集团新闻", path: "/informationCenter/groupNewsIndex" },
-    { name: "媒体聚焦", path: "/informationCenter/mediaFocusIndex" },
-    { name: "热点视频", path: "/informationCenter/hotVideo" },
-    { name: "最新公告", path: "/informationCenter/latestAnnouncementIndex" },
+    {name: "总部动态", path: "/informationCenter/headquartersDynamicsIndex"},
+    {name: "集团新闻", path: "/informationCenter/groupNewsIndex"},
+    {name: "媒体聚焦", path: "/informationCenter/mediaFocusIndex"},
+    {name: "热点视频", path: "/informationCenter/hotVideo"},
+    {name: "最新公告", path: "/informationCenter/latestAnnouncementIndex"},
   ],
 });
+
 // 悬浮下框内容显示
 function hoverContent(name) {
   hidden.value = false;
@@ -256,6 +257,7 @@ function hoverContent(name) {
 // }
 
 let moveShowUl = ref([]);
+
 function changeMoveShowUl(index) {
   moveShowUl.value[index] = !moveShowUl.value[index];
 }
@@ -277,11 +279,11 @@ const props = defineProps({
   footer: {
     type: Array,
     default: () => [
-      { name: "总部动态", path: "/informationCenter/headquartersDynamicsIndex" },
-      { name: "集团新闻", path: "/informationCenter/groupNewsIndex" },
-      { name: "媒体聚焦", path: "/informationCenter/mediaFocusIndex" },
-      { name: "热点视频", path: "/informationCenter/hotVideo" },
-      { name: "最新公告", path: "/informationCenter/latestAnnouncementIndex" },
+      {name: "总部动态", path: "/informationCenter/headquartersDynamicsIndex"},
+      {name: "集团新闻", path: "/informationCenter/groupNewsIndex"},
+      {name: "媒体聚焦", path: "/informationCenter/mediaFocusIndex"},
+      {name: "热点视频", path: "/informationCenter/hotVideo"},
+      {name: "最新公告", path: "/informationCenter/latestAnnouncementIndex"},
     ],
   },
   onlyHeaderFlag: {
@@ -307,7 +309,7 @@ const props = defineProps({
 
 // 语言切换
 const langStore = useLanguageStore();
-const { currentLang: language } = storeToRefs(langStore);
+const {currentLang: language} = storeToRefs(langStore);
 
 // 切换语言跳转相应首页
 const goHome = (type = 0) => {
@@ -424,7 +426,8 @@ onMounted(() => {
                     active-class="active-color"
                     @mouseenter="hoverContent(item.name)"
                     :to="item.path"
-                    >{{ item.name }}</router-link
+                  >{{ item.name }}
+                  </router-link
                   >
                 </li>
               </ul>
@@ -465,12 +468,12 @@ onMounted(() => {
                 class="header-nav-bottom-item"
               >
                 搜索
-                <i class="iconfont icon-sousuo" style="font-size: 1.125rem" />
+                <i class="iconfont icon-sousuo" style="font-size: 1.125rem"/>
               </div>
               <router-link active-class="active-border" to="/contactUs/addressTelephone">
                 <div class="header-nav-bottom-item">
                   邮箱
-                  <i class="iconfont icon-youxiang" style="font-size: 1.125rem" />
+                  <i class="iconfont icon-youxiang" style="font-size: 1.125rem"/>
                 </div>
               </router-link>
 
@@ -508,12 +511,12 @@ onMounted(() => {
                 class="header-nav-bottom-item"
               >
                 Search
-                <i class="iconfont icon-sousuo" style="font-size: 1.125rem" />
+                <i class="iconfont icon-sousuo" style="font-size: 1.125rem"/>
               </div>
               <router-link active-class="active-border" to="/contactUs/addressTelephone">
                 <div class="header-nav-bottom-item">
                   Email
-                  <i class="iconfont icon-youxiang" style="font-size: 1.125rem" />
+                  <i class="iconfont icon-youxiang" style="font-size: 1.125rem"/>
                 </div>
               </router-link>
 
@@ -540,7 +543,7 @@ onMounted(() => {
               <div class="header-nav-hover-content-title">
                 {{ hoverText.content.title }}
               </div>
-              <hr style="display: inline-block; width: 5%; border: 0.1rem solid rgb(35, 24, 21)" />
+              <hr style="display: inline-block; width: 5%; border: 0.1rem solid rgb(35, 24, 21)"/>
               <div class="header-nav-hover-content-text">
                 {{ hoverText.content.content }}
               </div>
@@ -553,14 +556,15 @@ onMounted(() => {
                 <ul>
                   <li v-for="item in hoverText.footer" :key="item.name">
                     <router-link active-class="active-color" :to="item.path">{{
-                      item.name
-                    }}</router-link>
+                        item.name
+                      }}
+                    </router-link>
                   </li>
                 </ul>
               </div>
               <div class="right-right">
                 <div>
-                  <img :src="hoverText.content.imgPath" alt="" />
+                  <img :src="hoverText.content.imgPath" alt=""/>
                 </div>
               </div>
             </div>
@@ -579,7 +583,7 @@ onMounted(() => {
               <div class="header-nav-search-content-title">
                 {{ language === "zh-CN" ? "搜索结果" : "SEARCH RESULT" }}
               </div>
-              <hr style="display: inline-block; width: 5%; border: 0.1rem solid rgb(35, 24, 21)" />
+              <hr style="display: inline-block; width: 5%; border: 0.1rem solid rgb(35, 24, 21)"/>
               <div class="header-nav-search-content-text">
                 {{
                   language === "zh-CN"
@@ -644,7 +648,7 @@ onMounted(() => {
           <div class="header-body-title">
             {{ language === "zh-CN" ? props.content.title : props.content.titleEn }}
           </div>
-          <hr class="header-body-hr" style="width: 5%" />
+          <hr class="header-body-hr" style="width: 5%"/>
           <div class="header-body-content">
             {{ language === "zh-CN" ? props.content.content : props.content.contentEn }}
           </div>
@@ -795,8 +799,8 @@ onMounted(() => {
 
 .logo-link img {
   border: none;
-  width: 100%;
-  height: auto;
+  width: auto;
+  height: 84px;
 }
 
 .log-img {
@@ -805,8 +809,8 @@ onMounted(() => {
 }
 
 .log-img img {
-  height: auto;
-  width: 25%;
+  width: auto;
+  height: 84px;
 }
 
 .log-title {
@@ -953,6 +957,7 @@ onMounted(() => {
 .header-nav-bottom-input:focus {
   outline: none;
 }
+
 .header-nav-bottom-item > i {
   font-size: 0.9375rem;
   color: #fff;
@@ -1062,6 +1067,7 @@ onMounted(() => {
   padding: 1em 0;
   border-bottom: 0.1rem solid gainsboro;
 }
+
 .header-nav-search-content-right-content ul li:hover {
   color: rgb(69, 179, 224);
   cursor: pointer;
@@ -1106,9 +1112,11 @@ onMounted(() => {
 .header-body {
   color: var(--fontColor);
 }
+
 .header-body-hr {
   border: 0.05rem solid var(--fontColor);
 }
+
 .header-body-title {
   margin-bottom: 2%;
   font-size: 3.125rem;
@@ -1134,6 +1142,7 @@ onMounted(() => {
   text-transform: uppercase;
   line-height: 1.2;
 }
+
 /* 定义过渡类 */
 .fade-float-enter-active {
   animation: fadeFloatIn 1s ease;
@@ -1149,6 +1158,7 @@ onMounted(() => {
     transform: translateY(0);
   }
 }
+
 .header-footer {
   position: absolute;
   bottom: 0;
@@ -1221,9 +1231,11 @@ onMounted(() => {
   #header-nav {
     padding: 1% 4% 0 4%;
   }
+
   .header-body-box {
     padding: 20% 0 0 7%;
   }
+
   .bar-icon {
     display: inline-block;
     /* width: auto;
@@ -1237,9 +1249,11 @@ onMounted(() => {
   .header-nav-bottom {
     height: auto;
   }
+
   #header-nav-bottom-left {
     border-top: 0.05rem solid #fff;
   }
+
   .header-footer {
     background-image: none;
     width: 100%;
@@ -1262,6 +1276,7 @@ onMounted(() => {
 
   .log-img img {
     width: 35%;
+    height: auto;
   }
 
   #header-nav-top {

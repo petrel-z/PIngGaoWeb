@@ -1,5 +1,9 @@
 <script setup>
+import dayjs from "dayjs";
 
+defineOptions({
+  name: "EnglishFooterItem",
+});
 </script>
 <template>
   <div class="footer_en">
@@ -56,7 +60,11 @@
       </div>
     </div>
     <div class="bottom">
-      <p>豫ICP备2022010930号 Copyright 2024 PINGGAO GROUP CO.,LTD, All Rights Reserved. 平高集团有限公司版权所有</p>
+      <p>
+        <a href="https://beian.miit.gov.cn/">豫ICP备2022010930号</a>
+        Copyright {{ dayjs().format("YYYY") }} PINGGAO GROUP CO.,LTD, All Rights Reserved.
+      </p>
+      <p>平高集团有限公司版权所有</p>
     </div>
   </div>
 </template>
@@ -215,7 +223,10 @@
     padding: 0.5% 0;
     font-size: 1.15rem;
     font-family: "SourceHanSansCN";
-    color: rgb(114, 113, 113);
+
+    a {
+      color: #727171;
+    }
 
     p {
       display: inline;
@@ -284,6 +295,7 @@
   .footer_en {
     .top {
       padding: 0 7%;
+
       .title {
         font-size: 3rem;
       }

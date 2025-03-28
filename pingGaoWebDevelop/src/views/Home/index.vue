@@ -5,14 +5,14 @@ defineOptions({
 import ComHeader from "@/components/ComHeader.vue";
 import Footer_En from "@/components/Footer_En.vue";
 import router from "@/router/index.js";
-import HttpUtils from "@/utils/httpUtils.js";
-import { onMounted, onUnmounted, nextTick, ref } from "vue";
+import {onMounted, onUnmounted, nextTick, ref} from "vue";
+import httpUtils from "@/utils/httpUtils.js";
 
-document.title = "平高集团有限公司";
+document.title = "PINGGAO GROUP CO., LTD.";
 
 // Import Swiper Vue.js components
-import { Swiper, SwiperSlide } from "swiper/vue";
-import { Navigation, Pagination } from "swiper/modules";
+import {Swiper, SwiperSlide} from "swiper/vue";
+import {Navigation, Pagination} from "swiper/modules";
 
 const modules = [Navigation, Pagination];
 const swiperInstance = ref(null);
@@ -124,7 +124,6 @@ onMounted(() => {
 });
 
 const images = ref([]);
-const topNews = ref([]);
 const homepageNews = ref([]);
 
 const scrollDiv = ref(null);
@@ -178,27 +177,43 @@ onMounted(() => {
   });
 });
 
-async function getData() {
-  const res = await HttpUtils.get(`/cms/home/news`);
-  const result = await res.json();
-  const data = result.data;
+const categoryId = 56;
+const pageNo = ref(1);
+const pageSize = ref(3);
 
-  const banner = [];
-  data.homeBanner.forEach((item) => {
-    banner.push({
-      type: item.type,
-      src: item.images,
-    });
+function formatTimestampObj(timestamp) {
+  const date = new Date(timestamp);
+  const year = date.getFullYear();
+  const month = (date.getMonth() + 1).toString().padStart(2, "0");
+  const day = date.getDate().toString().padStart(2, "0");
+  return {
+    year: `${year}`,
+    month: `${month}.${day}`,
+  };
+}
+
+async function getData() {
+  const queryString = new URLSearchParams({
+    pageNo: pageNo.value,
+    pageSize: pageSize.value,
+  }).toString();
+
+  console.log("获取数据", queryString);
+  const response = await httpUtils.get(
+    `/cms/category/${categoryId}/news?${queryString.toString()}`,
+  );
+  const {data} = await response.json();
+  const page = data.page;
+  page.list.forEach((i) => {
+    i.timeObj = formatTimestampObj(i.publishTime);
   });
-  images.value = [...banner];
-  topNews.value = [...data.topNews];
-  homepageNews.value = [...data.homepageNews];
+  homepageNews.value = [...page.list];
 }
 
 function toProduct(item) {
   if (item) {
     const target = router.resolve({
-      name: "productSeries",
+      name: "engProductSeries",
       query: {
         type: item,
       },
@@ -208,6 +223,32 @@ function toProduct(item) {
   }
 }
 
+async function getBanner() {
+  const response = await httpUtils.get("/cms/banner/eng_index/list");
+  const {data} = await response.json();
+  const banner = [];
+  data.forEach((item) => {
+    banner.push({
+      type: item.type,
+      src: item.images,
+    });
+  });
+  images.value = [...banner];
+}
+
+function toDetail(newsId) {
+  if (newsId) {
+    const target = router.resolve({
+      name: "engNewsDetail",
+      params: {
+        id: newsId,
+      },
+    });
+    window.open(target.href, "_blank");
+  }
+}
+
+getBanner();
 getData();
 </script>
 
@@ -239,10 +280,10 @@ getData();
           autoplay
           disablepictureinpicture
           @ended="handleVideoEnd(index)"
-          poster="http://218.28.22.50:8108/videos/carousel.png"
+          poster="https://www.pinggaogroup.com/videos/carousel.png"
           :src="image.src"
         ></video>
-        <img v-else-if="image.type === 'image'" :src="image.src" alt="" />
+        <img v-else-if="image.type === 'image'" :src="image.src" alt=""/>
       </swiper-slide>
     </swiper>
 
@@ -252,105 +293,105 @@ getData();
         <div class="product_content_box">
           <div class="product_detail product_detail_1">
             <div class="product_topImg">
-              <img src="@/assets/imgs/_10_homePageImgs/product1.png" alt="" />
+              <img src="@/assets/imgs/_10_homePageImgs/product1.png" alt=""/>
             </div>
             <div class="product_h">
-              High voltage electri-<br />
+              High voltage electri-<br/>
               cal industry
             </div>
-            <div class="product_button" @click="toProduct('高压电器产业')">
-              <img src="@/assets/imgs/_10_homePageImgs/button.png" alt="" />
+            <div class="product_button" @click="toProduct(58)">
+              <img src="@/assets/imgs/_10_homePageImgs/button.png" alt=""/>
               <span>View details</span>
             </div>
           </div>
           <div class="product_detail">
             <div class="product_topImg">
-              <img src="@/assets/imgs/_10_homePageImgs/product2.png" alt="" />
+              <img src="@/assets/imgs/_10_homePageImgs/product2.png" alt=""/>
             </div>
             <div class="product_h">
-              Operation and main<br />
+              Operation and main<br/>
               tenance service
             </div>
-            <div class="product_button" @click="toProduct('运维检修业务')">
-              <img src="@/assets/imgs/_10_homePageImgs/button.png" alt="" />
+            <div class="product_button" @click="toProduct(62)">
+              <img src="@/assets/imgs/_10_homePageImgs/button.png" alt=""/>
               <span>View details</span>
             </div>
           </div>
           <div class="product_detail">
             <div class="product_topImg">
-              <img src="@/assets/imgs/_10_homePageImgs/product3.png" alt="" />
+              <img src="@/assets/imgs/_10_homePageImgs/product3.png" alt=""/>
             </div>
             <div class="product_h">
-              Component manu-<br />
+              Component manu-<br/>
               facturing industry
             </div>
             <div class="product_button" @click="toProduct('零部件制造产业')">
-              <img src="@/assets/imgs/_10_homePageImgs/button.png" alt="" />
+              <img src="@/assets/imgs/_10_homePageImgs/button.png" alt=""/>
               <span>View details</span>
             </div>
           </div>
           <div class="product_detail">
             <div class="product_topImg">
-              <img src="@/assets/imgs/_10_homePageImgs/product5.png" alt="" />
+              <img src="@/assets/imgs/_10_homePageImgs/product5.png" alt=""/>
             </div>
             <div class="product_h">
-              Power storage<br />
+              Power storage<br/>
               business
             </div>
             <div class="product_button" @click="toProduct('电力储能业务')">
-              <img src="@/assets/imgs/_10_homePageImgs/button.png" alt="" />
+              <img src="@/assets/imgs/_10_homePageImgs/button.png" alt=""/>
               <span>View details</span>
             </div>
           </div>
           <div class="product_detail">
             <div class="product_topImg">
-              <img src="@/assets/imgs/_10_homePageImgs/product6.png" alt="" />
+              <img src="@/assets/imgs/_10_homePageImgs/product6.png" alt=""/>
             </div>
             <div class="product_h">
-              Distribution network<br />
+              Distribution network<br/>
               industry
             </div>
-            <div class="product_button" @click="toProduct('配电网产业')">
-              <img src="@/assets/imgs/_10_homePageImgs/button.png" alt="" />
+            <div class="product_button" @click="toProduct(61)">
+              <img src="@/assets/imgs/_10_homePageImgs/button.png" alt=""/>
               <span>View details</span>
             </div>
           </div>
           <div class="product_detail">
             <div class="product_topImg">
-              <img src="@/assets/imgs/_10_homePageImgs/product7.png" alt="" />
+              <img src="@/assets/imgs/_10_homePageImgs/product7.png" alt=""/>
             </div>
             <div class="product_h">
-              System integration<br />
+              System integration<br/>
               service
             </div>
-            <div class="product_button" @click="toProduct('系统集成业务')">
-              <img src="@/assets/imgs/_10_homePageImgs/button.png" alt="" />
+            <div class="product_button" @click="toProduct(59)">
+              <img src="@/assets/imgs/_10_homePageImgs/button.png" alt=""/>
               <span>View details</span>
             </div>
           </div>
           <div class="product_detail">
             <div class="product_topImg">
-              <img src="@/assets/imgs/_10_homePageImgs/product8.png" alt="" />
+              <img src="@/assets/imgs/_10_homePageImgs/product8.png" alt=""/>
             </div>
             <div class="product_h">
-              Smart power distri-<br />
+              Smart power distri-<br/>
               bution business
             </div>
-            <div class="product_button" @click="toProduct('智慧配用电业务')">
-              <img src="@/assets/imgs/_10_homePageImgs/button.png" alt="" />
+            <div class="product_button" @click="toProduct(66)">
+              <img src="@/assets/imgs/_10_homePageImgs/button.png" alt=""/>
               <span>View details</span>
             </div>
           </div>
           <div class="product_detail">
             <div class="product_topImg">
-              <img src="@/assets/imgs/_10_homePageImgs/product9.png" alt="" />
+              <img src="@/assets/imgs/_10_homePageImgs/product9.png" alt=""/>
             </div>
             <div class="product_h">
-              Integrated energy<br />
+              Integrated energy<br/>
               services business
             </div>
-            <div class="product_button" @click="toProduct('综合能源服务业务')">
-              <img src="@/assets/imgs/_10_homePageImgs/button.png" alt="" />
+            <div class="product_button" @click="toProduct(65)">
+              <img src="@/assets/imgs/_10_homePageImgs/button.png" alt=""/>
               <span>View details</span>
             </div>
           </div>
@@ -363,45 +404,18 @@ getData();
     <!-- News -->
     <div ref="news" class="news">
       <div class="introduction_title">
-        news
-        <span class="span"
-          >MORE
-          <span></span>
-        </span>
+        news <span class="span" @click="router.push({name:'engNews'})">MORE<span></span></span>
       </div>
       <div class="content">
-        <div class="item">
+        <div class="item" style="cursor: pointer;" v-for="news in homepageNews" :key="news.id"
+             @click="toDetail(news.id)">
           <div class="date">
-            01.14
-            <span>2015</span>
+            {{ news.timeObj.month }}
+            <span>{{ news.timeObj.year }}</span>
           </div>
-          <p>One enterprise of Pinggao Group won the 2024…</p>
+          <p>{{ news.title }}</p>
           <div class="img">
-            <img src="/src/assets/imgs/_10_homePageImgs/eng/news1.png" alt="" />
-          </div>
-          <div class="button-more">More</div>
-        </div>
-
-        <div class="item">
-          <div class="date">
-            01.14
-            <span>2015</span>
-          </div>
-          <p>One enterprise of Pinggao Group won the 2024…</p>
-          <div class="img">
-            <img src="/src/assets/imgs/_10_homePageImgs/eng/news2.png" alt="" />
-          </div>
-          <div class="button-more">More</div>
-        </div>
-
-        <div class="item">
-          <div class="date">
-            01.14
-            <span>2015</span>
-          </div>
-          <p>One enterprise of Pinggao Group won the 2024…</p>
-          <div class="img">
-            <img src="/src/assets/imgs/_10_homePageImgs/eng/news3.png" alt="" />
+            <img :src="news.headerImage" alt=""/>
           </div>
           <div class="button-more">More</div>
         </div>
@@ -411,12 +425,11 @@ getData();
     <!-- 公司介绍 -->
     <div class="company_introduction">
       <div class="bg_img">
-        <img src="@/assets/imgs/_10_homePageImgs/company-introduction.png" alt="" />
+        <img src="@/assets/imgs/_10_homePageImgs/company-introduction.png" alt=""/>
       </div>
       <div class="introduction_title">
         about us
-        <span class="span"
-          >MORE
+        <span class="span">MORE
           <!-- <img src="/src//assets/imgs/_1_aboutPinggaoImgs/eng/moreSpan.png" alt=""> -->
           <span></span>
         </span>
@@ -439,15 +452,15 @@ getData();
           <video
             style="width: 100%; height: 100%; object-fit: cover"
             controls
-            poster="http://218.28.22.50:8108/videos/video_poster.png"
-            src="http://218.28.22.50:8108/videos/pinggao.mp4"
+            poster="https://www.pinggaogroup.com/videos/video_poster.png"
+            src="https://www.pinggaogroup.com/videos/pinggao.mp4"
           />
         </div>
       </div>
     </div>
   </div>
   <div>
-    <Footer_En />
+    <Footer_En/>
   </div>
 </template>
 
@@ -795,7 +808,7 @@ getData();
     transition: all 0.3s ease;
 
     span {
-      background-image: url(/src/assets/imgs/_1_aboutPinggaoImgs/eng/moreSpan.png);
+      background-image: url(@/assets/imgs/_1_aboutPinggaoImgs/eng/moreSpan.png);
       background-size: cover;
       background-repeat: no-repeat;
       display: inline-block;
@@ -1007,6 +1020,7 @@ getData();
         width: 100%;
         height: auto;
         overflow: hidden;
+        cursor: pointer;
 
         .date {
           width: 100%;
@@ -1056,6 +1070,7 @@ getData();
   .company_introduction {
     height: 90rem;
     padding: 5% 5%;
+
     .bg_img {
       height: 100%;
 
@@ -1090,15 +1105,19 @@ getData();
   .product_detail {
     width: calc(50%);
   }
+
   .news {
     height: 200rem;
+
     .introduction_title {
       height: 4%;
       font-size: 4rem;
+
       span {
         font-size: 2rem;
       }
     }
+
     .content {
       height: 95%;
 
@@ -1110,6 +1129,7 @@ getData();
         .img {
           height: 50%;
         }
+
         .button-more {
           height: 10%;
           font-size: 2rem;
@@ -1132,10 +1152,12 @@ getData();
 
     .introduction_title {
       font-size: 4rem;
+
       span {
         font-size: 2rem;
       }
     }
+
     .introduction_content {
       height: 115rem;
       flex-direction: column;
@@ -1155,17 +1177,23 @@ getData();
 @media (max-width: 500px) {
   .news {
     height: 280rem;
+
     .introduction_title {
       height: 4%;
       font-size: 6rem;
+
       span {
         font-size: 3rem;
       }
     }
+
     .content {
       height: 90%;
+
       .item {
         width: 100%;
+        cursor: pointer;
+
         .date {
           height: 15%;
           font-size: 6rem;
@@ -1193,12 +1221,15 @@ getData();
     .introduction_title {
       font-size: 5rem;
     }
+
     .introduction_title {
       font-size: 6rem;
+
       span {
         font-size: 3rem;
       }
     }
+
     .introduction_content {
       height: 100rem; //
 
