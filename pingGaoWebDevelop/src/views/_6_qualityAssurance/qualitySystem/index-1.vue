@@ -84,8 +84,8 @@ onMounted(() => {
     width: 100%;
 
     .top-title {
-      margin-top: 60px;
-      margin-bottom: 60px;
+      margin-top: 6rem;
+      margin-bottom: 6rem;
       position: relative;
       right: -100%;
       transition: all 0.5s;
@@ -130,7 +130,7 @@ onMounted(() => {
       }
 
       .right-text {
-        font-size: 20px;
+        font-size: 2rem;
         font-family: "AlibabaPuHuiTi_2_45_Light";
         color: #595757;
         line-height: 1.85;
@@ -199,6 +199,7 @@ onMounted(() => {
     }
   }
 }
+
 @media (max-width: 1430px) {
   .quality-content {
     .content-top {
@@ -215,6 +216,7 @@ onMounted(() => {
     }
   }
 }
+
 @media (max-width: 1400px) {
   .quality-content {
     .content-top {
@@ -231,6 +233,7 @@ onMounted(() => {
     }
   }
 }
+
 @media (max-width: 1300px) {
   .quality-content {
     .content-top {
@@ -251,14 +254,22 @@ onMounted(() => {
 /* 大型设备（桌面，大于 900px） */
 @media (max-width: 900px) {
   .quality-content {
+    padding: 0 5%;
+
     .content-top {
+
+      .top-title {
+        margin-top: 3rem;
+        margin-bottom: 3rem;
+      }
 
       .top-span {
 
         .top-span-content {
 
           p {
-            font-size: 1.5rem;
+            font-size: 1.6rem;
+
             br {
               display: none;
             }
@@ -279,7 +290,7 @@ onMounted(() => {
         .top-span-content {
 
           p {
-            font-size: 1.7rem;
+            font-size: 2rem;
           }
         }
       }
@@ -294,7 +305,7 @@ onMounted(() => {
       .top-span {
         .top-span-content {
           p {
-            font-size: 1.8rem;
+            font-size: 2.2rem;
           }
         }
       }
@@ -311,7 +322,7 @@ onMounted(() => {
       .top-span {
         .top-span-content {
           p {
-            font-size: 2.3rem;
+            font-size: 2.5rem;
           }
         }
       }
@@ -325,7 +336,7 @@ onMounted(() => {
       .top-span {
         .top-span-content {
           p {
-            font-size: 2.9rem;
+            font-size: 2.4rem;
           }
         }
       }

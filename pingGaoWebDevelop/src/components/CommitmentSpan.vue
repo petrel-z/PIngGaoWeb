@@ -69,7 +69,7 @@ const props = defineProps({
     }
 
     h1 {
-      font-size: 32px;
+      font-size: 3rem;
       font-family: "AlibabaPuHuiTi_2_65_Medium";
       color: #ffffff;
       line-height: 1.156;
@@ -122,7 +122,7 @@ const props = defineProps({
   .commitment-span {
     .content {
       h1 {
-        font-size: 30px;
+        font-size: 4rem;
         padding: 0 7%;
       }
     }
@@ -134,44 +134,49 @@ const props = defineProps({
   .commitment-span {
     height: 500px;
 
+
     .content {
       top: 10%;
+
+      h1 {
+        font-size: 3.1rem;
+      }
     }
   }
 
 }
+@media (max-width: 600px) {
+  .commitment-span {
+    height: 450px;
 
-@media (max-width: 800px) {}
 
-/* 中型设备（平板，600px 到 900px） */
-@media (max-width: 700px) {}
+  }
 
-/* 小型设备（手机，小于 600px） */
-
-@media (max-width: 600px) {}
-
+}
 @media (max-width: 500px) {
   .commitment-span {
-    height: 580px;
+    height: 280px;
 
     .content {
       top: 10%;
+
       h1 {
-        font-size: 26px;
+        font-size: 3.3rem;
       }
     }
   }
-  
+
 }
 
 @media (max-width: 400px) {
   .commitment-span {
-    height: 600px;
+    height: 220px;
 
     .content {
       top: 10%;
+
       h1 {
-        font-size: 23px;
+        font-size: 3.5rem;
       }
     }
   }

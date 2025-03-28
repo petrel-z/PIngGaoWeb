@@ -59,14 +59,17 @@ import CommitmentSpan from "@/components/CommitmentSpan.vue";
       from {
         left: 100%;
       }
+
       to {
         left: 0;
       }
     }
+
     .top-span {
       animation: topspan 1s ease forwards;
       position: relative;
       top: 0;
+
       .top-span-content {
 
         margin-top: 2rem;
@@ -116,11 +119,13 @@ import CommitmentSpan from "@/components/CommitmentSpan.vue";
         opacity: 0;
         top: 200px;
       }
+
       to {
         opacity: 1;
         top: 0;
       }
     }
+
     .top-whiteSpan {
       width: 100%;
       height: 500px;
@@ -133,6 +138,7 @@ import CommitmentSpan from "@/components/CommitmentSpan.vue";
     height: 100%;
   }
 }
+
 @media (max-width: 1800px) {
   .purchaseByBidding-content {
     .content-top {
@@ -146,6 +152,7 @@ import CommitmentSpan from "@/components/CommitmentSpan.vue";
     }
   }
 }
+
 /* 大型设备（桌面，大于 900px） */
 @media (max-width: 900px) {
   .purchaseByBidding-content {
@@ -155,14 +162,16 @@ import CommitmentSpan from "@/components/CommitmentSpan.vue";
       .top-span {
         .top-span-content {
           width: 100%;
+
           p {
+            font-size: 1.9rem;
             white-space: wrap;
             text-align: center;
           }
 
           .enter-bidding {
             width: 100%;
-            margin-top: 6rem;
+            margin-top: 4rem;
 
             a {
               width: 100%;
@@ -179,6 +188,10 @@ import CommitmentSpan from "@/components/CommitmentSpan.vue";
     .content-top {
       .top-span {
         .top-span-content {
+          p {
+            font-size: 2.3rem;
+          }
+
           .enter-bidding {
             margin-top: 5rem;
           }
@@ -194,34 +207,40 @@ import CommitmentSpan from "@/components/CommitmentSpan.vue";
     .content-top {
       .top-span {
         .top-span-content {
+          p {
+            font-size: 2.5rem;
+          }
+
           .enter-bidding {
+            height: 70px;
+            line-height: 70px;
             margin-top: 4rem;
+            a {
+              font-size: 2.5rem;
+            }
           }
         }
       }
     }
   }
 }
+
 /* 小型设备（手机，小于 600px） */
 @media (max-width: 600px) {
   .purchaseByBidding-content {
     .content-top {
       .top-span {
         .top-span-content {
-          width: 100%;
+          margin-top: 3.5rem;
 
           p {
-            white-space: wrap;
-            text-align: center;
+            font-size: 3rem;
           }
 
           .enter-bidding {
-            width: 100%;
-            margin-top: 5rem;
-
-            a {
-              width: 100%;
-            }
+            height: 60px;
+            line-height: 60px;
+            margin-top: 7rem;
           }
         }
       }
@@ -234,21 +253,41 @@ import CommitmentSpan from "@/components/CommitmentSpan.vue";
     .content-top {
       .top-span {
         .top-span-content {
+          margin-top: 3.5rem;
+
+          p {
+            font-size: 2.7rem;
+          }
           .enter-bidding {
             margin-top: 7rem;
+            height: 40px;
+            line-height: 40px;
+            a {
+            font-size: 2.9rem;
+            }
           }
         }
       }
     }
   }
 }
+
 @media (max-width: 400px) {
   .purchaseByBidding-content {
     .content-top {
       .top-span {
         .top-span-content {
+
+          p {
+            font-size: 2.9rem;
+          }
           .enter-bidding {
-            margin-top: 6rem;
+            margin-top: 7rem;
+            height: 30px;
+            line-height: 30px;
+            a {
+            font-size: 3rem;
+            }
           }
         }
       }
