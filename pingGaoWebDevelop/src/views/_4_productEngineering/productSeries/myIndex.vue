@@ -1,10 +1,10 @@
 <script setup>
 import MyTitle from "@/components/MyTitle.vue";
 import httpUtils from "@/utils/httpUtils.js";
-import { onMounted, ref } from "vue";
+import {onMounted, ref} from "vue";
 import router from "@/router/index.js";
 import MyButton from "@/components/MyButton.vue";
-import { useRoute } from "vue-router";
+import {useRoute} from "vue-router";
 
 const boxRef = ref(null);
 const isVisibleBox = ref(false);
@@ -93,7 +93,7 @@ const createObserver = (refElement, isVisible) => {
   const observer = new IntersectionObserver(
     (entries) => {
       entries.forEach((entry) => {
-        const { intersectionRatio } = entry;
+        const {intersectionRatio} = entry;
         // 设置触发条件：元素进入视口 50% 以上时触发
         if (intersectionRatio >= 0) {
           isVisible.value = true;
@@ -189,12 +189,12 @@ function setActive(category, index) {
         </div>
       </div>
       <div class="button-container">
-        <MyButton v-if="hasMore" @child-button="handleClick" />
+        <MyButton v-if="hasMore" @child-button="handleClick"/>
         <p v-else style="font-size: 24px">没有更多了</p>
       </div>
     </div>
     <div class="footer_img">
-      <img src="@/assets/imgs/_4_productEngineeringImgs/bg-footimg.png" alt="" />
+      <img src="@/assets/imgs/_4_productEngineeringImgs/bg-footimg.png" alt=""/>
     </div>
   </div>
 </template>
@@ -354,37 +354,45 @@ function setActive(category, index) {
   width: 100%;
   margin-bottom: -0.5rem;
 }
+
 @media (min-width: 400px) and (max-width: 500px) {
   .productSeries .img {
     height: 70.375rem;
   }
+
   .detail_page {
     margin-top: 45.375rem;
     margin-bottom: 30rem;
   }
 }
+
 @media (min-width: 300px) and (max-width: 400px) {
   .productSeries .img {
     height: 75.375rem;
   }
+
   .detail_page {
     margin-top: 50.375rem;
     margin-bottom: 30rem;
   }
 }
+
 @media (min-width: 200px) and (max-width: 300px) {
   .productSeries .img {
     height: 83.375rem;
   }
+
   .detail_page {
     margin-top: 58.375rem;
     margin-bottom: 30rem;
   }
 }
+
 @media (min-width: 100px) and (max-width: 200px) {
   .productSeries .img {
     height: 90.375rem;
   }
+
   .detail_page {
     margin-top: 58.375rem;
     margin-bottom: 30rem;
@@ -395,6 +403,7 @@ function setActive(category, index) {
   .productSeries .img {
     height: 68.375rem;
   }
+
   .detail_page {
     margin-top: 40.375rem;
     margin-bottom: 30rem;
@@ -405,20 +414,24 @@ function setActive(category, index) {
   .productSeries .img {
     height: 68.375rem;
   }
+
   .detail_page {
     margin-top: 40.375rem;
     margin-bottom: 30rem;
   }
 }
+
 @media (min-width: 800px) and (max-width: 900px) {
   .productSeries .img {
     height: 68.375rem;
   }
+
   .detail_page {
     margin-top: 40.375rem;
     margin-bottom: 30rem;
   }
 }
+
 .detail_product span {
   font-size: 2.8rem;
 }

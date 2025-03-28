@@ -7,7 +7,7 @@ import Footer_En from "@/components/Footer_En.vue";
 import ComHeader from "@/components/ComHeader.vue";
 import imgPath from "@/assets/imgs/_1_aboutPinggaoImgs/头部轮播-01.png";
 import comHeaderFoot from "@/assets/imgs/_1_aboutPinggaoImgs/t6_topBar.png";
-import { ref } from "vue";
+import {ref} from "vue";
 
 const info = ref({
   title: "关于平高",
@@ -86,13 +86,13 @@ const info = ref({
         <video
           style="width: 100%; height: 100%"
           controls
-          src="http://218.28.22.50:8108/videos/pinggao.mp4"
-          poster="@/assets/imgs/_1_aboutPinggaoImgs/eng/videoBg.png"
+          poster="https://www.pinggaogroup.com/videos/video_poster.png"
+          src="https://www.pinggaogroup.com/videos/pinggao.mp4"
         />
       </div>
     </div>
     <div>
-      <Footer_En />
+      <Footer_En/>
     </div>
   </div>
 </template>
@@ -116,7 +116,7 @@ const info = ref({
   bottom: 0;
   width: 100%;
   height: 60rem;
-  background-image: url("../../../assets/imgs/_1_aboutPinggaoImgs/eng/bg.png");
+  background-image: url("@/assets/imgs/_1_aboutPinggaoImgs/eng/bg.png");
   background-size: cover;
   left: -50%;
   transform: translateX(50%);
@@ -194,6 +194,7 @@ const info = ref({
     padding: 3% 7%;
     display: flex;
   }
+
   .about_pinggao_eng {
     .header {
       width: 100%;
@@ -203,38 +204,46 @@ const info = ref({
     }
   }
 }
+
 @media (max-width: 700px) {
   .text_word {
     padding: 3% 7%;
     display: flex;
     flex-direction: column-reverse;
+
     .word_left {
       width: 100%;
       font-size: 2.5rem;
     }
+
     .img_right {
       width: 100%;
       height: auto;
       margin: 0;
+
       video {
         margin: 0;
       }
     }
   }
 }
+
 @media (max-width: 500px) {
   .title {
     font-size: 4.5rem;
   }
+
   .text_word {
     .word_left {
       width: 100%;
       font-size: 4rem;
     }
+
     .img_right {
       width: 100%;
       height: auto;
       margin: 0;
+
       video {
         margin: 0;
       }
