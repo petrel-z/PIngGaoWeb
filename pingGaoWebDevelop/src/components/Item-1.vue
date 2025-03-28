@@ -71,15 +71,21 @@ const props = defineProps({
     type: String,
     default: "#fff", // 默认 右侧字体悬停颜色为白色
   },
+  language: {
+    type: String,
+    default: "zh-CN",
+  },
 });
 
 const emit = defineEmits(["clickItem"]);
 const hover = ref(false);
 const items = ref(null);
+const enItems = ref(null);
 
 onMounted(() => {
   // 获取目标元素容器
   const targetContainer = items.value;
+  const enTargetContainer = enItems.value;
   if (targetContainer) {
     // 监听页面滚动事件
     window.addEventListener("scroll", () => {
@@ -97,11 +103,29 @@ onMounted(() => {
       }
     });
   }
+  if (enTargetContainer) {
+    // 监听页面滚动事件
+    window.addEventListener("scroll", () => {
+      if (!enTargetContainer) return;
+      // 获取元素顶部距离页面顶部的距离
+      const enElementTop = enTargetContainer.getBoundingClientRect().top;
+      // 获取窗口的高度
+      const windowHeight = window.innerHeight;
+
+      // 判断元素是否进入可视区域
+      if (enElementTop < windowHeight) {
+        enTargetContainer.classList.add("show");
+      } else {
+        enTargetContainer.classList.remove("show");
+      }
+    });
+  }
 });
 </script>
 
 <template>
   <div
+    v-if="props.language === 'zh-CN'"
     ref="items"
     class="item"
     :style="{
@@ -135,12 +159,29 @@ onMounted(() => {
       <div class="title">
         {{ props.title }}
       </div>
-      <div class="text" v-html="props.text"/>
+      <div class="text" v-html="props.text" />
+    </div>
+  </div>
+  <div
+    v-else-if="props.language === 'en-US'"
+    ref="enItems"
+    class="en-item"
+    @click="emit('clickItem', props.detailId)"
+  >
+    <div class="en-left" @mouseenter="hover = true" @mouseleave="hover = false">
+      <span class="en-month">{{ props.month }}</span>
+      <span class="en-year">{{ props.year }}</span>
+    </div>
+    <div class="en-right" @mouseenter="hover = true" @mouseleave="hover = false">
+      <div class="en-title">
+        {{ props.title }}
+      </div>
+      <div class="en-text" v-html="props.text" />
     </div>
   </div>
 </template>
 
-<style scoped>
+<style lang="less" scoped>
 .item {
   display: flex;
   cursor: pointer;
@@ -150,11 +191,13 @@ onMounted(() => {
 }
 
 /* 元素进入可视区域时的样式 */
-.show .left {
+.show .left,
+.show .en-left {
   left: 0;
 }
 
-.show .right {
+.show .right,
+.show .en-right {
   right: 0;
 }
 
@@ -258,6 +301,95 @@ onMounted(() => {
   text-align: left;
   width: 100%;
   height: auto;
+}
+
+.en {
+  &-item {
+    display: flex;
+    cursor: pointer;
+    margin-bottom: 1%;
+    width: 100%;
+    height: 100%;
+  }
+
+  &-left {
+    position: relative;
+    left: -100%;
+    /* top: 0; */
+    transition: left 1s ease;
+    width: 18%;
+    height: auto;
+    margin-right: 2%;
+    background-color: #0088ff;
+    border-radius: 0.625rem;
+    text-align: right;
+    padding: 0 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    color: #fff;
+  }
+
+  &-right {
+    position: relative;
+    right: -100%;
+    /* top: 0; */
+    transition: right 1s ease;
+    width: 80%;
+    height: auto;
+    border-radius: 0.625rem;
+    padding: 2rem 3rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    color: black;
+  }
+
+  &-month {
+    font-family: "Avenir Black";
+    color: var(--leftFontColor);
+    font-size: 2.5rem;
+    line-height: 1.85;
+    text-align: right;
+    border-bottom: 0.125rem solid #fff;
+    /*底部蓝色线条*/
+    display: block;
+    width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  &-year {
+    font-family: "Avenir Black";
+    color: var(--leftFontColor);
+    font-size: 1.59rem;
+    line-height: 1.85;
+    text-align: right;
+    width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  &-title {
+    /* font-size: 28px; */
+    font-family: var(--titleFont);
+    color: var(--titleFontColor);
+    font-size: 1.75rem;
+    line-height: 1.75;
+    text-align: left;
+    font-weight: 500;
+  }
+
+  &-text {
+    /* font-size: 20px; */
+    font-family: var(--textFont);
+    color: var(--textFontColor);
+    font-size: 1.25rem;
+    line-height: 1.498;
+    text-align: left;
+    width: 100%;
+    height: auto;
+  }
 }
 
 @media screen and (max-width: 1500px) {

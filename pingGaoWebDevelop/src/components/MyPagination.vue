@@ -12,18 +12,18 @@ const props = defineProps({
     type: String,
     default: "#45b3e0",
   },
-})
+});
 
-const emit = defineEmits(["pageChange"])
+const emit = defineEmits(["pageChange"]);
 
-function clickPage (pageNo) {
+function clickPage(pageNo) {
   // 边界处理
-  if (pageNo < 1) pageNo = 1
-  if (pageNo > props.total) pageNo = props.total
+  if (pageNo < 1) pageNo = 1;
+  if (pageNo > props.total) pageNo = props.total;
 
   // 只有页码变化时才触发事件
   if (pageNo !== props.current) {
-    emit("pageChange", pageNo)
+    emit("pageChange", pageNo);
   }
 }
 </script>
@@ -44,20 +44,10 @@ function clickPage (pageNo) {
 
       <template v-else>
         <!-- 首页 -->
-        <li
-          :class="{ active: current === 1 }"
-          @click="clickPage(1)"
-        >
-          &laquo;
-        </li>
+        <li :class="{ active: current === 1 }" @click="clickPage(1)">&laquo;</li>
 
         <!-- 上一页 -->
-        <li
-          :class="{ disabled: current === 1 }"
-          @click="clickPage(current - 1)"
-        >
-          &lt;
-        </li>
+        <li :class="{ disabled: current === 1 }" @click="clickPage(current - 1)">&lt;</li>
 
         <!-- 当前页 -->
         <li class="active">
@@ -65,45 +55,34 @@ function clickPage (pageNo) {
         </li>
 
         <!-- 下一页 -->
-        <li
-          :class="{ disabled: current === total }"
-          @click="clickPage(current + 1)"
-        >
-          &gt;
-        </li>
+        <li :class="{ disabled: current === total }" @click="clickPage(current + 1)">&gt;</li>
 
         <!-- 尾页 -->
-        <li
-          :class="{ active: current === total }"
-          @click="clickPage(total)"
-        >
-          &raquo;
-        </li>
+        <li :class="{ active: current === total }" @click="clickPage(total)">&raquo;</li>
       </template>
     </ul>
   </div>
 </template>
 
-<style scoped>
+<style lang="less" scoped>
 .my-pagination {
-  width: 25%;
+  width: auto;
   margin: 1em;
-}
 
-.my-pagination ul {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  list-style: none;
-  width: 100%;
-  margin: 0;
-  padding: 0;
-}
+  ul {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    list-style: none;
+    width: 100%;
+    margin: 0;
+    padding: 0;
 
-.my-pagination ul .active {
-  background-color: var(--fontColor);
-  color: #ffffff;
-}
+    .active {
+      background-color: var(--fontColor);
+      color: #ffffff;
+    }
+  }
 
 .my-pagination li {
   font-size: 2rem;

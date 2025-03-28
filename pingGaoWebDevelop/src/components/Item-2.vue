@@ -33,7 +33,7 @@ const props = defineProps({
   hoverBgColor: {
     type: String,
     default: "#006fc1",
-  }
+  },
 });
 
 const emit = defineEmits(["clickItem"]);
