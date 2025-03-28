@@ -40,51 +40,42 @@ onMounted(initializeObservers); // 在组件挂载时调用
   <div class="scientificResearchAchievement">
     <MyTitle title="科研成果" english="SCIENTIFIC RESEARCH ACHIEVEMENTS"></MyTitle>
     <div class="achievement">
-      <div class="achievement_top">
-        <div class="achievement_detail" ref="infoRef" :class="{ 'scale-up': isVisibleInfo }">
+      <div class="info">
+        <div class="achievement_detail detail_last">
           <div class="num">266</div>
           <div class="p">科技奖励/项</div>
         </div>
-        <div class="achievement_detail" ref="infoRef" :class="{ 'scale-up': isVisibleInfo }">
+        <div class="achievement_detail  detail_last">
           <div class="num">6</div>
           <div class="p">中国专利优秀奖/项</div>
         </div>
-        <div class="achievement_detail" ref="infoRef" :class="{ 'scale-up': isVisibleInfo }">
+        <div class="achievement_detail ">
           <div class="num">2350+</div>
           <div class="p">授权专利/项</div>
         </div>
-        <div class="achievement_detail" ref="infoRef" :class="{ 'scale-up': isVisibleInfo }">
+        <div class="achievement_detail detail_last">
           <div class="num">1414+</div>
           <div class="p">其中发明专利/项</div>
         </div>
-        <div class="achievement_detail" ref="infoRef" :class="{ 'scale-up': isVisibleInfo }">
+        <div class="achievement_detail detail_last">
           <div class="num">38</div>
           <div class="p">海外专利/项</div>
         </div>
-        <div class="achievement_detail" ref="infoRef" :class="{ 'scale-up': isVisibleInfo }">
+        <div class="achievement_detail">
           <div class="num">138</div>
           <div class="p">软件著作权登记/项</div>
         </div>
-      </div>
-      <div class="achievement_bottom">
-        <div
-          class="achievement_detail"
-          ref="infoRef"
-          :class="{ 'scale-up': isVisibleInfo }"
-          style="border: none"
-        ></div>
-
-        <div class="achievement_detail" ref="infoRef" :class="{ 'scale-up': isVisibleInfo }">
+        <div class="achievement_detail detail_last">
           <div class="num">266</div>
           <div class="p1">制（修）订</div>
           <div class="p2">科技奖励/项</div>
         </div>
-        <div class="achievement_detail" ref="infoRef" :class="{ 'scale-up': isVisibleInfo }">
+        <div class="achievement_detail  detail_last">
           <div class="num">266</div>
           <div class="p1">制（修）订</div>
           <div class="p2">科技奖励/项</div>
         </div>
-        <div class="achievement_detail" ref="infoRef" :class="{ 'scale-up': isVisibleInfo }">
+        <div class="achievement_detail">
           <div class="num">266</div>
           <div class="p1">制（修）订</div>
           <div class="p2">科技奖励/项</div>
@@ -101,6 +92,7 @@ onMounted(initializeObservers); // 在组件挂载时调用
         <div class="achievement_detail" style="border: none"></div>
       </div>
     </div>
+
     <div class="content">
       <MyContent title="电工行业重大技术装备支柱企业">
         <div class="content1" ref="wordRightRef1" :class="{ 'move-right': isVisibleWordRight1 }">
@@ -125,7 +117,7 @@ onMounted(initializeObservers); // 在组件挂载时调用
 .scientificResearchAchievement {
   position: relative;
   width: 100%;
-  height: 127.5rem;
+  height: 220.5rem;
   /* border: 0.0625rem solid rgb(206, 206, 206); */
   background-color: #fff;
   padding: 4rem 11%;
@@ -133,8 +125,7 @@ onMounted(initializeObservers); // 在组件挂载时调用
   z-index: -10;
 }
 .content {
-  margin-top: 32.525rem;
-  border-bottom: 0.0625rem solid #006fc1;
+  margin-top: 82.525rem;
 }
 .content1 {
   width: 100%;
@@ -148,7 +139,7 @@ onMounted(initializeObservers); // 在组件挂载时调用
   visibility: visible;
 }
 .text {
-  font-size: 1.25rem;
+  font-size: 2.3rem;
   font-family: "AlibabaPuHuiTi_2_55_Regular";
   color: rgb(89, 87, 87);
   line-height: 1.66;
@@ -156,104 +147,59 @@ onMounted(initializeObservers); // 在组件挂载时调用
 }
 .achievement {
   position: absolute;
-  width: 100%;
-  height: 25rem;
+  height: 70rem;
   background-color: #f4f4f4;
   padding: 4.875rem 13.125rem;
   left: 0;
   top: 19.375rem;
 }
-.achievement_top {
-  display: flex;
-  width: 100%;
-  margin-bottom: 4rem;
-  border-right: 0.125rem solid #6ba9d7;
-}
-.achievement_bottom {
+.info {
   display: flex;
   width: 100%;
   text-align: center;
+  flex-wrap: wrap;
+  justify-content: start;
 }
 .achievement_detail {
-  width: 100%;
-  height: 4.6875rem;
-  border-left: 0.125rem solid #6ba9d7;
-  position: relative;
-  transform: scale(0.3); /* 初始缩小 */
-  opacity: 0; /* 初始不可见 */
-  visibility: hidden; /* 初始隐藏 */
-  transition: transform 0.5s ease, opacity 0.5s ease; /* 过渡效果 */
+  width: 33%;
+  height: 9rem;
+  margin-bottom: 6rem;
 }
-.achievement_detail.scale-up {
-  transform: scale(1); /* 放大到原始大小 */
-  opacity: 1; /* 可见 */
-  visibility: visible; /* 可见 */
+
+.achievement_detail .p {
+  font-size: 2.2rem;
+  font-family: "AlibabaPuHuiTi_2_65_Medium";
+  color: rgb(0, 111, 193);
+  text-align: center;
+  margin: auto;
+  width: 15.625rem;
 }
-.achievement_bottom .achievement_detail {
-  width: 100%;
-  height: 6.75rem;
-  border-left: 0.125rem solid #6ba9d7;
-  position: relative;
-}
-.achievement_top .achievement_detail .num {
-  position: absolute;
-  font-size: 2.75rem;
+
+.achievement_detail .num {
+  font-size: 4.5rem;
   font-family: "AlibabaPuHuiTi_2_95_ExtraBold";
   color: rgb(0, 111, 193);
-  left: 50%;
-  transform: translateX(-50%);
-  top: -0.9375rem;
+  text-align: center;
+  margin-top: -2rem;
 }
-.achievement_top .achievement_detail .p {
-  position: absolute;
-  font-size: 1.5rem;
+.achievement_detail .p1 {
+  font-size: 2.2rem;
   font-family: "AlibabaPuHuiTi_2_65_Medium";
   color: rgb(0, 111, 193);
   text-align: center;
-  top: 2.5rem;
   width: 15.625rem;
-  left: 50%;
-  transform: translateX(-50%);
+  margin: auto;
 }
-.achievement_bottom {
-  width: 100%;
-}
-.achievement_bottom .achievement_detail {
-  width: 16%;
-}
-.achievement_bottom .achievement_detail .num {
-  position: absolute;
-  font-size: 2.75rem;
-  font-family: "AlibabaPuHuiTi_2_95_ExtraBold";
-  color: rgb(0, 111, 193);
-  left: 50%;
-  transform: translateX(-50%);
-  top: -0.9375rem;
-}
-.achievement_bottom .achievement_detail .p1 {
-  position: absolute;
-  font-size: 1.5rem;
+.achievement_detail .p2 {
+  font-size: 2.2rem;
   font-family: "AlibabaPuHuiTi_2_65_Medium";
   color: rgb(0, 111, 193);
   text-align: center;
-  top: 2.5rem;
-  width: 15.625rem;
-  left: 50%;
-  transform: translateX(-50%);
-}
-.achievement_bottom .achievement_detail .p2 {
-  position: absolute;
-  font-size: 1.5rem;
-  font-family: "AlibabaPuHuiTi_2_65_Medium";
-  color: rgb(0, 111, 193);
-  text-align: center;
-  top: 4.5rem;
+  margin: auto;
   width: 100%;
-  left: 50%;
-  transform: translateX(-50%);
 }
 .detail_last {
-  border-right: 0.125rem solid #6ba9d7;
+  border-right: 0.225rem solid #6ba9d7;
 }
 .footer_img {
   position: absolute;
@@ -266,55 +212,5 @@ onMounted(initializeObservers); // 在组件挂载时调用
 .footer_img img {
   width: 100%;
   height: 66.5rem;
-}
-@media (min-width: 500px) and (max-width: 800px) {
-  .text {
-    font-size: 0.8rem !important;
-  }
-}
-/*
-@media (min-width: 1000px) and (max-width: 1800px) {
-  .achievement_detail .num {
-    font-size: 2.1rem !important;
-    top: -0.9375rem;
-  }
-  .achievement_detail .p1 {
-    font-size: 1.2rem !important;
-  }
-  .achievement_detail .p2 {
-    font-size: 1.2rem !important;
-  }
-  .achievement_top .achievement_detail .p {
-    font-size: 1.2rem;
-  }
-} */
-@media (min-width: 400px) and (max-width: 1800px) {
-  .achievement_detail {
-    width: 14.8125rem !important;
-  }
-}
-@media (min-width: 600px) and (max-width: 800px) {
-  .achievement_detail .num {
-    font-size: 2.1rem !important;
-    top: -0.9375rem;
-  }
-  .achievement_detail .p1 {
-    font-size: 1.2rem !important;
-  }
-  .achievement_detail .p2 {
-    font-size: 1.2rem !important;
-  }
-  .achievement_top .achievement_detail .p {
-    font-size: 1.2rem;
-
-  }
-  .achievement_detail {
-    width: 16.8125rem !important;
-  }
-}
-@media (min-width:1500px) and (max-width: 1800px) {
-  .text {
-  font-size: 1rem !important;
-}
 }
 </style>
