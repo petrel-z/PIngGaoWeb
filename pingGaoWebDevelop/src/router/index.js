@@ -1,28 +1,42 @@
 import aboutPinggao from "@/views/_1_aboutPinggao/myIndex.vue";
 import approachPinggao from "@/views/_1_aboutPinggao/approachPinggao/myIndex.vue";
-import groupProfile from "@/views/_1_aboutPinggao/groupProfile/myIndex.vue";
-import lesadingMember from "@/views/_1_aboutPinggao/lesadingMember/myIndex.vue";
-import organizationalStructure from "@/views/_1_aboutPinggao/organizationalStructure/myIndex.vue";
-import seniorHonor from "@/views/_1_aboutPinggao/seniorHonor/myIndex.vue";
+import groupProfile_pc from "@/views/_1_aboutPinggao/groupProfile/myIndex_pc.vue";
+import groupProfile_yd from "@/views/_1_aboutPinggao/groupProfile/myIndex_yd.vue";
+import lesadingMember_yd from "@/views/_1_aboutPinggao/lesadingMember/myIndex_yd.vue";
+import lesadingMember_pc from "@/views/_1_aboutPinggao/lesadingMember/myIndex_pc.vue";
+import organizationalStructure_yd from "@/views/_1_aboutPinggao/organizationalStructure/myIndex_yd.vue";
+import organizationalStructure_pc from "@/views/_1_aboutPinggao/organizationalStructure/myIndex_pc.vue";
+import seniorHonor_yd from "@/views/_1_aboutPinggao/seniorHonor/myIndex_yd.vue";
+import seniorHonor_pc from "@/views/_1_aboutPinggao/seniorHonor/myIndex_pc.vue";
 import partyBuilding from "@/views/_3_partyBuilding/index.vue";
 
 import productSeriseEng from "@/views/_4_productEngineering/productSeriesEng/myIndex.vue";
 import productSeriesDetailEng
   from "@/views/_4_productEngineering/productSeriesDetailEng/myIndex.vue";
 import productEngineering from "@/views/_4_productEngineering/index.vue";
-import keyProject from "@/views/_4_productEngineering/keyProject/myIndex.vue";
-import productSeries from "@/views/_4_productEngineering/productSeries/myIndex.vue";
+import keyProject_pc from "@/views/_4_productEngineering/keyProject/myIndex_pc.vue";
+import keyProject_yd from "@/views/_4_productEngineering/keyProject/myIndex_yd.vue";
+
+import productSeries_pc from "@/views/_4_productEngineering/productSeries/myIndex_pc.vue";
+import productSeries_yd from "@/views/_4_productEngineering/productSeries/myIndex_yd.vue";
+
 import productSeriesDetail from "@/views/_4_productEngineering/productSeriesDetail/myIndex.vue";
+
 import qualityAssurance from "@/views/_6_qualityAssurance/index.vue";
 import manufacturing from "@/views/_6_qualityAssurance/manufacturing/index-1.vue";
 import productTesting from "@/views/_6_qualityAssurance/productTesting/index-1.vue";
 import qualitySystem from "@/views/_6_qualityAssurance/qualitySystem/index-1.vue";
 import scientificResearchCenter from "@/views/_7_scientificResearchCenter/index.vue";
-import scientificResearchAchievement
-  from "@/views/_7_scientificResearchCenter/scientificResearchAchievement/myIndex.vue";
-import scientificResearchSystem
-  from "@/views/_7_scientificResearchCenter/scientificResearchSystem/myIndex.vue";
-import testSystem from "@/views/_7_scientificResearchCenter/testSystem/myIndex.vue";
+import scientificResearchAchievement_yd
+  from "@/views/_7_scientificResearchCenter/scientificResearchAchievement/myIndex_yd.vue";
+import scientificResearchAchievement_pc
+  from "@/views/_7_scientificResearchCenter/scientificResearchAchievement/myIndex_pc.vue";
+import scientificResearchSystem_yd
+  from "@/views/_7_scientificResearchCenter/scientificResearchSystem/myIndex_yd.vue";
+import scientificResearchSystem_pc
+  from "@/views/_7_scientificResearchCenter/scientificResearchSystem/myIndex_pc.vue";
+import testSystem_yd from "@/views/_7_scientificResearchCenter/testSystem/myIndex_yd.vue";
+import testSystem_pc from "@/views/_7_scientificResearchCenter/testSystem/myIndex_pc.vue";
 import addressTelephone from "@/views/_9_contactUs/addressTelephone/index-1.vue";
 import becomePartner from "@/views/_9_contactUs/becomePartner/index-1.vue";
 import businessConsulting from "@/views/_9_contactUs/businessConsulting/index-1.vue";
@@ -49,24 +63,40 @@ const router = createRouter({
     },
     {
       path: "/aboutPinggao",
-      redirect: "/aboutPinggao/groupProfile", // 这里重定向到 /aboutPinggao 下的 groupProfile
+      redirect: "/aboutPinggao/groupProfile1", // 这里重定向到 /aboutPinggao 下的 groupProfile
       component: aboutPinggao,
       children: [
         {
-          path: "groupProfile",
-          component: groupProfile,
+          path: "groupProfile1",
+          component: groupProfile_pc,
         },
         {
-          path: "lesadingMember",
-          component: lesadingMember,
+          path: "groupProfile2",
+          component: groupProfile_yd,
         },
         {
-          path: "organizationalStructure",
-          component: organizationalStructure,
+          path: "lesadingMember1",
+          component: lesadingMember_pc,
         },
         {
-          path: "seniorHonor",
-          component: seniorHonor,
+          path: "lesadingMember2",
+          component: lesadingMember_yd,
+        },
+        {
+          path: "organizationalStructure1",
+          component: organizationalStructure_pc,
+        },
+        {
+          path: "organizationalStructure2",
+          component: organizationalStructure_yd,
+        },
+        {
+          path: "seniorHonor1",
+          component: seniorHonor_pc,
+        },
+        {
+          path: "seniorHonor2",
+          component: seniorHonor_yd,
         },
         {
           path: "approachPinggao",
@@ -148,22 +178,33 @@ const router = createRouter({
     },
     {
       path: "/productEngineering",
-      redirect: "/productEngineering/productSeries", // 这里的重定向路径是相对于父路径的
+      redirect: "/productEngineering/productSeries1", // 这里的重定向路径是相对于父路径的
       component: productEngineering,
       children: [
         {
-          path: "keyProject",
-          component: keyProject,
+          path: "keyProject1",
+          component: keyProject_pc,
+        },
+        {
+          path: "keyProject2",
+          component: keyProject_yd,
+        },
+
+
+        {
+          name: "productSeries1",
+          path: "productSeries1",
+          component: productSeries_pc,
+        },
+        {
+          name: "productSeries2",
+          path: "productSeries2",
+          component: productSeries_yd,
         },
         {
           name: "productDetail",
           path: "productSeries/detail-:id",
           component: productSeriesDetail,
-        },
-        {
-          name: "productSeries",
-          path: "productSeries",
-          component: productSeries,
         },
         {
           path: "productSeriesEng",
@@ -217,20 +258,32 @@ const router = createRouter({
     },
     {
       path: "/scientificResearchCenter",
-      redirect: "/scientificResearchCenter/scientificResearchSystem", // 这里的重定向路径是相对于父路径的
+      redirect: "/scientificResearchCenter/scientificResearchSystem1", // 这里的重定向路径是相对于父路径的
       component: scientificResearchCenter,
       children: [
         {
-          path: "scientificResearchAchievement",
-          component: scientificResearchAchievement,
+          path: "scientificResearchAchievement1",
+          component: scientificResearchAchievement_pc,
         },
         {
-          path: "scientificResearchSystem",
-          component: scientificResearchSystem,
+          path: "scientificResearchAchievement2",
+          component: scientificResearchAchievement_yd,
         },
         {
-          path: "testSystem",
-          component: testSystem,
+          path: "scientificResearchSystem1",
+          component: scientificResearchSystem_pc,
+        },
+        {
+          path: "scientificResearchSystem2",
+          component: scientificResearchSystem_yd,
+        },
+        {
+          path: "testSystem1",
+          component: testSystem_pc,
+        },
+        {
+          path: "testSystem2",
+          component: testSystem_yd,
         },
       ],
     },
@@ -320,13 +373,13 @@ const router = createRouter({
   scrollBehavior(to, from, savedPosition) {
     // 定义需要回到顶部的路由路径数组
     const scrollToTopPaths = [
-      "/aboutPinggao/groupProfile",
+      "/aboutPinggao/groupProfile1",
       "/informationCenter/headquartersDynamicsIndex",
       "/partyBuilding/partySpirit/index",
-      "/productEngineering/productSeries",
+      "/productEngineering/productSeries1",
       "/marketingService/performancePledge",
       "/qualityAssurance/qualitySystem",
-      "/scientificResearchCenter/scientificResearchSystem",
+      "/scientificResearchCenter/scientificResearchSystem1",
       "/humanResources/talentTeam",
       "/contactUs/purchaseByBidding",
     ];

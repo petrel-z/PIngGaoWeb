@@ -2,7 +2,35 @@
 import peopleBg from "@/assets/imgs/_1_aboutPinggaoImgs/peoplebg.png";
 import MyTitle from "@/components/MyTitle.vue";
 import httpUtils from "@/utils/httpUtils.js";
-import { nextTick, ref, watch } from "vue";
+import { nextTick, ref, watch,onMounted } from "vue";
+import { useRouter } from 'vue-router';
+const router = useRouter();
+
+const redirectToMobileVersion = () => {
+  try {
+    const isMobile = window.matchMedia('(max-device-width: 900px)').matches;
+
+    // 避免重复跳转
+    const currentPath = router.currentRoute.value.path;
+    const targetPath = isMobile
+      ? '/aboutPinggao/lesadingMember2'
+      : '/aboutPinggao/lesadingMember1';
+
+    if (currentPath !== targetPath) {
+      router.push(targetPath);
+    }
+  } catch (error) {
+    console.error('路由跳转失败:', error);
+    // 可添加回退方案
+    router.push('/error-page');
+  }
+};
+onMounted(() => {
+  // 确保只在客户端执行
+  if (typeof window !== 'undefined') {
+    redirectToMobileVersion();
+  }
+});
 
 const imgRef = ref(null);
 const isVisible = ref(null);

@@ -28,9 +28,9 @@ const info = ref({
 });
 
 const footer = ref([
-  { name: "科研体系", path: "/scientificResearchCenter/scientificResearchSystem" },
-  { name: "科研成果", path: "/scientificResearchCenter/scientificResearchAchievement" },
-  { name: "试验体系", path: "/scientificResearchCenter/testSystem" },
+  { name: "科研体系", path: "/scientificResearchCenter/scientificResearchSystem1" },
+  { name: "科研成果", path: "/scientificResearchCenter/scientificResearchAchievement1" },
+  { name: "试验体系", path: "/scientificResearchCenter/testSystem1" },
 ]);
 </script>
 <style lang="less" scoped>

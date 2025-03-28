@@ -19,7 +19,6 @@ const props = defineProps({
         <br />
         {{ props.title1 }}
       </div>
-
     </div>
     <div class="framework">
       <div class="left"></div>

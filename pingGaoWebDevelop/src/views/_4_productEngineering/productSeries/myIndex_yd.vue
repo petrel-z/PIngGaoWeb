@@ -1,11 +1,38 @@
 <script setup>
 import MyTitle from "@/components/MyTitle.vue";
 import httpUtils from "@/utils/httpUtils.js";
-import {onMounted, ref} from "vue";
+import { onMounted, ref } from "vue";
 import router from "@/router/index.js";
 import MyButton from "@/components/MyButton.vue";
-import {useRoute} from "vue-router";
+import { useRoute } from "vue-router";
+import { useRouter } from "vue-router";
+const router1 = useRouter();
 
+const redirectToMobileVersion = () => {
+  try {
+    const isMobile = window.matchMedia("(max-device-width: 900px)").matches;
+
+    // 避免重复跳转
+    const currentPath = router1.currentRoute.value.path;
+    const targetPath = isMobile
+    ? '/productEngineering/productSeries2'
+    : '/productEngineering/productSeries1';
+    if (currentPath !== targetPath) {
+      router1.push(targetPath);
+    }
+  } catch (error) {
+    console.error("路由跳转失败:", error);
+    // 可添加回退方案
+    router1.push("/error-page");
+  }
+};
+
+onMounted(() => {
+  // 确保只在客户端执行
+  if (typeof window !== "undefined") {
+    redirectToMobileVersion();
+  }
+});
 const boxRef = ref(null);
 const isVisibleBox = ref(false);
 const infoRef = ref(null);
@@ -93,7 +120,7 @@ const createObserver = (refElement, isVisible) => {
   const observer = new IntersectionObserver(
     (entries) => {
       entries.forEach((entry) => {
-        const {intersectionRatio} = entry;
+        const { intersectionRatio } = entry;
         // 设置触发条件：元素进入视口 50% 以上时触发
         if (intersectionRatio >= 0) {
           isVisible.value = true;
@@ -189,12 +216,12 @@ function setActive(category, index) {
         </div>
       </div>
       <div class="button-container">
-        <MyButton v-if="hasMore" @child-button="handleClick"/>
+        <MyButton v-if="hasMore" @child-button="handleClick" />
         <p v-else style="font-size: 24px">没有更多了</p>
       </div>
     </div>
     <div class="footer_img">
-      <img src="@/assets/imgs/_4_productEngineeringImgs/bg-footimg.png" alt=""/>
+      <img src="@/assets/imgs/_4_productEngineeringImgs/bg-footimg.png" alt="" />
     </div>
   </div>
 </template>

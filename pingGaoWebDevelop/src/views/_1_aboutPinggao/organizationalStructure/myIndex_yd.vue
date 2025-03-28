@@ -1,8 +1,35 @@
-
 <script setup>
-import MyTitle from '@/components/MyTitle.vue'
-import headLine from '@/components/MyHeadLine.vue'
+import MyTitle from "@/components/MyTitle.vue";
+import headLine from "@/components/MyHeadLine.vue";
+import { onMounted } from "vue";
+import { useRouter } from "vue-router";
+const router = useRouter();
 
+const redirectToMobileVersion = () => {
+  try {
+    const isMobile = window.matchMedia("(max-device-width: 900px)").matches;
+
+    // 避免重复跳转
+    const currentPath = router.currentRoute.value.path;
+    const targetPath = isMobile
+      ? "/aboutPinggao/organizationalStructure2"
+      : "/aboutPinggao/organizationalStructure1";
+
+    if (currentPath !== targetPath) {
+      router.push(targetPath);
+    }
+  } catch (error) {
+    console.error("路由跳转失败:", error);
+    // 可添加回退方案
+    router.push("/error-page");
+  }
+};
+onMounted(() => {
+  // 确保只在客户端执行
+  if (typeof window !== "undefined") {
+    redirectToMobileVersion();
+  }
+});
 </script>
 <template>
   <!-- 组织机构 -->
@@ -151,25 +178,25 @@ import headLine from '@/components/MyHeadLine.vue'
           </div>
         </div>
         <div class="introduce">
-          <div class="info" >
+          <div class="info">
             <div class="info_top">1</div>
             <div class="info_bottom">合营公司<span>/</span>家</div>
           </div>
         </div>
         <div class="introduce">
-          <div class="info" >
+          <div class="info">
             <div class="info_top">9</div>
             <div class="info_bottom">本部部门<span>/</span>家</div>
           </div>
         </div>
         <div class="introduce">
-          <div class="info" >
+          <div class="info">
             <div class="info_top">12</div>
             <div class="info_bottom">直属分公司<span>/</span>家</div>
           </div>
         </div>
         <div class="introduce">
-          <div class="info" >
+          <div class="info">
             <div class="info_top">4</div>
             <div class="info_bottom">支撑平台<span>/</span>家</div>
           </div>
@@ -218,9 +245,7 @@ import headLine from '@/components/MyHeadLine.vue'
           </ul>
         </div>
       </div>
-      <div
-        class="content_bottom_2"
-      >
+      <div class="content_bottom_2">
         <div class="content_left_2">
           <headLine title="合营公司"></headLine>
           <ul class="parts">
@@ -339,7 +364,7 @@ import headLine from '@/components/MyHeadLine.vue'
   left: 50%;
   transform: translate(-50%, -50%);
 }
-.organization .info_bottom span{
+.organization .info_bottom span {
   font-size: 2.6rem !important;
 }
 

@@ -1,7 +1,36 @@
 <script setup>
 import MyTitle from "@/components/MyTitle.vue";
-import MyContent from "@/components/F6_MyContent.vue";
+import MyContent from "@/components/F6_MyContent1.vue";
 import { ref, onMounted } from "vue";
+import { useRouter } from 'vue-router';
+const router = useRouter();
+
+const redirectToMobileVersion = () => {
+  try {
+    const isMobile = window.matchMedia('(max-device-width: 900px)').matches;
+
+    // 避免重复跳转
+    const currentPath = router.currentRoute.value.path;
+    const targetPath = isMobile
+      ? '/scientificResearchCenter/testSystem2'
+      : '/scientificResearchCenter/testSystem1';
+
+    if (currentPath !== targetPath) {
+      router.push(targetPath);
+    }
+  } catch (error) {
+    console.error('路由跳转失败:', error);
+    // 可添加回退方案
+    router.push('/error-page');
+  }
+};
+
+onMounted(() => {
+  // 确保只在客户端执行
+  if (typeof window !== 'undefined') {
+    redirectToMobileVersion();
+  }
+});
 const isVisibleWordRight1 = ref(false);
 const isVisibleWordRight2 = ref(false);
 const wordRightRef1 = ref(null);
@@ -79,7 +108,7 @@ onMounted(initializeObservers); // 在组件挂载时调用
   position: relative;
   margin: auto;
   width: 100%;
-  height: 150rem;
+  height: 105rem;
   /* border: 0.0625rem solid rgb(206, 206, 206); */
   padding: 4rem 11%;
   border-radius: 1.25rem;
@@ -114,21 +143,20 @@ onMounted(initializeObservers); // 在组件挂载时调用
 }
 .content .my_content {
   position: relative;
-  margin-bottom: 12rem;
 }
 .content .right {
   position: absolute;
-  left: 150%;
+  left: 68%;
   top: 0rem;
 }
 .content .my_content .p {
-  font-size: 2.2rem;
-  font-family: "AlibabaPuHuiTi_2_55_Regular";
+  font-size: 1.25rem;
+  font-family: "AlibabaPuHuiTi_2_55_Regular", sans-serif;
   color: rgb(89, 87, 87);
 }
 .text {
-  font-size: 2.2rem;
-  font-family: "AlibabaPuHuiTi_2_55_Regular";
+  font-size: 1.25rem;
+  font-family: "AlibabaPuHuiTi_2_55_Regular", sans-serif;
   color: rgb(89, 87, 87);
   line-height: 1.56;
   margin-bottom: 1.5rem;
@@ -151,5 +179,16 @@ onMounted(initializeObservers); // 在组件挂载时调用
 .content .right {
   width: 26.25rem;
 }
-
+@media (min-width: 400px) and (max-width: 800px) {
+  .text,
+  .p {
+    font-size: 0.9rem !important;
+  }
+}
+@media (min-width: 1500px) and (max-width: 1800px) {
+  .text,
+  .p {
+    font-size: 1rem !important;
+  }
+}
 </style>

@@ -27,16 +27,16 @@ defineOptions({
           <router-link to="/aboutPinggao">
             <h3>关于平高</h3>
           </router-link>
-          <router-link to="/aboutPinggao/groupProfile">
+          <router-link to="/aboutPinggao/groupProfile1">
             <p class="p-first">集团简介</p>
           </router-link>
-          <router-link to="/aboutPinggao/lesadingMember">
+          <router-link to="/aboutPinggao/lesadingMember1">
             <p>领导成员</p>
           </router-link>
-          <router-link to="/aboutPinggao/organizationalStructure">
+          <router-link to="/aboutPinggao/organizationalStructure1">
             <p>组织机构</p>
           </router-link>
-          <router-link to="/aboutPinggao/seniorHonor">
+          <router-link to="/aboutPinggao/seniorHonor1">
             <p>资质荣誉</p>
           </router-link>
           <router-link to="/aboutPinggao/approachPinggao">
@@ -80,7 +80,7 @@ defineOptions({
           <router-link to="/productEngineering">
             <h3>产品工程</h3>
           </router-link>
-          <router-link to="/productEngineering/productSeries">
+          <router-link to="/productEngineering/productSeries1">
             <p class="p-first">产品系列</p>
           </router-link>
           <router-link to="/productEngineering">
@@ -122,13 +122,13 @@ defineOptions({
           <router-link to="/scientificResearchCenter">
             <h3>科研中心</h3>
           </router-link>
-          <router-link to="/scientificResearchCenter/scientificResearchAchievement">
+          <router-link to="/scientificResearchCenter/scientificResearchAchievement1">
             <p class="p-first">科研体系</p>
           </router-link>
-          <router-link to="/scientificResearchCenter/scientificResearchSystem">
+          <router-link to="/scientificResearchCenter/scientificResearchSystem1">
             <p>科研成果</p>
           </router-link>
-          <router-link to="/scientificResearchCenter/testSystem">
+          <router-link to="/scientificResearchCenter/testSystem1">
             <p>试验体系</p>
           </router-link>
         </div>

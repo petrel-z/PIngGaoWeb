@@ -32,10 +32,10 @@ const info = ref({
 });
 
 const footer = ref([
-  { name: "集团简介", path: "/aboutPinggao/groupProfile" },
-  { name: "领导成员", path: "/aboutPinggao/lesadingMember" },
-  { name: "组织机构", path: "/aboutPinggao/organizationalStructure" },
-  { name: "资质荣誉", path: "/aboutPinggao/seniorHonor" },
+  { name: "集团简介", path: "/aboutPinggao/groupProfile1" },
+  { name: "领导成员", path: "/aboutPinggao/lesadingMember1" },
+  { name: "组织机构", path: "/aboutPinggao/organizationalStructure1" },
+  { name: "资质荣誉", path: "/aboutPinggao/seniorHonor1" },
   { name: "走进平高", path: "/aboutPinggao/approachPinggao" },
 ]);
 </script>
