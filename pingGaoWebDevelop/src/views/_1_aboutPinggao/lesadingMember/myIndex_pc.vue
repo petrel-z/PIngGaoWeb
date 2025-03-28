@@ -2,7 +2,7 @@
 import peopleBg from "@/assets/imgs/_1_aboutPinggaoImgs/peoplebg.png";
 import MyTitle from "@/components/MyTitle.vue";
 import httpUtils from "@/utils/httpUtils.js";
-import { nextTick, ref, watch, onMounted } from "vue";
+import { nextTick, ref, watch,onMounted } from "vue";
 import { useRouter } from 'vue-router';
 const router = useRouter();
 

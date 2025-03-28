@@ -222,8 +222,7 @@ a {
     margin-right: 1%;
     transform: translateY(-3px);
 
-    img {
-    }
+
   }
 
   .logo-text {
@@ -315,8 +314,7 @@ a {
 
     }
 
-    .p-first {
-    }
+
   }
 
   .codeImg {
@@ -383,9 +381,7 @@ a {
     padding: 0 4%;
     white-space: wrap;
 
-    p {
-      // display: block;
-    }
+
   }
 
   .content > div {
@@ -476,8 +472,6 @@ a {
       }
 
 
-      .p-first {
-      }
     }
 
     .f9 {
