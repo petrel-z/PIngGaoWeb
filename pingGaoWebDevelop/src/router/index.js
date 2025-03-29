@@ -14,8 +14,7 @@ import productSeriseEng from "@/views/_4_productEngineering/productSeriesEng/myI
 import productSeriesDetailEng
   from "@/views/_4_productEngineering/productSeriesDetailEng/myIndex.vue";
 import productEngineering from "@/views/_4_productEngineering/index.vue";
-import keyProject_pc from "@/views/_4_productEngineering/keyProject/myIndex_pc.vue";
-import keyProject_yd from "@/views/_4_productEngineering/keyProject/myIndex_yd.vue";
+import keyProject from "@/views/_4_productEngineering/keyProject/myIndex.vue";
 
 import productSeries_pc from "@/views/_4_productEngineering/productSeries/myIndex_pc.vue";
 import productSeries_yd from "@/views/_4_productEngineering/productSeries/myIndex_yd.vue";
@@ -182,15 +181,9 @@ const router = createRouter({
       component: productEngineering,
       children: [
         {
-          path: "keyProject1",
-          component: keyProject_pc,
+          path: "keyProject",
+          component: keyProject,
         },
-        {
-          path: "keyProject2",
-          component: keyProject_yd,
-        },
-
-
         {
           name: "productSeries1",
           path: "productSeries1",

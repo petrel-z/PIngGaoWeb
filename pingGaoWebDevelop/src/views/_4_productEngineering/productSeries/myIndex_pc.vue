@@ -1,7 +1,9 @@
 <script setup>
 import MyTitle from "@/components/MyTitle.vue";
 import { ref, onMounted} from "vue";
-import { useRouter } from 'vue-router';
+import {useRoute, useRouter} from 'vue-router';
+import httpUtils from "@/utils/httpUtils.js";
+import MyButton from "@/components/MyButton.vue";
 const router = useRouter();
 
 const redirectToMobileVersion = () => {
@@ -30,10 +32,21 @@ onMounted(() => {
     redirectToMobileVersion();
   }
 });
+onMounted(() => {
+  // 确保只在客户端执行
+  if (typeof window !== "undefined") {
+    redirectToMobileVersion();
+  }
+});
 const boxRef = ref(null);
 const isVisibleBox = ref(false);
 const infoRef = ref(null);
-const isVisibleInfo = ref(null);
+const isVisibleInfo = ref(true);
+
+const categoryList = ref([]);
+const categoryItems = ref([]);
+
+const type = useRoute().query.type;
 
 // 处理 imgs 数组中的路径
 const imgs = ref(
@@ -49,36 +62,64 @@ const imgs = ref(
     new URL("@/assets/imgs/_4_productEngineeringImgs/product-9.png", import.meta.url).href,
   ].map((path) => new URL(path, import.meta.url).href)
 );
+// 使用 ref 存储图片路径，并处理路径
+const imageSrc = ref(
+  new URL("@/assets/imgs/_4_productEngineeringImgs/product-1.png", import.meta.url).href
+);
 
-const activeIndex = ref(0);
+const currentCategory = ref({});
+const pageNo = ref(1);
+const pageSize = ref(9);
+const hasMore = ref(true);
 
-const handleMouse = (event) => {
-  const boxs = document.querySelectorAll(".detail_product");
-  const clickedDiv = event.currentTarget;
-  const index = Array.from(boxs).indexOf(clickedDiv);
+async function getData() {
+  const queryString = new URLSearchParams({
+    pageNo: pageNo.value,
+    pageSize: pageSize.value,
+  }).toString();
 
-  boxs.forEach((div) => {
-    div.classList.remove("active");
-  });
+  const categoryId = currentCategory.value.id;
+  const response = await httpUtils.get(
+    `/cms/category/${categoryId}/news?${queryString.toString()}`
+  );
+  const result = await response.json();
+  const data = result.data.page;
 
-  if (index >= 0 && index < imgs.value.length) {
-    imageSrc.value = imgs.value[index];
-    console.log(`你点击了第 ${index + 1} 个 div`);
-    // 更新 activeIndex 的值
-    activeIndex.value = index;
+  if (pageNo.value === 1) {
+    categoryItems.value = [...data.list];
+  } else {
+    categoryItems.value = [...categoryItems.value, ...data.list];
   }
-};
 
-// 处理鼠标离开事件，恢复默认图片
-const handleMouseLeave = () => {
-  imageSrc.value = new URL(
-    "@/assets/imgs/_4_productEngineeringImgs/product-1.png",
-    import.meta.url
-  ).href; // 恢复默认图片
-  console.log("鼠标离开，恢复默认图片");
-  // 鼠标离开时，将 activeIndex 重置为 -1
-  activeIndex.value = 0;
-};
+  if (data.list.length < pageSize.value) {
+    hasMore.value = false;
+  } else {
+    pageNo.value = pageNo.value + 1;
+  }
+}
+
+function handleClick() {
+  if (hasMore.value) {
+    getData();
+  }
+}
+
+async function getCategory() {
+  const res = await httpUtils.get(`/cms/category/23/list`);
+  const result = await res.json();
+
+  categoryList.value = result.data;
+
+  const queryCategory = result.data.find((i) => i.name === type);
+  if (queryCategory) {
+    currentCategory.value = queryCategory;
+  } else {
+    currentCategory.value = result.data[0];
+  }
+
+  await getData();
+}
+
 // 创建交叉观察器
 const createObserver = (refElement, isVisible) => {
   const observer = new IntersectionObserver(
@@ -108,16 +149,33 @@ const initializeObservers = () => {
   createObserver(infoRef, isVisibleInfo);
 };
 onMounted(initializeObservers); // 在组件挂载时调用
-// 使用 ref 存储图片路径，并处理路径
-const imageSrc = ref(
-  new URL("@/assets/imgs/_4_productEngineeringImgs/product-1.png", import.meta.url).href
-);
+
+getCategory();
+
+function toDetail(newsId) {
+  if (newsId) {
+    const target = router.resolve({
+      name: "productDetail",
+      params: {
+        id: newsId,
+      },
+    });
+    window.open(target.href, "_blank");
+  }
+}
+
+function setActive(category, index) {
+  currentCategory.value = category;
+  imageSrc.value = imgs.value[index % 9];
+  pageNo.value = 1;
+  getData();
+}
 </script>
 
 <template>
   <div class="productSeries">
     <div class="img">
-      <img :src="imageSrc" />
+      <img :src="imageSrc" alt="" />
     </div>
     <MyTitle
       title="产品系列"
@@ -128,149 +186,45 @@ const imageSrc = ref(
     ></MyTitle>
     <div class="detail_content" ref="boxRef" :class="{ 'move-left': isVisibleBox }">
       <div
+        v-for="(category, index) in categoryList"
+        :key="category.id"
         class="detail_product"
-        :style="{ 'background-color': activeIndex === 0 ? '#45b3e0' : 'transparent' }"
-        @mouseover="handleMouse"
-        @mouseleave="handleMouseLeave"
-        data-image="@/assets/imgs/_4_productEngineeringImgs/bg-protect.png"
+        :style="{
+          'background-color': currentCategory.id === category.id ? '#45b3e0' : 'transparent',
+        }"
+        @click="setActive(category, index)"
       >
-        <router-link to="/productEngineering/productSeries/detail-:id"
-          ><span>高压电器产业</span>
-        </router-link>
-      </div>
-      <div
-        class="detail_product"
-        :style="{ 'background-color': activeIndex === 1 ? '#45b3e0' : 'transparent' }"
-        @mouseover="handleMouse"
-        @mouseleave="handleMouseLeave"
-      >
-        <span>系统集成业务</span>
-      </div>
-      <div
-        class="detail_product"
-        :style="{ 'background-color': activeIndex === 2 ? '#45b3e0' : 'transparent' }"
-        @mouseover="handleMouse"
-        @mouseleave="handleMouseLeave"
-      >
-        <span>电力储能业务</span>
-      </div>
-      <div
-        class="detail_product"
-        :style="{ 'background-color': activeIndex === 3 ? '#45b3e0' : 'transparent' }"
-        @mouseover="handleMouse"
-        @mouseleave="handleMouseLeave"
-      >
-        <span>配电网产业</span>
-      </div>
-      <div
-        class="detail_product"
-        :style="{ 'background-color': activeIndex === 4 ? '#45b3e0' : 'transparent' }"
-        @mouseover="handleMouse"
-        @mouseleave="handleMouseLeave"
-      >
-        <span>运维检修业务</span>
-      </div>
-      <div
-        class="detail_product"
-        :style="{ 'background-color': activeIndex === 5 ? '#45b3e0' : 'transparent' }"
-        @mouseover="handleMouse"
-        @mouseleave="handleMouseLeave"
-      >
-        <span>电锅炉及热储能业务</span>
-      </div>
-      <div
-        class="detail_product"
-        :style="{ 'background-color': activeIndex === 6 ? '#45b3e0' : 'transparent' }"
-        @mouseover="handleMouse"
-        @mouseleave="handleMouseLeave"
-      >
-        <span>零部件制造产业</span>
-      </div>
-      <div
-        class="detail_product"
-        :style="{ 'background-color': activeIndex === 7 ? '#45b3e0' : 'transparent' }"
-        @mouseover="handleMouse"
-        @mouseleave="handleMouseLeave"
-      >
-        <span>综合能源服务业务</span>
-      </div>
-      <div
-        class="detail_product"
-        :style="{ 'background-color': activeIndex === 8 ? '#45b3e0' : 'transparent' }"
-        @mouseover="handleMouse"
-        @mouseleave="handleMouseLeave"
-      >
-        <span>智慧配用电业务</span>
+        <span>{{ category.name }}</span>
       </div>
     </div>
     <div class="detail_page">
-      <div class="detail_page_title">高压电器产业</div>
+      <div class="detail_page_title">
+        {{ currentCategory.name }}
+      </div>
       <div class="detail_page_content">
         <div
+          v-for="(item, index) in categoryItems"
+          :key="item.id"
+          ref="infoRef"
           class="detail_page_info"
           style="border-top: 0.0625rem solid #1078c5"
-          ref="infoRef"
           :class="{ 'scale-up': isVisibleInfo }"
+          @click="toDetail(item.id)"
         >
-          <div class="h">01</div>
-          <div class="p1">ZHW1-252（L）/T4000-50型</div>
-          <div class="p2">复合式组合电器</div>
+          <div class="h">
+            {{ index + 1 }}
+          </div>
+          <div class="p1">
+            {{ item.title }}
+          </div>
+          <div class="p2">
+            {{ currentCategory.name }}
+          </div>
         </div>
-        <div
-          class="detail_page_info"
-          style="border-top: 0.0625rem solid #1078c5"
-          ref="infoRef"
-          :class="{ 'scale-up': isVisibleInfo }"
-        >
-          <div class="h">02</div>
-          <div class="p1">ZHW1-145(L)/T3150-40型</div>
-          <div class="p2">复合式组合电器</div>
-        </div>
-        <div
-          class="detail_page_info"
-          style="border-top: 0.0625rem solid #1078c5"
-          ref="infoRef"
-          :class="{ 'scale-up': isVisibleInfo }"
-        >
-          <div class="h">03</div>
-          <div class="p1">ZHW1-126（L）/T4000-50型</div>
-          <div class="p2">复合式组合电器</div>
-        </div>
-        <div class="detail_page_info" ref="infoRef" :class="{ 'scale-up': isVisibleInfo }">
-          <div class="h">04</div>
-          <div class="p1">ZHW1-72.5(L)/T3150-40型</div>
-          <div class="p2">复合式组合电器</div>
-        </div>
-        <div class="detail_page_info" ref="infoRef" :class="{ 'scale-up': isVisibleInfo }">
-          <div class="h">05</div>
-          <div class="p1">LW55-72.5/T3150-31.5型</div>
-          <div class="p2">罐式六氟化硫断路器</div>
-        </div>
-        <div class="detail_page_info" ref="infoRef" :class="{ 'scale-up': isVisibleInfo }">
-          <div class="h">06</div>
-          <div class="p1">LW35A-72.5/T3150-31.5型</div>
-          <div class="p2">高压六氟化硫断路器</div>
-        </div>
-        <div class="detail_page_info" ref="infoRef" :class="{ 'scale-up': isVisibleInfo }">
-          <div class="h">07</div>
-          <div class="p1">LW35-126/T3150-40型</div>
-          <div class="p2">自能式六氟化硫断路器</div>
-        </div>
-        <div class="detail_page_info" ref="infoRef" :class="{ 'scale-up': isVisibleInfo }">
-          <div class="h">08</div>
-          <div class="p1">GXL5-1100(L) 型</div>
-          <div class="p2">刚性气体绝缘输电线路</div>
-        </div>
-        <div class="detail_page_info" ref="infoRef" :class="{ 'scale-up': isVisibleInfo }">
-          <div class="h">09</div>
-          <div class="p1">GXL5-550(L) 型</div>
-          <div class="p2">刚性气体绝缘输电线路</div>
-        </div>
-        <div class="detail_page_info" ref="infoRef" :class="{ 'scale-up': isVisibleInfo }">
-          <div class="h">10</div>
-          <div class="p1">GXL5-252(L) 型</div>
-          <div class="p2">刚性气体绝缘输电线路</div>
-        </div>
+      </div>
+      <div class="button-container">
+        <MyButton v-if="hasMore" @child-button="handleClick" />
+        <p v-else style="font-size: 24px">没有更多了</p>
       </div>
     </div>
     <div class="footer_img">
@@ -295,7 +249,8 @@ const imageSrc = ref(
   height: 16.9375rem;
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: flex-start;
+  gap: 1.25rem;
   margin-top: 4.125rem;
   position: relative;
   transform: translateX(-100%); /* 初始位置在左边 */
@@ -479,7 +434,7 @@ const imageSrc = ref(
 }
 .detail_page {
   margin-top: 9.375rem;
-  height: 108.375rem;
+  padding-bottom: 780px;
 }
 .detail_page_title {
   font-size: 2rem;
@@ -534,5 +489,14 @@ const imageSrc = ref(
 .footer_img img {
   width: 100%;
   margin-bottom: -0.5rem;
+}
+
+.button-container {
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  padding: 20px;
+  position: relative;
+  z-index: 101;
 }
 </style>

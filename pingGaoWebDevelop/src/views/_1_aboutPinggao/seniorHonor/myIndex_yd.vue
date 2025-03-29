@@ -1,9 +1,10 @@
 <script setup>
 import MyTitle from "@/components/MyTitle.vue";
 import MyButton from "@/components/MyButton.vue";
-import { ref, nextTick, watch,onMounted } from "vue";
+import {ref, nextTick, watch, onMounted} from "vue";
 import httpUtils from "@/utils/httpUtils.js";
-import { useRouter } from 'vue-router';
+import {useRouter} from 'vue-router';
+
 const router = useRouter();
 
 const redirectToMobileVersion = () => {
@@ -52,7 +53,7 @@ const createObserver = (refElement, isVisible) => {
   const observer = new IntersectionObserver(
     (entries) => {
       entries.forEach((entry) => {
-        const { intersectionRatio } = entry;
+        const {intersectionRatio} = entry;
         // 设置触发条件：元素进入视口 50% 以上时触发
         if (intersectionRatio >= 0) {
           isVisible.value = true;
@@ -116,6 +117,7 @@ watch(honorList, async () => {
   background-color: #fff;
   z-index: 0;
 }
+
 .content {
   margin-top: 3.125rem;
   display: flex;
