@@ -1,6 +1,6 @@
 <script setup>
 import MyTitle from "@/components/MyTitle.vue";
-import MyContent from "@/components/F6_MyContent.vue";
+import MyContent from "@/components/F6_MyContent1.vue";
 import { ref, onMounted } from "vue";
 const topDetailList = ref(null);
 const topTitle = ref(null);
@@ -38,7 +38,7 @@ onMounted(() => {
             </p>
           </div>
         </MyContent>
-        <hr style="height: 0; border: none; border-top: 1px solid #006fc1; margin-top: 30px" />
+        <hr style="height: 0; border: none; border-top: 0.2rem solid #006fc1; margin-top: 30px" />
       </div>
       <div class="top-whiteSpan"></div>
     </div>
