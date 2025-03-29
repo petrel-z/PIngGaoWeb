@@ -85,37 +85,37 @@ onMounted(initializeObservers); // 在组件挂载时调用
       <div class="organization_title">平高集团有限公司</div>
       <div class="detail">
         <div class="introduce">
-          <div class="info" ref="infoRef" :class="{ 'scale-up': isVisibleInfo }">
+          <div class="info">
             <div class="info_top">12</div>
             <div class="info_bottom">全资子公司<span>/</span>家</div>
           </div>
         </div>
         <div class="introduce">
-          <div class="info" ref="infoRef" :class="{ 'scale-up': isVisibleInfo }">
+          <div class="info">
             <div class="info_top">6</div>
             <div class="info_bottom">投股子公司<span>/</span>家</div>
           </div>
         </div>
         <div class="introduce">
-          <div class="info" ref="infoRef" :class="{ 'scale-up': isVisibleInfo }">
+          <div class="info">
             <div class="info_top">1</div>
             <div class="info_bottom">合营公司<span>/</span>家</div>
           </div>
         </div>
         <div class="introduce">
-          <div class="info" ref="infoRef" :class="{ 'scale-up': isVisibleInfo }">
+          <div class="info">
             <div class="info_top">11</div>
             <div class="info_bottom">本部部门<span>/</span>家</div>
           </div>
         </div>
         <div class="introduce">
-          <div class="info" ref="infoRef" :class="{ 'scale-up': isVisibleInfo }">
+          <div class="info">
             <div class="info_top">2</div>
             <div class="info_bottom">分公司<span>/</span>家</div>
           </div>
         </div>
         <div class="introduce">
-          <div class="info" ref="infoRef" :class="{ 'scale-up': isVisibleInfo }">
+          <div class="info">
             <div class="info_top">1</div>
             <div class="info_bottom">支撑平台<span>/</span>家</div>
           </div>
@@ -123,29 +123,29 @@ onMounted(initializeObservers); // 在组件挂载时调用
       </div>
     </div>
     <div class="component">
-      <div class="content_top1" ref="wordLeftRef" :class="{ 'move-left': isVisibleWordLeft }">
-        <div class="left">
+      <div class="content_top1">
+        <div class="info">
           <headLine title="本部部门"></headLine>
           <ul class="parts">
             <li>办公室(党委办公室、董事会办公室)</li>
             <li>发展策划部</li>
-            <li>财务资产部(资本管理部)</li>
-            <li>党委组织部(人力资源部、全面深化改革办公室)</li>
+            <li>财务资产部（资本管理部）</li>
+            <li>党委组织部（人力资源部、全面深化改革办公室）</li>
             <li>科信部</li>
             <li>纪委（党委巡察办）</li>
             <li>合规管理部（审计部）</li>
-            <li>党委工作部(党委宣传部、工会、团委)</li>
-            <li>市场运营部</li>
+            <li>党委工作部（党委宣传部、工会、团委）</li>
+            <li>市场运营部（国际部）</li>
             <li>安全质量部</li>
             <li>生产物资部</li>
           </ul>
         </div>
-        <div class="middle">
+        <div class="info">
           <headLine title="全资子公司"></headLine>
           <ul class="parts">
             <li>北京平高清大科技发展有限公司</li>
             <li>河南平高祥和电气有限公司</li>
-            <li>平高集团(河南)电力器材科技有限公司</li>
+            <li>平高集团（河南）电力器材科技有限公司</li>
             <li>平高集团物链科技有限公司</li>
             <li>平高集团电力检修工程有限公司</li>
             <li>西安平高智慧能源有限公司</li>
@@ -154,9 +154,10 @@ onMounted(initializeObservers); // 在组件挂载时调用
             <li>平高集团智能电气有限公司</li>
             <li>南京平高信息通信技术有限公司</li>
             <li>河南平高电力设备有限公司</li>
+            <li>平高集团能源发展有限公司</li>
           </ul>
         </div>
-        <div class="right">
+        <div class="info">
           <headLine title="控股子公司"></headLine>
           <ul class="parts">
             <li>天津平高易电科技有限公司</li>
@@ -169,88 +170,96 @@ onMounted(initializeObservers); // 在组件挂载时调用
         </div>
       </div>
 
-      <div class="content_middle1" ref="wordRightRef" :class="{ 'move-right': isVisibleWordRight }">
-        <div class="left">
+      <div class="content_middle1">
+        <div class="info">
           <headLine title="支撑平台"></headLine>
           <ul class="parts">
             <li>平高集团工程项目管理中心</li>
           </ul>
         </div>
-        <div class="middle">
+        <div class="info">
           <headLine title="营销平台"></headLine>
           <ul class="parts">
             <li>平高集团营销服务中心</li>
           </ul>
         </div>
-        <div class="right">
-          <headLine title="营销平台"></headLine>
+        <div class="info">
+          <headLine title="合营公司"></headLine>
           <ul class="parts">
-            <li>平高东芝(河南)开关零部件制造有限公司</li>
+            <li>平高东芝（河南）开关零部件制造有限公司</li>
           </ul>
         </div>
       </div>
-      <div class="content_bottom1" ref="wordLeftRef" :class="{ 'move-left': isVisibleWordLeft }">
-        <div class="left">
+      <div class="content_bottom1">
+        <div class="info">
           <headLine title="分公司"></headLine>
           <ul class="parts">
-            <li>平高集团有限公司综合能源服务分公司</li>
+            <li>平高集团有限公司综合服务分公司</li>
             <li>平高集团电力储能事业部</li>
+          </ul>
+        </div>
+        <div class="info">
+          <headLine title="科研平台"></headLine>
+          <ul class="parts">
+            <li>平高大连交大轨道电气技术研究院</li>
+            <li>清华大学（电机系）平高集团有限公司电气技术联合研究中心</li>
+            <li>平高集团智慧能源技术研究</li>
           </ul>
         </div>
       </div>
     </div>
-    <div class="organization_2">
+    <div class="organization_2" v-if="false">
       <div class="organization_title">平高集团控股子公司</div>
       <div class="detail">
         <div class="introduce">
-          <div class="info" ref="infoRef1" :class="{ 'scale-up': isVisibleInfo1 }">
+          <div class="info">
             <div class="info_top">6</div>
             <div class="info_bottom">全资子公司<span>/</span>家</div>
           </div>
         </div>
         <div class="introduce">
-          <div class="info" ref="infoRef1" :class="{ 'scale-up': isVisibleInfo1 }">
+          <div class="info">
             <div class="info_top">6</div>
             <div class="info_bottom">投股子公司<span>/</span>家</div>
           </div>
         </div>
         <div class="introduce">
-          <div class="info" ref="infoRef1" :class="{ 'scale-up': isVisibleInfo1 }">
+          <div class="info">
             <div class="info_top">1</div>
             <div class="info_bottom">合营公司<span>/</span>家</div>
           </div>
         </div>
         <div class="introduce">
-          <div class="info" ref="infoRef1" :class="{ 'scale-up': isVisibleInfo1 }">
+          <div class="info">
             <div class="info_top">9</div>
             <div class="info_bottom">本部部门<span>/</span>家</div>
           </div>
         </div>
         <div class="introduce">
-          <div class="info" ref="infoRef1" :class="{ 'scale-up': isVisibleInfo1 }">
+          <div class="info">
             <div class="info_top">12</div>
             <div class="info_bottom">直属分公司<span>/</span>家</div>
           </div>
         </div>
         <div class="introduce">
-          <div class="info" ref="infoRef1" :class="{ 'scale-up': isVisibleInfo1 }">
+          <div class="info">
             <div class="info_top">4</div>
             <div class="info_bottom">支撑平台<span>/</span>家</div>
           </div>
         </div>
       </div>
     </div>
-    <div class="component_2">
-      <div class="content_top_2" ref="wordLeftRef1" :class="{ 'move-left': isVisibleWordLeft1 }">
+    <div class="component_2" v-if="false">
+      <div class="content_top_2">
         <div class="content_left_2">
           <headLine title="本部部门"></headLine>
           <ul class="parts">
-            <li>综合管理部(党建工作部、纪委办公室)</li>
+            <li>综合管理部（党建工作部、纪委办公室）</li>
             <li>人劳部</li>
             <li>财务部</li>
             <li>证券部</li>
             <li>审计部</li>
-            <li>科技管理部(发展策划部)</li>
+            <li>科技管理部（发展策划部）</li>
             <li>生产物资部</li>
             <li>安全质量部</li>
             <li>平高集团客户服务中心</li>
@@ -273,30 +282,26 @@ onMounted(initializeObservers); // 在组件挂载时调用
           <ul class="parts">
             <li>河南平芝高压开关有限公司</li>
             <li>上海平高天灵开关有限公司</li>
-            <li>一希捷爱斯(上海)电气有限公司</li>
+            <li>希捷爱斯（上海）电气有限公司</li>
             <li>上海雷泽灵电气有限公司</li>
             <li>广州平高电力技术有限公司</li>
-            <li>平高帕拉特(河南)能源科技有限公司</li>
+            <li>平高帕拉特（河南）能源科技有限公司</li>
             <li>平高集团印度电力有限公司</li>
-            <li>平高新松电力智能装备(河南)有限公司</li>
+            <li>平高新松电力智能装备（河南)有限公司</li>
           </ul>
         </div>
       </div>
-      <div
-        class="content_bottom_2"
-        ref="wordRightRef1"
-        :class="{ 'move-right': isVisibleWordRight1 }"
-      >
+      <div class="content_bottom_2">
         <div class="content_left_2">
           <headLine title="合营公司"></headLine>
           <ul class="parts">
-            <li>平高东芝(廊坊)避雷器有限公司</li>
+            <li>平高东芝（廊坊）避雷器有限公司</li>
           </ul>
         </div>
         <div class="content_middle_2">
           <headLine title="支撑平台"></headLine>
           <ul class="parts">
-            <li>工程技术中心(计量中心)</li>
+            <li>工程技术中心（计量中心）</li>
             <li>市场营销中心</li>
             <li>综合运行中心</li>
             <li>特高压管理中心</li>

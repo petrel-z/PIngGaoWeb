@@ -108,28 +108,28 @@ onMounted(initializeObservers); // 在组件挂载时调用
         ></div>
 
         <div class="achievement_detail" ref="infoRef" :class="{ 'scale-up': isVisibleInfo }">
-          <div class="num">266</div>
+          <div class="num">73</div>
           <div class="p1">制（修）订</div>
-          <div class="p2">科技奖励/项</div>
+          <div class="p2">国家标准/项</div>
         </div>
         <div class="achievement_detail" ref="infoRef" :class="{ 'scale-up': isVisibleInfo }">
-          <div class="num">266</div>
+          <div class="num">52</div>
           <div class="p1">制（修）订</div>
-          <div class="p2">科技奖励/项</div>
+          <div class="p2">行业标准/项</div>
         </div>
         <div class="achievement_detail" ref="infoRef" :class="{ 'scale-up': isVisibleInfo }">
-          <div class="num">266</div>
+          <div class="num">15</div>
           <div class="p1">制（修）订</div>
-          <div class="p2">科技奖励/项</div>
+          <div class="p2">团体标准/项</div>
         </div>
         <div
           class="achievement_detail detail_last"
           ref="infoRef"
           :class="{ 'scale-up': isVisibleInfo }"
         >
-          <div class="num">266</div>
+          <div class="num">1</div>
           <div class="p1">制（修）订</div>
-          <div class="p2">科技奖励/项</div>
+          <div class="p2">国际标准/项</div>
         </div>
         <div class="achievement_detail" style="border: none"></div>
         </div>
@@ -200,6 +200,7 @@ onMounted(initializeObservers); // 在组件挂载时调用
 .achievement_content{
   display: flex;
   margin: auto;
+  min-width: 80rem;
 }
 .achievement_top {
   display: flex;

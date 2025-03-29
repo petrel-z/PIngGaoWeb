@@ -95,28 +95,28 @@ onMounted(initializeObservers); // 在组件挂载时调用
           <div class="p">软件著作权登记/项</div>
         </div>
         <div class="achievement_detail detail_last">
-          <div class="num">266</div>
+          <div class="num">73</div>
           <div class="p1">制（修）订</div>
-          <div class="p2">科技奖励/项</div>
+          <div class="p2">国家标准/项</div>
         </div>
         <div class="achievement_detail  detail_last">
-          <div class="num">266</div>
+          <div class="num">52</div>
           <div class="p1">制（修）订</div>
-          <div class="p2">科技奖励/项</div>
+          <div class="p2">行业标准/项</div>
         </div>
         <div class="achievement_detail">
-          <div class="num">266</div>
+          <div class="num">15</div>
           <div class="p1">制（修）订</div>
-          <div class="p2">科技奖励/项</div>
+          <div class="p2">团体标准/项</div>
         </div>
         <div
           class="achievement_detail detail_last"
           ref="infoRef"
           :class="{ 'scale-up': isVisibleInfo }"
         >
-          <div class="num">266</div>
+          <div class="num">1</div>
           <div class="p1">制（修）订</div>
-          <div class="p2">科技奖励/项</div>
+          <div class="p2">国际标准/项</div>
         </div>
         <div class="achievement_detail" style="border: none"></div>
       </div>

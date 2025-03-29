@@ -223,7 +223,7 @@ function toDetail (newsId) {
 function toProduct (item) {
   if (item) {
     const target = router.resolve({
-      name: 'productSeries',
+      name: 'productSeries1',
       query: {
         type: item,
       },
@@ -280,7 +280,7 @@ getData()
           <router-link class="p" to="/productEngineering">产品工程</router-link>
         </div>
         <div class="nav_introduction">
-          <router-link class="p" to="/productEngineering/keyProject1">重点工程</router-link>
+          <router-link class="p" to="/productEngineering/keyProject">重点工程</router-link>
         </div>
       </div>
     </div>
@@ -465,8 +465,7 @@ getData()
             <div class="hr" />
             <div class="p text-ellipsis" style="color: #223893;font-size: 1.75rem;">{{
                 top.title
-              }}
-            </div>
+            }}</div>
             <div class="p" v-html="top.description"></div>
           </div>
         </div>
