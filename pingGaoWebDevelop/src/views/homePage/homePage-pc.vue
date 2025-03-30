@@ -4,7 +4,34 @@ import Footer from '@/components/Footer.vue'
 import router from '@/router/index.js'
 import HttpUtils from '@/utils/httpUtils.js'
 import { onMounted, onUnmounted, nextTick, ref } from 'vue'
+import { useRouter } from 'vue-router';
+const router1 = useRouter();
 
+const redirectToMobileVersion = () => {
+  try {
+    const isMobile = window.matchMedia('(max-device-width: 900px)').matches;
+
+    // 避免重复跳转
+    const currentPath = router1.currentRoute.value.path;
+    const targetPath = isMobile
+      ? '/homePage-yd'
+      : '/homePage-pc';
+
+    if (currentPath !== targetPath) {
+      router1.push(targetPath);
+    }
+  } catch (error) {
+    console.error('路由跳转失败:', error);
+    // 可添加回退方案
+    router1.push('/error-page');
+  }
+};
+onMounted(() => {
+  // 确保只在客户端执行
+  if (typeof window !== 'undefined') {
+    redirectToMobileVersion();
+  }
+});
 document.title = '平高集团有限公司'
 
 // Import Swiper Vue.js components

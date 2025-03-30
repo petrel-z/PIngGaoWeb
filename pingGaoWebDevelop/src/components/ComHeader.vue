@@ -316,7 +316,7 @@ const goHome = (type = 0) => {
   if (type === 0) {
     langStore.toggleLanguage(language.value === "zh-CN" ? "en-US" : "zh-CN");
   }
-  const homePath = language.value === "zh-CN" ? "/homePage-2" : "/home";
+  const homePath = language.value === "zh-CN" ? "/homePage-pc" : "/home";
   window.location.href = homePath; // 这会完全刷新页面
 };
 
@@ -684,7 +684,7 @@ onMounted(() => {
         </div>
         <ul class="moveNav-body">
           <li v-if="language === 'zh-CN'" class="moveNav-body-item">
-            <router-link to="/homePage-2">首页</router-link>
+            <router-link to="/homePage-pc">首页</router-link>
           </li>
           <li
             class="moveNav-body-item"

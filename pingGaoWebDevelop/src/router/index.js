@@ -57,8 +57,12 @@ const router = createRouter({
       component: homePage_1,
     },
     {
-      path: "/homePage-2",
-      component: () => import("@/views/homePage/homePage-2.vue"),
+      path: "/homePage-pc",
+      component: () => import("@/views/homePage/homePage-pc.vue"),
+    },
+    {
+      path: "/homePage-yd",
+      component: () => import("@/views/homePage/homePage-yd.vue"),
     },
     {
       path: "/aboutPinggao",

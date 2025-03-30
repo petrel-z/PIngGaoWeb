@@ -20,7 +20,7 @@ const goBack = () => {
 };
 
 const goHome = () => {
-  router.push(`${currentLang.value === "zh-CN" ? "/homePage-2" : "/home"}`); // 跳转首页
+  router.push(`${currentLang.value === "zh-CN" ? "/homePage-pc" : "/home"}`); // 跳转首页
 };
 </script>
 

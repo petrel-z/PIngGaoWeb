@@ -23,7 +23,7 @@ const toggleLanguage = (language) => {
       <div class="center-left">
         <div class="content">
           <div class="image"></div>
-          <router-link to="/homePage-2" class="button" @click="toggleLanguage('zh-CN')"
+          <router-link to="/homePage-pc" class="button" @click="toggleLanguage('zh-CN')"
             >点击进入</router-link
           >
         </div>
