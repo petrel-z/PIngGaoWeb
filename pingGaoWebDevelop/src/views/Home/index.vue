@@ -502,7 +502,7 @@ getData();
 }
 
 .header {
-  height: 68vh;
+  // height: 68vh;
   // min-width: 120rem;
   width: 100%;
   position: absolute;
