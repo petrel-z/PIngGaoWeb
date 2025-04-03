@@ -3,8 +3,9 @@ import ComHeader from "@/components/ComHeader.vue";
 import Footer from "@/components/Footer.vue";
 import router from "@/router/index.js";
 import HttpUtils from "@/utils/httpUtils.js";
-import { onMounted, onUnmounted, nextTick, ref } from "vue";
-import { useRouter } from 'vue-router';
+import {onMounted, onUnmounted, nextTick, ref} from "vue";
+import {useRouter} from 'vue-router';
+
 const router1 = useRouter();
 
 const redirectToMobileVersion = () => {
@@ -35,8 +36,8 @@ onMounted(() => {
 document.title = "平高集团有限公司";
 
 // Import Swiper Vue.js components
-import { Swiper, SwiperSlide } from "swiper/vue";
-import { Navigation, Pagination } from "swiper/modules";
+import {Swiper, SwiperSlide} from "swiper/vue";
+import {Navigation, Pagination} from "swiper/modules";
 
 const modules = [Navigation, Pagination];
 const swiperInstance = ref(null);
@@ -249,7 +250,7 @@ function toDetail(newsId) {
 function toProduct(item) {
   if (item) {
     const target = router.resolve({
-      name: "productSeries",
+      name: "productSeries2",
       query: {
         type: item,
       },
@@ -290,10 +291,10 @@ getData();
           autoplay
           disablepictureinpicture
           @ended="handleVideoEnd(index)"
-          poster="http://218.28.22.50:8108/videos/carousel.png"
+          poster="https://www.pinggaogroup.com/videos/carousel.png"
           :src="image.src"
         ></video>
-        <img v-else-if="image.type === 'image'" :src="image.src" alt="" />
+        <img v-else-if="image.type === 'image'" :src="image.src" alt=""/>
       </swiper-slide>
     </swiper>
     <!-- 轮播图下面的导航栏 -->
@@ -331,84 +332,84 @@ getData();
         </div>
       </div>
     </div>
-    <hr style="border: 0.0625rem solid #80b7e0" />
+    <hr style="border: 0.0625rem solid #80b7e0"/>
     <div class="product_content">
       <div class="product_box">
-        <div class="product_detail product_detail_1">
+        <div class="product_detail product_detail_1" @click="toProduct('高压电器产业')">
           <div class="product_topImg">
-            <img src="@/assets/imgs/_10_homePageImgs/product1.png" alt="" />
+            <img src="@/assets/imgs/_10_homePageImgs/product1.png" alt=""/>
           </div>
           <div class="product_h">高压电器产业</div>
           <div class="product_hr"></div>
           <div class="product_p">复合式组合电器、罐式六氟化硫断路器、高压六氟化硫断路器…</div>
-          <div class="product_button" @click="toProduct('高压电器产业')"><span>查看详情</span></div>
+          <div class="product_button"><span>查看详情</span></div>
         </div>
-        <div class="product_detail">
+        <div class="product_detail" @click="toProduct('运维检修业务')">
           <div class="product_topImg">
-            <img src="@/assets/imgs/_10_homePageImgs/product2.png" alt="" />
+            <img src="@/assets/imgs/_10_homePageImgs/product2.png" alt=""/>
           </div>
           <div class="product_h">运维检修业务</div>
           <div class="product_hr"></div>
           <div class="product_p">罩式馈线自动化终端、箱式馈线自动化终端、配电自动化站所终端…</div>
-          <div class="product_button" @click="toProduct('运维检修业务')"><span>查看详情</span></div>
+          <div class="product_button"><span>查看详情</span></div>
         </div>
-        <div class="product_detail">
+        <div class="product_detail" @click="toProduct('零部件制造产业')">
           <div class="product_topImg">
-            <img src="@/assets/imgs/_10_homePageImgs/product3.png" alt="" />
+            <img src="@/assets/imgs/_10_homePageImgs/product3.png" alt=""/>
           </div>
           <div class="product_h">零部件制造产业</div>
           <div class="product_hr"></div>
           <div class="product_p">气体回收净化业务、集中供气站、混气比检测仪、密度继电器校验仪…</div>
-          <div class="product_button" @click="toProduct('零部件制造产业')">
+          <div class="product_button">
             <span>查看详情</span>
           </div>
         </div>
-        <div class="product_detail">
+        <div class="product_detail" @click="toProduct('电力储能业务')">
           <div class="product_topImg">
-            <img src="@/assets/imgs/_10_homePageImgs/product5.png" alt="" />
+            <img src="@/assets/imgs/_10_homePageImgs/product5.png" alt=""/>
           </div>
           <div class="product_h">电力储能业务</div>
           <div class="product_hr"></div>
           <div class="product_p">罩式馈线自动化终端、箱式馈线自动化终端、配电自动化站所终端…</div>
-          <div class="product_button" @click="toProduct('电力储能业务')"><span>查看详情</span></div>
+          <div class="product_button"><span>查看详情</span></div>
         </div>
-        <div class="product_detail">
+        <div class="product_detail" @click="toProduct('配电网产业')">
           <div class="product_topImg">
-            <img src="@/assets/imgs/_10_homePageImgs/product6.png" alt="" />
+            <img src="@/assets/imgs/_10_homePageImgs/product6.png" alt=""/>
           </div>
           <div class="product_h">配电网产业</div>
           <div class="product_hr"></div>
           <div class="product_p">气体回收净化业务、集中供气站、混气比检测仪、密度继电器校验仪…</div>
-          <div class="product_button" @click="toProduct('配电网产业')"><span>查看详情</span></div>
+          <div class="product_button"><span>查看详情</span></div>
         </div>
-        <div class="product_detail">
+        <div class="product_detail" @click="toProduct('系统集成业务')">
           <div class="product_topImg">
-            <img src="@/assets/imgs/_10_homePageImgs/product7.png" alt="" />
+            <img src="@/assets/imgs/_10_homePageImgs/product7.png" alt=""/>
           </div>
           <div class="product_h">系统集成业务</div>
           <div class="product_hr"></div>
           <div class="product_p">复合式组合电器、罐式六氟化硫断路器、高压六氟化硫断路器…</div>
-          <div class="product_button" @click="toProduct('系统集成业务')"><span>查看详情</span></div>
+          <div class="product_button"><span>查看详情</span></div>
         </div>
-        <div class="product_detail">
+        <div class="product_detail" @click="toProduct('智慧配用电业务')">
           <div class="product_topImg">
-            <img src="@/assets/imgs/_10_homePageImgs/product8.png" alt="" />
+            <img src="@/assets/imgs/_10_homePageImgs/product8.png" alt=""/>
           </div>
           <div class="product_h">智慧配用电业务</div>
           <div class="product_hr"></div>
           <div class="product_p">罩式馈线自动化终端、箱式馈线自动化终端、配电自动化站所终端…</div>
-          <div class="product_button" @click="toProduct('智慧配用电业务')">
+          <div class="product_button">
             <span>查看详情</span>
           </div>
         </div>
-        <div class="product_detail">
+        <div class="product_detail" @click="toProduct('综合能源服务业务')">
           <div class="product_topImg">
-            <img src="@/assets/imgs/_10_homePageImgs/product9.png" alt="" />
+            <img src="@/assets/imgs/_10_homePageImgs/product9.png" alt=""/>
           </div>
           <div class="product_h">综合能源服务业务</div>
           <div class="product_hr"></div>
           <div class="product_p">气体回收净化业务、集中供气站、混气比检测仪、密度继电器校验仪…</div>
-          <div class="product_button" @click="toProduct('综合能源服务业务')">
+          <div class="product_button">
             <span>查看详情</span>
           </div>
         </div>
@@ -418,7 +419,7 @@ getData();
     </div>
     <div class="company_introduction">
       <div class="bg_img">
-        <img src="@/assets/imgs/_10_homePageImgs/company-introduction.png" alt="" />
+        <img src="@/assets/imgs/_10_homePageImgs/company-introduction.png" alt=""/>
       </div>
       <div class="introduction_title">赋能智慧电气 创引绿色能源</div>
       <div class="introduction_small_title">公司介绍</div>
@@ -431,8 +432,8 @@ getData();
         <div class="img_right">
           <video
             controls
-            poster="http://218.28.22.50:8108/videos/video_poster.png"
-            src="http://218.28.22.50:8108/videos/pinggao.mp4"
+            poster="https://www.pinggaogroup.com/videos/video_poster.png"
+            src="https://www.pinggaogroup.com/videos/pinggao.mp4"
           />
         </div>
       </div>
@@ -484,10 +485,10 @@ getData();
           :title="top.title"
           @click="toDetail(top.id)"
         >
-          <div class="top_img"><img :src="top.headerImage" :alt="top.title" /></div>
+          <div class="top_img"><img :src="top.headerImage" :alt="top.title"/></div>
           <div class="bottom_text">
             <div class="time">{{ formatTimestamp(top.publishTime) }}</div>
-            <div class="hr" />
+            <div class="hr"/>
             <div class="p1 text-ellipsis">
               {{ top.title }}
             </div>
@@ -497,7 +498,7 @@ getData();
         <div class="content_detail_text">
           <div v-for="news in homepageNews" :key="news.id" class="text" @click="toDetail(news.id)">
             <div class="title text-ellipsis">{{ news.title }}</div>
-            <div class="line" />
+            <div class="line"/>
             <div class="time">{{ formatTimestamp(news.publishTime) }}</div>
           </div>
         </div>
@@ -509,12 +510,12 @@ getData();
         </router-link>
       </div>
       <div class="great_flag_footer">
-        <img src="@/assets/imgs/_10_homePageImgs/footer.png" alt="" />
+        <img src="@/assets/imgs/_10_homePageImgs/footer.png" alt=""/>
       </div>
     </div>
   </div>
   <div>
-    <Footer />
+    <Footer/>
   </div>
 </template>
 
@@ -556,7 +557,7 @@ getData();
 }
 
 .header {
-  height: 68vh;
+  // height: 68vh;
   // min-width: 120rem;
   width: 100%;
   position: absolute;
@@ -862,6 +863,7 @@ getData();
   width: 100%;
   height: 159.25rem;
 }
+
 .introduction_title {
   font-size: 3.5rem;
   font-family: "AlibabaPuHuiTi_2_65_Medium";
@@ -888,10 +890,12 @@ getData();
   border-top: 0.0625rem solid #313a3d;
   padding-top: 0.8125rem;
 }
+
 .introduction_content .img_right {
   width: 100%;
   height: 50rem;
 }
+
 .introduction_content .img_right video {
   width: 100%;
   height: 50rem;
@@ -1035,6 +1039,7 @@ getData();
   font-family: "AlibabaPuHuiTi_2_55_Regular", sans-serif;
   color: rgb(89, 87, 87);
 }
+
 .great_flag_content .bottom_text .p1 {
   font-size: 3.375rem;
   font-family: "AlibabaPuHuiTi_2_55_Regular", sans-serif;
@@ -1135,12 +1140,14 @@ getData();
   color: rgb(34, 56, 147);
   margin-bottom: 1.75rem;
 }
+
 @media (min-width: 300px) and (max-width: 400px) {
   .product_content {
     height: 77.625rem;
     padding-top: 6rem;
     margin-bottom: 2.5rem;
   }
+
   .product_topImg {
     width: 44.25rem;
     height: 44.25rem;
@@ -1175,6 +1182,7 @@ getData();
     line-height: 2.5rem;
   }
 }
+
 @media (min-width: 380px) and (max-width: 500px) {
   .button_right span {
     display: block;
@@ -1206,24 +1214,31 @@ getData();
     width: 100%;
     height: 135.25rem;
   }
-  .great_flag .great_flag_title .h{
+
+  .great_flag .great_flag_title .h {
     font-size: 4rem;
   }
-  .great_flag .great_flag_title .p{
+
+  .great_flag .great_flag_title .p {
     font-size: 4rem;
   }
-  .great_flag .great_flag_content .time{
+
+  .great_flag .great_flag_content .time {
     font-size: 3.5rem;
   }
-  .great_flag .great_flag_content .p1{
+
+  .great_flag .great_flag_content .p1 {
     font-size: 3rem;
   }
-  .great_flag .great_flag_content  .p{
+
+  .great_flag .great_flag_content .p {
     font-size: 2.7rem;
   }
-  .great_flag .great_flag_content .text  .title{
+
+  .great_flag .great_flag_content .text .title {
     font-size: 2.7rem;
   }
+
   .introduction_title {
     font-size: 3.5rem;
     font-family: "AlibabaPuHuiTi_2_65_Medium";
@@ -1240,10 +1255,12 @@ getData();
     width: 100%;
     padding-top: 0.8125rem;
   }
+
   .introduction_content .img_right {
     width: 100%;
     height: 35rem;
   }
+
   .introduction_content .img_right video {
     width: 100%;
     height: 35rem;
@@ -1291,24 +1308,31 @@ getData();
     width: 100%;
     height: 135.25rem;
   }
-  .great_flag .great_flag_title .h{
+
+  .great_flag .great_flag_title .h {
     font-size: 4rem;
   }
-  .great_flag .great_flag_title .p{
+
+  .great_flag .great_flag_title .p {
     font-size: 4rem;
   }
-  .great_flag .great_flag_content .time{
+
+  .great_flag .great_flag_content .time {
     font-size: 3.5rem;
   }
-  .great_flag .great_flag_content .p1{
+
+  .great_flag .great_flag_content .p1 {
     font-size: 3rem;
   }
-  .great_flag .great_flag_content  .p{
+
+  .great_flag .great_flag_content .p {
     font-size: 2.7rem;
   }
-  .great_flag .great_flag_content .text  .title{
+
+  .great_flag .great_flag_content .text .title {
     font-size: 2.7rem;
   }
+
   .introduction_title {
     font-size: 3.5rem;
     font-family: "AlibabaPuHuiTi_2_65_Medium";
@@ -1325,10 +1349,12 @@ getData();
     width: 100%;
     padding-top: 0.8125rem;
   }
+
   .introduction_content .img_right {
     width: 100%;
     height: 35rem;
   }
+
   .introduction_content .img_right video {
     width: 100%;
     height: 35rem;
@@ -1351,6 +1377,7 @@ getData();
     padding-top: 6rem;
     margin-bottom: 2.5rem;
   }
+
   .product_topImg {
     width: 30.25rem;
     height: 30.25rem;
@@ -1422,24 +1449,31 @@ getData();
     width: 100%;
     height: 135.25rem;
   }
-  .great_flag .great_flag_title .h{
+
+  .great_flag .great_flag_title .h {
     font-size: 4rem;
   }
-  .great_flag .great_flag_title .p{
+
+  .great_flag .great_flag_title .p {
     font-size: 4rem;
   }
-  .great_flag .great_flag_content .time{
+
+  .great_flag .great_flag_content .time {
     font-size: 3.5rem;
   }
-  .great_flag .great_flag_content .p1{
+
+  .great_flag .great_flag_content .p1 {
     font-size: 3rem;
   }
-  .great_flag .great_flag_content  .p{
+
+  .great_flag .great_flag_content .p {
     font-size: 2.7rem;
   }
-  .great_flag .great_flag_content .text  .title{
+
+  .great_flag .great_flag_content .text .title {
     font-size: 2.7rem;
   }
+
   .introduction_title {
     font-size: 3.5rem;
     font-family: "AlibabaPuHuiTi_2_65_Medium";
@@ -1456,10 +1490,12 @@ getData();
     width: 100%;
     padding-top: 0.8125rem;
   }
+
   .introduction_content .img_right {
     width: 100%;
     height: 35rem;
   }
+
   .introduction_content .img_right video {
     width: 100%;
     height: 35rem;
@@ -1482,6 +1518,7 @@ getData();
     padding-top: 6rem;
     margin-bottom: 2.5rem;
   }
+
   .product_topImg {
     width: 30.25rem;
     height: 30.25rem;
@@ -1553,24 +1590,31 @@ getData();
     width: 100%;
     height: 135.25rem;
   }
-  .great_flag .great_flag_title .h{
+
+  .great_flag .great_flag_title .h {
     font-size: 4rem;
   }
-  .great_flag .great_flag_title .p{
+
+  .great_flag .great_flag_title .p {
     font-size: 4rem;
   }
-  .great_flag .great_flag_content .time{
+
+  .great_flag .great_flag_content .time {
     font-size: 3.5rem;
   }
-  .great_flag .great_flag_content .p1{
+
+  .great_flag .great_flag_content .p1 {
     font-size: 3rem;
   }
-  .great_flag .great_flag_content  .p{
+
+  .great_flag .great_flag_content .p {
     font-size: 2.7rem;
   }
-  .great_flag .great_flag_content .text  .title{
+
+  .great_flag .great_flag_content .text .title {
     font-size: 2.7rem;
   }
+
   .introduction_title {
     font-size: 3.5rem;
     font-family: "AlibabaPuHuiTi_2_65_Medium";
@@ -1587,10 +1631,12 @@ getData();
     width: 100%;
     padding-top: 0.8125rem;
   }
+
   .introduction_content .img_right {
     width: 100%;
     height: 35rem;
   }
+
   .introduction_content .img_right video {
     width: 100%;
     height: 35rem;
@@ -1616,6 +1662,7 @@ getData();
     position: relative;
     margin-bottom: 2.5rem;
   }
+
   .product_topImg {
     width: 30.25rem;
     height: 30.25rem;
