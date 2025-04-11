@@ -52,9 +52,10 @@ onMounted(() => {
         </MyContent>
         <hr style="height: 0; border: none; border-top: 0.2rem solid #006fc1" />
       </div>
-      <div class="top-whiteSpan"></div>
     </div>
-    <div class="content-bgimg"></div>
+    <div class="content-bgimg">
+      <img src="../../../assets/imgs/_6_qualityAssuranceImgs/t6_p1_contentBg.png" alt="">
+    </div>
   </div>
 </template>
 
@@ -62,7 +63,6 @@ onMounted(() => {
 .manufacture-content {
   z-index: 999;
   width: 100%;
-  padding: 0 11%;
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
@@ -74,6 +74,7 @@ onMounted(() => {
   .content-top {
     z-index: 9;
     width: 100%;
+    padding: 0 11%;
 
     .top-title {
       margin-top: 6rem;
@@ -127,22 +128,19 @@ onMounted(() => {
       left: 0;
     }
 
-    .top-whiteSpan {
-      width: 100%;
-      height: 880px;
-      // height: 1050px;
-    }
   }
 
   .content-bgimg {
-    z-index: 0;
-    // background-attachment: fixed;
-    position: absolute;
     bottom: 0;
     width: 100%;
-    height: 1013px;
-    background-image: url("../../../assets/imgs/_6_qualityAssuranceImgs/t6_p1_contentBg.png");
-    background-size: cover;
+    height: 100%;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      display: block;
+    }
   }
 }
 
@@ -150,9 +148,8 @@ onMounted(() => {
 /* 大型设备（桌面，大于 900px） */
 @media (max-width: 900px) {
   .manufacture-content {
-    padding: 0 5%;
-
     .content-top {
+    padding: 0 5%;
       .top-title {
         margin-top: 3rem;
         margin-bottom: 3rem;
@@ -163,14 +160,4 @@ onMounted(() => {
 
 }
 
-@media (max-width: 800px) {}
-
-/* 中型设备（平板，600px 到 900px） */
-@media (max-width: 700px) {}
-
-/* 小型设备（手机，小于 600px） */
-
-@media (max-width: 600px) {}
-
-@media (max-width: 500px) {}
 </style>

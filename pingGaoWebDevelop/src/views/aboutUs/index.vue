@@ -26,7 +26,6 @@ const info = ref({
         <ComHeader :content="info"></ComHeader>
       </div>
     </div>
-    <div class="bg"></div>
     <MyTitle_En></MyTitle_En>
     <div class="text_word">
       <div class="word_left" ref="wordLeft">
@@ -91,6 +90,9 @@ const info = ref({
         />
       </div>
     </div>
+    <div class="bg">
+      <img src="../../assets/imgs/_1_aboutPinggaoImgs/eng/bg.png" alt="">
+    </div>
     <div>
       <Footer_En/>
     </div>
@@ -112,14 +114,13 @@ const info = ref({
 
 .bg {
   z-index: 0;
-  position: absolute;
-  bottom: 0;
   width: 100%;
-  height: 60rem;
-  background-image: url("@/assets/imgs/_1_aboutPinggaoImgs/eng/bg.png");
-  background-size: cover;
-  left: -50%;
-  transform: translateX(50%);
+  height: auto;
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
 }
 
 .text_word {

@@ -69,7 +69,7 @@ const props = defineProps({
     }
 
     h1 {
-      font-size: 3rem;
+      font-size: 2.6rem;
       font-family: "AlibabaPuHuiTi_2_65_Medium";
       color: #ffffff;
       line-height: 1.156;
@@ -121,11 +121,19 @@ const props = defineProps({
 @media (max-width: 1300px) {
   .commitment-span {
     .content {
+      top: 25%;
+
       h1 {
-        font-size: 4rem;
+        font-size: 2.8rem;
         padding: 0 7%;
       }
     }
+  }
+}
+
+@media (max-width: 1200px) {
+  .commitment-span {
+    height: 301px;
   }
 }
 
@@ -145,6 +153,7 @@ const props = defineProps({
   }
 
 }
+
 @media (max-width: 600px) {
   .commitment-span {
     height: 450px;
@@ -153,6 +162,7 @@ const props = defineProps({
   }
 
 }
+
 @media (max-width: 500px) {
   .commitment-span {
     height: 280px;

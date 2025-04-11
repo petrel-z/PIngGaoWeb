@@ -62,16 +62,17 @@ onMounted(() => {
         </MyContent>
         <hr style="height: 0; border: none; border-top: 0.2rem solid #006fc1" />
       </div>
-      <div class="top-whiteSpan"></div>
     </div>
-    <div class="content-bgimg"></div>
+    <div class="content-bgimg">
+      <img src="../../../assets/imgs/_6_qualityAssuranceImgs/t6_p1_contentBg.png" alt="">
+    </div>
   </div>
 </template>
 
 <style lang="less" scoped>
 .quality-content {
   width: 100%;
-  padding: 0 11%;
+  // padding: 0 11%;
 
   display: flex;
   justify-content: center;
@@ -82,6 +83,7 @@ onMounted(() => {
 
   .content-top {
     width: 100%;
+    padding: 0 11%;
 
     .top-title {
       margin-top: 6rem;
@@ -148,21 +150,19 @@ onMounted(() => {
       right: 0; // 动画效果
     }
 
-    .top-whiteSpan {
-      width: 100%;
-      height: 730px;
-      // height: 1050px;
-    }
   }
 
   .content-bgimg {
-    position: absolute;
     bottom: 0;
     width: 100%;
-    height: 1013px;
-    background-image: url("../../../assets/imgs/_6_qualityAssuranceImgs/t6_p1_contentBg.png");
-    background-size: cover;
-    // background-attachment: fixed;
+    height: 100%;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      display: block;
+    }
   }
 }
 
@@ -175,7 +175,7 @@ onMounted(() => {
         .top-span-content {
 
           p {
-            font-size: 1.1rem;
+            font-size: 1.19rem;
           }
         }
       }
@@ -183,7 +183,8 @@ onMounted(() => {
   }
 }
 
-@media (max-width: 1600px) {
+
+@media (max-width: 1200px) {
   .quality-content {
     .content-top {
 
@@ -192,7 +193,7 @@ onMounted(() => {
         .top-span-content {
 
           p {
-            font-size: 1rem;
+            font-size: 1.5rem;
           }
         }
       }
@@ -200,24 +201,7 @@ onMounted(() => {
   }
 }
 
-@media (max-width: 1430px) {
-  .quality-content {
-    .content-top {
-
-      .top-span {
-
-        .top-span-content {
-
-          p {
-            font-size: 0.96rem;
-          }
-        }
-      }
-    }
-  }
-}
-
-@media (max-width: 1400px) {
+@media (max-width: 1100px) {
   .quality-content {
     .content-top {
 
@@ -234,29 +218,13 @@ onMounted(() => {
   }
 }
 
-@media (max-width: 1300px) {
-  .quality-content {
-    .content-top {
-
-      .top-span {
-
-        .top-span-content {
-
-          p {
-            font-size: 1.1rem;
-          }
-        }
-      }
-    }
-  }
-}
 
 /* 大型设备（桌面，大于 900px） */
 @media (max-width: 900px) {
   .quality-content {
-    padding: 0 5%;
 
     .content-top {
+      padding: 0 5%;
 
       .top-title {
         margin-top: 3rem;

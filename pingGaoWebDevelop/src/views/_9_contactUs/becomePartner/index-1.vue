@@ -761,17 +761,19 @@ function reset () {
   }
 }
 
-@media (max-width: 800px) {
-}
-
-/* 中型设备（平板，600px 到 900px） */
-@media (max-width: 700px) {
-}
-
-/* 小型设备（手机，小于 600px） */
-@media (max-width: 600px) {
-}
-
-@media (max-width: 500px) {
+@media (max-width: 400px) {
+  .becomePartner-content {
+    .content-top {
+      .top-information {
+        .write-info {
+          .common {
+            .common-title {
+              margin-top: 1rem;
+            }
+          }
+        }
+      }
+    }
+  }
 }
 </style>
