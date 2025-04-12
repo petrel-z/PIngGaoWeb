@@ -628,6 +628,13 @@ getData();
   }
 }
 
+@media (max-width: 500px) {
+  .swiper{
+	  --swiper-navigation-size: 20px;/* 设置按钮大小 */
+  }
+}
+
+
 .announcement_title {
   font-size: 1.375rem;
   font-family: "AlibabaPuHuiTi_2_55_Regular";
@@ -802,6 +809,7 @@ getData();
   transition: all 0.3s ease;
   cursor: pointer;
   background-repeat: no-repeat;
+  white-space: nowrap;
 }
 
 .product_button:hover {
@@ -1170,17 +1178,36 @@ getData();
     height: 4.5rem;
     font-size: 2rem;
     margin: auto;
+	height: fit-content;
   }
 
-  .product_button {
-    width: 9.6875rem;
-    margin-top: 3rem;
-  }
+//   .product_button {
+//     width: 19.6875rem;
+//     margin-top: 3rem;
+//   }
 
-  .product_button span {
-    font-size: 1.3rem;
-    line-height: 2.5rem;
-  }
+//   .product_button span {
+// 	top: 5px;
+//     font-size: 1.3rem;
+//     line-height: 2.5rem;
+//   }
+	.product_button{
+		margin-top: 0;
+		background-image: none;
+		width: fit-content;
+		height: fit-content;
+	}
+	.product_button span{
+		background-image: url("@/assets/imgs/_10_homePageImgs/button.png");
+		background-position: center;
+		background-size: 100%;
+		background-repeat: no-repeat;
+		padding: 5px 15px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		position: static;
+	}
 }
 
 @media (min-width: 380px) and (max-width: 500px) {

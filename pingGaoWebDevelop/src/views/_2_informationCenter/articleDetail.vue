@@ -79,7 +79,8 @@ getData();
 <style scoped>
 .body-bg {
   background-image: url("../../assets/imgs/_2_informationCenterImgs/newsBg-1.png");
-  padding: 0 11%;
+  /* padding: 0 11%; */
+  padding: 0 5%;
   background-size: cover;
 }
 
@@ -127,6 +128,11 @@ getData();
   text-align: left;
 }
 
+:deep(.content p img){
+  width: 80% !important;
+  height: auto !important;
+}
+
 .footer {
   display: flex;
   justify-content: space-between;
@@ -145,7 +151,7 @@ getData();
 
 @media (max-width: 900px) {
   .body {
-    padding: 0;
+    padding: 0 5%;
   }
 
   .title-box {
@@ -162,7 +168,7 @@ getData();
 
   .content {
     margin-bottom: 3rem;
-    padding: 0 2.5rem;
+    /* padding: 0 2.5rem; */
   }
 
   .footer-left {

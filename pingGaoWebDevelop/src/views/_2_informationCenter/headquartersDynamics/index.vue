@@ -6,6 +6,7 @@ import Item1 from "@/components/Item-1.vue";
 import MyButton from "@/components/MyButton.vue";
 import httpUtils from "@/utils/httpUtils.js";
 import router from "@/router/index.js";
+import { isMobile } from "@/utils/util.js";
 
 defineOptions({
   name: "NewsCenterIndex1-1",
@@ -81,23 +82,28 @@ getData();
 const contentBox = ref(null);
 onMounted(() => {
   if (contentBox.value) {
-    // 监听页面滚动事件
-    window.addEventListener("scroll", () => {
-      if (!contentBox.value) return;
-      // 获取元素顶部距离页面顶部的距离
-
-      const contentTop = contentBox.value.getBoundingClientRect().top;
-      // 获取窗口的高度
-      const windowHeight = window.innerHeight;
-
-      // 判断元素是否进入可视区域
-
-      if (contentTop < windowHeight) {
-        contentBox.value.classList.add("show");
-      } else {
-        contentBox.value.classList.remove("show");
-      }
-    });
+	const mobile = isMobile();
+	if(mobile) {
+		contentBox.value.classList.add("show");
+	}else{
+		// 监听页面滚动事件
+		window.addEventListener("scroll", () => {
+		  if (!contentBox.value) return;
+		  // 获取元素顶部距离页面顶部的距离
+	
+		  const contentTop = contentBox.value.getBoundingClientRect().top;
+		  // 获取窗口的高度
+		  const windowHeight = window.innerHeight;
+	
+		  // 判断元素是否进入可视区域
+	
+		  if (contentTop < windowHeight) {
+			contentBox.value.classList.add("show");
+		  } else {
+			contentBox.value.classList.remove("show");
+		  }
+		});
+	}
   }
 });
 </script>

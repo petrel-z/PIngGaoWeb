@@ -3,6 +3,7 @@ import MyContent from '@/components/MyContent.vue'
 import MyTitle from '@/components/MyTitle.vue'
 import HttpUtils from '@/utils/httpUtils.js'
 import { onMounted, ref } from 'vue'
+import { isMobile } from "@/utils/util.js";
 
 defineOptions({
   name: 'marketing-serviceIndex2-1',
@@ -14,6 +15,8 @@ const contentBox = ref(null)
 const itemsContent = ref(null)
 onMounted(() => {
   if (contentBox.value && itemsContent.value) {
+    const mobile = isMobile()
+	if(mobile)return;
     // 监听页面滚动事件
     window.addEventListener('scroll', () => {
       if (!contentBox.value || !itemsContent.value) return
@@ -42,6 +45,10 @@ async function getData() {
   const res = await HttpUtils.get(`/cms/organization/list`)
   const result = await res.json()
   data.value = result.data
+  setTimeout(() => {
+	contentBox.value.classList.add('show')
+	itemsContent.value.classList.add('show')
+  }, 200);
 }
 
 getData()
@@ -135,7 +142,8 @@ getData()
 .bodyBg {
   background-color: #def1fb;
   width: 100%;
-  height: 60vh;
+  min-height: 60vh;
+  height: 100%;
   position: absolute;
   top: 0px;
   left: 0px;
@@ -231,6 +239,7 @@ getData()
   width: 100%;
   margin-top: 2.9375rem;
   overflow: hidden;
+  padding-bottom: 20px;
 }
 
 .item {

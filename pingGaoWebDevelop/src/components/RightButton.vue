@@ -5,6 +5,7 @@ import { storeToRefs } from "pinia";
 
 const languageStore = useLanguageStore();
 const { currentLang } = storeToRefs(languageStore);
+console.log('currentLang:',currentLang.value)
 
 const router = useRouter();
 
@@ -25,7 +26,7 @@ const goHome = () => {
 </script>
 
 <template>
-  <div class="button">
+  <div class="button" v-if="currentLang !== 'en-US'">
     <div class="top box" @click="scrollToTop">
       <div class="icon"><span class="icon iconfont">&#xe7e5;</span></div>
       <div class="p">定顶部</div>

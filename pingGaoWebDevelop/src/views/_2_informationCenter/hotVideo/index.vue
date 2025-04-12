@@ -3,7 +3,8 @@ import hotVideoImg from "@/assets/imgs/_2_informationCenterImgs/hotVideoImg.png"
 import MyButton from "@/components/MyButton.vue";
 import MyTitle from "@/components/MyTitle.vue";
 import httpUtils from "@/utils/httpUtils.js";
-import { onMounted, ref } from "vue";
+import { onMounted, ref, nextTick } from "vue";
+import { isMobile } from "@/utils/util.js";
 
 defineOptions({
   name: "NewsCenterIndex4-1",
@@ -38,6 +39,9 @@ async function getData () {
   } else {
     pageNo.value = pageNo.value + 1;
   }
+  setTimeout(() => {
+	items.value.classList.add("show");
+  }, 100);
 }
 
 getData();
@@ -57,6 +61,8 @@ onMounted(() => {
   // 获取目标元素容器
   const targetContainer = items.value;
   if (targetContainer) {
+	const mobile = isMobile();
+	if(mobile)return;
     // 监听页面滚动事件
     window.addEventListener("scroll", () => {
       if (!targetContainer) return;

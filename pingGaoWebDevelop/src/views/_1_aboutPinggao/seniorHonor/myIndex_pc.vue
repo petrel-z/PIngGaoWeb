@@ -69,7 +69,8 @@ const createObserver = (refElement, isVisible) => {
     }
   );
   if (refElement.value) {
-    observer.observe(refElement.value);
+	if(observer.observe) observer.observe(...refElement.value);
+   
   }
 };
 // 初始化所有的观察器

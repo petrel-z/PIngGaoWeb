@@ -6,6 +6,7 @@ import OrderList from "@/components/OrderList.vue";
 import router from "@/router/index.js";
 import httpUtils from "@/utils/httpUtils.js";
 import { ref, onMounted } from "vue";
+import { isMobile } from "@/utils/util.js";
 
 defineOptions({
   name: "NewsCenterIndex2-2",
@@ -88,8 +89,12 @@ function changeOnce() {
 }
 
 onMounted(() => {
-  changeOnce();
-  window.addEventListener("resize", changeOnce);
+	const mobile = isMobile();
+	if(mobile){
+		return onceChange.value = true;
+	}
+	changeOnce();
+	window.addEventListener("resize", changeOnce);
 });
 </script>
 

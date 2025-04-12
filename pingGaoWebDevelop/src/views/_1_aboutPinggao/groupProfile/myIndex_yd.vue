@@ -425,17 +425,10 @@ onMounted(initializeObservers); // 在组件挂载时调用
 
 .key {
   width: 100%;
-  height: 120rem;
-  margin-bottom: 7.5rem;
   margin-top: 2.5rem;
   z-index: 10;
 }
 
-.key_content1 {
-  height: 130rem;
-  display: grid;
-  grid-template-rows: repeat(6, 1fr); /* 将容器分为3等份 */
-}
 
 .key .key_title {
   font-size: 2rem;
@@ -446,101 +439,55 @@ onMounted(initializeObservers); // 在组件挂载时调用
 }
 
 .key_content_one {
-  width: 45.3%;
-  margin-bottom: 0.4375rem;
-  position: relative;
-  height: 10.0625rem;
   background-image: url("@/assets/imgs/_1_aboutPinggaoImgs/content-1.png");
-  background-repeat: no-repeat;
-  background-size: contain;
-  background-color: #def1fb;
-  cursor: pointer;
-  transform: scale(2);
-  margin: auto;
 }
 
 .key_content_two {
-  width: 45.3%;
-  margin-bottom: 0.4375rem;
-  position: relative;
-  height: 10.0625rem;
   background-image: url("@/assets/imgs/_1_aboutPinggaoImgs/content-2.png");
-  background-repeat: no-repeat;
-  background-size: contain;
-  cursor: pointer;
-  background-color: #def1fb;
-  transform: scale(2);
-  margin: auto;
 }
 
 .key_content_three {
-  width: 45.3%;
-  margin-bottom: 0.4375rem;
-  position: relative;
-  height: 10.0625rem;
   background-image: url("@/assets/imgs/_1_aboutPinggaoImgs/content-3.png");
-  background-repeat: no-repeat;
-  background-size: contain;
-  background-color: #def1fb;
-  transform: scale(2);
-  margin: auto;
 }
 
 .key_content_four {
-  width: 45.3%;
-  position: relative;
-  height: 10.0625rem;
   background-image: url("@/assets/imgs/_1_aboutPinggaoImgs/content-4.png");
-  background-repeat: no-repeat;
-  background-size: contain;
-  background-color: #def1fb;
-  margin-bottom: 0.4375rem;
-  transform: scale(2);
-  margin: auto;
 }
 
 .key_content_five {
-  width: 45.3%;
-  position: relative;
-  height: 10.0625rem;
   background-image: url("@/assets/imgs/_1_aboutPinggaoImgs/content-5.png");
-  background-repeat: no-repeat;
-  background-size: contain;
-  background-color: #def1fb;
-  margin-bottom: 0.4375rem;
-  transform: scale(2);
-  margin: auto;
 }
 
 .key_content_six {
-  position: relative;
-  width: 45.3%;
-  height: 10.0625rem;
   background-image: url("@/assets/imgs/_1_aboutPinggaoImgs/content-6.png");
-  background-repeat: no-repeat;
-  background-size: contain;
-  background-color: #def1fb;
-  transform: scale(2);
-  margin: auto;
 }
 .key .key_info {
   cursor: pointer;
   transition: 0.3s;
+  width: 90%;
+  margin: 0 auto;
+  margin-bottom: 0.4375rem;
+  padding: 3rem 0;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-color: #def1fb;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding-left: 14%;
+  padding-right: 10%;
 }
 
 .key_content_h {
-  left: 11.75rem;
-  top: 2rem;
-  position: absolute;
-  font-size: 1.375rem;
-  font-family: "AlibabaPuHuiTi_2_65_Medium";
-  color: rgb(35, 24, 21);
+	width: 50%;
+	border-bottom: 1px solid #bdbdbd;
+	font-size: 1.375rem;
+	font-family: "AlibabaPuHuiTi_2_65_Medium";
+	color: rgb(35, 24, 21);
 }
 
 .key_content_text {
-  left: 11.75rem;
-  top: 4.4375rem;
-  position: absolute;
   font-size: 1.25rem;
   font-family: "AlibabaPuHuiTi_2_45_Light";
   color: rgb(89, 87, 87);
@@ -676,7 +623,7 @@ onMounted(initializeObservers); // 在组件挂载时调用
     font-size: 0.85rem;
   }
   .key .key_info {
-    height: 6rem;
+    /* height: 6rem; */
   }
   .basic_culture_info .basic_culture_h {
     font-size: 1.1rem !important;
@@ -835,7 +782,7 @@ onMounted(initializeObservers); // 在组件挂载时调用
   }
   .key .key_info {
     width: 30%;
-    height: 5rem;
+    /* height: 5rem; */
     transform: scale(3) !important;
   }
   .basic_culture {
@@ -918,7 +865,7 @@ onMounted(initializeObservers); // 在组件挂载时调用
   }
   .key .key_info {
     width: 30%;
-    height: 5rem;
+    /* height: 5rem; */
     transform: scale(3) !important;
   }
   .basic_culture {
@@ -1001,7 +948,7 @@ onMounted(initializeObservers); // 在组件挂载时调用
   }
   .key .key_info {
     width: 30%;
-    height: 5rem;
+    /* height: 5rem; */
     transform: scale(3) !important;
   }
   .basic_culture {
@@ -1084,7 +1031,7 @@ onMounted(initializeObservers); // 在组件挂载时调用
   }
   .key .key_info {
     width: 30%;
-    height: 5rem;
+    /* height: 5rem; */
     transform: scale(3) !important;
   }
   .basic_culture {
@@ -1156,7 +1103,7 @@ onMounted(initializeObservers); // 在组件挂载时调用
     font-size: 1.1rem;
   }
   .key .key_info {
-    height: 8.5rem;
+    /* height: 8.5rem; */
   }
   .mind_map {
     background-color: #def1fb;

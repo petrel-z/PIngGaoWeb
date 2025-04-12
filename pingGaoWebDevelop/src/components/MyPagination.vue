@@ -203,6 +203,7 @@ function handleJump(e) {
     font-size: 1rem;
 
     input {
+	min-width: 30px;
       width: 4rem;
       padding: 0.3rem 0.5rem;
       border: 1px solid var(--fontColor);

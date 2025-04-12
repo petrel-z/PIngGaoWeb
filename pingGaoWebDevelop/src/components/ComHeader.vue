@@ -394,17 +394,19 @@ onMounted(() => {
         }"
       >
         <div class="log-img">
-          <div class="logo-link" @click="goHome(1)">
+          <div class="logo-link">
             <img
               ref="logo1"
               v-show="!headerBottomFlag && !imgFixed && (language === 'en-US' || hidden)"
               :src="logoImg1"
+			  @click="goHome(1)"
               alt=""
             />
             <img
               ref="logo2"
               v-show="imgFixed || headerBottomFlag || (language !== 'en-US' && !hidden)"
               :src="logoImg2"
+			  @click="goHome(1)"
               alt=""
             />
           </div>
@@ -917,7 +919,7 @@ onMounted(() => {
   justify-content: space-around;
   align-items: center;
   color: #fff;
-  padding: 0 1rem;
+  padding: 0 1.5rem;
   width: auto;
   text-align: center;
   margin-left: 1rem;
@@ -928,7 +930,7 @@ onMounted(() => {
   font-size: 1.3rem;
   transition: all 0.3s ease;
   flex: 0 0 auto;
-  height: 1.5rem;
+  /* height: 1.5rem; */
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -1242,7 +1244,7 @@ onMounted(() => {
     height: auto;
     padding: 0;
     margin: 0; */
-    font-size: 5rem;
+    font-size: 8rem;
     color: #fff;
   }
 
