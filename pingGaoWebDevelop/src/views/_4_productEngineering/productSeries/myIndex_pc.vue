@@ -32,12 +32,7 @@ onMounted(() => {
     redirectToMobileVersion();
   }
 });
-onMounted(() => {
-  // 确保只在客户端执行
-  if (typeof window !== "undefined") {
-    redirectToMobileVersion();
-  }
-});
+
 const boxRef = ref(null);
 const isVisibleBox = ref(false);
 const infoRef = ref(null);

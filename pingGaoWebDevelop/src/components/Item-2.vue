@@ -1,5 +1,6 @@
 <script setup>
 import { onMounted, ref } from "vue";
+import { isMobile } from "@/utils/util.js";
 
 const props = defineProps({
   detailId: {
@@ -43,6 +44,13 @@ onMounted(() => {
   // 获取目标元素容器
   const targetContainer = items.value;
   if (targetContainer) {
+	const mobile = isMobile();
+	if(mobile){
+		setTimeout(() => {
+			targetContainer.classList.add("show");
+		}, 100);
+		return;
+	} 
     // 监听页面滚动事件
     window.addEventListener("scroll", () => {
       if (!targetContainer) return;

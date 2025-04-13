@@ -205,7 +205,7 @@ function reset () {
         <h1>填写资料</h1>
         <div class="write-info">
           <div class="left">
-            <div class="common">
+            <div class="common first_common">
               <div class="common-title">
                 <span class="star">*</span><span class="text">申请伙伴类型</span>
               </div>
@@ -286,12 +286,12 @@ function reset () {
                 该项是必填项
               </div>
             </div>
-            <div class="submit" @click="submit()">
-              提交资料
-            </div>
+			<!-- <div class="submit" @click="submit()">
+				提交资料
+			</div> -->
           </div>
           <div class="right">
-            <div class="common">
+            <div class="common first_common">
               <div class="common-title">
                 <span class="star">*</span><span class="text">合作意向</span>
               </div>
@@ -375,11 +375,19 @@ function reset () {
                 该项是必填项
               </div>
             </div>
-            <div class="reset" @click="reset()">
-              重置资料
-            </div>
-          </div>
-        </div>
+		  </div>
+		  <!-- <div class="reset" @click="reset()">
+				重置资料
+			</div> -->
+		</div>
+		<div class="submit_btn">
+			<div class="submit sb_btn" @click="submit()">
+				提交资料
+			</div>
+			<div class="reset sb_btn" @click="reset()">
+				重置资料
+			</div>
+		</div>
       </div>
     </div>
     <div class="content-bgimg">
@@ -443,7 +451,7 @@ function reset () {
       position: relative;
       animation: top-information 1s ease forwards;
 
-      height: 105.5rem;
+    //   height: 105.5rem;
       background-color: #fff;
       border-radius: 10px;
 
@@ -458,7 +466,7 @@ function reset () {
       }
 
       .write-info {
-        height: 74.5rem;
+        // height: 74.5rem;
         display: flex;
         justify-content: space-between;
 
@@ -496,8 +504,10 @@ function reset () {
         .common {
           width: 100%;
           height: 11.8rem;
-          border-top: 1px solid #006fc1;
+          border-bottom: 1px solid #006fc1;
           position: relative;
+		  box-sizing: content-box;
+		  padding-bottom: 2px;
 
           .mustWrite {
             display: none;
@@ -653,7 +663,6 @@ function reset () {
     height: 100%;
   }
 }
-
 @media (max-width: 1700px) {
   .becomePartner-content {
     .content-top {
@@ -683,7 +692,7 @@ function reset () {
       }
 
       .top-information {
-        height: 130rem;
+        // height: 130rem;
         background-color: #fff;
         border-radius: 10px;
 
@@ -694,7 +703,7 @@ function reset () {
 
         .write-info {
           width: 100%;
-          height: 90rem;
+        //   height: 90rem;
           flex-direction: column;
 
           .left,
@@ -705,12 +714,12 @@ function reset () {
           }
 
           .right {
-            padding-bottom: 13rem;
+            // padding-bottom: 13rem;
           }
 
           .left {
             .last {
-              border-bottom: none;
+            //   border-bottom: none;
             }
           }
 
@@ -759,6 +768,14 @@ function reset () {
       }
     }
   }
+  .left .first_common{
+	border-top: 1px solid #006fc1;
+  }
+}
+@media (min-width: 900px) {
+	.first_common{
+		border-top: 1px solid #006fc1;
+	}
 }
 
 @media (max-width: 400px) {
@@ -775,5 +792,27 @@ function reset () {
       }
     }
   }
+}
+.submit_btn{
+	display: flex;
+	align-items: center;
+	justify-content: space-around;
+	padding: 15px 0;
+	.sb_btn{
+		width: 45%;
+		border-radius: 1.5rem;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		height: 9vw;
+		font-size: 2.2rem;
+	}
+	.submit{
+		background-color: #45b3e0;
+    	color: #ffffff;
+	}
+	.reset{
+		background-color: #dcdddd;
+	}
 }
 </style>

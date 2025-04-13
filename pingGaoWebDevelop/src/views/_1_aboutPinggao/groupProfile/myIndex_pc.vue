@@ -549,6 +549,8 @@ onMounted(initializeObservers); // 在组件挂载时调用
   font-size: 1.375rem;
   font-family: "AlibabaPuHuiTi_2_65_Medium";
   color: rgb(35, 24, 21);
+  border-bottom: 1px solid #bdbdbd;
+  width: 58%;
 }
 
 .key_content_text {

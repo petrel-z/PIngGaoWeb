@@ -1,5 +1,6 @@
 <script setup>
 import { ref, onMounted } from "vue";
+import { isMobile } from "@/utils/util.js";
 
 defineOptions({
   name: "marketing-serviceIndex1-1",
@@ -12,6 +13,14 @@ const contentBox = ref(null);
 const processBox = ref(null);
 onMounted(() => {
   if (contentBox.value && processBox.value) {
+	const mobile = isMobile();
+	if(mobile){
+		setTimeout(() => {
+			contentBox.value.classList.add("show");
+			processBox.value.classList.add("show");
+		}, 100);
+		return;
+	}
     // 监听页面滚动事件
     window.addEventListener("scroll", () => {
       if (!contentBox.value || !processBox.value) return;
@@ -73,7 +82,8 @@ onMounted(() => {
 .bodyBg {
   background-color: #def1fb;
   width: 100%;
-  height: 50vh;
+  min-height: 50vh;
+  height: 100%;
   position: absolute;
   top: 0px;
   left: 0px;
@@ -125,6 +135,7 @@ onMounted(() => {
 
 .process {
   width: 100%;
+  padding-bottom: 20px;
 }
 
 .process img {

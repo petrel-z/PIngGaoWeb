@@ -5,7 +5,8 @@ import MyPagination from "@/components/MyPagination.vue";
 import MyTitle from "@/components/MyTitle.vue";
 import router from "@/router/index.js";
 import httpUtils from "@/utils/httpUtils.js";
-import { onMounted, ref } from "vue";
+import { onMounted, ref, nextTick } from "vue";
+import { isMobile } from "@/utils/util.js";
 
 defineOptions({
   name: "NewsCenterIndex5-1",
@@ -14,21 +15,24 @@ defineOptions({
 const contentBox = ref(null);
 onMounted(() => {
   if (contentBox.value) {
-    // 监听页面滚动事件
-    window.addEventListener("scroll", () => {
-      if (!contentBox.value) return;
-      // 获取元素顶部距离页面顶部的距离
-      const contentTop = contentBox.value.getBoundingClientRect().top;
-      // 获取窗口的高度
-      const windowHeight = window.innerHeight;
-
-      // 判断元素是否进入可视区域
-      if (contentTop < windowHeight) {
-        contentBox.value.classList.add("show");
-      } else {
-        contentBox.value.classList.remove("show");
-      }
-    });
+	const mobile = isMobile();
+	if (!mobile){
+		// 监听页面滚动事件
+		window.addEventListener("scroll", () => {
+		  if (!contentBox.value) return;
+		  // 获取元素顶部距离页面顶部的距离
+		  const contentTop = contentBox.value.getBoundingClientRect().top;
+		  // 获取窗口的高度
+		  const windowHeight = window.innerHeight;
+	
+		  // 判断元素是否进入可视区域
+		  if (contentTop < windowHeight) {
+			contentBox.value.classList.add("show");
+		  } else {
+			contentBox.value.classList.remove("show");
+		  }
+		});
+	}
   }
 });
 
@@ -84,6 +88,8 @@ async function getData () {
     mainNews.value = page.list;
   }
   pageMax.value = Math.ceil(page.total / pageSize.value);
+  await nextTick();
+  contentBox.value.classList.add("show");
 }
 
 function pageChange (pageNumber) {

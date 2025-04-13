@@ -1,5 +1,6 @@
 <script setup>
-import { onMounted, ref } from "vue";
+import { onMounted, ref, nextTick } from "vue";
+import { isMobile } from "@/utils/util.js";
 
 const props = defineProps({
   detailId: {
@@ -81,44 +82,56 @@ const emit = defineEmits(["clickItem"]);
 const hover = ref(false);
 const items = ref(null);
 const enItems = ref(null);
-
+const mobile = isMobile();
 onMounted(() => {
   // 获取目标元素容器
   const targetContainer = items.value;
   const enTargetContainer = enItems.value;
-  if (targetContainer) {
-    // 监听页面滚动事件
-    window.addEventListener("scroll", () => {
-      if (!targetContainer) return;
-      // 获取元素顶部距离页面顶部的距离
-      const elementTop = targetContainer.getBoundingClientRect().top;
-      // 获取窗口的高度
-      const windowHeight = window.innerHeight;
-
-      // 判断元素是否进入可视区域
-      if (elementTop < windowHeight) {
-        targetContainer.classList.add("show");
-      } else {
-        targetContainer.classList.remove("show");
-      }
-    });
-  }
-  if (enTargetContainer) {
-    // 监听页面滚动事件
-    window.addEventListener("scroll", () => {
-      if (!enTargetContainer) return;
-      // 获取元素顶部距离页面顶部的距离
-      const enElementTop = enTargetContainer.getBoundingClientRect().top;
-      // 获取窗口的高度
-      const windowHeight = window.innerHeight;
-
-      // 判断元素是否进入可视区域
-      if (enElementTop < windowHeight) {
-        enTargetContainer.classList.add("show");
-      } else {
-        enTargetContainer.classList.remove("show");
-      }
-    });
+  if(mobile){
+	setTimeout(() => {
+		if (targetContainer) {
+			targetContainer.classList.add("show");
+		}
+		if (enTargetContainer) {
+			enTargetContainer.classList.add("show");
+		}
+	}, 100)
+	return;
+  }else{
+	  if (targetContainer) {
+		// 监听页面滚动事件
+		window.addEventListener("scroll", () => {
+		  if (!targetContainer) return;
+		  // 获取元素顶部距离页面顶部的距离
+		  const elementTop = targetContainer.getBoundingClientRect().top;
+		  // 获取窗口的高度
+		  const windowHeight = window.innerHeight;
+	
+		  // 判断元素是否进入可视区域
+		  if (elementTop < windowHeight) {
+			targetContainer.classList.add("show");
+		  } else {
+			targetContainer.classList.remove("show");
+		  }
+		});
+	  }
+	  if (enTargetContainer) {
+		// 监听页面滚动事件
+		window.addEventListener("scroll", () => {
+		  if (!enTargetContainer) return;
+		  // 获取元素顶部距离页面顶部的距离
+		  const enElementTop = enTargetContainer.getBoundingClientRect().top;
+		  // 获取窗口的高度
+		  const windowHeight = window.innerHeight;
+	
+		  // 判断元素是否进入可视区域
+		  if (enElementTop < windowHeight) {
+			enTargetContainer.classList.add("show");
+		  } else {
+			enTargetContainer.classList.remove("show");
+		  }
+		});
+	  }
   }
 });
 </script>
@@ -393,6 +406,13 @@ onMounted(() => {
     height: auto;
   }
 }
+.en-right .en-title, .en-right .en-text{
+	overflow: hidden;
+	text-overflow: ellipsis;
+	display: -webkit-box;
+	-webkit-line-clamp: 2;
+	-webkit-box-orient: vertical;
+}
 
 @media screen and (max-width: 1500px) {
   .left,
@@ -433,7 +453,7 @@ onMounted(() => {
 
   .text,
   .en-text {
-    font-size: 2.5rem;
+    font-size: 2.1rem;
   }
 
   .month,

@@ -109,5 +109,16 @@ getData();
 }
 
 @media (max-width: 600px) {
+	.container-box{
+		padding: 0 5%;
+	}
+}
+
+:deep(.container-body){
+	p{
+		img{
+			width: 80%;
+		}
+	}
 }
 </style>

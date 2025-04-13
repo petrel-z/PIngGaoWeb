@@ -4,6 +4,7 @@ import MyContent from "@/components/MyContent.vue";
 import MyTitle from "@/components/MyTitle.vue";
 import HumanContent from "@/components/HumanContent.vue";
 import httpUtils from "@/utils/httpUtils.js";
+import { isMobile } from "@/utils/util.js";
 
 const formatedData = ref([]);
 
@@ -54,27 +55,33 @@ getList();
 
 onMounted(() => {
   if (contentBox.value && humanContentBox.value) {
-    // 监听页面滚动事件
-    window.addEventListener("scroll", () => {
-      if (!contentBox.value || !humanContentBox.value) return;
-      // 获取元素顶部距离页面顶部的距离
-      const contentTop = contentBox.value.getBoundingClientRect().top;
-      const humanContentTop = humanContentBox.value.getBoundingClientRect().top;
-      // 获取窗口的高度
-      const windowHeight = window.innerHeight;
-
-      // 判断元素是否进入可视区域
-      if (contentTop < windowHeight) {
-        contentBox.value.classList.add("show");
-      } else {
-        contentBox.value.classList.remove("show");
-      }
-      if (humanContentTop < windowHeight) {
-        humanContentBox.value.classList.add("show");
-      } else {
-        humanContentBox.value.classList.remove("show");
-      }
-    });
+	const mobile = isMobile();
+	if(mobile){
+		contentBox.value.classList.add("show");
+		humanContentBox.value.classList.add("show");
+	}else{
+		// 监听页面滚动事件
+		window.addEventListener("scroll", () => {
+		  if (!contentBox.value || !humanContentBox.value) return;
+		  // 获取元素顶部距离页面顶部的距离
+		  const contentTop = contentBox.value.getBoundingClientRect().top;
+		  const humanContentTop = humanContentBox.value.getBoundingClientRect().top;
+		  // 获取窗口的高度
+		  const windowHeight = window.innerHeight;
+	
+		  // 判断元素是否进入可视区域
+		  if (contentTop < windowHeight) {
+			contentBox.value.classList.add("show");
+		  } else {
+			contentBox.value.classList.remove("show");
+		  }
+		  if (humanContentTop < windowHeight) {
+			humanContentBox.value.classList.add("show");
+		  } else {
+			humanContentBox.value.classList.remove("show");
+		  }
+		});
+	}
   }
 });
 </script>

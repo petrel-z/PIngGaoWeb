@@ -85,37 +85,37 @@ onMounted(initializeObservers); // 在组件挂载时调用
       <div class="organization_title">平高集团有限公司</div>
       <div class="detail">
         <div class="introduce">
-          <div class="info">
+          <div class="info scale-up">
             <div class="info_top">12</div>
             <div class="info_bottom">全资子公司<span>/</span>家</div>
           </div>
         </div>
         <div class="introduce">
-          <div class="info">
+          <div class="info scale-up">
             <div class="info_top">6</div>
             <div class="info_bottom">投股子公司<span>/</span>家</div>
           </div>
         </div>
         <div class="introduce">
-          <div class="info">
+          <div class="info scale-up">
             <div class="info_top">1</div>
             <div class="info_bottom">合营公司<span>/</span>家</div>
           </div>
         </div>
         <div class="introduce">
-          <div class="info">
+          <div class="info scale-up">
             <div class="info_top">11</div>
             <div class="info_bottom">本部部门<span>/</span>家</div>
           </div>
         </div>
         <div class="introduce">
-          <div class="info">
+          <div class="info scale-up">
             <div class="info_top">2</div>
             <div class="info_bottom">分公司<span>/</span>家</div>
           </div>
         </div>
         <div class="introduce">
-          <div class="info">
+          <div class="info scale-up">
             <div class="info_top">1</div>
             <div class="info_bottom">支撑平台<span>/</span>家</div>
           </div>
@@ -123,7 +123,7 @@ onMounted(initializeObservers); // 在组件挂载时调用
       </div>
     </div>
     <div class="component">
-      <div class="content_top1">
+      <div class="content_top1 move-left">
         <div class="info">
           <headLine title="本部部门"></headLine>
           <ul class="parts">
@@ -170,7 +170,7 @@ onMounted(initializeObservers); // 在组件挂载时调用
         </div>
       </div>
 
-      <div class="content_middle1">
+      <div class="content_middle1 move-right">
         <div class="info">
           <headLine title="支撑平台"></headLine>
           <ul class="parts">
@@ -190,7 +190,7 @@ onMounted(initializeObservers); // 在组件挂载时调用
           </ul>
         </div>
       </div>
-      <div class="content_bottom1">
+      <div class="content_bottom1 move-left">
         <div class="info">
           <headLine title="分公司"></headLine>
           <ul class="parts">
