@@ -15,7 +15,6 @@ defineOptions({
             <img style="width: 100%;height: auto" src="../assets/imgs/common/footerLogo.png"
                  alt=""/>
           </div>
-          <!-- <hr class="logo-text-hr" /> -->
           <div class="text-bottom">
             <p>地址:河南省郑州市郑东新区龙源西三街39号3B栋</p>
             <p>邮箱:sales@pinggao.com</p>
@@ -233,30 +232,6 @@ a {
       width: 75%;
     }
 
-    .logo-text-bottom {
-      .bottom-p1 {
-        width: 70%;
-        white-space: nowrap;
-        border-top: 1px solid #727171;
-        font-size: 1.15rem;
-        font-family: "AlibabaPuHuiTi_2_85_Bold";
-        color: rgb(114, 113, 113);
-        line-height: 1.296;
-        text-align: left;
-        letter-spacing: 2px;
-        font-weight: bold;
-      }
-
-      .bottom-p2 {
-        font-size: 0.9rem;
-        font-family: "Arial";
-        color: rgb(114, 113, 113);
-        font-weight: bold;
-        text-transform: uppercase;
-        text-align: left;
-        line-height: 1.841;
-      }
-    }
 
     .text-bottom {
       font-size: 0.8rem;
@@ -377,7 +352,7 @@ a {
   .footer-bottom {
     height: 15%;
     width: 100%;
-    font-size: 1.6rem;
+    font-size: 1.8rem;
     padding: 0 4%;
     white-space: wrap;
 
@@ -393,7 +368,6 @@ a {
     position: relative;
 
     .logo-img {
-
       display: none;
     }
 
@@ -404,27 +378,8 @@ a {
       .logo-text-top {
         display: none;
       }
-
-      .logo-text-bottom {
-        height: auto;
-        line-height: 100px;
-
-        .bottom-p1 {
-          font-size: 1.9rem;
-          width: 100%;
-          text-align: center;
-          padding-bottom: 2rem;
-          border: none;
-          border-bottom: 1px solid #727171;
-        }
-
-        .bottom-p2 {
-          display: none;
-        }
-      }
-
       .text-bottom {
-        font-size: 1.5rem;
+        font-size: 2rem;
         padding: 1% 0 1% 3%;
         border-bottom: 1px solid #727171;
         margin: 0;
@@ -453,7 +408,7 @@ a {
       border-bottom: 1px solid #727171;
 
       h3 {
-        font-size: 1.5rem;
+        font-size: 2rem;
         margin: 0;
         height: 100%;
         line-height: 2;
@@ -461,12 +416,12 @@ a {
 
       h3::after {
         content: "▶";
-        font-size: 1.2rem;
+        font-size: 1.8rem;
         margin-left: 1rem;
       }
 
       p {
-        font-size: 1.5rem;
+        font-size: 1.8rem;
         margin-bottom: 0;
         margin: 0 1.3rem;
       }
@@ -492,5 +447,45 @@ a {
     }
   }
 }
+/* 大型设备（桌面，大于 900px） */
+@media (max-width: 500px) {
+  .footer-bottom {
+    font-size: 2rem;
+  }
 
+
+  .content {
+    .logo-text {
+      .text-bottom {
+        font-size: 2.2rem;
+      }
+    }
+
+    .f1,
+    .f2,
+    .f3,
+    .f4,
+    .f5,
+    .f6,
+    .f7,
+    .f8,
+    .f9 {
+
+      h3 {
+        font-size: 2.3rem;
+      }
+
+      h3::after {
+        font-size: 2rem;
+      }
+
+      p {
+        font-size: 2.2rem;
+      }
+
+
+    }
+
+  }
+}
 </style>
